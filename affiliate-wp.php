@@ -166,7 +166,7 @@ final class Affiliate_WP {
 
 		// Set filter for plugin's languages directory
 		$lang_dir = dirname( plugin_basename( EDD_PLUGIN_FILE ) ) . '/languages/';
-		$lang_dir = apply_filters( 'edd_languages_directory', $lang_dir );
+		$lang_dir = apply_filters( 'aff_wp_languages_directory', $lang_dir );
 
 		// Traditional WordPress plugin locale filter
 		$locale        = apply_filters( 'plugin_locale',  get_locale(), 'affiliate-wp' );
@@ -174,7 +174,7 @@ final class Affiliate_WP {
 
 		// Setup paths to current locale file
 		$mofile_local  = $lang_dir . $mofile;
-		$mofile_global = WP_LANG_DIR . '/edd/' . $mofile;
+		$mofile_global = WP_LANG_DIR . '/affiliate-wp/' . $mofile;
 
 		if ( file_exists( $mofile_global ) ) {
 			// Look in global /wp-content/languages/edd folder
