@@ -2,7 +2,8 @@
 
 function affiliate_wp_install() {
 
-	affiliate_wp()->db->create_tables();
+	affiliate_wp()->referrals->create_table();
+	affiliate_wp()->visits->create_table();
 
 	// send to welcome page here
 
