@@ -48,6 +48,7 @@ final class Affiliate_WP {
 
 	private $version = '0.1';
 
+	public $affiliates;
 	public $referrals;
 	public $visits;
 
@@ -75,8 +76,9 @@ final class Affiliate_WP {
 			self::$instance->load_textdomain();
 
 			// Setup objects
-			self::$referrals = new Affiliate_WP_Referrals_DB;
-			self::$visits    = new Affiliate_WP_Visits_DB;
+			self::$instance->affiliates = new Affiliate_WP_DB;
+			self::$instance->referrals  = new Affiliate_WP_Referrals_DB;
+			self::$instance->visits     = new Affiliate_WP_Visits_DB;
 		}
 		return self::$instance;
 	}
@@ -152,6 +154,9 @@ final class Affiliate_WP {
 		
 		}
 
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 	}
 

@@ -6,28 +6,40 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 	public $version;
 
+	public $primary_key;
+
 	public function __construct() {
 
 		global $wpdb;
 
-		$this->table_name = $wpdb->prefix . 'affiliate_wp_visits'
+		$this->table_name  = $wpdb->prefix . 'affiliate_wp_visits';
+		$this->primary_key = 'visit_id';
+		$this->version     = '1.0';
+
 	}
 
 	public function create_table() {
+
+		global $wpdb;
+
+		if( $wpdb->get_var( "show tables like '$this->table_name'" ) == $this->table_name )
+			return;
+
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-		$sql = "CREATE TABLE " . $this->referrals->table_name . " (
+		$sql = "CREATE TABLE " . $this->table_name . " (
 		`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
-		`user_id` bigint(20) NOT NULL default '0',
+		`user_id` bigint(20) NOT NULL,
 		`ip` smalltext NOT NULL,
-		`reference` varchar(20) NOT NULL default '0',
-		`date` datetime NOT NULL default '0000-00-00 00:00:00',
-		UNIQUE KEY visit_id (visit_id)
+		`reference` varchar(20) NOT NULL,
+		`date` datetime NOT NULL,
+		PRIMARY KEY  (visit_id),
+		KEY user_id (user_id)
 		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
 
 		dbDelta( $sql );
 
-		update_option( "affiliate_wp_visits_db_version", $this->version );
+		update_option( $this->table_name . '_db_version', $this->version );
 	}
 
 	public function get_columns() {
