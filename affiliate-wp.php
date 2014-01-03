@@ -170,7 +170,7 @@ final class Affiliate_WP {
 	public function load_textdomain() {
 
 		// Set filter for plugin's languages directory
-		$lang_dir = dirname( plugin_basename( EDD_PLUGIN_FILE ) ) . '/languages/';
+		$lang_dir = dirname( plugin_basename( AFFILIATEWP_PLUGIN_FILE ) ) . '/languages/';
 		$lang_dir = apply_filters( 'aff_wp_languages_directory', $lang_dir );
 
 		// Traditional WordPress plugin locale filter
