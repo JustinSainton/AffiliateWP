@@ -1,6 +1,6 @@
 <?php
 
-class Affiliate_WP_Menu {
+class Affiliate_WP_Admin_Menu {
 	
 
 	public function __construct() {
@@ -13,4 +13,4 @@ class Affiliate_WP_Menu {
 	}
 
 }
-$affiliatewp_menu = new Affiliate_WP_Menu;
+$affiliatewp_menu = new Affiliate_WP_Admin_Menu;
