@@ -22,7 +22,7 @@ class Affiliate_WP_DB {
 
 		global $wpdb;
 
-		if( $wpdb->get_var( "show tables like '$this->table_name'" ) == $this->table_name )
+		if( $wpdb->get_var( "show tables like '{$this->table_name}'" ) == $this->table_name )
 			return;
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

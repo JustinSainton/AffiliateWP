@@ -22,7 +22,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		global $wpdb;
 
-		if( $wpdb->get_var( "show tables like '$this->table_name'" ) == $this->table_name )
+		if( $wpdb->get_var( "show tables like '{$this->table_name}'" ) == $this->table_name )
 			return;
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -30,7 +30,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`user_id` bigint(20) NOT NULL,
-		`ip` smalltext NOT NULL,
+		`ip` tinytext NOT NULL,
 		`reference` varchar(20) NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (visit_id),

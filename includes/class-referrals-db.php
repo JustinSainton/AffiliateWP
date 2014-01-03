@@ -22,7 +22,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		global $wpdb;
 
-		if( $wpdb->get_var( "show tables like '$this->table_name'" ) == $this->table_name )
+		if( $wpdb->get_var( "show tables like '{$this->table_name}'" ) == $this->table_name )
 			return;
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
@@ -30,12 +30,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`referral_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`user_id` bigint(20) NOT NULL,
-		`description` largetext NOT NULL,
-		`status` smalltext NOT NULL,
+		`description` longtext NOT NULL,
+		`status` tinytext NOT NULL,
 		`amount` mediumtext NOT NULL,
-		`ip` smalltext NOT NULL,
+		`ip` tinytext NOT NULL,
 		`currency` char(3) NOT NULL,
-		`custom` largetext NOT NULL,
+		`custom` longtext NOT NULL,
 		`reference` varchar(20) NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (referral_id),
