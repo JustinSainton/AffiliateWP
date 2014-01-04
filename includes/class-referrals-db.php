@@ -18,6 +18,22 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
+
+	public function get_columns() {
+		return array(
+			'referral_id' => '%d',
+			'user_id'     => '%d',
+			'description' => '%s',
+			'status'      => '%s',
+			'amount'      => '%s',
+			'ip'          => '%s',
+			'currency'    => '%s',
+			'custom'      => '%s',
+			'reference'   => '%d',
+			'date'        => '%s',
+		);
+	}
+
 	public function create_table() {
 
 		global $wpdb;
@@ -46,20 +62,4 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		update_option( $this->table_name . '_db_version', $this->version );
 	}
-
-	public function get_columns() {
-		return array(
-			'referral_id' => '%d',
-			'user_id'     => '%d',
-			'description' => '%s',
-			'status'      => '%s',
-			'amount'      => '%s',
-			'ip'          => '%s',
-			'currency'    => '%s',
-			'custom'      => '%s',
-			'reference'   => '%d',
-			'date'        => '%s',
-		);
-	}
-
 }

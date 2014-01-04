@@ -18,6 +18,17 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 	}
 
+
+	public function get_columns() {
+		return array(
+			'visit_id' => '%d',
+			'user_id'     => '%d',
+			'ip'          => '%s',
+			'reference'   => '%d',
+			'date'        => '%s',
+		);
+	}
+
 	public function create_table() {
 
 		global $wpdb;
@@ -41,15 +52,4 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		update_option( $this->table_name . '_db_version', $this->version );
 	}
-
-	public function get_columns() {
-		return array(
-			'visit_id' => '%d',
-			'user_id'     => '%d',
-			'ip'          => '%s',
-			'reference'   => '%d',
-			'date'        => '%s',
-		);
-	}
-
 }

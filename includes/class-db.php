@@ -18,6 +18,28 @@ class Affiliate_WP_DB {
 
 	}
 
+
+	public function get_columns() {
+		return array(
+			'affiliate_id' => '%d',
+			'user_id'      => '%d',
+			'earnings'     => '%s',
+			'referrals'    => '%d',
+			'visits'       => '%d',
+		);
+	}
+
+	public function get( $row_id, $column ) {
+		global $wpdb;
+		return $wpdb->get_col( "SELECT $column FROM $this->table WHERE $this->primary_key = $row_id;" );
+	}
+
+	public function set( $row_id, $column, $value ) {
+		$data = array();
+		$data[ $column ] = $value;
+		$this->update( $row_id, $data );
+	}
+
 	public function create_table() {
 
 		global $wpdb;
@@ -41,28 +63,6 @@ class Affiliate_WP_DB {
 
 		update_option( $this->table_name . '_db_version', $this->version );
 	}
-
-	public function get_columns() {
-		return array(
-			'affiliate_id' => '%d',
-			'user_id'      => '%d',
-			'earnings'     => '%s',
-			'referrals'    => '%d',
-			'visits'       => '%d',
-		);
-	}
-
-	public function get( $row_id, $column ) {
-		global $wpdb;
-		return $wpdb->get_col( "SELECT $column FROM $this->table WHERE $this->primary_key = $row_id;" );
-	}
-
-	public function set( $row_id, $column, $value ) {
-		$data = array();
-		$data[ $column ] = $value;
-		$this->update( $row_id, $data );
-	}
-
 	public function insert( $data ) {
 		global $wpdb;
 
