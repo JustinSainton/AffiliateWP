@@ -40,7 +40,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
-	public function insert_referral( $data ) {
+	public function add( $data ) {
 		return $this->insert( $data, 'referral' );
 	}
 
