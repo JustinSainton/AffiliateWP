@@ -38,7 +38,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		return array(
 			'user_id'  => get_current_user_id(),
 			'date'     => date( 'Y-m-d H:i:s' )
-		)
+		);
 	}
 
 	public function create_table() {
