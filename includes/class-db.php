@@ -29,6 +29,13 @@ class Affiliate_WP_DB {
 		);
 	}
 
+	public function get_column_defaults() {
+		return array(
+			'user_id'  => get_current_user_id(),
+			'date'     => date( 'Y-m-d H:i:s' )
+		)
+	}
+
 	public function get( $row_id, $column ) {
 		global $wpdb;
 		return $wpdb->get_col( "SELECT $column FROM $this->table WHERE $this->primary_key = $row_id;" );
@@ -67,9 +74,7 @@ class Affiliate_WP_DB {
 		global $wpdb;
 
 		// Set default values
-		$data = wp_parse_args( $data, array(
-			'user_id' => get_current_user_id()
-		) );
+		$data = wp_parse_args( $data, $this->get_column_defaults() );
 
 		// Initialise column format array
 		$column_formats = $this->get_columns();
@@ -84,7 +89,7 @@ class Affiliate_WP_DB {
 		$data_keys = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
-		$wpdb->insert( $this->table, $data, $column_formats );
+		$wpdb->insert( $this->table_name, $data, $column_formats );
 
 		return $wpdb->insert_id;
 	}
@@ -110,7 +115,7 @@ class Affiliate_WP_DB {
 		$data_keys = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
-		if ( false === $wpdb->update( $this->table, $data, array( $this->primary_key => $row_id ), $column_formats ) ) {
+		if ( false === $wpdb->update( $this->table_name, $data, array( $this->primary_key => $row_id ), $column_formats ) ) {
 			return false;
 		}
 
