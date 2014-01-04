@@ -36,6 +36,10 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		);
 	}
 
+	public function insert_visit( $data ) {
+		return $this->insert( $data, 'visit' );
+	}
+
 	public function create_table() {
 
 		global $wpdb;

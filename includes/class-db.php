@@ -36,6 +36,10 @@ class Affiliate_WP_DB {
 		);
 	}
 
+	public function insert_affiliate( $data ) {
+		return $this->insert( $data, 'affiliate' );
+	}
+
 	public function get( $row_id, $column ) {
 		global $wpdb;
 		return $wpdb->get_col( "SELECT $column FROM $this->table WHERE $this->primary_key = $row_id;" );
@@ -47,34 +51,13 @@ class Affiliate_WP_DB {
 		$this->update( $row_id, $data );
 	}
 
-	public function create_table() {
-
-		global $wpdb;
-
-		if( $wpdb->get_var( "show tables like '{$this->table_name}'" ) == $this->table_name )
-			return;
-
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-		$sql = "CREATE TABLE " . $this->table_name . " (
-		`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
-		`user_id` bigint(20) NOT NULL,
-		`earnings` mediumtext NOT NULL,
-		`referrals` bigint(20) NOT NULL,
-		`visits` bigint(20) NOT NULL,
-		PRIMARY KEY  (affiliate_id),
-		KEY user_id (user_id)
-		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
-
-		dbDelta( $sql );
-
-		update_option( $this->table_name . '_db_version', $this->version );
-	}
-	public function insert( $data ) {
+	public function insert( $data, $type = 'affiliate' ) {
 		global $wpdb;
 
 		// Set default values
 		$data = wp_parse_args( $data, $this->get_column_defaults() );
+
+		do_action( 'affwp_pre_insert_' . $type, $data );
 
 		// Initialise column format array
 		$column_formats = $this->get_columns();
@@ -90,6 +73,8 @@ class Affiliate_WP_DB {
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
 		$wpdb->insert( $this->table_name, $data, $column_formats );
+
+		do_action( 'affwp_post_insert_' . $type, $wpdb->insert_id, $data );
 
 		return $wpdb->insert_id;
 	}
@@ -120,6 +105,30 @@ class Affiliate_WP_DB {
 		}
 
 		return true;
+	}
+	
+	public function create_table() {
+
+		global $wpdb;
+
+		if( $wpdb->get_var( "show tables like '{$this->table_name}'" ) == $this->table_name )
+			return;
+
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+		$sql = "CREATE TABLE " . $this->table_name . " (
+		`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
+		`user_id` bigint(20) NOT NULL,
+		`earnings` mediumtext NOT NULL,
+		`referrals` bigint(20) NOT NULL,
+		`visits` bigint(20) NOT NULL,
+		PRIMARY KEY  (affiliate_id),
+		KEY user_id (user_id)
+		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+
+		dbDelta( $sql );
+
+		update_option( $this->table_name . '_db_version', $this->version );
 	}
 
 }
