@@ -7,12 +7,22 @@ class Affiliate_WP_Base {
 
 	}
 
-	public function is_referral() {
+	public function get_referral_affiliate() {
 		return affiliate_wp()->cookies->is_referral_cookie_set();
 	}
 
-	public function complete_referral() {
+	public function insert_referral( $args = array() ) {
 
+		$defaults = array(
+			'affiliate_id' => $this->get_referral_affiliate(),
+			'status'       => 'pending',
+			'ip'           => $this->get_ip()
+		);
+
+		$args = wp_parse_args( $args, $defaults );		
+
+		affiliate_wp()->referrals->add( $args );
+		
 		// update the original visit with the referral ID
 
 	}
