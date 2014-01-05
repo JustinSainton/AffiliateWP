@@ -20,18 +20,18 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 	public function get_columns() {
 		return array(
-			'visit_id' => '%d',
-			'user_id'     => '%d',
-			'ip'          => '%s',
-			'reference'   => '%d',
-			'date'        => '%s',
+			'visit_id'     => '%d',
+			'affiliate_id' => '%d',
+			'ip'           => '%s',
+			'reference'    => '%d',
+			'date'         => '%s',
 		);
 	}
 
 	public function get_column_defaults() {
 		return array(
-			'user_id'  => get_current_user_id(),
-			'date'     => date( 'Y-m-d H:i:s' )
+			'affiliate_id' => 0,
+			'date'         => date( 'Y-m-d H:i:s' )
 		);
 	}
 
@@ -50,12 +50,12 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
-		`user_id` bigint(20) NOT NULL,
+		`affiliate_id` bigint(20) NOT NULL,
 		`ip` tinytext NOT NULL,
 		`reference` varchar(20) NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (visit_id),
-		KEY user_id (user_id)
+		KEY affiliate_id (affiliate_id)
 		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
 
 		dbDelta( $sql );

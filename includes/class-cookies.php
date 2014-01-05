@@ -33,14 +33,20 @@ class Affiliate_WP_Cookies {
 			return; // cookie already set
 		}
 
-		$affiliate_id = absint( $_GET[ $this->get_referral_var() ] );
+		$affiliate_id = $this->get_affiliate_id();
 
 		setcookie( 'affwp_referral', $affiliate_id, current_time( 'timestamp' ) + $this->expiration_time, COOKIEPATH, COOKIE_DOMAIN );		
+
+		$this->track_visit();
 
 	}
 
 	public function is_referral_cookie_set() {
 		return ! empty( $_COOKIE[ 'affwp_referral'] );
+	}
+
+	public function get_affiliate_id() {
+		return isset( $_GET[ $this->get_referral_var() ] ) ? absint( $_GET[ $this->get_referral_var() ] ) : 0;
 	}
 
 	public function set_expiration_time() {
@@ -50,6 +56,15 @@ class Affiliate_WP_Cookies {
 
 	public function get_expiration_time() {
 		return $this->expiration_time;
+	}
+
+	public function track_visit() {
+
+		$visit_id = affiliate_wp()->visits->add( array(
+			'affiliate_id' => $this->get_affiliate_id(),
+			'ip'           => affiliate_wp()->base->get_ip()
+		) );
+
 	}
 
 }
