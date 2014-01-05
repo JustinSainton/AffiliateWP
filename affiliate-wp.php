@@ -48,9 +48,13 @@ final class Affiliate_WP {
 
 	private $version = '0.1';
 
+	// Class properties
 	public $affiliates;
 	public $referrals;
 	public $visits;
+	public $cookies;
+
+
 
 
 	/**
@@ -79,6 +83,8 @@ final class Affiliate_WP {
 			self::$instance->affiliates = new Affiliate_WP_DB;
 			self::$instance->referrals  = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits     = new Affiliate_WP_Visits_DB;
+			self::$instance->cookies    = new Affiliate_WP_Cookies;
+
 		}
 		return self::$instance;
 	}
@@ -156,6 +162,7 @@ final class Affiliate_WP {
 		
 		}
 
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-cookies.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
@@ -194,6 +201,7 @@ final class Affiliate_WP {
 			load_plugin_textdomain( 'affiliate-wp', false, $lang_dir );
 		}
 	}
+
 }
 
 endif; // End if class_exists check
