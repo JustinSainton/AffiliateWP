@@ -41,6 +41,10 @@ class Affiliate_WP_Cookies {
 
 	}
 
+	public function set_visit_cookie( $visit_id = 0 ) {
+		setcookie( 'affwp_visit_id', $visit_id, current_time( 'timestamp' ) + $this->expiration_time, COOKIEPATH, COOKIE_DOMAIN );		
+	}
+
 	public function is_referral_cookie_set() {
 		return ! empty( $_COOKIE[ 'affwp_referral'] );
 	}
@@ -64,6 +68,8 @@ class Affiliate_WP_Cookies {
 			'affiliate_id' => $this->get_affiliate_id(),
 			'ip'           => affiliate_wp()->base->get_ip()
 		) );
+
+		$this->set_visit_cookie( $visit_id );
 
 	}
 

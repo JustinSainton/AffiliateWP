@@ -52,7 +52,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`affiliate_id` bigint(20) NOT NULL,
 		`ip` tinytext NOT NULL,
-		`reference` varchar(20) NOT NULL,
+		`referral_id` bigint(20) NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (visit_id),
 		KEY affiliate_id (affiliate_id)

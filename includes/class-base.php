@@ -13,6 +13,8 @@ class Affiliate_WP_Base {
 
 	public function complete_referral() {
 
+		// update the original visit with the referral ID
+
 	}
 
 	public function get_ip() {
