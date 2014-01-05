@@ -36,7 +36,7 @@ class Affiliate_WP_DB {
 		);
 	}
 
-	public function add( $data ) {
+	public function add( $data = array() ) {
 		return $this->insert( $data, 'affiliate' );
 	}
 

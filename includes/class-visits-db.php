@@ -15,7 +15,6 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		$this->table_name  = $wpdb->prefix . 'affiliate_wp_visits';
 		$this->primary_key = 'visit_id';
 		$this->version     = '1.0';
-
 	}
 
 
@@ -36,7 +35,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		);
 	}
 
-	public function add( $data ) {
+	public function add( $data = array() ) {
 		return $this->insert( $data, 'visit' );
 	}
 
