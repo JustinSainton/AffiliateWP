@@ -7,6 +7,11 @@ class Affiliate_WP_Base {
 
 	}
 
+	public function is_valid_affiliate( $affiliate_id = 0 ) {
+
+		return true;
+	}
+
 	public function get_referral_affiliate() {
 		return affiliate_wp()->cookies->is_referral_cookie_set();
 	}

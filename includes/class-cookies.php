@@ -35,14 +35,20 @@ class Affiliate_WP_Cookies {
 
 		$affiliate_id = $this->get_affiliate_id();
 
-		setcookie( 'affwp_referral', $affiliate_id, current_time( 'timestamp' ) + $this->expiration_time, COOKIEPATH, COOKIE_DOMAIN );		
+		if( ! empty( $affiliate_id ) ) {
 
-		$this->track_visit();
+			// Store the visit in the DB
+			$visit_id = affiliate_wp()->visits->add( array(
+				'affiliate_id' => $this->get_affiliate_id(),
+				'ip'           => affiliate_wp()->base->get_ip()
+			) );
 
-	}
+			// Set the referral and visit cookies
+			setcookie( 'affwp_referral', $affiliate_id, current_time( 'timestamp' ) + $this->expiration_time, COOKIEPATH, COOKIE_DOMAIN );		
+			setcookie( 'affwp_visit_id', $visit_id, current_time( 'timestamp' ) + $this->expiration_time, COOKIEPATH, COOKIE_DOMAIN );
 
-	public function set_visit_cookie( $visit_id = 0 ) {
-		setcookie( 'affwp_visit_id', $visit_id, current_time( 'timestamp' ) + $this->expiration_time, COOKIEPATH, COOKIE_DOMAIN );		
+		}
+
 	}
 
 	public function is_referral_cookie_set() {
@@ -50,7 +56,9 @@ class Affiliate_WP_Cookies {
 	}
 
 	public function get_affiliate_id() {
-		return isset( $_GET[ $this->get_referral_var() ] ) ? absint( $_GET[ $this->get_referral_var() ] ) : 0;
+		$aff_id = isset( $_GET[ $this->get_referral_var() ] ) ? absint( $_GET[ $this->get_referral_var() ] ) : 0;
+		return affiliate_wp()->base->is_valid_affiliate( $aff_id ) ? $aff_id : 0;
+
 	}
 
 	public function set_expiration_time() {
@@ -60,17 +68,6 @@ class Affiliate_WP_Cookies {
 
 	public function get_expiration_time() {
 		return $this->expiration_time;
-	}
-
-	public function track_visit() {
-
-		$visit_id = affiliate_wp()->visits->add( array(
-			'affiliate_id' => $this->get_affiliate_id(),
-			'ip'           => affiliate_wp()->base->get_ip()
-		) );
-
-		$this->set_visit_cookie( $visit_id );
-
 	}
 
 }
