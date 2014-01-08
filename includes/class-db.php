@@ -40,7 +40,7 @@ class Affiliate_WP_DB {
 		return $this->insert( $data, 'affiliate' );
 	}
 
-	public function get( $row_id, $column ) {
+	public function get( $column, $row_id ) {
 		global $wpdb;
 		return $wpdb->get_col( "SELECT $column FROM $this->table WHERE $this->primary_key = $row_id;" );
 	}

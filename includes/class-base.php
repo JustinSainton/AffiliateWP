@@ -9,7 +9,8 @@ class Affiliate_WP_Base {
 
 	public function is_valid_affiliate( $affiliate_id = 0 ) {
 
-		return true;
+		$affiliate = affiliate_wp()->affiliates->get( 'affiliate_id', $affiliate_id );
+		return ! empty( $affiliate );
 	}
 
 	public function get_referral_affiliate() {
