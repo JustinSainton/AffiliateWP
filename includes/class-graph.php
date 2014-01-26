@@ -164,7 +164,7 @@ class Affiliate_WP_Graph {
 		<script type="text/javascript">
 			jQuery( document ).ready( function($) {
 				$.plot(
-					$("#edd-graph-<?php echo $this->id; ?>"),
+					$("#affwp-graph-<?php echo $this->id; ?>"),
 					[
 						<?php foreach( $this->get_data() as $label => $data ) : ?>
 						{
@@ -223,7 +223,7 @@ class Affiliate_WP_Graph {
 				);
 
 				function affwp_flot_tooltip(x, y, contents) {
-					$('<div id="edd-flot-tooltip">' + contents + '</div>').css( {
+					$('<div id="affwp-flot-tooltip">' + contents + '</div>').css( {
 						position: 'absolute',
 						display: 'none',
 						top: y + 5,
@@ -236,13 +236,13 @@ class Affiliate_WP_Graph {
 				}
 
 				var previousPoint = null;
-				$("#edd-graph-<?php echo $this->id; ?>").bind("plothover", function (event, pos, item) {
+				$("#affwp-graph-<?php echo $this->id; ?>").bind("plothover", function (event, pos, item) {
 					$("#x").text(pos.x.toFixed(2));
 					$("#y").text(pos.y.toFixed(2));
 					if (item) {
 						if (previousPoint != item.dataIndex) {
 							previousPoint = item.dataIndex;
-							$("#edd-flot-tooltip").remove();
+							$("#affwp-flot-tooltip").remove();
 							var x = item.datapoint[0].toFixed(2),
 							y = item.datapoint[1].toFixed(2);
 							if( item.series.id == 'earnings' ) {
@@ -256,7 +256,7 @@ class Affiliate_WP_Graph {
 							}
 						}
 					} else {
-						$("#edd-flot-tooltip").remove();
+						$("#affwp-flot-tooltip").remove();
 						previousPoint = null;
 					}
 				});
@@ -264,7 +264,7 @@ class Affiliate_WP_Graph {
 			});
 
 		</script>
-		<div id="edd-graph-<?php echo $this->id; ?>" style="height: 300px;"></div>
+		<div id="affwp-graph-<?php echo $this->id; ?>" style="height: 300px;"></div>
 <?php
 		return ob_get_clean();
 	}
