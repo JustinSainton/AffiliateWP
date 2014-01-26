@@ -160,12 +160,12 @@ final class Affiliate_WP {
 		
 		}
 
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-base.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-cookies.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-base.php';
 	}
 
 	/**
