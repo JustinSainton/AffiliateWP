@@ -232,6 +232,18 @@ final class Affiliate_WP {
 		return false;
 	}
 
+	public function insert_affiliate( $args = array() ) {
+
+		$defaults = array(
+			'user_id' => 0,
+		);
+
+		$args = wp_parse_args( $args, $defaults );		
+
+		return affiliate_wp()->affiliates->add( $args );
+		
+	}
+
 	/*****************************
 	* Referral helpers
 	*****************************/
@@ -250,15 +262,35 @@ final class Affiliate_WP {
 
 		$args = wp_parse_args( $args, $defaults );		
 
-		affiliate_wp()->referrals->add( $args );
+		$referral_id = affiliate_wp()->referrals->add( $args );
 		
 		// update the original visit with the referral ID
+
+		return $referral_id;
 
 	}
 
 	/*****************************
 	* Visit helpers
 	*****************************/
+
+	public function insert_visit( $args = array() ) {
+
+		$defaults = array(
+			'affiliate_id' => $this->get_referral_affiliate(),
+			'ip'           => $this->get_ip(),
+			'date'         => date( 'Y-m-d H:i:s' )
+		);
+
+		$args = wp_parse_args( $args, $defaults );		
+
+		$visit_id = affiliate_wp()->visits->add( $args );
+		
+		// update the original visit with the referral ID
+
+		return $visit_id;
+
+	}
 
 	/*****************************
 	* Misc methods
