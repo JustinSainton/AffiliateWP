@@ -201,6 +201,10 @@ final class Affiliate_WP {
 		}
 	}
 
+	/*****************************
+	* Affiliate helpers
+	*****************************/
+
 	public function is_valid_affiliate( $affiliate_id = 0 ) {
 
 		$affiliate = affiliate_wp()->affiliates->get( 'affiliate_id', $affiliate_id );
@@ -211,10 +215,6 @@ final class Affiliate_WP {
 			}
 		}
 		return ! empty( $affiliate );
-	}
-
-	public function get_referral_affiliate() {
-		return affiliate_wp()->cookies->is_referral_cookie_set();
 	}
 
 	public function get_affilite_id_of_user( $user_id = 0 ) {
@@ -232,6 +232,14 @@ final class Affiliate_WP {
 		return false;
 	}
 
+	/*****************************
+	* Referral helpers
+	*****************************/
+
+	public function get_referral_affiliate() {
+		return affiliate_wp()->cookies->is_referral_cookie_set();
+	}
+
 	public function insert_referral( $args = array() ) {
 
 		$defaults = array(
@@ -247,6 +255,14 @@ final class Affiliate_WP {
 		// update the original visit with the referral ID
 
 	}
+
+	/*****************************
+	* Visit helpers
+	*****************************/
+
+	/*****************************
+	* Misc methods
+	*****************************/
 
 	public function get_ip() {
 		if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
