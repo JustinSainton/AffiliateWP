@@ -23,7 +23,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'visit_id'     => '%d',
 			'affiliate_id' => '%d',
 			'ip'           => '%s',
-			'reference'    => '%d',
+			'referral_id'  => '%d',
 			'date'         => '%s',
 		);
 	}
