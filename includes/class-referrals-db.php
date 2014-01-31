@@ -40,8 +40,89 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
+	/**
+	 * Retrieve referrals from the database
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function get_referrals( $args = array() ) {
+
+		global $wpdb;
+
+		$defaults = array(
+			'number'       => 20,
+			'offset'       => 0,
+			'affiliate_id' => 0,
+			'status'       => ''
+		);
+
+		$args  = wp_parse_args( $args, $defaults );
+
+		$where = '';
+
+		// referrals for specific affiliates
+		if( ! empty( $args['affiliate_id'] ) ) {
+
+			if( is_array( $args['affiliate_id'] ) ) {
+				$affiliate_ids = implode( ',', $args['affiliate_id'] );
+			} else {
+				$affiliate_ids = intval( $args['affiliate_id'] );
+			}	
+
+			$where .= "WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
+
+		}
+
+		if( ! empty( $args['status'] ) ) {
+
+			if( ! empty( $where ) ) {
+				$where .= "`status` = '" . $args['status'] . "' ";
+			} else {
+				$where .= "WHERE `status` = '" . $args['status'] . "' ";
+			}
+		}
+
+		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+	}
+
 	public function add( $data = array() ) {
 		return $this->insert( $data, 'referral' );
+	}
+
+	/**
+	 * Count the total number of referrals in the database
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function count( $args = array() ) {
+
+		global $wpdb;
+
+		$where = '';
+
+		if( ! empty( $args['status'] ) ) {
+
+			if( ! empty( $where ) ) {
+				$where .= "`status` = '" . $args['status'] . "' ";
+			} else {
+				$where .= " WHERE `status` = '" . $args['status'] . "' ";
+			}
+		}
+
+		$cache_key   = md5( 'affwp_referrals_count' . serialize( $args ) );
+
+		$count = wp_cache_get( $cache_key, 'referrals' );
+		
+		if( $count === false ) {
+			$count = $wpdb->get_var( "SELECT COUNT(referral_id) FROM " . $this->table_name . "{$where};" );
+			wp_cache_set( $cache_key, $count, 'referrals' );
+		}
+
+		return $count;
+
 	}
 
 	public function create_table() {

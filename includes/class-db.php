@@ -42,7 +42,6 @@ class Affiliate_WP_DB {
 	 * @access  public
 	 * @since   1.0
 	*/
-
 	public function get_affiliates( $args = array() ) {
 
 		global $wpdb;
@@ -165,7 +164,6 @@ class Affiliate_WP_DB {
 	 * @access  public
 	 * @since   1.0
 	*/
-
 	public function count( $args = array() ) {
 
 		global $wpdb;
