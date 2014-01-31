@@ -248,6 +248,30 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Render the referrals column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $affiliate Contains all the data for the referrals column
+	 * @return string referrals link
+	 */
+	function column_referrals( $affiliate ) {
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate=' . $affiliate->affiliate_id ) . '">' . $affiliate->referrals . '</a>';
+	}
+
+	/**
+	 * Render the visits column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $affiliate Contains all the data for the visits column
+	 * @return string visits link
+	 */
+	function column_visits( $affiliate ) {
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $affiliate->affiliate_id ) . '">' . $affiliate->visits . '</a>';
+	}
+
+	/**
 	 * Message to be displayed when there are no items
 	 *
 	 * @since 1.7.2
