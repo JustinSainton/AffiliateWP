@@ -155,6 +155,7 @@ final class Affiliate_WP {
 		if( is_admin() ) {
 		
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates.php';
 
 		} else {
 		

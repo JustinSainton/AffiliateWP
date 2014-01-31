@@ -23,6 +23,7 @@ class Affiliate_WP_DB {
 		return array(
 			'affiliate_id' => '%d',
 			'user_id'      => '%d',
+			'status'       => '%s',
 			'earnings'     => '%s',
 			'referrals'    => '%d',
 			'visits'       => '%d',
@@ -35,26 +36,73 @@ class Affiliate_WP_DB {
 		);
 	}
 
-	public function add( $data = array() ) {
-		return $this->insert( $data, 'affiliate' );
-	}
+	/**
+	 * Retrieve affiliates from the database
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 
-	public function get( $column, $row_id ) {
+	public function get_affiliates( $args = array() ) {
+
 		global $wpdb;
-		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id;" );
+
+		$defaults = array(
+			'number'  => 20,
+			'offset'  => 0,
+			'user_id' => 0,
+			'status'  => ''
+		);
+
+		$args  = wp_parse_args( $args, $defaults );
+
+		$where = '';
+
+		// affiliates for specific users
+		if( ! empty( $args['user_id'] ) ) {
+
+			if( is_array( $args['user_id'] ) ) {
+				$user_ids = implode( ',', $args['user_id'] );
+			} else {
+				$user_ids = intval( $args['user_id'] );
+			}	
+
+			$where .= "WHERE `user_id` IN( {$user_ids} ) ";
+
+		}
+
+		if( ! empty( $args['status'] ) ) {
+
+			if( ! empty( $where ) ) {
+				$where .= "`status` = '" . $args['status'] . "' ";
+			} else {
+				$where .= "WHERE `status` = '" . $args['status'] . "' ";
+			}
+		}
+
+		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+	}
+	
+	public function get( $row_id ) {
+		global $wpdb;
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE affiliate_id = $row_id;" );
 	}
 
 	public function get_by( $column, $row_id ) {
 		global $wpdb;
-		return $wpdb->get_var( "SELECT $this->primary_key FROM $this->table_name WHERE $column = $row_id;" );
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = $row_id;" );
 	}
 
-	public function set( $row_id, $column, $value ) {
-		$data = array();
-		$data[ $column ] = $value;
-		$this->update( $row_id, $data );
+	public function get_column( $column, $row_id ) {
+		global $wpdb;
+		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id;" );
 	}
 
+	public function add( $data = array() ) {
+		return $this->insert( $data, 'affiliate' );
+	}
+	
 	public function insert( $data, $type = 'affiliate' ) {
 		global $wpdb;
 
@@ -123,6 +171,7 @@ class Affiliate_WP_DB {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`user_id` bigint(20) NOT NULL,
+		`status` tinytext NOT NULL,
 		`earnings` mediumtext NOT NULL,
 		`referrals` bigint(20) NOT NULL,
 		`visits` bigint(20) NOT NULL,
