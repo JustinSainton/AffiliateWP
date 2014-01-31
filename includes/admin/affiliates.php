@@ -165,8 +165,8 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public function get_columns() {
 		$columns = array(
 			'cb'           => '<input type="checkbox" />',
-			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
 			'name'         => __( 'Name', 'affiliate-wp' ),
+			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
 			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
 			'referrals'    => __( 'Referrals', 'affiliate-wp' ),
 			'visits'       => __( 'Visits', 'affiliate-wp' ),
@@ -310,9 +310,9 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function get_affiliate_counts() {
-		$this->active_count   = 0;
-		$this->inactive_count = 0;
-		$this->total_count    = 0;
+		$this->active_count   = affiliate_wp()->affiliates->count( array( 'status' => 'active' ) );
+		$this->inactive_count = affiliate_wp()->affiliates->count( array( 'status' => 'inactive' ) );
+		$this->total_count    = $this->active_count + $this->inactive_count;
 	}
 
 	/**

@@ -158,6 +158,41 @@ class Affiliate_WP_DB {
 
 		return true;
 	}
+
+	/**
+	 * Count the total number of affiliates in the database
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+
+	public function count( $args = array() ) {
+
+		global $wpdb;
+
+		$where = '';
+
+		if( ! empty( $args['status'] ) ) {
+
+			if( ! empty( $where ) ) {
+				$where .= "`status` = '" . $args['status'] . "' ";
+			} else {
+				$where .= " WHERE `status` = '" . $args['status'] . "' ";
+			}
+		}
+
+		$cache_key   = md5( 'affwp_affiliates_count' . serialize( $args ) );
+
+		$count = wp_cache_get( $cache_key, 'affiliates' );
+		
+		if( $count === false ) {
+			$count = $wpdb->get_var( "SELECT COUNT(affiliate_id) FROM " . $this->table_name . "{$where};" );
+			wp_cache_set( $cache_key, $count, 'affiliates' );
+		}
+
+		return $count;
+
+	}
 	
 	public function create_table() {
 
