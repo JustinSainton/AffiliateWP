@@ -217,19 +217,18 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	function column_name( $affiliate ) {
 
-
 		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
 		$row_actions  = array();
 		$name         = get_userdata( $affiliate->user_id )->display_name; 
 
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp-action' => 'edit_discount', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
+		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_discount', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
 		if( strtolower( $affiliate->status ) == 'active' )
-			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'affwp-action' => 'deactivate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'action' => 'deactivate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		else
-			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp-action' => 'activate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'action' => 'activate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp-action' => 'delete_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
 
@@ -324,10 +323,13 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	public function affiliate_data() {
 		
-		$page = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
+		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
+		$status = isset( $_GET['status'] ) ? $_GET['status'] : ''; 
+
 		$affiliates  = affiliate_wp()->affiliates->get_affiliates( array(
 			'number' => $this->per_page,
-			'offset' => $this->per_page * ( $page - 1 )
+			'offset' => $this->per_page * ( $page - 1 ),
+			'status' => $status
 		) );
 		return $affiliates;
 	}
