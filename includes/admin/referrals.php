@@ -223,7 +223,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Displays a checkbox
 	 */
 	function column_cb( $referral ) {
-		return '<input type="checkbox" name="affiliate_id[]" value="' . $referral->affiliate_id . '" />';
+		return '<input type="checkbox" name="referral_id[]" value="' . $referral->referral_id . '" />';
 	}
 
 	/**
@@ -257,7 +257,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @access public
 	 */
 	function no_items() {
-		_e( 'No affiliates found.', 'affiliate-wp' );
+		_e( 'No referrals found.', 'affiliate-wp' );
 	}
 
 	/**

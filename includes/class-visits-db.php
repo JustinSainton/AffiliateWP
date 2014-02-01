@@ -22,8 +22,9 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		return array(
 			'visit_id'     => '%d',
 			'affiliate_id' => '%d',
-			'ip'           => '%s',
 			'referral_id'  => '%d',
+			'url'          => '%s',
+			'ip'           => '%s',
 			'date'         => '%s',
 		);
 	}
@@ -35,9 +36,112 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		);
 	}
 
+	/**
+	 * Retrieve visits from the database
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function get_visits( $args = array() ) {
+
+		global $wpdb;
+
+		$defaults = array(
+			'number'       => 20,
+			'offset'       => 0,
+			'affiliate_id' => 0,
+			'referral_id'  => 0,
+		);
+
+		$args  = wp_parse_args( $args, $defaults );
+
+		$where = '';
+
+		// visits for specific affiliates
+		if( ! empty( $args['affiliate_id'] ) ) {
+
+			if( is_array( $args['affiliate_id'] ) ) {
+				$affiliate_ids = implode( ',', $args['affiliate_id'] );
+			} else {
+				$affiliate_ids = intval( $args['affiliate_id'] );
+			}	
+
+			$where .= "WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
+
+		}
+
+		// visits for specific referral
+		if( ! empty( $args['referral_id'] ) ) {
+
+			if( is_array( $args['referral_id'] ) ) {
+				$referral_ids = implode( ',', $args['referral_id'] );
+			} else {
+				$referral_ids = intval( $args['referral_id'] );
+			}	
+
+			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
+
+		}
+
+		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+	}
+
 	public function add( $data = array() ) {
 		return $this->insert( $data, 'visit' );
 	}
+
+	/**
+	 * Count the total number of visits in the database
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function count( $args = array() ) {
+
+		global $wpdb;
+
+		$where = '';
+
+		// visits for specific affiliate
+		if( ! empty( $args['affiliate_id'] ) ) {
+
+			if( is_array( $args['affiliate_id'] ) ) {
+				$affiliate_ids = implode( ',', $args['affiliate_id'] );
+			} else {
+				$affiliate_ids = intval( $args['affiliate_id'] );
+			}	
+
+			$where .= "WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
+
+		}
+
+		// visits for specific referral
+		if( ! empty( $args['referral_id'] ) ) {
+
+			if( is_array( $args['referral_id'] ) ) {
+				$referral_ids = implode( ',', $args['referral_id'] );
+			} else {
+				$referral_ids = intval( $args['referral_id'] );
+			}	
+
+			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
+
+		}
+
+		$cache_key   = md5( 'affwp_visits_count' . serialize( $args ) );
+
+		$count = wp_cache_get( $cache_key, 'visits' );
+		
+		if( $count === false ) {
+			$count = $wpdb->get_var( "SELECT COUNT(referral_id) FROM " . $this->table_name . "{$where};" );
+			wp_cache_set( $cache_key, $count, 'visits' );
+		}
+
+		return $count;
+
+	}
+
 
 	public function create_table() {
 
@@ -51,8 +155,9 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`affiliate_id` bigint(20) NOT NULL,
-		`ip` tinytext NOT NULL,
 		`referral_id` bigint(20) NOT NULL,
+		`url` mediumtext NOT NULL,
+		`ip` tinytext NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (visit_id),
 		KEY affiliate_id (affiliate_id)

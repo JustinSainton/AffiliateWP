@@ -88,7 +88,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * Get things started
 	 *
 	 * @since 1.0
-	 * @uses AffWP_Visits_Table::get_affiliate_counts()
+	 * @uses AffWP_Visits_Table::get_visits_counts()
 	 * @see WP_List_Table::__construct()
 	 */
 	public function __construct() {
@@ -98,7 +98,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 			'ajax'      => false
 		) );
 
-		$this->get_affiliate_counts();
+		$this->get_visits_counts();
 	}
 
 	/**
@@ -132,30 +132,6 @@ class AffWP_Visits_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Retrieve the view types
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return array $views All the views available
-	 */
-	public function get_views() {
-		$base           = admin_url( 'admin.php?page=affiliate-wp' );
-
-		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
-		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
-		$active_count   = '&nbsp;<span class="count">(' . $this->active_count . ')</span>';
-		$inactive_count = '&nbsp;<span class="count">(' . $this->inactive_count  . ')</span>';
-
-		$views = array(
-			'all'		=> sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( 'status', $base ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'affiliate-wp') . $total_count ),
-			'active'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'active', $base ), $current === 'active' ? ' class="current"' : '', __('Active', 'affiliate-wp') . $active_count ),
-			'inactive'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'inactive', $base ), $current === 'inactive' ? ' class="current"' : '', __('Inactive', 'affiliate-wp') . $inactive_count ),
-		);
-
-		return $views;
-	}
-
-	/**
 	 * Retrieve the table columns
 	 *
 	 * @access public
@@ -165,12 +141,11 @@ class AffWP_Visits_Table extends WP_List_Table {
 	public function get_columns() {
 		$columns = array(
 			'cb'           => '<input type="checkbox" />',
-			'name'         => __( 'Name', 'affiliate-wp' ),
-			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
-			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
-			'referrals'    => __( 'Referrals', 'affiliate-wp' ),
-			'visits'       => __( 'Visits', 'affiliate-wp' ),
-			'status'       => __( 'Status', 'affiliate-wp' ),
+			'ip'           => __( 'ID', 'affiliate-wp' ),
+			'url'          => __( 'URL', 'affiliate-wp' ),
+			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
+			'referral_id'  => __( 'Referral ID', 'affiliate-wp' ),
+			'date'         => __( 'Date', 'affiliate-wp' ),
 		);
 
 		return $columns;
@@ -244,31 +219,31 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return string Displays a checkbox
 	 */
 	function column_cb( $affiliate ) {
-		return '<input type="checkbox" name="affiliate_id[]" value="' . $affiliate->affiliate_id . '" />';
+		return '<input type="checkbox" name="visit_id[]" value="' . $affiliate->visit_id . '" />';
 	}
 
 	/**
-	 * Render the referrals column
+	 * Render the affiliate column
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @param array $affiliate Contains all the data for the referrals column
-	 * @return string referrals link
+	 * @param array $referral Contains all the data for the checkbox column
+	 * @return string The affiliate
 	 */
-	function column_referrals( $affiliate ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate=' . $affiliate->affiliate_id ) . '">' . $affiliate->referrals . '</a>';
+	function column_affiliate( $referral ) {
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&affiliate=' . $referral->affiliate_id ) . '">' . $referral->affiliate_id . '</a>';
 	}
 
 	/**
-	 * Render the visits column
+	 * Render the actions column
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @param array $affiliate Contains all the data for the visits column
-	 * @return string visits link
+	 * @param array $referral Contains all the data for the actions column
+	 * @return string The actions HTML
 	 */
-	function column_visits( $affiliate ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $affiliate->affiliate_id ) . '">' . $affiliate->visits . '</a>';
+	function column_actions( $referral ) {
+		return 'Actions here';
 	}
 
 	/**
@@ -278,7 +253,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @access public
 	 */
 	function no_items() {
-		_e( 'No affiliates found.', 'affiliate-wp' );
+		_e( 'No visits found.', 'affiliate-wp' );
 	}
 
 	/**
@@ -332,10 +307,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function get_affiliate_counts() {
-		$this->active_count   = affiliate_wp()->affiliates->count( array( 'status' => 'active' ) );
-		$this->inactive_count = affiliate_wp()->affiliates->count( array( 'status' => 'inactive' ) );
-		$this->total_count    = $this->active_count + $this->inactive_count;
+	public function get_visits_counts() {
+		$this->total_count    = affiliate_wp()->visits->count();
 	}
 
 	/**
@@ -343,19 +316,17 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @return array $affiliate_data Array of all the data for the Affiliates
+	 * @return array $visits_data Array of all the data for the Affiliates
 	 */
-	public function affiliate_data() {
+	public function visits_data() {
 		
 		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
-		$status = isset( $_GET['status'] ) ? $_GET['status'] : ''; 
 
-		$affiliates  = affiliate_wp()->affiliates->get_affiliates( array(
+		$visits  = affiliate_wp()->visits->get_visits( array(
 			'number' => $this->per_page,
 			'offset' => $this->per_page * ( $page - 1 ),
-			'status' => $status
 		) );
-		return $affiliates;
+		return $visits;
 	}
 
 	/**
@@ -366,7 +337,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @uses AffWP_Visits_Table::get_columns()
 	 * @uses AffWP_Visits_Table::get_sortable_columns()
 	 * @uses AffWP_Visits_Table::process_bulk_action()
-	 * @uses AffWP_Visits_Table::affiliate_data()
+	 * @uses AffWP_Visits_Table::visits_data()
 	 * @uses WP_List_Table::get_pagenum()
 	 * @uses WP_List_Table::set_pagination_args()
 	 * @return void
@@ -384,30 +355,16 @@ class AffWP_Visits_Table extends WP_List_Table {
 
 		$this->process_bulk_action();
 
-		$data = $this->affiliate_data();
+		$data = $this->visits_data();
 
 		$current_page = $this->get_pagenum();
-
-		$status = isset( $_GET['status'] ) ? $_GET['status'] : 'any';
-
-		switch( $status ) {
-			case 'active':
-				$total_items = $this->active_count;
-				break;
-			case 'inactive':
-				$total_items = $this->inactive_count;
-				break;
-			case 'any':
-				$total_items = $this->total_count;
-				break;
-		}
 
 		$this->items = $data;
 
 		$this->set_pagination_args( array(
-				'total_items' => $total_items,
+				'total_items' => $this->total_count,
 				'per_page'    => $per_page,
-				'total_pages' => ceil( $total_items / $per_page )
+				'total_pages' => ceil( $this->total_count / $per_page )
 			)
 		);
 	}
