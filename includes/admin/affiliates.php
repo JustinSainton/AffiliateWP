@@ -171,6 +171,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'referrals'    => __( 'Referrals', 'affiliate-wp' ),
 			'visits'       => __( 'Visits', 'affiliate-wp' ),
 			'status'       => __( 'Status', 'affiliate-wp' ),
+			'reports'      => __( 'Reports', 'affiliate-wp' ),
 		);
 
 		return $columns;
@@ -202,9 +203,19 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	function column_default( $affiliate, $column_name ) {
 		switch( $column_name ){
+			
+			case 'reports' :
+
+				$value = '<a href="' . add_query_arg( array( 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate_report' ) ) . '">' . __( 'View', 'affiliate-wp' ) . '</a>';
+
+				break;
+
 			default:
-				return $affiliate->$column_name;
+				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
+				break;
 		}
+
+		return $value;
 	}
 
 	/**

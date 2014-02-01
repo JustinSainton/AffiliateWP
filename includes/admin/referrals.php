@@ -210,8 +210,11 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	function column_default( $referral, $column_name ) {
 		switch( $column_name ){
 			default:
-				return $referral->$column_name;
+				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
+				break;
 		}
+
+		return $value;
 	}
 
 	/**

@@ -178,8 +178,11 @@ class AffWP_Visits_Table extends WP_List_Table {
 	function column_default( $affiliate, $column_name ) {
 		switch( $column_name ){
 			default:
-				return $affiliate->$column_name;
+				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
+				break;
 		}
+
+		return $value;
 	}
 
 	/**
