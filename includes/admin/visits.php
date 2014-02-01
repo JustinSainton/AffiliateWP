@@ -170,15 +170,15 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @access public
 	 * @since 1.0
 	 *
-	 * @param array $item Contains all the data of the affiliate
+	 * @param array $item Contains all the data of the visit
 	 * @param string $column_name The name of the column
 	 *
 	 * @return string Column Name
 	 */
-	function column_default( $affiliate, $column_name ) {
+	function column_default( $visit, $column_name ) {
 		switch( $column_name ){
 			default:
-				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
+				$value = isset( $visit->$column_name ) ? $visit->$column_name : '';
 				break;
 		}
 

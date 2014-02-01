@@ -210,7 +210,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	function column_default( $referral, $column_name ) {
 		switch( $column_name ){
 			default:
-				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
+				$value = isset( $referral->$column_name ) ? $referral->$column_name : '';
 				break;
 		}
 
@@ -326,13 +326,15 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function referrals_data() {
 		
-		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
-		$status = isset( $_GET['status'] ) ? $_GET['status'] : ''; 
+		$page      = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
+		$status    = isset( $_GET['status'] ) ? $_GET['status'] : ''; 
+		$affiliate = isset( $_GET['affiliate'] ) ? $_GET['affiliate'] : ''; 
 
 		$referrals  = affiliate_wp()->referrals->get_referrals( array(
-			'number' => $this->per_page,
-			'offset' => $this->per_page * ( $page - 1 ),
-			'status' => $status
+			'number'       => $this->per_page,
+			'offset'       => $this->per_page * ( $page - 1 ),
+			'status'       => $status,
+			'affiliate_id' => $affiliate
 		) );
 		return $referrals;
 	}
