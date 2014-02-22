@@ -1,5 +1,9 @@
 <?php
 
+function affwp_get_affiliate() {
+
+}
+
 function affwp_get_affiliate_status( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -41,14 +45,42 @@ function affwp_delete_affiliate( $affiliate ) {
 	return affiliate_wp()->affiliates->delete( $affiliate_id );
 }
 
-function affwp_was_referred() {
-	
+
+function affwp_get_affiliate_earnings( $affiliate ) {
+
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	return affiliate_wp()->affiliates->get_column( 'earnings', $affiliate_id );
 }
 
-function affwp_get_referring_affiliate_id() {
+function affwp_get_affiliate_referral_count( $affiliate ) {
 
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	return affiliate_wp()->affiliates->get_column( 'referrals', $affiliate_id );
 }
 
-function affwp_get_affiliate() {
+function affwp_get_affiliate_visit_count( $affiliate ) {
 
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	return absint( affiliate_wp()->affiliates->get_column( 'visits', $affiliate_id ) );
 }
