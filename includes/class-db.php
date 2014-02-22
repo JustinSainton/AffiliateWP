@@ -158,6 +158,22 @@ class Affiliate_WP_DB {
 		return true;
 	}
 
+	public function delete( $row_id = 0 ) {
+
+		global $wpdb;
+
+		// Row ID must be positive integer
+		$row_id = absint( $row_id );     
+		if( empty( $row_id ) )
+			return false;
+
+		if ( false === $wpdb->query( $wpdb->prepare( "DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id ) ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
 	/**
 	 * Count the total number of affiliates in the database
 	 *
