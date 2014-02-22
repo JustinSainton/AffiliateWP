@@ -19,6 +19,10 @@ function affwp_affiliates_admin() {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/view.php';
 
+	} else if( isset( $_GET['action'] ) && 'add_affiliate' == $_GET['action'] ) {
+
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/new.php';
+
 	} else {
 
 		$affiliates_table = new AffWP_Affiliates_Table();
@@ -26,7 +30,7 @@ function affwp_affiliates_admin() {
 ?>
 		<div class="wrap">
 			<h2><?php _e( 'Affiliates', 'affiliate-wp' ); ?>
-				<a href="<?php echo add_query_arg( array( 'affwp-action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
+				<a href="<?php echo add_query_arg( array( 'action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
 			</h2>
 			<?php do_action( 'affwp_affiliates_page_top' ); ?>
 			<form id="affwp-affiliates-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
@@ -342,7 +346,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			if ( 'deactivate_affiliate' === $this->current_action() ) {
 				affwp_set_affiliate_status( $id, 'inactive' );
 			}
-			
+
 		}
 
 	}
