@@ -15,26 +15,32 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function affwp_referrals_admin() {
 
+	if( isset( $_GET['action'] ) && 'add_referral' == $_GET['action'] ) {
 
-	$referrals_table = new AffWP_Referrals_Table();
-	$referrals_table->prepare_items();
-	?>
-	<div class="wrap">
-		<h2><?php _e( 'Referrals', 'affiliate-wp' ); ?>
-			<a href="<?php echo add_query_arg( array( 'action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
-		</h2>
-		<?php do_action( 'affwp_referrals_page_top' ); ?>
-		<form id="affwp-referrals-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>">
-			<?php $referrals_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-referrals' ); ?>
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/new.php';
 
-			<input type="hidden" name="page" value="affiliate-wp-referrals" />
+	} else {
 
-			<?php $referrals_table->views() ?>
-			<?php $referrals_table->display() ?>
-		</form>
-		<?php do_action( 'affwp_referrals_page_bottom' ); ?>
-	</div>
-<?php
+		$referrals_table = new AffWP_Referrals_Table();
+		$referrals_table->prepare_items();
+		?>
+		<div class="wrap">
+			<h2><?php _e( 'Referrals', 'affiliate-wp' ); ?>
+				<a href="<?php echo add_query_arg( array( 'action' => 'add_referral' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
+			</h2>
+			<?php do_action( 'affwp_referrals_page_top' ); ?>
+			<form id="affwp-referrals-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>">
+				<?php $referrals_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-referrals' ); ?>
+
+				<input type="hidden" name="page" value="affiliate-wp-referrals" />
+
+				<?php $referrals_table->views() ?>
+				<?php $referrals_table->display() ?>
+			</form>
+			<?php do_action( 'affwp_referrals_page_bottom' ); ?>
+		</div>
+	<?php
+}
 
 }
 

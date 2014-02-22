@@ -156,7 +156,7 @@ final class Affiliate_WP {
 		
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
-			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/referrals.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits.php';
 
 		} else {
