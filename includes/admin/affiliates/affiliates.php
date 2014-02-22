@@ -324,21 +324,25 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function process_bulk_action() {
-		$ids = isset( $_GET['discount'] ) ? $_GET['discount'] : false;
+		$ids = isset( $_GET['affiliate_id'] ) ? absint( $_GET['affiliate_id'] ) : false;
 
 		if ( ! is_array( $ids ) )
 			$ids = array( $ids );
 
 		foreach ( $ids as $id ) {
-			if ( 'delete' === $this->current_action() ) {
+
+			if ( 'delete_affiliate' === $this->current_action() ) {
 
 			}
-			if ( 'activate' === $this->current_action() ) {
-
+			
+			if ( 'activate_affiliate' === $this->current_action() ) {
+				affwp_set_affiliate_status( $id, 'active' );
 			}
-			if ( 'deactivate' === $this->current_action() ) {
-
+			
+			if ( 'deactivate_affiliate' === $this->current_action() ) {
+				affwp_set_affiliate_status( $id, 'inactive' );
 			}
+			
 		}
 
 	}
