@@ -207,7 +207,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 *
 	 * @return string Column Name
 	 */
-	function column_default( $referral, $column_name ) {
+	public function column_default( $referral, $column_name ) {
 		switch( $column_name ){
 			default:
 				$value = isset( $referral->$column_name ) ? $referral->$column_name : '';
@@ -225,7 +225,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @param array $referral Contains all the data for the checkbox column
 	 * @return string Displays a checkbox
 	 */
-	function column_cb( $referral ) {
+	public function column_cb( $referral ) {
 		return '<input type="checkbox" name="referral_id[]" value="' . $referral->referral_id . '" />';
 	}
 
@@ -237,7 +237,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @param array $referral Contains all the data for the checkbox column
 	 * @return string The affiliate
 	 */
-	function column_affiliate( $referral ) {
+	public function column_affiliate( $referral ) {
 		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&action=view_affiliateaffiliate=' . $referral->affiliate_id ) . '">' . $referral->affiliate_id . '</a>';
 	}
 
@@ -249,8 +249,16 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @param array $referral Contains all the data for the actions column
 	 * @return string The actions HTML
 	 */
-	function column_actions( $referral ) {
-		return 'Actions here';
+	public function column_actions( $referral ) {
+		
+		$action_links   = array();
+		$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral' => $referral->referral_id ) ) ) . '">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
+		$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral' => $referral->referral_id ) ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+		$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral' => $referral->referral_id ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		
+		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links ) );
+
+		return '<div class="action-links">' . implode( ' | ', $action_links ) . '</div>';
 	}
 
 	/**
@@ -259,7 +267,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @since 1.7.2
 	 * @access public
 	 */
-	function no_items() {
+	public function no_items() {
 		_e( 'No referrals found.', 'affiliate-wp' );
 	}
 
