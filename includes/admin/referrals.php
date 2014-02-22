@@ -252,8 +252,27 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public function column_actions( $referral ) {
 		
 		$action_links   = array();
-		$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
-		$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+		
+		if( 'paid' == affwp_get_referral_status( $referral ) ) {
+			
+			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_unpaid', 'referral' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Unpaid', 'affiliate-wp' ) . '</a>';
+	
+		} else {
+
+			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
+			
+			if( 'rejected' == affwp_get_referral_status( $referral ) ) {
+			
+				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+			
+			} else {
+			
+				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+			
+			}
+
+		}
+		
 		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral' => $referral->referral_id ) ) ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
 		
 		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links ) );
