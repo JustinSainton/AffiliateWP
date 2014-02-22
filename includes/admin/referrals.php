@@ -209,6 +209,11 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function column_default( $referral, $column_name ) {
 		switch( $column_name ){
+			
+			case 'date' :
+				$value = date_i18n( get_option( 'date_format' ), strtotime( $referral->date ) );
+				break;
+
 			default:
 				$value = isset( $referral->$column_name ) ? $referral->$column_name : '';
 				break;
@@ -226,7 +231,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Displays a checkbox
 	 */
 	public function column_cb( $referral ) {
-		return '<input type="checkbox" name="referral_id[]" value="' . $referral->referral_id . '" />';
+		return '<input type="checkbox" name="referral_id[]" value="' . absint( $referral->referral_id ) . '" />';
 	}
 
 	/**
