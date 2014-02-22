@@ -40,7 +40,7 @@ function affwp_referrals_admin() {
 			<?php do_action( 'affwp_referrals_page_bottom' ); ?>
 		</div>
 	<?php
-}
+	}
 
 }
 
