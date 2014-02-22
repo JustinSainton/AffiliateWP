@@ -1,5 +1,10 @@
 <?php
 
+
+function affwp_get_referral() {
+
+}
+
 function affwp_get_referral_status( $referral ) {
 
 	if( is_object( $referral ) && isset( $referral->referral_id ) ) {
@@ -37,22 +42,4 @@ function affwp_delete_referral( $referral ) {
 	}
 
 	return affiliate_wp()->referrals->delete( $referral_id );
-}
-
-
-
-function affwp_was_referred() {
-	
-}
-
-function affwp_get_referring_affiliate_id() {
-
-}
-
-function affwp_get_referral() {
-
-}
-
-function affwp_get_affiliate() {
-
 }
