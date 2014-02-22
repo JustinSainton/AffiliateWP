@@ -304,8 +304,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = array(
-			'delete' => __( 'Delete', 'affiliate-wp' ),
-			'reject' => __( 'Reject', 'affiliate-wp' )
+			'delete'         => __( 'Delete', 'affiliate-wp' ),
+			'reject'         => __( 'Reject', 'affiliate-wp' ),
+			'mark_as_paid'   => __( 'Mark as Paid', 'affiliate-wp' ),
+			'mark_as_unpaid' => __( 'Mark as Unpaid', 'affiliate-wp' ),
 		);
 
 		return $actions;
@@ -319,18 +321,33 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function process_bulk_action() {
-		$ids = isset( $_GET['discount'] ) ? $_GET['discount'] : false;
+		$ids = isset( $_GET['referral'] ) ? absint( $_GET['referral'] ) : false;
 
 		if ( ! is_array( $ids ) )
 			$ids = array( $ids );
 
 		foreach ( $ids as $id ) {
+			
 			if ( 'delete' === $this->current_action() ) {
-
+				affwp_delete_referral( $id );
 			}
+			
 			if ( 'reject' === $this->current_action() ) {
-
+				affwp_set_referral_status( $id, 'rejected' );
 			}
+
+			if ( 'accept' === $this->current_action() ) {
+				affwp_set_referral_status( $id, 'pending' );
+			}
+
+			if ( 'mark_as_paid' === $this->current_action() ) {
+				affwp_set_referral_status( $id, 'paid' );
+			}
+
+			if ( 'mark_as_unpaid' === $this->current_action() ) {
+				affwp_set_referral_status( $id, 'pending' );
+			}
+
 		}
 
 	}
