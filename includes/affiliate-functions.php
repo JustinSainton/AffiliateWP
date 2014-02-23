@@ -1,7 +1,16 @@
 <?php
 
-function affwp_get_affiliate() {
+function affwp_get_affiliate( $affiliate ) {
+	
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
 
+	return affiliate_wp()->affiliates->get( $affiliate_id );
 }
 
 function affwp_get_affiliate_status( $affiliate ) {

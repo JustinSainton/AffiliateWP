@@ -1,8 +1,17 @@
 <?php
 
 
-function affwp_get_referral() {
+function affwp_get_referral( $referral ) {
 
+	if( is_object( $referral ) && isset( $referral->referral_id ) ) {
+		$referral_id = $referral->referral_id;
+	} elseif( is_numeric( $referral ) ) {
+		$referral_id = absint( $referral );
+	} else {
+		return false;
+	}
+
+	return affiliate_wp()->referrals->get( $referral_id );
 }
 
 function affwp_get_referral_status( $referral ) {
