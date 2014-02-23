@@ -8,8 +8,14 @@ $affiliate_id = isset( $_GET['affiliate_id'] ) ? absint( $_GET['affiliate_id'] )
 
 	<h3><?php _e( 'Earnings', 'affiliate-wp' ); ?></h3>
 
-	<h3><?php _e( 'Referrals', 'affiliate-wp' ); ?></h3>
-	
-	<h3><?php _e( 'Visits', 'affiliate-wp' ); ?></h3>
+	<div id="affwp-affiliate-report">
+
+		<div class="affwp-total"><?php printf( __( 'Total earnings: %s' ), affwp_get_affiliate_earnings( $affiliate_id ) ); ?></div>
+		<div class="affwp-total"><?php printf( __( 'Total referrals: %s' ), affwp_get_affiliate_referral_count( $affiliate_id ) ); ?></div>
+		<div class="affwp-total"><?php printf( __( 'Total visits: %s' ), affwp_get_affiliate_visit_count( $affiliate_id ) ); ?></div>
+
+		<?php affwp_affiliate_graph( $affiliate_id ); ?>
+
+	</div>
 
 </div>

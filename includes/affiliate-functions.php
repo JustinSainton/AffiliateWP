@@ -93,3 +93,33 @@ function affwp_get_affiliate_visit_count( $affiliate ) {
 
 	return absint( affiliate_wp()->affiliates->get_column( 'visits', $affiliate_id ) );
 }
+
+function affwp_affiliate_graph( $affiliate_id = 0 ) {
+
+	// outputs a graph of the affiliate's earnings, referral, and visit stats
+
+	$data = array();
+
+	$data[ __( 'Earnings', 'affiliate-wp' ) ] = array(
+		array( 1, 5 ),
+		array( 3, 8 ),
+		array( 10, 2 )
+	);
+
+	$data[ __( 'Referrals', 'affiliate-wp' ) ] = array(
+		array( 4, 12 ),
+		array( 2, 8 ),
+		array( 12, 8 )
+	);
+
+	$data[ __( 'Visits', 'affiliate-wp' ) ] = array(
+		array( 1, 7 ),
+		array( 2, 10 ),
+		array( 8, 8 )
+	);
+
+	$graph = new Affiliate_WP_Graph( $data );
+	$graph->display();
+
+
+}
