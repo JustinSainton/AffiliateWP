@@ -261,9 +261,18 @@ class Affiliate_WP_Graph {
 					}
 				});
 
-			});
+				$( '#affwp-graphs-date-options' ).change( function() {
+					var $this = $(this);
+					if( $this.val() == 'other' ) {
+						$( '#affwp-date-range-options' ).css('display', 'inline-block');
+					} else {
+						$( '#affwp-date-range-options' ).hide();
+					}
+				});
 
+			});
 		</script>
+		<?php echo $this->graph_controls(); ?>
 		<div id="affwp-graph-<?php echo $this->id; ?>" style="height: 300px;"></div>
 <?php
 		return ob_get_clean();
@@ -278,6 +287,250 @@ class Affiliate_WP_Graph {
 		do_action( 'affwp_before_graph', $this );
 		echo $this->build_graph();
 		do_action( 'affwp_after_graph', $this );
+	}
+
+	/**
+	 * Show report graph date filters
+	 *
+	 * @since 1.0
+	 * @return void
+	*/
+	function graph_controls() {
+		$date_options = apply_filters( 'affwp_report_date_options', array(
+			'today' 	    => __( 'Today', 'affiliate-wp' ),
+			'yesterday'     => __( 'Yesterday', 'affiliate-wp' ),
+			'this_week' 	=> __( 'This Week', 'affiliate-wp' ),
+			'last_week' 	=> __( 'Last Week', 'affiliate-wp' ),
+			'this_month' 	=> __( 'This Month', 'affiliate-wp' ),
+			'last_month' 	=> __( 'Last Month', 'affiliate-wp' ),
+			'this_quarter'	=> __( 'This Quarter', 'affiliate-wp' ),
+			'last_quarter'	=> __( 'Last Quarter', 'affiliate-wp' ),
+			'this_year'		=> __( 'This Year', 'affiliate-wp' ),
+			'last_year'		=> __( 'Last Year', 'affiliate-wp' ),
+			'other'			=> __( 'Custom', 'affiliate-wp' )
+		) );
+
+		$dates = edd_get_report_dates();
+
+		$display = $dates['range'] == 'other' ? 'style="display:inline-block;"' : 'style="display:none;"';
+
+		$view = edd_get_reporting_view();
+
+		?>
+		<form id="affwp-graphs-filter" method="get">
+			<div class="tablenav top">
+
+				<input type="hidden" name="page" value="affiliate-wp"/>
+				<input type="hidden" name="action" value="view_affiliate"/>
+
+				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
+				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>
+				<?php endif; ?>
+
+				<select id="affwp-graphs-date-options" name="range">
+				<?php
+					foreach ( $date_options as $key => $option ) {
+						echo '<option value="' . esc_attr( $key ) . '" ' . selected( $key, $dates['range'] ) . '>' . esc_html( $option ) . '</option>';
+					}
+				?>
+				</select>
+
+				<div id="affwp-date-range-options" <?php echo $display; ?>>
+					<span><?php _e( 'From', 'affiliate-wp' ); ?>&nbsp;</span>
+					<select id="affwp-graphs-month-start" name="m_start">
+						<?php for ( $i = 1; $i <= 12; $i++ ) : ?>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_start'] ); ?>><?php echo edd_month_num_to_name( $i ); ?></option>
+						<?php endfor; ?>
+					</select>
+					<select id="affwp-graphs-year" name="year">
+						<?php for ( $i = 2007; $i <= date( 'Y' ); $i++ ) : ?>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year'] ); ?>><?php echo $i; ?></option>
+						<?php endfor; ?>
+					</select>
+					<span><?php _e( 'To', 'affiliate-wp' ); ?>&nbsp;</span>
+					<select id="affwp-graphs-month-start" name="m_end">
+						<?php for ( $i = 1; $i <= 12; $i++ ) : ?>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_end'] ); ?>><?php echo edd_month_num_to_name( $i ); ?></option>
+						<?php endfor; ?>
+					</select>
+					<select id="affwp-graphs-year" name="year_end">
+						<?php for ( $i = 2007; $i <= date( 'Y' ); $i++ ) : ?>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year_end'] ); ?>><?php echo $i; ?></option>
+						<?php endfor; ?>
+					</select>
+				</div>
+
+				<input type="submit" class="button-secondary" value="<?php _e( 'Filter', 'affiliate-wp' ); ?>"/>
+			</div>
+		</form>
+		<?php
+	}
+
+	/**
+	 * Sets up the dates used to filter graph data
+	 *
+	 * Date sent via $_GET is read first and then modified (if needed) to match the
+	 * selected date-range (if any)
+	 *
+	 * @since 1.0
+	 * @return array
+	*/
+	public function get_report_dates() {
+		$dates = array();
+
+		$current_time = current_time( 'timestamp' );
+
+		$dates['range']      = isset( $_GET['range'] )   ? $_GET['range']   : 'this_month';
+		$dates['day']        = isset( $_GET['day'] )     ? $_GET['day']     : null;
+		$dates['m_start']    = isset( $_GET['m_start'] ) ? $_GET['m_start'] : 1;
+		$dates['m_end']      = isset( $_GET['m_end'] )   ? $_GET['m_end']   : 12;
+		$dates['year']       = isset( $_GET['year'] )    ? $_GET['year']    : date( 'Y' );
+		$dates['year_end']   = isset( $_GET['year_end'] )? $_GET['year_end']: date( 'Y' );
+			
+		// Modify dates based on predefined ranges
+		switch ( $dates['range'] ) :
+
+			case 'this_month' :
+				$dates['m_start'] 	= date( 'n', $current_time );
+				$dates['m_end']		= date( 'n', $current_time );
+				$dates['year']		= date( 'Y', $current_time );
+			break;
+
+			case 'last_month' :
+				if( date( 'n' ) == 1 ) {
+					$dates['m_start'] = 12;
+					$dates['m_end']	  = 12;
+					$dates['year']    = date( 'Y', $current_time ) - 1;
+					$dates['year_end']= date( 'Y', $current_time ) - 1;
+				} else {
+					$dates['m_start'] = date( 'n' ) - 1;
+					$dates['m_end']	  = date( 'n' ) - 1;
+					$dates['year_end']= $dates['year'];
+				}
+			break;
+
+			case 'today' :
+				$dates['day']		= date( 'd', $current_time );
+				$dates['m_start'] 	= date( 'n', $current_time );
+				$dates['m_end']		= date( 'n', $current_time );
+				$dates['year']		= date( 'Y', $current_time );
+			break;
+
+			case 'yesterday' :
+				$month              = date( 'n', $current_time ) == 1 ? 12 : date( 'n', $current_time );
+				$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y' ) );
+				$yesterday          = date( 'd', $current_time ) == 1 ? $days_in_month : date( 'd', $current_time ) - 1;
+				$dates['day']		= $yesterday;
+				$dates['m_start'] 	= $month;
+				$dates['m_end'] 	= $month;
+				$dates['year']		= $month == 1 && date( 'd', $current_time ) == 1 ? date( 'Y', $current_time ) - 1 : date( 'Y', $current_time );
+			break;
+
+			case 'this_week' :
+				$dates['day']       = date( 'd', $current_time - ( date( 'w', $current_time ) - 1 ) *60*60*24 ) - 1;
+				$dates['day']      += get_option( 'start_of_week' );
+				$dates['day_end']   = $dates['day'] + 6;
+				$dates['m_start'] 	= date( 'n', $current_time );
+				$dates['m_end']		= date( 'n', $current_time );
+				$dates['year']		= date( 'Y', $current_time );
+			break;
+
+			case 'last_week' :
+				$dates['day']       = date( 'd', $current_time - ( date( 'w' ) - 1 ) *60*60*24 ) - 8;
+				$dates['day']      += get_option( 'start_of_week' );
+				$dates['day_end']   = $dates['day'] + 6;
+				$dates['year']		= date( 'Y' );
+
+				if( date( 'j', $current_time ) <= 7 ) {
+					$dates['m_start'] 	= date( 'n', $current_time ) - 1;
+					$dates['m_end']		= date( 'n', $current_time ) - 1;
+					if( $dates['m_start'] <= 1 ) {
+						$dates['year'] = date( 'Y', $current_time ) - 1;
+						$dates['year_end'] = date( 'Y', $current_time ) - 1;
+					}
+				} else {
+					$dates['m_start'] 	= date( 'n', $current_time );
+					$dates['m_end']		= date( 'n', $current_time );
+				}
+			break;
+
+			case 'this_quarter' :
+				$month_now = date( 'n', $current_time );
+
+				if ( $month_now <= 3 ) {
+
+					$dates['m_start'] 	= 1;
+					$dates['m_end']		= 4;
+					$dates['year']		= date( 'Y', $current_time );
+
+				} else if ( $month_now <= 6 ) {
+
+					$dates['m_start'] 	= 4;
+					$dates['m_end']		= 7;
+					$dates['year']		= date( 'Y', $current_time );
+
+				} else if ( $month_now <= 9 ) {
+
+					$dates['m_start'] 	= 7;
+					$dates['m_end']		= 10;
+					$dates['year']		= date( 'Y', $current_time );
+
+				} else {
+
+					$dates['m_start'] 	= 10;
+					$dates['m_end']		= 1;
+					$dates['year']		= date( 'Y', $current_time );
+					$dates['year_end']  = date( 'Y', $current_time ) + 1;
+
+				}
+			break;
+
+			case 'last_quarter' :
+				$month_now = date( 'n' );
+
+				if ( $month_now <= 3 ) {
+
+					$dates['m_start']   = 10;
+					$dates['m_end']     = 12;
+					$dates['year']      = date( 'Y', $current_time ) - 1; // Previous year
+
+				} else if ( $month_now <= 6 ) {
+
+					$dates['m_start'] 	= 1;
+					$dates['m_end']		= 3;
+					$dates['year']		= date( 'Y', $current_time );
+
+				} else if ( $month_now <= 9 ) {
+
+					$dates['m_start'] 	= 4;
+					$dates['m_end']		= 6;
+					$dates['year']		= date( 'Y', $current_time );
+
+				} else {
+
+					$dates['m_start'] 	= 7;
+					$dates['m_end']		= 9;
+					$dates['year']		= date( 'Y', $current_time );
+
+				}
+			break;
+
+			case 'this_year' :
+				$dates['m_start'] 	= 1;
+				$dates['m_end']		= 12;
+				$dates['year']		= date( 'Y', $current_time );
+			break;
+
+			case 'last_year' :
+				$dates['m_start'] 	= 1;
+				$dates['m_end']		= 12;
+				$dates['year']		= date( 'Y', $current_time ) - 1;
+				$dates['year_end']  = date( 'Y', $current_time ) - 1;
+			break;
+
+		endswitch;
+
+		return apply_filters( 'affwp_report_dates', $dates );
 	}
 
 }
