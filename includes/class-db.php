@@ -188,20 +188,21 @@ class Affiliate_WP_DB {
 
 		if( ! empty( $args['status'] ) ) {
 
-			if( ! empty( $where ) ) {
-				$where .= "`status` = '" . $args['status'] . "' ";
+			if( is_array( $args['status'] ) ) {
+				$where .= " WHERE `status` IN(" . implode( ',', $args['status'] ) . ") ";
 			} else {
 				$where .= " WHERE `status` = '" . $args['status'] . "' ";
 			}
+
 		}
 
-		$cache_key   = md5( 'affwp_affiliates_count' . serialize( $args ) );
+		$cache_key = md5( 'affwp_affiliates_count' . serialize( $args ) );
 
 		$count = wp_cache_get( $cache_key, 'affiliates' );
 		
 		if( $count === false ) {
-			$count = $wpdb->get_var( "SELECT COUNT(affiliate_id) FROM " . $this->table_name . "{$where};" );
-			wp_cache_set( $cache_key, $count, 'affiliates' );
+			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
+			wp_cache_set( $cache_key, $count, $this->table_name );
 		}
 
 		return $count;

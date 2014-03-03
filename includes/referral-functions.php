@@ -52,3 +52,18 @@ function affwp_delete_referral( $referral ) {
 
 	return affiliate_wp()->referrals->delete( $referral_id );
 }
+
+function affwp_count_referrals( $affiliate_id = 0, $status = array(), $date = array() ) {
+
+	$args = array(
+		'affiliate_id' => $affiliate_id,
+		'status' => $status
+	);
+
+	if( ! empty( $date ) ) {
+		$args['date'] = $date;
+	}
+
+	return affiliate_wp()->referrals->count( $args );
+
+}
