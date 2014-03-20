@@ -241,6 +241,18 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Render the amount column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $referral Contains all the data for the checkbox column
+	 * @return string Displays the referral amount
+	 */
+	public function column_amount( $referral ) {
+		return affwp_currency_filter( affwp_format_amount( $referral->amount ) );
+	}
+
+	/**
 	 * Render the affiliate column
 	 *
 	 * @access public

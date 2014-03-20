@@ -52,7 +52,8 @@ final class Affiliate_WP {
 	public $affiliates;
 	public $referrals;
 	public $visits;
-	public $cookies;
+	public $tracking;
+	public $settings;
 
 
 	/**
@@ -78,10 +79,11 @@ final class Affiliate_WP {
 			self::$instance->load_textdomain();
 
 			// Setup objects
-			self::$instance->affiliates = new Affiliate_WP_DB;
+			self::$instance->affiliates = new Affiliate_WP_DB_Affiliates;
 			self::$instance->referrals  = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits     = new Affiliate_WP_Visits_DB;
-			self::$instance->cookies    = new Affiliate_WP_Cookies;
+			self::$instance->tracking   = new Affiliate_WP_Tracking;
+			self::$instance->settings   = new Affiliate_WP_Settings;
 
 		}
 		return self::$instance;
@@ -163,16 +165,20 @@ final class Affiliate_WP {
 		
 		}
 
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-cookies.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-tracking.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-functions.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/referral-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-base.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
 	}
 
 	/**

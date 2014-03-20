@@ -59,6 +59,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$args  = wp_parse_args( $args, $defaults );
 
+		if( $args['number'] < 1 ) {
+			$args['number'] = 999999999999;
+		}
+
 		$where = '';
 
 		// referrals for specific affiliates
@@ -124,7 +128,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$referrals = wp_cache_get( $cache_key, 'referrals' );
 		
-		if( $count === false ) {
+		if( $referrals === false ) {
 			$referrals = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $referrals, 'referrals' );
 		}
