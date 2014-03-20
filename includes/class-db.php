@@ -34,6 +34,11 @@ class Affiliate_WP_DB {
 		global $wpdb;
 		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id;" );
 	}
+
+	public function get_column_by( $column, $column_where, $column_value ) {
+		global $wpdb;
+		return $wpdb->get_col( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value;" );
+	}
 	
 	public function insert( $data, $type = '' ) {
 		global $wpdb;

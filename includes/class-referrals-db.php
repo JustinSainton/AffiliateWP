@@ -40,6 +40,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
+	public function add( $data = array() ) {
+		return $this->insert( $data, 'referral' );
+	}
+
 	/**
 	 * Retrieve referrals from the database
 	 *
@@ -117,6 +121,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( empty( $where ) ) {
 					$where .= " WHERE";
+				} else {
+					$where .= " AND";
 				}
 
 				$where .= " $year = YEAR ( date ) AND $month = MONTH ( date ) AND $day = DAY ( date )";
@@ -137,12 +143,79 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
-	public function add( $data = array() ) {
-		return $this->insert( $data, 'referral' );
+	/**
+	 * Get the total unpaid earnings
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function unpaid_earnings( $date = '', $format = true ) {
+
+		$args = array();
+		$args['status'] = 'unpaid';
+
+		if( ! empty( $date ) ) {
+
+			switch( $date ) {
+
+				case 'month' :
+				
+					$date = array(
+						'start' => date( 'Y-m-01 00:00:00', current_time( 'timestamp' ) ),
+						'end'   => date( 'Y-m-' . cal_days_in_month( CAL_GREGORIAN, date( 'n' ), date( 'Y' ) ) . ' 00:00:00', current_time( 'timestamp' ) ),
+					);
+					break;
+
+			}
+
+			$args['date'] = $date;
+		}
+
+		$referrals = $this->get_referrals( $args );
+
+		$earnings  = array_sum( wp_list_pluck( $referrals, 'amount' ) );
+
+		if( $format ) {
+			$earnings = affwp_currency_filter( affwp_format_amount( $earnings ) );
+		}
+
+		return $earnings;
+
 	}
 
 	/**
-	 * Count the total number of affiliates in the database
+	 * Count the total number of unpaid referrals
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function unpaid_count( $date = '' ) {
+
+		$args = array();
+		$args['status'] = 'unpaid';
+
+		if( ! empty( $date ) ) {
+
+			switch( $date ) {
+
+				case 'month' :
+				
+					$date = array(
+						'start' => date( 'Y-m-01 00:00:00', current_time( 'timestamp' ) ),
+						'end'   => date( 'Y-m-' . cal_days_in_month( CAL_GREGORIAN, date( 'n' ), date( 'Y' ) ) . ' 00:00:00', current_time( 'timestamp' ) ),
+					);
+					break;
+
+			}
+
+			$args['date'] = $date;
+		}
+
+		return $this->count( $args );
+	}
+
+	/**
+	 * Count the total number of referrals in the database
 	 *
 	 * @access  public
 	 * @since   1.0
@@ -187,13 +260,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
 				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
 
-				if( ! empty( $where ) ) {
+				if( empty( $where ) ) {
 
-					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
+					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
 				
 				} else {
 					
-					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
+					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
 	
 				}
 
@@ -205,6 +278,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( empty( $where ) ) {
 					$where .= " WHERE";
+				} else {
+					$where .= " AND";
 				}
 
 				$where .= " $year = YEAR ( date ) AND $month = MONTH ( date ) AND $day = DAY ( date )";
@@ -221,7 +296,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			wp_cache_set( $cache_key, $count, 'referrals' );
 		}
 
-		return $count;
+		return absint( $count );
 
 	}
 
