@@ -32,7 +32,19 @@ class Affiliate_WP_Base {
 			return false;
 		}
 
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference );
+
+		if( empty( $referral ) ) {
+			return false;
+		}
+
 		if( affiliate_wp()->referrals->update( $reference, array( 'status' => 'unpaid' ), 'reference' ) ) {
+			
+			// Update the visit ID that spawned this referral
+			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral_id ) );
+
+			do_action( 'affwp_complete_referral', $referral_id, $referral, $reference );
+
 			return true;
 		}
 
