@@ -150,7 +150,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		
 		if( $referrals === false ) {
 			$referrals = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
-			wp_cache_set( $cache_key, $referrals, 'referrals' );
+			wp_cache_set( $cache_key, $referrals, 'referrals', 3600 );
 		}
 
 		return $referrals;
@@ -309,7 +309,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		
 		if( $count === false ) {
 			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
-			wp_cache_set( $cache_key, $count, 'referrals' );
+			wp_cache_set( $cache_key, $count, 'referrals', 3600 );
 		}
 
 		return absint( $count );

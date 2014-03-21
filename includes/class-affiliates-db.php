@@ -115,7 +115,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		
 		if( $count === false ) {
 			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
-			wp_cache_set( $cache_key, $count, $this->table_name );
+			wp_cache_set( $cache_key, $count, 'affiliates', 3600 );
 		}
 
 		return $count;

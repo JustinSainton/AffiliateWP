@@ -137,9 +137,15 @@ class Affiliate_WP_Tracking {
 			$affiliate_id = $this->get_affiliate_id();
 		}
 
+		if( is_user_logged_in() ) {
+
+			$is_self = get_current_user_id() == affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+
+		}
+
 		$valid = affiliate_wp()->affiliates->get_column( 'affiliate_id', $affiliate_id );
 
-		return ! empty( $valid );
+		return ! empty( $valid ) && ! $is_self;
 	}
 
 }

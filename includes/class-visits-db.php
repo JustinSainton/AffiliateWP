@@ -139,7 +139,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		
 		if( $count === false ) {
 			$count = $wpdb->get_var( "SELECT COUNT(referral_id) FROM " . $this->table_name . "{$where};" );
-			wp_cache_set( $cache_key, $count, 'visits' );
+			wp_cache_set( $cache_key, $count, 'visits', 3600 );
 		}
 
 		return $count;
