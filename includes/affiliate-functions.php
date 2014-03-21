@@ -70,7 +70,15 @@ function affwp_get_affiliate_earnings( $affiliate ) {
 		return false;
 	}
 
-	return affiliate_wp()->affiliates->get_column( 'earnings', $affiliate_id );
+	$earnings = affiliate_wp()->affiliates->get_column( 'earnings', $affiliate_id );
+
+	if( empty( $earnings ) ) {
+
+		$earnings = 0;
+
+	}
+
+	return $earnings;
 }
 
 function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
@@ -230,6 +238,30 @@ function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 		return false;
 
 	}
+
+}
+
+function affwp_add_affiliate( $data = array() ) {
+
+	if( empty( $data['user_id'] ) ) {
+
+		return false;
+
+	}
+
+	$user_id = absint( $data['user_id'] );
+
+	if( ! affiliate_wp()->affiliates->get_by( 'user_id', $user_id ) ) {
+
+		if( affiliate_wp()->affiliates->add( array( 'user_id' => $user_id ) ) ) {
+
+			return true;
+
+		}
+
+	}
+
+	return false;
 
 }
 

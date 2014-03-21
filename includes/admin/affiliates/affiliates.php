@@ -270,6 +270,18 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Render the earnings column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $affiliate Contains all the data for the earnings column
+	 * @return string earnings link
+	 */
+	function column_earnings( $affiliate ) {
+		return affwp_currency_filter( affwp_format_amount( affwp_get_affiliate_earnings( $affiliate->affiliate_id ) ) );
+	}
+
+	/**
 	 * Render the referrals column
 	 *
 	 * @access public
