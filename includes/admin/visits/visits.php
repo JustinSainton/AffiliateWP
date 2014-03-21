@@ -16,21 +16,19 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function affwp_visits_admin() {
 
 
-	$affiliates_table = new AffWP_Visits_Table();
-	$affiliates_table->prepare_items();
+	$visits_table = new AffWP_Visits_Table();
+	$visits_table->prepare_items();
 	?>
 	<div class="wrap">
-		<h2><?php _e( 'Visits', 'affiliate-wp' ); ?>
-			<a href="<?php echo add_query_arg( array( 'affwp-action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
-		</h2>
+		<h2><?php _e( 'Visits', 'affiliate-wp' ); ?></h2>
 		<?php do_action( 'affwp_affiliates_page_top' ); ?>
-		<form id="affwp-affiliates-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
-			<?php $affiliates_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-affiliates' ); ?>
+		<form id="affwp-visits-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
+			<?php $visits_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-affiliates' ); ?>
 
 			<input type="hidden" name="page" value="affiliate-wp" />
 
-			<?php $affiliates_table->views() ?>
-			<?php $affiliates_table->display() ?>
+			<?php $visits_table->views() ?>
+			<?php $visits_table->display() ?>
 		</form>
 		<?php do_action( 'affwp_affiliates_page_bottom' ); ?>
 	</div>
@@ -140,7 +138,6 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'cb'           => '<input type="checkbox" />',
 			'ip'           => __( 'ID', 'affiliate-wp' ),
 			'url'          => __( 'URL', 'affiliate-wp' ),
 			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
@@ -186,46 +183,6 @@ class AffWP_Visits_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Render the Name Column
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @param array $item Contains all the data of the discount code
-	 * @return string Data shown in the Name column
-	 */
-	function column_name( $affiliate ) {
-
-		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
-		$row_actions  = array();
-		$name         = get_userdata( $affiliate->user_id )->display_name; 
-
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_discount', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
-
-		if( strtolower( $affiliate->status ) == 'active' )
-			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'action' => 'deactivate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
-		else
-			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'action' => 'activate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
-
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
-
-		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
-
-		return $name . $this->row_actions( $row_actions );
-	}
-
-	/**
-	 * Render the checkbox column
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @param array $affiliate Contains all the data for the checkbox column
-	 * @return string Displays a checkbox
-	 */
-	function column_cb( $affiliate ) {
-		return '<input type="checkbox" name="visit_id[]" value="' . $affiliate->visit_id . '" />';
-	}
-
-	/**
 	 * Render the affiliate column
 	 *
 	 * @access public
@@ -233,20 +190,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @param array $referral Contains all the data for the checkbox column
 	 * @return string The affiliate
 	 */
-	function column_affiliate( $referral ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&affiliate=' . $referral->affiliate_id ) . '">' . $referral->affiliate_id . '</a>';
-	}
-
-	/**
-	 * Render the actions column
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @param array $referral Contains all the data for the actions column
-	 * @return string The actions HTML
-	 */
-	function column_actions( $referral ) {
-		return 'Actions here';
+	function column_affiliate_id( $visit ) {
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&action=view_affiliate&affiliate_id=' . $visit->affiliate_id ) . '">' . $visit->affiliate_id . '</a>';
 	}
 
 	/**
@@ -260,23 +205,6 @@ class AffWP_Visits_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Retrieve the bulk actions
-	 *
-	 * @access public
-	 * @since 1.0
-	 * @return array $actions Array of the bulk actions
-	 */
-	public function get_bulk_actions() {
-		$actions = array(
-			'activate'   => __( 'Activate', 'affiliate-wp' ),
-			'deactivate' => __( 'Deactivate', 'affiliate-wp' ),
-			'delete'     => __( 'Delete', 'affiliate-wp' )
-		);
-
-		return $actions;
-	}
-
-	/**
 	 * Process the bulk actions
 	 *
 	 * @access public
@@ -284,22 +212,6 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function process_bulk_action() {
-		$ids = isset( $_GET['discount'] ) ? $_GET['discount'] : false;
-
-		if ( ! is_array( $ids ) )
-			$ids = array( $ids );
-
-		foreach ( $ids as $id ) {
-			if ( 'delete' === $this->current_action() ) {
-
-			}
-			if ( 'activate' === $this->current_action() ) {
-
-			}
-			if ( 'deactivate' === $this->current_action() ) {
-
-			}
-		}
 
 	}
 
@@ -311,7 +223,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function get_visits_counts() {
-		$this->total_count    = affiliate_wp()->visits->count();
+		$this->total_count = affiliate_wp()->visits->count();
 	}
 
 	/**
@@ -324,8 +236,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	public function visits_data() {
 		
 		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
-
-		$visits  = affiliate_wp()->visits->get_visits( array(
+		$visits = affiliate_wp()->visits->get_visits( array(
 			'number' => $this->per_page,
 			'offset' => $this->per_page * ( $page - 1 ),
 		) );

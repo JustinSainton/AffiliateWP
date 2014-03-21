@@ -83,6 +83,14 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public $paid_count;
 
 	/**
+	 * Number of unpaid referrals
+	 *
+	 * @var int
+	 * @since 1.0
+	 */
+	public $unpaid_count;
+
+	/**
 	 * Number of pending referrals
 	 *
 	 * @var int
@@ -157,12 +165,14 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
 		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
 		$paid_count     = '&nbsp;<span class="count">(' . $this->paid_count . ')</span>';
+		$unpaid_count   = '&nbsp;<span class="count">(' . $this->unpaid_count . ')</span>';
 		$pending_count  = '&nbsp;<span class="count">(' . $this->pending_count . ')</span>';
 		$rejected_count = '&nbsp;<span class="count">(' . $this->rejected_count . ')</span>';
 
 		$views = array(
 			'all'      => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( 'status', $base ), $current === 'all' || $current == '' ? ' class="current"' : '', __( 'All', 'affiliate-wp' ) . $total_count ),
-			'paid'	   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'paid', $base ), $current === 'paid' ? ' class="current"' : '', __( 'Paid', 'affiliate-wp' ) . $paid_count ),
+			'paid'     => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'paid', $base ), $current === 'paid' ? ' class="current"' : '', __( 'Paid', 'affiliate-wp' ) . $paid_count ),
+			'unpaid'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'unpaid', $base ), $current === 'unpaid' ? ' class="current"' : '', __( 'Unpaid', 'affiliate-wp' ) . $unpaid_count ),
 			'pending'  => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'pending', $base ), $current === 'pending' ? ' class="current"' : '', __( 'Pending', 'affiliate-wp' ) . $pending_count ),
 			'rejected' => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'rejected', $base ), $current === 'rejected' ? ' class="current"' : '', __( 'Rejected', 'affiliate-wp' ) . $rejected_count ),
 		);
@@ -182,6 +192,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'cb'        => '<input type="checkbox" />',
 			'amount'    => __( 'Amount', 'affiliate-wp' ),
 			'affiliate' => __( 'Affiliate', 'affiliate-wp' ),
+			'status'    => __( 'Status', 'affiliate-wp' ),
 			'date'      => __( 'Date', 'affiliate-wp' ),
 			'actions'   => __( 'Actions', 'affiliate-wp' ),
 		);
@@ -278,25 +289,25 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		
 		if( 'paid' == affwp_get_referral_status( $referral ) ) {
 			
-			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_unpaid', 'referral' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Unpaid', 'affiliate-wp' ) . '</a>';
+			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_unpaid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Unpaid', 'affiliate-wp' ) . '</a>';
 	
 		} else {
 
-			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
+			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
 			
-			if( 'rejected' == affwp_get_referral_status( $referral ) ) {
+			if( 'rejected' == affwp_get_referral_status( $referral ) || 'pending' == affwp_get_referral_status( $referral ) ) {
 			
-				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
 			
 			} else {
 			
-				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 			
 			}
 
 		}
 		
-		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral' => $referral->referral_id ) ) ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
+		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral_id' => $referral->referral_id ) ) ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
 		
 		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links ) );
 
@@ -322,10 +333,11 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = array(
-			'delete'         => __( 'Delete', 'affiliate-wp' ),
+			'accept'         => __( 'Accept', 'affiliate-wp' ),
 			'reject'         => __( 'Reject', 'affiliate-wp' ),
 			'mark_as_paid'   => __( 'Mark as Paid', 'affiliate-wp' ),
 			'mark_as_unpaid' => __( 'Mark as Unpaid', 'affiliate-wp' ),
+			'delete'         => __( 'Delete', 'affiliate-wp' ),
 		);
 
 		return $actions;
@@ -339,10 +351,17 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function process_bulk_action() {
-		$ids = isset( $_GET['referral'] ) ? absint( $_GET['referral'] ) : false;
+		$ids = isset( $_GET['referral_id'] ) ? $_GET['referral_id'] : array();
 
-		if ( ! is_array( $ids ) )
+		if ( ! is_array( $ids ) ) {
 			$ids = array( $ids );
+		}
+
+		$ids = array_map( 'absint', $ids );
+
+		if( empty( $ids ) ) {
+			return;
+		}
 
 		foreach ( $ids as $id ) {
 			
@@ -355,7 +374,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			}
 
 			if ( 'accept' === $this->current_action() ) {
-				affwp_set_referral_status( $id, 'pending' );
+				affwp_set_referral_status( $id, 'unpaid' );
 			}
 
 			if ( 'mark_as_paid' === $this->current_action() ) {
@@ -363,7 +382,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			}
 
 			if ( 'mark_as_unpaid' === $this->current_action() ) {
-				affwp_set_referral_status( $id, 'pending' );
+				affwp_set_referral_status( $id, 'unpaid' );
 			}
 
 		}
@@ -379,6 +398,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function get_referral_counts() {
 		$this->paid_count     = affiliate_wp()->referrals->count( array( 'status' => 'paid' ) );
+		$this->unpaid_count   = affiliate_wp()->referrals->count( array( 'status' => 'unpaid' ) );
 		$this->pending_count  = affiliate_wp()->referrals->count( array( 'status' => 'pending' ) );
 		$this->rejected_count = affiliate_wp()->referrals->count( array( 'status' => 'rejected' ) );
 		$this->total_count    = $this->paid_count + $this->pending_count + $this->rejected_count;

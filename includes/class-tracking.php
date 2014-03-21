@@ -42,11 +42,11 @@ class Affiliate_WP_Tracking {
 						affiliate: ref,
 						url: document.URL
 					},
-					dataType: "json",
 					url: affwp_scripts.ajaxurl,
 					success: function (response) {
 						console.log( 'success' );
 						console.log( response )
+						$.cookie( 'affwp_ref_visit_id', response, { expires: <?php echo $this->get_expiration_time(); ?>, path: '/' } );
 					}
 
 				}).fail(function (response) {
@@ -83,7 +83,7 @@ class Affiliate_WP_Tracking {
 
 		$affiliate_id = absint( $_POST['affiliate'] );
 
-		if( ! empty( $affiliate_id ) ) {
+		if( $this->is_valid_affiliate( $affiliate_id ) ) {
 
 			// Store the visit in the DB
 			$visit_id = affiliate_wp()->visits->add( array(
@@ -92,7 +92,7 @@ class Affiliate_WP_Tracking {
 				'url'          => sanitize_text_field( $_POST['url'] )
 			) );
 
-			die( $visit_id );
+			echo $visit_id; exit;
 
 		} else {
 
@@ -117,6 +117,29 @@ class Affiliate_WP_Tracking {
 
 	public function get_expiration_time() {
 		return $this->expiration_time;
+	}
+
+	public function was_referred() {
+		return isset( $_COOKIE['affwp_ref'] );
+	}
+
+	public function get_visit_id() {
+		return absint( $_COOKIE['affwp_ref_visit_id'] );
+	}
+
+	public function get_affiliate_id() {
+		return absint( $_COOKIE['affwp_ref'] );
+	}
+
+	public function is_valid_affiliate( $affiliate_id = 0 ) {
+
+		if( empty( $affiliate_id ) ) {
+			$affiliate_id = $this->get_affiliate_id();
+		}
+
+		$valid = affiliate_wp()->affiliates->get_column( 'affiliate_id', $affiliate_id );
+
+		return ! empty( $valid );
 	}
 
 }

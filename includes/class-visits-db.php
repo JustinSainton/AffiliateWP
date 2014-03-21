@@ -90,7 +90,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	public function add( $data = array() ) {
 		$visit_id = $this->insert( $data, 'visit' );
 		
-		affiliate_wp()->affiliates->bump_visits( $data['affiliate_id'] );
+		affwp_increase_affiliate_visit_count( $data['affiliate_id'] );
 
 		return $visit_id;
 	}

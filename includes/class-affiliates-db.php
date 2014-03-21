@@ -87,13 +87,6 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		return $this->insert( $data, 'affiliate' );
 	}
 
-	public function bump_visits( $affiliate_id = 0 ) {
-		$visits = absint( $this->get_column( 'visits', $affiliate_id ) );
-		$visits += 1;
-		$this->update( $affiliate_id, array( 'visits' => $visits ) );
-		return $visits;
-	}
-
 	/**
 	 * Count the total number of affiliates in the database
 	 *

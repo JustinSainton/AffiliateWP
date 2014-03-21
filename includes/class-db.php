@@ -22,7 +22,7 @@ class Affiliate_WP_DB {
 	
 	public function get( $row_id ) {
 		global $wpdb;
-		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE this->primary_key = $row_id;" );
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $this->primary_key = $row_id;" );
 	}
 
 	public function get_by( $column, $row_id ) {
@@ -68,13 +68,17 @@ class Affiliate_WP_DB {
 		return $wpdb->insert_id;
 	}
 
-	public function update( $row_id, $data = array() ) {
+	public function update( $row_id, $data = array(), $where = '' ) {
 		global $wpdb;        
 
 		// Row ID must be positive integer
 		$row_id = absint( $row_id );     
 		if( empty( $row_id ) )
 			return false;
+
+		if( empty( $where ) ) {
+			$where = $this->primary_key;
+		}
 
 		// Initialise column format array
 		$column_formats = $this->get_columns();
@@ -89,7 +93,7 @@ class Affiliate_WP_DB {
 		$data_keys = array_keys( $data );
 		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
-		if ( false === $wpdb->update( $this->table_name, $data, array( $this->primary_key => $row_id ), $column_formats ) ) {
+		if ( false === $wpdb->update( $this->table_name, $data, array( $where => $row_id ), $column_formats ) ) {
 			return false;
 		}
 

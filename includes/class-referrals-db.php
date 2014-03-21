@@ -22,6 +22,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		return array(
 			'referral_id' => '%d',
 			'affiliate_id'=> '%d',
+			'visit_id'    => '%d',
 			'description' => '%s',
 			'status'      => '%s',
 			'amount'      => '%s',
@@ -41,7 +42,18 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	}
 
 	public function add( $data = array() ) {
-		return $this->insert( $data, 'referral' );
+
+		$defaults = array(
+			'status' => 'pending'
+		);
+
+		$args = wp_parse_args( $data, $defaults );
+
+		$add  = $this->insert( $args, 'referral' );
+
+		if( $add ) {
+			do_action( 'affwp_add_referral', $add );
+		}
 	}
 
 	/**
@@ -58,7 +70,9 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'number'       => 20,
 			'offset'       => 0,
 			'affiliate_id' => 0,
-			'status'       => ''
+			'status'       => '',
+			'orderby'      => 'date',
+			'order'        => 'DESC'
 		);
 
 		$args  = wp_parse_args( $args, $defaults );
@@ -135,7 +149,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$referrals = wp_cache_get( $cache_key, 'referrals' );
 		
 		if( $referrals === false ) {
-			$referrals = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			$referrals = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $referrals, 'referrals' );
 		}
 
@@ -149,10 +163,11 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	 * @access  public
 	 * @since   1.0
 	*/
-	public function unpaid_earnings( $date = '', $format = true ) {
+	public function unpaid_earnings( $date = '', $affiliate_id = 0, $format = true ) {
 
 		$args = array();
 		$args['status'] = 'unpaid';
+		$args['affiliate_id'] = $affiliate_id;
 
 		if( ! empty( $date ) ) {
 
@@ -189,10 +204,11 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	 * @access  public
 	 * @since   1.0
 	*/
-	public function unpaid_count( $date = '' ) {
+	public function unpaid_count( $date = '', $affiliate_id = 0 ) {
 
 		$args = array();
 		$args['status'] = 'unpaid';
+		$args['affiliate_id'] = $affiliate_id;
 
 		if( ! empty( $date ) ) {
 
@@ -312,6 +328,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`referral_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`affiliate_id` bigint(20) NOT NULL,
+		`visit_id` bigint(20) NOT NULL,
 		`description` longtext NOT NULL,
 		`status` tinytext NOT NULL,
 		`amount` mediumtext NOT NULL,
