@@ -243,8 +243,6 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$row_actions  = array();
 		$name         = get_userdata( $affiliate->user_id )->display_name; 
 
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_discount', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
-
 		if( strtolower( $affiliate->status ) == 'active' )
 			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'action' => 'deactivate_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		else
