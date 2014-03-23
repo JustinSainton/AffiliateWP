@@ -138,10 +138,10 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'ip'           => __( 'ID', 'affiliate-wp' ),
 			'url'          => __( 'URL', 'affiliate-wp' ),
 			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
 			'referral_id'  => __( 'Referral ID', 'affiliate-wp' ),
+			'ip'           => __( 'IP', 'affiliate-wp' ),
 			'date'         => __( 'Date', 'affiliate-wp' ),
 		);
 

@@ -79,12 +79,37 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			}
 		}
 
-		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
+
+		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
+		
+		if( $affiliates === false ) {
+			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
+		}
+
+		return $affiliates;
 
 	}
 
 	public function add( $data = array() ) {
-		return $this->insert( $data, 'affiliate' );
+
+		$defaults = array(
+			'status' => 'active'
+		);
+
+		$args = wp_parse_args( $data, $defaults );
+
+		$add  = $this->insert( $args, 'affiliate' );
+
+		if( $add ) {
+			do_action( 'affwp_add_affiliate', $add );
+			return $add;
+		}
+
+		return false;
+
 	}
 
 	/**
