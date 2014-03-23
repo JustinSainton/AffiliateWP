@@ -23,6 +23,10 @@ function affwp_affiliates_admin() {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/new.php';
 
+	} else if( isset( $_GET['action'] ) && 'edit_affiliate' == $_GET['action'] ) {
+
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
+
 	} else {
 
 		$affiliates_table = new AffWP_Affiliates_Table();
