@@ -343,7 +343,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		`ip` tinytext NOT NULL,
 		`currency` char(3) NOT NULL,
 		`custom` longtext NOT NULL,
-		`reference` varchar(20) NOT NULL,
+		`reference` mediumtext NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (referral_id),
 		KEY affiliate_id (affiliate_id)

@@ -38,12 +38,17 @@ class Affiliate_WP_Base {
 			return false;
 		}
 
-		if( affiliate_wp()->referrals->update( $reference, array( 'status' => 'unpaid' ), 'reference' ) ) {
+		if( is_object( $referral ) && $referral->status != 'pending' ) {
+			// This referral has already been completed, rejected, or paid
+			return false;
+		}
+
+		if( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'unpaid' ) ) ) {
 			
 			// Update the visit ID that spawned this referral
-			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral_id ) );
+			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );
 
-			do_action( 'affwp_complete_referral', $referral_id, $referral, $reference );
+			do_action( 'affwp_complete_referral', $referral->referral_id, $referral, $reference );
 
 			return true;
 		}

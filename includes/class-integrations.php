@@ -13,7 +13,7 @@ class Affiliate_WP_Integrations {
 		// Load each enabled integrations
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-base.php';
 
-		$enabled = array( 'edd' );
+		$enabled = array( 'edd', 'rcp' );
 
 		$enabled = apply_filters( 'affwp_enabled_integrations', $enabled );
 

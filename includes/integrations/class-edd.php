@@ -9,19 +9,8 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 	public function add_pending_referral( $payment_id = 0, $payment_data = array() ) {
 
-
 		if( $this->was_referred() ) {
 			$this->insert_pending_referral( $payment_data['price'], $payment_id );
-		}
-
-	}
-
-	public function mark_referral_complete( $payment_id = 0 ) {
-
-		if( $this->was_referred() ) {
-
-			$this->complete_referral();
-	
 		}
 
 	}

@@ -27,7 +27,7 @@ class Affiliate_WP_DB {
 
 	public function get_by( $column, $row_id ) {
 		global $wpdb;
-		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = $row_id;" );
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id';" );
 	}
 
 	public function get_column( $column, $row_id ) {
