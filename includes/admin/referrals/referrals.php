@@ -293,8 +293,12 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	
 		} else {
 
-			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
-			
+			if( 'rejected' != $referral->status ) {	
+
+				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
+
+			}
+
 			if( 'rejected' == $referral->status || 'pending' == $referral->status ) {
 			
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
