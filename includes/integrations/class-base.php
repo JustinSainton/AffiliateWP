@@ -17,7 +17,7 @@ class Affiliate_WP_Base {
 	public function insert_pending_referral( $amount = '', $reference = 0, $data = array() ) {
 
 		return affiliate_wp()->referrals->add( array(
-			'amount'       => affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id() ),
+			'amount'       => affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference ),
 			'reference'    => $reference,
 			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
 			'visit_id'     => affiliate_wp()->tracking->get_visit_id(),

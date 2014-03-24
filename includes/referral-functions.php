@@ -98,7 +98,7 @@ function affwp_delete_referral( $referral ) {
 	return false;
 }
 
-function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0 ) {
+function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0 ) {
 
 	return round( $amount * affwp_get_affiliate_rate( $affiliate_id ), 2 );
 }
