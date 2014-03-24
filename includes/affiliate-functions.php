@@ -1,5 +1,21 @@
 <?php
 
+function affwp_get_affiliate_id() {
+
+	if( ! is_user_logged_in() ) {
+		return false;
+	}
+
+	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', get_current_user_id() );
+	
+	if( $affiliate ) {
+		return $affiliate->affiliate_id;
+	}
+
+	return false;
+
+}
+
 function affwp_get_affiliate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {

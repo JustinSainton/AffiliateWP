@@ -104,6 +104,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 			if( empty( $where ) ) {
 				$where .= " WHERE";
+			} else {
+				$where .= " AND";
 			}
 
 			if( is_array( $args['status'] ) ) {
@@ -263,6 +265,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 			if( empty( $where ) ) {
 				$where .= " WHERE";
+			} else {
+				$where .= " AND";
 			}
 
 			if( is_array( $args['status'] ) ) {

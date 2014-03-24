@@ -54,6 +54,7 @@ final class Affiliate_WP {
 	public $visits;
 	public $tracking;
 	public $settings;
+	public $templates;
 
 
 	/**
@@ -84,6 +85,7 @@ final class Affiliate_WP {
 			self::$instance->visits     = new Affiliate_WP_Visits_DB;
 			self::$instance->tracking   = new Affiliate_WP_Tracking;
 			self::$instance->settings   = new Affiliate_WP_Settings;
+			self::$instance->templates  = new Affiliate_WP_Templates;
 
 		}
 		return self::$instance;
@@ -166,6 +168,7 @@ final class Affiliate_WP {
 
 		} else {
 		
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
 		}
 
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/actions.php';
@@ -175,6 +178,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-integrations.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-templates.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-tracking.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-functions.php';

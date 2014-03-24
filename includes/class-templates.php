@@ -23,6 +23,16 @@ class Affiliate_WP_Templates {
 	}
 
 	/**
+	 * Returns the URL to the EDD templates directory
+	 *
+	 * @since 1.0
+	 * @return string
+	 */
+	public function get_theme_template_dir_name() {
+		return apply_filters( 'affwp_theme_template_dir_name', 'affiliatewp' );
+	}
+
+	/**
 	 * Retrieves a template part
 	 *
 	 * @since v1.1
@@ -115,7 +125,7 @@ class Affiliate_WP_Templates {
 		$file_paths = array(
 			1 => trailingslashit( get_stylesheet_directory() ) . $template_dir,
 			10 => trailingslashit( get_template_directory() ) . $template_dir,
-			100 => get_templates_dir()
+			100 => $this->get_templates_dir()
 		);
 
 		$file_paths = apply_filters( 'affwp_template_paths', $file_paths );

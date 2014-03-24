@@ -116,7 +116,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$affiliate_ids = intval( $args['affiliate_id'] );
 			}	
 
-			$where .= "WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
+			$where .= " WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
 
 		}
 
@@ -127,9 +127,15 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$referral_ids = implode( ',', $args['referral_id'] );
 			} else {
 				$referral_ids = intval( $args['referral_id'] );
-			}	
+			}
 
-			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			$where .= " `referral_id` IN( {$referral_ids} )";
 
 		}
 
@@ -138,7 +144,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		$count = wp_cache_get( $cache_key, 'visits' );
 		
 		if( $count === false ) {
-			$count = $wpdb->get_var( "SELECT COUNT(referral_id) FROM " . $this->table_name . "{$where};" );
+			$count = $wpdb->get_var( "SELECT COUNT(visit_id) FROM " . $this->table_name . "{$where};" );
 			wp_cache_set( $cache_key, $count, 'visits', 3600 );
 		}
 
