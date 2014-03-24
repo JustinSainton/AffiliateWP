@@ -86,6 +86,7 @@ final class Affiliate_WP {
 			self::$instance->tracking   = new Affiliate_WP_Tracking;
 			self::$instance->settings   = new Affiliate_WP_Settings;
 			self::$instance->templates  = new Affiliate_WP_Templates;
+			self::$instance->login      = new Affiliate_WP_Login;;
 
 		}
 		return self::$instance;
@@ -169,6 +170,8 @@ final class Affiliate_WP {
 		} else {
 		
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-login.php';
+
 		}
 
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/actions.php';

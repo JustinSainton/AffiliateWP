@@ -1,5 +1,9 @@
 <?php
 
+function affwp_is_affiliate() {
+	return (bool) affwp_get_affiliate_id();
+}
+
 function affwp_get_affiliate_id() {
 
 	if( ! is_user_logged_in() ) {
