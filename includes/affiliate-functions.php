@@ -42,7 +42,7 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
 
 	// default rate
-	$rate = 30;
+	$rate = affiliate_wp()->settings->get( 'referral_rate', 30 );
 
 	$affiliate_rate = affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
 
