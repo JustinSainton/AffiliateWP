@@ -7,6 +7,24 @@ function affiliate_wp_install() {
 	affiliate_wp()->visits->create_table();
 
 
+	if ( ! get_option( 'affwp_is_installed' ) ) {
+		$affiliate_area = wp_insert_post(
+			array(
+				'post_title'     => __( 'Affiliate Area', 'affiliate-wp' ),
+				'post_content'   => '[affiliate_area]',
+				'post_status'    => 'publish',
+				'post_author'    => 1,
+				'post_type'      => 'page',
+				'comment_status' => 'closed'
+			)
+		);
+
+		$options = affiliate_wp()->settings->get_all();
+		$options['affiliates_page'] = $affiliate_area;
+		update_option( 'affwp_settings', $options );
+
+	}
+
 	update_option( 'affwp_is_installed', '1' );
 	// send to welcome page here
 

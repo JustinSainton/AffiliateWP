@@ -18,6 +18,10 @@ class Affiliate_WP_Settings {
 		return $value;
 	}
 
+	public function get_all() {
+		return $this->options;
+	}
+
 	/**
 	 * Add all settings sections and fields
 	 *
