@@ -375,8 +375,11 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function get_affiliate_counts() {
-		$this->active_count   = affiliate_wp()->affiliates->count( array( 'status' => 'active' ) );
-		$this->inactive_count = affiliate_wp()->affiliates->count( array( 'status' => 'inactive' ) );
+
+		$search = isset( $_GET['s'] ) ? $_GET['s'] : ''; 
+
+		$this->active_count   = affiliate_wp()->affiliates->count( array( 'status' => 'active', 'search' => $search ) );
+		$this->inactive_count = affiliate_wp()->affiliates->count( array( 'status' => 'inactive', 'search' => $search ) );
 		$this->total_count    = $this->active_count + $this->inactive_count;
 	}
 
@@ -390,12 +393,14 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public function affiliate_data() {
 		
 		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
-		$status = isset( $_GET['status'] ) ? $_GET['status'] : ''; 
+		$status = isset( $_GET['status'] ) ? $_GET['status']          : ''; 
+		$search = isset( $_GET['s'] )      ? $_GET['s']               : ''; 
 
 		$affiliates  = affiliate_wp()->affiliates->get_affiliates( array(
 			'number' => $this->per_page,
 			'offset' => $this->per_page * ( $page - 1 ),
-			'status' => $status
+			'status' => $status,
+			'search' => $search
 		) );
 		return $affiliates;
 	}

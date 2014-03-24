@@ -74,12 +74,56 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		if( ! empty( $args['status'] ) ) {
 
 			if( ! empty( $where ) ) {
-				$where .= "`status` = '" . $args['status'] . "' ";
+				$where .= "AND `status` = '" . $args['status'] . "' ";
 			} else {
 				$where .= "WHERE `status` = '" . $args['status'] . "' ";
 			}
 		}
 
+		if( ! empty( $args['search'] ) ) {
+
+			if( is_numeric( $args['search'] ) ) {
+
+				$affiliate_ids = esc_sql( $args['search'] );
+				$search = "`affiliate_id` IN( {$affiliate_ids} )";
+
+			} elseif( is_string( $args['search'] ) ) {
+
+				// Searching by an affiliate's name or email
+				if( is_email( $args['search'] ) ) {
+
+					$user    = get_user_by( 'email', $args['search'] );
+					$user_id = $user ? $user->ID : 0;
+					$search  = "`user_id` = '" . $user_id . "' ";
+
+				} else {
+
+					$search = esc_sql( $args['search'] );
+					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%$search%'" );
+
+					if( ! empty( $users ) ) {
+
+						$users  = implode( ',', $users );
+						$search = "`user_id` IN( {$users} )";
+					
+					}
+
+				}
+
+			}
+
+			if( ! empty( $search ) ) {
+
+				if( ! empty( $where ) ) {
+					$search = "AND " . $search;
+				} else {
+					$search = "WHERE " . $search;
+				}
+
+				$where .= $search;
+			}
+
+		}
 
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
@@ -131,6 +175,51 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				$where .= " WHERE `status` IN(" . implode( ',', $args['status'] ) . ") ";
 			} else {
 				$where .= " WHERE `status` = '" . $args['status'] . "' ";
+			}
+
+		}
+
+		if( ! empty( $args['search'] ) ) {
+
+			if( is_numeric( $args['search'] ) ) {
+
+				$affiliate_ids = esc_sql( $args['search'] );
+				$search = "`affiliate_id` IN( {$affiliate_ids} )";
+
+			} elseif( is_string( $args['search'] ) ) {
+
+				// Searching by an affiliate's name or email
+				if( is_email( $args['search'] ) ) {
+
+					$user    = get_user_by( 'email', $args['search'] );
+					$user_id = $user ? $user->ID : 0;
+					$search  = "`user_id` = '" . $user_id . "' ";
+
+				} else {
+
+					$search = esc_sql( $args['search'] );
+					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%$search%'" );
+
+					if( ! empty( $users ) ) {
+
+						$users  = implode( ',', $users );
+						$search = "`user_id` IN( {$users} )";
+					
+					}
+
+				}
+
+			}
+
+			if( ! empty( $search ) ) {
+
+				if( ! empty( $where ) ) {
+					$search = "AND " . $search;
+				} else {
+					$search = "WHERE " . $search;
+				}
+
+				$where .= $search;
 			}
 
 		}
