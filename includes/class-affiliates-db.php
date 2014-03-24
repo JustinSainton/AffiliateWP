@@ -23,6 +23,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		return array(
 			'affiliate_id' => '%d',
 			'user_id'      => '%d',
+			'rate'         => '%s',
 			'status'       => '%s',
 			'earnings'     => '%s',
 			'referrals'    => '%d',
@@ -159,6 +160,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$sql = "CREATE TABLE " . $this->table_name . " (
 		`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
 		`user_id` bigint(20) NOT NULL,
+		`rate` tinytext NOT NULL,
 		`status` tinytext NOT NULL,
 		`earnings` mediumtext NOT NULL,
 		`referrals` bigint(20) NOT NULL,

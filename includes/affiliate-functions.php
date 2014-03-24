@@ -41,7 +41,9 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
 function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
 
-	return 30;
+	$rate = 30;
+
+	return apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
 }
 
 function affwp_delete_affiliate( $affiliate ) {
@@ -258,6 +260,33 @@ function affwp_add_affiliate( $data = array() ) {
 			return true;
 
 		}
+
+	}
+
+	return false;
+
+}
+
+function affwp_update_affiliate( $data = array() ) {
+
+	if( empty( $data['affiliate_id'] ) ) {
+
+		return false;
+
+	}
+
+	$args         = array();
+	$affiliate_id = absint( $data['affiliate_id'] );
+
+	if( ! empty( $data['rate'] ) ) {
+
+		$args['rate'] = sanitize_text_field( $data['rate'] );
+
+	}
+
+	if( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
+
+		return true;
 
 	}
 

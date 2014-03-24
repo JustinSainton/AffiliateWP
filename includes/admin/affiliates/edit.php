@@ -1,4 +1,7 @@
-<?php $affiliate = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) ); ?>
+<?php
+$affiliate = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
+$rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
+?>
 <div class="wrap">
 
 	<h2><?php _e( 'Edit Affiliate', 'affiliate-wp' ); ?></h2>
@@ -22,11 +25,24 @@
 
 			</tr>
 
+			<tr class="form-row form-required">
+
+				<th scope="row">
+					<label for="rate"><?php _e( 'Referral Rate', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<input type="text" name="rate" id="rate" value="<?php echo esc_attr( $rate ); ?>"/>
+					<div class="description"><?php _e( 'The affiliate\'s referral rate. If left blank, the site default will be used.', 'affiliate-wp' ); ?></div>
+				</td>
+
+			</tr>
+
 		</table>
 
 		<?php do_action( 'affwp_edit_affiliate_bottom' ); ?>
 
-		<input type="hidden" name="affwp_action" value="edit_affiliate" />
+		<input type="hidden" name="affwp_action" value="update_affiliate" />
 
 		<?php submit_button( __( 'Edit Affiliate', 'affiliate-wp' ) ); ?>
 
