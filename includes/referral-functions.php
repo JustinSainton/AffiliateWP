@@ -100,7 +100,7 @@ function affwp_delete_referral( $referral ) {
 
 function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0 ) {
 
-	return round( $amount / affwp_get_affiliate_rate( $affiliate_id ), 2 );
+	return round( $amount * affwp_get_affiliate_rate( $affiliate_id ), 2 );
 }
 
 function affwp_count_referrals( $affiliate_id = 0, $status = array(), $date = array() ) {

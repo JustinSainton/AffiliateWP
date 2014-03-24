@@ -52,6 +52,11 @@ function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
 
 	}
 
+	// Sanitize the rate and ensure it's in the proper format
+	if( $rate > 1 ) {
+		$rate = $rate / 100;
+	}
+
 	return apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
 }
 
