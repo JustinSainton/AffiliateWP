@@ -13,7 +13,7 @@ class Affiliate_WP_Admin_Menu {
 		add_submenu_page( 'affiliate-wp', __( 'Referrals', 'affiliate-wp' ), __( 'Referrals', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-referrals', 'affwp_referrals_admin' );
 		add_submenu_page( 'affiliate-wp', __( 'Visits', 'affiliate-wp' ), __( 'Visits', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-visits', 'affwp_visits_admin' );
 		add_submenu_page( 'affiliate-wp', __( 'Reports', 'affiliate-wp' ), __( 'Reports', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-reports', 'affwp_reports_admin' );
-		add_submenu_page( 'affiliate-wp', __( 'Settings', 'affiliate-wp' ), __( 'Settings', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-settings', '__return_null' );
+		add_submenu_page( 'affiliate-wp', __( 'Settings', 'affiliate-wp' ), __( 'Settings', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-settings', 'eaffwp_settings_admin' );
 
 	}
 
