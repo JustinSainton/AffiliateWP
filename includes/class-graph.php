@@ -353,11 +353,9 @@ class Affiliate_WP_Graph {
 			'other'			=> __( 'Custom', 'affiliate-wp' )
 		) );
 
-		$dates = edd_get_report_dates();
+		$dates = affwp_get_report_dates();
 
 		$display = $dates['range'] == 'other' ? 'style="display:inline-block;"' : 'style="display:none;"';
-
-		$view = edd_get_reporting_view();
 
 		?>
 		<form id="affwp-graphs-filter" method="get">
