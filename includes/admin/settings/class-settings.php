@@ -132,6 +132,18 @@ class Affiliate_WP_Settings {
 						'type' => 'select',
 						'options' => affwp_get_pages()
 					),
+					'referrals' => array(
+						'name' => '<strong>' . __( 'Referral Settings', 'affiliate-wp' ) . '</strong>',
+						'desc' => '',
+						'type' => 'header'
+					),
+					'referral_rate' => array(
+						'name' => __( 'Referral Rate (%)', 'affiliate-wp' ),
+						'desc' => __( 'The default referral rate for affiliates. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
+						'type' => 'number',
+						'size' => 'small',
+						'std' => '20'
+					),
 					'currency_settings' => array(
 						'name' => '<strong>' . __( 'Currency Settings', 'affiliate-wp' ) . '</strong>',
 						'desc' => __( 'Configure the currency options', 'affiliate-wp' ),
@@ -165,11 +177,6 @@ class Affiliate_WP_Settings {
 						'type' => 'text',
 						'size' => 'small',
 						'std' => '.'
-					),
-					'uninstall_on_delete' => array(
-						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
-						'desc' => __( 'Check this box if you would like EDD to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
-						'type' => 'checkbox'
 					)
 				)
 			),
@@ -181,6 +188,11 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Just a place holder for now.', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'uninstall_on_delete' => array(
+						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
+						'desc' => __( 'Check this box if you would like Affiliate WP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					)
 				)
 			)
 		);
