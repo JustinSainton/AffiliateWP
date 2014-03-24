@@ -98,15 +98,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 				} else {
 
-					$search = esc_sql( $args['search'] );
-					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%$search%'" );
-
-					if( ! empty( $users ) ) {
-
-						$users  = implode( ',', $users );
-						$search = "`user_id` IN( {$users} )";
-					
-					}
+					$args['search'] = esc_sql( $args['search'] );
+					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%{$args['search']}%'" );
+					$users = ! empty( $users ) ? implode( ',', $users ) : 0;
+					$search = "`user_id` IN( {$users} )";
 
 				}
 
@@ -197,15 +192,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 				} else {
 
-					$search = esc_sql( $args['search'] );
-					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%$search%'" );
-
-					if( ! empty( $users ) ) {
-
-						$users  = implode( ',', $users );
-						$search = "`user_id` IN( {$users} )";
-					
-					}
+					$args['search'] = esc_sql( $args['search'] );
+					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%{$args['search']}%'" );
+					$users = ! empty( $users ) ? implode( ',', $users ) : 0;
+					$search = "`user_id` IN( {$users} )";
 
 				}
 
