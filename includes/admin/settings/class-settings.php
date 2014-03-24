@@ -184,6 +184,17 @@ class Affiliate_WP_Settings {
 					)
 				)
 			),
+			/** Integration Settings */
+			'integrations' => apply_filters('affwp_settings_integrations',
+				array(
+					'integrations' => array(
+						'name' => __( 'Integrations', 'affiliate-wp' ),
+						'desc' => __( 'Choose the integrations to enable', 'affiliate-wp' ),
+						'type' => 'multicheck',
+						'options' => affiliate_wp()->integrations->get_integrations()
+					)
+				)
+			),
 			/** Misc Settings */
 			'misc' => apply_filters('affwp_settings_misc',
 				array(

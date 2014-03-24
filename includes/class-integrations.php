@@ -4,26 +4,35 @@ class Affiliate_WP_Integrations {
 
 	public function __construct() {
 
-		$this->includes();
+		$this->load();
 
 	}
 
-	public function includes() {
+	public function get_integrations() {
+
+		return array(
+			'edd' => 'Easy Digital Downloads',
+			'rcp' => 'Restrict Content Pro'
+		);
+	}
+
+	public function get_enabled_integrations() {
+		return affiliate_wp()->settings->get( 'integrations', array() );
+	}
+
+	public function load() {
 
 		// Load each enabled integrations
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-base.php';
 
-		$enabled = array( 'edd', 'rcp' );
+		$enabled = apply_filters( 'affwp_enabled_integrations', $this->get_enabled_integrations() );
 
-		$enabled = apply_filters( 'affwp_enabled_integrations', $enabled );
+		foreach( $enabled as $filename => $integration ) {
 
-		foreach( $enabled as $integration ) {
-
-			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $integration . '.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php';
 
 		}
 
 	}
 
 }
-new Affiliate_WP_Integrations;
