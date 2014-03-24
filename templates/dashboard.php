@@ -3,6 +3,20 @@
 
 	<h4><?php _e( 'Stats', 'affiliate-wp' ); ?></h4>
 
+	<?php if ( 'pending' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
+
+		<p class="affwp-notice"><?php _e( 'Your affiliate account is pending approval', 'affiliate-wp' ); ?></p>
+
+	<?php elseif ( 'inactive' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
+
+		<p class="affwp-notice"><?php _e( 'Your affiliate account is not active', 'affiliate-wp' ); ?></p>
+	
+	<?php elseif ( 'rejected' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
+
+		<p class="affwp-notice"><?php _e( 'Your affiliate account request has been rejected', 'affiliate-wp' ); ?></p>
+
+	<?php endif; ?>
+
 	<table id="affwp-affiliate-dashboard-stats" class="affwp-table">
 
 		<thead>
@@ -34,5 +48,13 @@
 	</table>
 
 	<h4><?php _e( 'Referrals Over Time', 'affiliate-wp' ); ?></h4>
+
+	<h4><?php _e( 'Your Affiliate Links', 'affiliate-wp' ); ?></h4>
+
+	<div id="affwp-affiliate-dashboard-links">
+
+		<?php echo add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, home_url('/') ); ?>
+
+	</div>
 
 </div>

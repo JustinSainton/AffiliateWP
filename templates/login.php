@@ -4,7 +4,7 @@
 		<span><legend><?php _e( 'Log into Your Account', 'affiliate-wp' ); ?></legend></span>
 		<?php do_action( 'affwp_login_fields_before' ); ?>
 		<p>
-			<label for="affwp_user_Login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
+			<label for="affwp_user_login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
 			<input name="affwp_user_login" id="affwp_user_login" class="required" type="text" title="<?php _e( 'Username', 'affiliate-wp' ); ?>"/>
 		</p>
 		<p>

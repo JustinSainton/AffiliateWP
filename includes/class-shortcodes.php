@@ -16,11 +16,17 @@ class Affiliate_WP_Shortcodes {
 			
 			affiliate_wp()->templates->get_template_part( 'dashboard' );
 	
-		} elseif( is_user_logged_in() ) {
+		} elseif( is_user_logged_in() && affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
 	
 			affiliate_wp()->templates->get_template_part( 'register' );
 
 		} else {
+
+			if( affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
+
+				affiliate_wp()->templates->get_template_part( 'register' );
+
+			}
 
 			affiliate_wp()->templates->get_template_part( 'login' );
 

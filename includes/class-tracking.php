@@ -143,9 +143,11 @@ class Affiliate_WP_Tracking {
 
 		}
 
-		$valid = affiliate_wp()->affiliates->get_column( 'affiliate_id', $affiliate_id );
+		$active = 'active' == affwp_get_affiliate_status( $affiliate_id );
 
-		return ! empty( $valid ) && ! $is_self;
+		$valid  = affiliate_wp()->affiliates->get_column( 'affiliate_id', $affiliate_id );
+
+		return ! empty( $valid ) && ! $is_self && $active;
 	}
 
 }

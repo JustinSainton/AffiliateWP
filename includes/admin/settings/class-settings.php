@@ -13,7 +13,7 @@ class Affiliate_WP_Settings {
 
 	}
 
-	public function get( $key, $default ) {
+	public function get( $key, $default = false ) {
 		$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
 		return $value;
 	}
@@ -191,6 +191,17 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
 						'type' => 'checkbox'
+					),
+					'require_approval' => array(
+						'name' => __( 'Require approval', 'affiliate-wp' ),
+						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'terms_of_use' => array(
+						'name' => __( 'Terms of Use', 'affiliate-wp' ),
+						'desc' => __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ),
+						'type' => 'select',
+						'options' => affwp_get_pages()
 					),
 					'uninstall_on_delete' => array(
 						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
