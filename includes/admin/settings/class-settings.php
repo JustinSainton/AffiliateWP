@@ -187,9 +187,9 @@ class Affiliate_WP_Settings {
 			/** Misc Settings */
 			'misc' => apply_filters('affwp_settings_misc',
 				array(
-					'not_real' => array(
-						'name' => __( 'Not a Real Option', 'affiliate-wp' ),
-						'desc' => __( 'Just a place holder for now.', 'affiliate-wp' ),
+					'allow_affiliate_registration' => array(
+						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
+						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'uninstall_on_delete' => array(
