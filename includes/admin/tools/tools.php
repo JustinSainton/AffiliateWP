@@ -136,7 +136,6 @@ function affwp_export_import_tab() {
 			<h3><span><?php _e( 'Export Settings', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">
 				<p><?php _e( 'Export the Affiliate WP settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'affiliate-wp' ); ?></p>
-				<p><?php printf( __( 'To export shop data (purchases, customers, etc), visit the <a href="%s">Reports</a> page.', 'affiliate-wp' ), admin_url( 'edit.php?post_type=download&page=edd-reports&tab=export' ) ); ?>
 				<form method="post" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
 					<p><input type="hidden" name="affwp_action" value="export_settings" /></p>
 					<p>
