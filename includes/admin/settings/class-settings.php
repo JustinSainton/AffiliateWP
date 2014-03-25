@@ -137,6 +137,12 @@ class Affiliate_WP_Settings {
 						'type' => 'select',
 						'options' => affwp_get_pages()
 					),
+					'terms_of_use' => array(
+						'name' => __( 'Terms of Use', 'affiliate-wp' ),
+						'desc' => __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ),
+						'type' => 'select',
+						'options' => affwp_get_pages()
+					),
 					'referrals' => array(
 						'name' => '<strong>' . __( 'Referral Settings', 'affiliate-wp' ) . '</strong>',
 						'desc' => '',
@@ -208,12 +214,6 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Require approval', 'affiliate-wp' ),
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
 						'type' => 'checkbox'
-					),
-					'terms_of_use' => array(
-						'name' => __( 'Terms of Use', 'affiliate-wp' ),
-						'desc' => __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ),
-						'type' => 'select',
-						'options' => affwp_get_pages()
 					),
 					'uninstall_on_delete' => array(
 						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
