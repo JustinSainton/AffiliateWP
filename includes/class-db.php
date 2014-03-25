@@ -115,4 +115,5 @@ class Affiliate_WP_DB {
 
 		return true;
 	}
+
 }
