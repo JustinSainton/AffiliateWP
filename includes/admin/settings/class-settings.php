@@ -86,6 +86,7 @@ class Affiliate_WP_Settings {
 
 		parse_str( $_POST['_wp_http_referer'], $referrer );
 
+		$saved    = get_option( 'affwp_settings' );
 		$settings = $this->get_registered_settings();
 		$tab      = isset( $referrer['tab'] ) ? $referrer['tab'] : 'general';
 
@@ -109,7 +110,7 @@ class Affiliate_WP_Settings {
 
 		add_settings_error( 'affwp-notices', '', __( 'Settings updated.', 'affiliate-wp' ), 'updated' );
 
-		return $input;
+		return array_merge( $saved, $input );
 
 	}
 
