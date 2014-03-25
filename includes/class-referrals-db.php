@@ -29,6 +29,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'ip'          => '%s',
 			'currency'    => '%s',
 			'custom'      => '%s',
+			'context'     => '%s',
 			'reference'   => '%d',
 			'date'        => '%s',
 		);
@@ -37,7 +38,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	public function get_column_defaults() {
 		return array(
 			'affiliate_id' => 0,
-			'date'         => date( 'Y-m-d H:i:s' )
+			'date'         => date( 'Y-m-d H:i:s' ),
+			'currency'     => affwp_get_currency()
 		);
 	}
 
@@ -146,6 +148,22 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 				}
 
 				$where .= " $year = YEAR ( date ) AND $month = MONTH ( date ) AND $day = DAY ( date )";
+			}
+
+		}
+
+		if( ! empty( $args['context'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if( is_array( $args['context'] ) ) {
+				$where .= " `context` IN(" . implode( ',', $args['context'] ) . ") ";
+			} else {
+				$where .= " `context` = '" . $args['context'] . "' ";
 			}
 
 		}
@@ -311,6 +329,22 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		}
 
+		if( ! empty( $args['context'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if( is_array( $args['context'] ) ) {
+				$where .= " `context` IN(" . implode( ',', $args['context'] ) . ") ";
+			} else {
+				$where .= " `context` = '" . $args['context'] . "' ";
+			}
+
+		}
+
 		$cache_key = md5( 'affwp_referrals_count' . serialize( $args ) );
 
 		$count = wp_cache_get( $cache_key, 'referrals' );
@@ -343,6 +377,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		`ip` tinytext NOT NULL,
 		`currency` char(3) NOT NULL,
 		`custom` longtext NOT NULL,
+		`context` tinytext NOT NULL,
 		`reference` mediumtext NOT NULL,
 		`date` datetime NOT NULL,
 		PRIMARY KEY  (referral_id),

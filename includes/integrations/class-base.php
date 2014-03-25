@@ -2,6 +2,8 @@
 
 class Affiliate_WP_Base {
 
+	private $context;
+
 	public function __construct() {
 		$this->init();
 	}
@@ -25,7 +27,8 @@ class Affiliate_WP_Base {
 			'reference'    => $reference,
 			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
 			'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
-			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : ''
+			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
+			'context'      => $this->context
 		) );
 
 	}

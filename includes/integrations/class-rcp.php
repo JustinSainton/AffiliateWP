@@ -2,7 +2,12 @@
 
 class Affiliate_WP_RCP extends Affiliate_WP_Base {
 	
+	private $context;
+
 	public function init() {
+
+		$this->context = 'rcp';
+
 		add_action( 'rcp_form_processing', array( $this, 'add_pending_referral' ), 10, 3 );
 		add_action( 'rcp_insert_payment', array( $this, 'mark_referral_complete' ), 10, 3 );
 	}

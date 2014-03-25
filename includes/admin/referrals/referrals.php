@@ -193,6 +193,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'amount'    => __( 'Amount', 'affiliate-wp' ),
 			'affiliate' => __( 'Affiliate', 'affiliate-wp' ),
 			'status'    => __( 'Status', 'affiliate-wp' ),
+			'reference' => __( 'Reference', 'affiliate-wp' ),
 			'date'      => __( 'Date', 'affiliate-wp' ),
 			'actions'   => __( 'Actions', 'affiliate-wp' ),
 		);
@@ -273,6 +274,20 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function column_affiliate( $referral ) {
 		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&action=view_affiliateaffiliate=' . $referral->affiliate_id ) . '">' . $referral->affiliate_id . '</a>';
+	}
+	
+	/**
+	 * Render the reference column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $referral Contains all the data for the checkbox column
+	 * @return string The reference
+	 */
+	public function column_reference( $referral ) {
+
+		return apply_filters( 'affwp_referral_reference_column', $referral->reference, $referral );
+
 	}
 
 	/**

@@ -2,7 +2,12 @@
 
 class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	
+	private $content;
+
 	public function init() {
+
+		$this->context = 'woocommerce';
+
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'add_pending_referral' ), 10, 2 );
 		add_action( 'woocommerce_payment_complete', array( $this, 'mark_referral_complete' ), 10 );
 	}
