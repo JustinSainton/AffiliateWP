@@ -71,13 +71,61 @@ function affwp_get_tools_tabs() {
 }
 
 /**
- * Tools
+ * General Tab
  *
- * Shows the tools panel which contains EDD-specific tools including the
- * built-in import/export system.
+ * @since       1.0
+ * @return      void
+ */
+function affwp_general_tab() {
+?>
+
+	<div class="metabox-holder">
+		<div class="postbox">
+			<h3><span><?php _e( 'Recount Affiliate Earnings', 'affiliate-wp' ); ?></span></h3>
+			<div class="inside">
+				<p><?php _e( 'Use this tool to recount the earnings for all affiliates.', 'affiliate-wp' ); ?></p>
+				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools' ); ?>">
+					<p>
+						<?php wp_nonce_field( 'affwp_recount_aff_earnings_nonce', 'affwp_recount_aff_earnings_nonce' ); ?>
+						<?php submit_button( __( 'Recount Earnings', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
+					</p>
+				</form>
+			</div><!-- .inside -->
+		</div><!-- .postbox -->
+<?php
+}
+add_action( 'affwp_tools_tab_general', 'affwp_general_tab' );
+
+/**
+ * Migration assistant tab
  *
- * @since       1.8
- * @author      Daniel J Griffiths
+ * @since       1.0
+ * @return      void
+ */
+function affwp_migration_tab() {
+?>
+
+	<div class="metabox-holder">
+		<div class="postbox">
+			<h3><span><?php _e( 'Recount Affiliate Earnings', 'affiliate-wp' ); ?></span></h3>
+			<div class="inside">
+				<p><?php _e( 'Use this tool to recount the earnings for all affiliates.', 'affiliate-wp' ); ?></p>
+				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools' ); ?>">
+					<p>
+						<?php wp_nonce_field( 'affwp_recount_aff_earnings_nonce', 'affwp_recount_aff_earnings_nonce' ); ?>
+						<?php submit_button( __( 'Recount Earnings', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
+					</p>
+				</form>
+			</div><!-- .inside -->
+		</div><!-- .postbox -->
+<?php
+}
+add_action( 'affwp_tools_tab_migration', 'affwp_migration_tab' );
+
+/**
+ * Export / Import tab
+ *
+ * @since       1.0
  * @return      void
  */
 function affwp_export_import_tab() {
@@ -115,7 +163,6 @@ function affwp_export_import_tab() {
 				</form>
 			</div><!-- .inside -->
 		</div><!-- .postbox -->
-
 <?php
 }
 add_action( 'affwp_tools_tab_export_import', 'affwp_export_import_tab' );
@@ -124,7 +171,7 @@ add_action( 'affwp_tools_tab_export_import', 'affwp_export_import_tab' );
 /**
  * Process a settings export that generates a .json file of the shop settings
  *
- * @since       1.7
+ * @since       1.0
  * @return      void
  */
 function affwp_process_settings_export() {
@@ -159,7 +206,7 @@ add_action( 'affwp_export_settings', 'affwp_process_settings_export' );
 /**
  * Process a settings import from a json file
  *
- * @since 1.7
+ * @since 1.0
  * @return void
  */
 function affwp_process_settings_import() {
