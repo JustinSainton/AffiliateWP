@@ -92,6 +92,7 @@ function affwp_general_tab() {
 				</form>
 			</div><!-- .inside -->
 		</div><!-- .postbox -->
+	</div>
 <?php
 }
 add_action( 'affwp_tools_tab_general', 'affwp_general_tab' );
@@ -104,20 +105,28 @@ add_action( 'affwp_tools_tab_general', 'affwp_general_tab' );
  */
 function affwp_migration_tab() {
 ?>
-
 	<div class="metabox-holder">
+
 		<div class="postbox">
-			<h3><span><?php _e( 'Recount Affiliate Earnings', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">
-				<p><?php _e( 'Use this tool to recount the earnings for all affiliates.', 'affiliate-wp' ); ?></p>
-				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools' ); ?>">
+				<p><?php _e( 'These tools assist in migrating affiliate and referral data from existing platforms.', 'affiliate-wp' ); ?></p>
+			</div><!-- .inside -->
+		</div><!-- .postbox -->
+
+		<div class="postbox">
+			<h3><span><?php _e( 'Affiliates Pro', 'affiliate-wp' ); ?></span></h3>
+			<div class="inside">
+				<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to Affiliate WP.', 'affiliate-wp' ); ?></p>
+				<p><?php _e( '<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool.', 'affiliate-wp' ); ?></p>
+				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'index.php?page=affiliate-wp-migrate&type=affiliates-pro' ); ?>">
 					<p>
-						<?php wp_nonce_field( 'affwp_recount_aff_earnings_nonce', 'affwp_recount_aff_earnings_nonce' ); ?>
-						<?php submit_button( __( 'Recount Earnings', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
+						<?php wp_nonce_field( 'affwp_affpro_migrate_nonce', 'affwp_affpro_migrate_nonce' ); ?>
+						<?php submit_button( __( 'Migrate Data from Affiliates Pro', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
 					</p>
 				</form>
 			</div><!-- .inside -->
 		</div><!-- .postbox -->
+	</div>
 <?php
 }
 add_action( 'affwp_tools_tab_migration', 'affwp_migration_tab' );
@@ -162,6 +171,7 @@ function affwp_export_import_tab() {
 				</form>
 			</div><!-- .inside -->
 		</div><!-- .postbox -->
+	</div>
 <?php
 }
 add_action( 'affwp_tools_tab_export_import', 'affwp_export_import_tab' );
@@ -240,3 +250,26 @@ function affwp_process_settings_import() {
 
 }
 add_action( 'affwp_import_settings', 'affwp_process_settings_import' );
+
+/**
+ * The migration processing screen
+ *
+ * @since 1.0
+ * @return void
+ */
+function affwp_migrate_admin() {
+	$step   = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
+	$type   = isset( $_GET['type'] ) ? $_GET['type'] : false;
+?>
+	<div class="wrap">
+		<h2><?php _e( 'Affiliate WP Migration', 'affiliate-wp' ); ?></h2>
+		<div id="edd-upgrade-status">
+			<p><?php _e( 'The upgrade process is running, please be patient. This could take several minutes to complete while license keys are upgraded in batches of 100.', 'affiliate-wp' ); ?></p>
+			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>
+		</div>
+		<script type="text/javascript">
+			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $_GET['step'] ); ?>&type=<?php echo $type; ?>";
+		</script>
+	</div>
+<?php	
+}

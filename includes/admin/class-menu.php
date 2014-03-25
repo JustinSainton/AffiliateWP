@@ -15,7 +15,7 @@ class Affiliate_WP_Admin_Menu {
 		add_submenu_page( 'affiliate-wp', __( 'Reports', 'affiliate-wp' ), __( 'Reports', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-reports', 'affwp_reports_admin' );
 		add_submenu_page( 'affiliate-wp', __( 'Settings', 'affiliate-wp' ), __( 'Settings', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-settings', 'affwp_settings_admin' );
 		add_submenu_page( 'affiliate-wp', __( 'Tools', 'affiliate-wp' ), __( 'Tools', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-tools', 'affwp_tools_admin' );
-
+		add_submenu_page( null, __( 'Affiliate WP Migration', 'affiliate-wp' ), __( 'Affiliate WP Migration', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-migrate', 'affwp_migrate_admin' );
 	}
 
 }
