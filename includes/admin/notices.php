@@ -75,6 +75,12 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
+			case 'settings-imported' :
+
+				$message = __( 'Settings successfully imported', 'affiliate-wp' );
+
+				break;
+
 		}
 
 		if( ! empty( $message ) ) {

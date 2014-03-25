@@ -246,3 +246,25 @@ function affwp_currency_decimal_filter( $decimals = 2 ) {
 }
 add_filter( 'affwp_sanitize_amount_decimals', 'affwp_currency_decimal_filter' );
 add_filter( 'affwp_format_amount_decimals', 'affwp_currency_decimal_filter' );
+
+
+/**
+ * Convert an object to an associative array.
+ *
+ * Can handle multidimensional arrays
+ *
+ * @since 1.0
+ *
+ * @param unknown $data
+ * @return array
+ */
+function affwp_object_to_array( $data ) {
+	if ( is_array( $data ) || is_object( $data ) ) {
+		$result = array();
+		foreach ( $data as $key => $value ) {
+			$result[ $key ] = edd_object_to_array( $value );
+		}
+		return $result;
+	}
+	return $data;
+}
