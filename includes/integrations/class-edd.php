@@ -2,8 +2,6 @@
 
 class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
-	private $context;
-
 	public function init() {
 
 		$this->context = 'edd';

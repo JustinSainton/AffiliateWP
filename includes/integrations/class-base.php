@@ -2,7 +2,7 @@
 
 class Affiliate_WP_Base {
 
-	private $context;
+	public $context;
 
 	public function __construct() {
 		$this->init();

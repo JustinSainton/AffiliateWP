@@ -2,8 +2,6 @@
 
 class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	
-	private $content;
-
 	public function init() {
 
 		$this->context = 'woocommerce';
