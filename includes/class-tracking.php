@@ -124,11 +124,11 @@ class Affiliate_WP_Tracking {
 	}
 
 	public function get_visit_id() {
-		return absint( $_COOKIE['affwp_ref_visit_id'] );
+		return ! empty( $_COOKIE['affwp_ref_visit_id'] ) ? absint( $_COOKIE['affwp_ref_visit_id'] ) : false;
 	}
 
 	public function get_affiliate_id() {
-		return absint( $_COOKIE['affwp_ref'] );
+		return ! empty( $_COOKIE['affwp_ref'] ) ? absint( $_COOKIE['affwp_ref'] ) : false;
 	}
 
 	public function is_valid_affiliate( $affiliate_id = 0 ) {
@@ -137,11 +137,7 @@ class Affiliate_WP_Tracking {
 			$affiliate_id = $this->get_affiliate_id();
 		}
 
-		if( is_user_logged_in() ) {
-
-			$is_self = get_current_user_id() == affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
-
-		}
+		$is_self = is_user_logged_in() && get_current_user_id() == affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
 
 		$active = 'active' == affwp_get_affiliate_status( $affiliate_id );
 
