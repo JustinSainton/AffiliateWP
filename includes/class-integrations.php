@@ -11,8 +11,10 @@ class Affiliate_WP_Integrations {
 	public function get_integrations() {
 
 		return array(
-			'edd' => 'Easy Digital Downloads',
-			'rcp' => 'Restrict Content Pro'
+			'edd'         => 'Easy Digital Downloads',
+			'rcp'         => 'Restrict Content Pro',
+			'woocommerce' => 'WooCommerce',
+			'wpec'        => 'WP e-Commerce',
 		);
 	}
 

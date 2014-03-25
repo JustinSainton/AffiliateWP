@@ -15,5 +15,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 	}
 	
+	// TODO add note about referral
+
 }
 new Affiliate_WP_EDD;

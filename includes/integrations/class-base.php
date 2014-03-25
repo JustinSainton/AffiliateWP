@@ -16,6 +16,10 @@ class Affiliate_WP_Base {
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $data = array() ) {
 
+		if( affiliate_wp()->referrals->get_by( 'reference', $reference ) ) {
+			return false; // Referral already created for this reference
+		}
+
 		return affiliate_wp()->referrals->add( array(
 			'amount'       => affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference ),
 			'reference'    => $reference,
