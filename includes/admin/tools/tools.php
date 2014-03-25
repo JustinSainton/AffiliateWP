@@ -33,7 +33,8 @@ function affwp_tools_admin() {
 
 				$tab_url = add_query_arg( array(
 					'settings-updated' => false,
-					'tab' => $tab_id
+					'tab'              => $tab_id,
+					'affwp_notice'     => false
 				) );
 
 				$active = $active_tab == $tab_id ? ' nav-tab-active' : '';
