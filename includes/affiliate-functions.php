@@ -320,6 +320,11 @@ function affwp_update_affiliate( $data = array() ) {
 
 	if( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
+		if( ! empty( $_POST['affwp_action'] ) ) {
+			// This is an update call from the edit screen
+			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp&action=edit_affiliate&affwp_notice=affiliate_updated&affiliate_id=' . $affiliate_id ) ); exit;
+		}
+
 		return true;
 
 	}
