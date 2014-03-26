@@ -86,9 +86,9 @@ final class Affiliate_WP {
 			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->settings     = new Affiliate_WP_Settings;
 			self::$instance->templates    = new Affiliate_WP_Templates;
-			self::$instance->login        = new Affiliate_WP_Login;;
-			self::$instance->register     = new Affiliate_WP_Register;;
-			self::$instance->integrations = new Affiliate_WP_Integrations;;
+			self::$instance->login        = new Affiliate_WP_Login;
+			self::$instance->register     = new Affiliate_WP_Register;
+			self::$instance->integrations = new Affiliate_WP_Integrations;
 
 		}
 		return self::$instance;
