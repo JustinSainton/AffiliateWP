@@ -273,7 +273,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string The affiliate
 	 */
 	public function column_affiliate( $referral ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&action=view_affiliateaffiliate=' . $referral->affiliate_id ) . '">' . $referral->affiliate_id . '</a>';
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate_id=' . $referral->affiliate_id ) . '">' . $referral->affiliate_id . '</a>';
 	}
 	
 	/**
@@ -432,9 +432,9 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function referrals_data() {
 		
-		$page      = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
-		$status    = isset( $_GET['status'] ) ? $_GET['status'] : ''; 
-		$affiliate = isset( $_GET['affiliate'] ) ? $_GET['affiliate'] : ''; 
+		$page      = isset( $_GET['paged'] )        ? absint( $_GET['paged'] ) : 1;
+		$status    = isset( $_GET['status'] )       ? $_GET['status']          : ''; 
+		$affiliate = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id']    : ''; 
 
 		$referrals  = affiliate_wp()->referrals->get_referrals( array(
 			'number'       => $this->per_page,
