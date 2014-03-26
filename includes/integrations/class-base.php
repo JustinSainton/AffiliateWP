@@ -51,13 +51,40 @@ class Affiliate_WP_Base {
 		}
 
 		if( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'unpaid' ) ) ) {
-			
+
 			// Update the visit ID that spawned this referral
 			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );
 
 			do_action( 'affwp_complete_referral', $referral->referral_id, $referral, $reference );
 
 			return true;
+		}
+
+		return false;
+
+	}
+
+	public function reject_referral( $reference = 0 ) {
+
+		if( empty( $reference ) ) {
+			return false;
+		}
+
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference );
+
+		if( empty( $referral ) ) {
+			return false;
+		}
+
+		if( is_object( $referral ) && $referral->status == 'paid' ) {
+			// This referral has already been paid so it cannot be rejected
+			return false;
+		}
+
+		if( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ) ) ) {
+
+			return true;
+
 		}
 
 		return false;
