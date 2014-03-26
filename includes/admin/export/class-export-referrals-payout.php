@@ -19,36 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0
  */
-class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
-
-	/**
-	 * Our export type. Used for export-type specific filters/actions
-	 * @var string
-	 * @since 1.0
-	 */
-	public $export_type = 'referrals';
-
-	/**
-	 * Begin date
-	 * @var string
-	 * @since 1.0
-	 */
-	public $start_date;
-
-	/**
-	 * End date
-	 * @var string
-	 * @since 1.0
-	 */
-	public $end_date;
-
-
-	/**
-	 * Status
-	 * @var string
-	 * @since 1.0
-	 */
-	public $status;
+class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 
 	/**
 	 * Set the CSV columns
@@ -62,7 +33,6 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 			'email'    => __( 'Email', 'affiliate-wp' ),
 			'amount'   => __( 'Amount', 'affiliate-wp' ),
 			'currency' => __( 'Currency', 'affiliate-wp' ),
-			'date'     => __( 'Date', 'affiliate-wp' )
 		);
 		return $cols;
 	}
@@ -78,24 +48,39 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 
 		$args = array(
 
-			'status' => ! empty( $this->status ) ? $this->status : '',
-			'date'   => ! empty( $this->date )   ? $this->date   : '',
+			'status' => 'unpaid',
+			'date'   => ! empty( $this->date ) ? $this->date   : '',
 
 		);
 
-		$data      = array();
-		$referrals = affiliate_wp()->referrals->get_referrals( $args );
+		$data       = array();
+		$affiliates = array();
+		$referrals  = affiliate_wp()->referrals->get_referrals( $args );
 
 		if( $referrals ) {
 
 			foreach( $referrals as $referral ) {
 
-				$data[] = array(
-					'email'    => affwp_get_affiliate_email( $referral->affiliate_id ),
-					'amount'   => $referral->amount,
-					'currency' => $referral->currency,
-					'date'     => $referral->date,
-				);
+				if( in_array( $referral->affiliate_id, $affiliates ) ) {
+
+					// Add the amount to an affiliate that already has a referral in the export
+
+					$amount = $data[ $referral->affiliate_id ]['amount'] + $referral->amount;
+
+					$data[ $referral->affiliate_id ]['amount'] = $amount;
+
+				} else {
+
+					$email = affwp_get_affiliate_email( $referral->affiliate_id );
+		
+					$data[ $referral->affiliate_id ] = array(
+						'email'    => $email,
+						'amount'   => $referral->amount,
+						'currency' => $referral->currency
+					);
+
+					$affiliates[] = $referral->affiliate_id;
+				}
 
 			}
 

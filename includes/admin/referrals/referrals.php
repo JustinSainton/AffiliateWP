@@ -25,11 +25,18 @@ function affwp_referrals_admin() {
 		$referrals_table->prepare_items();
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Referrals', 'affiliate-wp' ); ?>
-				<a href="<?php echo add_query_arg( array( 'action' => 'add_referral' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
-			</h2>
+			<h2><?php _e( 'Referrals', 'affiliate-wp' ); ?></h2>
 			<?php do_action( 'affwp_referrals_page_top' ); ?>
-			<form id="affwp-referrals-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>">
+			
+			<form id="affwp-referrals-export-form" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>" method="post">
+				<input type="date" name="from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+				<input type="date" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+				<input type="hidden" name="affwp_action" value="generate_referral_payout"/>
+				<input type="submit" value="<?php _e( 'Generate Payment File', 'affiliate-wp' ); ?>" class="button-secondary"/>
+			</form>
+
+			<form id="affwp-referrals-filter-form" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>">
+			
 				<?php $referrals_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-referrals' ); ?>
 
 				<input type="hidden" name="page" value="affiliate-wp-referrals" />
@@ -43,6 +50,18 @@ function affwp_referrals_admin() {
 	}
 
 }
+
+function affwp_generate_referral_payout_file( $data ) {
+
+	$export = new Affiliate_WP_Referral_Payout_Export;
+	$export->date = array(
+		'start' => $data['from'],
+		'end'   => $data['to']
+	);
+	$export->export();
+
+}
+add_action( 'affwp_generate_referral_payout', 'affwp_generate_referral_payout_file' );
 
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {

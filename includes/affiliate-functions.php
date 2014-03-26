@@ -80,6 +80,30 @@ function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
 	return apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
 }
 
+function affwp_get_affiliate_email( $affiliate ) {
+
+	global $wpdb;
+
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	$email = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $affiliate_id ) );
+
+	if( $email ) {
+
+		return $email;
+
+	}
+
+	return false;
+
+}
+
 function affwp_delete_affiliate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
