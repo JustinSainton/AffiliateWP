@@ -76,7 +76,7 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 					$data[ $referral->affiliate_id ] = array(
 						'email'    => $email,
 						'amount'   => $referral->amount,
-						'currency' => $referral->currency
+						'currency' => ! empty( $referral->currency ) ? $referral->currency : affwp_get_currency() 
 					);
 
 					$affiliates[] = $referral->affiliate_id;
