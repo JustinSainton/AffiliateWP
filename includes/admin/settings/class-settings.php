@@ -215,6 +215,11 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'revoke_on_refund' => array(
+						'name' => __( 'Reject Unpaid Referrals on Refund?', 'affiliate-wp' ),
+						'desc' => __( 'Should unpaid referrals get automatically rejected when the originating purchase is refunded or revoked?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'uninstall_on_delete' => array(
 						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
 						'desc' => __( 'Check this box if you would like Affiliate WP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),

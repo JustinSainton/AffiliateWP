@@ -358,6 +358,29 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
+	public function bulk_update_status( $referral_ids = array(), $status = '' ) {
+
+		global $wpdb;
+
+		if( empty( $referral_ids ) ) {
+			return false;
+		}
+
+		if( empty( $status ) ) {
+			return false;
+		}
+
+		$referral_ids = implode( ',', $referral_ids );
+
+		// Not working yet
+		$update = $wpdb->query( $wpdb->prepare( "UPDATE $this->table_name SET status = '%s' WHERE $this->primary_key IN(%s)", $status, $referral_ids ) );
+
+		if( $update ) {
+			return true;
+		}
+		return false;
+	}
+
 	public function create_table() {
 
 		global $wpdb;

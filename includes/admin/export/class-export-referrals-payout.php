@@ -53,9 +53,10 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 
 		);
 
-		$data       = array();
-		$affiliates = array();
-		$referrals  = affiliate_wp()->referrals->get_referrals( $args );
+		$data         = array();
+		$affiliates   = array();
+		$referral_ids = array();
+		$referrals    = affiliate_wp()->referrals->get_referrals( $args );
 
 		if( $referrals ) {
 
@@ -79,10 +80,14 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 						'currency' => ! empty( $referral->currency ) ? $referral->currency : affwp_get_currency() 
 					);
 
-					$affiliates[] = $referral->affiliate_id;
+					$affiliates[]   = $referral->affiliate_id;
+					$referral_ids[] = $referral->referral_id;
+
 				}
 
 			}
+
+			affiliate_wp()->referrals->bulk_update_status( $referral_ids, 'paid' );
 
 		}
 
