@@ -94,7 +94,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'offset'       => 0,
 			'affiliate_id' => 0,
 			'status'       => '',
-			'orderby'      => 'date',
+			'orderby'      => 'referral_id',
 			'order'        => 'DESC'
 		);
 
