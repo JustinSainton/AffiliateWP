@@ -83,7 +83,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		}
 
-		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY visit_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 
 	}
 
