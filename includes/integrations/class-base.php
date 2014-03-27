@@ -18,7 +18,7 @@ class Affiliate_WP_Base {
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $data = array() ) {
 
-		if( affiliate_wp()->referrals->get_by( 'reference', $reference ) ) {
+		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
 
@@ -39,7 +39,7 @@ class Affiliate_WP_Base {
 			return false;
 		}
 
-		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference );
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context );
 
 		if( empty( $referral ) ) {
 			return false;
@@ -70,7 +70,7 @@ class Affiliate_WP_Base {
 			return false;
 		}
 
-		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference );
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context );
 
 		if( empty( $referral ) ) {
 			return false;

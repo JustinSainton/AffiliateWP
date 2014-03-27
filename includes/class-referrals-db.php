@@ -63,6 +63,23 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	}
 
 	/**
+	 * Retrieve a referral by a specific field. Optionally let's you retreive via field that also has a specific context
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function get_by( $column, $row_id, $context = '' ) {
+		global $wpdb;
+
+		$and = '';
+		if( ! empty( $context ) ) {
+			$and = " AND context = '$context'";
+		}
+
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id'$and;" );
+	}
+
+	/**
 	 * Retrieve referrals from the database
 	 *
 	 * @access  public
