@@ -76,7 +76,7 @@ class Affiliate_WP_Base {
 			return false;
 		}
 
-		if( is_object( $referral ) && $referral->status == 'paid' ) {
+		if( is_object( $referral ) && 'paid' == $referral->status ) {
 			// This referral has already been paid so it cannot be rejected
 			return false;
 		}

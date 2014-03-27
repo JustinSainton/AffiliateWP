@@ -33,8 +33,6 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 
 	public function revoke_referral_on_delete( $payment_id = 0 ) {
 
-		// TODO: fix this, it doesn't fire when RCP payments are deleted
-
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;
 		}
@@ -43,6 +41,19 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 		$payment  = $payments->get_payment( $payment_id );
 		$this->reject_referral( $payment->subscription_key );
 
+	}
+
+	public function reference_link( $reference = 0, $referral ) {
+
+		if( empty( $referral->context ) || 'rcp' != $referral->context ) {
+
+			return $reference;
+
+		}
+
+		$url = admin_url( 'admin.php?page=rcp-payments&s=' . $reference );
+
+		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
 	
 }

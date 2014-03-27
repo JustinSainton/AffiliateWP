@@ -11,6 +11,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		// There should be an option to choose which of these is used
 		add_action( 'woocommerce_order_status_completed', array( $this, 'mark_referral_complete' ), 10 );
 		add_action( 'woocommerce_order_status_processing', array( $this, 'mark_referral_complete' ), 10 );
+		add_action( 'woocommerce_order_status_completed_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_on-hold_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
 	
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
@@ -28,11 +33,19 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 	public function mark_referral_complete( $order_id = 0 ) {
 
-		$order  = new WC_Order( $order_id );
-
 		$this->complete_referral( $order_id );
 
 		// TODO add order note about referral
+
+	}
+
+	public function revoke_referral_on_refund( $order_id = 0 ) {
+
+		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+			return;
+		}
+
+		$this->reject_referral( $order_id );
 
 	}
 
