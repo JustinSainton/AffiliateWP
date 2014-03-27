@@ -13,6 +13,7 @@ class Affiliate_WP_Integrations {
 		return array(
 			'edd'         => 'Easy Digital Downloads',
 			'rcp'         => 'Restrict Content Pro',
+			'shopp'       => 'Shopp',
 			'woocommerce' => 'WooCommerce',
 			'wpec'        => 'WP e-Commerce',
 		);

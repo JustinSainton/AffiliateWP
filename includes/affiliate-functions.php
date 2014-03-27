@@ -313,7 +313,12 @@ function affwp_add_affiliate( $data = array() ) {
 
 	if( ! affiliate_wp()->affiliates->get_by( 'user_id', $user_id ) ) {
 
-		if( affiliate_wp()->affiliates->add( array( 'user_id' => $user_id ) ) ) {
+		$args = array(
+			'user_id' => $user_id,
+			'rate'    => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : ''
+		);
+
+		if( affiliate_wp()->affiliates->add( $args ) ) {
 
 			return true;
 
