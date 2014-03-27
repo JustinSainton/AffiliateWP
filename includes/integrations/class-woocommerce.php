@@ -42,8 +42,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		$this->complete_referral( $order_id );
 
-		// TODO add order note about referral
-
 	}
 
 	public function revoke_referral_on_refund( $order_id = 0 ) {
