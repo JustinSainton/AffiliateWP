@@ -133,6 +133,19 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 	}
 
+	/**
+	 * Retrieve the name of the affiliate
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function get_affiliate_name( $affiliate_id = 0 ) {
+
+		global $wpdb;
+
+		return $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
+	}
+
 	public function add( $data = array() ) {
 
 		$defaults = array(
