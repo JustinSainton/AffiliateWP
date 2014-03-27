@@ -203,7 +203,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'name'         => __( 'Name', 'affiliate-wp' ),
 			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
 			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
-			'referrals'    => __( 'Referrals', 'affiliate-wp' ),
+			'referrals'    => __( 'Paid Referrals', 'affiliate-wp' ),
 			'visits'       => __( 'Visits', 'affiliate-wp' ),
 			'status'       => __( 'Status', 'affiliate-wp' ),
 			'reports'      => __( 'Reports', 'affiliate-wp' ),
