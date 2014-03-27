@@ -375,6 +375,59 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Outputs the reporting views
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return void
+	 */
+	public function bulk_actions() {
+		
+		if ( is_null( $this->_actions ) ) {
+			$no_new_actions = $this->_actions = $this->get_bulk_actions();
+			$this->_actions = array_intersect_assoc( $this->_actions, $no_new_actions );
+			$two = '';
+		} else {
+			$two = '2';
+		}
+
+		if ( empty( $this->_actions ) )
+			return;
+
+		echo "<select name='action$two'>\n";
+		echo "<option value='-1' selected='selected'>" . __( 'Bulk Actions' ) . "</option>\n";
+
+		foreach ( $this->_actions as $name => $title ) {
+			$class = 'edit' == $name ? ' class="hide-if-no-js"' : '';
+
+			echo "\t<option value='$name'$class>$title</option>\n";
+		}
+
+		echo "</select>\n";
+
+		do_action( 'affwp_referral_bulk_actions' );
+
+		submit_button( __( 'Apply' ), 'action', false, false, array( 'id' => "doaction$two" ) );
+		echo "\n";
+
+		// Makes the filters only get output at the top of the page
+		if( ! did_action( 'affwp_referral_filters' ) ) {
+
+			$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
+			$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
+
+			echo "<input type='date' name='filter_from' placeholder='" . __( 'From - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $from . "'/>";
+			echo "<input type='date' name='filter_to' placeholder='" . __( 'To - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $to . "'/>";
+
+			do_action( 'affwp_referral_filters' );
+
+			submit_button( __( 'Filter', 'affiliate-wp' ), 'action', false, false );
+			echo "\n";
+
+		}
+	}
+
+	/**
 	 * Retrieve the bulk actions
 	 *
 	 * @access public
@@ -407,9 +460,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$ids = array( $ids );
 		}
 
-		$ids = array_map( 'absint', $ids );
+		$ids    = array_map( 'absint', $ids );
+		$action = ! empty( $_REQUEST['action'] ) ? $_REQUEST['action'] : false;
 
-		if( empty( $ids ) ) {
+		if( empty( $ids ) || empty( $action ) ) {
 			return;
 		}
 
@@ -466,12 +520,23 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$page      = isset( $_GET['paged'] )        ? absint( $_GET['paged'] ) : 1;
 		$status    = isset( $_GET['status'] )       ? $_GET['status']          : ''; 
 		$affiliate = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id']    : ''; 
+		$from      = isset( $_GET['filter_from'] )  ? $_GET['filter_from']     : ''; 
+		$to        = isset( $_GET['filter_to'] )    ? $_GET['filter_to']       : ''; 
+
+		$date = array();
+		if( ! empty( $from ) ) {
+			$date['start'] = $from;
+		}
+		if( ! empty( $to ) ) {
+			$date['end']   = $to;
+		}
 
 		$referrals  = affiliate_wp()->referrals->get_referrals( array(
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
 			'status'       => $status,
-			'affiliate_id' => $affiliate
+			'affiliate_id' => $affiliate,
+			'date'         => $date
 		) );
 		return $referrals;
 	}
