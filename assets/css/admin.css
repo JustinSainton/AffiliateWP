@@ -2,3 +2,40 @@ table.affwp_table { text-align: left; width: 100%; border: none; margin: 0 0 21p
 table.affwp_table th,
 table.affwp_table td { text-align: left; border: 1px solid #eee; color: #666; padding: 0.3em 1em; }
 table.affwp_table th { background: #fafafa; font-weight: bold; }
+
+.affwp-status.pending i,
+.affwp-status.unpaid i,
+.affwp-status.paid i,
+.affwp-status.rejected i {
+	display: inline-block;
+	position: relative;
+	top:2px;
+	left: -2px;
+}
+.affwp-status.pending i:before,
+.affwp-status.unpaid i:before,
+.affwp-status.paid i:before,
+.affwp-status.rejected i:before {
+	font-family: "dashicons";
+	font-style: normal;
+}
+
+.affwp-status.pending i:before {
+	content: "\f159";
+	color: #d8ecb4;
+}
+
+.affwp-status.unpaid i:before {
+	content: "\f159";
+	color: #5e95ef;
+}
+
+.affwp-status.paid i:before {
+	content: "\f159";
+	color: green;
+}
+
+.affwp-status.rejected i:before {
+	content: "\f159";
+	color: #ef6c5e;
+}

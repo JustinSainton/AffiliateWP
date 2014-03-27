@@ -211,10 +211,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'cb'        => '<input type="checkbox" />',
 			'amount'    => __( 'Amount', 'affiliate-wp' ),
 			'affiliate' => __( 'Affiliate', 'affiliate-wp' ),
-			'status'    => __( 'Status', 'affiliate-wp' ),
 			'reference' => __( 'Reference', 'affiliate-wp' ),
 			'date'      => __( 'Date', 'affiliate-wp' ),
 			'actions'   => __( 'Actions', 'affiliate-wp' ),
+			'status'    => __( 'Status', 'affiliate-wp' ),
 		);
 
 		return $columns;
@@ -281,6 +281,18 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function column_amount( $referral ) {
 		return affwp_currency_filter( affwp_format_amount( $referral->amount ) );
+	}
+
+	/**
+	 * Render the status column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $referral Contains all the data for the checkbox column
+	 * @return string Displays the referral status
+	 */
+	public function column_status( $referral ) {
+		return '<span class="affwp-status ' . $referral->status . '"><i></i>' . $referral->status . '</span>';
 	}
 
 	/**
