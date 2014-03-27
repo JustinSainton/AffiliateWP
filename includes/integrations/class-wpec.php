@@ -8,6 +8,10 @@ class Affiliate_WP_WPEC extends Affiliate_WP_Base {
 
 		add_action( 'wpsc_update_purchase_log_status', array( $this, 'add_pending_referral' ), 10, 4 );
 		add_action( 'wpsc_update_purchase_log_status', array( $this, 'mark_referral_complete' ), 10, 4 );
+		add_action( 'wpsc_update_purchase_log_status', array( $this, 'revoke_referral_on_refund' ), 10, 4 );
+	
+		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+
 	}
 
 	public function add_pending_referral( $order_id = 0, $current_status, $previous_status, $order ) {
@@ -30,6 +34,33 @@ class Affiliate_WP_WPEC extends Affiliate_WP_Base {
 
 		// TODO add order note about referral
 
+	}
+
+	public function revoke_referral_on_refund( $order_id = 0, $current_status, $previous_status, $order ) {
+
+		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+			return;
+		}
+
+		if( $order->is_refunded() || $order->is_payment_declined() ) {
+
+			$this->reject_referral( $order_id );
+	
+		}
+
+	}
+
+	public function reference_link( $reference = 0, $referral ) {
+
+		if( empty( $referral->context ) || 'wpec' != $referral->context ) {
+
+			return $reference;
+
+		}
+
+		$url = admin_url( 'index.php?page=wpsc-purchase-logs&c=item_details&id=' . $reference );
+
+		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
 	
 }
