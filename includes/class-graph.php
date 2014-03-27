@@ -52,7 +52,7 @@ class Affiliate_WP_Graph {
 	 * @var array
 	 * @since 1.0
 	 */
-	private $data;
+	public $data;
 
 	/**
 	 * Unique ID for the graph
@@ -60,7 +60,7 @@ class Affiliate_WP_Graph {
 	 * @var string
 	 * @since 1.0
 	 */
-	private $id = '';
+	public $id = '';
 
 	/**
 	 * Graph options
@@ -68,7 +68,7 @@ class Affiliate_WP_Graph {
 	 * @var array
 	 * @since 1.0
 	 */
-	private $options = array();
+	public $options = array();
 
 	/**
 	 * Get things started
@@ -140,41 +140,6 @@ class Affiliate_WP_Graph {
 	 */
 	public function get_data() {
 		return apply_filters( 'affwp_get_graph_data', $this->data, $this );
-	}
-
-	/**
-	 * Add a new line to the graph
-	 *
-	 * @since 1.0
-	 */
-	public function add_line( $id = '', $label = '', $data = array() ) {
-		$data = $this->parse_line_data( $label, $data );
-	}
-
-	/**
-	 * Parse the graph data
-	 *
-	 * A helper method to parse incorrect data into a format the graph understands
-	 *
-	 * @since 1.0
-	 */
-	public function parse_line_data( $_label = '', $_line_data = array() ) {
-		
-		$data = $this->get_data();
-
-		$line_data = array();
-
-		foreach( $_line_data as $key => $point ) {
-
-			if( isset( $point['date'] ) ) {
-
-			} else {
-
-			}
-
-		}
-		$this->data[ $_label ] = $line_data;
-
 	}
 
 	/**
