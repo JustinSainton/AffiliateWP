@@ -265,8 +265,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 
 		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
 		$row_actions  = array();
-		$user         = get_userdata( $affiliate->user_id );
-		$name         = ! empty( $user->display_name ) ? $user->display_name : $user->user_login;
+		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
 
 		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
