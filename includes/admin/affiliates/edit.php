@@ -5,10 +5,10 @@ $rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
 <div class="wrap">
 
 	<h2><?php _e( 'Edit Affiliate', 'affiliate-wp' ); ?></h2>
-	
+
 	<form method="post" id="affwp_edit_affiliate">
 
-		<?php do_action( 'affwp_edit_affiliate_top' ); ?>
+		<?php do_action( 'affwp_edit_affiliate_top', $affiliate ); ?>
 
 		<table class="form-table">
 
@@ -40,7 +40,7 @@ $rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
 
 		</table>
 
-		<?php do_action( 'affwp_edit_affiliate_bottom' ); ?>
+		<?php do_action( 'affwp_edit_affiliate_bottom', $affiliate ); ?>
 
 		<input type="hidden" name="affwp_action" value="update_affiliate" />
 
