@@ -268,3 +268,19 @@ function affwp_object_to_array( $data ) {
 	}
 	return $data;
 }
+
+/**
+ * Month Num To Name
+ *
+ * Takes a month number and returns the name three letter name of it.
+ *
+ * @since 1.0
+ *
+ * @param unknown $n
+ * @return string Short month name
+ */
+function affwp_month_num_to_name( $n ) {
+	$timestamp = mktime( 0, 0, 0, $n, 1, 2005 );
+
+	return date_i18n( "M", $timestamp );
+}

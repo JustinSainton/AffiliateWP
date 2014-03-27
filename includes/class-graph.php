@@ -380,7 +380,7 @@ class Affiliate_WP_Graph {
 					<span><?php _e( 'From', 'affiliate-wp' ); ?>&nbsp;</span>
 					<select id="affwp-graphs-month-start" name="m_start">
 						<?php for ( $i = 1; $i <= 12; $i++ ) : ?>
-							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_start'] ); ?>><?php echo edd_month_num_to_name( $i ); ?></option>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_start'] ); ?>><?php echo affwp_month_num_to_name( $i ); ?></option>
 						<?php endfor; ?>
 					</select>
 					<select id="affwp-graphs-year" name="year">
@@ -391,7 +391,7 @@ class Affiliate_WP_Graph {
 					<span><?php _e( 'To', 'affiliate-wp' ); ?>&nbsp;</span>
 					<select id="affwp-graphs-month-start" name="m_end">
 						<?php for ( $i = 1; $i <= 12; $i++ ) : ?>
-							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_end'] ); ?>><?php echo edd_month_num_to_name( $i ); ?></option>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_end'] ); ?>><?php echo affwp_month_num_to_name( $i ); ?></option>
 						<?php endfor; ?>
 					</select>
 					<select id="affwp-graphs-year" name="year_end">
