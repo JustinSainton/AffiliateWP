@@ -9,6 +9,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 10, 2 );
 		add_action( 'edd_complete_purchase', array( $this, 'complete_referral' ) );
 		add_action( 'edd_update_payment_status', array( $this, 'revoke_referral_on_refund' ), 10, 3 );
+		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 	}
@@ -30,6 +31,16 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		if( 'refunded' != $new_status ) {
 			return;
 		}
+
+		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+			return;
+		}
+
+		$this->reject_referral( $payment_id );
+
+	}
+
+	public function revoke_referral_on_delete( $payment_id = 0 ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;
