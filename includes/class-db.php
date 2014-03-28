@@ -1,6 +1,6 @@
 <?php
 
-class Affiliate_WP_DB {
+abstract class Affiliate_WP_DB {
 
 	public $table_name;
 
@@ -10,7 +10,6 @@ class Affiliate_WP_DB {
 
 	public function __construct() {}
 
-
 	public function get_columns() {
 		return array();
 	}
@@ -18,7 +17,6 @@ class Affiliate_WP_DB {
 	public function get_column_defaults() {
 		return array();
 	}
-
 	
 	public function get( $row_id ) {
 		global $wpdb;
