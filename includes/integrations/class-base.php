@@ -1,6 +1,6 @@
 <?php
 
-class Affiliate_WP_Base {
+abstract class Affiliate_WP_Base {
 
 	public $context;
 
@@ -17,7 +17,6 @@ class Affiliate_WP_Base {
 	}
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $data = array() ) {
-
 		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
@@ -34,23 +33,22 @@ class Affiliate_WP_Base {
 	}
 
 	public function complete_referral( $reference = 0 ) {
-
-		if( empty( $reference ) ) {
+		if ( empty( $reference ) ) {
 			return false;
 		}
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context );
 
-		if( empty( $referral ) ) {
+		if ( empty( $referral ) ) {
 			return false;
 		}
 
-		if( is_object( $referral ) && $referral->status != 'pending' ) {
+		if ( is_object( $referral ) && $referral->status != 'pending' ) {
 			// This referral has already been completed, rejected, or paid
 			return false;
 		}
 
-		if( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'unpaid' ) ) ) {
+		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'unpaid' ) ) ) {
 
 			// Update the visit ID that spawned this referral
 			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );
@@ -65,8 +63,7 @@ class Affiliate_WP_Base {
 	}
 
 	public function reject_referral( $reference = 0 ) {
-
-		if( empty( $reference ) ) {
+		if ( empty( $reference ) ) {
 			return false;
 		}
 
