@@ -83,6 +83,41 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		}
 
+		// Visits for a date or date range
+		if( ! empty( $args['date'] ) ) {
+
+			if( is_array( $args['date'] ) ) {
+
+				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
+				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+
+				if( ! empty( $where ) ) {
+
+					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
+				
+				} else {
+					
+					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
+	
+				}
+
+			} else {
+
+				$year  = date( 'Y', strtotime( $args['date'] ) );
+				$month = date( 'm', strtotime( $args['date'] ) );
+				$day   = date( 'd', strtotime( $args['date'] ) );
+
+				if( empty( $where ) ) {
+					$where .= " WHERE";
+				} else {
+					$where .= " AND";
+				}
+
+				$where .= " $year = YEAR ( date ) AND $month = MONTH ( date ) AND $day = DAY ( date )";
+			}
+
+		}
+
 		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY visit_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 
 	}
