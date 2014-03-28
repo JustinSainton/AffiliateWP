@@ -1,5 +1,11 @@
 jQuery(document).ready(function($) {
 	
+	// Show referral export form
+	$('.affwp-referrals-export-toggle').click(function() {
+		$('.affwp-referrals-export-toggle').toggle();
+		$('#affwp-referrals-export-form').slideToggle();
+	});
+
 	// datepicker
 	$('.affwp-datepicker').datepicker();
 

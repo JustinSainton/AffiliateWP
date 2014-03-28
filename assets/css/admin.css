@@ -2,7 +2,24 @@ table.affwp_table { text-align: left; width: 100%; border: none; margin: 0 0 21p
 table.affwp_table th,
 table.affwp_table td { text-align: left; border: 1px solid #eee; color: #666; padding: 0.3em 1em; }
 table.affwp_table th { background: #fafafa; font-weight: bold; }
-
+#affwp-referrals-export-form {
+	clear: both;	background: #f5f5f5;
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5f5), to(#fafafa));
+	background-image: -webkit-linear-gradient(bottom, #f5f5f5, #fafafa);
+	background-image:    -moz-linear-gradient(bottom, #f5f5f5, #fafafa);
+	background-image:      -o-linear-gradient(bottom, #f5f5f5, #fafafa);
+	background-image: linear-gradient(to top, #f5f5f5, #fafafa);
+	border-color: #dfdfdf;
+	//position: relative;
+	overflow: auto;
+	margin: 8px 0;
+	padding: 12px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px;
+	font-size: 13px;
+	line-height: 2.1em;
+}
 .affwp-status.pending i,
 .affwp-status.unpaid i,
 .affwp-status.paid i,

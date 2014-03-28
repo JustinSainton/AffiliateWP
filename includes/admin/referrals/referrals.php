@@ -26,15 +26,23 @@ function affwp_referrals_admin() {
 		?>
 		<div class="wrap">
 			<h2><?php _e( 'Referrals', 'affiliate-wp' ); ?></h2>
+
 			<?php do_action( 'affwp_referrals_page_top' ); ?>
 			
-			<form id="affwp-referrals-export-form" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>" method="post">
-				<input type="text" class="affwp-datepicker" name="from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
-				<input type="text" class="affwp-datepicker" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
-				<input type="hidden" name="affwp_action" value="generate_referral_payout"/>
-				<input type="submit" value="<?php _e( 'Generate Payment File', 'affiliate-wp' ); ?>" class="button-secondary"/>
-			</form>
+			<div id="affwp-referrals-export-wrap">
+				<button class="button-primary affwp-referrals-export-toggle"><?php _e( 'Export Referrals', 'affiliate-wp' ); ?></button>
+				<button class="button-primary affwp-referrals-export-toggle" style="display:none"><?php _e( 'Close', 'affiliate-wp' ); ?></button>
+				
+				<form id="affwp-referrals-export-form" style="display:none;" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>" method="post">
+					<p>
+						<input type="text" class="affwp-datepicker" autocomplete="off" name="from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+						<input type="text" class="affwp-datepicker" autocomplete="off" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+						<input type="hidden" name="affwp_action" value="generate_referral_payout"/>
+						<input type="submit" value="<?php _e( 'Generate CSV File', 'affiliate-wp' ); ?>" class="button-secondary"/>
+					</p>
+				</form>
 
+			</div>
 			<form id="affwp-referrals-filter-form" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>">
 			
 				<?php $referrals_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-referrals' ); ?>
@@ -416,8 +424,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
 			$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
 
-			echo "<input type='text' class='affwp-datepicker' name='filter_from' placeholder='" . __( 'From - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $from . "'/>";
-			echo "<input type='text' class='affwp-datepicker' name='filter_to' placeholder='" . __( 'To - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $to . "'/>";
+			echo "<input type='text' class='affwp-datepicker' autocomplete='off' name='filter_from' placeholder='" . __( 'From - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $from . "'/>";
+			echo "<input type='text' class='affwp-datepicker' autocomplete='off' name='filter_to' placeholder='" . __( 'To - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $to . "'/>";
 
 			do_action( 'affwp_referral_filters' );
 
