@@ -37,7 +37,6 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 * @since   1.0
 	*/
 	public function get_affiliates( $args = array() ) {
-
 		global $wpdb;
 
 		$defaults = array(
@@ -52,7 +51,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$where = '';
 
 		// affiliates for specific users
-		if( ! empty( $args['user_id'] ) ) {
+		if ( ! empty( $args['user_id'] ) ) {
 
 			if( is_array( $args['user_id'] ) ) {
 				$user_ids = implode( ',', $args['user_id'] );
@@ -64,7 +63,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		}
 
-		if( ! empty( $args['status'] ) ) {
+		if ( ! empty( $args['status'] ) ) {
 
 			if( ! empty( $where ) ) {
 				$where .= "AND `status` = '" . $args['status'] . "' ";
@@ -73,7 +72,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			}
 		}
 
-		if( ! empty( $args['search'] ) ) {
+		if ( ! empty( $args['search'] ) ) {
 
 			if( is_numeric( $args['search'] ) ) {
 
@@ -133,14 +132,12 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 * @since   1.0
 	*/
 	public function get_affiliate_name( $affiliate_id = 0 ) {
-
 		global $wpdb;
 
 		return $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
 	}
 
 	public function add( $data = array() ) {
-
 		$defaults = array(
 			'status' => 'active'
 		);
@@ -165,12 +162,11 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 * @since   1.0
 	*/
 	public function count( $args = array() ) {
-
 		global $wpdb;
 
 		$where = '';
 
-		if( ! empty( $args['status'] ) ) {
+		if ( ! empty( $args['status'] ) ) {
 
 			if( is_array( $args['status'] ) ) {
 				$where .= " WHERE `status` IN(" . implode( ',', $args['status'] ) . ") ";
@@ -180,9 +176,9 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		}
 
-		if( ! empty( $args['search'] ) ) {
+		if ( ! empty( $args['search'] ) ) {
 
-			if( is_numeric( $args['search'] ) ) {
+			if ( is_numeric( $args['search'] ) ) {
 
 				$affiliate_ids = esc_sql( $args['search'] );
 				$search = "`affiliate_id` IN( {$affiliate_ids} )";
@@ -207,7 +203,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 			}
 
-			if( ! empty( $search ) ) {
+			if ( ! empty( $search ) ) {
 
 				if( ! empty( $where ) ) {
 					$search = "AND " . $search;
@@ -234,7 +230,6 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	}
 	
 	public function create_table() {
-
 		global $wpdb;
 
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
