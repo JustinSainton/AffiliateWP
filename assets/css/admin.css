@@ -1,7 +1,24 @@
-table.affwp_table { text-align: left; width: 100%; border: none; margin: 0 0 21px; border-collapse: collapse; }
+/* General */
+table.affwp_table {
+	text-align: left;
+	width: 100%;
+	border: none;
+	margin: 0 0 21px;
+	border-collapse: collapse;
+}
 table.affwp_table th,
-table.affwp_table td { text-align: left; border: 1px solid #eee; color: #666; padding: 0.3em 1em; }
-table.affwp_table th { background: #fafafa; font-weight: bold; }
+table.affwp_table td {
+	text-align: left;
+	border: 1px solid #eee;
+	color: #666;
+	padding: 0.3em 1em;
+}
+table.affwp_table th {
+	background: #fafafa;
+	font-weight: bold;
+}
+
+/* Referrals page */
 #affwp-referrals-export-form {
 	clear: both;	background: #f5f5f5;
 	background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5f5), to(#fafafa));
@@ -36,26 +53,33 @@ table.affwp_table th { background: #fafafa; font-weight: bold; }
 	font-family: "dashicons";
 	font-style: normal;
 }
-
 .affwp-status.pending i:before {
 	content: "\f159";
 	color: #d8ecb4;
 }
-
 .affwp-status.unpaid i:before {
 	content: "\f159";
 	color: #5e95ef;
 }
-
 .affwp-status.paid i:before {
 	content: "\f159";
 	color: green;
 }
-
 .affwp-status.rejected i:before {
 	content: "\f159";
 	color: #ef6c5e;
 }
 
-#affwp_user_search_results { position: absolute; }
-#affwp_user_search_results ul { padding: 10px 10px 4px; margin: 0; background: #f0f0f0; border: 1px solid #DFDFDF; width: 300px; max-height: 200px; overflow-y: scroll; }
+/* Affiliates page */
+#affwp_user_search_results {
+	position: absolute;
+}
+#affwp_user_search_results ul {
+	padding: 10px 10px 4px;
+	margin: 0;
+	background: #f0f0f0;
+	border: 1px solid #DFDFDF;
+	width: 300px;
+	max-height: 200px;
+	overflow-y: scroll;
+}
