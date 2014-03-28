@@ -326,8 +326,7 @@ class Affiliate_WP_Graph {
 		<form id="affwp-graphs-filter" method="get">
 			<div class="tablenav top">
 
-				<input type="hidden" name="page" value="affiliate-wp"/>
-				<input type="hidden" name="action" value="view_affiliate"/>
+				<input type="hidden" name="page" value="affiliate-wp-reports"/>
 
 				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
 				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>
@@ -421,7 +420,8 @@ function affwp_get_report_dates() {
 		break;
 
 		case 'today' :
-			$dates['day']		= date( 'd', $current_time );
+			$dates['day']       = date( 'd', $current_time );
+			$dates['day_end']   = date( 'd', $current_time );
 			$dates['m_start'] 	= date( 'n', $current_time );
 			$dates['m_end']		= date( 'n', $current_time );
 			$dates['year']		= date( 'Y', $current_time );
@@ -432,6 +432,7 @@ function affwp_get_report_dates() {
 			$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y' ) );
 			$yesterday          = date( 'd', $current_time ) == 1 ? $days_in_month : date( 'd', $current_time ) - 1;
 			$dates['day']		= $yesterday;
+			$dates['day_end']   = $yesterday;
 			$dates['m_start'] 	= $month;
 			$dates['m_end'] 	= $month;
 			$dates['year']		= $month == 1 && date( 'd', $current_time ) == 1 ? date( 'Y', $current_time ) - 1 : date( 'Y', $current_time );

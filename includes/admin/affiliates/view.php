@@ -14,8 +14,6 @@ $affiliate_id = isset( $_GET['affiliate_id'] ) ? absint( $_GET['affiliate_id'] )
 		<div class="affwp-total"><?php printf( __( 'Total referrals: %s' ), affwp_get_affiliate_referral_count( $affiliate_id ) ); ?></div>
 		<div class="affwp-total"><?php printf( __( 'Total visits: %s' ), affwp_get_affiliate_visit_count( $affiliate_id ) ); ?></div>
 
-		<?php affwp_affiliate_graph( $affiliate_id ); ?>
-
 	</div>
 
 </div>

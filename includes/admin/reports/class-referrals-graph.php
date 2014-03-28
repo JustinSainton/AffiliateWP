@@ -51,7 +51,18 @@ class Affiliate_WP_Referrals_Graph extends Affiliate_WP_Graph {
 		$rejected = array();
 		$pending  = array();
 
-		$referrals = affiliate_wp()->referrals->get_referrals( array( 'orderby' => 'date', 'order' => 'ASC' ));
+		$dates = affwp_get_report_dates();
+
+		$start = $dates['year'] . '-' . $dates['m_start'] . '-' . $dates['day'] . ' 00:00:00';
+		$end   = $dates['year_end'] . '-' . $dates['m_end'] . '-' . $dates['day_end'] . ' 23:59:59';
+		$date  = array(
+			'start' => $start,
+			'end'   => $end
+		);
+
+		//echo '<pre>'; print_r( $date ); echo '</pre>'; exit;
+
+		$referrals = affiliate_wp()->referrals->get_referrals( array( 'orderby' => 'date', 'order' => 'ASC', 'date' => $date ) );
 
 		if( $referrals ) {
 			foreach( $referrals as $referral ) {
