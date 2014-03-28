@@ -223,7 +223,7 @@ final class Affiliate_WP {
 		$mofile_global = WP_LANG_DIR . '/affiliate-wp/' . $mofile;
 
 		if ( file_exists( $mofile_global ) ) {
-			// Look in global /wp-content/languages/edd folder
+			// Look in global /wp-content/languages/affiliate-wp/ folder
 			load_textdomain( 'affiliate-wp', $mofile_global );
 		} elseif ( file_exists( $mofile_local ) ) {
 			// Look in local /wp-content/plugins/affiliate-wp/languages/ folder
