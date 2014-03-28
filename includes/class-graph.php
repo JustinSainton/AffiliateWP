@@ -185,8 +185,8 @@ class Affiliate_WP_Graph {
 							},
 							bars: {
 								show: <?php echo $this->options['bars'] ? 'true' : 'false'; ?>,
-								barWidth: 12,
-								aling: 'center'
+								barWidth: 2,
+								align: 'center'
 							},
 							lines: {
 								show: <?php echo $this->options['lines'] ? 'true' : 'false'; ?>

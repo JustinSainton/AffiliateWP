@@ -1,4 +1,9 @@
 jQuery(document).ready(function($) {
+	
+	// datepicker
+	$('.affwp-datepicker').datepicker();
+
+	// ajax user search
 	$('.affwp-user-search').keyup(function() {
 		var user_search = $(this).val();
 		$('.affwp-ajax').show();

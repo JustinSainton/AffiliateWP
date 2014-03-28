@@ -29,8 +29,8 @@ function affwp_referrals_admin() {
 			<?php do_action( 'affwp_referrals_page_top' ); ?>
 			
 			<form id="affwp-referrals-export-form" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>" method="post">
-				<input type="date" name="from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
-				<input type="date" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+				<input type="text" class="affwp-datepicker" name="from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+				<input type="text" class="affwp-datepicker" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
 				<input type="hidden" name="affwp_action" value="generate_referral_payout"/>
 				<input type="submit" value="<?php _e( 'Generate Payment File', 'affiliate-wp' ); ?>" class="button-secondary"/>
 			</form>
@@ -416,8 +416,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
 			$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
 
-			echo "<input type='date' name='filter_from' placeholder='" . __( 'From - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $from . "'/>";
-			echo "<input type='date' name='filter_to' placeholder='" . __( 'To - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $to . "'/>";
+			echo "<input type='text' class='affwp-datepicker' name='filter_from' placeholder='" . __( 'From - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $from . "'/>";
+			echo "<input type='text' class='affwp-datepicker' name='filter_to' placeholder='" . __( 'To - mm/dd/yyyy', 'affiliate-wp' ) . "' value='" . $to . "'/>";
 
 			do_action( 'affwp_referral_filters' );
 
