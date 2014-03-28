@@ -1,12 +1,6 @@
 <?php
 
 class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
-	
-	public $table_name;
-	
-	public $version;
-
-	public $primary_key;
 
 	public function __construct() {
 

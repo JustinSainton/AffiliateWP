@@ -8,7 +8,6 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
 		$this->primary_key = 'affiliate_id';
 		$this->version     = '1.0';
-
 	}
 
 
@@ -232,17 +231,17 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	public function create_table() {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-		$sql = "CREATE TABLE " . $this->table_name . " (
-		`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
-		`user_id` bigint(20) NOT NULL,
-		`rate` tinytext NOT NULL,
-		`status` tinytext NOT NULL,
-		`earnings` mediumtext NOT NULL,
-		`referrals` bigint(20) NOT NULL,
-		`visits` bigint(20) NOT NULL,
-		PRIMARY KEY  (affiliate_id),
-		KEY user_id (user_id)
-		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+		$sql = "CREATE TABLE {$this->table_name} (
+			`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
+			`user_id` bigint(20) NOT NULL,
+			`rate` tinytext NOT NULL,
+			`status` tinytext NOT NULL,
+			`earnings` mediumtext NOT NULL,
+			`referrals` bigint(20) NOT NULL,
+			`visits` bigint(20) NOT NULL,
+			PRIMARY KEY  (affiliate_id),
+			KEY user_id (user_id)
+			) CHARACTER SET utf8 COLLATE utf8_general_ci;";
 
 		dbDelta( $sql );
 
