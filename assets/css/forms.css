@@ -10,6 +10,12 @@
 	width: 200px;
 }
 
+.affwp_form input[type="text"].required,
+.affwp_form input[type="password"].required,
+.affwp_form input[type="email"].required {
+	color: inherit;
+}
+
 .affwp_form input[type="checkbox"] {
 	display: inline-block;
 }
@@ -18,3 +24,7 @@
 	display: inline-block;
 	width: 200px;
 }
+
+.affwp_errors { -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; border: 1px solid #E6DB55; margin: 0 0 21px 0; background: #FFFFE0; color: #333; }
+.affwp_error { padding:10px; }
+p.affwp_error { margin: 0 !important; }
