@@ -17,6 +17,18 @@ table.affwp_table th {
 	background: #fafafa;
 	font-weight: bold;
 }
+#affwp_user_search_results {
+	position: absolute;
+}
+#affwp_user_search_results ul {
+	padding: 10px 10px 4px;
+	margin: 0;
+	background: #f0f0f0;
+	border: 1px solid #DFDFDF;
+	width: 300px;
+	max-height: 200px;
+	overflow-y: scroll;
+}
 
 /* Referrals page */
 #affwp-referrals-export-form {
@@ -71,15 +83,7 @@ table.affwp_table th {
 }
 
 /* Affiliates page */
-#affwp_user_search_results {
-	position: absolute;
-}
-#affwp_user_search_results ul {
-	padding: 10px 10px 4px;
-	margin: 0;
-	background: #f0f0f0;
-	border: 1px solid #DFDFDF;
-	width: 300px;
-	max-height: 200px;
-	overflow-y: scroll;
+#affwp-referrals-filter-form #amount,
+#affwp-referrals-filter-form #affiliate {
+	width: 100px;
 }

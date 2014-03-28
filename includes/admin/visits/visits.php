@@ -24,9 +24,12 @@ function affwp_visits_admin() {
 		<?php do_action( 'affwp_affiliates_page_top' ); ?>
 		<form id="affwp-visits-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
 			<?php $visits_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-affiliates' ); ?>
-
-			<input type="hidden" name="page" value="affiliate-wp" />
-
+			<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
+			<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+			<div id="affwp_user_search_results"></div>
+			<input type="hidden" name="user_id" id="user_id" value=""/>
+			<input type="hidden" name="page" value="affiliate-wp-visits" />
+			<input type="submit" class="button" value="<?php _e( 'Filter', 'affiliate-wp' ); ?>"/>
 			<?php $visits_table->views() ?>
 			<?php $visits_table->display() ?>
 		</form>
@@ -235,10 +238,19 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function visits_data() {
 		
-		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
+		$page    = isset( $_GET['paged'] )   ? absint( $_GET['paged'] )   : 1;
+		$user_id = isset( $_GET['user_id'] ) ? absint( $_GET['user_id'] ) : false;
+
+		if( ! empty( $user_id ) ) {
+
+			$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
+
+		}
+
 		$visits = affiliate_wp()->visits->get_visits( array(
-			'number' => $this->per_page,
-			'offset' => $this->per_page * ( $page - 1 ),
+			'number'       => $this->per_page,
+			'offset'       => $this->per_page * ( $page - 1 ),
+			'affiliate_id' => ! empty( $affiliate_id ) ? $affiliate_id : false
 		) );
 		return $visits;
 	}
