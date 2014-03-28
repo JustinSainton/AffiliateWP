@@ -4,16 +4,43 @@ $affiliate_id = isset( $_GET['affiliate_id'] ) ? absint( $_GET['affiliate_id'] )
 
 ?>
 <div class="wrap">
-	<h2><?php printf( __( 'Affiliate: #%d', 'affiliate-wp' ), $affiliate_id ); ?></h2>
+	<h2><?php printf( __( 'Affiliate: #%d %s', 'affiliate-wp' ), $affiliate_id, affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id ) ); ?></h2>
 
 	<h3><?php _e( 'Earnings', 'affiliate-wp' ); ?></h3>
 
-	<div id="affwp-affiliate-report">
+	<table id="affwp_affiliate_stats" class="affwp_table">
 
-		<div class="affwp-total"><?php printf( __( 'Total earnings: %s' ), affwp_get_affiliate_earnings( $affiliate_id ) ); ?></div>
-		<div class="affwp-total"><?php printf( __( 'Total referrals: %s' ), affwp_get_affiliate_referral_count( $affiliate_id ) ); ?></div>
-		<div class="affwp-total"><?php printf( __( 'Total visits: %s' ), affwp_get_affiliate_visit_count( $affiliate_id ) ); ?></div>
+			<thead>
 
-	</div>
+				<tr>
+					<th><?php _e( 'Total earnings', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total paid referrals', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total unpaid referrals', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total pending referrals', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total rejected referrals', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total visits', 'affiliate-wp' ); ?></th>
+				</tr>
 
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td><?php echo affwp_currency_filter( affwp_get_affiliate_earnings( $affiliate_id ) ); ?></td>
+					<td><?php echo affwp_get_affiliate_referral_count( $affiliate_id ); ?></td>
+					<td><?php echo affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) ); ?></td>
+					<td><?php echo affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'pending' ) ); ?></td>
+					<td><?php echo affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'rejected' ) ); ?></td>
+					<td><?php echo affwp_get_affiliate_visit_count( $affiliate_id ); ?></td>
+				</tr>
+
+			</tbody>
+
+		</table>
+		<?php
+		$graph = new Affiliate_WP_Referrals_Graph;
+		$graph->set( 'x_mode', 'time' );
+		$graph->set( 'affiliate_id', $affiliate_id );
+		$graph->display();
+		?>	
 </div>
