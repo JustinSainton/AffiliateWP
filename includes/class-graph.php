@@ -170,6 +170,7 @@ class Affiliate_WP_Graph {
 
 ?>
 		<script type="text/javascript">
+			var affwp_vars;
 			jQuery( document ).ready( function($) {
 				$.plot(
 					$("#affwp-graph-<?php echo $this->id; ?>"),
@@ -253,14 +254,10 @@ class Affiliate_WP_Graph {
 							$("#affwp-flot-tooltip").remove();
 							var x = item.datapoint[0].toFixed(2),
 							y = item.datapoint[1].toFixed(2);
-							if( item.series.id == 'earnings' ) {
-								if( affwp_vars.currency_pos == 'before' ) {
-									affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + affwp_vars.currency_sign + y );
-								} else {
-									affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y + affwp_vars.currency_sign );
-								}
+							if( affwp_vars.currency_pos == 'before' ) {
+								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + affwp_vars.currency_sign + y );
 							} else {
-								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y.replace( '.00', '' ) );
+								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y + affwp_vars.currency_sign );
 							}
 						}
 					} else {
@@ -326,8 +323,9 @@ class Affiliate_WP_Graph {
 		<form id="affwp-graphs-filter" method="get">
 			<div class="tablenav top">
 
-				<input type="hidden" name="page" value="affiliate-wp-reports"/>
-
+				<?php if( is_admin() ) : $page = isset( $_GET['page'] ) ? $_GET['page'] : 'affiliate-wp'; ?>
+				<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>"/>
+				<?php endif; ?>
 				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
 				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>
 				<?php endif; ?>
