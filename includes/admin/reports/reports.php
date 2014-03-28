@@ -73,13 +73,11 @@ function affwp_reports_admin() {
 		</table>
 
 		<?php
-		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/reports/class-referrals-graph.php';
 
 		$graph = new Affiliate_WP_Referrals_Graph;
 		$graph->set( 'x_mode', 'time' );
 		$graph->display();
 		
-
 		do_action( 'affwp_reports_page_bottom' );
 		?>
 	</div>

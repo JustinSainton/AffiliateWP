@@ -49,6 +49,13 @@
 
 	<h4><?php _e( 'Referrals Over Time', 'affiliate-wp' ); ?></h4>
 
+	<?php
+	$graph = new Affiliate_WP_Referrals_Graph;
+	$graph->set( 'x_mode', 'time' );
+	$graph->set( 'affiliate_id', $affiliate_id );
+	$graph->display();
+	?>	
+
 	<h4><?php _e( 'Your Affiliate Links', 'affiliate-wp' ); ?></h4>
 
 	<div id="affwp-affiliate-dashboard-links">

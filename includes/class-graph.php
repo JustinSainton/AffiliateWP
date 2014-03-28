@@ -278,7 +278,7 @@ class Affiliate_WP_Graph {
 			});
 		</script>
 		<?php echo $this->graph_controls(); ?>
-		<div id="affwp-graph-<?php echo $this->id; ?>" style="height: 300px;"></div>
+		<div id="affwp-graph-<?php echo $this->id; ?>" class="affwp-graph" style="height: 300px;"></div>
 <?php
 		return ob_get_clean();
 	}
