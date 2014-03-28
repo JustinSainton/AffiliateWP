@@ -2,14 +2,7 @@
 
 class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
-	public $table_name;
-
-	public $version;
-
-	public $primary_key;
-
 	public function __construct() {
-
 		global $wpdb;
 
 		$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
