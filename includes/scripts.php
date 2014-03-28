@@ -26,3 +26,18 @@ function affwp_admin_styles( $hook ) {
 	wp_enqueue_style( 'jquery-ui-css', AFFILIATEWP_PLUGIN_URL . 'assets/css/jquery-ui-' . $ui_style . '.min.css' );
 }
 add_action( 'admin_enqueue_scripts', 'affwp_admin_styles' );
+
+function affwp_frontend_styles() {
+
+	global $post;
+
+	if( ! is_object( $post ) ) {
+		return;
+	}
+
+	if( has_shortcode( $post->post_content, 'affiliate_area' ) ) {
+		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms.css', AFFILIATEWP_VERSION );
+	}
+
+}
+add_action( 'wp_enqueue_scripts', 'affwp_frontend_styles' );

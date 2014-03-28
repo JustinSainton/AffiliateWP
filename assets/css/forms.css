@@ -1,0 +1,20 @@
+.affwp_form legend {
+	font-size: 120%;
+	margin-bottom: 1em;
+}
+
+.affwp_form input[type="text"],
+.affwp_form input[type="password"],
+.affwp_form input[type="email"] {
+	display: inline-block;
+	width: 200px;
+}
+
+.affwp_form input[type="checkbox"] {
+	display: inline-block;
+}
+
+.affwp_form label {
+	display: inline-block;
+	width: 200px;
+}
