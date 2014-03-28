@@ -1,15 +1,8 @@
 <?php
 
 class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
-	
-	public $table_name;
-
-	public $version;
-
-	public $primary_key;
 
 	public function __construct() {
-
 		global $wpdb;
 
 		$this->table_name  = $wpdb->prefix . 'affiliate_wp_visits';
@@ -43,7 +36,6 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	 * @since   1.0
 	*/
 	public function get_visits( $args = array() ) {
-
 		global $wpdb;
 
 		$defaults = array(
@@ -137,7 +129,6 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	 * @since   1.0
 	*/
 	public function count( $args = array() ) {
-
 		global $wpdb;
 
 		$where = '';
@@ -189,21 +180,18 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 
 	public function create_table() {
-
-		global $wpdb;
-
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-		$sql = "CREATE TABLE " . $this->table_name . " (
-		`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
-		`affiliate_id` bigint(20) NOT NULL,
-		`referral_id` bigint(20) NOT NULL,
-		`url` mediumtext NOT NULL,
-		`ip` tinytext NOT NULL,
-		`date` datetime NOT NULL,
-		PRIMARY KEY  (visit_id),
-		KEY affiliate_id (affiliate_id)
-		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
+		$sql = "CREATE TABLE {$this->table_name} (
+			`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
+			`affiliate_id` bigint(20) NOT NULL,
+			`referral_id` bigint(20) NOT NULL,
+			`url` mediumtext NOT NULL,
+			`ip` tinytext NOT NULL,
+			`date` datetime NOT NULL,
+			PRIMARY KEY  (visit_id),
+			KEY affiliate_id (affiliate_id)
+			) CHARACTER SET utf8 COLLATE utf8_general_ci;";
 
 		dbDelta( $sql );
 
