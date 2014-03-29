@@ -2,6 +2,12 @@
 
 class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function __construct() {
 		global $wpdb;
 
@@ -10,7 +16,12 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$this->version     = '1.0';
 	}
 
-
+	/**
+	 * Get table columns and date types
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function get_columns() {
 		return array(
 			'affiliate_id' => '%d',
@@ -23,6 +34,12 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		);
 	}
 
+	/**
+	 * Get default column values
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function get_column_defaults() {
 		return array(
 			'user_id'  => get_current_user_id()
@@ -147,6 +164,12 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		return $name;
 	}
 
+	/**
+	 * Add a new affiliate
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function add( $data = array() ) {
 		$defaults = array(
 			'status' => 'active'
@@ -239,6 +262,12 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 	}
 	
+	/**
+	 * Create the table
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function create_table() {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
