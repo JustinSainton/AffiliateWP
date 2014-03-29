@@ -4,13 +4,17 @@ function affwp_is_affiliate() {
 	return (bool) affwp_get_affiliate_id();
 }
 
-function affwp_get_affiliate_id() {
+function affwp_get_affiliate_id( $user_id = 0 ) {
 
-	if( ! is_user_logged_in() ) {
+	if( ! is_user_logged_in() && empty( $user_id ) ) {
 		return false;
 	}
 
-	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', get_current_user_id() );
+	if( empty( $user_id ) ) {
+		$user_id = get_current_user_id();
+	}
+
+	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
 	
 	if( $affiliate ) {
 		return $affiliate->affiliate_id;

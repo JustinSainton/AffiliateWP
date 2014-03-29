@@ -43,6 +43,13 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 	public $status;
 
 	/**
+	 * Affiliate ID
+	 * @var int
+	 * @since 1.0
+	 */
+	public $affiliate;
+
+	/**
 	 * Set the CSV columns
 	 *
 	 * @access public
@@ -73,8 +80,9 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 	public function get_data() {
 
 		$args = array(
-			'status' => $this->status,
-			'date'   => ! empty( $this->date ) ? $this->date : '',
+			'status'       => $this->status,
+			'date'         => ! empty( $this->date ) ? $this->date : '',
+			'affiliate_id' => $this->affiliate
 		);
 
 		$data         = array();

@@ -32,16 +32,18 @@ function affwp_process_referrals_export() {
 		return;
 	}
 
-	$start  = ! empty( $_POST['start_date'] ) ? sanitize_text_field( $_POST['start_date'] ) : false;
-	$end    = ! empty( $_POST['end_date'] )   ? sanitize_text_field( $_POST['end_date'] )   : false;
-	$status = ! empty( $_POST['status'] )     ? sanitize_text_field( $_POST['status'] )     : false;
+	$start   = ! empty( $_POST['start_date'] ) ? sanitize_text_field( $_POST['start_date'] ) : false;
+	$end     = ! empty( $_POST['end_date'] )   ? sanitize_text_field( $_POST['end_date'] )   : false;
+	$status  = ! empty( $_POST['status'] )     ? sanitize_text_field( $_POST['status'] )     : false;
+	$user_id = ! empty( $_POST['user_id'] )    ? absint( $_POST['user_id'] )                 : false;
 
 	$export = new Affiliate_WP_Referral_Export;
 	$export->date = array(
 		'start' => $start,
 		'end'   => $end
 	);
-	$export->status = $status;
+	$export->status    = $status;
+	$export->affiliate = affwp_get_affiliate_id( $user_id );
 	$export->export();
 
 }
