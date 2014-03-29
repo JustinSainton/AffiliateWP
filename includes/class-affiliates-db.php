@@ -42,7 +42,9 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			'number'  => 20,
 			'offset'  => 0,
 			'user_id' => 0,
-			'status'  => ''
+			'status'  => '',
+			'order'   => 'DESC',
+			'orderby' => 'affiliate_id'
 		);
 
 		$args  = wp_parse_args( $args, $defaults );
@@ -116,7 +118,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
 		
 		if( $affiliates === false ) {
-			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
 		}
 

@@ -221,7 +221,12 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		return array(
-			'name'   => array( 'name', false )
+			'name'         => array( 'name', false ),
+			'affiliate_id' => array( 'affiliate_id', false ),
+			'earnings'     => array( 'earnings', false ),
+			'referrals'    => array( 'referrals', false ),
+			'visits'       => array( 'visits', false ),
+			'status'       => array( 'status', false ),
 		);
 	}
 
@@ -445,15 +450,19 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	public function affiliate_data() {
 		
-		$page   = isset( $_GET['paged'] )  ? absint( $_GET['paged'] ) : 1;
-		$status = isset( $_GET['status'] ) ? $_GET['status']          : ''; 
-		$search = isset( $_GET['s'] )      ? $_GET['s']               : ''; 
+		$page    = isset( $_GET['paged'] )    ? absint( $_GET['paged'] ) : 1;
+		$status  = isset( $_GET['status'] )   ? $_GET['status']          : ''; 
+		$search  = isset( $_GET['s'] )        ? $_GET['s']               : ''; 
+		$order   = isset( $_GET['order'] )    ? $_GET['order']           : 'DESC';
+		$orderby = isset( $_GET['orderby'] )  ? $_GET['orderby']         : 'affiliate_id';
 
-		$affiliates  = affiliate_wp()->affiliates->get_affiliates( array(
-			'number' => $this->per_page,
-			'offset' => $this->per_page * ( $page - 1 ),
-			'status' => $status,
-			'search' => $search
+		$affiliates   = affiliate_wp()->affiliates->get_affiliates( array(
+			'number'  => $this->per_page,
+			'offset'  => $this->per_page * ( $page - 1 ),
+			'status'  => $status,
+			'search'  => $search,
+			'orderby' => $orderby,
+			'order'   => $order
 		) );
 		return $affiliates;
 	}

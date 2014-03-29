@@ -90,11 +90,17 @@ table.affwp_table th {
 }
 
 /* Affiliates page */
+#affwp-affiliates-filter #name {
+	width: 180px;
+}
 #affwp-affiliates-filter #affiliate_id {
 	width: 80px;
 }
+#affwp-affiliates-filter #earnings {
+	width: 140px;
+}
 #affwp-affiliates-filter #referrals {
-	width: 120px;
+	width: 140px;
 }
 #affwp-affiliates-filter #visits {
 	width: 100px;
