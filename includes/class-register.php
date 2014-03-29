@@ -85,6 +85,8 @@ class Affiliate_WP_Register {
 
 			$user_id = wp_insert_user( $args );
 		
+			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
+
 		} else {
 
 			$user_id = get_current_user_id();
@@ -92,6 +94,18 @@ class Affiliate_WP_Register {
 		}
 
 		affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+
+	}
+
+	private function log_user_in( $user_id = 0, $user_login = '', $remember = false ) {
+
+		$user = get_userdata( $user_id );
+		if( ! $user )
+			return;
+
+		wp_set_auth_cookie( $user_id, $remember );
+		wp_set_current_user( $user_id, $user_login );
+		do_action( 'wp_login', $user_login, $user );
 
 	}
 
