@@ -314,7 +314,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return string visits link
 	 */
 	function column_visits( $affiliate ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $affiliate->affiliate_id ) . '">' . $affiliate->visits . '</a>';
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $affiliate->affiliate_id ) . '">' . affwp_get_affiliate_visit_count( $affiliate->affiliate_id ) . '</a>';
 	}
 	
 	/**

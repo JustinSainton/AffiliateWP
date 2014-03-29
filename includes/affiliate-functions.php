@@ -298,7 +298,13 @@ function affwp_get_affiliate_visit_count( $affiliate ) {
 		return false;
 	}
 
-	return absint( affiliate_wp()->affiliates->get_column( 'visits', $affiliate_id ) );
+	$visits = affiliate_wp()->affiliates->get_column( 'visits', $affiliate_id );
+
+	if( $visits < 0 ) {
+		$visits = 0;
+	}
+
+	return absint( $visits );
 }
 
 function affwp_increase_affiliate_visit_count( $affiliate_id = 0 ) {
@@ -330,6 +336,10 @@ function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 
 	$visits = affwp_get_affiliate_visit_count( $affiliate_id );
 	$visits -= 1;
+
+	if( $visits < 0 ) {
+		$visits = 0;
+	}
 
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
 
