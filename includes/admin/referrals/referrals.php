@@ -13,6 +13,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/contextual-help.php';
+
 function affwp_referrals_admin() {
 
 	if( isset( $_GET['action'] ) && 'add_referral' == $_GET['action'] ) {
@@ -527,8 +529,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		
 		$page      = isset( $_GET['paged'] )        ? absint( $_GET['paged'] ) : 1;
 		$status    = isset( $_GET['status'] )       ? $_GET['status']          : ''; 
+		$referral  = isset( $_GET['referral_id'] )  ? $_GET['referral_id']     : ''; 
 		$affiliate = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id']    : ''; 
 		$reference = isset( $_GET['reference'] )    ? $_GET['reference']       : ''; 
+		$context   = isset( $_GET['context'] )      ? $_GET['context']         : ''; 
 		$from      = isset( $_GET['filter_from'] )  ? $_GET['filter_from']     : ''; 
 		$to        = isset( $_GET['filter_to'] )    ? $_GET['filter_to']       : ''; 
 		$is_search = false;
@@ -548,12 +552,14 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$search = sanitize_text_field( $_GET['s'] );
 
 			if( is_numeric( $search ) ) {
-				// This is an affiliate ID search
-				$affiliate = absint( $search );
+				// This is an referral ID search
+				$referral = absint( $search );
 			} elseif ( strpos( $search, 'ref:' ) !== false ) {
 				$reference = trim( str_replace( 'ref:', '', $search ) );
 			} elseif ( strpos( $search, 'context:' ) !== false ) {
 				$context = trim( str_replace( 'context:', '', $search ) );
+			} elseif ( strpos( $search, 'affiliate:' ) !== false ) {
+				$affiliate = absint( trim( str_replace( 'affiliate:', '', $search ) ) );
 			}
 
 		}
@@ -562,6 +568,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
 			'status'       => $status,
+			'referral_id'  => $referral,
 			'affiliate_id' => $affiliate,
 			'reference'    => $reference,
 			'context'      => $context,

@@ -86,6 +86,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$defaults = array(
 			'number'       => 20,
 			'offset'       => 0,
+			'referrals_id' => 0,
 			'affiliate_id' => 0,
 			'reference'    => '',
 			'context'      => '',
@@ -102,6 +103,19 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		}
 
 		$where    = '';
+
+		// specific referrals
+		if( ! empty( $args['referral_id'] ) ) {
+
+			if( is_array( $args['referral_id'] ) ) {
+				$referral_ids = implode( ',', $args['referral_id'] );
+			} else {
+				$referral_ids = intval( $args['referral_id'] );
+			}	
+
+			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
+
+		}
 
 		// referrals for specific affiliates
 		if( ! empty( $args['affiliate_id'] ) ) {
