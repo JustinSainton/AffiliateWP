@@ -52,9 +52,9 @@ function affwp_reports_admin() {
 
 				<tr>
 
-					<th><?php _e( 'Total Unpaid Referrals', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Unpaid Referrals Today', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Unpaid Referrals This Month', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total Unpaid Earnings', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total Unpaid Earnings Today', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Total Unpaid Earnings This Month', 'affiliate-wp' ); ?></th>
 
 				</tr>
 
