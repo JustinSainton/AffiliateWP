@@ -357,7 +357,9 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
 	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
 	$visits    = affwp_decrease_affiliate_visit_count( $affiliate_id );
-	$rate      = round( $visits / $referrals, 2 );
+	if( $referrals > 0 ) {
+		$rate = round( $visits / $referrals, 2 );
+	}
 
 	return apply_filters( 'affwp_get_affiliate_conversion_rate', $rate . '%', $affiliate_id );
 
