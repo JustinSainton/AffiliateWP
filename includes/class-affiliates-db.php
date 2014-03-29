@@ -135,7 +135,16 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	public function get_affiliate_name( $affiliate_id = 0 ) {
 		global $wpdb;
 
-		return $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
+		$cache_key = 'affwp_affiliate_name_' . $affiliate_id;
+
+		$name = wp_cache_get( $cache_key, 'affiliates' );
+		
+		if( $name === false ) {
+			$name = $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
+			wp_cache_set( $cache_key, $name, 'affiliates', 3600 );
+		}
+
+		return $name;
 	}
 
 	public function add( $data = array() ) {
