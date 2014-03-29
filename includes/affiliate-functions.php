@@ -120,7 +120,7 @@ function affwp_delete_affiliate( $affiliate ) {
 }
 
 
-function affwp_get_affiliate_earnings( $affiliate ) {
+function affwp_get_affiliate_earnings( $affiliate, $formatted = false ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
@@ -135,6 +135,43 @@ function affwp_get_affiliate_earnings( $affiliate ) {
 	if( empty( $earnings ) ) {
 
 		$earnings = 0;
+
+	}
+
+	if( $formatted ) {
+
+		$earnings = affwp_currency_filter( $earnings );
+
+	}
+
+	return $earnings;
+}
+
+function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
+
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+	$earnings = 0;
+	
+	if( ! empty( $earnings ) ) {
+
+		foreach( $referrals as $referral ) {
+
+			$earnings += $referral->amount;
+
+		}
+	}
+
+	if( $formatted ) {
+
+		$earnings = affwp_currency_filter( $earnings );
 
 	}
 
@@ -303,6 +340,26 @@ function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 		return false;
 
 	}
+
+}
+
+function affwp_get_affiliate_conversion_rate( $affiliate ) {
+
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	$rate = 0;
+
+	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
+	$visits    = affwp_decrease_affiliate_visit_count( $affiliate_id );
+	$rate      = round( $visits / $referrals, 2 );
+
+	return apply_filters( 'affwp_get_affiliate_conversion_rate', $rate . '%', $affiliate_id );
 
 }
 
