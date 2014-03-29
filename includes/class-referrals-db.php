@@ -150,17 +150,36 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 			if( is_array( $args['date'] ) ) {
 
-				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
-				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+				if( ! empty( $args['date']['start'] ) ) {
 
-				if( ! empty( $where ) ) {
+					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
 
-					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
-				
-				} else {
+					if( ! empty( $where ) ) {
+
+						$where .= " AND `date` >= '{$start}'";
 					
-					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
-	
+					} else {
+						
+						$where .= " WHERE `date` >= '{$start}'";
+		
+					}
+
+				}
+
+				if( ! empty( $args['date']['end'] ) ) {
+
+					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+
+					if( ! empty( $where ) ) {
+
+						$where .= " AND `date` <= '{$end}'";
+					
+					} else {
+						
+						$where .= " WHERE `date` <= '{$end}'";
+		
+					}
+
 				}
 
 			} else {

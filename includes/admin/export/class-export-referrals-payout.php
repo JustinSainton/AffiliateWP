@@ -47,10 +47,8 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 	public function get_data() {
 
 		$args = array(
-
 			'status' => 'unpaid',
-			'date'   => ! empty( $this->date ) ? $this->date   : '',
-
+			'date'   => ! empty( $this->date ) ? $this->date : '',
 		);
 
 		$data         = array();
