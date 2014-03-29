@@ -52,6 +52,10 @@ table.affwp_table th {
 	font-size: 13px;
 	line-height: 2.1em;
 }
+#affwp-referrals-filter-form #amount,
+#affwp-referrals-filter-form #affiliate {
+	width: 100px;
+}
 .affwp-status.pending i,
 .affwp-status.unpaid i,
 .affwp-status.paid i,
@@ -86,7 +90,15 @@ table.affwp_table th {
 }
 
 /* Affiliates page */
-#affwp-referrals-filter-form #amount,
-#affwp-referrals-filter-form #affiliate {
+#affwp-affiliates-filter #affiliate_id {
+	width: 80px;
+}
+#affwp-affiliates-filter #referrals {
+	width: 120px;
+}
+#affwp-affiliates-filter #visits {
+	width: 100px;
+}
+#affwp-affiliates-filter #status {
 	width: 100px;
 }
