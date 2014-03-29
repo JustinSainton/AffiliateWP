@@ -89,7 +89,7 @@
 	<div id="affwp-affiliate-dashboard-url-generator">
 
 		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
-		<p><?php _e( 'Enter any URL below to generate a referral link!', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'Enter any URL of this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
 		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
