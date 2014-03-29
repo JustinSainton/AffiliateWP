@@ -12,6 +12,11 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/export.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-referrals.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-referrals-payout.php';
+
 /**
  * Options Page
  *
@@ -148,7 +153,15 @@ function affwp_export_import_tab() {
 				<p><?php _e( 'Export referrals to a CSV file.', 'affiliate-wp' ); ?></p>
 				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
 					<p>
-						date / status / affiliate options here
+						<input type="text" class="affwp-datepicker" autocomplete="off" name="start_date" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+						<input type="text" class="affwp-datepicker" autocomplete="off" name="end_date" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
+						<select name="status" id="status">
+							<option value="0"><?php _e( 'All Statuses', 'affiliate-wp' ); ?></option>
+							<option value="paid"><?php _e( 'Paid', 'affiliate-wp' ); ?></option>
+							<option value="unpaid"><?php _e( 'Unpaid', 'affiliate-wp' ); ?></option>
+							<option value="pending"><?php _e( 'Pending', 'affiliate-wp' ); ?></option>
+							<option value="rejected"><?php _e( 'Rejected', 'affiliate-wp' ); ?></option>
+						</select>
 					</p>
 					<p>
 						<input type="hidden" name="affwp_action" value="export_referrals" />
