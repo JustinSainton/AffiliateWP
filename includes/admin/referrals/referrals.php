@@ -528,8 +528,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$page      = isset( $_GET['paged'] )        ? absint( $_GET['paged'] ) : 1;
 		$status    = isset( $_GET['status'] )       ? $_GET['status']          : ''; 
 		$affiliate = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id']    : ''; 
+		$reference = isset( $_GET['reference'] )    ? $_GET['reference']       : ''; 
 		$from      = isset( $_GET['filter_from'] )  ? $_GET['filter_from']     : ''; 
 		$to        = isset( $_GET['filter_to'] )    ? $_GET['filter_to']       : ''; 
+		$is_search = false;
 
 		$date = array();
 		if( ! empty( $from ) ) {
@@ -539,12 +541,32 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$date['end']   = $to;
 		}
 
+		if( ! empty( $_GET['s'] ) ) {
+
+			$is_search = true;
+
+			$search = sanitize_text_field( $_GET['s'] );
+
+			if( is_numeric( $search ) ) {
+				// This is an affiliate ID search
+				$affiliate = absint( $search );
+			} elseif ( strpos( $search, 'ref:' ) !== false ) {
+				$reference = trim( str_replace( 'ref:', '', $search ) );
+			} elseif ( strpos( $search, 'context:' ) !== false ) {
+				$context = trim( str_replace( 'context:', '', $search ) );
+			}
+
+		}
+
 		$referrals  = affiliate_wp()->referrals->get_referrals( array(
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
 			'status'       => $status,
 			'affiliate_id' => $affiliate,
-			'date'         => $date
+			'reference'    => $reference,
+			'context'      => $context,
+			'date'         => $date,
+			'search'       => $is_search
 		) );
 		return $referrals;
 	}

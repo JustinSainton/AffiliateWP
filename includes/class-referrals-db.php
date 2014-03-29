@@ -87,9 +87,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'number'       => 20,
 			'offset'       => 0,
 			'affiliate_id' => 0,
+			'reference'    => '',
+			'context'      => '',
 			'status'       => '',
 			'orderby'      => 'referral_id',
-			'order'        => 'DESC'
+			'order'        => 'DESC',
+			'search'       => false
 		);
 
 		$args  = wp_parse_args( $args, $defaults );
@@ -98,7 +101,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			$args['number'] = 999999999999;
 		}
 
-		$where = '';
+		$where    = '';
 
 		// referrals for specific affiliates
 		if( ! empty( $args['affiliate_id'] ) ) {
@@ -163,6 +166,26 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		}
 
+		if( ! empty( $args['reference'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if( is_array( $args['reference'] ) ) {
+				$where .= " `reference` IN(" . implode( ',', $args['reference'] ) . ") ";
+			} else {
+				if( ! empty( $args['search'] ) ) {
+					$where .= " `reference` LIKE '%%" . $args['reference'] . "%%' ";
+				} else {
+					$where .= " `reference` = '" . $args['reference'] . "' ";
+				}
+			}
+
+		}
+
 		if( ! empty( $args['context'] ) ) {
 
 			if( empty( $where ) ) {
@@ -174,7 +197,11 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			if( is_array( $args['context'] ) ) {
 				$where .= " `context` IN(" . implode( ',', $args['context'] ) . ") ";
 			} else {
-				$where .= " `context` = '" . $args['context'] . "' ";
+				if( ! empty( $args['search'] ) ) {
+					$where .= " `context` LIKE '%%" . $args['context'] . "%%' ";
+				} else {
+					$where .= " `context` = '" . $args['context'] . "' ";
+				}
 			}
 
 		}
