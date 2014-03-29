@@ -36,9 +36,7 @@ function affwp_referrals_contextual_help() {
 		'id'	    => 'affwp-referrals-overview',
 		'title'	    => __( 'Overview', 'affiliate-wp' ),
 		'content'	=>
-			'<p>' . __( "This screen provides access to all of your store's transactions.", 'affiliate-wp' ) . '</p>' . 
-			'<p>' . __( 'Payments can be searched by email address, user name, or filtered by status (completed, pending, etc.)', 'affiliate-wp' ) . '</p>' .
-			'<p>' . __( 'You also have the option to bulk delete payment should you wish.', 'affiliate-wp' ) . '</p>'
+			'<p>' . __( "This screen provides access to your site's referral history.", 'affiliate-wp' ) . '</p>'
 	) );
 
 	$screen->add_help_tab( array(
