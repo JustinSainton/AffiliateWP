@@ -32,7 +32,7 @@ function affwp_referrals_admin() {
 			<?php do_action( 'affwp_referrals_page_top' ); ?>
 			
 			<div id="affwp-referrals-export-wrap">
-				<button class="button-primary affwp-referrals-export-toggle"><?php _e( 'Export Referrals', 'affiliate-wp' ); ?></button>
+				<button class="button-primary affwp-referrals-export-toggle"><?php _e( 'Export Unpaid Referrals', 'affiliate-wp' ); ?></button>
 				<button class="button-primary affwp-referrals-export-toggle" style="display:none"><?php _e( 'Close', 'affiliate-wp' ); ?></button>
 				
 				<form id="affwp-referrals-export-form" style="display:none;" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>" method="post">
@@ -41,6 +41,7 @@ function affwp_referrals_admin() {
 						<input type="text" class="affwp-datepicker" autocomplete="off" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
 						<input type="hidden" name="affwp_action" value="generate_referral_payout"/>
 						<input type="submit" value="<?php _e( 'Generate CSV File', 'affiliate-wp' ); ?>" class="button-secondary"/>
+						<span><?php printf( __( 'To export referrals with a status other than <em>unpaid</em>, go to the <a href="%s">Tools &rarr; Export</a> page.', 'affiliate-wp' ), admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ) ); ?></span>
 					</p>
 				</form>
 
