@@ -530,12 +530,12 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		
 		$page      = isset( $_GET['paged'] )        ? absint( $_GET['paged'] ) : 1;
 		$status    = isset( $_GET['status'] )       ? $_GET['status']          : ''; 
-		$referral  = isset( $_GET['referral_id'] )  ? $_GET['referral_id']     : ''; 
 		$affiliate = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id']    : ''; 
 		$reference = isset( $_GET['reference'] )    ? $_GET['reference']       : ''; 
 		$context   = isset( $_GET['context'] )      ? $_GET['context']         : ''; 
 		$from      = isset( $_GET['filter_from'] )  ? $_GET['filter_from']     : ''; 
 		$to        = isset( $_GET['filter_to'] )    ? $_GET['filter_to']       : ''; 
+		$referral  = ''; 
 		$is_search = false;
 
 		$date = array();
