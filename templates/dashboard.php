@@ -92,21 +92,21 @@
 		<p><?php _e( 'Enter any URL below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
-		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url();
-		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url();
+		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
+		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url( '/' );
 		?>
 
-		<form method="get" class="affwp_form"> 
-			<div>
+		<form method="get" id="affwp_generate_ref_url" class="affwp_form"> 
+			<div id="affwp_base_url_wrap">
 				<label for="affwp_url"><?php _e( 'URL', 'affiliate-wp' ); ?></label>
 				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
 			</div>
-			<div>
+			<div id="affwp_referral_url_wrap"<?php if( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
 				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 				<input type="text" id="affwp_referral_url" value="<?php echo esc_attr( $referral_url ); ?>"/>
 				<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
 			</div>
-			<div>
+			<div id="affwp_referral_url_submit_wrap">
 				<input type="hidden" id="affwp_affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
 				<input type="hidden" id="affwp_referral_var" value="<?php echo esc_attr( affiliate_wp()->tracking->get_referral_var() ); ?>"/>
 				<input type="submit" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>"/>

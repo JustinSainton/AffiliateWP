@@ -36,6 +36,7 @@ function affwp_frontend_styles() {
 	}
 
 	if( has_shortcode( $post->post_content, 'affiliate_area' ) ) {
+		wp_enqueue_script( 'affwp-frontend', AFFILIATEWP_PLUGIN_URL . 'assets/js/frontend.js', array( 'jquery' ), AFFILIATEWP_VERSION );
 		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms.css', AFFILIATEWP_VERSION );
 	}
 
