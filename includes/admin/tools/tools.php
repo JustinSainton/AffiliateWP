@@ -141,6 +141,24 @@ function affwp_export_import_tab() {
 ?>
 
 	<div class="metabox-holder">
+
+		<div class="postbox">
+			<h3><span><?php _e( 'Export Referrals', 'affiliate-wp' ); ?></span></h3>
+			<div class="inside">
+				<p><?php _e( 'Export referrals to a CSV file.', 'affiliate-wp' ); ?></p>
+				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
+					<p>
+						date / status / affiliate options here
+					</p>
+					<p>
+						<input type="hidden" name="affwp_action" value="export_referrals" />
+						<?php wp_nonce_field( 'affwp_export_referrals_nonce', 'affwp_export_referrals_nonce' ); ?>
+						<?php submit_button( __( 'Export', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
+					</p>
+				</form>
+			</div><!-- .inside -->
+		</div><!-- .postbox -->
+
 		<div class="postbox">
 			<h3><span><?php _e( 'Export Settings', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">

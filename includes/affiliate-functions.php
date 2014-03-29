@@ -179,6 +179,9 @@ function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 	$earnings = affwp_get_affiliate_earnings( $affiliate_id );
 	$earnings -= $amount;
 	$earnings = round( $earnings, 2 );
+	if( $earnings < 0 ) {
+		$earnings = 0;
+	}
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
 
 		return $earnings;
@@ -233,7 +236,9 @@ function affwp_decrease_affiliate_referral_count( $affiliate_id = 0 ) {
 
 	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
 	$referrals -= 1;
-
+	if( $referrals < 0 ) {
+		$referrals = 0;
+	}
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
 
 		return $referrals;
