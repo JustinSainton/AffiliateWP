@@ -37,6 +37,12 @@ function affwp_frontend_styles() {
 
 	if( has_shortcode( $post->post_content, 'affiliate_area' ) ) {
 		wp_enqueue_script( 'affwp-frontend', AFFILIATEWP_PLUGIN_URL . 'assets/js/frontend.js', array( 'jquery' ), AFFILIATEWP_VERSION );
+		wp_localize_script( 'affwp-frontend', 'affwp_vars', array(
+			'affwp_version' => AFFILIATEWP_VERSION,
+			'permalinks'    => get_option( 'permalink_structure' ),
+			'currency_sign' => affwp_currency_filter(''),
+			'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
+		));
 		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms.css', AFFILIATEWP_VERSION );
 	}
 
