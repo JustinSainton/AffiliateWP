@@ -206,7 +206,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'referrals'    => __( 'Paid Referrals', 'affiliate-wp' ),
 			'visits'       => __( 'Visits', 'affiliate-wp' ),
 			'status'       => __( 'Status', 'affiliate-wp' ),
-			'reports'      => __( 'Reports', 'affiliate-wp' ),
+			'actions'      => __( 'Actions', 'affiliate-wp' ),
 		);
 
 		return $columns;
@@ -239,12 +239,6 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	function column_default( $affiliate, $column_name ) {
 		switch( $column_name ){
 			
-			case 'reports' :
-
-				$value = '<a href="' . add_query_arg( array( 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) . '">' . __( 'View', 'affiliate-wp' ) . '</a>';
-
-				break;
-
 			default:
 				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
 				break;
@@ -267,22 +261,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$row_actions  = array();
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
 
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
-
-		if( strtolower( $affiliate->status ) == 'active' ) {
-			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
-		} elseif( strtolower( $affiliate->status ) == 'pending' ) {
-			$row_actions['accept'] = '<a href="' . add_query_arg( array( 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
-			$row_actions['reject'] = '<a href="' . add_query_arg( array( 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
-		} else {
-			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
-		}
-
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
-
-		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
-
-		return $name . $this->row_actions( $row_actions );
+		return $name;
 	}
 
 	/**
@@ -332,6 +311,37 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	function column_visits( $affiliate ) {
 		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $affiliate->affiliate_id ) . '">' . $affiliate->visits . '</a>';
 	}
+	
+	/**
+	 * Render the actions column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $affiliate Contains all the data for the visits column
+	 * @return string action links
+	 */
+	function column_actions( $affiliate ) {
+
+		$row_actions['reports'] = '<a href="' . add_query_arg( array( 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) . '">' . __( 'Reports', 'affiliate-wp' ) . '</a>';
+		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
+
+		if( strtolower( $affiliate->status ) == 'active' ) {
+			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+		} elseif( strtolower( $affiliate->status ) == 'pending' ) {
+			$row_actions['accept'] = '<a href="' . add_query_arg( array( 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+			$row_actions['reject'] = '<a href="' . add_query_arg( array( 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+		} else {
+			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+		}
+
+		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+
+		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
+
+		return $this->row_actions( $row_actions, true );
+
+	}
+
 
 	/**
 	 * Message to be displayed when there are no items
