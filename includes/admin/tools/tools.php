@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function affwp_tools_admin() {
 
-	$active_tab = isset( $_GET[ 'tab' ] ) && array_key_exists( $_GET['tab'], affwp_get_tools_tabs() ) ? $_GET[ 'tab' ] : 'general';
+	$active_tab = isset( $_GET[ 'tab' ] ) && array_key_exists( $_GET['tab'], affwp_get_tools_tabs() ) ? $_GET[ 'tab' ] : 'export_import';
 
 	ob_start();
 	?>
@@ -63,9 +63,9 @@ function affwp_tools_admin() {
 function affwp_get_tools_tabs() {
 
 	$tabs                  = array();
-	$tabs['general']       = __( 'General', 'affiliate-wp' );
-	$tabs['migration']     = __( 'Migration Assistant', 'affiliate-wp' );
+	//$tabs['general']       = __( 'General', 'affiliate-wp' );
 	$tabs['export_import'] = __( 'Export / Import', 'affiliate-wp' );
+	$tabs['migration']     = __( 'Migration Assistant', 'affiliate-wp' );
 
 	return apply_filters( 'affwp_tools_tabs', $tabs );
 }
