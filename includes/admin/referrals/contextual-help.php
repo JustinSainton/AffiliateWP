@@ -52,6 +52,14 @@ function affwp_referrals_contextual_help() {
 			</ul>'
 	) );
 
+	$screen->add_help_tab( array(
+		'id'	    => 'affwp-referrals-export',
+		'title'	    => __( 'Exporting Referrals', 'affiliate-wp' ),
+		'content'	=>
+			'<p>' . __( 'Referrals can be exported directly to a CSV file in order to make it easier for your own accounting needs and for you to payout your affiliates\'s earnings.', 'affiliate-wp' ) . '</p>' .
+			'<p>' . __( 'The CSV file generated is structured properly for PayPal\'s Mass Payment system so you can easily payout all of your affiliates at once via PayPal.', 'affiliate-wp' ) . '</p>'
+	) );
+
 	do_action( 'affwp_referrals_contextual_help', $screen );
 }
 add_action( 'load-affiliates_page_affiliate-wp-referrals', 'affwp_referrals_contextual_help' );
