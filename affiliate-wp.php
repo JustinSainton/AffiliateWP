@@ -90,6 +90,7 @@ final class Affiliate_WP {
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
 
+			self::$instance->updater();
 		}
 		return self::$instance;
 	}
@@ -161,6 +162,7 @@ final class Affiliate_WP {
 
 		if( is_admin() ) {
 		
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
@@ -196,6 +198,29 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
+	}
+
+	/**
+	 * Plugin Updater
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @return void
+	 */
+	private function updater() {
+
+		$license_key = $this->settings->get( 'license_key' );
+
+		if( $license_key ) {
+			// setup the updater
+			$affwp_updater = new AFFWP_Plugin_Updater( 'http://affiliatewp.com', __FILE__, array(
+					'version' 	=> AFFILIATEWP_VERSION,
+					'license' 	=> $license_key,
+					'item_name' => 'AffiliateWP',
+					'author' 	=> 'Pippin Williamson'
+				)
+			);
+		}
 	}
 
 	/**
