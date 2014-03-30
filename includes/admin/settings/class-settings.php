@@ -146,7 +146,7 @@ class Affiliate_WP_Settings {
 					),
 					'affiliates_page' => array(
 						'name' => __( 'Affiliate Area', 'affiliate-wp' ),
-						'desc' => __( 'This is the page where affiliates will manage this affiliate account.', 'affiliate-wp' ),
+						'desc' => __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => affwp_get_pages()
 					),
