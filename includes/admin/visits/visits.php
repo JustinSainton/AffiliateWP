@@ -149,6 +149,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
 			'referral_id'  => __( 'Referral ID', 'affiliate-wp' ),
 			'ip'           => __( 'IP', 'affiliate-wp' ),
+			'converted'    => __( 'Converted', 'affiliate-wp' ),
 			'date'         => __( 'Date', 'affiliate-wp' ),
 		);
 
@@ -199,6 +200,20 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	function column_affiliate_id( $visit ) {
 		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&action=view_affiliate&affiliate_id=' . $visit->affiliate_id ) . '">' . $visit->affiliate_id . '</a>';
+	}
+
+	/**
+	 * Render the converted column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $referral Contains all the data for the checkbox column
+	 * @return string Converted status icon
+	 */
+	function column_converted( $visit ) {
+
+		$converted = ! empty( $visit->referral_id ) ? 'yes' : 'no';
+		return '<span class="visit-converted ' . $converted . '"><i></i></span>';
 	}
 
 	/**

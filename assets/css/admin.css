@@ -34,27 +34,6 @@ table.affwp_table th {
 #affwp-dashboard-widgets-wrap .postbox {
 	margin: 0 8px 20px;
 }
-#affwp-dashboard-widgets-wrap .visit-converted {
-
-}
-#affwp-dashboard-widgets-wrap .visit-converted i {
-	display: inline-block;
-	position: relative;
-	top:2px;
-	left: 2px;
-}
-#affwp-dashboard-widgets-wrap .visit-converted i:before {
-	font-family: "dashicons";
-	font-style: normal;
-}
-#affwp-dashboard-widgets-wrap .visit-converted.yes i:before {
-	content: "\f147";
-	color: #5e95ef;
-}
-#affwp-dashboard-widgets-wrap .visit-converted.no i:before {
-	content: "\f158";
-	color: #ef6c5e;
-}
 
 /* Referrals page */
 #affwp-referrals-export-form,
@@ -133,4 +112,27 @@ table.affwp_table th {
 }
 #affwp-affiliates-filter #status {
 	width: 100px;
+}
+
+/* Visits page */
+.visit-converted {
+
+}
+.visit-converted i {
+	display: inline-block;
+	position: relative;
+	top:2px;
+	left: 2px;
+}
+.visit-converted i:before {
+	font-family: "dashicons";
+	font-style: normal;
+}
+.visit-converted.yes i:before {
+	content: "\f147";
+	color: #5e95ef;
+}
+.visit-converted.no i:before {
+	content: "\f158";
+	color: #ef6c5e;
 }
