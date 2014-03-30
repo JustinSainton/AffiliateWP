@@ -70,7 +70,7 @@ final class Affiliate_WP {
 	 * @uses Affiliate_WP::setup_globals() Setup the globals needed
 	 * @uses Affiliate_WP::includes() Include the required files
 	 * @uses Affiliate_WP::setup_actions() Setup the hooks and actions
-	 * @see EDD()
+	 * @uses Affiliate_WP::updater() Setup the plugin updater
 	 * @return The one true Affiliate_WP
 	 */
 	public static function instance() {
