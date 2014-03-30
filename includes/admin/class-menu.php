@@ -8,7 +8,8 @@ class Affiliate_WP_Admin_Menu {
 	}
 
 	public function register_menus() {
-		add_menu_page( __( 'Affiliates Overview', 'affiliate-wp' ), __( 'Overview', 'affiliate-wp' ), 'manage_options', 'affiliate-wp', 'affwp_affiliates_dashboard' );
+		add_menu_page( __( 'Affiliates', 'affiliate-wp' ), __( 'Affiliates', 'affiliate-wp' ), 'manage_options', 'affiliate-wp', 'affwp_affiliates_dashboard' );
+		add_submenu_page( 'affiliate-wp', __( 'Overview', 'affiliate-wp' ), __( 'Overview', 'affiliate-wp' ), 'manage_options', 'affiliate-wp', 'affwp_affiliates_dashboard' );
 		add_submenu_page( 'affiliate-wp', __( 'Affiliates', 'affiliate-wp' ), __( 'Affiliates', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-affiliates', 'affwp_affiliates_admin' );
 		add_submenu_page( 'affiliate-wp', __( 'Referrals', 'affiliate-wp' ), __( 'Referrals', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-referrals', 'affwp_referrals_admin' );
 		add_submenu_page( 'affiliate-wp', __( 'Visits', 'affiliate-wp' ), __( 'Visits', 'affiliate-wp' ), 'manage_options', 'affiliate-wp-visits', 'affwp_visits_admin' );
