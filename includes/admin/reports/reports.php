@@ -19,7 +19,7 @@ function affwp_reports_admin() {
 	<div class="wrap">
 		<h2><?php _e( 'Reports', 'affiliate-wp' ); ?></h2>
 		<?php do_action( 'affwp_reports_page_top' ); ?>
-		
+
 		<table id="affwp_unpaid_counts" class="affwp_table">
 
 			<thead>
@@ -77,7 +77,7 @@ function affwp_reports_admin() {
 		$graph = new Affiliate_WP_Referrals_Graph;
 		$graph->set( 'x_mode', 'time' );
 		$graph->display();
-		
+
 		do_action( 'affwp_reports_page_bottom' );
 		?>
 	</div>
