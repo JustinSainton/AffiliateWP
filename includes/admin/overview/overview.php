@@ -78,22 +78,21 @@ function affwp_affiliates_dashboard() {
 					<div class="postbox">
 						<h3><?php _e( 'Latest Affiliate Registrations', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<?php
-							$affiliates = affiliate_wp()->affiliates->get_affiliates( array( 'number' => 5 ) );
-							if( $affiliates ) : ?>
-								<table class="affwp_table">
+							<?php $affiliates = affiliate_wp()->affiliates->get_affiliates( array( 'number' => 5 ) ); ?>
+							<table class="affwp_table">
 
-									<thead>
+								<thead>
 
-										<tr>
-											<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
-											<th><?php _e( 'Status', 'affiliate-wp' ); ?></th>
-											<th><?php _e( 'Actions', 'affiliate-wp' ); ?></th>
-										</tr>
+									<tr>
+										<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Status', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Actions', 'affiliate-wp' ); ?></th>
+									</tr>
 
-									</thead>
+								</thead>
 
-									<tbody>
+								<tbody>
+									<?php if( $affiliates ) : ?>
 										<?php foreach( $affiliates as $affiliate  ) : ?>	
 											<tr>
 												<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id ); ?></td>
@@ -113,10 +112,14 @@ function affwp_affiliates_dashboard() {
 												</td>
 											</tr>
 										<?php endforeach; ?>
-									</tbody>
+									<?php else : ?>
+										<tr>
+											<td colspn="3"><?php _e( 'No affiliate registrations yet', 'affiliate-wp' ); ?></td>
+										</tr>
+									<?php endif; ?>
+								</tbody>
 
-								</table>
-							<?php endif; ?>
+							</table>
 		
 						</div>
 					</div>
@@ -125,54 +128,56 @@ function affwp_affiliates_dashboard() {
 					<div class="postbox">
 						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<?php
-							$referrals = affiliate_wp()->referrals->get_referrals( array( 'number' => 5, 'status' => 'unpaid' ) );
-							if( $referrals ) : ?>
-								<table class="affwp_table">
+							<?php $referrals = affiliate_wp()->referrals->get_referrals( array( 'number' => 5, 'status' => 'unpaid' ) ); ?>
+							<table class="affwp_table">
 
-									<thead>
+								<thead>
 
+									<tr>
+										<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Amount', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Description', 'affiliate-wp' ); ?></th>
+									</tr>
+
+								</thead>
+
+								<tbody>
+								<?php if( $referrals ) : ?>
+									<?php foreach( $referrals as $referral  ) : ?>	
 										<tr>
-											<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
-											<th><?php _e( 'Amount', 'affiliate-wp' ); ?></th>
-											<th><?php _e( 'Description', 'affiliate-wp' ); ?></th>
+											<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ); ?></td>
+											<td><?php echo affwp_currency_filter( $referral->amount ); ?></td>
+											<td><?php echo ! empty( $referral->description ) ? esc_html( $referral->description ) : ''; ?></td>
 										</tr>
+									<?php endforeach; ?>
+								<?php else : ?>
+									<tr>
+										<td colspn="3"><?php _e( 'No referrals recorded yet', 'affiliate-wp' ); ?></td>
+									</tr>
+								<?php endif; ?>
+								</tbody>
 
-									</thead>
-
-									<tbody>
-										<?php foreach( $referrals as $referral  ) : ?>	
-											<tr>
-												<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ); ?></td>
-												<td><?php echo affwp_currency_filter( $referral->amount ); ?></td>
-												<td><?php echo ! empty( $referral->description ) ? esc_html( $referral->description ) : ''; ?></td>
-											</tr>
-										<?php endforeach; ?>
-									</tbody>
-
-								</table>
-							<?php endif; ?>
+							</table>
 						</div>
 					</div>
 					<div class="postbox">
 						<h3><?php _e( 'Recent Referral Visits', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<?php
-							$visits = affiliate_wp()->visits->get_visits( array( 'number' => 8 ) );
-							if( $visits ) : ?>
-								<table class="affwp_table">
+							<?php $visits = affiliate_wp()->visits->get_visits( array( 'number' => 8 ) ); ?>
+							<table class="affwp_table">
 
-									<thead>
+								<thead>
 
-										<tr>
-											<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
-											<th><?php _e( 'URL Earnings This Month', 'affiliate-wp' ); ?></th>
-											<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
-										</tr>
+									<tr>
+										<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'URL Earnings This Month', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
+									</tr>
 
-									</thead>
+								</thead>
 
-									<tbody>
+								<tbody>
+									<?php if( $visits ) : ?>
 										<?php foreach( $visits as $visit ) : ?>	
 											<tr>
 												<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $visit->affiliate_id ); ?></td>
@@ -183,10 +188,14 @@ function affwp_affiliates_dashboard() {
 												</td>
 											</tr>
 										<?php endforeach; ?>
-									</tbody>
+									<?php else: ?>
+										<tr>
+											<td colspn="3"><?php _e( 'No referral visits recorded yet', 'affiliate-wp' ); ?></td>
+										</tr>
+									<?php endif; ?>
+								</tbody>
 
-								</table>
-							<?php endif; ?>
+							</table>
 						</div>
 					</div>
 				</div>
