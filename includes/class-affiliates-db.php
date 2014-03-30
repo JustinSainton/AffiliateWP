@@ -24,13 +24,14 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	*/
 	public function get_columns() {
 		return array(
-			'affiliate_id' => '%d',
-			'user_id'      => '%d',
-			'rate'         => '%s',
-			'status'       => '%s',
-			'earnings'     => '%s',
-			'referrals'    => '%d',
-			'visits'       => '%d',
+			'affiliate_id'    => '%d',
+			'user_id'         => '%d',
+			'rate'            => '%s',
+			'status'          => '%s',
+			'earnings'        => '%s',
+			'referrals'       => '%d',
+			'visits'          => '%d',
+			'date_registered' => '%s',
 		);
 	}
 
@@ -172,7 +173,8 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	*/
 	public function add( $data = array() ) {
 		$defaults = array(
-			'status' => 'active'
+			'status'          => 'active',
+			'date_registered' => current_time( 'mysql' )
 		);
 
 		$args = wp_parse_args( $data, $defaults );
@@ -279,6 +281,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			`earnings` mediumtext NOT NULL,
 			`referrals` bigint(20) NOT NULL,
 			`visits` bigint(20) NOT NULL,
+			`date_registered` datetime NOT NULL,
 			PRIMARY KEY  (affiliate_id),
 			KEY user_id (user_id)
 			) CHARACTER SET utf8 COLLATE utf8_general_ci;";
