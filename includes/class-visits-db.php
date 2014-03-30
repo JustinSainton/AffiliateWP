@@ -83,13 +83,13 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
 				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
 
-				if( ! empty( $where ) ) {
+				if( empty( $where ) ) {
 
-					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
+					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
 				
 				} else {
 					
-					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
+					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
 	
 				}
 
