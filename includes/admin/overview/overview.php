@@ -76,68 +76,82 @@ function affwp_affiliates_dashboard() {
 						</div>
 					</div>
 					<div class="postbox">
-						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
+						<h3><?php _e( 'Latest Affiliate Registrations', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
 							<?php
-							$referrals = affiliate_wp()->referrals->get_referrals( array( 'number' => 5, 'status' => 'unpaid' ) );
-							if( $referrals ) {
+							$affiliates = affiliate_wp()->affiliates->get_affiliates( array( 'number' => 5 ) );
+							if( $affiliates ) : ?>
+								<table class="affwp_table">
 
-								echo '<ul>';
+									<thead>
 
-								foreach( $referrals as $referral ) {
+										<tr>
+											<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+											<th><?php _e( 'Status', 'affiliate-wp' ); ?></th>
+											<th><?php _e( 'Actions', 'affiliate-wp' ); ?></th>
+										</tr>
 
-									echo '<li>';
+									</thead>
 
-										echo '<span class="referral-amount">';
-											printf(
-												_x( '%s for %s', 'Amount for affiliate', 'affiliate-wp' ),
-												affwp_currency_filter( $referral->amount ),
-												affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id )
-											);
-										echo '</span>';
-										if( ! empty( $referral->description ) ) {
-											echo '<span class="referral-sep">&nbsp;&ndash;&nbsp;</span>';
-											echo '<span class="referral-description">' . esc_html( $referral->description ) . '</span>';
-										}
+									<tbody>
+										<?php foreach( $affiliates as $affiliate  ) : ?>	
+											<tr>
+												<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id ); ?></td>
+												<td><?php echo $affiliate->status; ?></td>
+												<td>
+													<?php
+													if( 'pending' == $affiliate->status ) {
+														$accept_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=accept&affiliate_id=' . $affiliate->affiliate_id );
+														$reject_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=reject&affiliate_id=' . $affiliate->affiliate_id );
+														echo '<a href="' . esc_url( $accept_url ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+														echo ' | <a href="' . esc_url( $reject_url ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+													} else {
+														$affiliate_report_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=view_affiliate&affiliate_id=' . $affiliate->affiliate_id );
+														echo '<a href="' . esc_url( $affiliate_report_url ) . '">' . __( 'View Report', 'affiliate-wp' ) . '</a>';
+													}
+													?>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
 
-									echo '</li>';
-
-								}
-
-								echo '</ul>';
-
-							}
-							?>
+								</table>
+							<?php endif; ?>
+		
 						</div>
 					</div>
 				</div>
 				<div id="postbox-container-2" class="postbox-container">
 					<div class="postbox">
-						<h3><?php _e( 'Latest Affiliate Registrations', 'affiliate-wp' ); ?></h3>
+						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
 							<?php
-							$affiliates = affiliate_wp()->affiliates->get_affiliates( array( 'number' => 5 ) );
-							if( $affiliates ) {
-								echo '<ul>';
-								foreach( $affiliates as $affiliate ) {
-									echo '<li>';
-										echo '<span class="affiliate-name">' . affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id ) . '</span>';
-										echo '<span class="affiliate-sep">&nbsp;&ndash;&nbsp;</span>';
-										echo '<span class="affiliate-status ' . esc_attr( $affiliate->status ) . '">';
-											echo $affiliate->status;
-											if( 'pending' == $affiliate->status ) {
-												echo '<span class="affiliate-sep">&nbsp;&ndash;&nbsp;</span>';
-												$accept_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=accept&affiliate_id=' . $affiliate->affiliate_id );
-												$reject_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=reject&affiliate_id=' . $affiliate->affiliate_id );
-												echo '<a href="' . esc_url( $accept_url ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
-												echo ' | <a href="' . esc_url( $reject_url ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
-											}
-										echo '</span>';
-									echo '</li>';
-								}
-								echo '</ul>';
-							}
-							?>
+							$referrals = affiliate_wp()->referrals->get_referrals( array( 'number' => 5, 'status' => 'unpaid' ) );
+							if( $referrals ) : ?>
+								<table class="affwp_table">
+
+									<thead>
+
+										<tr>
+											<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+											<th><?php _e( 'Amount', 'affiliate-wp' ); ?></th>
+											<th><?php _e( 'Description', 'affiliate-wp' ); ?></th>
+										</tr>
+
+									</thead>
+
+									<tbody>
+										<?php foreach( $referrals as $referral  ) : ?>	
+											<tr>
+												<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ); ?></td>
+												<td><?php echo affwp_currency_filter( $referral->amount ); ?></td>
+												<td><?php echo ! empty( $referral->description ) ? esc_html( $referral->description ) : ''; ?></td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+
+								</table>
+							<?php endif; ?>
 						</div>
 					</div>
 					<div class="postbox">
