@@ -93,7 +93,11 @@ class Affiliate_WP_Register {
 
 		}
 
-		affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+		$affiliate_id = affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+
+		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
+		}
 
 	}
 

@@ -223,6 +223,11 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'registration_notifications' => array(
+						'name' => __( 'Notify Admins', 'affiliate-wp' ),
+						'desc' => __( 'Notify site admins of new affiliate registrations?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'require_approval' => array(
 						'name' => __( 'Require approval', 'affiliate-wp' ),
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),

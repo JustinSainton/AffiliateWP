@@ -55,6 +55,7 @@ final class Affiliate_WP {
 	public $tracking;
 	public $settings;
 	public $templates;
+	public $emails;
 
 
 	/**
@@ -89,6 +90,7 @@ final class Affiliate_WP {
 			self::$instance->login        = new Affiliate_WP_Login;
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
+			self::$instance->emails       = new Affiliate_WP_Emails;
 
 			self::$instance->updater();
 		}
@@ -184,6 +186,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-integrations.php';
