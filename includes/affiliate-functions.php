@@ -419,7 +419,7 @@ function affwp_update_affiliate( $data = array() ) {
 	$args         = array();
 	$affiliate_id = absint( $data['affiliate_id'] );
 
-	$args['rate'] = !empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
+	$args['rate'] = ! empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
 
 	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
