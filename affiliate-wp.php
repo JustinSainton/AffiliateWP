@@ -209,6 +209,10 @@ final class Affiliate_WP {
 	 */
 	private function updater() {
 
+		if( ! is_admin() ) {
+			return;
+		}
+
 		$license_key = $this->settings->get( 'license_key' );
 
 		if( $license_key ) {
