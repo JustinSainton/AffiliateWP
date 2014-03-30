@@ -30,6 +30,11 @@ table.affwp_table th {
 	overflow-y: scroll;
 }
 
+/* Affiliate Overview */
+#affwp-dashboard-widgets-wrap .postbox {
+	margin: 0 8px 20px;
+}
+
 /* Referrals page */
 #affwp-referrals-export-form,
 #affwp_unpaid_counts,

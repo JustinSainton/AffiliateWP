@@ -14,6 +14,44 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 function affwp_affiliates_dashboard() {
-
-
+?>
+	<div class="wrap">
+		<div id="affwp-dashboard-widgets-wrap">
+			<div id="dashboard-widgets" class="metabox-holder">
+				<div class="postbox-container">
+					<div class="postbox">
+						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
+						<div class="inside">
+							stuff
+						</div>
+					</div>
+				</div>
+				<div class="postbox-container">
+					<div class="postbox">
+						<h3><?php _e( 'Affiliate Registrations', 'affiliate-wp' ); ?></h3>
+						<div class="inside">
+							stuff
+						</div>
+					</div>
+				</div>
+				<div class="postbox-container">
+					<div class="postbox">
+						<h3><?php _e( 'Totals', 'affiliate-wp' ); ?></h3>
+						<div class="inside">
+							stuff
+						</div>
+					</div>
+				</div>
+				<div class="postbox-container">
+					<div class="postbox">
+						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
+						<div class="inside">
+							stuff
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php
 }
