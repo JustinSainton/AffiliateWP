@@ -141,34 +141,38 @@ function affwp_affiliates_dashboard() {
 						</div>
 					</div>
 					<div class="postbox">
-						<h3><?php _e( 'Referral Visits', 'affiliate-wp' ); ?></h3>
+						<h3><?php _e( 'Recent Referral Visits', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
 							<?php
 							$visits = affiliate_wp()->visits->get_visits( array( 'number' => 8 ) );
-							if( $visits ) {
+							if( $visits ) : ?>
+								<table class="affwp_table">
 
-								echo '<ul>';
+									<thead>
 
-								foreach( $visits as $visit ) {
+										<tr>
+											<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+											<th><?php _e( 'URL Earnings This Month', 'affiliate-wp' ); ?></th>
+											<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
+										</tr>
 
-									echo '<li>';
+									</thead>
 
-										echo '<span class="visit-affiliate-name">';
-											echo affiliate_wp()->affiliates->get_affiliate_name( $visit->affiliate_id );
-										echo '</span>';
-										echo '<span class="visit-sep">&nbsp;&ndash;&nbsp;</span>';
-										echo '<span class="visit-url">';
-											echo '<a href="' . esc_url( $visit->url ) . '">' . esc_html( $visit->url ) . '</a>';
-										echo '</span>';
-										
-									echo '</li>';
+									<tbody>
+										<?php foreach( $visits as $visit ) : ?>	
+											<tr>
+												<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $visit->affiliate_id ); ?></td>
+												<td><a href="<?php echo esc_url( $visit->url ); ?>"><?php echo esc_html( $visit->url ); ?></a></td>
+												<td>
+													<?php $converted = ! empty( $visit->referral_id ) ? 'yes' : 'no'; ?>
+													<span class="visit-converted <?php echo $converted; ?>"><i></i></span>
+												</td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
 
-								}
-
-								echo '</ul>';
-
-							}
-							?>
+								</table>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
