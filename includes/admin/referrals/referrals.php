@@ -219,13 +219,14 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'cb'        => '<input type="checkbox" />',
-			'amount'    => __( 'Amount', 'affiliate-wp' ),
-			'affiliate' => __( 'Affiliate', 'affiliate-wp' ),
-			'reference' => __( 'Reference', 'affiliate-wp' ),
-			'date'      => __( 'Date', 'affiliate-wp' ),
-			'actions'   => __( 'Actions', 'affiliate-wp' ),
-			'status'    => __( 'Status', 'affiliate-wp' ),
+			'cb'          => '<input type="checkbox" />',
+			'amount'      => __( 'Amount', 'affiliate-wp' ),
+			'affiliate'   => __( 'Affiliate', 'affiliate-wp' ),
+			'reference'   => __( 'Reference', 'affiliate-wp' ),
+			'description' => __( 'Description', 'affiliate-wp' ),
+			'date'        => __( 'Date', 'affiliate-wp' ),
+			'actions'     => __( 'Actions', 'affiliate-wp' ),
+			'status'      => __( 'Status', 'affiliate-wp' ),
 		);
 
 		return $columns;
