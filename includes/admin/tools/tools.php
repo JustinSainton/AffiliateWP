@@ -12,6 +12,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/migration.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/export.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-referrals.php';
@@ -123,7 +124,9 @@ function affwp_migration_tab() {
 			<div class="inside">
 				<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to Affiliate WP.', 'affiliate-wp' ); ?></p>
 				<p><?php _e( '<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool.', 'affiliate-wp' ); ?></p>
-				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'index.php?page=affiliate-wp-migrate&type=affiliates-pro' ); ?>">
+				<form method="post">
+					<input type="hidden" name="type" value="affiliates-pro"/>
+					<input type="hidden" name="affwp_action" value="migrate"/>
 					<p>
 						<?php wp_nonce_field( 'affwp_affpro_migrate_nonce', 'affwp_affpro_migrate_nonce' ); ?>
 						<?php submit_button( __( 'Migrate Data from Affiliates Pro', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
@@ -288,26 +291,3 @@ function affwp_process_settings_import() {
 
 }
 add_action( 'affwp_import_settings', 'affwp_process_settings_import' );
-
-/**
- * The migration processing screen
- *
- * @since 1.0
- * @return void
- */
-function affwp_migrate_admin() {
-	$step   = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
-	$type   = isset( $_GET['type'] ) ? $_GET['type'] : false;
-?>
-	<div class="wrap">
-		<h2><?php _e( 'Affiliate WP Migration', 'affiliate-wp' ); ?></h2>
-		<div id="edd-upgrade-status">
-			<p><?php _e( 'The upgrade process is running, please be patient. This could take several minutes to complete while license keys are upgraded in batches of 100.', 'affiliate-wp' ); ?></p>
-			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>
-		</div>
-		<script type="text/javascript">
-			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $_GET['step'] ); ?>&type=<?php echo $type; ?>";
-		</script>
-	</div>
-<?php	
-}

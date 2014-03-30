@@ -27,4 +27,8 @@ class Affiliate_WP_Migrate_Base {
 
 	}
 
+	public function finish() {
+		wp_redirect( admin_url( 'admin.php?page=affiliate-wp' ) ); exit;
+	}
+
 }
