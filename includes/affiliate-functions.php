@@ -410,7 +410,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 function affwp_update_affiliate( $data = array() ) {
 
-	if( empty( $data['affiliate_id'] ) ) {
+	if ( empty( $data['affiliate_id'] ) ) {
 
 		return false;
 
@@ -419,15 +419,11 @@ function affwp_update_affiliate( $data = array() ) {
 	$args         = array();
 	$affiliate_id = absint( $data['affiliate_id'] );
 
-	if( ! empty( $data['rate'] ) ) {
+	$args['rate'] = !empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
 
-		$args['rate'] = sanitize_text_field( $data['rate'] );
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
-	}
-
-	if( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
-
-		if( ! empty( $_POST['affwp_action'] ) ) {
+		if ( ! empty( $_POST['affwp_action'] ) ) {
 			// This is an update call from the edit screen
 			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp&action=edit_affiliate&affwp_notice=affiliate_updated&affiliate_id=' . $affiliate_id ) ); exit;
 		}
