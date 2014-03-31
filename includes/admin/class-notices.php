@@ -50,6 +50,12 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
+			case 'stats_recounted' :
+
+				$message = __( 'Affiliate stats have been recounted!', 'affiliate-wp' );
+
+				break;
+
 			case 'referral_updated' :
 
 				$message = __( 'Referral updated successfully', 'affiliate-wp' );
