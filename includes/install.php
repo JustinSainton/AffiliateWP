@@ -30,7 +30,14 @@ function affiliate_wp_install() {
 	$roles->add_caps();
 
 	update_option( 'affwp_is_installed', '1' );
-	// send to welcome page here
+	
+	// Bail if activating from network, or bulk
+	if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+		return;
+	}
+
+	// Add the transient to redirect
+	set_transient( '_affwp_activation_redirect', true, 30 );
 
 }
 register_activation_hook( AFFILIATEWP_PLUGIN_FILE, 'affiliate_wp_install' );
