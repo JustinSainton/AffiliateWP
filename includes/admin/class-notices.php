@@ -61,13 +61,25 @@ class Affiliate_WP_Admin_Notices {
 
 			case 'affiliate_active' :
 
-				$message = __( 'Affiliate account activated' );
+				$message = __( 'Affiliate account activated', 'affiliate-wp' );
 
 				break;
 
 			case 'affiliate_inactive' :
 
-				$message = __( 'Affiliate account deactivated' );
+				$message = __( 'Affiliate account deactivated', 'affiliate-wp' );
+
+				break;
+
+			case 'affiliate_accept' :
+
+				$message = __( 'Affiliate request was accepted', 'affiliate-wp' );
+
+				break;
+
+			case 'affiliate_reject' :
+
+				$message = __( 'Affiliate request was rejected', 'affiliate-wp' );
 
 				break;
 
