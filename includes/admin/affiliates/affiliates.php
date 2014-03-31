@@ -34,7 +34,7 @@ function affwp_affiliates_admin() {
 ?>
 		<div class="wrap">
 			<h2><?php _e( 'Affiliates', 'affiliate-wp' ); ?>
-				<a href="<?php echo add_query_arg( array( 'action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
+				<a href="<?php echo add_query_arg( array( 'affwp_notice' => false, 'action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
 			</h2>
 			<?php do_action( 'affwp_affiliates_page_top' ); ?>
 			<form id="affwp-affiliates-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
@@ -243,7 +243,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	function column_default( $affiliate, $column_name ) {
 		switch( $column_name ){
-			
+
 			default:
 				$value = isset( $affiliate->$column_name ) ? $affiliate->$column_name : '';
 				break;
@@ -316,7 +316,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	function column_visits( $affiliate ) {
 		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $affiliate->affiliate_id ) . '">' . affwp_get_affiliate_visit_count( $affiliate->affiliate_id ) . '</a>';
 	}
-	
+
 	/**
 	 * Render the actions column
 	 *
@@ -327,19 +327,19 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	function column_actions( $affiliate ) {
 
-		$row_actions['reports'] = '<a href="' . add_query_arg( array( 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) . '">' . __( 'Reports', 'affiliate-wp' ) . '</a>';
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
+		$row_actions['reports'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) . '">' . __( 'Reports', 'affiliate-wp' ) . '</a>';
+		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
 		if( strtolower( $affiliate->status ) == 'active' ) {
-			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		} elseif( strtolower( $affiliate->status ) == 'pending' ) {
-			$row_actions['accept'] = '<a href="' . add_query_arg( array( 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
-			$row_actions['reject'] = '<a href="' . add_query_arg( array( 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+			$row_actions['accept'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+			$row_actions['reject'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 		} else {
-			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
 
@@ -410,11 +410,11 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			if ( 'delete' === $this->current_action() ) {
 				affiliate_wp()->affiliates->delete( $id );
 			}
-			
+
 			if ( 'activate' === $this->current_action() ) {
 				affwp_set_affiliate_status( $id, 'active' );
 			}
-			
+
 			if ( 'deactivate' === $this->current_action() ) {
 				affwp_set_affiliate_status( $id, 'inactive' );
 			}
@@ -432,7 +432,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	public function get_affiliate_counts() {
 
-		$search = isset( $_GET['s'] ) ? $_GET['s'] : ''; 
+		$search = isset( $_GET['s'] ) ? $_GET['s'] : '';
 
 		$this->active_count   = affiliate_wp()->affiliates->count( array( 'status' => 'active', 'search' => $search ) );
 		$this->inactive_count = affiliate_wp()->affiliates->count( array( 'status' => 'inactive', 'search' => $search ) );
@@ -449,10 +449,10 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return array $affiliate_data Array of all the data for the Affiliates
 	 */
 	public function affiliate_data() {
-		
+
 		$page    = isset( $_GET['paged'] )    ? absint( $_GET['paged'] ) : 1;
-		$status  = isset( $_GET['status'] )   ? $_GET['status']          : ''; 
-		$search  = isset( $_GET['s'] )        ? $_GET['s']               : ''; 
+		$status  = isset( $_GET['status'] )   ? $_GET['status']          : '';
+		$search  = isset( $_GET['s'] )        ? $_GET['s']               : '';
 		$order   = isset( $_GET['order'] )    ? $_GET['order']           : 'DESC';
 		$orderby = isset( $_GET['orderby'] )  ? $_GET['orderby']         : 'affiliate_id';
 
