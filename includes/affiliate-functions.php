@@ -196,6 +196,9 @@ function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 	$earnings += $amount;
 	$earnings = round( $earnings, 2 );
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+		$alltime = get_option( 'affwp_alltime_earnings' );
+		$alltime += $amount;
+		update_option( 'affwp_alltime_earnings', $alltime );
 
 		return $earnings;
 
@@ -224,6 +227,13 @@ function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 		$earnings = 0;
 	}
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+
+		$alltime = get_option( 'affwp_alltime_earnings' );
+		$alltime -= $amount;
+		if( $alltime < 0 ) {
+			$alltime = 0;
+		}
+		update_option( 'affwp_alltime_earnings', $alltime );
 
 		return $earnings;
 

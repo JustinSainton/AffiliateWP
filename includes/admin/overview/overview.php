@@ -23,7 +23,34 @@ function affwp_affiliates_dashboard() {
 					<div class="postbox">
 						<h3><?php _e( 'Totals', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<table id="affwp_unpaid_counts" class="affwp_table">
+							
+							<table class="affwp_table">
+
+								<thead>
+
+									<tr>
+
+										<th><?php _e( 'Paid Earnings', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Paid Earnings This Month', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Paid Earnings Today', 'affiliate-wp' ); ?></th>
+
+									</tr>
+
+								</thead>
+
+								<tbody>
+
+									<tr>
+										<td><?php echo affiliate_wp()->referrals->paid_earnings(); ?></td>
+										<td><?php echo affiliate_wp()->referrals->paid_earnings( 'month' ); ?></td>
+										<td><?php echo affiliate_wp()->referrals->paid_earnings( 'today' ); ?></td>
+									</tr>
+
+								</tbody>
+
+							</table>
+
+							<table class="affwp_table">
 
 								<thead>
 
@@ -48,7 +75,7 @@ function affwp_affiliates_dashboard() {
 								</tbody>
 
 							</table>
-							<table id="affwp_unpaid_earnings" class="affwp_table">
+							<table class="affwp_table">
 
 								<thead>
 

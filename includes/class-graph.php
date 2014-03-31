@@ -347,7 +347,7 @@ class Affiliate_WP_Graph {
 						<?php endfor; ?>
 					</select>
 					<select id="affwp-graphs-year" name="year">
-						<?php for ( $i = 2007; $i <= date( 'Y' ); $i++ ) : ?>
+						<?php for ( $i = 2007; $i <= date( 'Y', $current_time ); $i++ ) : ?>
 							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year'] ); ?>><?php echo $i; ?></option>
 						<?php endfor; ?>
 					</select>
@@ -358,7 +358,7 @@ class Affiliate_WP_Graph {
 						<?php endfor; ?>
 					</select>
 					<select id="affwp-graphs-year" name="year_end">
-						<?php for ( $i = 2007; $i <= date( 'Y' ); $i++ ) : ?>
+						<?php for ( $i = 2007; $i <= date( 'Y', $current_time ); $i++ ) : ?>
 							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year_end'] ); ?>><?php echo $i; ?></option>
 						<?php endfor; ?>
 					</select>
@@ -391,15 +391,15 @@ function affwp_get_report_dates() {
 	$dates['day_end']    = isset( $_GET['day_end'] ) ? $_GET['day_end'] : null;
 	$dates['m_start']    = isset( $_GET['m_start'] ) ? $_GET['m_start'] : 1;
 	$dates['m_end']      = isset( $_GET['m_end'] )   ? $_GET['m_end']   : 12;
-	$dates['year']       = isset( $_GET['year'] )    ? $_GET['year']    : date( 'Y' );
-	$dates['year_end']   = isset( $_GET['year_end'] )? $_GET['year_end']: date( 'Y' );
+	$dates['year']       = isset( $_GET['year'] )    ? $_GET['year']    : date( 'Y', $current_time );
+	$dates['year_end']   = isset( $_GET['year_end'] )? $_GET['year_end']: date( 'Y', $current_time );
 		
 	// Modify dates based on predefined ranges
 	switch ( $dates['range'] ) :
 
 		case 'this_month' :
 			$dates['day']       = 1;
-			$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, $dates['m_start'], date( 'Y' ) );;
+			$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, $dates['m_start'], date( 'Y', $current_time ) );
 			$dates['m_start']   = date( 'n', $current_time );
 			$dates['m_end']	    = date( 'n', $current_time );
 			$dates['year']      = date( 'Y', $current_time );
@@ -407,11 +407,15 @@ function affwp_get_report_dates() {
 
 		case 'last_month' :
 			if( date( 'n' ) == 1 ) {
+				$dates['day']     = 1;
+				$dates['day_end'] = cal_days_in_month( CAL_GREGORIAN, 12, date( 'Y', $current_time ) );
 				$dates['m_start'] = 12;
 				$dates['m_end']	  = 12;
 				$dates['year']    = date( 'Y', $current_time ) - 1;
 				$dates['year_end']= date( 'Y', $current_time ) - 1;
 			} else {
+				$dates['day']     = 1;
+				$dates['day_end'] = cal_days_in_month( CAL_GREGORIAN, date( 'n' ) - 1, date( 'Y', $current_time ) );
 				$dates['m_start'] = date( 'n' ) - 1;
 				$dates['m_end']	  = date( 'n' ) - 1;
 				$dates['year_end']= $dates['year'];
@@ -428,7 +432,7 @@ function affwp_get_report_dates() {
 
 		case 'yesterday' :
 			$month              = date( 'n', $current_time ) == 1 ? 12 : date( 'n', $current_time );
-			$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y' ) );
+			$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y', $current_time ) );
 			$yesterday          = date( 'd', $current_time ) == 1 ? $days_in_month : date( 'd', $current_time ) - 1;
 			$dates['day']		= $yesterday;
 			$dates['day_end']   = $yesterday;
@@ -450,7 +454,7 @@ function affwp_get_report_dates() {
 			$dates['day']       = date( 'd', $current_time - ( date( 'w' ) - 1 ) *60*60*24 ) - 8;
 			$dates['day']      += get_option( 'start_of_week' );
 			$dates['day_end']   = $dates['day'] + 6;
-			$dates['year']		= date( 'Y' );
+			$dates['year']		= date( 'Y', $current_time );
 
 			if( date( 'j', $current_time ) <= 7 ) {
 				$dates['m_start'] 	= date( 'n', $current_time ) - 1;
@@ -467,27 +471,32 @@ function affwp_get_report_dates() {
 
 		case 'this_quarter' :
 			$month_now = date( 'n', $current_time );
+			$dates['day'] = 1;
 
 			if ( $month_now <= 3 ) {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 4, date( 'Y', $current_time ) );
 				$dates['m_start'] 	= 1;
 				$dates['m_end']		= 4;
 				$dates['year']		= date( 'Y', $current_time );
 
 			} else if ( $month_now <= 6 ) {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 7, date( 'Y', $current_time ) );
 				$dates['m_start'] 	= 4;
 				$dates['m_end']		= 7;
 				$dates['year']		= date( 'Y', $current_time );
 
 			} else if ( $month_now <= 9 ) {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 10, date( 'Y', $current_time ) );
 				$dates['m_start'] 	= 7;
 				$dates['m_end']		= 10;
 				$dates['year']		= date( 'Y', $current_time );
 
 			} else {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 1, date( 'Y', $current_time ) + 1 );
 				$dates['m_start'] 	= 10;
 				$dates['m_end']		= 1;
 				$dates['year']		= date( 'Y', $current_time );
@@ -498,27 +507,32 @@ function affwp_get_report_dates() {
 
 		case 'last_quarter' :
 			$month_now = date( 'n' );
+			$dates['day'] = 1;
 
 			if ( $month_now <= 3 ) {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 9, date( 'Y', $current_time ) - 1 );
 				$dates['m_start']   = 10;
 				$dates['m_end']     = 12;
 				$dates['year']      = date( 'Y', $current_time ) - 1; // Previous year
 
 			} else if ( $month_now <= 6 ) {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 3, date( 'Y', $current_time ) );
 				$dates['m_start'] 	= 1;
 				$dates['m_end']		= 3;
 				$dates['year']		= date( 'Y', $current_time );
 
 			} else if ( $month_now <= 9 ) {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 6, date( 'Y', $current_time ) );
 				$dates['m_start'] 	= 4;
 				$dates['m_end']		= 6;
 				$dates['year']		= date( 'Y', $current_time );
 
 			} else {
 
+				$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 9, date( 'Y', $current_time ) );
 				$dates['m_start'] 	= 7;
 				$dates['m_end']		= 9;
 				$dates['year']		= date( 'Y', $current_time );
@@ -527,12 +541,17 @@ function affwp_get_report_dates() {
 		break;
 
 		case 'this_year' :
+			$dates['day']       = 1;
+			$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 12, date( 'Y', $current_time ) );
 			$dates['m_start'] 	= 1;
 			$dates['m_end']		= 12;
 			$dates['year']		= date( 'Y', $current_time );
+			$dates['year_end']  = date( 'Y', $current_time );
 		break;
 
 		case 'last_year' :
+			$dates['day']       = 1;
+			$dates['day_end']   = cal_days_in_month( CAL_GREGORIAN, 12, date( 'Y', $current_time ) - 1 );
 			$dates['m_start'] 	= 1;
 			$dates['m_end']		= 12;
 			$dates['year']		= date( 'Y', $current_time ) - 1;

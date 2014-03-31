@@ -47,6 +47,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {
+
 			do_action( 'affwp_add_referral', $add );
 			return $add;
 		}
@@ -249,6 +250,61 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		return $referrals;
 
+	}
+
+	/**
+	 * Get the total paid earnings
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function paid_earnings( $date = '', $affiliate_id = 0, $format = true ) {
+
+		$args = array();
+		$args['status'] = 'paid';
+		$args['affiliate_id'] = $affiliate_id;
+
+		if( 'alltime' == $date ) {
+			return $this->get_alltime_earnings();
+		}
+
+		if( ! empty( $date ) ) {
+
+			switch( $date ) {
+
+				case 'month' :
+				
+					$date = array(
+						'start' => date( 'Y-m-01 00:00:00', current_time( 'timestamp' ) ),
+						'end'   => date( 'Y-m-' . cal_days_in_month( CAL_GREGORIAN, date( 'n' ), date( 'Y' ) ) . ' 00:00:00', current_time( 'timestamp' ) ),
+					);
+					break;
+
+			}
+
+			$args['date'] = $date;
+		}
+
+		$referrals = $this->get_referrals( $args );
+
+		$earnings  = array_sum( wp_list_pluck( $referrals, 'amount' ) );
+
+		if( $format ) {
+			$earnings = affwp_currency_filter( affwp_format_amount( $earnings ) );
+		}
+
+		return $earnings;
+
+	}
+
+	/**
+	 * Get the total unpaid earnings
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function get_alltime_earnings() {
+		return get_option( 'affwp_alltime_earnings', 0.00 );
 	}
 
 	/**
