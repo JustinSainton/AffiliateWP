@@ -61,7 +61,13 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 	}
 
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ){
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_'.$status ) ); exit;
+
+		if ( ! empty( $_REQUEST['affwp_action'] ) ) {
+
+			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_'.$status ) ); exit;
+		}
+
+		return true;
 	}
 
 }
@@ -412,9 +418,12 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if( affiliate_wp()->affiliates->add( $args ) ) {
 
-			// This is an update call from the edit screen
-			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
+			if ( ! empty( $_POST['affwp_action'] ) ) {
 
+				wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
+			}
+
+			return true;
 		}
 
 	}
