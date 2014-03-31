@@ -17,9 +17,11 @@ function affwp_affiliates_dashboard() {
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'Overview', 'affiliate-wp' ); ?></h2>
+		<?php do_action( 'affwp_overview_top' ); ?>
 		<div id="affwp-dashboard-widgets-wrap">
 			<div id="dashboard-widgets" class="metabox-holder">
 				<div id="postbox-container-1" class="postbox-container">
+					<?php do_action( 'affwp_overview_tleft_op' ); ?>
 					<div class="postbox">
 						<h3><?php _e( 'Totals', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
@@ -150,8 +152,10 @@ function affwp_affiliates_dashboard() {
 		
 						</div>
 					</div>
+					<?php do_action( 'affwp_overview_left_bottom' ); ?>
 				</div>
 				<div id="postbox-container-2" class="postbox-container">
+					<?php do_action( 'affwp_overview_right_top' ); ?>
 					<div class="postbox">
 						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
@@ -225,9 +229,11 @@ function affwp_affiliates_dashboard() {
 							</table>
 						</div>
 					</div>
+					<?php do_action( 'affwp_overview_right_bottom' ); ?>
 				</div>
 			</div>
 		</div>
+		<?php do_action( 'affwp_overview_bottom' ); ?>
 	</div>
 <?php
 }
