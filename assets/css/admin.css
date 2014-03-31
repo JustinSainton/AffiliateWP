@@ -138,3 +138,17 @@ table.affwp_table th {
 	content: "\f158";
 	color: #ef6c5e;
 }
+
+@font-face {
+  font-family: "affwp-dashicons";
+  src:url("../fonts/dashicons.eot");
+  src:url("../fonts/dashicons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/dashicons.woff") format("woff"),
+    url("../fonts/dashicons.ttf") format("truetype"),
+    url("../fonts/dashicons.svg#dashicons") format("svg");
+}
+
+#adminmenu #toplevel_page_affiliate-wp div.wp-menu-image:before {
+	font-family: 'affwp-dashicons' !important;
+	content: "\e000";
+}
