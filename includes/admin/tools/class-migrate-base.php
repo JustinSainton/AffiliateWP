@@ -2,26 +2,23 @@
 
 class Affiliate_WP_Migrate_Base {
 	
-	public function __construct() {
+	public $this->type;
 
-	}
+	public function __construct() { }
 
 	public function process( $step = 1, $part = '' ) {
 
 
 	}
 
-	public function step_forward() {
-
-		$step = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
-		$part = isset( $_GET['part'] ) ? $_GET['part'] : 'affiliates';
+	public function step_forward( $step = 1, $part = '' ) {
 
 		$step++;
-		$redirect  = add_query_arg( array(
-			'page' => 'affiliate-wp-migrate',
-			'type' => 'affiliates-pro',
-			'part' => $part,
-			'step' => $step
+		$redirect          = add_query_arg( array(
+			'page'         => 'affiliate-wp-migrate',
+			'type'         => $this->type,
+			'part'         => $part,
+			'step'         => $step
 		), admin_url( 'index.php' ) );
 		wp_redirect( $redirect ); exit;
 

@@ -4,7 +4,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 
 	public function __construct() {
-
+		$this->type = 'affiliates-pro';
 	}
 
 
@@ -50,19 +50,6 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 		}
 
 		$this->finish();
-
-	}
-
-	public function step_forward( $step = 1, $part = '' ) {
-
-		$step++;
-		$redirect          = add_query_arg( array(
-			'page'         => 'affiliate-wp-migrate',
-			'type'         => 'affiliates-pro',
-			'part'         => $part,
-			'step'         => $step
-		), admin_url( 'index.php' ) );
-		wp_redirect( $redirect ); exit;
 
 	}
 
@@ -176,65 +163,6 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 			return false;
 
 		}
-
-	}
-
-	public function do_visits( $step = 1 ) {
-
-		global $wpdb;
-		$offset    = $step > 1 ? $step * 100 : 0;
-		/*
-		$referrals = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}aff_referrals ORDER BY referral_id LIMIT $offset, 100;" );
-
-		if( $referrals ) {
-			foreach( $referrals as $referral ) {
-
-				switch( $referral->status ) {
-
-					case 'accepted' :
-						$status = 'unpaid';
-						break;
-					case 'closed' :
-						$status = 'paid';
-						break;
-					case 'rejected' :
-						$status = 'rejected';
-						break;
-					case 'pending' :
-					default :
-						$status = 'pending';
-						break;
-				}
-
-				$args = array(
-					'status'          => $status,
-					'affiliate_id'    => $referral->affiliate_id,
-					'date'            => $referral->datetime,
-					'description'     => $referral->description,
-					'amount'          => $referral->amount,
-					'currency'        => strtoupper( $referral->currency_id ),
-					'reference'       => $referral->reference
-				);
-
-				$id = affiliate_wp()->referrals->add( $args );
-
-				if( 'paid' == $status ) {
-					affwp_increase_affiliate_earnings( $referral->affiliate_id, $referral->amount );
-					affwp_increase_affiliate_referral_count( $referral->affiliate_id );
-				}
-			}
-
-			return true;
-
-		} else {
-
-			// No referrals found, so all done
-			return false;
-
-		}
-
-		*/
-		return false;
 
 	}
 
