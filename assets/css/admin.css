@@ -11,7 +11,8 @@ table.affwp_table td {
 	text-align: left;
 	border: 1px solid #eee;
 	color: #666;
-	padding: 0.3em 1em;
+	padding: 0.3em 1em;,
+	max-width: 100%;
 }
 table.affwp_table th {
 	background: #fafafa;
