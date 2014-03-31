@@ -67,7 +67,7 @@ function affwp_generate_referral_payout_file( $data ) {
 	$export = new Affiliate_WP_Referral_Payout_Export;
 	$export->date = array(
 		'start' => $data['from'],
-		'end'   => $data['to']
+		'end'   => $data['to'] . ' 23:59:59'
 	);
 	$export->export();
 
@@ -219,13 +219,14 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'cb'        => '<input type="checkbox" />',
-			'amount'    => __( 'Amount', 'affiliate-wp' ),
-			'affiliate' => __( 'Affiliate', 'affiliate-wp' ),
-			'reference' => __( 'Reference', 'affiliate-wp' ),
-			'date'      => __( 'Date', 'affiliate-wp' ),
-			'actions'   => __( 'Actions', 'affiliate-wp' ),
-			'status'    => __( 'Status', 'affiliate-wp' ),
+			'cb'          => '<input type="checkbox" />',
+			'amount'      => __( 'Amount', 'affiliate-wp' ),
+			'affiliate'   => __( 'Affiliate', 'affiliate-wp' ),
+			'reference'   => __( 'Reference', 'affiliate-wp' ),
+			'description' => __( 'Description', 'affiliate-wp' ),
+			'date'        => __( 'Date', 'affiliate-wp' ),
+			'actions'     => __( 'Actions', 'affiliate-wp' ),
+			'status'      => __( 'Status', 'affiliate-wp' ),
 		);
 
 		return $columns;
@@ -350,7 +351,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	
 		} else {
 
-			if( 'rejected' != $referral->status ) {	
+			if( 'unpaid' == $referral->status ) {	
 
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
 
@@ -543,7 +544,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$date['start'] = $from;
 		}
 		if( ! empty( $to ) ) {
-			$date['end']   = $to;
+			$date['end']   = $to . ' 23:59:59';;
 		}
 
 		if( ! empty( $_GET['s'] ) ) {

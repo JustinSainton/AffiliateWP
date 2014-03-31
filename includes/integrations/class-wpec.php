@@ -19,7 +19,16 @@ class Affiliate_WP_WPEC extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			$this->insert_pending_referral( $order->get( 'totalprice' ), $order_id );
+			$description = '';
+			$items = $order->get_cart_contents();
+			foreach( $items as $key => $item ) {
+				$description .= $item->name;
+				if( $key + 1 < count( $items ) ) {
+					$description .= ', ';
+				}
+			}
+
+			$this->insert_pending_referral( $order->get( 'totalprice' ), $order_id, $description );
 		}
 
 	}

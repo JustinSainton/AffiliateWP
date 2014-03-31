@@ -55,6 +55,7 @@ final class Affiliate_WP {
 	public $tracking;
 	public $settings;
 	public $templates;
+	public $emails;
 
 
 	/**
@@ -69,7 +70,7 @@ final class Affiliate_WP {
 	 * @uses Affiliate_WP::setup_globals() Setup the globals needed
 	 * @uses Affiliate_WP::includes() Include the required files
 	 * @uses Affiliate_WP::setup_actions() Setup the hooks and actions
-	 * @see EDD()
+	 * @uses Affiliate_WP::updater() Setup the plugin updater
 	 * @return The one true Affiliate_WP
 	 */
 	public static function instance() {
@@ -83,13 +84,15 @@ final class Affiliate_WP {
 			self::$instance->affiliates   = new Affiliate_WP_DB_Affiliates;
 			self::$instance->referrals    = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits       = new Affiliate_WP_Visits_DB;
-			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->settings     = new Affiliate_WP_Settings;
+			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->templates    = new Affiliate_WP_Templates;
 			self::$instance->login        = new Affiliate_WP_Login;
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
+			self::$instance->emails       = new Affiliate_WP_Emails;
 
+			self::$instance->updater();
 		}
 		return self::$instance;
 	}
@@ -160,18 +163,28 @@ final class Affiliate_WP {
 	private function includes() {
 
 		if( is_admin() ) {
+<<<<<<< HEAD
 
+=======
+		
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
+>>>>>>> upstream/master
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-notices.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/overview.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/referrals.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/reports/reports.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/visits.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/tools.php';
+<<<<<<< HEAD
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/welcome.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/plugins.php';
+=======
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate.php';
+>>>>>>> upstream/master
 
 		} else {
 
@@ -183,6 +196,8 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-capabilities.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-integrations.php';
@@ -198,6 +213,33 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
+	}
+
+	/**
+	 * Plugin Updater
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @return void
+	 */
+	private function updater() {
+
+		if( ! is_admin() ) {
+			return;
+		}
+
+		$license_key = $this->settings->get( 'license_key' );
+
+		if( $license_key ) {
+			// setup the updater
+			$affwp_updater = new AFFWP_Plugin_Updater( 'http://affiliatewp.com', __FILE__, array(
+					'version' 	=> AFFILIATEWP_VERSION,
+					'license' 	=> $license_key,
+					'item_name' => 'AffiliateWP',
+					'author' 	=> 'Pippin Williamson'
+				)
+			);
+		}
 	}
 
 	/**
@@ -233,6 +275,7 @@ final class Affiliate_WP {
 		}
 	}
 
+<<<<<<< HEAD
 	/*****************************
 	* Affiliate helpers
 	*****************************/
@@ -341,6 +384,8 @@ final class Affiliate_WP {
 		return apply_filters( 'affwp_get_ip', $ip );
 	}
 
+=======
+>>>>>>> upstream/master
 }
 
 endif; // End if class_exists check

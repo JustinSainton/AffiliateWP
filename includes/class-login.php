@@ -4,12 +4,22 @@ class Affiliate_WP_Login {
 
 	private $errors;
 
+	/**
+	 * Get things started
+	 *
+	 * @since 1.0
+	 */
 	public function __construct() {
 
 		add_action( 'affwp_user_login', array( $this, 'process_login' ) );
 
 	}
 
+	/**
+	 * Process the loginform submission
+	 *
+	 * @since 1.0
+	 */
 	public function process_login( $data ) {
 
 		if( ! isset( $_POST['affwp_login_nonce'] ) || ! wp_verify_nonce( $_POST['affwp_login_nonce'], 'affwp-login-nonce' ) ) {
@@ -65,6 +75,11 @@ class Affiliate_WP_Login {
 		}
 	}
 
+	/**
+	 * Log the user in 
+	 *
+	 * @since 1.0
+	 */
 	private function log_user_in( $user_id = 0, $user_login = '', $remember = false ) {
 
 		$user = get_userdata( $user_id );
@@ -77,10 +92,20 @@ class Affiliate_WP_Login {
 
 	}
 
+	/**
+	 * Register a submission error
+	 *
+	 * @since 1.0
+	 */
 	private function add_error( $error_id, $message = '' ) {
 		$this->errors[ $error_id ] = $message;
 	}
 
+	/**
+	 * Print errors
+	 *
+	 * @since 1.0
+	 */
 	public function print_errors() {
 
 		if( empty( $this->errors ) ) {

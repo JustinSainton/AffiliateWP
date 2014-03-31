@@ -16,7 +16,7 @@ abstract class Affiliate_WP_Base {
 		return affiliate_wp()->tracking->was_referred();
 	}
 
-	public function insert_pending_referral( $amount = '', $reference = 0, $data = array() ) {
+	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
 		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
@@ -24,6 +24,7 @@ abstract class Affiliate_WP_Base {
 		return affiliate_wp()->referrals->add( array(
 			'amount'       => affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference ),
 			'reference'    => $reference,
+			'description'  => $description,
 			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
 			'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
 			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',

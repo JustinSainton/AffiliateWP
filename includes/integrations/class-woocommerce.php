@@ -25,8 +25,18 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			$order  = new WC_Order( $order_id );
-			$this->insert_pending_referral( $order->get_total(), $order_id );
+			$order       = new WC_Order( $order_id );
+
+			$description = ''; 
+			$items       = $order->get_items();
+			foreach( $items as $key => $item ) {
+				$description .= $item['name'];
+				if( $key + 1 < count( $items ) ) {
+					$description .= ', ';
+				}
+			}
+
+			$this->insert_pending_referral( $order->get_total(), $order_id, $description );
 		
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );

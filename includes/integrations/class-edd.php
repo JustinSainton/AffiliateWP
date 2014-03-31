@@ -18,7 +18,16 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			$this->insert_pending_referral( $payment_data['price'], $payment_id );
+			$description = '';
+			$downloads   = edd_get_payment_meta_downloads( $payment_id );
+			foreach( $downloads as $key => $item ) {
+				$description .= get_the_title( $item['id'] );
+				if( $key + 1 < count( $downloads ) ) {
+					$description .= ', ';
+				}
+			}
+
+			$this->insert_pending_referral( $payment_data['price'], $payment_id, $description );
 		
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $payment_id, 'edd' );
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );

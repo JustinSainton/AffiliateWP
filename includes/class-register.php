@@ -4,12 +4,22 @@ class Affiliate_WP_Register {
 
 	private $errors;
 
+	/**
+	 * Get things started
+	 *
+	 * @since 1.0
+	 */
 	public function __construct() {
 
 		add_action( 'affwp_affiliate_register', array( $this, 'process_registration' ) );
 
 	}
 
+	/**
+	 * Process registration form submission 
+	 *
+	 * @since 1.0
+	 */
 	public function process_registration( $data ) {
 
 		if( ! isset( $_POST['affwp_register_nonce'] ) || ! wp_verify_nonce( $_POST['affwp_register_nonce'], 'affwp-register-nonce' ) ) {
@@ -64,6 +74,11 @@ class Affiliate_WP_Register {
 		}
 	}
 
+	/**
+	 * Register the affiliate / user
+	 *
+	 * @since 1.0
+	 */
 	private function register_user() {
 
 		$status  = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
@@ -93,10 +108,19 @@ class Affiliate_WP_Register {
 
 		}
 
-		affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+		$affiliate_id = affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+
+		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
+		}
 
 	}
 
+	/**
+	 * Log the user in
+	 *
+	 * @since 1.0
+	 */
 	private function log_user_in( $user_id = 0, $user_login = '', $remember = false ) {
 
 		$user = get_userdata( $user_id );
@@ -109,10 +133,20 @@ class Affiliate_WP_Register {
 
 	}
 
+	/**
+	 * Register a submission error 
+	 *
+	 * @since 1.0
+	 */
 	private function add_error( $error_id, $message = '' ) {
 		$this->errors[ $error_id ] = $message;
 	}
 
+	/**
+	 * Print errors
+	 *
+	 * @since 1.0
+	 */
 	public function print_errors() {
 
 		if( empty( $this->errors ) ) {

@@ -196,6 +196,9 @@ function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 	$earnings += $amount;
 	$earnings = round( $earnings, 2 );
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+		$alltime = get_option( 'affwp_alltime_earnings' );
+		$alltime += $amount;
+		update_option( 'affwp_alltime_earnings', $alltime );
 
 		return $earnings;
 
@@ -224,6 +227,13 @@ function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 		$earnings = 0;
 	}
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+
+		$alltime = get_option( 'affwp_alltime_earnings' );
+		$alltime -= $amount;
+		if( $alltime < 0 ) {
+			$alltime = 0;
+		}
+		update_option( 'affwp_alltime_earnings', $alltime );
 
 		return $earnings;
 
@@ -370,7 +380,7 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 	$rate = 0;
 
 	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
-	$visits    = affwp_decrease_affiliate_visit_count( $affiliate_id );
+	$visits    = affwp_get_affiliate_visit_count( $affiliate_id );
 	if( $referrals > 0 ) {
 		$rate = round( $visits / $referrals, 2 );
 	}
@@ -410,7 +420,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 function affwp_update_affiliate( $data = array() ) {
 
-	if( empty( $data['affiliate_id'] ) ) {
+	if ( empty( $data['affiliate_id'] ) ) {
 
 		return false;
 
@@ -419,15 +429,11 @@ function affwp_update_affiliate( $data = array() ) {
 	$args         = array();
 	$affiliate_id = absint( $data['affiliate_id'] );
 
-	if( ! empty( $data['rate'] ) ) {
+	$args['rate'] = ! empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
 
-		$args['rate'] = sanitize_text_field( $data['rate'] );
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
-	}
-
-	if( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
-
-		if( ! empty( $_POST['affwp_action'] ) ) {
+		if ( ! empty( $_POST['affwp_action'] ) ) {
 			// This is an update call from the edit screen
 			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp&action=edit_affiliate&affwp_notice=affiliate_updated&affiliate_id=' . $affiliate_id ) ); exit;
 		}

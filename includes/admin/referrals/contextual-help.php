@@ -36,7 +36,15 @@ function affwp_referrals_contextual_help() {
 		'id'	    => 'affwp-referrals-overview',
 		'title'	    => __( 'Overview', 'affiliate-wp' ),
 		'content'	=>
-			'<p>' . __( "This screen provides access to your site's referral history.", 'affiliate-wp' ) . '</p>'
+			'<p>' . __( "This screen provides access to your site's referral history.", 'affiliate-wp' ) . '</p>' . 
+			'<p>' . __( "<strong>Reference</strong>: this refers to the order number (or similar) that created this referral.", 'affiliate-wp' ) . '</p>' . 
+			'<p>' . __( "Referral statuses:", 'affiliate-wp' ) . '</p>' . 
+			'<ul>' .
+				'<li>' . __( '<strong>Paid</strong> - this is a referral that has been paid to the affiliate', 'affiliate-wp' ) . '</li>' .
+				'<li>' . __( '<strong>Unpaid</strong> - this is a referral that has been accepted but not yet paid to the affiliate', 'affiliate-wp' ) . '</li>' .
+				'<li>' . __( '<strong>Pending</strong> - this is a referral that is waiting to be accepted', 'affiliate-wp' ) . '</li>' .
+				'<li>' . __( '<strong>Rejected</strong> - this is a referral that has been rejected and will not be paid to the affiliate', 'affiliate-wp' ) . '</li>' .
+			'</ul>'
 	) );
 
 	$screen->add_help_tab( array(

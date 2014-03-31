@@ -1,5 +1,6 @@
 <?php affiliate_wp()->login->print_errors(); ?>
 <form id="affwp_login_form" class="affwp_form" action="" method="post">
+	<?php do_action( 'affwp_affiliate_login_form_top' ); ?>
 	<fieldset>
 		<span><legend><?php _e( 'Log into Your Account', 'affiliate-wp' ); ?></legend></span>
 		<?php do_action( 'affwp_login_fields_before' ); ?>
@@ -27,4 +28,5 @@
 		</p>
 		<?php do_action( 'affwp_login_fields_after' ); ?>
 	</fieldset>
+	<?php do_action( 'affwp_affiliate_login_form_bottom' ); ?>
 </form>

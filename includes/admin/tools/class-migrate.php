@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_Migrate {
-	
+
 
 	public function __construct() {
 
@@ -11,21 +11,31 @@ class Affiliate_WP_Migrate {
 
 	public function process_migration() {
 
-		if( empty( $_GET['type'] ) ) {
+		if( empty( $_REQUEST['type'] ) ) {
 			return false;
 		}
 
-		$step = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
+		$step = isset( $_REQUEST['step'] ) ? absint( $_REQUEST['step'] )              : 1;
+		$type = isset( $_REQUEST['type'] ) ? sanitize_text_field( $_REQUEST['type'] ) : false;
+		$part = isset( $_REQUEST['part'] ) ? sanitize_text_field( $_REQUEST['part'] ) : false;
+
+		if( ! $type ) {
+
+			wp_redirect( admin_url() ); exit;
+
+		}
+
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate-base.php';
 
 		switch( $type ) {
 
 			case 'affiliates-pro' :
 
-				$part    = isset( $_GET['part'] ) ? $_GET['part'] : 'affiliates';
+				require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate-affiliates-pro.php';
 
 				$migrate = new Affiliate_WP_Migrate_Affiliates_Pro;
 
-				$migrate->process( $step, $part );	
+				$migrate->process( $step, $part );
 
 				break;
 

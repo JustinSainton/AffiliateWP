@@ -2,6 +2,12 @@
 
 class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function __construct() {
 
 		global $wpdb;
@@ -12,6 +18,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
+	/**
+	 * Get columns and formats
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function get_columns() {
 		return array(
 			'referral_id' => '%d',
@@ -20,7 +32,6 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'description' => '%s',
 			'status'      => '%s',
 			'amount'      => '%s',
-			'ip'          => '%s',
 			'currency'    => '%s',
 			'custom'      => '%s',
 			'context'     => '%s',
@@ -29,6 +40,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
+	/**
+	 * Get default column values
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function get_column_defaults() {
 		return array(
 			'affiliate_id' => 0,
@@ -37,6 +54,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
+	/**
+	 * Add a referral
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function add( $data = array() ) {
 
 		$defaults = array(
@@ -48,6 +71,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {
+
 			do_action( 'affwp_add_referral', $add );
 			return $add;
 		}
@@ -253,6 +277,61 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	}
 
 	/**
+	 * Get the total paid earnings
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function paid_earnings( $date = '', $affiliate_id = 0, $format = true ) {
+
+		$args = array();
+		$args['status'] = 'paid';
+		$args['affiliate_id'] = $affiliate_id;
+
+		if( 'alltime' == $date ) {
+			return $this->get_alltime_earnings();
+		}
+
+		if( ! empty( $date ) ) {
+
+			switch( $date ) {
+
+				case 'month' :
+				
+					$date = array(
+						'start' => date( 'Y-m-01 00:00:00', current_time( 'timestamp' ) ),
+						'end'   => date( 'Y-m-' . cal_days_in_month( CAL_GREGORIAN, date( 'n' ), date( 'Y' ) ) . ' 00:00:00', current_time( 'timestamp' ) ),
+					);
+					break;
+
+			}
+
+			$args['date'] = $date;
+		}
+
+		$referrals = $this->get_referrals( $args );
+
+		$earnings  = array_sum( wp_list_pluck( $referrals, 'amount' ) );
+
+		if( $format ) {
+			$earnings = affwp_currency_filter( affwp_format_amount( $earnings ) );
+		}
+
+		return $earnings;
+
+	}
+
+	/**
+	 * Get the total unpaid earnings
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function get_alltime_earnings() {
+		return get_option( 'affwp_alltime_earnings', 0.00 );
+	}
+
+	/**
 	 * Get the total unpaid earnings
 	 *
 	 * @access  public
@@ -429,6 +508,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
+	/**
+	 * Set the status of multiple referrals at once
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function bulk_update_status( $referral_ids = array(), $status = '' ) {
 
 		global $wpdb;
@@ -452,6 +537,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		return false;
 	}
 
+	/**
+	 * Create the table
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function create_table() {
 
 		global $wpdb;
@@ -465,7 +556,6 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		`description` longtext NOT NULL,
 		`status` tinytext NOT NULL,
 		`amount` mediumtext NOT NULL,
-		`ip` tinytext NOT NULL,
 		`currency` char(3) NOT NULL,
 		`custom` longtext NOT NULL,
 		`context` tinytext NOT NULL,

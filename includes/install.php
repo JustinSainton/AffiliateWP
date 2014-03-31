@@ -25,6 +25,10 @@ function affiliate_wp_install() {
 
 	}
 
+	// Create affiliate caps
+	$roles = new Affiliate_WP_Capabilities;
+	$roles->add_caps();
+
 	update_option( 'affwp_is_installed', '1' );
 	// send to welcome page here
 

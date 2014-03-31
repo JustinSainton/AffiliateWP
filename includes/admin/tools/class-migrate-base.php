@@ -2,9 +2,7 @@
 
 class Affiliate_WP_Migrate_Base {
 	
-	public function __construct() {
-
-	}
+	public function __construct() { }
 
 	public function process( $step = 1, $part = '' ) {
 
@@ -25,6 +23,10 @@ class Affiliate_WP_Migrate_Base {
 		), admin_url( 'index.php' ) );
 		wp_redirect( $redirect ); exit;
 
+	}
+
+	public function finish() {
+		wp_redirect( admin_url( 'admin.php?page=affiliate-wp' ) ); exit;
 	}
 
 }

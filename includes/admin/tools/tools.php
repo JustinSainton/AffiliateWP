@@ -12,6 +12,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/migration.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/import/import.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/export.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-referrals.php';
@@ -123,10 +125,12 @@ function affwp_migration_tab() {
 			<div class="inside">
 				<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to Affiliate WP.', 'affiliate-wp' ); ?></p>
 				<p><?php _e( '<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool.', 'affiliate-wp' ); ?></p>
-				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'index.php?page=affiliate-wp-migrate&type=affiliates-pro' ); ?>">
+				<form method="get">
+					<input type="hidden" name="type" value="affiliates-pro"/>
+					<input type="hidden" name="part" value="affiliates"/>
+					<input type="hidden" name="page" value="affiliate-wp-migrate"/>
 					<p>
-						<?php wp_nonce_field( 'affwp_affpro_migrate_nonce', 'affwp_affpro_migrate_nonce' ); ?>
-						<?php submit_button( __( 'Migrate Data from Affiliates Pro', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
+						<input type="submit" value="<?php _e( 'Migrate Data from Affiliates Pro', 'affiliate-wp' ); ?>" class="button"/>
 					</p>
 				</form>
 			</div><!-- .inside -->
@@ -213,101 +217,3 @@ function affwp_export_import_tab() {
 <?php
 }
 add_action( 'affwp_tools_tab_export_import', 'affwp_export_import_tab' );
-
-
-/**
- * Process a settings export that generates a .json file of the shop settings
- *
- * @since       1.0
- * @return      void
- */
-function affwp_process_settings_export() {
-
-	if( empty( $_POST['affwp_export_nonce'] ) )
-		return;
-
-	if( ! wp_verify_nonce( $_POST['affwp_export_nonce'], 'affwp_export_nonce' ) )
-		return;
-
-	if( ! current_user_can( 'manage_options' ) )
-		return;
-
-	$settings = array();
-	$settings = get_option( 'affwp_settings' );
-
-	ignore_user_abort( true );
-
-	if ( ! ini_get( 'safe_mode' ) )
-		set_time_limit( 0 );
-
-	nocache_headers();
-	header( 'Content-Type: application/json; charset=utf-8' );
-	header( 'Content-Disposition: attachment; filename=affwp-settings-export-' . date( 'm-d-Y' ) . '.json' );
-	header( "Expires: 0" );
-
-	echo json_encode( $settings );
-	exit;
-}
-add_action( 'affwp_export_settings', 'affwp_process_settings_export' );
-
-/**
- * Process a settings import from a json file
- *
- * @since 1.0
- * @return void
- */
-function affwp_process_settings_import() {
-
-	if( empty( $_POST['affwp_import_nonce'] ) )
-		return;
-
-	if( ! wp_verify_nonce( $_POST['affwp_import_nonce'], 'affwp_import_nonce' ) )
-		return;
-
-	if( ! current_user_can( 'manage_options' ) )
-		return;
-
-	$extension = end( explode( '.', $_FILES['import_file']['name'] ) );
-
-    if( $extension != 'json' ) {
-        wp_die( __( 'Please upload a valid .json file', 'affiliate-wp' ) );
-    }
-
-	$import_file = $_FILES['import_file']['tmp_name'];
-
-	if( empty( $import_file ) ) {
-		wp_die( __( 'Please upload a file to import', 'affiliate-wp' ) );
-	}
-
-	// Retrieve the settings from the file and convert the json object to an array
-	$settings = affwp_object_to_array( json_decode( file_get_contents( $import_file ) ) );
-
-	update_option( 'affwp_settings', $settings );
-
-	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import&affwp_notice=settings-imported' ) ); exit;
-
-}
-add_action( 'affwp_import_settings', 'affwp_process_settings_import' );
-
-/**
- * The migration processing screen
- *
- * @since 1.0
- * @return void
- */
-function affwp_migrate_admin() {
-	$step   = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
-	$type   = isset( $_GET['type'] ) ? $_GET['type'] : false;
-?>
-	<div class="wrap">
-		<h2><?php _e( 'Affiliate WP Migration', 'affiliate-wp' ); ?></h2>
-		<div id="edd-upgrade-status">
-			<p><?php _e( 'The upgrade process is running, please be patient. This could take several minutes to complete while license keys are upgraded in batches of 100.', 'affiliate-wp' ); ?></p>
-			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>
-		</div>
-		<script type="text/javascript">
-			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $_GET['step'] ); ?>&type=<?php echo $type; ?>";
-		</script>
-	</div>
-<?php	
-}

@@ -4,6 +4,12 @@ class Affiliate_WP_Settings {
 
 	private $options;
 
+	/**
+	 * Get things started
+	 *
+	 * @since 1.0
+	 * @return void
+	*/
 	public function __construct() {
 
 		$this->options = get_option( 'affwp_settings', array() );
@@ -15,11 +21,23 @@ class Affiliate_WP_Settings {
 
 	}
 
+	/**
+	 * Get the value of a specific setting
+	 *
+	 * @since 1.0
+	 * @return mixed
+	*/
 	public function get( $key, $default = false ) {
 		$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
 		return $value;
 	}
 
+	/**
+	 * Get all settings
+	 *
+	 * @since 1.0
+	 * @return array
+	*/
 	public function get_all() {
 		return $this->options;
 	}
@@ -146,7 +164,7 @@ class Affiliate_WP_Settings {
 					),
 					'affiliates_page' => array(
 						'name' => __( 'Affiliate Area', 'affiliate-wp' ),
-						'desc' => __( 'This is the page where affiliates will manage this affiliate account.', 'affiliate-wp' ),
+						'desc' => __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => affwp_get_pages()
 					),
@@ -160,6 +178,12 @@ class Affiliate_WP_Settings {
 						'name' => '<strong>' . __( 'Referral Settings', 'affiliate-wp' ) . '</strong>',
 						'desc' => '',
 						'type' => 'header'
+					),
+					'referral_var' => array(
+						'name' => __( 'Referral Variable', 'affiliate-wp' ),
+						'desc' => __( 'The URL variable for referral URLs.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => 'ref'
 					),
 					'referral_rate' => array(
 						'name' => __( 'Referral Rate (%)', 'affiliate-wp' ),
@@ -221,6 +245,11 @@ class Affiliate_WP_Settings {
 					'allow_affiliate_registration' => array(
 						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'registration_notifications' => array(
+						'name' => __( 'Notify Admins', 'affiliate-wp' ),
+						'desc' => __( 'Notify site admins of new affiliate registrations?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'require_approval' => array(
@@ -370,10 +399,16 @@ class Affiliate_WP_Settings {
 
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
 		$html = '<input type="text" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
+		$license_status = $this->get( 'license_status' );
+		$license_key = ! empty( $value ) ? $value : false;
 		
-		if( 'valid' === $this->get( 'license_status' ) ) {
+		if( 'valid' === $license_status && ! empty( $license_key ) ) {
 			$html .= '<input type="submit" class="button" name="affwp_deactivate_license" value="' . esc_attr__( 'Deactivate License', 'affiliate-wp' ) . '"/>';
-			$html .= '<span>&nbsp;' . __( 'Your license is valid!', 'affiliate-wp' );
+			$html .= '<span style="color:green;">&nbsp;' . __( 'Your license is valid!', 'affiliate-wp' ) . '</span>';
+		} elseif( 'expired' === $license_status && ! empty( $license_key ) ) {
+			$renewal_url = add_query_arg( array( 'edd_license_key' => $license_key, 'download_id' => 17 ), 'https://affiliatewp.com/checkout' );
+			$html .= '<a href="' . esc_url( $renewal_url ) . '" class="button-primary">' . __( 'Renew Your License', 'affiliate-wp' ) . '</a>';
+			$html .= '<br/><span style="color:red;">&nbsp;' . __( 'Your license has expired, renew today to continue getting updates and support!', 'affiliate-wp' ) . '</span>';
 		} else {
 			$html .= '<input type="submit" class="button" name="affwp_activate_license" value="' . esc_attr__( 'Activate License', 'affiliate-wp' ) . '"/>';
 		}
@@ -601,9 +636,10 @@ class Affiliate_WP_Settings {
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
 			return false;
+
 		$options = $this->get_all();
 
-		unset( $options['license_status'] );
+		$options['license_status'] = 0;
 
 		update_option( 'affwp_settings', $options );
 
@@ -611,6 +647,38 @@ class Affiliate_WP_Settings {
 
 	public function check_license() {
 		
+		$status = get_transient( 'affwp_license_check' );
+
+		// Run the license check a maximum of once per day
+		if( false === $status ) {
+
+			// data to send in our API request
+			$api_params = array(
+				'edd_action'=> 'check_license',
+				'license' 	=> $this->get( 'license_key' ),
+				'item_name' => 'AffiliateWP',
+				'url'       => home_url()
+			);
+
+			// Call the custom API.
+			$response = wp_remote_post( 'http://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
+
+			// make sure the response came back okay
+			if ( is_wp_error( $response ) )
+				return false;
+
+			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+
+			$options = $this->get_all();
+
+			$options['license_status'] = $license_data->license;
+
+			update_option( 'affwp_settings', $options );
+
+			set_transient( 'affwp_license_check', $license_data->license, DAY_IN_SECONDS );
+
+		}
+
 	}
 
 }
