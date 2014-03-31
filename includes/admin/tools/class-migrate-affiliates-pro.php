@@ -24,10 +24,10 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 					// Proceed to the referrals part
 					$redirect  = add_query_arg( array(
-						'page' => 'affiliate-wp-migrate',
-						'type' => 'affiliates-pro',
-						'part' => 'referrals',
-						'step' => 1
+						'page'         => 'affiliate-wp-migrate',
+						'type'         => 'affiliates-pro',
+						'part'         => 'referrals',
+						'step'         => 1
 					), admin_url( 'index.php' ) );
 					wp_redirect( $redirect ); exit;
 
@@ -43,32 +43,10 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 					$this->step_forward( $step, 'referrals' );
 
-				} else {
-
-					// Proceed to the visits part
-					$redirect  = add_query_arg( array(
-						'page' => 'affiliate-wp-migrate',
-						'type' => 'affiliates-pro',
-						'part' => 'visits',
-						'step' => 1
-					), admin_url( 'index.php' ) );
-					wp_redirect( $redirect ); exit;
-
 				}
 
 				break;
 
-			case 'visits' :
-
-				$visits = $this->do_visits( $step );
-
-				if( ! empty( $visits ) ) {
-
-					$this->step_forward( $step, 'visits' );
-
-				}
-
-				break;
 		}
 
 		$this->finish();
@@ -78,11 +56,11 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 	public function step_forward( $step = 1, $part = '' ) {
 
 		$step++;
-		$redirect  = add_query_arg( array(
-			'page' => 'affiliate-wp-migrate',
-			'type' => 'affiliates-pro',
-			'part' => $part,
-			'step' => $step
+		$redirect          = add_query_arg( array(
+			'page'         => 'affiliate-wp-migrate',
+			'type'         => 'affiliates-pro',
+			'part'         => $part,
+			'step'         => $step
 		), admin_url( 'index.php' ) );
 		wp_redirect( $redirect ); exit;
 

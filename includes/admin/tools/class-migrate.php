@@ -15,8 +15,9 @@ class Affiliate_WP_Migrate {
 			return false;
 		}
 
-		$step = isset( $_REQUEST['step'] ) ? absint( $_REQUEST['step'] ) : 1;
+		$step = isset( $_REQUEST['step'] ) ? absint( $_REQUEST['step'] )              : 1;
 		$type = isset( $_REQUEST['type'] ) ? sanitize_text_field( $_REQUEST['type'] ) : false;
+		$part = isset( $_REQUEST['part'] ) ? sanitize_text_field( $_REQUEST['part'] ) : false;
 
 		if( ! $type ) {
 
@@ -31,12 +32,6 @@ class Affiliate_WP_Migrate {
 			case 'affiliates-pro' :
 
 				require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate-affiliates-pro.php';
-
-				$part = isset( $_REQUEST['part'] ) ? $_REQUEST['part'] : false;
-
-				if( empty( $part ) ) {
-					wp_redirect( admin_url() ); exit;
-				}
 
 				$migrate = new Affiliate_WP_Migrate_Affiliates_Pro;
 
