@@ -16,10 +16,24 @@ class Affiliate_WP_Tracking {
 		$this->set_expiration_time();
 		$this->set_referral_var();
 
-		add_action( 'wp_head', array( $this, 'header_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
-		add_action( 'wp_ajax_nopriv_affwp_track_visit', array( $this, 'track_visit' ) );
-		add_action( 'wp_ajax_affwp_track_visit', array( $this, 'track_visit' ) );
+		/*
+		 * Referrals are tracked via javascript by default
+		 * This fails on sites that have jQuery errors, so a fallback method is available
+		 * With the fallback, the template_redirect action is used
+		 */ 
+
+		if( ! $this->use_fallback_method() ) {
+
+			add_action( 'wp_head', array( $this, 'header_scripts' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
+			add_action( 'wp_ajax_nopriv_affwp_track_visit', array( $this, 'track_visit' ) );
+			add_action( 'wp_ajax_affwp_track_visit', array( $this, 'track_visit' ) );
+
+		} else {
+
+			add_action( 'template_redirect', array( $this, 'fallback_track_visit' ), -9999 );
+
+		}
 
 	}
 
@@ -54,8 +68,6 @@ class Affiliate_WP_Tracking {
 					},
 					url: affwp_scripts.ajaxurl,
 					success: function (response) {
-						console.log( 'success' );
-						console.log( response )
 						$.cookie( 'affwp_ref_visit_id', response, { expires: <?php echo $this->get_expiration_time(); ?>, path: '/' } );
 					}
 
@@ -122,6 +134,36 @@ class Affiliate_WP_Tracking {
 	}
 
 	/**
+	 * Record referral visit via template_redirect
+	 *
+	 * @since 1.0
+	 */
+	public function fallback_track_visit() {
+
+		$ref = ! empty( $_GET[ $this->get_referral_var() ] ) ? absint( $_GET[ $this->get_referral_var() ] ) : false;
+
+		if( empty( $ref ) ) {
+			return;
+		}
+
+		if( $this->is_valid_affiliate( $ref ) && ! $this->get_visit_id() ) {
+
+			$this->set_affiliate_id( $ref );
+
+			// Store the visit in the DB
+			$visit_id = affiliate_wp()->visits->add( array(
+				'affiliate_id' => $ref,
+				'ip'           => $this->get_ip(),
+				'url'          => $this->get_current_page_url()
+			) );
+
+			$this->set_visit_id( $visit_id );
+
+		}
+
+	}
+
+	/**
 	 * Get the referral variable
 	 *
 	 * @since 1.0
@@ -151,7 +193,7 @@ class Affiliate_WP_Tracking {
 	}
 
 	/**
-	 * Get the cookie expiration time
+	 * Get the cookie expiration time in days
 	 *
 	 * @since 1.0
 	 */
@@ -178,12 +220,30 @@ class Affiliate_WP_Tracking {
 	}
 
 	/**
+	 * Set the visit ID
+	 *
+	 * @since 1.0
+	 */
+	public function set_visit_id( $visit_id = 0 ) {
+		setcookie( 'affwp_ref_visit_id', $visit_id, strtotime( '+' . $this->get_expiration_time() . ' days' ), COOKIEPATH, COOKIE_DOMAIN );
+	}
+
+	/**
 	 * Get the referring affiliate ID
 	 *
 	 * @since 1.0
 	 */
 	public function get_affiliate_id() {
 		return ! empty( $_COOKIE['affwp_ref'] ) ? absint( $_COOKIE['affwp_ref'] ) : false;
+	}
+
+	/**
+	 * Set the referring affiliate ID
+	 *
+	 * @since 1.0
+	 */
+	public function set_affiliate_id( $affiliate_id = 0 ) {
+		setcookie( 'affwp_ref', $affiliate_id, strtotime( '+' . $this->get_expiration_time() . ' days' ), COOKIEPATH, COOKIE_DOMAIN );
 	}
 
 	/**
@@ -222,6 +282,49 @@ class Affiliate_WP_Tracking {
 			$ip = $_SERVER['REMOTE_ADDR'];
 		}
 		return apply_filters( 'affwp_get_ip', $ip );
+	}
+
+	/**
+	 * Get the current page URL
+	 *
+	 * @since 1.0
+	 * @global $post
+	 * @return string $page_url Current page URL
+	 */
+	function get_current_page_url() {
+		global $post;
+
+		if ( is_front_page() ) {
+			$page_url = home_url();
+		} else {
+			$page_url = 'http';
+		}
+
+		if ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) {
+			$page_url .= "s";
+		}
+
+		$page_url .= "://";
+
+		if ( $_SERVER["SERVER_PORT"] != "80" ) {
+			$page_url .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} else {
+			$page_url .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+
+		return apply_filters( 'affwp_get_current_page_url', esc_url( $page_url ) );
+	}
+
+	/**
+	 * Determine if we need to use the fallback tracking method
+	 *
+	 * @since 1.0
+	 */
+	public function use_fallback_method() {
+		
+		$use_fallback = affiliate_wp()->settings->get( 'tracking_fallback', false );
+
+		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );
 	}
 
 }
