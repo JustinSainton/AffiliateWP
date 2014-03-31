@@ -90,7 +90,7 @@ function affwp_recount_tab() {
 	<div class="metabox-holder">
 
 		<div class="postbox">
-			<h3><span><?php _e( 'Recount Affiliate Earnings', 'affiliate-wp' ); ?></span></h3>
+			<h3><span><?php _e( 'Recount Affiliate Stats', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">
 				<p><?php _e( 'Use this tool to recount affiliate statistics.', 'affiliate-wp' ); ?></p>
 				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=recount' ); ?>">
