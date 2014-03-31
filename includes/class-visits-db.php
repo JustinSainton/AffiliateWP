@@ -110,7 +110,16 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		}
 
-		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY visit_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+		$cache_key = md5( 'affwp_visits_' . serialize( $args ) );
+
+		$visits = wp_cache_get( $cache_key, 'visits' );
+		
+		if( $visits === false ) {
+			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY visit_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			wp_cache_set( $cache_key, $visits, 'visits', 3600 );
+		}
+
+		return $visits;
 
 	}
 
