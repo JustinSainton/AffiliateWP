@@ -143,7 +143,7 @@ function affwp_affiliates_dashboard() {
 										<?php endforeach; ?>
 									<?php else : ?>
 										<tr>
-											<td colspn="3"><?php _e( 'No affiliate registrations yet', 'affiliate-wp' ); ?></td>
+											<td colspan="3"><?php _e( 'No affiliate registrations yet', 'affiliate-wp' ); ?></td>
 										</tr>
 									<?php endif; ?>
 								</tbody>
@@ -183,7 +183,7 @@ function affwp_affiliates_dashboard() {
 									<?php endforeach; ?>
 								<?php else : ?>
 									<tr>
-										<td colspn="3"><?php _e( 'No referrals recorded yet', 'affiliate-wp' ); ?></td>
+										<td colspan="3"><?php _e( 'No referrals recorded yet', 'affiliate-wp' ); ?></td>
 									</tr>
 								<?php endif; ?>
 								</tbody>
@@ -221,7 +221,7 @@ function affwp_affiliates_dashboard() {
 										<?php endforeach; ?>
 									<?php else: ?>
 										<tr>
-											<td colspn="3"><?php _e( 'No referral visits recorded yet', 'affiliate-wp' ); ?></td>
+											<td colspan="3"><?php _e( 'No referral visits recorded yet', 'affiliate-wp' ); ?></td>
 										</tr>
 									<?php endif; ?>
 								</tbody>
