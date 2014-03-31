@@ -31,11 +31,7 @@ jQuery(document).ready(function($) {
 
 				$('#affwp_user_search_results').html('');
 
-				if(search_response.id == 'found') {
-					$(search_response.results).appendTo('#affwp_user_search_results');
-				} else if(search_response.id == 'fail') {
-					$('#affwp_user_search_results').text(search_response.msg);
-				}
+				$(search_response.results).appendTo('#affwp_user_search_results');
 			}
 		});
 	});

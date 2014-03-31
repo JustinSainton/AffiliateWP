@@ -21,6 +21,7 @@ table.affwp_table th {
 #affwp_user_search_results {
 	position: absolute;
 }
+#affwp_user_search_results p,
 #affwp_user_search_results ul {
 	padding: 10px 10px 4px;
 	margin: 0;
