@@ -2,6 +2,12 @@
 
 class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function __construct() {
 
 		global $wpdb;
@@ -12,6 +18,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
+	/**
+	 * Get columns and formats
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function get_columns() {
 		return array(
 			'referral_id' => '%d',
@@ -28,6 +40,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
+	/**
+	 * Get default column values
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function get_column_defaults() {
 		return array(
 			'affiliate_id' => 0,
@@ -36,6 +54,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		);
 	}
 
+	/**
+	 * Add a referral
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function add( $data = array() ) {
 
 		$defaults = array(
@@ -484,6 +508,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 	}
 
+	/**
+	 * Set the status of multiple referrals at once
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function bulk_update_status( $referral_ids = array(), $status = '' ) {
 
 		global $wpdb;
@@ -507,6 +537,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		return false;
 	}
 
+	/**
+	 * Create the table
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function create_table() {
 
 		global $wpdb;
