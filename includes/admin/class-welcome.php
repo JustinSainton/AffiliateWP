@@ -129,7 +129,7 @@ class Affiliate_WP_Welcome {
 	 * Navigation tabs
 	 *
 	 * @access public
-	 * @since 1.9
+	 * @since 1.0
 	 * @return void
 	 */
 	public function tabs() {
@@ -181,8 +181,6 @@ class Affiliate_WP_Welcome {
 					<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affwp' );?></p>
 				</div>
 			</div>
-
-
 
 			<div class="changelog">
 				<h3><?php _e( 'Additional Updates', 'affwp' );?></h3>
