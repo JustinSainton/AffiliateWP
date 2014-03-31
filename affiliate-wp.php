@@ -84,8 +84,8 @@ final class Affiliate_WP {
 			self::$instance->affiliates   = new Affiliate_WP_DB_Affiliates;
 			self::$instance->referrals    = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits       = new Affiliate_WP_Visits_DB;
-			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->settings     = new Affiliate_WP_Settings;
+			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->templates    = new Affiliate_WP_Templates;
 			self::$instance->login        = new Affiliate_WP_Login;
 			self::$instance->register     = new Affiliate_WP_Register;

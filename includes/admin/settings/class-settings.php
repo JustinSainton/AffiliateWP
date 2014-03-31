@@ -4,6 +4,12 @@ class Affiliate_WP_Settings {
 
 	private $options;
 
+	/**
+	 * Get things started
+	 *
+	 * @since 1.0
+	 * @return void
+	*/
 	public function __construct() {
 
 		$this->options = get_option( 'affwp_settings', array() );
@@ -15,11 +21,23 @@ class Affiliate_WP_Settings {
 
 	}
 
+	/**
+	 * Get the value of a specific setting
+	 *
+	 * @since 1.0
+	 * @return mixed
+	*/
 	public function get( $key, $default = false ) {
 		$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
 		return $value;
 	}
 
+	/**
+	 * Get all settings
+	 *
+	 * @since 1.0
+	 * @return array
+	*/
 	public function get_all() {
 		return $this->options;
 	}
@@ -160,6 +178,12 @@ class Affiliate_WP_Settings {
 						'name' => '<strong>' . __( 'Referral Settings', 'affiliate-wp' ) . '</strong>',
 						'desc' => '',
 						'type' => 'header'
+					),
+					'referral_var' => array(
+						'name' => __( 'Referral Variable', 'affiliate-wp' ),
+						'desc' => __( 'The URL variable for referral URLs.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => 'ref'
 					),
 					'referral_rate' => array(
 						'name' => __( 'Referral Rate (%)', 'affiliate-wp' ),

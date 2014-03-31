@@ -136,7 +136,8 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function set_referral_var() {
-		$this->referral_var = apply_filters( 'affwp_referral_var', 'ref' );
+		$var = affiliate_wp()->settings->get( 'referral_var', 'ref' );
+		$this->referral_var = apply_filters( 'affwp_referral_var', $var );
 	}
 
 	/**
