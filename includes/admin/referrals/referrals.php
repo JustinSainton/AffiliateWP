@@ -351,7 +351,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	
 		} else {
 
-			if( 'rejected' != $referral->status ) {	
+			if( 'unpaid' == $referral->status ) {	
 
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
 
