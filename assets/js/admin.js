@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
 	});
 
 	// datepicker
-	if( $('.affwp-datepicker').length {
+	if( $('.affwp-datepicker').length ) {
 		$('.affwp-datepicker').datepicker();
 	}
 
