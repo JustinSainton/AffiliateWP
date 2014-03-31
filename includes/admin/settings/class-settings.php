@@ -229,7 +229,7 @@ class Affiliate_WP_Settings {
 				)
 			),
 			/** Integration Settings */
-			'integrations' => apply_filters('affwp_settings_integrations',
+			'integrations' => apply_filters( 'affwp_settings_integrations',
 				array(
 					'integrations' => array(
 						'name' => __( 'Integrations', 'affiliate-wp' ),
@@ -240,7 +240,7 @@ class Affiliate_WP_Settings {
 				)
 			),
 			/** Misc Settings */
-			'misc' => apply_filters('affwp_settings_misc',
+			'misc' => apply_filters( 'affwp_settings_misc',
 				array(
 					'allow_affiliate_registration' => array(
 						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
