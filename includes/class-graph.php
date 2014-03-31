@@ -319,6 +319,8 @@ class Affiliate_WP_Graph {
 
 		$display = $dates['range'] == 'other' ? 'style="display:inline-block;"' : 'style="display:none;"';
 
+		$current_time = current_time( 'timestamp' );
+
 		?>
 		<form id="affwp-graphs-filter" method="get">
 			<div class="tablenav top">
