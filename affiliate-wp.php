@@ -160,7 +160,7 @@ final class Affiliate_WP {
 	private function includes() {
 
 		if( is_admin() ) {
-		
+
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
@@ -170,9 +170,11 @@ final class Affiliate_WP {
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/visits.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/tools.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/welcome.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/plugins.php';
 
 		} else {
-		
+
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
 
 		}
@@ -268,10 +270,10 @@ final class Affiliate_WP {
 			'user_id' => 0,
 		);
 
-		$args = wp_parse_args( $args, $defaults );		
+		$args = wp_parse_args( $args, $defaults );
 
 		return affiliate_wp()->affiliates->add( $args );
-		
+
 	}
 
 	/*****************************
@@ -290,10 +292,10 @@ final class Affiliate_WP {
 			'ip'           => $this->get_ip()
 		);
 
-		$args = wp_parse_args( $args, $defaults );		
+		$args = wp_parse_args( $args, $defaults );
 
 		$referral_id = affiliate_wp()->referrals->add( $args );
-		
+
 		// update the original visit with the referral ID
 
 		return $referral_id;
@@ -312,10 +314,10 @@ final class Affiliate_WP {
 			'date'         => date( 'Y-m-d H:i:s' )
 		);
 
-		$args = wp_parse_args( $args, $defaults );		
+		$args = wp_parse_args( $args, $defaults );
 
 		$visit_id = affiliate_wp()->visits->add( $args );
-		
+
 		// update the original visit with the referral ID
 
 		return $visit_id;
