@@ -131,6 +131,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		}
 
+		if( 'earnings' == $args['orderby'] ) {
+			$args['orderby'] = 'earnings+0';
+		}
+
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
