@@ -60,9 +60,10 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 		return false;
 	}
 
+
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ){
 
-		if ( ! empty( $_REQUEST['affwp_action'] ) ) {
+		if ( ! empty( $_REQUEST['action'] ) ) {
 
 			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_'.$status ) ); exit;
 		}
