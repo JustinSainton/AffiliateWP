@@ -1,5 +1,6 @@
 <?php affiliate_wp()->register->print_errors(); ?>
 <form id="affwp_register_form" class="affwp_form" action="" method="post">
+	<?php do_action( 'affwp_affiliate_register_form_top' ); ?>
 	<fieldset>
 		<span><legend><?php _e( 'Register a New Affiliate Account', 'affiliate-wp' ); ?></legend></span>
 		
@@ -48,4 +49,5 @@
 		
 		<?php do_action( 'affwp_register_fields_after' ); ?>
 	</fieldset>
+	<?php do_action( 'affwp_affiliate_register_form_bottom' ); ?>
 </form>

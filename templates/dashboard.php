@@ -1,6 +1,8 @@
 <?php $affiliate_id = affwp_get_affiliate_id(); ?>
 <div id="affwp-affiliate-dashboard">
 
+	<?php do_action( 'affwp_affiliate_dashboard_top', $affiliate_id ); ?>
+
 	<h4><?php _e( 'Stats', 'affiliate-wp' ); ?></h4>
 
 	<?php if ( 'pending' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
@@ -16,6 +18,8 @@
 		<p class="affwp-notice"><?php _e( 'Your affiliate account request has been rejected', 'affiliate-wp' ); ?></p>
 
 	<?php endif; ?>
+
+	<?php do_action( 'affwp_affiliate_dashboard_notices', $affiliate_id ); ?>
 
 	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp-table">
 
@@ -47,6 +51,8 @@
 
 	</table>
 
+	<?php do_action( 'affwp_affiliate_dashboard_after_counts', $affiliate_id ); ?>
+
 	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp-table">
 
 		<thead>
@@ -75,6 +81,8 @@
 
 	</table>
 
+	<?php do_action( 'affwp_affiliate_dashboard_after_earnings', $affiliate_id ); ?>
+
 	<h4><?php _e( 'Referrals Over Time', 'affiliate-wp' ); ?></h4>
 
 	<?php
@@ -83,6 +91,8 @@
 	$graph->set( 'affiliate_id', $affiliate_id );
 	$graph->display();
 	?>	
+
+	<?php do_action( 'affwp_affiliate_dashboard_after_graphs', $affiliate_id ); ?>
 
 	<h4><?php _e( 'Referral URL Generator', 'affiliate-wp' ); ?></h4>
 
@@ -114,5 +124,7 @@
 		</form>
 
 	</div>
+
+	<?php do_action( 'affwp_affiliate_dashboard_bottom', $affiliate_id ); ?>
 
 </div>
