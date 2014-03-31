@@ -7,7 +7,9 @@ jQuery(document).ready(function($) {
 	});
 
 	// datepicker
-	$('.affwp-datepicker').datepicker();
+	if( $('.affwp-datepicker').length {
+		$('.affwp-datepicker').datepicker();
+	}
 
 	// ajax user search
 	$('.affwp-user-search').keyup(function() {
