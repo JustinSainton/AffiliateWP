@@ -199,7 +199,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return string The affiliate
 	 */
 	function column_affiliate_id( $visit ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp&action=view_affiliate&affiliate_id=' . $visit->affiliate_id ) . '">' . $visit->affiliate_id . '</a>';
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-affiliates&action=view_affiliate&affiliate_id=' . $visit->affiliate_id ) . '">' . $visit->affiliate_id . '</a>';
 	}
 
 	/**
