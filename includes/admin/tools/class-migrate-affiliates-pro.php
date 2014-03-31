@@ -165,7 +165,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 					'description'     => $referral->description,
 					'amount'          => $referral->amount,
 					'currency'        => strtoupper( $referral->currency_id ),
-					'reference'       => str_replace( 'Order #', '', $referral->reference ),
+					'reference'       => $referral->reference,
 					'context'         => $context
 				);
 
