@@ -60,6 +60,10 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 		return false;
 	}
 
+	$old_status = affiliate_wp()->affiliates->get_column( 'status', $affiliate_id );
+
+	do_action( 'affwp_set_affiliate_status', $affiliate_id, $status, $old_status );
+
 	return affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) );
 }
 
