@@ -163,12 +163,8 @@ final class Affiliate_WP {
 	private function includes() {
 
 		if( is_admin() ) {
-<<<<<<< HEAD
 
-=======
-		
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
->>>>>>> upstream/master
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
@@ -179,12 +175,9 @@ final class Affiliate_WP {
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/visits.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/tools.php';
-<<<<<<< HEAD
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/welcome.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/plugins.php';
-=======
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate.php';
->>>>>>> upstream/master
 
 		} else {
 
