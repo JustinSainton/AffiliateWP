@@ -328,6 +328,7 @@ class Affiliate_WP_Graph {
 				<?php endif; ?>
 				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
 				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>
+				<input type="hidden" name="action" value="view_affiliate"/>
 				<?php endif; ?>
 
 				<select id="affwp-graphs-date-options" name="range">
