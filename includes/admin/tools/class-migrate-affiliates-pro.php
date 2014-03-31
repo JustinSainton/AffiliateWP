@@ -148,6 +148,16 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 						break;
 				}
 
+				$context = '';
+				$data = maybe_unserialize( $referral->data );
+				if( ! empty( $data ) ) {
+					if( ! empty( $data['order_id'] ) ) {
+						if( ! empty( $data['order_id']['domain'] ) ) {
+							$context = $data['order_id']['domain'];
+						}
+					}
+				}
+
 				$args = array(
 					'status'          => $status,
 					'affiliate_id'    => $referral->affiliate_id,
@@ -155,7 +165,8 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 					'description'     => $referral->description,
 					'amount'          => $referral->amount,
 					'currency'        => strtoupper( $referral->currency_id ),
-					'reference'       => str_replace( 'Order #', '', $referral->reference )
+					'reference'       => str_replace( 'Order #', '', $referral->reference ),
+					'context'         => $context
 				);
 
 				$id = affiliate_wp()->referrals->add( $args );
