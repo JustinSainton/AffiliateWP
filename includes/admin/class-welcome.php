@@ -98,16 +98,21 @@ class Affiliate_WP_Welcome {
 		<style type="text/css" media="screen">
 		/*<![CDATA[*/
 		.affwp-badge {
-			padding-top: 150px;
-			height: 52px;
+			height: 151px;
 			width: 185px;
-			color: #666;
+			position: relative;
+			color: #fff;
 			font-weight: bold;
 			font-size: 14px;
 			text-align: center;
-			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-			margin: 0 -5px;
 			background: url('<?php echo $badge_url; ?>') no-repeat;
+		}
+
+		.affwp-badge span {
+			position: absolute;
+			bottom: 20px;
+			left: 0;
+			width: 100%;
 		}
 
 		.about-wrap .affwp-badge {
@@ -162,7 +167,7 @@ class Affiliate_WP_Welcome {
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
 			<div class="about-text"><?php printf( __( 'Thank you for Installing Affiliate WP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), $display_version ); ?></div>
-			<div class="affwp-badge"><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></div>
+			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
 
@@ -232,7 +237,7 @@ class Affiliate_WP_Welcome {
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
 			<div class="about-text"><?php printf( __( 'Thank you for Installing Affiliate WP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), $display_version ); ?></div>
-			<div class="affwp-badge"><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></div>
+			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
 
@@ -330,7 +335,7 @@ class Affiliate_WP_Welcome {
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
 			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Affiliate WP %s is ready to make your online store faster, safer and better!', 'affiliate-wp' ), $display_version ); ?></div>
-			<div class="affwp-badge"><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></div>
+			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
 
