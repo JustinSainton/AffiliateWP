@@ -44,6 +44,9 @@ table.affwp_table th {
 	display: inline-block;
 	width: 200px;
 }
+#affwp_referral_url_submit_wrap {
+	margin-top: 10px;
+}
 
 .affwp_errors,
 .affwp-notice {
@@ -61,6 +64,18 @@ table.affwp_table th {
 }
 p.affwp_error {
 	margin: 0 !important;
+}
+
+#affwp-affiliate-dashboard h4 {
+	margin-bottom: 20px;
+}
+
+#affwp-graphs-filter {
+	margin-bottom: 20px;
+}
+
+#affwp-affiliate-dashboard .affwp-graph {
+	margin-bottom: 20px;
 }
 
 #affwp-affiliate-dashboard .affwp-graph table {

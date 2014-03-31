@@ -12,7 +12,7 @@
 	<?php elseif ( 'inactive' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
 
 		<p class="affwp-notice"><?php _e( 'Your affiliate account is not active', 'affiliate-wp' ); ?></p>
-	
+
 	<?php elseif ( 'rejected' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
 
 		<p class="affwp-notice"><?php _e( 'Your affiliate account request has been rejected', 'affiliate-wp' ); ?></p>
@@ -88,7 +88,7 @@
 	$graph->set( 'x_mode', 'time' );
 	$graph->set( 'affiliate_id', $affiliate_id );
 	$graph->display();
-	?>	
+	?>
 
 	<?php do_action( 'affwp_affiliate_dashboard_after_graphs', $affiliate_id ); ?>
 
@@ -104,14 +104,14 @@
 		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url( '/' );
 		?>
 
-		<form method="get" id="affwp_generate_ref_url" class="affwp_form"> 
+		<form method="get" id="affwp_generate_ref_url" class="affwp_form">
 			<div id="affwp_base_url_wrap">
-				<label for="affwp_url"><?php _e( 'URL', 'affiliate-wp' ); ?></label>
 				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
+				<label for="affwp_url"><?php _e( 'URL', 'affiliate-wp' ); ?></label>
 			</div>
 			<div id="affwp_referral_url_wrap"<?php if( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
-				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 				<input type="text" id="affwp_referral_url" value="<?php echo esc_attr( $referral_url ); ?>"/>
+				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 				<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
 			</div>
 			<div id="affwp_referral_url_submit_wrap">
