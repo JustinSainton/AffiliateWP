@@ -21,7 +21,7 @@
 
 	<?php do_action( 'affwp_affiliate_dashboard_notices', $affiliate_id ); ?>
 
-	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp-table">
+	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp_table">
 
 		<thead>
 
@@ -53,7 +53,7 @@
 
 	<?php do_action( 'affwp_affiliate_dashboard_after_counts', $affiliate_id ); ?>
 
-	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp-table">
+	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp_table">
 
 		<thead>
 
