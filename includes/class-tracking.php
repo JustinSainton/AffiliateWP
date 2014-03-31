@@ -295,24 +295,28 @@ class Affiliate_WP_Tracking {
 		global $post;
 
 		if ( is_front_page() ) {
+
 			$page_url = home_url();
+
 		} else {
+
 			$page_url = 'http';
+
+			if ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) {
+				$page_url .= "s";
+			}
+
+			$page_url .= "://";
+
+			if ( $_SERVER["SERVER_PORT"] != "80" ) {
+				$page_url .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+			} else {
+				$page_url .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+			}
+
 		}
 
-		if ( isset( $_SERVER["HTTPS"] ) && $_SERVER["HTTPS"] == "on" ) {
-			$page_url .= "s";
-		}
-
-		$page_url .= "://";
-
-		if ( $_SERVER["SERVER_PORT"] != "80" ) {
-			$page_url .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-		} else {
-			$page_url .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
-		}
-
-		return apply_filters( 'affwp_get_current_page_url', esc_url( $page_url ) );
+		return apply_filters( 'affwp_get_current_page_url', $page_url );
 	}
 
 	/**
