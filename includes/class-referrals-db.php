@@ -72,7 +72,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( $add ) {
 
+			wp_cache_flush();
+
 			do_action( 'affwp_add_referral', $add );
+
 			return $add;
 		}
 

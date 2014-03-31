@@ -61,6 +61,8 @@ abstract class Affiliate_WP_DB {
 
 		$wpdb->insert( $this->table_name, $data, $column_formats );
 
+		wp_cache_flush();
+
 		do_action( 'affwp_post_insert_' . $type, $wpdb->insert_id, $data );
 
 		return $wpdb->insert_id;
@@ -95,6 +97,8 @@ abstract class Affiliate_WP_DB {
 			return false;
 		}
 
+		wp_cache_flush();
+
 		return true;
 	}
 
@@ -110,6 +114,8 @@ abstract class Affiliate_WP_DB {
 		if ( false === $wpdb->query( $wpdb->prepare( "DELETE FROM $this->table_name WHERE $this->primary_key = %d", $row_id ) ) ) {
 			return false;
 		}
+
+		wp_cache_flush();
 
 		return true;
 	}

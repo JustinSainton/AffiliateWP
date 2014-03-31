@@ -186,6 +186,9 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$add  = $this->insert( $args, 'affiliate' );
 
 		if( $add ) {
+
+			wp_cache_flush();
+
 			do_action( 'affwp_add_affiliate', $add );
 			return $add;
 		}

@@ -57,8 +57,8 @@
 
 			<tr>
 
-				<th><?php _e( 'Paid Earnings', 'affwp' ); ?></th>
 				<th><?php _e( 'Unpaid Earnings', 'affwp' ); ?></th>
+				<th><?php _e( 'Paid Earnings', 'affwp' ); ?></th>
 				<th><?php _e( 'Conversion Rate', 'affwp' ); ?></th>
 
 			</tr>
@@ -69,8 +69,8 @@
 
 			<tr>
 
-				<td><?php echo affwp_get_affiliate_earnings( $affiliate_id, true ); ?></td>
 				<td><?php echo affwp_get_affiliate_unpaid_earnings( $affiliate_id ); ?></td>
+				<td><?php echo affwp_get_affiliate_earnings( $affiliate_id, true ); ?></td>
 				<td><?php echo affwp_get_affiliate_conversion_rate( $affiliate_id ); ?></td>
 
 			</tr>
