@@ -22,7 +22,7 @@ class Affiliate_WP_Emails {
 				$message .= __( 'Name: ', 'affiliate-wp' ) . affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) . "\n\n";
 
 				if( affiliate_wp()->settings->get( 'require_approval' ) ) {
-					$message .= sprintf( "<a href='%s'>Click here</a> to review pending applications.\n\n", admin_url( 'admin.php?page=affiliate-wp&status=pending' ) ); 
+					$message .= sprintf( "Review pending applications: %s\n\n", admin_url( 'admin.php?page=affiliate-wp&status=pending' ) ); 
 
 				}
 
