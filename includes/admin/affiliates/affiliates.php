@@ -170,7 +170,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return array $views All the views available
 	 */
 	public function get_views() {
-		$base           = admin_url( 'admin.php?page=affiliate-wp' );
+		$base           = admin_url( 'admin.php?page=affiliate-wp-affiliates' );
 
 		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
 		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
