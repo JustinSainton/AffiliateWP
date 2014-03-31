@@ -67,7 +67,7 @@ function affwp_generate_referral_payout_file( $data ) {
 	$export = new Affiliate_WP_Referral_Payout_Export;
 	$export->date = array(
 		'start' => $data['from'],
-		'end'   => $data['to']
+		'end'   => $data['to'] . ' 23:59:59'
 	);
 	$export->export();
 
@@ -544,7 +544,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			$date['start'] = $from;
 		}
 		if( ! empty( $to ) ) {
-			$date['end']   = $to;
+			$date['end']   = $to . ' 23:59:59';;
 		}
 
 		if( ! empty( $_GET['s'] ) ) {

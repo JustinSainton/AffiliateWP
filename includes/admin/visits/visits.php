@@ -268,7 +268,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 			$date['start'] = $from;
 		}
 		if( ! empty( $to ) ) {
-			$date['end']   = $to;
+			$date['end']   = $to . ' 23:59:59';
 		}
 
 		if( ! empty( $user_id ) ) {
