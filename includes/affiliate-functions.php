@@ -164,7 +164,7 @@ function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 	$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
 	$earnings = 0;
 	
-	if( ! empty( $earnings ) ) {
+	if( ! empty( $referrals ) ) {
 
 		foreach( $referrals as $referral ) {
 
