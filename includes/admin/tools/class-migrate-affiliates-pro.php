@@ -3,9 +3,7 @@
 class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 
-	public function __construct() {
-		$this->type = 'affiliates-pro';
-	}
+	public function __construct() { }
 
 
 	public function process( $step = 1, $part = '' ) {
@@ -50,6 +48,19 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 		}
 
 		$this->finish();
+
+	}
+
+	public function step_forward( $step = 1, $part = '' ) {
+
+		$step++;
+		$redirect          = add_query_arg( array(
+			'page'         => 'affiliate-wp-migrate',
+			'type'         => 'affiliates-pro',
+			'part'         => $part,
+			'step'         => $step
+		), admin_url( 'index.php' ) );
+		wp_redirect( $redirect ); exit;
 
 	}
 
@@ -144,7 +155,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 					'description'     => $referral->description,
 					'amount'          => $referral->amount,
 					'currency'        => strtoupper( $referral->currency_id ),
-					'reference'       => $referral->reference
+					'reference'       => str_replace( 'Order #', '', $referral->reference )
 				);
 
 				$id = affiliate_wp()->referrals->add( $args );
