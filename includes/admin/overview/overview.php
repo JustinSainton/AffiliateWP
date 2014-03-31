@@ -201,7 +201,7 @@ function affwp_affiliates_dashboard() {
 
 									<tr>
 										<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
-										<th><?php _e( 'URL Earnings This Month', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'URL', 'affiliate-wp' ); ?></th>
 										<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 									</tr>
 
