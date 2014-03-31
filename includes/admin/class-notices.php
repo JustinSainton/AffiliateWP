@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_Admin_Notices {
-	
+
 	public function __construct() {
 
 		add_action( 'admin_notices', array( $this, 'show_notices' ) );
@@ -24,9 +24,18 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
+			case 'affiliate_added_failed' :
+
+				$message = __( 'Affiliate wasn\'t added, please try again.', 'affiliate-wp' );
+				$class   = 'error';
+
+				break;
+
 			case 'affiliate_updated' :
 
 				$message = __( 'Affiliate updated successfully', 'affiliate-wp' );
+
+				$message .= '<p>'. sprintf( __( '<a href="%s">Back to Affiliates</a>', 'affiliate-wp' ), admin_url( 'admin.php?page=affiliate-wp-affiliates' ) ) .'</p>';
 
 				break;
 
@@ -47,6 +56,18 @@ class Affiliate_WP_Admin_Notices {
 
 				$message = __( 'Affiliate deletion failed, please try again', 'affiliate-wp' );
 				$class   = 'error';
+
+				break;
+
+			case 'affiliate_active' :
+
+				$message = __( 'Affiliate account activated' );
+
+				break;
+
+			case 'affiliate_inactive' :
+
+				$message = __( 'Affiliate account deactivated' );
 
 				break;
 
@@ -85,7 +106,7 @@ class Affiliate_WP_Admin_Notices {
 
 		if( ! empty( $message ) ) {
 
-			echo '<div class="' . esc_attr( $class ) . '"><p>' . esc_html( $message ) . '</p></div>';
+			echo '<div class="' . esc_attr( $class ) . '"><p>' .  $message  . '</p></div>';
 
 		}
 
