@@ -15,7 +15,7 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 	}
 
 	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
-	
+
 	if( $affiliate ) {
 		return $affiliate->affiliate_id;
 	}
@@ -60,7 +60,10 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 		return false;
 	}
 
-	return affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) );
+	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ){
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_'.$status ) ); exit;
+	}
+
 }
 
 function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
@@ -121,6 +124,7 @@ function affwp_delete_affiliate( $affiliate ) {
 	// TODO: also delete all referrals and visits here
 
 	return affiliate_wp()->affiliates->delete( $affiliate_id );
+
 }
 
 
@@ -163,7 +167,7 @@ function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 
 	$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
 	$earnings = 0;
-	
+
 	if( ! empty( $earnings ) ) {
 
 		foreach( $referrals as $referral ) {
@@ -408,7 +412,8 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if( affiliate_wp()->affiliates->add( $args ) ) {
 
-			return true;
+			// This is an update call from the edit screen
+			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
 
 		}
 
@@ -435,7 +440,7 @@ function affwp_update_affiliate( $data = array() ) {
 
 		if ( ! empty( $_POST['affwp_action'] ) ) {
 			// This is an update call from the edit screen
-			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp&action=edit_affiliate&affwp_notice=affiliate_updated&affiliate_id=' . $affiliate_id ) ); exit;
+			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&action=edit_affiliate&affwp_notice=affiliate_updated&affiliate_id=' . $affiliate_id ) ); exit;
 		}
 
 		return true;

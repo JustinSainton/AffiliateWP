@@ -17,7 +17,7 @@ abstract class Affiliate_WP_DB {
 	public function get_column_defaults() {
 		return array();
 	}
-	
+
 	public function get( $row_id ) {
 		global $wpdb;
 		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $this->primary_key = $row_id;" );
@@ -37,7 +37,7 @@ abstract class Affiliate_WP_DB {
 		global $wpdb;
 		return $wpdb->get_col( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value;" );
 	}
-	
+
 	public function insert( $data, $type = '' ) {
 		global $wpdb;
 
@@ -67,10 +67,10 @@ abstract class Affiliate_WP_DB {
 	}
 
 	public function update( $row_id, $data = array(), $where = '' ) {
-		global $wpdb;        
+		global $wpdb;
 
 		// Row ID must be positive integer
-		$row_id = absint( $row_id );     
+		$row_id = absint( $row_id );
 		if( empty( $row_id ) )
 			return false;
 
@@ -103,7 +103,7 @@ abstract class Affiliate_WP_DB {
 		global $wpdb;
 
 		// Row ID must be positive integer
-		$row_id = absint( $row_id );     
+		$row_id = absint( $row_id );
 		if( empty( $row_id ) )
 			return false;
 
