@@ -86,6 +86,12 @@ class Affiliate_WP_Welcome {
 		remove_submenu_page( 'index.php', 'affwp-getting-started' );
 		remove_submenu_page( 'index.php', 'affwp-credits' );
 
+		$page = isset( $_GET['page'] ) ? $_GET['page'] : false;
+
+		if( 'affwp-about' != $page  && 'affwp-getting-started' != $page && 'affwp-credits' != $page ) {
+			return;
+		}
+
 		// Badge for welcome page
 		$badge_url = AFFILIATEWP_PLUGIN_URL . 'assets/images/affwp-badge.png';
 		?>
