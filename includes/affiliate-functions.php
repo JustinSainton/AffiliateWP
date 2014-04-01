@@ -100,7 +100,8 @@ function affwp_get_affiliate_email( $affiliate ) {
 		return false;
 	}
 
-	$email = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $affiliate_id ) );
+	$user_id = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+	$email   = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
 
 	if( $email ) {
 
