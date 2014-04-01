@@ -146,7 +146,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	public function get_columns() {
 		$columns = array(
 			'url'          => __( 'Landing Page', 'affiliate-wp' ),
-			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
+			'affiliate'    => __( 'Affiliate', 'affiliate-wp' ),
 			'referral_id'  => __( 'Referral ID', 'affiliate-wp' ),
 			'ip'           => __( 'IP', 'affiliate-wp' ),
 			'converted'    => __( 'Converted', 'affiliate-wp' ),
@@ -198,8 +198,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @param array $referral Contains all the data for the checkbox column
 	 * @return string The affiliate
 	 */
-	function column_affiliate_id( $visit ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-affiliates&action=view_affiliate&affiliate_id=' . $visit->affiliate_id ) . '">' . $visit->affiliate_id . '</a>';
+	function column_affiliate( $visit ) {
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-affiliates&action=view_affiliate&affiliate_id=' . $visit->affiliate_id ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $visit->affiliate_id ) . '</a>';
 	}
 
 	/**
