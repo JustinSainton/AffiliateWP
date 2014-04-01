@@ -67,7 +67,7 @@ class Affiliate_WP_Emails {
 				$subject  = __( 'Referral Awarded!', 'affiliate-wp' );
 				$message  = sprintf( __( "Congratulations %s!\n\n", "affiliate-wp" ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) );
 				$message .= sprintf( __( "You have been awarded a new referral of %s on %s!\n\n", "affiliate-wp" ), affwp_currency_filter( $args['amount'] ), home_url() );
-				$message .= sprintf( __( "Log into your affiliate area to view your earnings: %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
+				$message .= sprintf( __( "Log into your affiliate area to view your earnings or disable these notifications: %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
 
 				$subject = apply_filters( 'affwp_new_referral_subject', $subject, $args );
 				$message = apply_filters( 'affwp_new_referral_email', $message, $args );
