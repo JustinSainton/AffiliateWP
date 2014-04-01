@@ -20,6 +20,12 @@ class Affiliate_WP_Emails {
 
 	public function notify_of_new_referral( $affiliate_id = 0, $referral ) {
 
+		$user_id = affwp_get_affiliate_user_id( $affiliate_id );
+
+		if( ! get_user_meta( $user_id, 'affwp_referral_notifications', true ) ) {
+			return;
+		}
+
 		affiliate_wp()->emails->notification( 'new_referral', array( 'affiliate_id' => $affiliate_id, 'amount' => $referral->amount ) );
 	}
 

@@ -24,6 +24,20 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 
 }
 
+function affwp_get_affiliate_user_id( $affiliate ) {
+
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	return affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+
+}
+
 function affwp_get_affiliate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -453,4 +467,35 @@ function affwp_update_affiliate( $data = array() ) {
 
 	return false;
 
+}
+
+function affwp_update_notification_settings( $data = array() ) {
+
+	if( ! is_user_logged_in() ) {
+		return false;
+	}
+
+	if( empty( $data['affiliate_id'] ) ) {
+		return false;
+	}
+
+	if( affwp_get_affiliate_id() != $data['affiliate_id'] && ! currenct_user_can( 'manage_affiliates' ) ) {
+		return false;
+	}
+
+	$user_id = affwp_get_affiliate_user_id( absint( $data['affiliate_id'] ) );
+
+	if( ! empty( $data['referral_notifications'] ) ) {
+
+		update_user_meta( $user_id, 'affwp_referral_notifications', '1' );
+	
+	} else {
+
+		delete_user_meta( $user_id, 'affwp_referral_notifications' );
+
+	}
+
+	if ( ! empty( $_POST['affwp_action'] ) ) {
+		wp_redirect( add_query_arg( 'affwp_notice', 'notifications_saved' ) ); exit;
+	}
 }
