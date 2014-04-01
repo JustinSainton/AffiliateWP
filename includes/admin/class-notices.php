@@ -77,7 +77,7 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
-			case 'affiliate_reject' :
+			case 'affiliate_rejected' :
 
 				$message = __( 'Affiliate request was rejected', 'affiliate-wp' );
 
