@@ -36,6 +36,10 @@ table.affwp_table th {
 #affwp-dashboard-widgets-wrap .postbox {
 	margin: 0 8px 20px;
 }
+#affwp-dashboard-widgets-wrap .postbox h3,
+#affwp-tools-widgets-wrap .postbox h3 {
+	cursor: default;
+}
 
 /* Referrals page */
 #affwp-referrals-export-form,
