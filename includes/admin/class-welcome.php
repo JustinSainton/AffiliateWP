@@ -267,12 +267,12 @@ class Affiliate_WP_Welcome {
 					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/registration.png'; ?>" class="affwp-welcome-screenshots"/>
 
 					<h4><?php _e( 'Affiliates &rarr; Add New', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'From the main Affiliates page, site admins can easily add new affiliate to Affiliate WP. Simply enter the username, set a rate, and click Add Affiliate!', 'affiliate-wp' );?></p>
+					<p><?php _e( 'From the main Affiliates page, site admins can easily add new affiliates to Affiliate WP. Simply enter the username, set a rate, and click Add Affiliate!', 'affiliate-wp' );?></p>
 
 					<h4><?php _e( 'Affiliate Registration', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simly agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!', 'affiliate-wp' );?></p>
+					<p><?php _e( 'When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simply agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!', 'affiliate-wp' );?></p>
 					
-					<h4><?php _e( 'Moderate Registrations', 'affiliate-wp' );?></h4>
+					<h4><?php _e( 'Moderated Registrations', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'Affiliate registrations can be moderated and require that a site admin approve each registration before the affiliate is permitted to begin tracking referrals.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'Each time an affiliate registers, site admins can log into the site and approve or reject the application.', 'affiliate-wp' );?></p>
 
