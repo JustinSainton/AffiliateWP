@@ -46,6 +46,7 @@ class Affiliate_WP_Welcome {
 	 * @return void
 	 */
 	public function admin_menus() {
+		/*
 		// About Page
 		add_dashboard_page(
 			__( 'Welcome to Affiliate WP', 'affiliate-wp' ),
@@ -54,6 +55,7 @@ class Affiliate_WP_Welcome {
 			'affwp-about',
 			array( $this, 'about_screen' )
 		);
+		*/
 
 		// Getting Started Page
 		add_dashboard_page(
@@ -82,7 +84,7 @@ class Affiliate_WP_Welcome {
 	 * @return void
 	 */
 	public function admin_head() {
-		remove_submenu_page( 'index.php', 'affwp-about' );
+		//remove_submenu_page( 'index.php', 'affwp-about' );
 		remove_submenu_page( 'index.php', 'affwp-getting-started' );
 		remove_submenu_page( 'index.php', 'affwp-credits' );
 
@@ -138,12 +140,13 @@ class Affiliate_WP_Welcome {
 	 * @return void
 	 */
 	public function tabs() {
-		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'affwp-about';
+		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'affwp-getting-started';
 		?>
 		<h2 class="nav-tab-wrapper">
-			<a class="nav-tab <?php echo $selected == 'affwp-about' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-about' ), 'index.php' ) ) ); ?>">
+			
+			<!--<a class="nav-tab <?php echo $selected == 'affwp-about' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-about' ), 'index.php' ) ) ); ?>">
 				<?php _e( "What's New", 'affiliate-wp' ); ?>
-			</a>
+			</a>-->
 			<a class="nav-tab <?php echo $selected == 'affwp-getting-started' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-getting-started' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Getting Started', 'affiliate-wp' ); ?>
 			</a>
@@ -434,7 +437,8 @@ class Affiliate_WP_Welcome {
 		if( ! $upgrade ) { // First time install
 			wp_safe_redirect( admin_url( 'index.php?page=affwp-getting-started' ) ); exit;
 		} else { // Update
-			wp_safe_redirect( admin_url( 'index.php?page=affwp-about' ) ); exit;
+			wp_safe_redirect( admin_url( 'index.php?page=affwp-getting-started' ) ); exit;
+			//wp_safe_redirect( admin_url( 'index.php?page=affwp-about' ) ); exit;
 		}
 	}
 }
