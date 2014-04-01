@@ -105,6 +105,9 @@ table.affwp_table th {
 #affwp-affiliates-filter #earnings {
 	width: 140px;
 }
+#affwp-affiliates-filter #rate {
+	width: 80px;
+}
 #affwp-affiliates-filter #referrals {
 	width: 140px;
 }

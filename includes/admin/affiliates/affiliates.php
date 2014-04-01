@@ -203,6 +203,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'name'         => __( 'Name', 'affiliate-wp' ),
 			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
 			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
+			'rate'     	   => __( 'Rate', 'affiliate-wp' ),
 			'referrals'    => __( 'Paid Referrals', 'affiliate-wp' ),
 			'visits'       => __( 'Visits', 'affiliate-wp' ),
 			'status'       => __( 'Status', 'affiliate-wp' ),
@@ -224,6 +225,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'name'         => array( 'name', false ),
 			'affiliate_id' => array( 'affiliate_id', false ),
 			'earnings'     => array( 'earnings', false ),
+			'rate'         => array( 'rate', false ),
 			'referrals'    => array( 'referrals', false ),
 			'visits'       => array( 'visits', false ),
 			'status'       => array( 'status', false ),
@@ -292,6 +294,19 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	function column_earnings( $affiliate ) {
 		return affwp_currency_filter( affwp_format_amount( affwp_get_affiliate_earnings( $affiliate->affiliate_id ) ) );
 	}
+
+	/**
+	 * Render the earnings column
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @param array $affiliate Contains all the data for the earnings column
+	 * @return string earnings link
+	 */
+	function column_rate( $affiliate ) {
+		return affwp_get_affiliate_rate( $affiliate->affiliate_id );
+	}
+
 
 	/**
 	 * Render the referrals column
