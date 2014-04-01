@@ -18,6 +18,10 @@ table.affwp_table th {
 	font-weight: bold;
 }
 
+.affwp_form fieldset {
+	border: none;
+}
+
 .affwp_form legend {
 	font-size: 120%;
 	margin-bottom: 1em;
