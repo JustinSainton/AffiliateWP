@@ -112,6 +112,13 @@ class Affiliate_WP_Settings {
 
 		$input = $input ? $input : array();
 		$input = apply_filters( 'affwp_settings_' . $tab . '_sanitize', $input );
+		
+		// Ensure a value is always passed for every checkbox
+		foreach ( $settings[ $tab ] as $key => $setting ) {
+			if ( isset( $settings[ $tab ][ $key ]['type'] ) && 'checkbox' == $settings[ $tab ][ $key ]['type'] ) {
+				$input[ $key ] = ! empty( $input[ $key ] );
+			}
+		}
 
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
