@@ -348,9 +348,9 @@ class Affiliate_WP_Graph {
 							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['m_start'] ); ?>><?php echo affwp_month_num_to_name( $i ); ?></option>
 						<?php endfor; ?>
 					</select>
-					<select id="affwp-graphs-year" name="year">
+					<select id="affwp-graphs-year" name="year_start">
 						<?php for ( $i = 2007; $i <= date( 'Y', $current_time ); $i++ ) : ?>
-							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year'] ); ?>><?php echo $i; ?></option>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year_start'] ); ?>><?php echo $i; ?></option>
 						<?php endfor; ?>
 					</select>
 					<span><?php _e( 'To', 'affiliate-wp' ); ?>&nbsp;</span>
