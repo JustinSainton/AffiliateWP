@@ -270,7 +270,7 @@ class Affiliate_WP_Welcome {
 					<p><?php _e( 'From the main Affiliates page, site admins can easily add new affiliate to Affiliate WP. Simply enter the username, set a rate, and click Add Affiliate!', 'affiliate-wp' );?></p>
 
 					<h4><?php _e( 'Affiliate Registration', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simly agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!', 'affiliate-wp' );?></p>
+					<p><?php _e( 'When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simply agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!', 'affiliate-wp' );?></p>
 					
 					<h4><?php _e( 'Moderate Registrations', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'Affiliate registrations can be moderated and require that a site admin approve each registration before the affiliate is permitted to begin tracking referrals.', 'affiliate-wp' );?></p>
@@ -286,7 +286,7 @@ class Affiliate_WP_Welcome {
 
 					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/graph.png'; ?>" class="affwp-welcome-screenshots"/>
 
-					<h4><?php _e( 'A Dashboard for Your Affiliates', 'affiliate-wp' );?></h4>
+					<h4><?php _e( 'A Dashboard For Your Affiliates', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> short code, gives your affiliates access to their performance reports.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referal URLs have done over time.', 'affiliate-wp' );?></p>
 
