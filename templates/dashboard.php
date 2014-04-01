@@ -97,7 +97,7 @@
 	<div id="affwp-affiliate-dashboard-url-generator">
 
 		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
-		<p><?php _e( 'Enter any URL of this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
 		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
@@ -107,7 +107,7 @@
 		<form method="get" id="affwp_generate_ref_url" class="affwp_form">
 			<div id="affwp_base_url_wrap">
 				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
-				<label for="affwp_url"><?php _e( 'URL', 'affiliate-wp' ); ?></label>
+				<label for="affwp_url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
 			</div>
 			<div id="affwp_referral_url_wrap"<?php if( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
 				<input type="text" id="affwp_referral_url" value="<?php echo esc_attr( $referral_url ); ?>"/>
