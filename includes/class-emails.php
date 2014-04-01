@@ -5,6 +5,7 @@ class Affiliate_WP_Emails {
 	public function __construct() {
 
 		add_action( 'affwp_set_affiliate_status', array( $this, 'notify_on_approval' ), 10, 3 );
+		add_action( 'affwp_referral_accepted', array( $this, 'notify_of_new_referral' ), 10, 2 );
 
 	}
 
@@ -15,6 +16,11 @@ class Affiliate_WP_Emails {
 		}
 
 		affiliate_wp()->emails->notification( 'application_accepted', array( 'affiliate_id' => $affiliate_id ) );
+	}
+
+	public function notify_of_new_referral( $affiliate_id = 0, $referral ) {
+
+		affiliate_wp()->emails->notification( 'new_referral', array( 'affiliate_id' => $affiliate_id, 'amount' => $referral->amount ) );
 	}
 
 	public function notification( $type = '', $args = array() ) {
@@ -37,6 +43,7 @@ class Affiliate_WP_Emails {
 
 				}
 
+				$subject = apply_filters( 'affwp_registration_subject', $subject, $args );
 				$message = apply_filters( 'affwp_registration_email', $message, $args );
 
 				break;
@@ -49,7 +56,21 @@ class Affiliate_WP_Emails {
 				$message .= sprintf( __( "Your affiliate application on %s has been accepted!\n\n", "affiliate-wp" ), home_url() );
 				$message .= sprintf( __( "Log into your affiliate area at %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
 
+				$subject = apply_filters( 'affwp_application_accepted_subject', $subject, $args );
 				$message = apply_filters( 'affwp_application_accepted_email', $message, $args );
+
+				break;
+
+			case 'new_referral' :
+
+				$email    = affwp_get_affiliate_email( $args['affiliate_id'] );
+				$subject  = __( 'Referral Awarded!', 'affiliate-wp' );
+				$message  = sprintf( __( "Congratulations %s!\n\n", "affiliate-wp" ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) );
+				$message .= sprintf( __( "You have been awarded a new referral of %s on %s!\n\n", "affiliate-wp" ), affwp_currency_filter( $args['amount'] ), home_url() );
+				$message .= sprintf( __( "Log into your affiliate area to view your earnings: %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
+
+				$subject = apply_filters( 'affwp_new_referral_subject', $subject, $args );
+				$message = apply_filters( 'affwp_new_referral_email', $message, $args );
 
 				break;
 

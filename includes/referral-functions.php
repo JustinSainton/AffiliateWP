@@ -44,11 +44,18 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 		return false;
 	}
 
-	if( 'paid' == $new_status || ( 'unpaid' == $new_status && 'pending' == $old_status ) ) {
+	if( 'paid' == $new_status ) {
 
 		affwp_increase_affiliate_earnings( $referral->affiliate_id, $referral->amount );
 		affwp_increase_affiliate_referral_count( $referral->affiliate_id );
-	
+
+	} elseif ( 'unpaid' == $new_status && ( 'pending' == $old_status || 'rejected' == $old_status ) ) {
+
+		affwp_increase_affiliate_earnings( $referral->affiliate_id, $referral->amount );
+		affwp_increase_affiliate_referral_count( $referral->affiliate_id );
+
+		do_action( 'affwp_referral_accepted', $referral->affiliate_id, $referral );
+
 	} elseif( 'rejected' == $new_status || 'unpaid' == $new_status ) {
 
 		affwp_decrease_affiliate_referral_count( $referral->affiliate_id );
