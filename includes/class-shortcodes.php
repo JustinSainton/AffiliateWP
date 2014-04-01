@@ -5,6 +5,7 @@ class Affiliate_WP_Shortcodes {
 	public function __construct() {
 
 		add_shortcode( 'affiliate_area', array( $this, 'affiliate_area' ) );
+		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
 
 	}
 
@@ -33,6 +34,30 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		return ob_get_clean();
+
+	}
+
+	public function conversion_script( $atts, $content = null ) {
+
+
+		shortcode_atts( array( 'amount' => '', 'description' => '', 'reference' => '', 'context' => '' ), $atts, 'affwp_conversion_script' );
+
+		$defaults = array(
+			'amount'      => '',
+			'description' => '',
+			'context'     => '',
+			'reference'   => '',
+			'status'      => ''
+		);
+
+		$args = wp_parse_args( $atts, $defaults );
+
+		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie.js', array( 'jquery' ), '1.4.0' );
+		wp_localize_script( 'jquery-cookie', 'affwp_scripts', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+		$md5 = md5( $args['amount'] . $args['description'] . $args['reference'] . $args['context'] . $args['status'] );
+
+		return affiliate_wp()->tracking->conversion_script( $args, $md5 );
 
 	}
 

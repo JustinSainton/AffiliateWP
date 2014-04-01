@@ -35,6 +35,9 @@ class Affiliate_WP_Tracking {
 
 		}
 
+		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
+		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
+
 	}
 
 	/**
@@ -96,6 +99,65 @@ class Affiliate_WP_Tracking {
 	}
 
 	/**
+	 * Output the conversion tracking script
+	 *
+	 * @since 1.0
+	 */
+	public function conversion_script( $args = array(), $md5 = '' ) {
+
+		$defaults = array(
+			'amount'      => '',
+			'description' => '',
+			'context'     => '',
+			'reference'   => ''
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+?>
+		<script type="text/javascript">
+		jQuery(document).ready(function($) {
+
+			var ref   = $.cookie( 'affwp_ref' );
+			var visit = $.cookie( 'affwp_ref_visit_id' );
+
+			// If a referral var is present and a referral cookie is not already set
+			if( ref && visit ) {
+
+				// Fire an ajax request to log the hit
+				$.ajax({
+					type: "POST",
+					data: {
+						action      : 'affwp_track_conversion',
+						affiliate   : ref,
+						amount      : '<?php echo $args["amount"]; ?>',
+						description : '<?php echo $args["description"]; ?>',
+						context     : '<?php echo $args["context"]; ?>',
+						reference   : '<?php echo $args["reference"]; ?>',
+						md5         : '<?php echo $md5; ?>'
+					},
+					url: affwp_scripts.ajaxurl,
+					success: function (response) {
+						if ( window.console && window.console.log ) {
+							console.log( response );
+						}
+					}
+
+				}).fail(function (response) {
+					if ( window.console && window.console.log ) {
+						console.log( response );
+					}
+				}).done(function (response) {
+				});
+
+			}
+
+		});
+		</script>
+<?php
+	}
+
+	/**
 	 * Load JS files
 	 *
 	 * @since 1.0
@@ -124,6 +186,51 @@ class Affiliate_WP_Tracking {
 			) );
 
 			echo $visit_id; exit;
+
+		} else {
+
+			die( '-2' );
+
+		}
+
+	}
+
+	/**
+	 * Record referral conversion via ajax
+	 *
+	 * This is called anytime a referred visitor lands on a success page, defined by the [affiliate_conversion_script] short code
+	 *
+	 * @since 1.0
+	 */
+	public function track_conversion() {
+
+		$affiliate_id = absint( $_POST['affiliate'] );
+
+		if( $this->is_valid_affiliate( $affiliate_id ) ) {
+
+			$md5 = md5( $_POST['amount'] . $_POST['description'] . $_POST['reference'] . $_POST['context'] . $_POST['status'] );
+
+			if( $md5 !== $_POST['md5'] ) {
+				die( '-3' ); // The args were modified
+			}
+
+			if( affiliate_wp()->referrals->get_by( 'visit_id', $this->get_visit_id() ) ) {
+				die( '-4' ); // This visit has already generated a referral
+			}
+
+			$status = ! empty( $_POST['status'] ) ? $_POST['status'] : 'unpaid';
+
+			// Store the visit in the DB
+			$referal_id = affiliate_wp()->referrals->add( array(
+				'affiliate_id' => $affiliate_id,
+				'amount'       => sanitize_text_field( $_POST['amount'] ),
+				'status'       => $status,
+				'description'  => sanitize_text_field( $_POST['description'] ),
+				'context'      => sanitize_text_field( $_POST['context'] ),
+				'reference'    => sanitize_text_field( $_POST['reference'] ),
+			) );
+
+			echo $referal_id; exit;
 
 		} else {
 
