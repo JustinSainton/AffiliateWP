@@ -2,7 +2,7 @@
 /**
  * Affiiates Admin
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Admin/Affiliates
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -170,7 +170,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return array $views All the views available
 	 */
 	public function get_views() {
-		$base           = admin_url( 'admin.php?page=affiliate-wp' );
+		$base           = admin_url( 'admin.php?page=affiliate-wp-affiliates' );
 
 		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
 		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';

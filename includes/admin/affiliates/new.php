@@ -6,6 +6,8 @@
 
 		<?php do_action( 'affwp_new_affiliate_top' ); ?>
 
+		<p><?php printf( __( 'Use this screen to register a new affiliate. Each affiliate is tied directly to a user account, so if the user account for the affiliate does not yet exist, <a href="%s" target="_blank">create one</a>.', 'affiliate-wp' ), admin_url( 'user-new.php' ) ); ?></p>
+
 		<table class="form-table">
 
 			<tr class="form-row form-required">
@@ -18,7 +20,7 @@
 					<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
 					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 					<div id="affwp_user_search_results"></div>
-					<div class="description"><?php _e( 'Enter the username of the user to register as an affiliate. To search for a user\'s ID, enter the user\'s login name, first name, or last name to perform a search.', 'affiliate-wp' ); ?></div>
+					<div class="description"><?php _e( 'Begin typing the name of the affiliate to perform a search for their associated user account.', 'affiliate-wp' ); ?></div>
 				</td>
 
 			</tr>
@@ -33,12 +35,6 @@
 					<input type="text" name="rate" id="rate" />
 					<div class="description"><?php _e( 'Referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></div>
 				</td>
-
-			</tr>
-
-			<tr class="form-row">
-
-				<td colspan="2"><?php _e( 'If the user account for this affiliate does not exist, create one first.', 'affiliate-wp' ); ?></td>
 
 			</tr>
 

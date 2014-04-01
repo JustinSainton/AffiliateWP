@@ -4,7 +4,7 @@
  *
  * This class handles building pretty report graphs
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @copyright   Copyright (c) 2012, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @since       1.0
@@ -318,6 +318,8 @@ class Affiliate_WP_Graph {
 		$dates = affwp_get_report_dates();
 
 		$display = $dates['range'] == 'other' ? 'style="display:inline-block;"' : 'style="display:none;"';
+
+		$current_time = current_time( 'timestamp' );
 
 		?>
 		<form id="affwp-graphs-filter" method="get">

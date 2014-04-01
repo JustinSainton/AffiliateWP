@@ -1,3 +1,23 @@
+table.affwp_table {
+	text-align: left;
+	width: 100%;
+	border: none;
+	margin: 0 0 21px;
+	border-collapse: collapse;
+}
+table.affwp_table th,
+table.affwp_table td {
+	text-align: left;
+	border: 1px solid #eee;
+	color: #666;
+	padding: 0.3em 1em;,
+	max-width: 100%;
+}
+table.affwp_table th {
+	background: #fafafa;
+	font-weight: bold;
+}
+
 .affwp_form legend {
 	font-size: 120%;
 	margin-bottom: 1em;
@@ -24,6 +44,9 @@
 	display: inline-block;
 	width: 200px;
 }
+#affwp_referral_url_submit_wrap {
+	margin-top: 10px;
+}
 
 .affwp_errors,
 .affwp-notice {
@@ -41,6 +64,18 @@
 }
 p.affwp_error {
 	margin: 0 !important;
+}
+
+#affwp-affiliate-dashboard h4 {
+	margin-bottom: 20px;
+}
+
+#affwp-graphs-filter {
+	margin-bottom: 20px;
+}
+
+#affwp-affiliate-dashboard .affwp-graph {
+	margin-bottom: 20px;
 }
 
 #affwp-affiliate-dashboard .affwp-graph table {

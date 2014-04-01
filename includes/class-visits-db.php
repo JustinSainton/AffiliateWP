@@ -124,8 +124,16 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	}
 
 	public function add( $data = array() ) {
+
+		if( ! empty( $data['url'] ) ) {
+
+			// Remove the referral var
+			$data['url'] = remove_query_arg( affiliate_wp()->tracking->get_referral_var(), $data['url'] );
+		}
+
 		$visit_id = $this->insert( $data, 'visit' );
 		
+
 		affwp_increase_affiliate_visit_count( $data['affiliate_id'] );
 
 		return $visit_id;

@@ -60,6 +60,9 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 		return false;
 	}
 
+	$old_status = affiliate_wp()->affiliates->get_column( 'status', $affiliate_id );
+
+	do_action( 'affwp_set_affiliate_status', $affiliate_id, $status, $old_status );
 
 	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ){
 
@@ -176,8 +179,13 @@ function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 
 	$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
 	$earnings = 0;
+<<<<<<< HEAD
 
 	if( ! empty( $earnings ) ) {
+=======
+
+	if( ! empty( $referrals ) ) {
+>>>>>>> upstream/master
 
 		foreach( $referrals as $referral ) {
 

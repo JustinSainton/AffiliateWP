@@ -2,7 +2,7 @@
 /**
  * Affiiates Overview
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Admin/Overview
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -143,7 +143,7 @@ function affwp_affiliates_dashboard() {
 										<?php endforeach; ?>
 									<?php else : ?>
 										<tr>
-											<td colspn="3"><?php _e( 'No affiliate registrations yet', 'affiliate-wp' ); ?></td>
+											<td colspan="3"><?php _e( 'No affiliate registrations yet', 'affiliate-wp' ); ?></td>
 										</tr>
 									<?php endif; ?>
 								</tbody>
@@ -183,7 +183,7 @@ function affwp_affiliates_dashboard() {
 									<?php endforeach; ?>
 								<?php else : ?>
 									<tr>
-										<td colspn="3"><?php _e( 'No referrals recorded yet', 'affiliate-wp' ); ?></td>
+										<td colspan="3"><?php _e( 'No referrals recorded yet', 'affiliate-wp' ); ?></td>
 									</tr>
 								<?php endif; ?>
 								</tbody>
@@ -201,7 +201,7 @@ function affwp_affiliates_dashboard() {
 
 									<tr>
 										<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
-										<th><?php _e( 'URL Earnings This Month', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'URL', 'affiliate-wp' ); ?></th>
 										<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 									</tr>
 
@@ -221,7 +221,7 @@ function affwp_affiliates_dashboard() {
 										<?php endforeach; ?>
 									<?php else: ?>
 										<tr>
-											<td colspn="3"><?php _e( 'No referral visits recorded yet', 'affiliate-wp' ); ?></td>
+											<td colspan="3"><?php _e( 'No referral visits recorded yet', 'affiliate-wp' ); ?></td>
 										</tr>
 									<?php endif; ?>
 								</tbody>

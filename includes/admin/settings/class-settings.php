@@ -229,7 +229,7 @@ class Affiliate_WP_Settings {
 				)
 			),
 			/** Integration Settings */
-			'integrations' => apply_filters('affwp_settings_integrations',
+			'integrations' => apply_filters( 'affwp_settings_integrations',
 				array(
 					'integrations' => array(
 						'name' => __( 'Integrations', 'affiliate-wp' ),
@@ -240,7 +240,7 @@ class Affiliate_WP_Settings {
 				)
 			),
 			/** Misc Settings */
-			'misc' => apply_filters('affwp_settings_misc',
+			'misc' => apply_filters( 'affwp_settings_misc',
 				array(
 					'allow_affiliate_registration' => array(
 						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
@@ -262,9 +262,14 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Should unpaid referrals get automatically rejected when the originating purchase is refunded or revoked?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'tracking_fallback' => array(
+						'name' => __( 'Use Fallback Referral Tracking Method?', 'affiliate-wp' ),
+						'desc' => __( 'The method used to track referral links can fail on sites that have jQuery errors. Check this if referrals are not getting tracked properly.', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'uninstall_on_delete' => array(
 						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
-						'desc' => __( 'Check this box if you would like Affiliate WP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
+						'desc' => __( 'Check this box if you would like AffiliateWP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					)
 				)

@@ -72,7 +72,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( $add ) {
 
+			wp_cache_flush();
+
 			do_action( 'affwp_add_referral', $add );
+
 			return $add;
 		}
 
@@ -284,9 +287,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	*/
 	public function paid_earnings( $date = '', $affiliate_id = 0, $format = true ) {
 
-		$args = array();
-		$args['status'] = 'paid';
+		$args                 = array();
+		$args['status']       = 'paid';
 		$args['affiliate_id'] = $affiliate_id;
+		$args['number']       = '-1';
 
 		if( 'alltime' == $date ) {
 			return $this->get_alltime_earnings();
@@ -339,9 +343,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	*/
 	public function unpaid_earnings( $date = '', $affiliate_id = 0, $format = true ) {
 
-		$args = array();
-		$args['status'] = 'unpaid';
+		$args                 = array();
+		$args['status']       = 'unpaid';
 		$args['affiliate_id'] = $affiliate_id;
+		$args['number']       = '-1';
 
 		if( ! empty( $date ) ) {
 
@@ -380,8 +385,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	*/
 	public function unpaid_count( $date = '', $affiliate_id = 0 ) {
 
-		$args = array();
-		$args['status'] = 'unpaid';
+		$args                 = array();
+		$args['status']       = 'unpaid';
 		$args['affiliate_id'] = $affiliate_id;
 
 		if( ! empty( $date ) ) {

@@ -12,7 +12,7 @@
 	<?php elseif ( 'inactive' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
 
 		<p class="affwp-notice"><?php _e( 'Your affiliate account is not active', 'affiliate-wp' ); ?></p>
-	
+
 	<?php elseif ( 'rejected' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
 
 		<p class="affwp-notice"><?php _e( 'Your affiliate account request has been rejected', 'affiliate-wp' ); ?></p>
@@ -21,13 +21,12 @@
 
 	<?php do_action( 'affwp_affiliate_dashboard_notices', $affiliate_id ); ?>
 
-	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp-table">
+	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp_table">
 
 		<thead>
 
 			<tr>
 
-				<th><?php _e( 'Total Referrals', 'affwp' ); ?></th>
 				<th><?php _e( 'Unpaid Referrals', 'affwp' ); ?></th>
 				<th><?php _e( 'Paid Referrals', 'affwp' ); ?></th>
 				<th><?php _e( 'Visits', 'affwp' ); ?></th>
@@ -40,7 +39,6 @@
 
 			<tr>
 
-				<td><?php echo affwp_count_referrals( $affiliate_id ); ?></td>
 				<td><?php echo affwp_count_referrals( $affiliate_id, 'unpaid' ); ?></td>
 				<td><?php echo affwp_count_referrals( $affiliate_id, 'paid' ); ?></td>
 				<td><?php echo affwp_count_visits( $affiliate_id ); ?></td>
@@ -53,14 +51,14 @@
 
 	<?php do_action( 'affwp_affiliate_dashboard_after_counts', $affiliate_id ); ?>
 
-	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp-table">
+	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp_table">
 
 		<thead>
 
 			<tr>
 
-				<th><?php _e( 'Paid Earnings', 'affwp' ); ?></th>
 				<th><?php _e( 'Unpaid Earnings', 'affwp' ); ?></th>
+				<th><?php _e( 'Paid Earnings', 'affwp' ); ?></th>
 				<th><?php _e( 'Conversion Rate', 'affwp' ); ?></th>
 
 			</tr>
@@ -71,8 +69,8 @@
 
 			<tr>
 
+				<td><?php echo affwp_get_affiliate_unpaid_earnings( $affiliate_id, true ); ?></td>
 				<td><?php echo affwp_get_affiliate_earnings( $affiliate_id, true ); ?></td>
-				<td><?php echo affwp_get_affiliate_unpaid_earnings( $affiliate_id ); ?></td>
 				<td><?php echo affwp_get_affiliate_conversion_rate( $affiliate_id ); ?></td>
 
 			</tr>
@@ -90,7 +88,7 @@
 	$graph->set( 'x_mode', 'time' );
 	$graph->set( 'affiliate_id', $affiliate_id );
 	$graph->display();
-	?>	
+	?>
 
 	<?php do_action( 'affwp_affiliate_dashboard_after_graphs', $affiliate_id ); ?>
 
@@ -99,21 +97,21 @@
 	<div id="affwp-affiliate-dashboard-url-generator">
 
 		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
-		<p><?php _e( 'Enter any URL of this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
 		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
 		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url( '/' );
 		?>
 
-		<form method="get" id="affwp_generate_ref_url" class="affwp_form"> 
+		<form method="get" id="affwp_generate_ref_url" class="affwp_form">
 			<div id="affwp_base_url_wrap">
-				<label for="affwp_url"><?php _e( 'URL', 'affiliate-wp' ); ?></label>
 				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
+				<label for="affwp_url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
 			</div>
 			<div id="affwp_referral_url_wrap"<?php if( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
-				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 				<input type="text" id="affwp_referral_url" value="<?php echo esc_attr( $referral_url ); ?>"/>
+				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 				<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
 			</div>
 			<div id="affwp_referral_url_submit_wrap">
