@@ -216,7 +216,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		if ( ! empty( $args['status'] ) ) {
 
 			if( is_array( $args['status'] ) ) {
-				$where .= " WHERE `status` IN(" . implode( ',', $args['status'] ) . ") ";
+				$where .= " WHERE `status` IN('" . implode( "','", $args['status'] ) . "') ";
 			} else {
 				$where .= " WHERE `status` = '" . $args['status'] . "' ";
 			}
