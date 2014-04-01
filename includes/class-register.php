@@ -64,6 +64,10 @@ class Affiliate_WP_Register {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
 		}
 
+		if( affwp_is_affiliate() ) {
+			$this->add_error( 'already_registered', __( 'You are already registered as an affiliate', 'affiliate-wp' ) );
+		}
+
 		do_action( 'affwp_process_register_form' );
 
 		// only log the user in if there are no errors
