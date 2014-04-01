@@ -425,15 +425,10 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if( affiliate_wp()->affiliates->add( $args ) ) {
 
-<<<<<<< HEAD
 			if ( ! empty( $_POST['affwp_action'] ) ) {
 
 				wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
 			}
-=======
-			// This is an update call from the edit screen
-			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
->>>>>>> Fixed merge conflicts
 
 			return true;
 		}
