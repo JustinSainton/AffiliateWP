@@ -176,12 +176,17 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 * @since   1.0
 	*/
 	public function add( $data = array() ) {
+
 		$defaults = array(
 			'status'          => 'active',
 			'date_registered' => current_time( 'mysql' )
 		);
 
 		$args = wp_parse_args( $data, $defaults );
+
+		if(  ! empty( $args['user_id'] ) && affiliate_wp()->affiliates->get_by( 'user_id', $args['user_id'] ) ) {
+			return false;
+		}
 
 		$add  = $this->insert( $args, 'affiliate' );
 
