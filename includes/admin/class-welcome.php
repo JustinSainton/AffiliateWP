@@ -2,7 +2,7 @@
 /**
  * Welcome Page Class
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Admin/Welcome
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -49,8 +49,8 @@ class Affiliate_WP_Welcome {
 		/*
 		// About Page
 		add_dashboard_page(
-			__( 'Welcome to Affiliate WP', 'affiliate-wp' ),
-			__( 'Welcome to Affiliate WP', 'affiliate-wp' ),
+			__( 'Welcome to AffiliateWP', 'affiliate-wp' ),
+			__( 'Welcome to AffiliateWP', 'affiliate-wp' ),
 			$this->minimum_capability,
 			'affwp-about',
 			array( $this, 'about_screen' )
@@ -59,8 +59,8 @@ class Affiliate_WP_Welcome {
 
 		// Getting Started Page
 		add_dashboard_page(
-			__( 'Getting started with Affiliate WP', 'affiliate-wp' ),
-			__( 'Getting started with Affiliate WP', 'affiliate-wp' ),
+			__( 'Getting started with AffiliateWP', 'affiliate-wp' ),
+			__( 'Getting started with AffiliateWP', 'affiliate-wp' ),
 			$this->minimum_capability,
 			'affwp-getting-started',
 			array( $this, 'getting_started_screen' )
@@ -68,8 +68,8 @@ class Affiliate_WP_Welcome {
 
 		// Credits Page
 		add_dashboard_page(
-			__( 'The people that build Affiliate WP', 'affiliate-wp' ),
-			__( 'The people that build Affiliate WP', 'affiliate-wp' ),
+			__( 'The people that build AffiliateWP', 'affiliate-wp' ),
+			__( 'The people that build AffiliateWP', 'affiliate-wp' ),
 			$this->minimum_capability,
 			'affwp-credits',
 			array( $this, 'credits_screen' )
@@ -168,8 +168,8 @@ class Affiliate_WP_Welcome {
 		list( $display_version ) = explode( '-', AFFILIATEWP_VERSION );
 		?>
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for Installing Affiliate WP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to AffiliateWP %s', 'affiliate-wp' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for Installing AffiliateWP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), $display_version ); ?></div>
 			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
@@ -221,7 +221,7 @@ class Affiliate_WP_Welcome {
 			</div>
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=affiliate-wp-settings' ) ); ?>"><?php _e( 'Go to Affiliate WP Settings', 'affiliate-wp' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=affiliate-wp-settings' ) ); ?>"><?php _e( 'Go to AffiliateWP Settings', 'affiliate-wp' ); ?></a>
 			</div>
 		</div>
 		<?php
@@ -238,13 +238,13 @@ class Affiliate_WP_Welcome {
 		list( $display_version ) = explode( '-', AFFILIATEWP_VERSION );
 		?>
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for Installing Affiliate WP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to AffiliateWP %s', 'affiliate-wp' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for Installing AffiliateWP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), $display_version ); ?></div>
 			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
 
-			<p class="about-description"><?php _e( 'Use the tips below to get started using Affiliate WP. You will be up and running in no time!', 'affiliate-wp' ); ?></p>
+			<p class="about-description"><?php _e( 'Use the tips below to get started using AffiliateWP. You will be up and running in no time!', 'affiliate-wp' ); ?></p>
 
 			<div class="changelog">
 				
@@ -267,12 +267,12 @@ class Affiliate_WP_Welcome {
 					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/registration.png'; ?>" class="affwp-welcome-screenshots"/>
 
 					<h4><?php _e( 'Affiliates &rarr; Add New', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'From the main Affiliates page, site admins can easily add new affiliates to Affiliate WP. Simply enter the username, set a rate, and click Add Affiliate!', 'affiliate-wp' );?></p>
+					<p><?php _e( 'From the main Affiliates page, site admins can easily add new affiliate to AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!', 'affiliate-wp' );?></p>
 
 					<h4><?php _e( 'Affiliate Registration', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simply agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!', 'affiliate-wp' );?></p>
 					
-					<h4><?php _e( 'Moderated Registrations', 'affiliate-wp' );?></h4>
+					<h4><?php _e( 'Moderate Registrations', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'Affiliate registrations can be moderated and require that a site admin approve each registration before the affiliate is permitted to begin tracking referrals.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'Each time an affiliate registers, site admins can log into the site and approve or reject the application.', 'affiliate-wp' );?></p>
 
@@ -286,7 +286,7 @@ class Affiliate_WP_Welcome {
 
 					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/graph.png'; ?>" class="affwp-welcome-screenshots"/>
 
-					<h4><?php _e( 'A Dashboard for Your Affiliates', 'affiliate-wp' );?></h4>
+					<h4><?php _e( 'A Dashboard For Your Affiliates', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> short code, gives your affiliates access to their performance reports.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referal URLs have done over time.', 'affiliate-wp' );?></p>
 
@@ -317,9 +317,6 @@ class Affiliate_WP_Welcome {
 				</div>
 			</div>
 
-			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=affiliate-wp-settings' ) ); ?>"><?php _e( 'Go to Affiliate WP Settings', 'affiliate-wp' ); ?></a>
-			</div>
 
 			<div class="changelog">
 				<h3><?php _e( 'Need Help?', 'affiliate-wp' );?></h3>
@@ -346,13 +343,13 @@ class Affiliate_WP_Welcome {
 		list( $display_version ) = explode( '-', AFFILIATEWP_VERSION );
 		?>
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
+			<h1><?php printf( __( 'Welcome to AffiliateWP %s', 'affiliate-wp' ), $display_version ); ?></h1>
 			<div class="about-text"><?php _e( 'Thank you for updating to the latest version!', 'affiliate-wp' ); ?></div>
 			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
 
-			<p class="about-description"><?php _e( 'Affiliate WP is created by a worldwide team of developers who aim to provide the #1 affiliate platform for WordPress.', 'affiliate-wp' ); ?></p>
+			<p class="about-description"><?php _e( 'AffiliateWP is created by a worldwide team of developers who aim to provide the #1 affiliate platform for WordPress.', 'affiliate-wp' ); ?></p>
 
 			<?php echo $this->contributors(); ?>
 		</div>

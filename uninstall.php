@@ -1,8 +1,8 @@
 <?php
 /**
- * Uninstall Affiliate WP
+ * Uninstall AffiliateWP
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Uninstall
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License

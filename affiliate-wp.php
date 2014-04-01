@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Affiliate WP
+ * Plugin Name: AffiliateWP
  * Plugin URI: http://affiliatewp.com
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
@@ -9,17 +9,17 @@
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
- * Affiliate WP is distributed under the terms of the GNU General Public License as published by
+ * AffiliateWP is distributed under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  *
- * Affiliate WP is distributed in the hope that it will be useful,
+ * AffiliateWP is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Affiliate WP. If not, see <http://www.gnu.org/licenses/>.
+ * along with AffiliateWP. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package AffiliateWP
  * @category Core
@@ -289,5 +289,5 @@ function affiliate_wp() {
 	return Affiliate_WP::instance();
 }
 
-// Get Affiliate WP Running
+// Get AffiliateWP Running
 affiliate_wp();

@@ -2,7 +2,7 @@
 /**
  * Affiiates Admin
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Admin/Affiliates
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License

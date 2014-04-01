@@ -4,7 +4,7 @@
  *
  * This is the base class for all export methods. Each data export type (referrals, affiliates, visits) extend this class
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Admin/Export
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
