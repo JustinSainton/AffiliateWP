@@ -350,7 +350,7 @@ class Affiliate_WP_Graph {
 					</select>
 					<select id="affwp-graphs-year" name="year">
 						<?php for ( $i = 2007; $i <= date( 'Y', $current_time ); $i++ ) : ?>
-							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year'] ); ?>><?php echo $i; ?></option>
+							<option value="<?php echo absint( $i ); ?>" <?php selected( $i, $dates['year_start'] ); ?>><?php echo $i; ?></option>
 						<?php endfor; ?>
 					</select>
 					<span><?php _e( 'To', 'affiliate-wp' ); ?>&nbsp;</span>
