@@ -2,7 +2,7 @@
 /**
  * Formatting functions for taking care of proper number formats and such
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Functions/Formatting
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License

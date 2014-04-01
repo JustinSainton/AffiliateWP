@@ -2,7 +2,7 @@
 /**
  * Admin Tools Page
  *
- * @package     Affiliate WP
+ * @package     AffiliateWP
  * @subpackage  Admin/Tools
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -139,7 +139,7 @@ function affwp_migration_tab() {
 		<div class="postbox">
 			<h3><span><?php _e( 'Affiliates Pro', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">
-				<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to Affiliate WP.', 'affiliate-wp' ); ?></p>
+				<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
 				<p><?php _e( '<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool.', 'affiliate-wp' ); ?></p>
 				<form method="get">
 					<input type="hidden" name="type" value="affiliates-pro"/>
@@ -202,7 +202,7 @@ function affwp_export_import_tab() {
 		<div class="postbox">
 			<h3><span><?php _e( 'Export Settings', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">
-				<p><?php _e( 'Export the Affiliate WP settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'affiliate-wp' ); ?></p>
+				<p><?php _e( 'Export the AffiliateWP settings for this site as a .json file. This allows you to easily import the configuration into another site.', 'affiliate-wp' ); ?></p>
 				<form method="post" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
 					<p><input type="hidden" name="affwp_action" value="export_settings" /></p>
 					<p>
@@ -216,7 +216,7 @@ function affwp_export_import_tab() {
 		<div class="postbox">
 			<h3><span><?php _e( 'Import Settings', 'affiliate-wp' ); ?></span></h3>
 			<div class="inside">
-				<p><?php _e( 'Import the Affiliate WP settings from a .json file. This file can be obtained by exporting the settings on another site using the form above.', 'affiliate-wp' ); ?></p>
+				<p><?php _e( 'Import the AffiliateWP settings from a .json file. This file can be obtained by exporting the settings on another site using the form above.', 'affiliate-wp' ); ?></p>
 				<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
 					<p>
 						<input type="file" name="import_file"/>

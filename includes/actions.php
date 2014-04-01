@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Hooks Affiliate WP actions, when present in the $_REQUEST superglobal. Every affwp_action
+ * Hooks AffiliateWP actions, when present in the $_REQUEST superglobal. Every affwp_action
  * present in $_REQUEST is called using WordPress's do_action function. These
  * functions are called on init.
  *

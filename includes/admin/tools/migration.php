@@ -12,7 +12,7 @@ function affwp_migrate_admin() {
 	$part   = isset( $_GET['part'] ) ? $_GET['part'] : false;
 ?>
 	<div class="wrap">
-		<h2><?php _e( 'Affiliate WP Migration', 'affiliate-wp' ); ?></h2>
+		<h2><?php _e( 'AffiliateWP Migration', 'affiliate-wp' ); ?></h2>
 		<div id="edd-upgrade-status">
 			<p><?php _e( 'The upgrade process is running, please be patient. This could take several minutes to complete while license keys are upgraded in batches of 100.', 'affiliate-wp' ); ?></p>
 			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>

@@ -269,7 +269,7 @@ class Affiliate_WP_Settings {
 					),
 					'uninstall_on_delete' => array(
 						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
-						'desc' => __( 'Check this box if you would like Affiliate WP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
+						'desc' => __( 'Check this box if you would like AffiliateWP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					)
 				)
