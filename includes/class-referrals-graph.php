@@ -111,8 +111,8 @@ class Affiliate_WP_Referrals_Graph extends Affiliate_WP_Graph {
 		$data = array(
 			__( 'Pending Referrals', 'affiliate-wp' )  => $pending,
 			__( 'Paid Referrals', 'affiliate-wp' )     => $paid,
+			__( 'Rejected Referrals', 'affiliate-wp' ) => $rejected,
 			__( 'Unpaid Referrals', 'affiliate-wp' )   => $unpaid,
-			__( 'Rejected Referrals', 'affiliate-wp' ) => $rejected
 		);
 
 		return $data;
