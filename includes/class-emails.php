@@ -37,6 +37,8 @@ class Affiliate_WP_Emails {
 
 				}
 
+				$message = apply_filters( 'affwp_registration_email', $message, $args );
+
 				break;
 
 			case 'application_accepted' :
@@ -46,6 +48,8 @@ class Affiliate_WP_Emails {
 				$message  = sprintf( __( "Congratulations %s!\n\n", "affiliate-wp" ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) );
 				$message .= sprintf( __( "Your affiliate application on %s has been accepted!\n\n", "affiliate-wp" ), home_url() );
 				$message .= sprintf( __( "Log into your affiliate area at %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
+
+				$message = apply_filters( 'affwp_application_accepted_email', $message, $args );
 
 				break;
 
