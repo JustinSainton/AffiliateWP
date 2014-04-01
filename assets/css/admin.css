@@ -31,6 +31,9 @@ table.affwp_table th {
 	max-height: 200px;
 	overflow-y: scroll;
 }
+#affwp-dashboard-widgets-wrap .postbox h3 {
+	cursor: default;
+}
 
 /* Affiliate Overview */
 #affwp-dashboard-widgets-wrap .postbox {
