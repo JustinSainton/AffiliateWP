@@ -252,24 +252,30 @@ class Affiliate_WP_Welcome {
 
 				<div class="feature-section">
 
-					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/edit-download.png'; ?>" class="affwp-welcome-screenshots"/>
+					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/totals.png'; ?>" class="affwp-welcome-screenshots"/>
 
-					<h4><?php _e( 'Affiliates &rarr; Add New', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
-
+					<h4><?php _e( 'The Overview Page', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'The overview page gives you a quick sumamry of your recent affiliate activity, including recent registrations, referrals, and visits.' ,'affiliate-wp' ); ?></p>
+					<p><?php _e( 'It also provides a quick summary of your affiliates\' referral earnings.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'If you allow affiliate registrations, you can also easily accept or reject affiliate\'s appliications directly from the Overview page', 'affiliate-wp' ); ?></p>
 				</div>
 
 				<h3><?php _e( 'Adding Affiliates', 'affiliate-wp' );?></h3>
 
 				<div class="feature-section">
 
-					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/edit-download.png'; ?>" class="affwp-welcome-screenshots"/>
+					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/registration.png'; ?>" class="affwp-welcome-screenshots"/>
 
 					<h4><?php _e( 'Affiliates &rarr; Add New', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'From the main Affiliates page, site admins can easily add new affiliate to Affiliate WP. Simply enter the username, set a rate, and click Add Affiliate!', 'affiliate-wp' );?></p>
 
 					<h4><?php _e( 'Affiliate Registration', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simly agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!', 'affiliate-wp' );?></p>
+					
+					<h4><?php _e( 'Moderate Registrations', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'Affiliate registrations can be moderated and require that a site admin approve each registration before the affiliate is permitted to begin tracking referrals.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'Each time an affiliate registers, site admins can log into the site and approve or reject the application.', 'affiliate-wp' );?></p>
+
 
 
 				</div>
@@ -278,10 +284,11 @@ class Affiliate_WP_Welcome {
 
 				<div class="feature-section">
 
-					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/edit-download.png'; ?>" class="affwp-welcome-screenshots"/>
+					<img src="<?php echo AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/graph.png'; ?>" class="affwp-welcome-screenshots"/>
 
-					<h4><?php _e( 'Affiliates &rarr; Add New', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
+					<h4><?php _e( 'A Dashboard for Your Affiliates', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> short code, gives your affiliates access to their performance reports.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referal URLs have done over time.', 'affiliate-wp' );?></p>
 
 				</div>
 
@@ -293,18 +300,18 @@ class Affiliate_WP_Welcome {
 				<div class="feature-section col three-col">
 					<div>
 						<h4><?php _e( 'Affiliates', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
+						<p><?php _e( 'These are your best friends. They are the users that are actively promoting your products and services through referral URLs. When they create a customer for you, they get paid back in the form of a commission.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div>
 						<h4><?php _e( 'Referrals', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
+						<p><?php _e( 'These are the commission records created anytime an affiliate successfully sends a potential customer to your site and that customer makes a purchase.', 'affiliate-wp' );?></p>
 
 					</div>
 
 					<div class="last-feature">
-						<h4><?php _e( 'Referrals', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Visits', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'These are unique hits on the referral URLs shared out by your affiliates. Each time a potential customer clicks on a referral URL, a visit is recorded.', 'affiliate-wp' );?></p>
 
 					</div>
 				</div>
@@ -317,7 +324,7 @@ class Affiliate_WP_Welcome {
 				<div class="feature-section">
 
 					<h4><?php _e( 'Phenomenal Support','affiliate-wp' );?></h4>
-					<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, visit our <a href="https://affiliatewp.com/support">support</a> page to open a ticket.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, visit our <a href="http://affiliatewp.com/support">support</a> page to open a ticket.', 'affiliate-wp' );?></p>
 				</div>
 			</div>
 
@@ -337,12 +344,12 @@ class Affiliate_WP_Welcome {
 		?>
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to Affiliate WP %s', 'affiliate-wp' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Affiliate WP %s is ready to make your online store faster, safer and better!', 'affiliate-wp' ), $display_version ); ?></div>
+			<div class="about-text"><?php _e( 'Thank you for updating to the latest version!', 'affiliate-wp' ); ?></div>
 			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), $display_version ); ?></span></div>
 
 			<?php $this->tabs(); ?>
 
-			<p class="about-description"><?php _e( 'Affiliate WP is created by a worldwide team of developers who aim to provide the #1 eCommerce platform for selling digital goods through WordPress.', 'affiliate-wp' ); ?></p>
+			<p class="about-description"><?php _e( 'Affiliate WP is created by a worldwide team of developers who aim to provide the #1 affiliate platform for WordPress.', 'affiliate-wp' ); ?></p>
 
 			<?php echo $this->contributors(); ?>
 		</div>
