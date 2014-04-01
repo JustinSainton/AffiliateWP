@@ -2,8 +2,11 @@
 
 class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
+	private $direct_affiliates;
 
-	public function __construct() { }
+	public function __construct() {
+		$this->direct_affiliates = array();
+	}
 
 
 	public function process( $step = 1, $part = '' ) {
@@ -96,6 +99,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 				if( 'direct' == $affiliate->type ) {
 					// We don't need direct affiliates, but we need to insert it in order to keep affiliate IDs correct
+					$this->direct_affiliates[] = $affiliate->affiliate_id;
 					$to_delete[] = $id;
 				}
 
@@ -130,6 +134,10 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 		if( $referrals ) {
 			foreach( $referrals as $referral ) {
+
+				if( in_array( $referral->affiliate_id, $this->direct_affiliates ) ) {
+					continue; // Skip referrals for Direct
+				}
 
 				switch( $referral->status ) {
 
