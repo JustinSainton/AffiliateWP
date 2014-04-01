@@ -27,7 +27,6 @@ if( affiliate_wp()->settings->get( 'uninstall_on_delete' ) ) {
 
 	// Remove all capabilities and roles
 	affiliate_wp()->roles->remove_caps();
-	affiliate_wp()->roles->remove_roles();
 
 	// Remove all database tables
 	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_affiliates" );
