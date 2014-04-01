@@ -99,12 +99,10 @@
 
 	<div id="affwp-affiliate-dashboard-notifications">
 
-		<p><?php _e( 'Enable or disable the email notifications you would like to receive.', 'affiliate-wp' ); ?></p>
-
 		<form method="post" id="affwp_email_notifications" class="affwp_form">
 			<div id="affwp_send_notifications_wrap">
 				<input type="checkbox" name="referral_notifications" id="affwp_referral_notifications" value="1"<?php checked( true, get_user_meta( $user_id, 'affwp_referral_notifications', true ) ); ?>/>
-				<label for="affwp_referral_notifications"><?php _e( 'New referral notifications', 'affiliate-wp' ); ?></label>
+				<label for="affwp_referral_notifications"><?php _e( 'Enable New Referral Notifications', 'affiliate-wp' ); ?></label>
 			</div>
 			<div id="affwp_save_notifications_wrap">
 				<input type="hidden" name="affwp_action" value="update_notification_settings"/>

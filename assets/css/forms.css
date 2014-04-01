@@ -81,3 +81,6 @@ p.affwp_error {
 #affwp-affiliate-dashboard .affwp-graph table {
 	width: auto;
 }
+#affwp-affiliate-dashboard #affwp_send_notifications_wrap label {
+	width: auto;
+}
