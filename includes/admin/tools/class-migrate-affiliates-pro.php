@@ -5,7 +5,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 	private $direct_affiliates;
 
 	public function __construct() {
-		$this->direct_affiliates = array();
+		$this->direct_affiliates = get_option( 'affwp_migrate_direct_affiliates', array() );
 	}
 
 
@@ -100,6 +100,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 				if( 'direct' == $affiliate->type ) {
 					// We don't need direct affiliates, but we need to insert it in order to keep affiliate IDs correct
 					$this->direct_affiliates[] = $affiliate->affiliate_id;
+					update_option( 'affwp_migrate_direct_affiliates', $this->direct_affiliates );
 					$to_delete[] = $id;
 				}
 
@@ -194,6 +195,11 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 		}
 
+	}
+
+	public function finish() {
+		delete_option( 'affwp_migrate_direct_affiliates' );
+		wp_redirect( admin_url( 'admin.php?page=affiliate-wp' ) ); exit;
 	}
 
 }
