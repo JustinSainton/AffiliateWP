@@ -86,7 +86,7 @@ function affwp_get_tools_tabs() {
  */
 function affwp_recount_tab() {
 ?>
-	<div id="affwp-tools-widgets-wrap">
+	<div id="affwp-dashboard-widgets-wrap">
 		<div class="metabox-holder">	
 			<div class="postbox">
 				<h3><span><?php _e( 'Recount Affiliate Stats', 'affiliate-wp' ); ?></span></h3>
@@ -115,7 +115,7 @@ function affwp_recount_tab() {
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
 		</div><!-- .metabox-holder -->
-	</div><!-- #affwp-tools-widgets-wrap -->
+	</div><!-- #affwp-dashboard-widgets-wrap -->
 <?php
 }
 add_action( 'affwp_tools_tab_recount', 'affwp_recount_tab' );
@@ -128,7 +128,7 @@ add_action( 'affwp_tools_tab_recount', 'affwp_recount_tab' );
  */
 function affwp_migration_tab() {
 ?>
-	<div id="affwp-tools-widgets-wrap">
+	<div id="affwp-dashboard-widgets-wrap">
 		<div class="metabox-holder">	
 			<div class="postbox">
 				<div class="inside">
@@ -152,7 +152,7 @@ function affwp_migration_tab() {
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
 		</div><!-- .metabox-holder -->
-	</div><!-- #affwp-tools-widgets-wrap -->
+	</div><!-- #affwp-dashboard-widgets-wrap -->
 <?php
 }
 add_action( 'affwp_tools_tab_migration', 'affwp_migration_tab' );
@@ -165,7 +165,7 @@ add_action( 'affwp_tools_tab_migration', 'affwp_migration_tab' );
  */
 function affwp_export_import_tab() {
 ?>
-	<div id="affwp-tools-widgets-wrap">
+	<div id="affwp-dashboard-widgets-wrap">
 		<div class="metabox-holder">	
 			<div class="postbox">
 				<h3><span><?php _e( 'Export Referrals', 'affiliate-wp' ); ?></span></h3>
@@ -230,7 +230,7 @@ function affwp_export_import_tab() {
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
 		</div><!-- .metabox-holder -->
-	</div><!-- #affwp-tools-widgets-wrap -->
+	</div><!-- #affwp-dashboard-widgets-wrap -->
 <?php
 }
 add_action( 'affwp_tools_tab_export_import', 'affwp_export_import_tab' );

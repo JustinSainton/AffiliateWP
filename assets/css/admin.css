@@ -31,8 +31,7 @@ table.affwp_table th {
 	max-height: 200px;
 	overflow-y: scroll;
 }
-#affwp-dashboard-widgets-wrap .postbox h3,
-#affwp-tools-widgets-wrap .postbox h3 {
+#affwp-dashboard-widgets-wrap .postbox h3 {
 	cursor: default;
 }
 
