@@ -307,7 +307,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function checkbox_callback( $args ) {
@@ -326,7 +326,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function multicheck_callback( $args ) {
@@ -348,7 +348,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function radio_callback( $args ) {
@@ -375,7 +375,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function text_callback( $args ) {
@@ -399,7 +399,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function license_callback( $args ) {
@@ -437,7 +437,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.9
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function number_callback( $args ) {
@@ -465,7 +465,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function textarea_callback( $args ) {
@@ -489,7 +489,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.3
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function password_callback( $args ) {
@@ -526,7 +526,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function select_callback($args) {
@@ -556,7 +556,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @global $wp_version WordPress Version
 	 */
 	function rich_editor_callback( $args ) {
