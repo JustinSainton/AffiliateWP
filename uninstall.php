@@ -12,7 +12,7 @@
 // Exit if accessed directly
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 
-// Load EDD file
+// Load AffiliateWP file
 include_once( 'affiliate-wp.php' );
 
 global $wpdb, $wp_roles;
