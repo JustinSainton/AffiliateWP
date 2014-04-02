@@ -11,12 +11,13 @@ class Affiliate_WP_Integrations {
 	public function get_integrations() {
 
 		return array(
-			'edd'         => 'Easy Digital Downloads',
-			'exchange'    => 'iThemes Exchange',
-			'rcp'         => 'Restrict Content Pro',
-			'shopp'       => 'Shopp',
-			'woocommerce' => 'WooCommerce',
-			'wpec'        => 'WP e-Commerce',
+			'edd'          => 'Easy Digital Downloads',
+			'exchange'     => 'iThemes Exchange',
+			'gravityforms' => 'Gravity Forms',
+			'rcp'          => 'Restrict Content Pro',
+			'shopp'        => 'Shopp',
+			'woocommerce'  => 'WooCommerce',
+			'wpec'         => 'WP e-Commerce',
 		);
 	}
 
