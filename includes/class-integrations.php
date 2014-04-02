@@ -14,6 +14,7 @@ class Affiliate_WP_Integrations {
 			'edd'         => 'Easy Digital Downloads',
 			'exchange'    => 'iThemes Exchange',
 			'rcp'         => 'Restrict Content Pro',
+			'pmp'         => 'Paid Memberships Pro',
 			'shopp'       => 'Shopp',
 			'woocommerce' => 'WooCommerce',
 			'wpec'        => 'WP e-Commerce',
