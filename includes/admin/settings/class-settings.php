@@ -112,6 +112,13 @@ class Affiliate_WP_Settings {
 
 		$input = $input ? $input : array();
 		$input = apply_filters( 'affwp_settings_' . $tab . '_sanitize', $input );
+		
+		// Ensure a value is always passed for every checkbox
+		foreach ( $settings[ $tab ] as $key => $setting ) {
+			if ( isset( $settings[ $tab ][ $key ]['type'] ) && 'checkbox' == $settings[ $tab ][ $key ]['type'] ) {
+				$input[ $key ] = ! empty( $input[ $key ] );
+			}
+		}
 
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
@@ -233,7 +240,7 @@ class Affiliate_WP_Settings {
 				array(
 					'integrations' => array(
 						'name' => __( 'Integrations', 'affiliate-wp' ),
-						'desc' => __( 'Choose the integrations to enable', 'affiliate-wp' ),
+						'desc' => __( 'Choose the integrations to enable. If you are not using any of these, you may use the <strong>[affiliate_conversion_script]</strong> short code to track and create referrals. Refer to the documentation for help using this.', 'affiliate-wp' ),
 						'type' => 'multicheck',
 						'options' => affiliate_wp()->integrations->get_integrations()
 					)
@@ -300,7 +307,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function checkbox_callback( $args ) {
@@ -319,7 +326,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function multicheck_callback( $args ) {
@@ -341,7 +348,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function radio_callback( $args ) {
@@ -368,7 +375,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function text_callback( $args ) {
@@ -392,7 +399,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function license_callback( $args ) {
@@ -430,7 +437,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.9
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function number_callback( $args ) {
@@ -458,7 +465,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function textarea_callback( $args ) {
@@ -482,7 +489,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.3
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function password_callback( $args ) {
@@ -519,7 +526,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @return void
 	 */
 	function select_callback($args) {
@@ -549,7 +556,7 @@ class Affiliate_WP_Settings {
 	 *
 	 * @since 1.0
 	 * @param array $args Arguments passed by the setting
-	 * @global $this->options Array of all the EDD Options
+	 * @global $this->options Array of all the AffiliateWP Options
 	 * @global $wp_version WordPress Version
 	 */
 	function rich_editor_callback( $args ) {

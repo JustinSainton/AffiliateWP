@@ -13,13 +13,13 @@ function affwp_migrate_admin() {
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'AffiliateWP Migration', 'affiliate-wp' ); ?></h2>
-		<div id="edd-upgrade-status">
-			<p><?php _e( 'The upgrade process is running, please be patient. This could take several minutes to complete while license keys are upgraded in batches of 100.', 'affiliate-wp' ); ?></p>
+		<div id="affwp-upgrade-status">
+			<p><?php _e( 'The upgrade process is running, please be patient. This could take several minutes to complete while affiliate records are upgraded in batches of 100.', 'affiliate-wp' ); ?></p>
 			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>
 		</div>
 		<script type="text/javascript">
 			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $_GET['step'] ); ?>&type=<?php echo $type; ?>&part=<?php echo $part; ?>";
 		</script>
 	</div>
-<?php	
+<?php
 }

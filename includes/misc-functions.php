@@ -262,7 +262,7 @@ function affwp_object_to_array( $data ) {
 	if ( is_array( $data ) || is_object( $data ) ) {
 		$result = array();
 		foreach ( $data as $key => $value ) {
-			$result[ $key ] = edd_object_to_array( $value );
+			$result[ $key ] = affwp_object_to_array( $value );
 		}
 		return $result;
 	}

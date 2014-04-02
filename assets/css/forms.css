@@ -18,6 +18,10 @@ table.affwp_table th {
 	font-weight: bold;
 }
 
+.affwp_form fieldset {
+	border: none;
+}
+
 .affwp_form legend {
 	font-size: 120%;
 	margin-bottom: 1em;
@@ -79,5 +83,8 @@ p.affwp_error {
 }
 
 #affwp-affiliate-dashboard .affwp-graph table {
+	width: auto;
+}
+#affwp-affiliate-dashboard #affwp_send_notifications_wrap label {
 	width: auto;
 }

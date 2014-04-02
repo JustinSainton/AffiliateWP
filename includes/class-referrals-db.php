@@ -35,7 +35,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'currency'    => '%s',
 			'custom'      => '%s',
 			'context'     => '%s',
-			'reference'   => '%d',
+			'reference'   => '%s',
 			'date'        => '%s',
 		);
 	}
@@ -166,7 +166,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			}
 
 			if( is_array( $args['status'] ) ) {
-				$where .= " `status` IN(" . implode( ',', $args['status'] ) . ") ";
+				$where .= " `status` IN('" . implode( "','", $args['status'] ) . "') ";
 			} else {
 				$where .= " `status` = '" . $args['status'] . "' ";
 			}
@@ -443,11 +443,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			}
 
 			if( is_array( $args['status'] ) ) {
-				$where .= " `status` IN(" . implode( ',', $args['status'] ) . ") ";
+				$where .= " `status` IN('" . implode( "','", $args['status'] ) . "') ";
 			} else {
 				$where .= " `status` = '" . $args['status'] . "' ";
 			}
-
 		}
 
 		if( ! empty( $args['date'] ) ) {

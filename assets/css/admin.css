@@ -18,6 +18,14 @@ table.affwp_table th {
 	background: #fafafa;
 	font-weight: bold;
 }
+table.affwp_table td a {
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
 #affwp_user_search_results {
 	position: absolute;
 }
@@ -30,6 +38,9 @@ table.affwp_table th {
 	width: 300px;
 	max-height: 200px;
 	overflow-y: scroll;
+}
+#affwp-dashboard-widgets-wrap .postbox h3 {
+	cursor: default;
 }
 
 /* Affiliate Overview */

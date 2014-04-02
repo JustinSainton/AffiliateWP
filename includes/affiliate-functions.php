@@ -24,6 +24,20 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 
 }
 
+function affwp_get_affiliate_user_id( $affiliate ) {
+
+	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	return affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+
+}
+
 function affwp_get_affiliate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -76,7 +90,7 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
 }
 
-function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
+function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 
 	// default rate
 	$rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
@@ -92,6 +106,10 @@ function affwp_get_affiliate_rate( $affiliate_id = 0 ) {
 	// Sanitize the rate and ensure it's in the proper format
 	if( $rate > 1 ) {
 		$rate = $rate / 100;
+	}
+
+	if( $formatted ) {
+		$rate = $rate * 100 . '%';
 	}
 
 	return apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
@@ -112,6 +130,7 @@ function affwp_get_affiliate_email( $affiliate ) {
 	$user_id = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
 
 	$email = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+
 
 	if( $email ) {
 
@@ -396,10 +415,10 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
 	$rate = 0;
 
-	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
+	$referrals = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => array( 'paid', 'unpaid' ) ) );
 	$visits    = affwp_get_affiliate_visit_count( $affiliate_id );
 	if( $referrals > 0 ) {
-		$rate = round( $visits / $referrals, 2 );
+		$rate = round( ( $visits / $referrals ) * 100, 2 );
 	}
 
 	return apply_filters( 'affwp_get_affiliate_conversion_rate', $rate . '%', $affiliate_id );
@@ -465,4 +484,35 @@ function affwp_update_affiliate( $data = array() ) {
 
 	return false;
 
+}
+
+function affwp_update_notification_settings( $data = array() ) {
+
+	if( ! is_user_logged_in() ) {
+		return false;
+	}
+
+	if( empty( $data['affiliate_id'] ) ) {
+		return false;
+	}
+
+	if( affwp_get_affiliate_id() != $data['affiliate_id'] && ! currenct_user_can( 'manage_affiliates' ) ) {
+		return false;
+	}
+
+	$user_id = affwp_get_affiliate_user_id( absint( $data['affiliate_id'] ) );
+
+	if( ! empty( $data['referral_notifications'] ) ) {
+
+		update_user_meta( $user_id, 'affwp_referral_notifications', '1' );
+
+	} else {
+
+		delete_user_meta( $user_id, 'affwp_referral_notifications' );
+
+	}
+
+	if ( ! empty( $_POST['affwp_action'] ) ) {
+		wp_redirect( add_query_arg( 'affwp_notice', 'notifications_saved' ) ); exit;
+	}
 }

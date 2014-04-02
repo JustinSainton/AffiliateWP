@@ -288,7 +288,7 @@ class Affiliate_WP_Welcome {
 
 					<h4><?php _e( 'A Dashboard For Your Affiliates', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> short code, gives your affiliates access to their performance reports.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referal URLs have done over time.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referral URLs have done over time.', 'affiliate-wp' );?></p>
 
 				</div>
 

@@ -12,7 +12,7 @@
 // Exit if accessed directly
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 
-// Load EDD file
+// Load AffiliateWP file
 include_once( 'affiliate-wp.php' );
 
 global $wpdb, $wp_roles;
@@ -27,7 +27,6 @@ if( affiliate_wp()->settings->get( 'uninstall_on_delete' ) ) {
 
 	// Remove all capabilities and roles
 	affiliate_wp()->roles->remove_caps();
-	affiliate_wp()->roles->remove_roles();
 
 	// Remove all database tables
 	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_affiliates" );
