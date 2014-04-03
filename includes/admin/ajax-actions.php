@@ -7,7 +7,7 @@ function affwp_search_users() {
 		die( '-1' );
 	}
 
-	$search_query = trim( $_POST['user_name'] );
+	$search_query = htmlentities2( trim( $_POST['user_name'] ) );
 
 	$found_users = get_users( array(
 			'number' => 9999,
