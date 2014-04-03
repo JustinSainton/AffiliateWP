@@ -20,22 +20,22 @@ abstract class Affiliate_WP_DB {
 	
 	public function get( $row_id ) {
 		global $wpdb;
-		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $this->primary_key = $row_id;" );
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $this->primary_key = $row_id LIMIT 1;" );
 	}
 
 	public function get_by( $column, $row_id ) {
 		global $wpdb;
-		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id';" );
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id' LIMIT 1;" );
 	}
 
 	public function get_column( $column, $row_id ) {
 		global $wpdb;
-		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id;" );
+		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id LIMIT 1;" );
 	}
 
 	public function get_column_by( $column, $column_where, $column_value ) {
 		global $wpdb;
-		return $wpdb->get_col( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value;" );
+		return $wpdb->get_col( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value LIMIT 1;" );
 	}
 	
 	public function insert( $data, $type = '' ) {

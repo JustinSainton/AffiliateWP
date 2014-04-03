@@ -97,7 +97,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			$and = " AND context = '$context'";
 		}
 
-		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id'$and;" );
+		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id'$and LIMIT 1;" );
 	}
 
 	/**
