@@ -17,6 +17,12 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
+			$user = get_userdata( $order->user_id );
+
+			if( $this->get_affiliate_email() == $user->user_email ) {
+				return; // Customers cannot refer themselves
+			}
+
 			$this->insert_pending_referral( $order->subtotal, $order->payment_transaction_id, $order->membership_name );
 		}
 
