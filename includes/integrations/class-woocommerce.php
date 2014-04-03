@@ -27,6 +27,10 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 			$order       = new WC_Order( $order_id );
 
+			if( $this->get_affiliate_email() == $order->billing_email ) {
+				return; // Customers cannot refer themselves
+			}
+
 			$description = ''; 
 			$items       = $order->get_items();
 			foreach( $items as $key => $item ) {
