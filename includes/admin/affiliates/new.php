@@ -38,6 +38,19 @@
 
 			</tr>
 
+			<tr class="form-row form-required">
+
+				<th scope="row">
+					<label for="payment_email"><?php _e( 'Payment Email', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<input type="text" name="payment_email" id="payment_email" />
+					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email', 'affiliate-wp' ); ?></div>
+				</td>
+
+			</tr>
+
 		</table>
 
 		<?php do_action( 'affwp_new_affiliate_bottom' ); ?>

@@ -118,8 +118,13 @@ function affwp_get_affiliate_email( $affiliate ) {
 		return false;
 	}
 
-	$user_id = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
-	$email   = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+	if( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
+		$email   = $affiliate->payment_email;
+	} else {
+		$user_id = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+		$email   = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+	}
+
 
 	if( $email ) {
 
@@ -452,7 +457,8 @@ function affwp_update_affiliate( $data = array() ) {
 	$args         = array();
 	$affiliate_id = absint( $data['affiliate_id'] );
 
-	$args['rate'] = ! empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
+	$args['payment_email'] = ! empty( $data['payment_email' ] ) && is_email( $data['payment_email' ] ) ? sanitize_text_field( $data['payment_email'] ) : '';
+	$args['rate']          = ! empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
 
 	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
