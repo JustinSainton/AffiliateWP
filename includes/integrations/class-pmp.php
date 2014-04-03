@@ -55,7 +55,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 			return;
 		}
 
-		if( 'refunded' != $_REQUEST['status'] && 'cancelled' != $_REQUEST['status'] ) {
+		if( 'refunded' != $_REQUEST['status'] ) {
 			return;
 		}
 
