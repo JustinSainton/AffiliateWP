@@ -21,7 +21,11 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 			$transaction = get_post_meta( $transaction_id, '_it_exchange_cart_object', true );
 
-			$this->insert_pending_referral( $transaction->total, $transaction_id );
+			if( $this->get_affiliate_email() == $transaction->shipping_address['email'] ) {
+				return; // Customers cannot refer themselves
+			}
+
+			$this->insert_pending_referral( $transaction->total, $transaction_id, $transaction->description );
 	
 		}
 
