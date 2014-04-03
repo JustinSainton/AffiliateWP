@@ -89,4 +89,8 @@ abstract class Affiliate_WP_Base {
 
 	}
 
+	public function get_affiliate_email() {
+		return affwp_get_affiliate_email( affiliate_wp()->tracking->get_affiliate_id() );
+	}
+
 }
