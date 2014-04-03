@@ -67,7 +67,8 @@ class Affiliate_WP_Tracking {
 					data: {
 						action: 'affwp_track_visit',
 						affiliate: ref,
-						url: document.URL
+						url: document.URL,
+						referrer: document.referrer
 					},
 					url: affwp_scripts.ajaxurl,
 					success: function (response) {
@@ -182,7 +183,8 @@ class Affiliate_WP_Tracking {
 			$visit_id = affiliate_wp()->visits->add( array(
 				'affiliate_id' => $affiliate_id,
 				'ip'           => $this->get_ip(),
-				'url'          => sanitize_text_field( $_POST['url'] )
+				'url'          => sanitize_text_field( $_POST['url'] ),
+				'referrer'     => sanitize_text_field( $_POST['referrer'] )
 			) );
 
 			echo $visit_id; exit;
@@ -261,7 +263,8 @@ class Affiliate_WP_Tracking {
 			$visit_id = affiliate_wp()->visits->add( array(
 				'affiliate_id' => $ref,
 				'ip'           => $this->get_ip(),
-				'url'          => $this->get_current_page_url()
+				'url'          => $this->get_current_page_url(),
+				'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : ''
 			) );
 
 			$this->set_visit_id( $visit_id );
