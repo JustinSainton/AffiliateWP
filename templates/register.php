@@ -38,14 +38,6 @@
 			<input type="hidden" name="affwp_action" value="affiliate_register"/>
 			<input id="affwp_register_submit" type="submit" class="affwp_submit" value="<?php _e( 'Register', 'affiliate-wp' ); ?>"/>
 		</p>
-
-		<?php if ( ! is_user_logged_in() ) : ?>
-			<p class="affwp-lost-password">
-				<a href="<?php echo wp_lostpassword_url(); ?>" title="<?php _e( 'Lost Password', 'affiliate-wp' ); ?>">
-					<?php _e( 'Lost Password?', 'affiliate-wp' ); ?>
-				</a>
-			</p>
-		<?php endif; ?>
 		
 		<?php do_action( 'affwp_register_fields_after' ); ?>
 	</fieldset>

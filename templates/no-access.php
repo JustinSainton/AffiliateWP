@@ -1,0 +1,1 @@
+<p><?php _e( 'The affiliate area is available only for registered affiliates.', 'affiliate-wp' ); ?></p>

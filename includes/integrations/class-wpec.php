@@ -19,6 +19,10 @@ class Affiliate_WP_WPEC extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
+			if( $this->get_affiliate_email() == wpsc_get_buyers_email( $order_id ) ) {
+				return; // Customers cannot refer themselves
+			}
+
 			$description = '';
 			$items = $order->get_cart_contents();
 			foreach( $items as $key => $item ) {

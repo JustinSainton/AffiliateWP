@@ -18,6 +18,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
+			$customer_email = edd_get_payment_user_email( $payment_id );
+
+			if( $this->get_affiliate_email() == $customer_email ) {
+				return; // Customers cannot refer themselves
+			}
+
 			$description = '';
 			$downloads   = edd_get_payment_meta_downloads( $payment_id );
 			foreach( $downloads as $key => $item ) {

@@ -262,7 +262,7 @@ function affwp_object_to_array( $data ) {
 	if ( is_array( $data ) || is_object( $data ) ) {
 		$result = array();
 		foreach ( $data as $key => $value ) {
-			$result[ $key ] = edd_object_to_array( $value );
+			$result[ $key ] = affwp_object_to_array( $value );
 		}
 		return $result;
 	}
@@ -283,4 +283,19 @@ function affwp_month_num_to_name( $n ) {
 	$timestamp = mktime( 0, 0, 0, $n, 1, 2005 );
 
 	return date_i18n( "M", $timestamp );
+}
+
+
+/**
+ * Checks whether function is disabled.
+ *
+ * @since 1.0
+ *
+ * @param string  $function Name of the function.
+ * @return bool Whether or not function is disabled.
+ */
+function affwp_is_func_disabled( $function ) {
+	$disabled = explode( ',',  ini_get( 'disable_functions' ) );
+
+	return in_array( $function, $disabled );
 }

@@ -70,9 +70,9 @@ function affwp_settings_admin() {
 function affwp_get_settings_tabs() {
 
 	$tabs                 = array();
-	$tabs['general']      = __( 'General', 'edd' );
-	$tabs['integrations'] = __( 'Integrations', 'edd' );
-	$tabs['misc']         = __( 'Misc', 'edd' );
+	$tabs['general']      = __( 'General', 'affiliate-wp' );
+	$tabs['integrations'] = __( 'Integrations', 'affiliate-wp' );
+	$tabs['misc']         = __( 'Misc', 'affiliate-wp' );
 
 	return apply_filters( 'affwp_settings_tabs', $tabs );
 }

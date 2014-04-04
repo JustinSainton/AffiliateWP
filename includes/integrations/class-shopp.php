@@ -10,7 +10,7 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 		add_action( 'shopp_delete_purchase', array( $this, 'revoke_referral_on_delete' ), 10 );
 	}
 
-	public function add_pending_referral( $order_id = 0 ) {
+	public function add_pending_referral( $order_event ) {
 
 
 		if( $this->was_referred() ) {
@@ -20,7 +20,7 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 
 	}
 
-	public function mark_referral_complete( $order_id = 0 ) {
+	public function mark_referral_complete( $order_event ) {
 
 		if( $order->is_transaction_completed() ) {
 
@@ -32,16 +32,8 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 
 	}
 
-	public function revoke_referral_on_refund( $payment_id = 0, $new_status, $old_status ) {
+	public function revoke_referral_on_refund( $order_event ) {
 	
-		if( 'publish' != $old_status && 'revoked' != $old_status ) {
-			return;
-		}
-
-		if( 'refunded' != $new_status ) {
-			return;
-		}
-
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;
 		}
@@ -50,7 +42,7 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 
 	}
 
-	public function revoke_referral_on_delete( $payment_id = 0 ) {
+	public function revoke_referral_on_delete( $order_event ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;

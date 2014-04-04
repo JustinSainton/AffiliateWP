@@ -3,7 +3,7 @@
 class Affiliate_WP_Templates {
 
 	/**
-	 * Returns the path to the EDD templates directory
+	 * Returns the path to the AffiliateWP templates directory
 	 *
 	 * @since 1.0
 	 * @return string
@@ -13,7 +13,7 @@ class Affiliate_WP_Templates {
 	}
 
 	/**
-	 * Returns the URL to the EDD templates directory
+	 * Returns the URL to the AffiliateWP templates directory
 	 *
 	 * @since 1.0
 	 * @return string
@@ -23,7 +23,7 @@ class Affiliate_WP_Templates {
 	}
 
 	/**
-	 * Returns the URL to the EDD templates directory
+	 * Returns the URL to the AffiliateWP templates directory
 	 *
 	 * @since 1.0
 	 * @return string
@@ -45,7 +45,7 @@ class Affiliate_WP_Templates {
 	 *
 	 * @return string
 	 *
-	 * @uses edd_locate_template()
+	 * @uses locate_template()
 	 * @uses load_template()
 	 * @uses get_template_part()
 	 */

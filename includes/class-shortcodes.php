@@ -27,9 +27,15 @@ class Affiliate_WP_Shortcodes {
 
 				affiliate_wp()->templates->get_template_part( 'register' );
 
+			} else {
+				affiliate_wp()->templates->get_template_part( 'no', 'access' );
 			}
 
-			affiliate_wp()->templates->get_template_part( 'login' );
+			if( ! is_user_logged_in() ) {
+
+				affiliate_wp()->templates->get_template_part( 'login' );
+
+			}
 
 		}
 

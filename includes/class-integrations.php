@@ -15,7 +15,9 @@ class Affiliate_WP_Integrations {
 			'exchange'     => 'iThemes Exchange',
 			'gravityforms' => 'Gravity Forms',
 			'rcp'          => 'Restrict Content Pro',
+			'pmp'          => 'Paid Memberships Pro',
 			'shopp'        => 'Shopp',
+			'wishlist'     => 'Wishlist Memberships',
 			'woocommerce'  => 'WooCommerce',
 			'wpec'         => 'WP e-Commerce',
 		);

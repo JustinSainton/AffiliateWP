@@ -18,6 +18,12 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
+			$user = get_userdata( $user_id );
+
+			if( $this->get_affiliate_email() == $user->user_email ) {
+				return; // Customers cannot refer themselves
+			}
+
 			$key = get_user_meta( $user_id, 'rcp_subscription_key', true );
 
 			$this->insert_pending_referral( $price, $key, rcp_get_subscription( $user_id ) );
