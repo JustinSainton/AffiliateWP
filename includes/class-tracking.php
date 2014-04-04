@@ -230,7 +230,10 @@ class Affiliate_WP_Tracking {
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
 				'reference'    => sanitize_text_field( $_POST['reference'] ),
+				'visit_id'     => $this->get_visit_id()
 			) );
+
+			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referal_id ) );
 
 			echo $referal_id; exit;
 
