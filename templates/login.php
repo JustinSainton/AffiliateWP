@@ -12,9 +12,11 @@
 			<label for="affwp_user_pass"><?php _e( 'Password', 'affiliate-wp' ); ?></label>
 			<input name="affwp_user_pass" id="affwp_user_pass" class="password required" type="password"/>
 		</p>
+
 		<p>
-			<label for="affwp_user_remember"><?php _e( 'Remember Me', 'affiliate-wp' ); ?></label>
-			<input name="affwp_user_remember" id="affwp_user_remember" type="checkbox" value="1"/>
+			<label for="affwp_user_remember">
+				<input name="affwp_user_remember" id="affwp_user_remember" type="checkbox" value="1" /><?php _e( 'Remember Me', 'affiliate-wp' ); ?>
+			</label>
 		</p>
 		<p>
 			<input type="hidden" name="affwp_login_nonce" value="<?php echo wp_create_nonce( 'affwp-login-nonce' ); ?>"/>

@@ -30,8 +30,11 @@
 		<?php endif; ?>
 
 		<p>
-			<label for="affwp_tos"><?php printf( __( 'Agree to Our <a href="%s" target="_blank">Terms of Use</a>', 'affiliate-wp' ), get_permalink( affiliate_wp()->settings->get( 'terms_of_use' ) ) ); ?></label>
-			<input name="affwp_tos" id="affwp_tos" class="required" type="checkbox"/>
+			<label for="affwp_tos">
+				<input name="affwp_tos" id="affwp_tos" class="required" type="checkbox" />
+				<?php printf( __( 'Agree to Our <a href="%s" target="_blank">Terms of Use</a>', 'affiliate-wp' ), get_permalink( affiliate_wp()->settings->get( 'terms_of_use' ) ) ); ?>
+			</label>
+			
 		</p>
 		<p>
 			<input type="hidden" name="affwp_register_nonce" value="<?php echo wp_create_nonce( 'affwp-register-nonce' ); ?>"/>
