@@ -9,23 +9,23 @@
 		<?php if ( ! is_user_logged_in() ) : ?>
 			<p>
 				<label for="affwp_user_name"><?php _e( 'Your Name', 'affiliate-wp' ); ?></label>
-				<input name="affwp_user_name" id="affwp_user_name" class="required" type="text" title="<?php _e( 'Your Name', 'affiliate-wp' ); ?>"/>
+				<input name="affwp_user_name" id="affwp_user_name" class="required" type="text" title="<?php _e( 'Your Name', 'affiliate-wp' ); ?>" />
 			</p>
 			<p>
 				<label for="affwp_user_login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
-				<input name="affwp_user_login" id="affwp_user_login" class="required" type="text" title="<?php _e( 'Username', 'affiliate-wp' ); ?>"/>
+				<input name="affwp_user_login" id="affwp_user_login" class="required" type="text" title="<?php _e( 'Username', 'affiliate-wp' ); ?>" />
 			</p>
 			<p>
 				<label for="affwp_user_email"><?php _e( 'Email', 'affiliate-wp' ); ?></label>
-				<input name="affwp_user_email" id="affwp_user_email" class="required" type="email" title="<?php _e( 'Email Address', 'affiliate-wp' ); ?>"/>
+				<input name="affwp_user_email" id="affwp_user_email" class="required" type="email" title="<?php _e( 'Email Address', 'affiliate-wp' ); ?>" />
 			</p>
 			<p>
 				<label for="affwp_user_pass"><?php _e( 'Password', 'affiliate-wp' ); ?></label>
-				<input name="affwp_user_pass" id="affwp_user_pass" class="password required" type="password"/>
+				<input name="affwp_user_pass" id="affwp_user_pass" class="password required" type="password" />
 			</p>
 			<p>
 				<label for="affwp_user_pass2"><?php _e( 'Confirm Password', 'affiliate-wp' ); ?></label>
-				<input name="affwp_user_pass2" id="affwp_user_pass2" class="password required" type="password"/>
+				<input name="affwp_user_pass2" id="affwp_user_pass2" class="password required" type="password" />
 			</p>
 		<?php endif; ?>
 
@@ -37,9 +37,9 @@
 			
 		</p>
 		<p>
-			<input type="hidden" name="affwp_register_nonce" value="<?php echo wp_create_nonce( 'affwp-register-nonce' ); ?>"/>
-			<input type="hidden" name="affwp_action" value="affiliate_register"/>
-			<input id="affwp_register_submit" type="submit" class="affwp_submit" value="<?php _e( 'Register', 'affiliate-wp' ); ?>"/>
+			<input type="hidden" name="affwp_register_nonce" value="<?php echo wp_create_nonce( 'affwp-register-nonce' ); ?>" />
+			<input type="hidden" name="affwp_action" value="affiliate_register" />
+			<input id="affwp_register_submit" type="submit" class="affwp_submit" value="<?php _e( 'Register', 'affiliate-wp' ); ?>" />
 		</p>
 		
 		<?php do_action( 'affwp_register_fields_after' ); ?>
