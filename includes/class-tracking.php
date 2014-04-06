@@ -374,7 +374,7 @@ class Affiliate_WP_Tracking {
 
 		$active = 'active' == affwp_get_affiliate_status( $affiliate_id );
 
-		$valid  = affiliate_wp()->affiliates->get_column( 'affiliate_id', $affiliate_id );
+		$valid  = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
 
 		return ! empty( $valid ) && ! $is_self && $active;
 	}
