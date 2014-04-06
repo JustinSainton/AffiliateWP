@@ -48,7 +48,7 @@
 
 			</tr>
 
-		</tobdy>
+		</tbody>
 
 	</table>
 
@@ -78,7 +78,7 @@
 
 			</tr>
 
-		</tobdy>
+		</tbody>
 
 	</table>
 
@@ -94,6 +94,65 @@
 	?>
 
 	<?php do_action( 'affwp_affiliate_dashboard_after_graphs', $affiliate_id ); ?>
+
+	<h4><?php _e( 'Referral URL Visits', 'affiliate-wp' ); ?></h4>
+
+	<?php
+	$per_page = 20;
+	$page     = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
+	$visits   = affiliate_wp()->visits->get_visits( array(
+		'number'       => $per_page,
+		'offset'       => $per_page * ( $page - 1 ),
+		'affiliate_id' => $affiliate_id
+	) );
+	?>
+
+	<table id="affwp-affiliate-dashboard-visits" class="affwp_table">
+
+		<thead>
+
+			<tr>
+
+				<th><?php _e( 'URL', 'affwp' ); ?></th>
+				<th><?php _e( 'Referring URL', 'affwp' ); ?></th>
+				<th><?php _e( 'Converted', 'affwp' ); ?></th>
+
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			<?php if( $visits ) : ?>
+				<?php foreach( $visits as $visit ) : ?>
+					<tr>
+
+						<td><?php echo $visit->url; ?></td>
+						<td><?php echo $visit->referrer; ?></td>
+						<td>
+							<?php $converted = ! empty( $visit->referral_id ) ? 'yes' : 'no'; ?>
+							<span class="visit-converted <?php echo $converted; ?>"><i></i></span>
+						</td>
+
+					</tr>
+				<?php endforeach; ?>
+			<?php else : ?>
+				<tr>
+					<td colspan="3"><?php _e( 'You have not received any visits yet.', 'affiliate-wp' ); ?></td>
+				</tr>
+			<?php endif; ?>
+
+		</tbody>
+
+	</table>
+
+	<div class="affwp-pagination">
+		<?php echo paginate_links( array(
+			'current'      => $page,
+			'total'        => ceil( affwp_get_affiliate_visit_count( $affiliate_id ) / $per_page ),
+			'add_fragment' => '#affwp-affiliate-dashboard-visits'
+		) ); ?>
+	</div>
 
 	<h4><?php _e( 'Notifications', 'affiliate-wp' ); ?></h4>
 
