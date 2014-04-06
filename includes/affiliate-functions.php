@@ -1,9 +1,25 @@
 <?php
 
-function affwp_is_affiliate() {
-	return (bool) affwp_get_affiliate_id();
+/**
+ * Determines if the specified user ID is an affiliate.
+ *
+ * If no user ID is given, it will check the currently logged in user
+ *  
+ * @since 1.0
+ * @return bool
+ */
+function affwp_is_affiliate( $user_id = 0 ) {
+	return (bool) affwp_get_affiliate_id( $user_id );
 }
 
+/**
+ * Retrieves the affiliate ID of the specified user
+ *
+ * If no user ID is given, it will check the currently logged in user
+ *  
+ * @since 1.0
+ * @return int
+ */
 function affwp_get_affiliate_id( $user_id = 0 ) {
 
 	if( ! is_user_logged_in() && empty( $user_id ) ) {
@@ -24,6 +40,12 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 
 }
 
+/**
+ * Retrieves an affiliate's user ID
+ *  
+ * @since 1.0
+ * @return bool
+ */
 function affwp_get_affiliate_user_id( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -38,6 +60,12 @@ function affwp_get_affiliate_user_id( $affiliate ) {
 
 }
 
+/**
+ * Retrieves the affiliate object
+ *  
+ * @since 1.0
+ * @return object
+ */
 function affwp_get_affiliate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -51,6 +79,12 @@ function affwp_get_affiliate( $affiliate ) {
 	return affiliate_wp()->affiliates->get( $affiliate_id );
 }
 
+/**
+ * Retrieves the affiliate's status
+ *  
+ * @since 1.0
+ * @return string
+ */
 function affwp_get_affiliate_status( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -64,6 +98,12 @@ function affwp_get_affiliate_status( $affiliate ) {
 	return affiliate_wp()->affiliates->get_column( 'status', $affiliate_id );
 }
 
+/**
+ * Sets the status for an affiliate
+ *  
+ * @since 1.0
+ * @return bool
+ */
 function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -85,6 +125,12 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
 }
 
+/**
+ * Retrieves the referral rate for an affiliate
+ *  
+ * @since 1.0
+ * @return float
+ */
 function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 
 	// default rate
@@ -110,6 +156,12 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 	return apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
 }
 
+/**
+ * Retrieves the affiliate's email address
+ *  
+ * @since 1.0
+ * @return string
+ */
 function affwp_get_affiliate_email( $affiliate ) {
 
 	global $wpdb;
@@ -139,6 +191,12 @@ function affwp_get_affiliate_email( $affiliate ) {
 
 }
 
+/**
+ * Deletes an affiliate
+ *  
+ * @since 1.0
+ * @return bool
+ */
 function affwp_delete_affiliate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -155,7 +213,12 @@ function affwp_delete_affiliate( $affiliate ) {
 
 }
 
-
+/**
+ * Retrieves the total paid earnings for an affiliate
+ *  
+ * @since 1.0
+ * @return float
+ */
 function affwp_get_affiliate_earnings( $affiliate, $formatted = false ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -183,6 +246,12 @@ function affwp_get_affiliate_earnings( $affiliate, $formatted = false ) {
 	return $earnings;
 }
 
+/**
+ * Retrieves the total unpaid earnings for an affiliate
+ *  
+ * @since 1.0
+ * @return float
+ */
 function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -215,6 +284,12 @@ function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 	return $earnings;
 }
 
+/**
+ * Increases an affiliate's total paid earnings by the specified amount
+ *  
+ * @since 1.0
+ * @return float|bool
+ */
 function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 
 	if( empty( $affiliate_id ) ) {
@@ -243,6 +318,12 @@ function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 
 }
 
+/**
+ * Decreases an affiliate's total paid earnings by the specified amount
+ *  
+ * @since 1.0
+ * @return float|bool
+ */
 function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 
 	if( empty( $affiliate_id ) ) {
@@ -278,6 +359,12 @@ function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 
 }
 
+/**
+ * Retrieves the number of paid referrals for an affiliate
+ *  
+ * @since 1.0
+ * @return int
+ */
 function affwp_get_affiliate_referral_count( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -291,6 +378,12 @@ function affwp_get_affiliate_referral_count( $affiliate ) {
 	return affiliate_wp()->affiliates->get_column( 'referrals', $affiliate_id );
 }
 
+/**
+ * Increases an affiliate's total paid referrals by 1
+ *  
+ * @since 1.0
+ * @return float|bool
+ */
 function affwp_increase_affiliate_referral_count( $affiliate_id = 0 ) {
 
 	if( empty( $affiliate_id ) ) {
@@ -312,6 +405,12 @@ function affwp_increase_affiliate_referral_count( $affiliate_id = 0 ) {
 
 }
 
+/**
+ * Decreases an affiliate's total paid referrals by 1
+ *  
+ * @since 1.0
+ * @return float|bool
+ */
 function affwp_decrease_affiliate_referral_count( $affiliate_id = 0 ) {
 
 	if( empty( $affiliate_id ) ) {
@@ -335,6 +434,12 @@ function affwp_decrease_affiliate_referral_count( $affiliate_id = 0 ) {
 
 }
 
+/**
+ * Retrieves an affiliate's total visit count
+ *  
+ * @since 1.0
+ * @return int
+ */
 function affwp_get_affiliate_visit_count( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -354,6 +459,12 @@ function affwp_get_affiliate_visit_count( $affiliate ) {
 	return absint( $visits );
 }
 
+/**
+ * Increases an affiliate's total visit count by 1
+ *  
+ * @since 1.0
+ * @return int
+ */
 function affwp_increase_affiliate_visit_count( $affiliate_id = 0 ) {
 
 	if( empty( $affiliate_id ) ) {
@@ -375,6 +486,12 @@ function affwp_increase_affiliate_visit_count( $affiliate_id = 0 ) {
 
 }
 
+/**
+ * Decreases an affiliate's total visit count by 1
+ *  
+ * @since 1.0
+ * @return float|bool
+ */
 function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 
 	if( empty( $affiliate_id ) ) {
@@ -400,6 +517,12 @@ function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 
 }
 
+/**
+ * Retrieves the affiliate's conversion rate
+ *  
+ * @since 1.0
+ * @return float
+ */
 function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
 	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
@@ -422,6 +545,12 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
 }
 
+/**
+ * Adds a new affiliate to the database
+ *  
+ * @since 1.0
+ * @return bool
+ */
 function affwp_add_affiliate( $data = array() ) {
 
 	if( empty( $data['user_id'] ) ) {
@@ -455,6 +584,12 @@ function affwp_add_affiliate( $data = array() ) {
 
 }
 
+/**
+ * Updates an affiliate
+ *  
+ * @since 1.0
+ * @return bool
+ */
 function affwp_update_affiliate( $data = array() ) {
 
 	if ( empty( $data['affiliate_id'] ) ) {
@@ -484,6 +619,12 @@ function affwp_update_affiliate( $data = array() ) {
 
 }
 
+/**
+ * Updates an affiliate's notification settings
+ *  
+ * @since 1.0
+ * @return bool
+ */
 function affwp_update_notification_settings( $data = array() ) {
 
 	if( ! is_user_logged_in() ) {
