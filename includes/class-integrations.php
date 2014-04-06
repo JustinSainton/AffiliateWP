@@ -10,7 +10,7 @@ class Affiliate_WP_Integrations {
 
 	public function get_integrations() {
 
-		return array(
+		return apply_filters( 'affwp_integrations', array(
 			'edd'         => 'Easy Digital Downloads',
 			'exchange'    => 'iThemes Exchange',
 			'rcp'         => 'Restrict Content Pro',
@@ -19,7 +19,7 @@ class Affiliate_WP_Integrations {
 			'wishlist'    => 'Wishlist Memberships',
 			'woocommerce' => 'WooCommerce',
 			'wpec'        => 'WP e-Commerce',
-		);
+		) );
 	}
 
 	public function get_enabled_integrations() {
@@ -35,7 +35,9 @@ class Affiliate_WP_Integrations {
 
 		foreach( $enabled as $filename => $integration ) {
 
-			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php';
+			if( file_exists( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php' ) ) {
+				require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php';
+			}
 
 		}
 
