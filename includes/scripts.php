@@ -19,7 +19,7 @@ function affwp_is_admin_page() {
 		$ret = false;
 	}
 
-	$page  = $_GET['page'];
+	$page  = isset( $_GET['page'] ) ? $_GET['page'] : '';
 	$pages = array(
 		'affiliate-wp',
 		'affiliate-wp-affiliates',
