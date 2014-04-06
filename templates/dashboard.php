@@ -128,7 +128,7 @@
 					<tr>
 
 						<td><?php echo $visit->url; ?></td>
-						<td><?php echo $visit->referrer; ?></td>
+						<td><?php echo ! empty( $visit->referrer ) ? $visit->referrer : __( 'Direct traffic', 'affiliate-wp' ); ?></td>
 						<td>
 							<?php $converted = ! empty( $visit->referral_id ) ? 'yes' : 'no'; ?>
 							<span class="visit-converted <?php echo $converted; ?>"><i></i></span>
