@@ -38,12 +38,18 @@ function affwp_is_admin_page() {
 	return apply_filters( 'affwp_is_admin_page', $ret );
 }
 
+/**
+ *  Load the admin scripts
+ *  
+ *  @since 1.0
+ *  @return void
+ */
 function affwp_admin_scripts( $hook ) {
 
 	if( ! affwp_is_admin_page() ) {
 		return;
 	}
-	
+
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_script( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/js/admin' . $suffix . '.js', array( 'jquery' ), AFFILIATEWP_VERSION );
@@ -58,12 +64,18 @@ function affwp_admin_scripts( $hook ) {
 }
 add_action( 'admin_enqueue_scripts', 'affwp_admin_scripts' );
 
+/**
+ *  Load the admin styles
+ *  
+ *  @since 1.0
+ *  @return void
+ */
 function affwp_admin_styles( $hook ) {
 
 	if( ! affwp_is_admin_page() ) {
 		return;
 	}
-	
+
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', AFFILIATEWP_VERSION );
@@ -73,7 +85,13 @@ function affwp_admin_styles( $hook ) {
 }
 add_action( 'admin_enqueue_scripts', 'affwp_admin_styles' );
 
-function affwp_frontend_styles() {
+/**
+ *  Load the frontend scripts and styles
+ *  
+ *  @since 1.0
+ *  @return void
+ */
+function affwp_frontend_scripts_and_styles() {
 
 	global $post;
 
@@ -96,4 +114,4 @@ function affwp_frontend_styles() {
 	}
 
 }
-add_action( 'wp_enqueue_scripts', 'affwp_frontend_styles' );
+add_action( 'wp_enqueue_scripts', 'affwp_frontend_scripts_and_styles' );
