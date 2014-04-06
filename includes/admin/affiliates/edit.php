@@ -47,7 +47,7 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 
 				<td>
 					<input type="text" name="payment_email" id="payment_email" value="<?php echo esc_attr( $email ); ?>"/>
-					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email', 'affiliate-wp' ); ?></div>
+					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email.', 'affiliate-wp' ); ?></div>
 				</td>
 
 			</tr>
