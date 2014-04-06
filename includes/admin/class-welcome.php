@@ -100,10 +100,10 @@ class Affiliate_WP_Welcome {
 		<style type="text/css" media="screen">
 		/*<![CDATA[*/
 		.affwp-badge {
-			height: 151px;
-			width: 185px;
+			height: 80px;
+			width: 145px;
 			position: relative;
-			color: #fff;
+			color: #777777;
 			font-weight: bold;
 			font-size: 14px;
 			text-align: center;
@@ -112,7 +112,7 @@ class Affiliate_WP_Welcome {
 
 		.affwp-badge span {
 			position: absolute;
-			bottom: 20px;
+			bottom: -30px;
 			left: 0;
 			width: 100%;
 		}
@@ -125,7 +125,7 @@ class Affiliate_WP_Welcome {
 
 		.affwp-welcome-screenshots {
 			float: right;
-			margin-left: 10px!important;
+			margin-left: 10px !important;
 		}
 		/*]]>*/
 		</style>
