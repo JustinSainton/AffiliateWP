@@ -68,6 +68,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$args = wp_parse_args( $data, $defaults );
 
+		if( empty( $args['affiliate_id'] ) ) {
+			return false;
+		}
+
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {

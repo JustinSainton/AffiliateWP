@@ -77,7 +77,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				$user_ids = implode( ',', $args['user_id'] );
 			} else {
 				$user_ids = intval( $args['user_id'] );
-			}	
+			}
 
 			$where .= "WHERE `user_id` IN( {$user_ids} ) ";
 
@@ -139,7 +139,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
-		
+
 		if( $affiliates === false ) {
 			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
@@ -161,13 +161,32 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$cache_key = 'affwp_affiliate_name_' . $affiliate_id;
 
 		$name = wp_cache_get( $cache_key, 'affiliates' );
-		
+
 		if( $name === false ) {
 			$name = $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
 			wp_cache_set( $cache_key, $name, 'affiliates', 3600 );
 		}
 
 		return $name;
+	}
+
+	/**
+	 * Checks if an affiliate exists
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
+	public function affiliate_exists( $affiliate_id = 0 ) {
+
+		global $wpdb;
+
+		if( empty( $affiliate_id ) ) {
+			return false;
+		}
+
+		$affiliate = $wpdb->query( $wpdb->prepare( "SELECT 1 FROM $this->table_name WHERE $this->primary_key = %d;", $affiliate_id ) );
+
+		return ! empty( $affiliate );
 	}
 
 	/**
@@ -267,7 +286,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		$cache_key = md5( 'affwp_affiliates_count' . serialize( $args ) );
 
 		$count = wp_cache_get( $cache_key, 'affiliates' );
-		
+
 		if( $count === false ) {
 			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
 			wp_cache_set( $cache_key, $count, 'affiliates', 3600 );
@@ -276,7 +295,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		return $count;
 
 	}
-	
+
 	/**
 	 * Create the table
 	 *
