@@ -353,7 +353,7 @@ class Affiliate_WP_Welcome {
 
 			<?php $this->tabs(); ?>
 
-			<p class="about-description"><?php _e( 'AffiliateWP is created by a worldwide team of developers who aim to provide the #1 affiliate platform for WordPress.', 'affiliate-wp' ); ?></p>
+			<p class="about-description"><?php _e( 'AffiliateWP is created by developers from around the world that aim to provide the #1 affiliate platform for WordPress. Here are just some of the faces that have helped build AffiliateWP:', 'affiliate-wp' ); ?></p>
 
 			<?php echo $this->contributors(); ?>
 		</div>
