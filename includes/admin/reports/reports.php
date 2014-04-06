@@ -26,9 +26,9 @@ function affwp_reports_admin() {
 
 				<tr>
 
-					<th><?php _e( 'Total Paid Earnings', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Paid Earnings This Month', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Paid Earnings Today', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Paid Earnings', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Paid Earnings This Month', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Paid Earnings Today', 'affiliate-wp' ); ?></th>
 
 				</tr>
 
@@ -46,41 +46,15 @@ function affwp_reports_admin() {
 
 		</table>
 
-		<table id="affwp_unpaid_counts" class="affwp_table">
-
-			<thead>
-
-				<tr>
-
-					<th><?php _e( 'Total Unpaid Referrals', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Unpaid Referrals This Month', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Unpaid Referrals Today', 'affiliate-wp' ); ?></th>
-
-				</tr>
-
-			</thead>
-
-			<tbody>
-
-				<tr>
-					<td><?php echo affiliate_wp()->referrals->unpaid_count(); ?></td>
-					<td><?php echo affiliate_wp()->referrals->unpaid_count( 'month' ); ?></td>
-					<td><?php echo affiliate_wp()->referrals->unpaid_count( 'today' ); ?></td>
-				</tr>
-
-			</tbody>
-
-		</table>
-
 		<table id="affwp_unpaid_earnings" class="affwp_table">
 
 			<thead>
 
 				<tr>
 
-					<th><?php _e( 'Total Unpaid Earnings', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Unpaid Earnings This Month', 'affiliate-wp' ); ?></th>
-					<th><?php _e( 'Total Unpaid Earnings Today', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Unpaid Earnings', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Unpaid Earnings This Month', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Unpaid Earnings Today', 'affiliate-wp' ); ?></th>
 
 				</tr>
 
@@ -92,6 +66,32 @@ function affwp_reports_admin() {
 					<td><?php echo affiliate_wp()->referrals->unpaid_earnings(); ?></td>
 					<td><?php echo affiliate_wp()->referrals->unpaid_earnings( 'month' ); ?></td>
 					<td><?php echo affiliate_wp()->referrals->unpaid_earnings( 'today' ); ?></td>
+				</tr>
+
+			</tbody>
+
+		</table>
+
+		<table id="affwp_unpaid_counts" class="affwp_table">
+
+			<thead>
+
+				<tr>
+
+					<th><?php _e( 'Unpaid Referrals', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Unpaid Referrals This Month', 'affiliate-wp' ); ?></th>
+					<th><?php _e( 'Unpaid Referrals Today', 'affiliate-wp' ); ?></th>
+
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				<tr>
+					<td><?php echo affiliate_wp()->referrals->unpaid_count(); ?></td>
+					<td><?php echo affiliate_wp()->referrals->unpaid_count( 'month' ); ?></td>
+					<td><?php echo affiliate_wp()->referrals->unpaid_count( 'today' ); ?></td>
 				</tr>
 
 			</tbody>
