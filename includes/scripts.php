@@ -1,8 +1,49 @@
 <?php
 
+/**
+ *  Determines whether the current admin page is an AffiliateWP admin page.
+ *  
+ *  Only works after the `wp_loaded` hook, & most effective 
+ *  starting on `admin_menu` hook.
+ *  
+ *  @since 1.0
+ *  @return bool True if AffiliateWP admin page.
+ */
+function affwp_is_admin_page() {
+
+	if ( ! is_admin() || ! did_action( 'wp_loaded' ) ) {
+		$ret = false;
+	}
+	
+	if( ! isset( $_GET['page'] ) ) {
+		$ret = false;
+	}
+
+	$page  = $_GET['page'];
+	$pages = array(
+		'affiliate-wp',
+		'affiliate-wp-affiliates',
+		'affiliate-wp-referrals',
+		'affiliate-wp-visits',
+		'affiliate-wp-reports',
+		'affiliate-wp-tools',
+		'affiliate-wp-settings',
+		'affwp-getting-started',
+		'affwp-about',
+		'affwp-credits'
+	);
+		
+	$ret = in_array( $page, $pages );
+	
+	return apply_filters( 'affwp_is_admin_page', $ret );
+}
+
 function affwp_admin_scripts( $hook ) {
 
-	// TODO load conditionally
+	if( ! affwp_is_admin_page() ) {
+		return;
+	}
+	
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_script( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/js/admin' . $suffix . '.js', array( 'jquery' ), AFFILIATEWP_VERSION );
@@ -19,7 +60,10 @@ add_action( 'admin_enqueue_scripts', 'affwp_admin_scripts' );
 
 function affwp_admin_styles( $hook ) {
 
-	// TODO load conditionally
+	if( ! affwp_is_admin_page() ) {
+		return;
+	}
+	
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', AFFILIATEWP_VERSION );
