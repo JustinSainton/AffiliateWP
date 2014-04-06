@@ -13,6 +13,7 @@ class Affiliate_WP_Integrations {
 		return apply_filters( 'affwp_integrations', array(
 			'edd'         => 'Easy Digital Downloads',
 			'exchange'    => 'iThemes Exchange',
+			'jigoshop'    => 'Jigoshop',
 			'rcp'         => 'Restrict Content Pro',
 			'pmp'         => 'Paid Memberships Pro',
 			'shopp'       => 'Shopp',
