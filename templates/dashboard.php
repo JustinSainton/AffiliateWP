@@ -184,7 +184,7 @@
 		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url( '/' );
 		?>
 
-		<form method="get" id="affwp_generate_ref_url" class="affwp_form">
+		<form method="get" id="affwp_generate_ref_url" class="affwp_form" action="#affwp_generate_ref_url">
 			<div id="affwp_base_url_wrap">
 				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
 				<label for="affwp_url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
