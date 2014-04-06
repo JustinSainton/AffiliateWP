@@ -94,17 +94,17 @@ function affwp_recount_tab() {
 					<p><?php _e( 'Use this tool to recount affiliate statistics.', 'affiliate-wp' ); ?></p>
 					<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=recount' ); ?>">
 						<p>
-							<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>"/>
-							<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
-							<div id="affwp_user_search_results"></div>
-							<div class="description"><?php _e( 'Enter the name of the affiliate or begin typing to perform a search based on the affiliate\'s name.', 'affiliate-wp' ); ?></div>
-						</p>
-						<p>
+							<span class="affwp-ajax-search-wrap">
+								<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>"/>
+								<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+							</span>
 							<select name="recount_type">
 								<option value="earnings"><?php _e( 'Paid Earnings', 'affiliate-wp' ); ?></option>
 								<option value="referrals"><?php _e( 'Referrals', 'affiliate-wp' ); ?></option>
 								<option value="visits"><?php _e( 'Visits', 'affiliate-wp' ); ?></option>
 							</select>
+							<div id="affwp_user_search_results"></div>
+							<div class="description"><?php _e( 'Enter the name of the affiliate or begin typing to perform a search based on the affiliate\'s name.', 'affiliate-wp' ); ?></div>
 						</p>
 						<p>
 							<input type="hidden" name="user_id" id="user_id" value="0"/>
@@ -173,13 +173,11 @@ function affwp_export_import_tab() {
 					<p><?php _e( 'Export referrals to a CSV file.', 'affiliate-wp' ); ?></p>
 					<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
 						<p>
-							<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
-							<input type="hidden" name="user_id" id="user_id" value=""/>
-							<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
-							<div id="affwp_user_search_results"></div>
-							<div class="description"><?php _e( 'To search for a affiliate, enter the affiliate\'s login name, first name, or last name. Leave blank to export referrals for all affiliates.', 'affiliate-wp' ); ?></div>
-						</p>
-						<p>
+							<span class="affwp-ajax-search-wrap">
+								<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
+								<input type="hidden" name="user_id" id="user_id" value=""/>
+								<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+							</span>
 							<input type="text" class="affwp-datepicker" autocomplete="off" name="start_date" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
 							<input type="text" class="affwp-datepicker" autocomplete="off" name="end_date" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
 							<select name="status" id="status">
@@ -189,6 +187,8 @@ function affwp_export_import_tab() {
 								<option value="pending"><?php _e( 'Pending', 'affiliate-wp' ); ?></option>
 								<option value="rejected"><?php _e( 'Rejected', 'affiliate-wp' ); ?></option>
 							</select>
+							<div id="affwp_user_search_results"></div>
+							<div class="description"><?php _e( 'To search for a affiliate, enter the affiliate\'s login name, first name, or last name. Leave blank to export referrals for all affiliates.', 'affiliate-wp' ); ?></div>
 						</p>
 						<p>
 							<input type="hidden" name="affwp_action" value="export_referrals" />

@@ -13,6 +13,16 @@
 	content: "\e000";
 }
 
+.affwp-ajax-search-wrap {
+	position: relative;
+}
+
+.affwp-ajax {
+	position: absolute;
+	right: 8px;
+	top: 1px;
+}
+
 table.affwp_table {
 	text-align: left;
 	width: 100%;

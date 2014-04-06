@@ -17,8 +17,10 @@
 				</th>
 
 				<td>
-					<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
-					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+					<span class="affwp-ajax-search-wrap">
+						<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
+						<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+					</span>
 					<div id="affwp_user_search_results"></div>
 					<div class="description"><?php _e( 'Begin typing the name of the affiliate to perform a search for their associated user account.', 'affiliate-wp' ); ?></div>
 				</td>
