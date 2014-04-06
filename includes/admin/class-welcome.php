@@ -317,6 +317,9 @@ class Affiliate_WP_Welcome {
 				</div>
 			</div>
 
+			<div class="return-to-dashboard">
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=affiliate-wp-settings' ) ); ?>"><?php _e( 'Go to AffiliateWP Settings', 'affiliate-wp' ); ?></a>
+			</div>
 
 			<div class="changelog">
 				<h3><?php _e( 'Need Help?', 'affiliate-wp' );?></h3>
