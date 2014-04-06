@@ -136,23 +136,20 @@ table.affwp_table td a {
 #affwp-affiliates-filter #name {
 	width: 180px;
 }
-#affwp-affiliates-filter #affiliate_id {
-	width: 80px;
-}
-#affwp-affiliates-filter #earnings {
-	width: 140px;
-}
+#affwp-affiliates-filter #affiliate_id,
 #affwp-affiliates-filter #rate {
 	width: 80px;
 }
+#affwp-affiliates-filter #earnings,
 #affwp-affiliates-filter #referrals {
 	width: 140px;
 }
-#affwp-affiliates-filter #visits {
-	width: 100px;
-}
+#affwp-affiliates-filter #visits,
 #affwp-affiliates-filter #status {
 	width: 100px;
+}
+#affwp_edit_affiliate input:disabled {
+	background: rgba(255, 255, 255, 0.3);
 }
 
 /* Visits page */
