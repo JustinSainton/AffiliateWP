@@ -166,7 +166,7 @@
 			<div id="affwp_save_notifications_wrap">
 				<input type="hidden" name="affwp_action" value="update_notification_settings"/>
 				<input type="hidden" id="affwp_affiliate_id" name="affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
-				<input type="submit" value="<?php _e( 'Save Notification Settings', 'affiliate-wp' ); ?>"/>
+				<input type="submit" class="button" value="<?php _e( 'Save Notification Settings', 'affiliate-wp' ); ?>"/>
 			</div>
 		</form>
 
@@ -197,7 +197,7 @@
 			<div id="affwp_referral_url_submit_wrap">
 				<input type="hidden" id="affwp_affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
 				<input type="hidden" id="affwp_referral_var" value="<?php echo esc_attr( affiliate_wp()->tracking->get_referral_var() ); ?>"/>
-				<input type="submit" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>"/>
+				<input type="submit" class="button" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>"/>
 			</div>
 		</form>
 
