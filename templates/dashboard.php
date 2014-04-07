@@ -175,7 +175,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<h4><?php _e( 'Profile Settings', 'affiliate-wp' ); ?></h4>
 
 	<div id="affwp-affiliate-dashboard-profile">
-		<form id="affwp-email-profile" class="affwp-form" method="post" >
+		<form id="affwp-affiliate-dashboard-profile" class="affwp-form" method="post">
 			<div class="affwp-payment-email-wrap">
 				<label for="affwp-payment-email"><?php _e( 'Your payment email', 'affiliate-wp' ); ?></label>
 				<input id="affwp-payment-email" type="email" name="payment_email" value="<?php echo esc_attr( $payment_email ); ?>"/>
