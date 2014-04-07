@@ -1,33 +1,41 @@
 <?php affiliate_wp()->login->print_errors(); ?>
-<form id="affwp_login_form" class="affwp_form" action="" method="post">
+
+<form id="affwp-login-form" class="affwp-form" action="" method="post">
 	<?php do_action( 'affwp_affiliate_login_form_top' ); ?>
+
 	<fieldset>
-		<span><legend><?php _e( 'Log into Your Account', 'affiliate-wp' ); ?></legend></span>
+		<legend><?php _e( 'Log into Your Account', 'affiliate-wp' ); ?></legend>
+
 		<?php do_action( 'affwp_login_fields_before' ); ?>
+
 		<p>
-			<label for="affwp_user_login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
-			<input name="affwp_user_login" id="affwp_user_login" class="required" type="text" title="<?php _e( 'Username', 'affiliate-wp' ); ?>" />
+			<label for="affwp-user-login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
+			<input id="affwp-user-login" class="required" type="text" name="affwp_user_login" title="<?php esc_attr_e( 'Username', 'affiliate-wp' ); ?>" />
 		</p>
+
 		<p>
-			<label for="affwp_user_pass"><?php _e( 'Password', 'affiliate-wp' ); ?></label>
-			<input name="affwp_user_pass" id="affwp_user_pass" class="password required" type="password" />
+			<label for="affwp-user-pass"><?php _e( 'Password', 'affiliate-wp' ); ?></label>
+			<input id="affwp-user-pass" class="password required" type="password" name="affwp_user_pass" />
 		</p>
+
 		<p>
-			<label for="affwp_user_remember">
-				<input name="affwp_user_remember" id="affwp_user_remember" type="checkbox" value="1" /><?php _e( 'Remember Me', 'affiliate-wp' ); ?>
+			<label for="affwp-user-remember">
+				<input id="affwp-user-remember" type="checkbox" name="affwp_user_remember" value="1" /><?php _e( 'Remember Me', 'affiliate-wp' ); ?>
 			</label>
 		</p>
+
 		<p>
 			<input type="hidden" name="affwp_login_nonce" value="<?php echo wp_create_nonce( 'affwp-login-nonce' ); ?>" />
 			<input type="hidden" name="affwp_action" value="user_login" />
-			<input id="affwp_login_submit" type="submit" class="affwp_submit" value="<?php _e( 'Login', 'affiliate-wp' ); ?>" />
+			<input type="submit" class="button" value="<?php esc_attr_e( 'Login', 'affiliate-wp' ); ?>" />
 		</p>
+
 		<p class="affwp-lost-password">
-			<a href="<?php echo wp_lostpassword_url(); ?>" title="<?php _e( 'Lost Password', 'affiliate-wp' ); ?>">
-				<?php _e( 'Lost Password?', 'affiliate-wp' ); ?>
-			</a>
+			<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost Password?', 'affiliate-wp' ); ?></a>
 		</p>
+
 		<?php do_action( 'affwp_login_fields_after' ); ?>
 	</fieldset>
+
 	<?php do_action( 'affwp_affiliate_login_form_bottom' ); ?>
 </form>

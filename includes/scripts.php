@@ -72,14 +72,17 @@ add_action( 'admin_enqueue_scripts', 'affwp_admin_scripts' );
  */
 function affwp_admin_styles( $hook ) {
 
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+	// Dashicons and our main admin CSS need to be on all pages for the menu icon	
+	wp_enqueue_style( 'dashicons' );
+	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', AFFILIATEWP_VERSION );
+	
 	if( ! affwp_is_admin_page() ) {
 		return;
 	}
 
-	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
-	wp_enqueue_style( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css', AFFILIATEWP_VERSION );
-	wp_enqueue_style( 'dashicons' );
+	// jQuery UI styles are loaded on our admin pages only 
 	$ui_style = ( 'classic' == get_user_option( 'admin_color' ) ) ? 'classic' : 'fresh';
 	wp_enqueue_style( 'jquery-ui-css', AFFILIATEWP_PLUGIN_URL . 'assets/css/jquery-ui-' . $ui_style . '.min.css' );
 }
@@ -111,6 +114,7 @@ function affwp_frontend_scripts_and_styles() {
 			'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
 		));
 		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
+		wp_enqueue_style( 'dashicons' );
 	}
 
 }
