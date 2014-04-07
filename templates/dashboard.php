@@ -1,10 +1,11 @@
-<?php $affiliate_id = affwp_get_affiliate_id(); ?>
-<?php $user_id = affwp_get_affiliate_user_id( $affiliate_id ); ?>
+<?php
+$affiliate_id  = affwp_get_affiliate_id();
+$user_id       = affwp_get_affiliate_user_id( $affiliate_id );
+$payment_email = affwp_get_affiliate_email( $affiliate_id );
+?>
 <div id="affwp-affiliate-dashboard">
 
 	<?php do_action( 'affwp_affiliate_dashboard_top', $affiliate_id ); ?>
-
-	<h4><?php _e( 'Stats', 'affiliate-wp' ); ?></h4>
 
 	<?php if ( 'pending' == affwp_get_affiliate_status( $affiliate_id ) ) : ?>
 
@@ -21,6 +22,39 @@
 	<?php endif; ?>
 
 	<?php do_action( 'affwp_affiliate_dashboard_notices', $affiliate_id ); ?>
+
+	<h4><?php _e( 'Referral URL Generator', 'affiliate-wp' ); ?></h4>
+
+	<div id="affwp-affiliate-dashboard-url-generator">
+
+		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
+		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
+
+		<?php
+		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
+		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url( '/' );
+		?>
+
+		<form method="get" id="affwp_generate_ref_url" class="affwp_form" action="#affwp_generate_ref_url">
+			<div id="affwp_base_url_wrap">
+				<label for="affwp_url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
+				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
+			</div>
+			<div id="affwp_referral_url_wrap"<?php if( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
+				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
+				<input type="text" id="affwp_referral_url" value="<?php echo esc_attr( $referral_url ); ?>"/>
+				<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
+			</div>
+			<div id="affwp_referral_url_submit_wrap">
+				<input type="hidden" id="affwp_affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
+				<input type="hidden" id="affwp_referral_var" value="<?php echo esc_attr( affiliate_wp()->tracking->get_referral_var() ); ?>"/>
+				<input type="submit" class="button" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>"/>
+			</div>
+		</form>
+
+	</div>
+
+	<h4><?php _e( 'Stats', 'affiliate-wp' ); ?></h4>
 
 	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp_table">
 
@@ -154,50 +188,23 @@
 		) ); ?>
 	</div>
 
-	<h4><?php _e( 'Notifications', 'affiliate-wp' ); ?></h4>
+	<h4><?php _e( 'Profile Settings', 'affiliate-wp' ); ?></h4>
 
-	<div id="affwp-affiliate-dashboard-notifications">
+	<div id="affwp-affiliate-dashboard-profile">
 
-		<form method="post" id="affwp_email_notifications" class="affwp_form">
+		<form method="post" id="affwp_email_profile" class="affwp_form">
+			<div id="affwp_payment_email_wrap">
+				<label for="affwp_payment_email"><?php _e( 'Your payment email', 'affiliate-wp' ); ?></label>
+				<input type="email" name="payment_email" id="affwp_payment_email" value="<?php echo esc_attr( $payment_email ); ?>"/>
+			</div><br/>
 			<div id="affwp_send_notifications_wrap">
 				<input type="checkbox" name="referral_notifications" id="affwp_referral_notifications" value="1"<?php checked( true, get_user_meta( $user_id, 'affwp_referral_notifications', true ) ); ?>/>
 				<label for="affwp_referral_notifications"><?php _e( 'Enable New Referral Notifications', 'affiliate-wp' ); ?></label>
-			</div>
-			<div id="affwp_save_notifications_wrap">
-				<input type="hidden" name="affwp_action" value="update_notification_settings"/>
+			</div><br/>
+			<div id="affwp_save_profile_wrap">
+				<input type="hidden" name="affwp_action" value="update_profile_settings"/>
 				<input type="hidden" id="affwp_affiliate_id" name="affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
-				<input type="submit" class="button" value="<?php _e( 'Save Notification Settings', 'affiliate-wp' ); ?>"/>
-			</div>
-		</form>
-
-	</div>
-
-	<h4><?php _e( 'Referral URL Generator', 'affiliate-wp' ); ?></h4>
-
-	<div id="affwp-affiliate-dashboard-url-generator">
-
-		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
-		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
-
-		<?php
-		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
-		$referral_url = isset( $_GET['url'] ) ? add_query_arg( affiliate_wp()->tracking->get_referral_var(), $affiliate_id, urldecode( $_GET['url'] ) ) : home_url( '/' );
-		?>
-
-		<form method="get" id="affwp_generate_ref_url" class="affwp_form" action="#affwp_generate_ref_url">
-			<div id="affwp_base_url_wrap">
-				<input type="text" name="url" id="affwp_url" value="<?php echo esc_attr( $base_url ); ?>"/>
-				<label for="affwp_url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
-			</div>
-			<div id="affwp_referral_url_wrap"<?php if( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
-				<input type="text" id="affwp_referral_url" value="<?php echo esc_attr( $referral_url ); ?>"/>
-				<label for="affwp_referral_url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
-				<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
-			</div>
-			<div id="affwp_referral_url_submit_wrap">
-				<input type="hidden" id="affwp_affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
-				<input type="hidden" id="affwp_referral_var" value="<?php echo esc_attr( affiliate_wp()->tracking->get_referral_var() ); ?>"/>
-				<input type="submit" class="button" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>"/>
+				<input type="submit" class="button" value="<?php _e( 'Save Profile Settings', 'affiliate-wp' ); ?>"/>
 			</div>
 		</form>
 
