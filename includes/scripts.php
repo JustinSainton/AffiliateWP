@@ -111,6 +111,7 @@ function affwp_frontend_scripts_and_styles() {
 			'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
 		));
 		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
+		wp_enqueue_style( 'dashicons' );
 	}
 
 }
