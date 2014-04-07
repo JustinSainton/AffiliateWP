@@ -76,7 +76,7 @@ class Affiliate_WP_Login {
 	}
 
 	/**
-	 * Log the user in 
+	 * Log the user in
 	 *
 	 * @since 1.0
 	 */
@@ -112,7 +112,7 @@ class Affiliate_WP_Login {
 			return;
 		}
 
-		echo '<div class="affwp_errors">';
+		echo '<div class="affwp-errors">';
 
 		foreach( $this->errors as $error_id => $error ) {
 
