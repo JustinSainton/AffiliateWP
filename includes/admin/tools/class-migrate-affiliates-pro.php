@@ -182,7 +182,9 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 					'amount'          => $referral->amount,
 					'currency'        => strtoupper( $referral->currency_id ),
 					'reference'       => $referral->reference,
-					'context'         => $context
+					'context'         => $context,
+					'visit_id'        => 0,
+					'custom'          => ''
 				);
 
 				$id = affiliate_wp()->referrals->add( $args );
