@@ -20,7 +20,7 @@
 		<p>
 			<input type="hidden" name="affwp_login_nonce" value="<?php echo wp_create_nonce( 'affwp-login-nonce' ); ?>" />
 			<input type="hidden" name="affwp_action" value="user_login" />
-			<input id="affwp_login_submit" type="submit" class="affwp_submit" value="<?php _e( 'Login', 'affiliate-wp' ); ?>" />
+			<input id="affwp_login_submit" type="submit" class="button affwp_submit" value="<?php _e( 'Login', 'affiliate-wp' ); ?>" />
 		</p>
 		<p class="affwp-lost-password">
 			<a href="<?php echo wp_lostpassword_url(); ?>" title="<?php _e( 'Lost Password', 'affiliate-wp' ); ?>">
