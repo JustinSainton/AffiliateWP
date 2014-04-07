@@ -290,7 +290,7 @@ class Affiliate_WP_Settings {
 					),
 					'ignore_zero_referrals' => array(
 						'name' => __( 'Ignore Zero Referrals?', 'affiliate-wp' ),
-						'desc' => __( 'Check this box if you would like AffiliateWP to completely ignore referrals for a zero total amount. This can be useful for multi-price products that start at zero, or if a discount was used, which resulted in a zero amount. Please note : if this setting is enabled and a visit results in a zero referral, then the visit would be considered not converted.', 'affiliate-wp' ),
+						'desc' => __( 'Check this box if you would like AffiliateWP to completely ignore referrals for a zero total amount. This can be useful for multi-price products that start at zero, or if a discount was used, which resulted in a zero amount. Please note: if this setting is enabled and a visit results in a zero referral, then the visit would be considered not converted.', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					)
 				)
