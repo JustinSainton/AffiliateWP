@@ -1,16 +1,16 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready( function($) {
 	$( '#affwp-generate-ref-url' ).submit( function() {
-		var url = $( '#affwp-url' ).val(),
-			ref_var = $( '#affwp-referral-var' ).val(),
-			aff_id = $( '#affwp-affiliate-id' ).val();
+		var url    = $( '#affwp-url' ).val(),
+		    refVar = $( '#affwp-referral-var' ).val(),
+		    affId  = $( '#affwp-affiliate-id' ).val();
 
 		if ( url.indexOf( '?' ) < 0 ) {
-			ref_var = '?' + ref_var;
+			refVar = '?' + refVar;
 		} else {
-			ref_var = '&' + ref_var;
+			refVar = '&' + refVar;
 		}
 
-		url = url + ref_var + '=' + aff_id;
+		url = url + refVar + '=' + affId;
 
 		$( '.affwp-referral-url-wrap' ).slideDown();
 		$( '#affwp-referral-url' ).val( url ).focus();
