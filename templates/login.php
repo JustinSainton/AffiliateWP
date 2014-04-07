@@ -10,7 +10,7 @@
 
 		<p>
 			<label for="affwp-user-login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
-			<input id="affwp-user-login" class="required" type="text" name="affwp_user_login" title="<?php _e( 'Username', 'affiliate-wp' ); ?>" />
+			<input id="affwp-user-login" class="required" type="text" name="affwp_user_login" title="<?php esc_attr_e( 'Username', 'affiliate-wp' ); ?>" />
 		</p>
 
 		<p>
@@ -27,7 +27,7 @@
 		<p>
 			<input type="hidden" name="affwp_login_nonce" value="<?php echo wp_create_nonce( 'affwp-login-nonce' ); ?>" />
 			<input type="hidden" name="affwp_action" value="user_login" />
-			<input type="submit" class="button" value="<?php _e( 'Login', 'affiliate-wp' ); ?>" />
+			<input type="submit" class="button" value="<?php esc_attr_e( 'Login', 'affiliate-wp' ); ?>" />
 		</p>
 
 		<p class="affwp-lost-password">
