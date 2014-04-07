@@ -21,8 +21,12 @@ abstract class Affiliate_WP_Base {
 			return false; // Referral already created for this reference
 		}
 
+		$amount = affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
+		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+			return false; // Ignore a zero amount referral
+		}
 		return affiliate_wp()->referrals->add( array(
-			'amount'       => affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference ),
+			'amount'       => $amount,
 			'reference'    => $reference,
 			'description'  => $description,
 			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
