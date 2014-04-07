@@ -197,7 +197,7 @@ class Affiliate_WP_Settings {
 					),
 					'referral_var' => array(
 						'name' => __( 'Referral Variable', 'affiliate-wp' ),
-						'desc' => __( 'The URL variable for referral URLs.', 'affiliate-wp' ),
+						'desc' => sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ),
 						'type' => 'text',
 						'std' => 'ref'
 					),
