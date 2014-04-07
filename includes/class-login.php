@@ -116,7 +116,7 @@ class Affiliate_WP_Login {
 
 		foreach( $this->errors as $error_id => $error ) {
 
-			echo '<p class="affwp_error">' . esc_html( $error ) . '</p>';
+			echo '<p class="affwp-error">' . esc_html( $error ) . '</p>';
 
 		}
 
