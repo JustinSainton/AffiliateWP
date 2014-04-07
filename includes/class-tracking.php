@@ -115,6 +115,11 @@ class Affiliate_WP_Tracking {
 
 		$args = wp_parse_args( $args, $defaults );
 
+		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) ) {
+			// Allow the amount to be passed via a query string or post request
+			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( $_REQUEST['amount'] ) );
+		}
+
 ?>
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
