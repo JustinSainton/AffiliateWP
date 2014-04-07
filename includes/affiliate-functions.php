@@ -661,6 +661,6 @@ function affwp_update_profile_settings( $data = array() ) {
 	}
 
 	if ( ! empty( $_POST['affwp_action'] ) ) {
-		wp_redirect( add_query_arg( 'affwp_notice', 'notifications_saved' ) ); exit;
+		wp_redirect( add_query_arg( 'affwp_notice', 'profile-updated' ) ); exit;
 	}
 }

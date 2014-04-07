@@ -22,6 +22,12 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 
 	<?php endif; ?>
 
+	<?php if ( ! empty( $_GET['affwp_notice'] ) && 'profile-updated' == $_GET['affwp_notice'] ) : ?>
+
+		<p class="affwp-notice"><?php _e( 'Your affiliate profile has been updated', 'affiliate-wp' ); ?></p>
+
+	<?php endif; ?>
+
 	<?php do_action( 'affwp_affiliate_dashboard_notices', $affiliate_id ); ?>
 
 	<h4><?php _e( 'Referral URL Generator', 'affiliate-wp' ); ?></h4>
