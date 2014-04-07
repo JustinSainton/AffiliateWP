@@ -147,7 +147,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 						<td><?php echo ! empty( $visit->referrer ) ? $visit->referrer : __( 'Direct traffic', 'affiliate-wp' ); ?></td>
 						<td>
 							<?php $converted = ! empty( $visit->referral_id ) ? 'yes' : 'no'; ?>
-							<span class="visit-converted <?php echo esc_attr( $converted; ); ?>"><i></i></span>
+							<span class="visit-converted <?php echo esc_attr( $converted ); ?>"><i></i></span>
 						</td>
 					</tr>
 				<?php endforeach; ?>
