@@ -119,7 +119,7 @@ class Affiliate_WP_Graph {
 		} else {
 
 			$this->options[ $key ] = $value;
-	
+
 		}
 	}
 
@@ -369,7 +369,7 @@ class Affiliate_WP_Graph {
 					</select>
 				</div>
 
-				<input type="submit" class="button-secondary" value="<?php _e( 'Filter', 'affiliate-wp' ); ?>"/>
+				<input type="submit" class="button" value="<?php _e( 'Filter', 'affiliate-wp' ); ?>"/>
 			</div>
 		</form>
 		<?php
@@ -398,7 +398,7 @@ function affwp_get_report_dates() {
 	$dates['m_end']      = isset( $_GET['m_end'] )      ? $_GET['m_end']      : 12;
 	$dates['year']       = isset( $_GET['year_start'] ) ? $_GET['year_start'] : date( 'Y', $current_time );
 	$dates['year_end']   = isset( $_GET['year_end'] )   ? $_GET['year_end']   : date( 'Y', $current_time );
-		
+
 	// Modify dates based on predefined ranges
 	switch ( $dates['range'] ) :
 
