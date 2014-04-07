@@ -174,6 +174,8 @@ function affwp_get_affiliate_email( $affiliate ) {
 		return false;
 	}
 
+	$affiliate   = affwp_get_affiliate( $affiliate_id );
+
 	if( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
 		$email   = $affiliate->payment_email;
 	} else {
@@ -620,12 +622,12 @@ function affwp_update_affiliate( $data = array() ) {
 }
 
 /**
- * Updates an affiliate's notification settings
+ * Updates an affiliate's profile settings
  *  
  * @since 1.0
  * @return bool
  */
-function affwp_update_notification_settings( $data = array() ) {
+function affwp_update_profile_settings( $data = array() ) {
 
 	if( ! is_user_logged_in() ) {
 		return false;
@@ -639,7 +641,8 @@ function affwp_update_notification_settings( $data = array() ) {
 		return false;
 	}
 
-	$user_id = affwp_get_affiliate_user_id( absint( $data['affiliate_id'] ) );
+	$affiliate_id = absint( $data['affiliate_id'] );
+	$user_id      = affwp_get_affiliate_user_id( $affiliate_id );
 
 	if( ! empty( $data['referral_notifications'] ) ) {
 
@@ -648,6 +651,12 @@ function affwp_update_notification_settings( $data = array() ) {
 	} else {
 
 		delete_user_meta( $user_id, 'affwp_referral_notifications' );
+
+	}
+
+	if( ! empty( $data['payment_email'] ) && is_email( $data['payment_email'] ) ) {
+
+		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ) );
 
 	}
 
