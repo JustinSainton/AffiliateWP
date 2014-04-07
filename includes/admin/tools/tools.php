@@ -135,7 +135,7 @@ function affwp_migration_tab() {
 					<p><?php _e( 'These tools assist in migrating affiliate and referral data from existing platforms.', 'affiliate-wp' ); ?></p>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-			<?php if ( defined( 'AFFILIATES_PRO_DEFAULT_VERSION' ) ) { ?>
+	
 			<div class="postbox">
 				<h3><span><?php _e( 'Affiliates Pro', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -151,7 +151,6 @@ function affwp_migration_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-			<?php } ?>
 		</div><!-- .metabox-holder -->
 	</div><!-- #affwp-dashboard-widgets-wrap -->
 <?php
