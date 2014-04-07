@@ -16,8 +16,12 @@
 				<input name="affwp_user_login" id="affwp_user_login" class="required" type="text" title="<?php _e( 'Username', 'affiliate-wp' ); ?>" />
 			</p>
 			<p>
-				<label for="affwp_user_email"><?php _e( 'Email', 'affiliate-wp' ); ?></label>
+				<label for="affwp_user_email"><?php _e( 'Account Email', 'affiliate-wp' ); ?></label>
 				<input name="affwp_user_email" id="affwp_user_email" class="required" type="email" title="<?php _e( 'Email Address', 'affiliate-wp' ); ?>" />
+			</p>
+			<p>
+				<label for="affwp_payment_email"><?php _e( 'Payment Email (if different)', 'affiliate-wp' ); ?></label>
+				<input name="affwp_payment_email" id="affwp_payment_email" type="email" title="<?php _e( 'Payment Email Address', 'affiliate-wp' ); ?>" />
 			</p>
 			<p>
 				<label for="affwp_user_pass"><?php _e( 'Password', 'affiliate-wp' ); ?></label>
