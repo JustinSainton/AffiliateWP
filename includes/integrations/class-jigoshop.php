@@ -9,7 +9,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 		// Filters the integration settings.
 		add_filter( 'affwp_settings_integrations', array( $this, 'filter_affwp_integration_settings' ), 10, 1 );
 
-		add_action( 'jigoshop_checkout_order_processed', array( $this, 'add_pending_referral' ), 10, 2 );
+		add_action( 'jigoshop_new_order', array( $this, 'add_pending_referral' ), 10, 1 );
 
 		// Mark referral complete when action is called.
 		$referral_complete = get_option('affwp_jigoshop_referral_complete');
@@ -66,7 +66,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 		return $settings;
 	}
 
-	public function add_pending_referral( $order_id = 0, $posted ) {
+	public function add_pending_referral( $order_id = 0 ) {
 
 		if( $this->was_referred() ) {
 
