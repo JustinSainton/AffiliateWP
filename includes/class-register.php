@@ -46,6 +46,10 @@ class Affiliate_WP_Register {
 				$this->add_error( 'email_invalid', __( 'Invalid email', 'affiliate-wp' ) );
 			}
 
+			if( ! empty( $data['affwp_payment_email'] ) && $data['affwp_payment_email'] != $data['affwp_user_email'] && ! is_email( $data['affwp_payment_email'] ) ) {
+				$this->add_error( 'payment_email_invalid', __( 'Invalid payment email', 'affiliate-wp' ) );
+			}
+
 			if( empty( $_POST['affwp_user_pass'] ) ) {
 				$this->add_error( 'empty_password', __( 'Please enter a password', 'affiliate-wp' ) );
 			}
@@ -112,7 +116,11 @@ class Affiliate_WP_Register {
 
 		}
 
-		$affiliate_id = affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+		$affiliate_id       = affiliate_wp()->affiliates->add( array( 
+			'status'        => $status,
+			'user_id'       => $user_id,
+			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
+		) );
 
 		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
 			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
