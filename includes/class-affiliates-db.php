@@ -199,7 +199,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		$defaults = array(
 			'status'          => 'active',
-			'date_registered' => current_time( 'mysql' )
+			'date_registered' => current_time( 'mysql' ),
+			'earnings'        => 0,
+			'referrals'       => 0,
+			'visits'          => 0
 		);
 
 		$args = wp_parse_args( $data, $defaults );

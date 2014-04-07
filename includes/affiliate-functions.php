@@ -567,7 +567,8 @@ function affwp_add_affiliate( $data = array() ) {
 
 		$args = array(
 			'user_id' => $user_id,
-			'rate'    => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : ''
+			'rate'    => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : '',
+			'payment_email' => ! empty( $data['payment_email'] ) ? sanitize_text_field( $data['payment_email'] ) : ''
 		);
 
 		if( affiliate_wp()->affiliates->add( $args ) ) {
