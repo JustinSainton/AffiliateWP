@@ -120,6 +120,11 @@ class Affiliate_WP_Tracking {
 			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( $_REQUEST['amount'] ) );
 		}
 
+		if( empty( $args['reference'] ) && ! empty( $_REQUEST['reference'] ) ) {
+			// Allow the reference to be passed via a query string or post request
+			$args['reference'] = absint( sanitize_text_field( $_REQUEST['reference'] ) );
+		}
+
 ?>
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
