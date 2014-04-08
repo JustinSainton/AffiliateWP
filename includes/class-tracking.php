@@ -235,7 +235,7 @@ class Affiliate_WP_Tracking {
 			// Store the visit in the DB
 			$referal_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
-				'amount'       => sanitize_text_field( $_POST['amount'] ),
+				'amount'       => affwp_calc_referral_amount( sanitize_text_field( $_POST['amount'] ), $affiliate_id ),
 				'status'       => $status,
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
