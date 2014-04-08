@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
-"POT-Creation-Date: 2014-04-07 13:46-0600\n"
-"PO-Revision-Date: 2014-04-07 13:46-0600\n"
+"POT-Creation-Date: 2014-04-08 10:56-0600\n"
+"PO-Revision-Date: 2014-04-08 10:56-0600\n"
 "Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
 "Language-Team: Chris Christoff <chriscct7@gmail.com>\n"
 "Language: en\n"
@@ -188,6 +188,10 @@ msgid "Please agree to our terms of use"
 msgstr ""
 
 #: includes/class-register.php:72
+msgid "Nice try honey bear, don't touch our honey"
+msgstr ""
+
+#: includes/class-register.php:76
 msgid "You are already registered as an affiliate"
 msgstr ""
 
@@ -1710,6 +1714,6 @@ msgstr ""
 msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
 msgstr ""
 
-#: templates/register.php:55
+#: templates/register.php:56
 msgid "Register"
 msgstr ""
