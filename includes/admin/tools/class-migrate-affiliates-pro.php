@@ -86,12 +86,11 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 				}
 
-				$rate = $wpdb->get_var( $wpdb->prepare( "SELECT attr_value FROM {$wpdb->prefix}aff_affiliates_attributes WHERE affiliate_id = %d AND attr_key = 'referral.rate'", $affiliate->affiliate_id ) );
-
-				$earnings = $wpdb->get_var( $wpdb->prepare( "SELECT sum(amount) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
+				$rate      = $wpdb->get_var( $wpdb->prepare( "SELECT attr_value FROM {$wpdb->prefix}aff_affiliates_attributes WHERE affiliate_id = %d AND attr_key = 'referral.rate'", $affiliate->affiliate_id ) );
+				$earnings  = $wpdb->get_var( $wpdb->prepare( "SELECT sum(amount) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				$referrals = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
-				$visits = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_hits WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
-				$args = array(
+				$visits    = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_hits WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
+				$args      = array(
 					'status'          => $affiliate->status,
 					'date_registered' => $affiliate->from_date,
 					'user_id'         => $user_id,
