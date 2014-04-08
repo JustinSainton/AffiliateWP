@@ -68,6 +68,10 @@ class Affiliate_WP_Register {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
 		}
 
+		if( ! empty( $_POST['affwp_honeypot'] ) ) {
+			$this->add_error( 'spam', __( 'Nice try honey bear, don\'t touch our honey', 'affiliate-wp' ) );
+		}
+
 		if( affwp_is_affiliate() ) {
 			$this->add_error( 'already_registered', __( 'You are already registered as an affiliate', 'affiliate-wp' ) );
 		}

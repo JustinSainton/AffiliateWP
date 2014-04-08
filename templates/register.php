@@ -50,6 +50,7 @@
 		</p>
 
 		<p>
+			<input type="hidden" name="affwp_honeypot" value="" />
 			<input type="hidden" name="affwp_register_nonce" value="<?php echo wp_create_nonce( 'affwp-register-nonce' ); ?>" />
 			<input type="hidden" name="affwp_action" value="affiliate_register" />
 			<input class="button" type="submit" value="<?php esc_attr_e( 'Register', 'affiliate-wp' ); ?>" />
