@@ -88,11 +88,18 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 				$rate = $wpdb->get_var( $wpdb->prepare( "SELECT attr_value FROM {$wpdb->prefix}aff_affiliates_attributes WHERE affiliate_id = %d AND attr_key = 'referral.rate'", $affiliate->affiliate_id ) );
 
+				$earnings = $wpdb->get_var( $wpdb->prepare( "SELECT sum(amount) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
+				$referrals = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
+				$visits = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_hits WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				$args = array(
 					'status'          => $affiliate->status,
 					'date_registered' => $affiliate->from_date,
 					'user_id'         => $user_id,
-					'rate'            => $rate
+					'payment_email'	  => $affiliate->email,
+					'rate'            => $rate,
+					'earnings'        => $earnings,
+					'referrals'       => $referrals,
+					'visits'          => $visits
 				);
 
 				$id = affiliate_wp()->affiliates->add( $args );
@@ -175,7 +182,9 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 					'amount'          => $referral->amount,
 					'currency'        => strtoupper( $referral->currency_id ),
 					'reference'       => $referral->reference,
-					'context'         => $context
+					'context'         => $context,
+					'visit_id'        => 0,
+					'custom'          => ''
 				);
 
 				$id = affiliate_wp()->referrals->add( $args );

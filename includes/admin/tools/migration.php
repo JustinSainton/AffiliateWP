@@ -18,7 +18,7 @@ function affwp_migrate_admin() {
 			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>
 		</div>
 		<script type="text/javascript">
-			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $_GET['step'] ); ?>&type=<?php echo $type; ?>&part=<?php echo $part; ?>";
+			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $step ); ?>&type=<?php echo $type; ?>&part=<?php echo $part; ?>";
 		</script>
 	</div>
 <?php
