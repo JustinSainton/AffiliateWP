@@ -619,6 +619,9 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			case 'pending':
 				$total_items = $this->pending_count;
 				break;
+			case 'unpaid':
+				$total_items = $this->unpaid_count;
+				break;
 			case 'rejected':
 				$total_items = $this->rejected_count;
 				break;
