@@ -44,8 +44,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 
 		<form id="affwp-generate-ref-url" class="affwp-form" method="get" action="#affwp-generate-ref-url">
 			<div class="affwp-base-url-wrap">
-				<input type="text" name="url" id="affwp-url" value="<?php echo esc_attr( $base_url ); ?>"/>
 				<label for="affwp-url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
+				<input type="text" name="url" id="affwp-url" value="<?php echo esc_attr( $base_url ); ?>"/>
+				
 			</div>
 
 			<div class="affwp-referral-url-wrap"<?php if ( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
