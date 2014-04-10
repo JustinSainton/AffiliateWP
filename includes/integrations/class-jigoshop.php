@@ -3,10 +3,8 @@
  * AffiliateWP Jigoshop Integration
  *
  * This integrates support for Jigoshop.
- * @since version: 1.0.1
+ * @since version: 1.0.2
  */
-
-if( !class_exists( 'Affiliate_WP_Jigoshop' ) ) :
 
 class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 
@@ -115,6 +113,3 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 }
 
 new Affiliate_WP_Jigoshop;
-
-endif; // end if class exits.
-?>
