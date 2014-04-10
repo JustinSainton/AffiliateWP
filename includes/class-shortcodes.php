@@ -6,6 +6,7 @@ class Affiliate_WP_Shortcodes {
 
 		add_shortcode( 'affiliate_area', array( $this, 'affiliate_area' ) );
 		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
+		add_shortcode( 'affiliate_referral_url', array( $this, 'referral_url' ) );
 
 	}
 
@@ -65,6 +66,15 @@ class Affiliate_WP_Shortcodes {
 
 		return affiliate_wp()->tracking->conversion_script( $args, $md5 );
 
+	}
+
+	public function referral_url( $atts, $content = null ) {
+
+		if( ! affwp_is_affiliate() ) {
+			return;
+		}
+
+		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) );
 	}
 
 }
