@@ -290,4 +290,4 @@ function affiliate_wp() {
 }
 
 // Get AffiliateWP Running
-affiliate_wp();
+add_action( 'plugins_loaded', 'affiliate_wp', 1 );
