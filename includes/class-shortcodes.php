@@ -10,6 +10,12 @@ class Affiliate_WP_Shortcodes {
 
 	}
 
+	/**
+	 *  Renders the affiliate area
+	 *
+	 *  @since 1.0
+	 *  @return string
+	 */
 	public function affiliate_area( $atts, $content = null ) {
 
 		ob_start();
@@ -44,6 +50,12 @@ class Affiliate_WP_Shortcodes {
 
 	}
 
+	/**
+	 *  Outputs a generic conversion script for custom referral tracking
+	 *
+	 *  @since 1.0
+	 *  @return string
+	 */
 	public function conversion_script( $atts, $content = null ) {
 
 
@@ -68,6 +80,12 @@ class Affiliate_WP_Shortcodes {
 
 	}
 
+	/**
+	 * Outputs the referral URL for the current affiliate
+	 *
+	 *  @since 1.0.1
+	 *  @return string
+	 */
 	public function referral_url( $atts, $content = null ) {
 
 		if( ! affwp_is_affiliate() ) {
