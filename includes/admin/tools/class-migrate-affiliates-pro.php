@@ -80,16 +80,15 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 				$user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM {$wpdb->prefix}aff_affiliates_users WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				if( ! $user_id ) {
-
 					$user    = get_user_by( 'email', $affiliate->email );
 					$user_id = ! empty( $user->ID ) ? $user->ID : 0;
-
 				}
 
 				$rate      = $wpdb->get_var( $wpdb->prepare( "SELECT attr_value FROM {$wpdb->prefix}aff_affiliates_attributes WHERE affiliate_id = %d AND attr_key = 'referral.rate'", $affiliate->affiliate_id ) );
 				$earnings  = $wpdb->get_var( $wpdb->prepare( "SELECT sum(amount) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				$referrals = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				$visits    = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_hits WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
+
 				$args      = array(
 					'status'          => $affiliate->status,
 					'date_registered' => $affiliate->from_date,
