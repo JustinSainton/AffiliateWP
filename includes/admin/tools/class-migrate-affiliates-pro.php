@@ -70,7 +70,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 	public function do_affiliates( $step = 1 ) {
 
 		global $wpdb;
-		$offset     = $step > 1 ? $step * 100 : 0;
+		$offset     = ($step - 1) * 100;
 		$affiliates = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}aff_affiliates ORDER BY affiliate_id LIMIT $offset, 100;" );
 
 		$to_delete = array();
@@ -136,7 +136,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 	public function do_referrals( $step = 1 ) {
 
 		global $wpdb;
-		$offset    = $step > 1 ? $step * 100 : 0;
+		$offset    = ($step - 1) * 100;
 		$referrals = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}aff_referrals ORDER BY referral_id LIMIT $offset, 100;" );
 
 		if( $referrals ) {
