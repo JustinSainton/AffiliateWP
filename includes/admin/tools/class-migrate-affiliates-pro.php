@@ -70,7 +70,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 	public function do_affiliates( $step = 1 ) {
 
 		global $wpdb;
-		$offset     = $step > 1 ? $step * 100 : 0;
+		$offset     = ($step - 1) * 100;
 		$affiliates = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}aff_affiliates ORDER BY affiliate_id LIMIT $offset, 100;" );
 
 		$to_delete = array();
@@ -80,17 +80,16 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 
 				$user_id = $wpdb->get_var( $wpdb->prepare( "SELECT user_id FROM {$wpdb->prefix}aff_affiliates_users WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				if( ! $user_id ) {
-
 					$user    = get_user_by( 'email', $affiliate->email );
 					$user_id = ! empty( $user->ID ) ? $user->ID : 0;
-
 				}
 
 				$rate      = $wpdb->get_var( $wpdb->prepare( "SELECT attr_value FROM {$wpdb->prefix}aff_affiliates_attributes WHERE affiliate_id = %d AND attr_key = 'referral.rate'", $affiliate->affiliate_id ) );
 				$earnings  = $wpdb->get_var( $wpdb->prepare( "SELECT sum(amount) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				$referrals = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_referrals WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
 				$visits    = $wpdb->get_var( $wpdb->prepare( "SELECT count(affiliate_id) FROM {$wpdb->prefix}aff_hits WHERE affiliate_id = %d", $affiliate->affiliate_id ) );
-				$args      = array(
+
+				$data      = array(
 					'status'          => $affiliate->status,
 					'date_registered' => $affiliate->from_date,
 					'user_id'         => $user_id,
@@ -101,7 +100,33 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 					'visits'          => $visits
 				);
 
-				$id = affiliate_wp()->affiliates->add( $args );
+				//set some defaults
+				$defaults = array(
+					'status'          => 'active',
+					'date_registered' => current_time( 'mysql' )
+				);
+
+				//merge the data with the defaults
+				$args = wp_parse_args( $data, $defaults );
+
+				//try to get an existing affiliate based on the user_id
+				$existing_affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
+
+				//insert a new affiliate - we need to always insert to make sure the affiliate_ids will match
+				$id = affiliate_wp()->affiliates->insert( $args, 'affiliate' );
+
+				//if we have a duplicate affiliate based on user_id then we need to clean things up! (also ignore the 'direct' affiliate)
+				if ( 'direct' != $affiliate->type && $existing_affiliate ) {
+
+					if ( 'deleted' == $existing_affiliate->status ) {
+						//if our original affiliate has a deleted status, then delete the original affiliate
+						$to_delete[] = $existing_affiliate->affiliate_id;
+					} else {
+						//we need to delete the duplicate we just inserted to make sure all works 100%
+						$to_delete[] = $id;
+					}
+
+				}
 
 				if( 'direct' == $affiliate->type ) {
 					// We don't need direct affiliates, but we need to insert it in order to keep affiliate IDs correct
@@ -136,7 +161,7 @@ class Affiliate_WP_Migrate_Affiliates_Pro extends Affiliate_WP_Migrate_Base {
 	public function do_referrals( $step = 1 ) {
 
 		global $wpdb;
-		$offset    = $step > 1 ? $step * 100 : 0;
+		$offset    = ($step - 1) * 100;
 		$referrals = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}aff_referrals ORDER BY referral_id LIMIT $offset, 100;" );
 
 		if( $referrals ) {
