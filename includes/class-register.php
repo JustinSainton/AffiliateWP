@@ -38,8 +38,13 @@ class Affiliate_WP_Register {
 				$this->add_error( 'username_unavailable', __( 'Username already taken', 'affiliate-wp' ) );
 			}
 
+
 			if( ! validate_username( $data['affwp_user_login'] ) ) {
 				$this->add_error( 'username_invalid', __( 'Invalid username', 'affiliate-wp' ) );
+			}
+
+			if( email_exists( $data['affwp_user_email'] ) ) {
+				$this->add_error( 'email_unavailable', __( 'Email address already taken', 'affiliate-wp' ) );
 			}
 
 			if( empty( $data['affwp_user_email'] ) || ! is_email( $data['affwp_user_email'] ) ) {
