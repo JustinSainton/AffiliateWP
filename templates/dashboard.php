@@ -133,9 +133,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-visits" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'URL', 'affiliate-wp' ); ?></th>
-				<th><?php _e( 'Referring URL', 'affiliate-wp' ); ?></th>
-				<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
+				<th class="visit-url"><?php _e( 'URL', 'affiliate-wp' ); ?></th>
+				<th class="referring-url"><?php _e( 'Referring URL', 'affiliate-wp' ); ?></th>
+				<th class="referral-status"><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
