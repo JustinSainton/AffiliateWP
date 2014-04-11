@@ -539,8 +539,8 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
 	$referrals = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => array( 'paid', 'unpaid' ) ) );
 	$visits    = affwp_get_affiliate_visit_count( $affiliate_id );
-	if( $referrals > 0 ) {
-		$rate = round( ( $visits / $referrals ) * 100, 2 );
+	if( $visits > 0 ) {
+		$rate = round( ( $referrals / $visits ) * 100, 2 );
 	}
 
 	return apply_filters( 'affwp_get_affiliate_conversion_rate', $rate . '%', $affiliate_id );
