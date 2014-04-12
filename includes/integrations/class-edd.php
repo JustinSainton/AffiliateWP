@@ -12,6 +12,13 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+	
+		// Discount code tracking actions and filters
+		add_action( 'edd_add_discount_form_bottom', array( $this, 'discount_edit' ) );
+		add_action( 'edd_edit_discount_form_bottom', array( $this, 'discount_edit' ) );
+		add_action( 'edd_post_update_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
+		add_action( 'edd_post_insert_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
+		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
 	}
 
 	public function add_pending_referral( $payment_id = 0, $payment_data = array() ) {
@@ -94,7 +101,93 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
 
-	// TODO add note about referral
+	public function discount_edit( $discount_id = 0 ) {
+
+		// TODO replace this with a select2 drop down
+?>
+		<table class="form-table">
+			<tbody>
+				<tr class="form-field">
+					<th scope="row" valign="top">
+						<label for="affiliate_id"><?php _e( 'Affiliate Discount?', 'affiliate-wp' ); ?></label>
+					</th>
+					<td>
+						<input type="text" id="affiliate_id" name="affiliate_id" value="<?php echo esc_attr( get_post_meta( $discount_id, 'affwp_discount_affiliate', true ) ); ?>" style="width: 300px;"/>
+						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, select the affiliate it belongs to.', 'edd' ); ?></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+<?php
+	}
+
+	public function store_discount_affiliate( $details, $discount_id = 0 ) {
+
+		if( empty( $_POST['affiliate_id'] ) ) {
+			return;
+		}
+
+		$affiliate_id = sanitize_text_field( $_POST['affiliate_id'] );
+
+		update_post_meta( $discount_id, 'affwp_discount_affiliate', $affiliate_id );
+	}
+
+	public function track_discount_referral( $payment_id = 0 ) {
+
+		$user_info = edd_get_payment_meta_user_info( $payment_id );
+
+		if ( isset( $user_info['discount'] ) && $user_info['discount'] != 'none' ) {
+
+			$discounts = array_map( 'trim', explode( ',', $user_info['discount'] ) );
+
+			if( empty( $discounts ) ) {
+				return;
+			}
+
+			foreach( $discounts as $code ) {
+
+				$discount_id  = edd_get_discount_id_by_code( $code );
+				$affiliate_id = get_post_meta( $discount_id, 'affwp_discount_affiliate', true );
+
+				if( ! $affiliate_id ) {
+					continue;
+				}
+
+				$amount = edd_get_payment_subtotal( $payment_id );
+				$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
+				
+				if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+					return false; // Ignore a zero amount referral
+				}
+
+				$description = '';
+				$downloads   = edd_get_payment_meta_downloads( $payment_id );
+				foreach( $downloads as $key => $item ) {
+					$description .= get_the_title( $item['id'] );
+					if( $key + 1 < count( $downloads ) ) {
+						$description .= ', ';
+					}
+				}
+
+				$referral_id = affiliate_wp()->referrals->add( array(
+					'amount'       => $amount,
+					'reference'    => $payment_id,
+					'description'  => $description,
+					'affiliate_id' => $affiliate_id,
+					'context'      => $this->context
+				) );
+
+				affwp_set_referral_status( $referral_id, 'unpaid' );
+
+				$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
+				$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+
+				edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
+			}
+		}
+
+	}
 
 }
 new Affiliate_WP_EDD;
