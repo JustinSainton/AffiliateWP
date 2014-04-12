@@ -35,6 +35,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<div id="affwp-affiliate-dashboard-url-generator">
 
 		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
+		<p><?php printf( __( 'Your referral URL is: <strong>%s</strong>', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) ) ); ?></p>
 		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
@@ -67,10 +68,10 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'Unpaid Referrals', 'affwp' ); ?></th>
-				<th><?php _e( 'Paid Referrals', 'affwp' ); ?></th>
-				<th><?php _e( 'Visits', 'affwp' ); ?></th>
-				<th><?php _e( 'Conversion Rate', 'affwp' ); ?></th>
+				<th><?php _e( 'Unpaid Referrals', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Paid Referrals', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Visits', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Conversion Rate', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -89,9 +90,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'Unpaid Earnings', 'affwp' ); ?></th>
-				<th><?php _e( 'Paid Earnings', 'affwp' ); ?></th>
-				<th><?php _e( 'Commission Rate', 'affwp' ); ?></th>
+				<th><?php _e( 'Unpaid Earnings', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Paid Earnings', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Commission Rate', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -132,9 +133,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-visits" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'URL', 'affwp' ); ?></th>
-				<th><?php _e( 'Referring URL', 'affwp' ); ?></th>
-				<th><?php _e( 'Converted', 'affwp' ); ?></th>
+				<th class="visit-url"><?php _e( 'URL', 'affiliate-wp' ); ?></th>
+				<th class="referring-url"><?php _e( 'Referring URL', 'affiliate-wp' ); ?></th>
+				<th class="referral-status"><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 

@@ -6,9 +6,16 @@ class Affiliate_WP_Shortcodes {
 
 		add_shortcode( 'affiliate_area', array( $this, 'affiliate_area' ) );
 		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
+		add_shortcode( 'affiliate_referral_url', array( $this, 'referral_url' ) );
 
 	}
 
+	/**
+	 *  Renders the affiliate area
+	 *
+	 *  @since 1.0
+	 *  @return string
+	 */
 	public function affiliate_area( $atts, $content = null ) {
 
 		ob_start();
@@ -43,6 +50,12 @@ class Affiliate_WP_Shortcodes {
 
 	}
 
+	/**
+	 *  Outputs a generic conversion script for custom referral tracking
+	 *
+	 *  @since 1.0
+	 *  @return string
+	 */
 	public function conversion_script( $atts, $content = null ) {
 
 
@@ -65,6 +78,21 @@ class Affiliate_WP_Shortcodes {
 
 		return affiliate_wp()->tracking->conversion_script( $args, $md5 );
 
+	}
+
+	/**
+	 * Outputs the referral URL for the current affiliate
+	 *
+	 *  @since 1.0.1
+	 *  @return string
+	 */
+	public function referral_url( $atts, $content = null ) {
+
+		if( ! affwp_is_affiliate() ) {
+			return;
+		}
+
+		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) );
 	}
 
 }

@@ -88,6 +88,18 @@ p.affwp-error {
 #affwp-affiliate-dashboard .affwp-graph table {
 	width: auto;
 }
+#affwp-affiliate-dashboard-visits {
+	table-layout: fixed;
+}
+#affwp-affiliate-dashboard-visits .visit-url {
+	width: 30%;
+}
+#affwp-affiliate-dashboard-visits .referring-url {
+	width: 50%;
+}
+#affwp-affiliate-dashboard-visits .referral-status {
+	width: 20%;
+}
 #affwp-affiliate-dashboard .affwp-send-notifications-wrap label {
 	width: auto;
 }
