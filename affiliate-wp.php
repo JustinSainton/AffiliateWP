@@ -194,6 +194,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-graph.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-integrations.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-login.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';

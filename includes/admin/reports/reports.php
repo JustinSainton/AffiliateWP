@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function affwp_reports_admin() {
 
-	$active_tab = isset( $_GET[ 'tab' ] ) && array_key_exists( $_GET['tab'], affwp_get_reports_tabs() ) ? $_GET[ 'tab' ] : 'export_import';
+	$active_tab = isset( $_GET[ 'tab' ] ) && array_key_exists( $_GET['tab'], affwp_get_reports_tabs() ) ? $_GET[ 'tab' ] : 'referrals';
 
 ?>
 	<div class="wrap">
@@ -162,3 +162,45 @@ function affwp_reports_tab_referrals() {
 
 }
 add_action( 'affwp_reports_tab_referrals', 'affwp_reports_tab_referrals' );
+
+/**
+ * Display the visits reports tab
+ *
+ * @since 1.1
+ * @return void
+ */
+function affwp_reports_tab_visits() {
+?>
+	<table id="affwp_total_earnings" class="affwp_table">
+
+		<thead>
+
+			<tr>
+
+				<th><?php _e( 'Visits', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Successful Conversions', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Conversion Rate', 'affiliate-wp' ); ?></th>
+
+			</tr>
+
+		</thead>
+
+		<tbody>
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+		</tbody>
+
+	</table>
+
+	<?php
+	$graph = new Affiliate_WP_Visits_Graph;
+	$graph->set( 'x_mode', 'time' );
+	$graph->display();
+
+}
+add_action( 'affwp_reports_tab_visits', 'affwp_reports_tab_visits' );
