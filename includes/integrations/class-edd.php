@@ -2,6 +2,12 @@
 
 class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function init() {
 
 		$this->context = 'edd';
@@ -21,6 +27,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
 	}
 
+	/**
+	 * Records a pending referral when a pending payment is created
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function add_pending_referral( $payment_id = 0, $payment_data = array() ) {
 
 		if( $this->was_referred() ) {
@@ -45,12 +57,23 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Sets a referral to unpaid when payment is completed
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function mark_referral_complete( $payment_id = 0 ) {
 
 		$this->complete_referral( $payment_id );
 	}
 
-
+	/**
+	 * Revokes a referral when payment is refunded
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function revoke_referral_on_refund( $payment_id = 0, $new_status, $old_status ) {
 
 		if( 'publish' != $old_status && 'revoked' != $old_status ) {
@@ -69,6 +92,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Revokes a referral when a payment is deleted
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function revoke_referral_on_delete( $payment_id = 0 ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
@@ -79,6 +108,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Sets up the reference link in the Referrals table
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function reference_link( $reference = 0, $referral ) {
 
 		if( empty( $referral->context ) || 'edd' != $referral->context ) {
@@ -92,6 +127,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
 
+	/**
+	 * Shows the affiliate drop down on the discount edit / add screens
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
 	public function discount_edit( $discount_id = 0 ) {
 
 		// TODO replace this with a select2 drop down
@@ -112,6 +153,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 <?php
 	}
 
+	/**
+	 * Stores the affiliate ID in the discounts meta if it is an affiliate's discount
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
 	public function store_discount_affiliate( $details, $discount_id = 0 ) {
 
 		if( empty( $_POST['affiliate_id'] ) ) {
@@ -123,6 +170,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		update_post_meta( $discount_id, 'affwp_discount_affiliate', $affiliate_id );
 	}
 
+	/**
+	 * Records referrals for the affiliate if a discount code belonging to the affiliate is used
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
 	public function track_discount_referral( $payment_id = 0 ) {
 
 		$user_info = edd_get_payment_meta_user_info( $payment_id );
@@ -173,6 +226,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Retrieves the referral description
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
 	public function get_referral_description( $payment_id = 0 ) {
 
 		$description = '';
