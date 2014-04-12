@@ -1,6 +1,6 @@
 <?php
 
-class Affiliate_WP_RCP extends Affiliate_WP_Base {
+class Affiliate_WP_Wishlist extends Affiliate_WP_Base {
 	
 	public function init() {
 
@@ -66,4 +66,4 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 	}
 	
 }
-new Affiliate_WP_RCP;
+new Affiliate_WP_Wishlist;
