@@ -31,16 +31,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$description = '';
-			$downloads   = edd_get_payment_meta_downloads( $payment_id );
-			foreach( $downloads as $key => $item ) {
-				$description .= get_the_title( $item['id'] );
-				if( $key + 1 < count( $downloads ) ) {
-					$description .= ', ';
-				}
-			}
-
-			$inserted = $this->insert_pending_referral( $payment_data['price'], $payment_id, $description );
+			$inserted = $this->insert_pending_referral( $payment_data['price'], $payment_id, $this->get_referral_description( $payment_id ) );
 
 			if ( false !== $inserted ) { //only continue if the insert was a success
 
@@ -160,19 +151,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					return false; // Ignore a zero amount referral
 				}
 
-				$description = '';
-				$downloads   = edd_get_payment_meta_downloads( $payment_id );
-				foreach( $downloads as $key => $item ) {
-					$description .= get_the_title( $item['id'] );
-					if( $key + 1 < count( $downloads ) ) {
-						$description .= ', ';
-					}
-				}
+				
 
 				$referral_id = affiliate_wp()->referrals->add( array(
 					'amount'       => $amount,
 					'reference'    => $payment_id,
-					'description'  => $description,
+					'description'  => $this->get_referral_description( $payment_id ),
 					'affiliate_id' => $affiliate_id,
 					'context'      => $this->context
 				) );
@@ -186,6 +170,21 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 			}
 		}
+
+	}
+
+	public function get_referral_description( $payment_id = 0 ) {
+
+		$description = '';
+		$downloads   = edd_get_payment_meta_downloads( $payment_id );
+		foreach( $downloads as $key => $item ) {
+			$description .= get_the_title( $item['id'] );
+			if( $key + 1 < count( $downloads ) ) {
+				$description .= ', ';
+			}
+		}
+
+		return $description;
 
 	}
 
