@@ -216,7 +216,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	function column_referrer( $visit ) {
 
-		$referrer = ! empty( $visit->referrer ) ? '<a href="' . esc_url( $visit->referrer ) . '" taret="_blank">' . $visit->referrer . '</a>' : __( 'Direct traffic' );
+		$referrer = ! empty( $visit->referrer ) ? '<a href="' . esc_url( $visit->referrer ) . '" taret="_blank">' . $visit->referrer . '</a>' : __( 'Direct traffic', 'affiliate-wp' );
 		return $referrer;
 	}
 
