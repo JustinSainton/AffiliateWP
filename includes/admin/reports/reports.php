@@ -100,6 +100,8 @@ function affwp_reports_admin() {
 
 		<?php
 
+		do_action( 'affwp_reports_page_middle' );
+
 		$graph = new Affiliate_WP_Referrals_Graph;
 		$graph->set( 'x_mode', 'time' );
 		$graph->display();
@@ -108,6 +110,4 @@ function affwp_reports_admin() {
 		?>
 	</div>
 <?php
-
-
 }
