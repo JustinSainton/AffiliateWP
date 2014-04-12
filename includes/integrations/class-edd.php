@@ -197,30 +197,38 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					continue;
 				}
 
-				$amount = edd_get_payment_subtotal( $payment_id );
-				$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
-				
-				if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
-					return false; // Ignore a zero amount referral
+				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
+
+				if( $existing ) {
+
+					// If a referral was already recored, overwrite it with the affiliate from the coupon
+					affiliate_wp()->referrals->update( $existing, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+
+				} else {
+
+					$amount = edd_get_payment_subtotal( $payment_id );
+					$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
+					
+					if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+						return false; // Ignore a zero amount referral
+					}
+
+					$referral_id = affiliate_wp()->referrals->add( array(
+						'amount'       => $amount,
+						'reference'    => $payment_id,
+						'description'  => $this->get_referral_description( $payment_id ),
+						'affiliate_id' => $affiliate_id,
+						'context'      => $this->context
+					) );
+
+					affwp_set_referral_status( $referral_id, 'unpaid' );
+
+					$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
+					$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+
+					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
 				}
-
-				
-
-				$referral_id = affiliate_wp()->referrals->add( array(
-					'amount'       => $amount,
-					'reference'    => $payment_id,
-					'description'  => $this->get_referral_description( $payment_id ),
-					'affiliate_id' => $affiliate_id,
-					'context'      => $this->context
-				) );
-
-				affwp_set_referral_status( $referral_id, 'unpaid' );
-
-				$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
-				$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
-
-				edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
-
 			}
 		}
 
