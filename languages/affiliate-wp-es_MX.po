@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: AffiliateWP v1.0.1\n"
+"Project-Id-Version: AffiliateWP v1.0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-04-12 07:01:26+0000\n"
+"PO-Revision-Date: 2014-04-13 04:08:32+0000\n"
 "Last-Translator: Sebastian Mantilla <sebas@iac.com.mx>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -37,19 +37,13 @@ msgstr "http://affiliatewp.com"
 #: affiliate-wp.php:0
 #@ affiliate-wp
 msgid "Affiliate Plugin for WordPress"
-msgstr ""
+msgstr "Plugin de socios para WordPress"
 
 #. translators: plugin header field 'Author'
 #: affiliate-wp.php:0
 #@ affiliate-wp
 msgid "Pippin Williamson and Andrew Munro"
 msgstr "Pippin Williamson y Andrew Munro"
-
-#. translators: plugin header field 'Version'
-#: affiliate-wp.php:0
-#@ affiliate-wp
-msgid "1.0.1"
-msgstr ""
 
 #: affiliate-wp.php:112
 #: affiliate-wp.php:124
@@ -132,7 +126,7 @@ msgstr "Comisión"
 
 #: includes/admin/affiliates/affiliates.php:207
 #: includes/class-referrals-graph.php:115
-#: templates/dashboard.php:72
+#: templates/dashboard.php:73
 #@ affiliate-wp
 msgid "Paid Referrals"
 msgstr "Recomendaciones pagadas"
@@ -140,9 +134,11 @@ msgstr "Recomendaciones pagadas"
 #: includes/admin/affiliates/affiliates.php:208
 #: includes/admin/class-menu.php:15
 #: includes/admin/class-welcome.php:302
+#: includes/admin/reports/reports.php:67
+#: includes/admin/reports/reports.php:185
 #: includes/admin/tools/tools.php:104
 #: includes/admin/visits/visits.php:25
-#: templates/dashboard.php:73
+#: templates/dashboard.php:74
 #@ affiliate-wp
 msgid "Visits"
 msgstr "Visitas"
@@ -164,7 +160,6 @@ msgstr "Acciones"
 
 #: includes/admin/affiliates/affiliates.php:345
 #: includes/admin/class-menu.php:16
-#: includes/admin/reports/reports.php:20
 #@ affiliate-wp
 msgid "Reports"
 msgstr "Reportes"
@@ -328,9 +323,9 @@ msgid "Total visits"
 msgstr "Visitas totales"
 
 #: includes/admin/ajax-actions.php:28
-#@ rcp
+#@ affiliate-wp
 msgid "No users found"
-msgstr ""
+msgstr "No se encontraron usuarios"
 
 #: includes/admin/class-menu.php:12
 #: includes/admin/overview/overview.php:19
@@ -342,6 +337,7 @@ msgstr "Resúmen"
 #: includes/admin/class-menu.php:14
 #: includes/admin/class-welcome.php:297
 #: includes/admin/referrals/referrals.php:30
+#: includes/admin/reports/reports.php:65
 #: includes/admin/tools/tools.php:103
 #@ affiliate-wp
 msgid "Referrals"
@@ -490,7 +486,7 @@ msgstr "Bienvenido %s a AffiliateWP"
 #, php-format
 #@ affiliate-wp
 msgid "Thank you for Installing AffiliateWP %s. Affiliate marketing for WordPress you'll love "
-msgstr "Gracias por instalar AffiliateWP %s. El sistema de recomendaciones para WordPress que te va a encantar"
+msgstr "Gracias por instalar AffiliateWP %s. El sistema de recomendaciones para WordPress que te va a encantar "
 
 #: includes/admin/class-welcome.php:172
 #: includes/admin/class-welcome.php:241
@@ -727,60 +723,60 @@ msgid "Totals"
 msgstr "Totales"
 
 #: includes/admin/overview/overview.php:35
-#: includes/admin/reports/reports.php:29
+#: includes/admin/reports/reports.php:86
 #: includes/admin/tools/tools.php:102
-#: templates/dashboard.php:94
+#: templates/dashboard.php:95
 #@ affiliate-wp
 msgid "Paid Earnings"
 msgstr "Ganacias pagadas"
 
 #: includes/admin/overview/overview.php:36
-#: includes/admin/reports/reports.php:30
+#: includes/admin/reports/reports.php:87
 #@ affiliate-wp
 msgid "Paid Earnings This Month"
 msgstr "Ganancias pagadas este mes"
 
 #: includes/admin/overview/overview.php:37
-#: includes/admin/reports/reports.php:31
+#: includes/admin/reports/reports.php:88
 #@ affiliate-wp
 msgid "Paid Earnings Today"
 msgstr "Ganancias pagadas hoy"
 
 #: includes/admin/overview/overview.php:61
-#: includes/admin/reports/reports.php:81
+#: includes/admin/reports/reports.php:138
 #: includes/class-referrals-graph.php:112
-#: templates/dashboard.php:71
+#: templates/dashboard.php:72
 #@ affiliate-wp
 msgid "Unpaid Referrals"
 msgstr "Recomendaciones no pagadas"
 
 #: includes/admin/overview/overview.php:62
-#: includes/admin/reports/reports.php:82
+#: includes/admin/reports/reports.php:139
 #@ affiliate-wp
 msgid "Unpaid Referrals This Month"
 msgstr "Recomendaciones no pagadas este mes"
 
 #: includes/admin/overview/overview.php:63
-#: includes/admin/reports/reports.php:83
+#: includes/admin/reports/reports.php:140
 #@ affiliate-wp
 msgid "Unpaid Referrals Today"
 msgstr "Recomendaciones no pagadas hoy"
 
 #: includes/admin/overview/overview.php:86
-#: includes/admin/reports/reports.php:55
-#: templates/dashboard.php:93
+#: includes/admin/reports/reports.php:112
+#: templates/dashboard.php:94
 #@ affiliate-wp
 msgid "Unpaid Earnings"
 msgstr "Ganancias no pagadas"
 
 #: includes/admin/overview/overview.php:87
-#: includes/admin/reports/reports.php:56
+#: includes/admin/reports/reports.php:113
 #@ affiliate-wp
 msgid "Unpaid Earnings This Month"
 msgstr "Ganancias no pagadas del mes"
 
 #: includes/admin/overview/overview.php:88
-#: includes/admin/reports/reports.php:57
+#: includes/admin/reports/reports.php:114
 #@ affiliate-wp
 msgid "Unpaid Earnings Today"
 msgstr "Ganancias no pagadas del día"
@@ -839,14 +835,14 @@ msgid "Recent Referral Visits"
 msgstr "Visitas recientes por recomendación"
 
 #: includes/admin/overview/overview.php:204
-#: templates/dashboard.php:136
+#: templates/dashboard.php:137
 #@ affiliate-wp
 msgid "URL"
 msgstr "URL"
 
 #: includes/admin/overview/overview.php:205
 #: includes/admin/visits/visits.php:156
-#: templates/dashboard.php:138
+#: templates/dashboard.php:139
 #@ affiliate-wp
 msgid "Converted"
 msgstr "Convertido"
@@ -1044,18 +1040,18 @@ msgid "No referrals found."
 msgstr "No se encontraron referencias."
 
 #: includes/admin/referrals/referrals.php:410
-#@ default
+#@ affiliate-wp
 msgid "Bulk Actions"
-msgstr ""
+msgstr "Acciones por lote"
 
 #: includes/admin/referrals/referrals.php:422
-#@ default
+#@ affiliate-wp
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: includes/admin/referrals/referrals.php:436
 #: includes/admin/visits/visits.php:39
-#: includes/class-graph.php:372
+#: includes/class-graph.php:381
 #@ affiliate-wp
 msgid "Filter"
 msgstr "Filtro"
@@ -1482,7 +1478,7 @@ msgid "Landing Page"
 msgstr "Página destino"
 
 #: includes/admin/visits/visits.php:152
-#: templates/dashboard.php:137
+#: templates/dashboard.php:138
 #@ affiliate-wp
 msgid "Referring URL"
 msgstr "URL de la recomendación"
@@ -1498,8 +1494,7 @@ msgid "IP"
 msgstr "IP"
 
 #: includes/admin/visits/visits.php:219
-#: templates/dashboard.php:148
-#@ default
+#: templates/dashboard.php:149
 #@ affiliate-wp
 msgid "Direct traffic"
 msgstr "Tráfico directo"
@@ -1580,67 +1575,67 @@ msgstr ""
 "Inicie seción en el área de socios para ver sus ganancias o para deshabilitar estos aviso:  %s\n"
 "\n"
 
-#: includes/class-graph.php:306
+#: includes/class-graph.php:312
 #@ affiliate-wp
 msgid "Today"
 msgstr "Hoy"
 
-#: includes/class-graph.php:307
+#: includes/class-graph.php:313
 #@ affiliate-wp
 msgid "Yesterday"
 msgstr "Ayer"
 
-#: includes/class-graph.php:308
+#: includes/class-graph.php:314
 #@ affiliate-wp
 msgid "This Week"
 msgstr "Esta semana"
 
-#: includes/class-graph.php:309
+#: includes/class-graph.php:315
 #@ affiliate-wp
 msgid "Last Week"
 msgstr "La semana pasada"
 
-#: includes/class-graph.php:310
+#: includes/class-graph.php:316
 #@ affiliate-wp
 msgid "This Month"
 msgstr "Este mes"
 
-#: includes/class-graph.php:311
+#: includes/class-graph.php:317
 #@ affiliate-wp
 msgid "Last Month"
 msgstr "El mes pasado"
 
-#: includes/class-graph.php:312
+#: includes/class-graph.php:318
 #@ affiliate-wp
 msgid "This Quarter"
 msgstr "Este cuatrimestre"
 
-#: includes/class-graph.php:313
+#: includes/class-graph.php:319
 #@ affiliate-wp
 msgid "Last Quarter"
 msgstr "El cuatrimestre pasado"
 
-#: includes/class-graph.php:314
+#: includes/class-graph.php:320
 #@ affiliate-wp
 msgid "This Year"
 msgstr "Este año"
 
-#: includes/class-graph.php:315
+#: includes/class-graph.php:321
 #@ affiliate-wp
 msgid "Last Year"
 msgstr "El año pasado"
 
-#: includes/class-graph.php:316
+#: includes/class-graph.php:322
 #@ affiliate-wp
 msgid "Custom"
 msgstr "Personalizado"
 
-#: includes/class-graph.php:348
+#: includes/class-graph.php:357
 #@ affiliate-wp
 msgid "From"
 msgstr "De"
 
-#: includes/class-graph.php:359
+#: includes/class-graph.php:368
 #@ affiliate-wp
 msgid "To"
 msgstr "Para"
@@ -1719,12 +1714,12 @@ msgstr "Buen intento oso, no toques nuestra miel"
 msgid "You are already registered as an affiliate"
 msgstr "Ya estás registrado como socio"
 
-#: includes/class-visits-graph.php:98
+#: includes/class-visits-graph.php:122
 #@ affiliate-wp
 msgid "Converted Visits"
 msgstr "Visitas que se han convertido en clientes"
 
-#: includes/class-visits-graph.php:99
+#: includes/class-visits-graph.php:123
 #@ affiliate-wp
 msgid "Unconverted Visits"
 msgstr "Visitas que no se han convertido en clientes"
@@ -1915,7 +1910,7 @@ msgstr "Su URL de recomendación es: <strong>%s</strong>"
 msgid "Enter any URL on this website below to generate a referral link!"
 msgstr "¡Teclee cualquier URL de este sitio mas abajo para obtener una liga de recomendación!"
 
-#: templates/dashboard.php:49
+#: templates/dashboard.php:48
 #@ affiliate-wp
 msgid "Page URL"
 msgstr "URL de la página"
@@ -1925,62 +1920,63 @@ msgstr "URL de la página"
 msgid "Referral URL"
 msgstr "URL de recomendación"
 
-#: templates/dashboard.php:55
+#: templates/dashboard.php:56
 #@ affiliate-wp
 msgid "(now copy this referral link and share it anywhere)"
 msgstr "(ahora copie esta liga y compartala en cualquier lugar)"
 
-#: templates/dashboard.php:61
+#: templates/dashboard.php:62
 #@ affiliate-wp
 msgid "Generate URL"
 msgstr "Generar un URL"
 
-#: templates/dashboard.php:66
+#: templates/dashboard.php:67
 #@ affiliate-wp
 msgid "Stats"
 msgstr "Estadísticas"
 
-#: templates/dashboard.php:74
+#: includes/admin/reports/reports.php:187
+#: templates/dashboard.php:75
 #@ affiliate-wp
 msgid "Conversion Rate"
 msgstr "Taza de conversión"
 
-#: templates/dashboard.php:95
+#: templates/dashboard.php:96
 #@ affiliate-wp
 msgid "Commission Rate"
 msgstr "Comisión"
 
-#: templates/dashboard.php:110
+#: templates/dashboard.php:111
 #@ affiliate-wp
 msgid "Referrals Over Time"
 msgstr "Recomendaciones en el tiempo"
 
-#: templates/dashboard.php:121
+#: templates/dashboard.php:122
 #@ affiliate-wp
 msgid "Referral URL Visits"
 msgstr "Visitas desde el URL de recomendación"
 
-#: templates/dashboard.php:159
+#: templates/dashboard.php:160
 #@ affiliate-wp
 msgid "You have not received any visits yet."
 msgstr "Aún no ha recibido visitas."
 
-#: templates/dashboard.php:176
+#: templates/dashboard.php:177
 #@ affiliate-wp
 msgid "Profile Settings"
 msgstr "Configuración del perfil"
 
-#: templates/dashboard.php:181
+#: templates/dashboard.php:182
 #@ affiliate-wp
 msgid "Your payment email"
 msgstr "Su dirección de correo para pagos"
 
-#: templates/dashboard.php:187
+#: templates/dashboard.php:188
 #@ affiliate-wp
 msgid "Enable New Referral Notifications"
 msgstr "Habilitar los avisos de nuevas recomendaciones"
 
-#: templates/dashboard.php:193
+#: templates/dashboard.php:194
 #@ affiliate-wp
 msgid "Save Profile Settings"
 msgstr "Guardar la configuración de su perfil"
@@ -2070,4 +2066,15 @@ msgstr "Acepte nuestras <a href=\"%s\" target=\"_blank\">condiciones de uso</a>"
 #@ affiliate-wp
 msgid "Register"
 msgstr "Registrar"
+
+#. translators: plugin header field 'Version'
+#: affiliate-wp.php:0
+#@ affiliate-wp
+msgid "1.0.2"
+msgstr "1.0.2"
+
+#: includes/admin/reports/reports.php:186
+#@ affiliate-wp
+msgid "Successful Conversions"
+msgstr "Conversiones exitosas"
 
