@@ -2,10 +2,13 @@
 
 class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 
+	public $total     = 0;
+	public $converted = 0;
+
 	/**
 	 * Get things started
 	 *
-	 * @since 1.0
+	 * @since 1.1
 	 */
 	public function __construct( $_data = array() ) {
 
@@ -43,7 +46,7 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 	/**
 	 * Retrieve referral data
 	 *
-	 * @since 1.0
+	 * @since 1.1
 	 */
 	public function get_data() {
 
@@ -76,6 +79,8 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 
 				$date = date( 'Y-m-d', strtotime( $visit->date ) );
 
+				$this->total += 1;
+
 				if( ! empty( $visit->referral_id ) ) {
 
 					if( array_key_exists( $date, $converted_data ) ) {
@@ -83,6 +88,8 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 					} else {
 						$converted_data[ $date ] = 1;
 					}
+
+					$this->converted += 1;
 
 				} else {
 
@@ -118,6 +125,15 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 
 		return $data;
 
+	}
+
+	/**
+	 * Retrieve conversion rate for successful visits
+	 *
+	 * @since 1.1
+	 */
+	public function get_conversion_rate() {
+		return round( ( $this->converted / $this->total ) * 100, 2 );
 	}
 
 }

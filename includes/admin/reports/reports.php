@@ -170,6 +170,11 @@ add_action( 'affwp_reports_tab_referrals', 'affwp_reports_tab_referrals' );
  * @return void
  */
 function affwp_reports_tab_visits() {
+
+	$graph = new Affiliate_WP_Visits_Graph;
+	$graph->set( 'x_mode',   'time' );
+	$graph->set( 'currency', false  );
+
 ?>
 	<table id="affwp_total_earnings" class="affwp_table">
 
@@ -188,19 +193,15 @@ function affwp_reports_tab_visits() {
 		<tbody>
 
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td><?php echo absint( $graph->total ); ?></td>
+				<td><?php echo absint( $graph->converted ); ?></td>
+				<td><?php echo $graph->get_conversion_rate(); ?></td>
 			</tr>
 
 		</tbody>
 
 	</table>
-
-	<?php
-	$graph = new Affiliate_WP_Visits_Graph;
-	$graph->set( 'x_mode',   'time' );
-	$graph->set( 'currency', false  );
+<?php
 	$graph->display();
 
 }
