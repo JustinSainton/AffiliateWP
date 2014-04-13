@@ -99,7 +99,8 @@ class Affiliate_WP_Graph {
 			'borderwidth'     => 2,
 			'bars'            => false,
 			'lines'           => true,
-			'points'          => true
+			'points'          => true,
+			'currency'        => true
 		);
 
 	}
@@ -255,11 +256,16 @@ class Affiliate_WP_Graph {
 							$("#affwp-flot-tooltip").remove();
 							var x = item.datapoint[0].toFixed(2),
 							y = item.datapoint[1].toFixed(2);
-							if( affwp_vars.currency_pos == 'before' ) {
-								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + affwp_vars.currency_sign + y );
-							} else {
-								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y + affwp_vars.currency_sign );
-							}
+
+							<?php if( $this->get( 'currency' ) ) : ?>
+								if( affwp_vars.currency_pos == 'before' ) {
+									affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + affwp_vars.currency_sign + y );
+								} else {
+									affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y + affwp_vars.currency_sign );
+								}
+							<?php else : ?>
+								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y );
+							<?php endif; ?>
 						}
 					} else {
 						$("#affwp-flot-tooltip").remove();

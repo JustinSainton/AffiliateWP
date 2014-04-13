@@ -59,8 +59,6 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 			'end'   => $end
 		);
 
-		//echo '<pre>'; print_r( $date ); echo '</pre>'; exit;
-
 		$visits = affiliate_wp()->visits->get_visits( array(
 			'orderby'      => 'date',
 			'order'        => 'ASC',
@@ -68,35 +66,54 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 			'affiliate_id' => $this->get( 'affiliate_id' )
 		) );
 
+		$converted_data   = array();
+		$unconverted_data = array();
+
 		if( $visits ) {
+
+			// Loop through each visit and find how many there are per day
 			foreach( $visits as $visit ) {
 
-				switch( $visit->status ) {
+				$date = date( 'Y-m-d', strtotime( $visit->date ) );
 
-					case 'converted' :
+				if( ! empty( $visit->referral_id ) ) {
 
-						$converted[] = array( strtotime( $visit->date ) * 1000, $visit->url );
+					if( array_key_exists( $date, $converted_data ) ) {
+						$converted_data[ $date ] += 1;
+					} else {
+						$converted_data[ $date ] = 1;
+					}
 
-						break;
+				} else {
 
-					case 'unconverted' :
-
-						$unconverted[] = array( strtotime( $visit->date ) * 1000, $visit->url );
-
-						break;
-
-					default :
-
-						break;
+					if( array_key_exists( $date, $unconverted_data ) ) {
+						$unconverted_data[ $date ] += 1;
+					} else {
+						$unconverted_data[ $date ] = 1;
+					}
 
 				}
 
 			}
 		}
 
+		$converted_visits = array();
+		foreach( $converted_data as $date => $count ) {
+
+			$converted_visits[] = array( strtotime( $date ) * 1000, $count );
+
+		}
+
+		$unconverted_visits = array();
+		foreach( $unconverted_data as $date => $count ) {
+
+			$unconverted_visits[] = array( strtotime( $date ) * 1000, $count );
+
+		}
+
 		$data = array(
-			__( 'Converted Visits', 'affiliate-wp' )   => $converted,
-			__( 'Unconverted Visits', 'affiliate-wp' ) => $unconverted,
+			__( 'Converted Visits', 'affiliate-wp' )   => $converted_visits,
+			__( 'Unconverted Visits', 'affiliate-wp' ) => $unconverted_visits
 		);
 
 		return $data;

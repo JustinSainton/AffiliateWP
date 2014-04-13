@@ -199,7 +199,8 @@ function affwp_reports_tab_visits() {
 
 	<?php
 	$graph = new Affiliate_WP_Visits_Graph;
-	$graph->set( 'x_mode', 'time' );
+	$graph->set( 'x_mode',   'time' );
+	$graph->set( 'currency', false  );
 	$graph->display();
 
 }
