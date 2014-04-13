@@ -195,7 +195,7 @@ function affwp_reports_tab_visits() {
 			<tr>
 				<td><?php echo absint( $graph->total ); ?></td>
 				<td><?php echo absint( $graph->converted ); ?></td>
-				<td><?php echo $graph->get_conversion_rate(); ?>%/td>
+				<td><?php echo $graph->get_conversion_rate(); ?>%</td>
 			</tr>
 
 		</tbody>
