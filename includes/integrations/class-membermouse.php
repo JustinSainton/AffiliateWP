@@ -6,62 +6,85 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 		$this->context = 'membermouse';
 
-		//add_action( 'mm_member_add', array( $this, 'add_pending_referral' ), 10 );
-		add_action( 'mm_payment_received', array( $this, 'add_pending_referral' ), 10, 2 );
-		add_action( 'rcp_insert_payment', array( $this, 'mark_referral_complete' ), 10, 3 );
-		//add_action( 'rcp_delete_payment', array( $this, 'revoke_referral_on_delete' ), 10 );
+		add_action( 'mm_member_add',         array( $this, 'add_referral_on_free' ),      10    );
+		add_action( 'mm_commission_initial', array( $this, 'add_referral' ),              10    );
+		add_action( 'mm_refund_issued',      array( $this, 'revoke_referral_on_refund' ), 10    );
 
-		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ),  10, 2 );
 	}
 
-	public function add_pending_referral( $member_data, $payment_data ) {
-
-		echo '<pre>'; print_r( $member_data ); echo '</pre>';
-		echo '<pre>'; print_r( $payment_data ); echo '</pre>'; exit;
-
+	public function add_referral_on_free( $member_data ) {
 
 		if( $this->was_referred() ) {
 
-			$user = get_userdata( $user_id );
+			$membership = new MM_MembershipLevel( $member_data['membership_level'] );
+			
+			if( ! $membership->isFree() ) {
+				return;
+			}
+
+			if( $this->get_affiliate_email() == $member_data['email'] ) {
+				return; // Customers cannot refer themselves
+			}
+
+			// Just a fake order number so we can explode it and get the user ID later
+			$reference = $member_data['member_id'] . '|0';
+
+			$this->insert_pending_referral( 0, $reference, $member_data['membership_level_name'] );
+		}
+
+	}
+
+	public function add_referral( $affiliate_data ) {
+
+		if( $this->was_referred() ) {
+
+			$user = get_userdata( $affiliate_data['member_id'] );
 
 			if( $this->get_affiliate_email() == $user->user_email ) {
 				return; // Customers cannot refer themselves
 			}
 
-			$key = get_user_meta( $user_id, 'rcp_subscription_key', true );
+			$description = '';
+			foreach( $affiliate_data['order_products'] as $product ) {
+				$description .= $product['name'];
+				if( $key + 1 < count( $affiliate_data['order_products'] ) ) {
+					$description .= ', ';
+				}
+			}
+			
+			$reference = $affiliate_data['member_id'] . '|' . $affiliate_data['order_number'];
 
-			$this->insert_pending_referral( $price, $key, rcp_get_subscription( $user_id ) );
+			$this->insert_pending_referral( $affiliate_data['order_total'], $reference, $description );
+			$this->complete_referral( $reference );
+
 		}
 
 	}
 
-	public function mark_referral_complete( $payment_id, $args, $amount ) {
-
-		$this->complete_referral( $args['subscription_key'] );
-	
-	}
-
-	public function revoke_referral_on_delete( $payment_id = 0 ) {
+	public function revoke_referral_on_refund( $data ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;
 		}
 
-		$payments = new RCP_Payments;
-		$payment  = $payments->get_payment( $payment_id );
-		$this->reject_referral( $payment->subscription_key );
+		$reference = $data['member_id'] . '|' . $data['order_number'] . '-' . $data['order_transaction_id'];
+
+		$this->reject_referral( $reference );
 
 	}
 
 	public function reference_link( $reference = 0, $referral ) {
 
-		if( empty( $referral->context ) || 'rcp' != $referral->context ) {
+		if( empty( $referral->context ) || $this->context != $referral->context ) {
 
 			return $reference;
 
 		}
 
-		$url = admin_url( 'admin.php?page=rcp-payments&s=' . $reference );
+		$data = explode( '|', $reference );
+
+		$url = admin_url( 'admin.php?page=manage_members&module=details_transaction_history&user_id=' . $data[0] );
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
