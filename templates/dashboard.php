@@ -45,20 +45,21 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 
 		<form id="affwp-generate-ref-url" class="affwp-form" method="get" action="#affwp-generate-ref-url">
 			<div class="affwp-base-url-wrap">
-				<input type="text" name="url" id="affwp-url" value="<?php echo esc_attr( $base_url ); ?>"/>
 				<label for="affwp-url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
+				<input type="text" name="url" id="affwp-url" value="<?php echo esc_attr( $base_url ); ?>" />
+				
 			</div>
 
 			<div class="affwp-referral-url-wrap"<?php if ( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
-				<input type="text" id="affwp-referral-url" value="<?php echo esc_attr( $referral_url ); ?>"/>
 				<label for="affwp-referral-url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
+				<input type="text" id="affwp-referral-url" value="<?php echo esc_attr( $referral_url ); ?>" />
 				<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
 			</div>
 
 			<div class="affwp-referral-url-submit-wrap">
-				<input type="hidden" id="affwp-affiliate-id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
-				<input type="hidden" id="affwp-referral-var" value="<?php echo esc_attr( affiliate_wp()->tracking->get_referral_var() ); ?>"/>
-				<input type="submit" class="button" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>"/>
+				<input type="hidden" id="affwp-affiliate-id" value="<?php echo esc_attr( $affiliate_id ); ?>" />
+				<input type="hidden" id="affwp-referral-var" value="<?php echo esc_attr( affiliate_wp()->tracking->get_referral_var() ); ?>" />
+				<input type="submit" class="button" value="<?php _e( 'Generate URL', 'affiliate-wp' ); ?>" />
 			</div>
 		</form>
 	</div>
@@ -68,10 +69,10 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-referral-counts" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'Unpaid Referrals', 'affwp' ); ?></th>
-				<th><?php _e( 'Paid Referrals', 'affwp' ); ?></th>
-				<th><?php _e( 'Visits', 'affwp' ); ?></th>
-				<th><?php _e( 'Conversion Rate', 'affwp' ); ?></th>
+				<th><?php _e( 'Unpaid Referrals', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Paid Referrals', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Visits', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Conversion Rate', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -90,9 +91,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-earnings-stats" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'Unpaid Earnings', 'affwp' ); ?></th>
-				<th><?php _e( 'Paid Earnings', 'affwp' ); ?></th>
-				<th><?php _e( 'Commission Rate', 'affwp' ); ?></th>
+				<th><?php _e( 'Unpaid Earnings', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Paid Earnings', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Commission Rate', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -133,9 +134,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 	<table id="affwp-affiliate-dashboard-visits" class="affwp-table">
 		<thead>
 			<tr>
-				<th><?php _e( 'URL', 'affwp' ); ?></th>
-				<th><?php _e( 'Referring URL', 'affwp' ); ?></th>
-				<th><?php _e( 'Converted', 'affwp' ); ?></th>
+				<th class="visit-url"><?php _e( 'URL', 'affiliate-wp' ); ?></th>
+				<th class="referring-url"><?php _e( 'Referring URL', 'affiliate-wp' ); ?></th>
+				<th class="referral-status"><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -179,7 +180,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 		<form id="affwp-affiliate-dashboard-profile" class="affwp-form" method="post">
 			<div class="affwp-payment-email-wrap">
 				<label for="affwp-payment-email"><?php _e( 'Your payment email', 'affiliate-wp' ); ?></label>
-				<input id="affwp-payment-email" type="email" name="payment_email" value="<?php echo esc_attr( $payment_email ); ?>"/>
+				<input id="affwp-payment-email" type="email" name="payment_email" value="<?php echo esc_attr( $payment_email ); ?>" />
 			</div>
 
 			<div class="affwp-send-notifications-wrap">
@@ -188,9 +189,9 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 			</div>
 
 			<div class="affwp-save-profile-wrap">
-				<input type="hidden" name="affwp_action" value="update_profile_settings"/>
-				<input type="hidden" id="affwp-affiliate-id" name="affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>"/>
-				<input type="submit" class="button" value="<?php esc_attr_e( 'Save Profile Settings', 'affiliate-wp' ); ?>"/>
+				<input type="hidden" name="affwp_action" value="update_profile_settings" />
+				<input type="hidden" id="affwp-affiliate-id" name="affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>" />
+				<input type="submit" class="button" value="<?php esc_attr_e( 'Save Profile Settings', 'affiliate-wp' ); ?>" />
 			</div>
 		</form>
 	</div>

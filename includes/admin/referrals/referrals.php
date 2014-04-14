@@ -407,7 +407,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			return;
 
 		echo "<select name='action$two'>\n";
-		echo "<option value='-1' selected='selected'>" . __( 'Bulk Actions' ) . "</option>\n";
+		echo "<option value='-1' selected='selected'>" . __( 'Bulk Actions', 'affiliate-wp' ) . "</option>\n";
 
 		foreach ( $this->_actions as $name => $title ) {
 			$class = 'edit' == $name ? ' class="hide-if-no-js"' : '';
@@ -419,7 +419,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 
 		do_action( 'affwp_referral_bulk_actions' );
 
-		submit_button( __( 'Apply' ), 'action', false, false, array( 'id' => "doaction$two" ) );
+		submit_button( __( 'Apply', 'affiliate-wp' ), 'action', false, false, array( 'id' => "doaction$two" ) );
 		echo "\n";
 
 		// Makes the filters only get output at the top of the page

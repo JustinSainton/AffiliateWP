@@ -88,7 +88,7 @@ class Affiliate_WP_Emails {
 	public function send( $email, $subject, $message ) {
 
 		$headers   = array();
-		$headers[] = 'From: ' . stripslashes_deep( html_entity_decode( get_bloginfo( 'name' ), ENT_COMPAT, 'UTF-8' ) ) . '<' . get_option( 'admin_email' ) . '>';
+		$headers[] = 'From: ' . stripslashes_deep( html_entity_decode( get_bloginfo( 'name' ), ENT_COMPAT, 'UTF-8' ) ) . ' <' . get_option( 'admin_email' ) . '>';
 		$headers   = apply_filters( 'affwp_email_headers', $headers );
 
 		wp_mail( $email, $subject, $message, $headers );

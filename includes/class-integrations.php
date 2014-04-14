@@ -14,10 +14,11 @@ class Affiliate_WP_Integrations {
 			'edd'         => 'Easy Digital Downloads',
 			'exchange'    => 'iThemes Exchange',
 			'membermouse' => 'MemberMouse',
+			'jigoshop'    => 'Jigoshop',
 			'rcp'         => 'Restrict Content Pro',
 			'pmp'         => 'Paid Memberships Pro',
 			'shopp'       => 'Shopp',
-			'wishlist'    => 'Wishlist Memberships',
+			//'wishlist'    => 'Wishlist Memberships',
 			'woocommerce' => 'WooCommerce',
 			'wpec'        => 'WP e-Commerce',
 		) );
