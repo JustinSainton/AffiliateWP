@@ -4,11 +4,16 @@ Plugin URI: http://affiliatewp.com/
 Contributors: mordauk, sumobi
 Requires at least: 3.7
 Tested up to: 3.9
-Stable Tag: 1.0.2
+Stable Tag: 1.0.3
 
 Affiliate tracking for WordPress
 
 == Changelog ==
+
+= 1.0.3, April 14, 2014 =
+
+* New: added direct integration for MemberMouse
+* New: added Spanish (Mexicon) translation
 
 = 1.0.2, April 11, 2014 =
 
