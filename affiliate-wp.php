@@ -289,6 +289,4 @@ endif; // End if class_exists check
 function affiliate_wp() {
 	return Affiliate_WP::instance();
 }
-
-// Get AffiliateWP Running
-add_action( 'plugins_loaded', 'affiliate_wp', 1 );
+affiliate_wp();
