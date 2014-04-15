@@ -289,7 +289,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Ignore Zero Referrals?', 'affiliate-wp' ),
 						'desc' => __( 'Check this box if you would like AffiliateWP to completely ignore referrals for a zero total amount. This can be useful for multi-price products that start at zero, or if a discount was used, which resulted in a zero amount. Please note: if this setting is enabled and a visit results in a zero referral, then the visit would be considered not converted.', 'affiliate-wp' ),
 						'type' => 'checkbox'
-					)
+					),
 					'uninstall_on_delete' => array(
 						'name' => __( 'Remove Data on Uninstall?', 'affiliate-wp' ),
 						'desc' => __( 'Check this box if you would like AffiliateWP to completely remove all of its data when the plugin is deleted.', 'affiliate-wp' ),
