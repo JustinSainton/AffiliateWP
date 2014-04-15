@@ -106,7 +106,10 @@ class Affiliate_WP_Settings {
 
 		parse_str( $_POST['_wp_http_referer'], $referrer );
 
-		$saved    = get_option( 'affwp_settings' );
+		$saved    = get_option( 'affwp_settings', array() );
+		if( ! is_array( $saved ) ) {
+			$saved = array();
+		}
 		$settings = $this->get_registered_settings();
 		$tab      = isset( $referrer['tab'] ) ? $referrer['tab'] : 'general';
 
