@@ -114,21 +114,23 @@ class Affiliate_WP_Settings {
 		$input = apply_filters( 'affwp_settings_' . $tab . '_sanitize', $input );
 
 		// Ensure a value is always passed for every checkbox
-		foreach ( $settings[ $tab ] as $key => $setting ) {
+		if( ! empty( $settings[ $tab ] ) ) {
+			foreach ( $settings[ $tab ] as $key => $setting ) {
 
-			// Single checkbox
-			if ( isset( $settings[ $tab ][ $key ][ 'type' ] ) && 'checkbox' == $settings[ $tab ][ $key ][ 'type' ] ) {
-				$input[ $key ] = ! empty( $input[ $key ] );
-			}
+				// Single checkbox
+				if ( isset( $settings[ $tab ][ $key ][ 'type' ] ) && 'checkbox' == $settings[ $tab ][ $key ][ 'type' ] ) {
+					$input[ $key ] = ! empty( $input[ $key ] );
+				}
 
-			// Multicheck list
-			if ( isset( $settings[ $tab ][ $key ][ 'type' ] ) && 'multicheck' == $settings[ $tab ][ $key ][ 'type' ] ) {
-				if( empty( $input[ $key ] ) ) {
-					$input[ $key ] = array();
+				// Multicheck list
+				if ( isset( $settings[ $tab ][ $key ][ 'type' ] ) && 'multicheck' == $settings[ $tab ][ $key ][ 'type' ] ) {
+					if( empty( $input[ $key ] ) ) {
+						$input[ $key ] = array();
+					}
 				}
 			}
 		}
-
+		
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
 
