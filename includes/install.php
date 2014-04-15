@@ -2,10 +2,13 @@
 
 function affiliate_wp_install() {
 
+	// Create affiliate caps
+	$roles = new Affiliate_WP_Capabilities;
+	$roles->add_caps();
+
 	affiliate_wp()->affiliates->create_table();
 	affiliate_wp()->referrals->create_table();
 	affiliate_wp()->visits->create_table();
-
 
 	if ( ! get_option( 'affwp_is_installed' ) ) {
 		$affiliate_area = wp_insert_post(
@@ -24,10 +27,6 @@ function affiliate_wp_install() {
 		update_option( 'affwp_settings', $options );
 
 	}
-
-	// Create affiliate caps
-	$roles = new Affiliate_WP_Capabilities;
-	$roles->add_caps();
 
 	update_option( 'affwp_is_installed', '1' );
 	

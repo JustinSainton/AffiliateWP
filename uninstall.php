@@ -30,8 +30,9 @@ if( affiliate_wp()->settings->get( 'uninstall_on_delete' ) ) {
 	$caps->remove_caps();
 
 	// Remove all database tables
-	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_affiliates" );
-	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_referrals" );
-	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_visits" );
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	$sql = "DROP TABLE {$wpdb->prefix}affiliate_wp_affiliates, {$wpdb->prefix}affiliate_wp_referrals, {$wpdb->prefix}affiliate_wp_referrals";
+	dbDelta( $sql );
+
 
 }
