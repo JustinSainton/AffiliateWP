@@ -42,6 +42,33 @@ function affiliate_wp_install() {
 register_activation_hook( AFFILIATEWP_PLUGIN_FILE, 'affiliate_wp_install' );
 
 function affiliate_wp_check_if_installed() {
+
+	global $wp_roles;
+
+	if ( class_exists('WP_Roles') ) {
+		if ( ! isset( $wp_roles ) ) {
+			$wp_roles = new WP_Roles();
+		}
+	}
+
+	// Check that our capabilities are present
+	if( ! empty( $wp_roles->roles['administrator'] ) ) {
+
+		$caps = $wp_roles->roles['administrator']['capabilities'];
+		if( ! in_array( 'view_affiliate_reports', $caps ) ) {
+
+			$wp_roles->add_cap( 'administrator', 'view_affiliate_reports' );
+			$wp_roles->add_cap( 'administrator', 'export_affiliate_data' );
+			$wp_roles->add_cap( 'administrator', 'manage_affiliate_options' );
+			$wp_roles->add_cap( 'administrator', 'manage_affiliates' );
+			$wp_roles->add_cap( 'administrator', 'manage_referrals' );
+			$wp_roles->add_cap( 'administrator', 'manage_visits' );
+
+		}
+
+	}
+
+	//echo '<pre>'; print_R( $wp_roles ); echo '</pre>'; exit;
 	// this is mainly for network activated installs
 	if( ! get_option( 'affwp_is_installed' ) ) {
 		affiliate_wp_install();
