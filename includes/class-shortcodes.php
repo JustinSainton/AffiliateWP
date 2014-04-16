@@ -7,7 +7,7 @@ class Affiliate_WP_Shortcodes {
 		add_shortcode( 'affiliate_area', array( $this, 'affiliate_area' ) );
 		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
 		add_shortcode( 'affiliate_referral_url', array( $this, 'referral_url' ) );
-
+		add_shortcode( 'affiliate_content', array( $this, 'affiliate_content' ) );
 	}
 
 	/**
@@ -99,6 +99,21 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) );
+	}
+
+	/**
+	 * Affiliate content shortcode.
+	 * Renders the content if the current user is an affiliate.
+	 * @since  1.0.4
+	 * @return string 
+	 */
+	public function affiliate_content( $atts, $content = null ) {
+
+		if ( ! affwp_is_affiliate() ) {
+			return;
+		}
+
+		return $content;
 	}
 
 }
