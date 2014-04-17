@@ -166,6 +166,7 @@ final class Affiliate_WP {
 
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-addon-updater.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-notices.php';

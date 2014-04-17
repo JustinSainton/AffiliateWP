@@ -637,6 +637,8 @@ class Affiliate_WP_Settings {
 
 		update_option( 'affwp_settings', $options );
 
+		delete_transient( 'affwp_license_check' );
+
 	}
 
 	public function deactivate_license() {
@@ -674,6 +676,8 @@ class Affiliate_WP_Settings {
 
 		update_option( 'affwp_settings', $options );
 
+		delete_transient( 'affwp_license_check' );
+
 	}
 
 	public function check_license() {
@@ -708,8 +712,16 @@ class Affiliate_WP_Settings {
 
 			set_transient( 'affwp_license_check', $license_data->license, DAY_IN_SECONDS );
 
+			$status = $license_data->license;
+
 		}
 
+		return $status;
+
+	}
+
+	public function is_license_valid() {
+		return $this->check_license() == 'valid';
 	}
 
 }
