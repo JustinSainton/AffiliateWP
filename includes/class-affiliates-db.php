@@ -11,7 +11,12 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	public function __construct() {
 		global $wpdb;
 
-		$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
+		if( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) {
+			// Allows a single affiliate table for the whole network
+			$this->table_name  = 'affiliate_wp_affiliates';
+		} else {
+			$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
+		}
 		$this->primary_key = 'affiliate_id';
 		$this->version     = '1.0';
 	}

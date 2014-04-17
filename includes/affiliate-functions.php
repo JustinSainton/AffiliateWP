@@ -149,11 +149,13 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 		$rate = $rate / 100;
 	}
 
+	$rate = apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
+
 	if( $formatted ) {
 		$rate = $rate * 100 . '%';
 	}
 
-	return apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
+	return $rate;
 }
 
 /**
