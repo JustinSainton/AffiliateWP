@@ -5,7 +5,7 @@
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.0.4
+ * Version: 1.0.5
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -46,7 +46,7 @@ final class Affiliate_WP {
 	 */
 	private static $instance;
 
-	private $version = '1.0.4';
+	private $version = '1.0.5';
 
 	// Class properties
 	public $affiliates;
