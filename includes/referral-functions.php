@@ -56,8 +56,9 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 
 		do_action( 'affwp_referral_accepted', $referral->affiliate_id, $referral );
 
-	} elseif( 'rejected' == $new_status || 'unpaid' == $new_status ) {
+	} elseif( 'paid' != $new_status && 'paid' == $old_status ) {
 
+		affwp_decrease_affiliate_earnings( $referral->affiliate_id, $referral->amount );
 		affwp_decrease_affiliate_referral_count( $referral->affiliate_id );
 
 	}
