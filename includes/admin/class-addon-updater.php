@@ -1,6 +1,6 @@
 <?php
 
-set_site_transient( 'update_plugins', null );
+//set_site_transient( 'update_plugins', null );
 	
 class AffWP_AddOn_Updater {
 	
