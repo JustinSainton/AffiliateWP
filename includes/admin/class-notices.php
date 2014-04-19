@@ -87,6 +87,12 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
+			case 'referral_added' :
+
+				$message = __( 'Referral added successfully', 'affiliate-wp' );
+
+				break;
+
 			case 'referral_updated' :
 
 				$message = __( 'Referral updated successfully', 'affiliate-wp' );
