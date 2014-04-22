@@ -145,7 +145,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
 
-		if( $affiliates === false ) {
+		if( false === $affiliates ) {
 			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
 		}
@@ -167,7 +167,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		$name = wp_cache_get( $cache_key, 'affiliates' );
 
-		if( $name === false ) {
+		if( false === $name ) {
 			$name = $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
 			wp_cache_set( $cache_key, $name, 'affiliates', 3600 );
 		}
@@ -295,7 +295,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		$count = wp_cache_get( $cache_key, 'affiliates' );
 
-		if( $count === false ) {
+		if( false === $count ) {
 			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
 			wp_cache_set( $cache_key, $count, 'affiliates', 3600 );
 		}
