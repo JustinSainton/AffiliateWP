@@ -263,12 +263,11 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return string Data shown in the Name column
 	 */
 	function column_name( $affiliate ) {
-
 		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
 		$row_actions  = array();
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
-
-		return $name;
+		
+		return sprintf( '<a href="%s">%s</a>', get_edit_user_link( $affiliate->affiliate_id ), $name );
 	}
 
 	/**
