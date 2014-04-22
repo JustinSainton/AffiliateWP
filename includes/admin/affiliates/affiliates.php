@@ -259,7 +259,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 *
 	 * @access public
 	 * @since 1.0
-	 * @param array $item Contains all the data of the discount code
+	 * @param array $affiliate Contains all the data of the discount code
 	 * @return string Data shown in the Name column
 	 */
 	function column_name( $affiliate ) {
