@@ -26,11 +26,12 @@ if( affiliate_wp()->settings->get( 'uninstall_on_delete' ) ) {
 	delete_option( 'affwp_settings' );
 
 	// Remove all capabilities and roles
-	affiliate_wp()->roles->remove_caps();
+	$caps = new Affiliate_WP_Capabilities;
+	$caps->remove_caps();
 
 	// Remove all database tables
-	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_affiliates" );
-	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_referrals" );
-	$wpdb->query( "DROP TABLE $wpdb->affiliate_wp_visits" );
+	$wpdb->query( "DROP TABLE IF EXISTS " . $wpdb->prefix . "affiliate_wp_affiliates" );
+	$wpdb->query( "DROP TABLE IF EXISTS " . $wpdb->prefix . "affiliate_wp_referrals" );
+	$wpdb->query( "DROP TABLE IF EXISTS " . $wpdb->prefix . "affiliate_wp_visits" );
 
 }

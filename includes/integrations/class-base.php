@@ -53,7 +53,7 @@ abstract class Affiliate_WP_Base {
 			return false;
 		}
 
-		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'unpaid' ) ) ) {
+		if ( affwp_set_referral_status( $referral->referral_id, 'unpaid' ) ) {
 
 			// Update the visit ID that spawned this referral
 			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );

@@ -32,6 +32,7 @@ function affwp_referrals_admin() {
 			<?php do_action( 'affwp_referrals_page_top' ); ?>
 			
 			<div id="affwp-referrals-export-wrap">
+				<a href="<?php echo add_query_arg( 'action', 'add_referral' ); ?>" class="button-secondary"><?php _e( 'Add New Referral', 'affiliate-wp' ); ?></a>
 				<button class="button-primary affwp-referrals-export-toggle"><?php _e( 'Generate Payout File', 'affiliate-wp' ); ?></button>
 				<button class="button-primary affwp-referrals-export-toggle" style="display:none"><?php _e( 'Close', 'affiliate-wp' ); ?></button>
 				

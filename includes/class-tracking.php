@@ -20,7 +20,7 @@ class Affiliate_WP_Tracking {
 		 * Referrals are tracked via javascript by default
 		 * This fails on sites that have jQuery errors, so a fallback method is available
 		 * With the fallback, the template_redirect action is used
-		 */ 
+		 */
 
 		if( ! $this->use_fallback_method() ) {
 
@@ -104,7 +104,7 @@ class Affiliate_WP_Tracking {
 	 *
 	 * @since 1.0
 	 */
-	public function conversion_script( $args = array(), $md5 = '' ) {
+	public function conversion_script( $args = array() ) {
 
 		$defaults = array(
 			'amount'      => '',
@@ -122,8 +122,22 @@ class Affiliate_WP_Tracking {
 
 		if( empty( $args['reference'] ) && ! empty( $_REQUEST['reference'] ) ) {
 			// Allow the reference to be passed via a query string or post request
-			$args['reference'] = absint( sanitize_text_field( $_REQUEST['reference'] ) );
+			$args['reference'] = sanitize_text_field( $_REQUEST['reference'] );
 		}
+
+		if( empty( $args['context'] ) && ! empty( $_REQUEST['context'] ) ) {
+			$args['context'] = sanitize_text_field( $_REQUEST['context'] );
+		}
+
+		if( empty( $args['description'] ) && ! empty( $_REQUEST['description'] ) ) {
+			$args['description'] = sanitize_text_field( $_REQUEST['description'] );
+		}
+
+		if( empty( $args['status'] ) && ! empty( $_REQUEST['status'] ) ) {
+			$args['status'] = sanitize_text_field( $_REQUEST['status'] );
+		}
+
+		$md5 = md5( $args['amount'] . $args['description'] . $args['reference'] . $args['context'] . $args['status'] );
 
 ?>
 		<script type="text/javascript">
@@ -448,7 +462,7 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function use_fallback_method() {
-		
+
 		$use_fallback = affiliate_wp()->settings->get( 'tracking_fallback', false );
 
 		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );
