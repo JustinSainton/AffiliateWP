@@ -124,4 +124,13 @@ class Affiliate_WP_Login {
 
 	}
 
+	/**
+	 * Retrieves the login URL
+	 *
+	 * @since 1.1
+	 */
+	function get_login_url() {
+	    return apply_filters( 'affwp_login_url', get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
+	}
+
 }
