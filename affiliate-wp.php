@@ -52,9 +52,12 @@ final class Affiliate_WP {
 	public $affiliates;
 	public $referrals;
 	public $visits;
-	public $tracking;
 	public $settings;
+	public $tracking;
 	public $templates;
+	public $login;
+	public $register;
+	public $integrations;
 	public $emails;
 
 
