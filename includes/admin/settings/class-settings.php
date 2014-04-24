@@ -278,6 +278,11 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'auto_register' => array(
+						'name' => __( 'Auto Register New Users', 'affiliate-wp' ),
+						'desc' => __( 'Automatically register new users as affiliates?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'revoke_on_refund' => array(
 						'name' => __( 'Reject Unpaid Referrals on Refund?', 'affiliate-wp' ),
 						'desc' => __( 'Should unpaid referrals get automatically rejected when the originating purchase is refunded or revoked?', 'affiliate-wp' ),
