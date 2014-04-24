@@ -276,6 +276,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	public function visits_data() {
 		
 		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )     : 1;
+		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )   : false;
 		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] ) : false;
 		
 		$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
@@ -287,6 +288,12 @@ class AffWP_Visits_Table extends WP_List_Table {
 		}
 		if( ! empty( $to ) ) {
 			$date['end']   = $to . ' 23:59:59';
+		}
+
+		if( ! empty( $user_id ) && empty( $affiliate_id ) ) {
+
+			$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
+
 		}
 
 		$visits = affiliate_wp()->visits->get_visits( array(
