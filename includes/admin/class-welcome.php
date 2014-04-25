@@ -142,9 +142,9 @@ class Affiliate_WP_Welcome {
 		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'affwp-getting-started';
 		?>
 		<h2 class="nav-tab-wrapper">
-			<!--<a class="nav-tab <?php echo $selected == 'affwp-what-is-new' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-what-is-new' ), 'index.php' ) ) ); ?>">
+			<a class="nav-tab <?php echo $selected == 'affwp-what-is-new' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-what-is-new' ), 'index.php' ) ) ); ?>">
 				<?php _e( "What's New", 'affiliate-wp' ); ?>
-			</a>-->
+			</a>
 			<a class="nav-tab <?php echo $selected == 'affwp-getting-started' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-getting-started' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Getting Started', 'affiliate-wp' ); ?>
 			</a>
