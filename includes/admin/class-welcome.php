@@ -83,7 +83,7 @@ class Affiliate_WP_Welcome {
 	 * @return void
 	 */
 	public function admin_head() {
-		//remove_submenu_page( 'index.php', 'affwp-what-is-new' );
+		remove_submenu_page( 'index.php', 'affwp-what-is-new' );
 		remove_submenu_page( 'index.php', 'affwp-getting-started' );
 		remove_submenu_page( 'index.php', 'affwp-credits' );
 
