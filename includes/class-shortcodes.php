@@ -5,6 +5,8 @@ class Affiliate_WP_Shortcodes {
 	public function __construct() {
 
 		add_shortcode( 'affiliate_area', array( $this, 'affiliate_area' ) );
+		add_shortcode( 'affiliate_login', array( $this, 'affiliate_login' ) );
+		add_shortcode( 'affiliate_registration', array( $this, 'affiliate_registration' ) );
 		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
 		add_shortcode( 'affiliate_referral_url', array( $this, 'referral_url' ) );
 		add_shortcode( 'affiliate_content', array( $this, 'affiliate_content' ) );
@@ -45,6 +47,50 @@ class Affiliate_WP_Shortcodes {
 			}
 
 		}
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 *  Renders the affiliate login form
+	 *
+	 *  @since 1.1
+	 *  @return string
+	 */
+	public function affiliate_login( $atts, $content = null ) {
+
+		ob_start();
+
+		if( ! is_user_logged_in() ) {
+
+			affiliate_wp()->templates->get_template_part( 'login' );
+
+		}
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 *  Renders the affiliate registration form
+	 *
+	 *  @since 1.1
+	 *  @return string
+	 */
+	public function affiliate_registration( $atts, $content = null ) {
+
+		ob_start();
+
+		if( ! affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
+			return;
+		}
+
+		if( affwp_is_affiliate() ) {
+			return;
+		}
+
+		affiliate_wp()->templates->get_template_part( 'register' );
 
 		return ob_get_clean();
 
