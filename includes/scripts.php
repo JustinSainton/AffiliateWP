@@ -29,7 +29,7 @@ function affwp_is_admin_page() {
 		'affiliate-wp-tools',
 		'affiliate-wp-settings',
 		'affwp-getting-started',
-		'affwp-about',
+		'affwp-what-is-new',
 		'affwp-credits'
 	);
 		

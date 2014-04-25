@@ -18,7 +18,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
 		}
 		$this->primary_key = 'affiliate_id';
-		$this->version     = '1.0';
+		$this->version     = '1.1';
 	}
 
 	/**
@@ -32,6 +32,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			'affiliate_id'    => '%d',
 			'user_id'         => '%d',
 			'rate'            => '%s',
+			'rate_type'       => '%s',
 			'payment_email'   => '%s',
 			'status'          => '%s',
 			'earnings'        => '%s',
@@ -317,6 +318,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
 			`user_id` bigint(20) NOT NULL,
 			`rate` tinytext NOT NULL,
+			`rate_type` tinytext NOT NULL,
 			`payment_email` mediumtext NOT NULL,
 			`status` tinytext NOT NULL,
 			`earnings` mediumtext NOT NULL,

@@ -144,18 +144,95 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 
 	}
 
-	// Sanitize the rate and ensure it's in the proper format
-	if( $rate > 1 ) {
-		$rate = $rate / 100;
+	$type = affwp_get_affiliate_rate_type( $affiliate_id );
+
+	if( 'percentage' == $type ) {
+
+		// Sanitize the rate and ensure it's in the proper format
+		if( $rate > 1 ) {
+			$rate = $rate / 100;
+		}
+
 	}
 
-	$rate = apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id );
+	$rate = apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id, $type );
 
+	// If rate should be formatted, format it based on the type
 	if( $formatted ) {
-		$rate = $rate * 100 . '%';
+
+		switch( $type ) {
+
+			case 'percentage' :
+
+				$rate = $rate * 100 . '%';
+
+				break;
+
+			case 'flat' :
+
+				$rate = affwp_currency_filter( $rate );
+
+				break;
+
+			default :
+
+				break;
+
+		}
+
 	}
 
 	return $rate;
+}
+
+/**
+ * Retrieves the referral rate type for an affiliate
+ *
+ * Either "flat" or "percentage"
+ *
+ * @since 1.1
+ * @return string
+ */
+function affwp_get_affiliate_rate_type( $affiliate_id = 0 ) {
+
+	// Allowed types
+	$types = affwp_get_affiliate_rate_types();
+
+	// default rate
+	$type = affiliate_wp()->settings->get( 'referral_rate_type', 'percentage' );
+
+	$affiliate_rate_type = affiliate_wp()->affiliates->get_column( 'rate_type', $affiliate_id );
+
+	if( ! empty( $affiliate_rate_type ) ) {
+
+		$type = $affiliate_rate_type;
+
+	}
+
+	if( ! array_key_exists( $type, $types ) ) {
+		$type = 'percentage';
+	}
+
+	return apply_filters( 'affwp_get_affiliate_rate_type', $type, $affiliate_id );
+
+}
+
+/**
+ * Retrieves an array of allowed affiliate rate types
+ *
+ * @since 1.1
+ * @return array
+ */
+function affwp_get_affiliate_rate_types() {
+
+	// Allowed types
+	$types = array(
+		'percentage' => __( 'Percentage (%)', 'affiliate-wp' ),
+		'flat'       => sprintf( __( 'Flat %s', 'affiliate-wp' ), affwp_get_currency() )
+	);
+
+	return apply_filters( 'affwp_get_affiliate_rate_types', $types );
+
 }
 
 /**
@@ -607,7 +684,8 @@ function affwp_update_affiliate( $data = array() ) {
 	$affiliate_id = absint( $data['affiliate_id'] );
 
 	$args['payment_email'] = ! empty( $data['payment_email' ] ) && is_email( $data['payment_email' ] ) ? sanitize_text_field( $data['payment_email'] ) : '';
-	$args['rate']          = ! empty( $data['rate' ] ) ? sanitize_text_field( $data['rate'] ) : 0;
+	$args['rate']          = ! empty( $data['rate' ] )      ? sanitize_text_field( $data['rate'] )      : 0;
+	$args['rate_type']     = ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '';
 
 	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
