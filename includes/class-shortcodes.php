@@ -64,6 +64,9 @@ class Affiliate_WP_Shortcodes {
 
 		if( ! is_user_logged_in() ) {
 
+			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+			wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
+
 			affiliate_wp()->templates->get_template_part( 'login' );
 
 		}
@@ -89,6 +92,10 @@ class Affiliate_WP_Shortcodes {
 		if( affwp_is_affiliate() ) {
 			return;
 		}
+
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
+
 
 		affiliate_wp()->templates->get_template_part( 'register' );
 
