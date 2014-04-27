@@ -63,8 +63,8 @@ function affwp_get_reports_tabs() {
 
 	$tabs                  = array();
 	$tabs['referrals']     = __( 'Referrals', 'affiliate-wp' );
-	//$tabs['registrations'] = __( 'Registrations', 'affiliate-wp' );
 	$tabs['visits']        = __( 'Visits', 'affiliate-wp' );
+	$tabs['registrations'] = __( 'Registrations', 'affiliate-wp' );
 
 	return apply_filters( 'affwp_reports_tabs', $tabs );
 }
@@ -206,3 +206,21 @@ function affwp_reports_tab_visits() {
 
 }
 add_action( 'affwp_reports_tab_visits', 'affwp_reports_tab_visits' );
+
+/**
+ * Display the affiliate registration reports tab
+ *
+ * @since 1.1
+ * @return void
+ */
+function affwp_reports_tab_registrations() {
+
+	require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/reports/class-registrations-graph.php';
+
+	$graph = new Affiliate_WP_Registrations_Graph;
+	$graph->set( 'x_mode',   'time' );
+	$graph->set( 'currency', false  );
+	$graph->display();
+
+}
+add_action( 'affwp_reports_tab_registrations', 'affwp_reports_tab_registrations' );
