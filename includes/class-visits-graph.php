@@ -105,6 +105,7 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 		}
 
 		$converted_visits = array();
+		$converted_visits[] = array( strtotime( $start ) * 1000, 0 );
 		foreach( $converted_data as $date => $count ) {
 
 			$converted_visits[] = array( strtotime( $date ) * 1000, $count );
@@ -112,6 +113,7 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 		}
 
 		$unconverted_visits = array();
+		$unconverted_visits[] = array( strtotime( $start ) * 1000, 0 );
 		foreach( $unconverted_data as $date => $count ) {
 
 			$unconverted_visits[] = array( strtotime( $date ) * 1000, $count );
