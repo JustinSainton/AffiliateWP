@@ -17,6 +17,19 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 			<tr class="form-row form-required">
 
 				<th scope="row">
+					<label for="affiliate_id"><?php _e( 'Affiliate ID', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<input type="text" name="affiliate_id" id="affiliate_id" value="<?php echo esc_attr( $affiliate->affiliate_id ); ?>" disabled="1"/>
+					<div class="description"><?php _e( 'The affiliate\'s ID. This cannot be changed.', 'affiliate-wp' ); ?></div>
+				</td>
+
+			</tr>
+
+			<tr class="form-row form-required">
+
+				<th scope="row">
 					<label for="user_id"><?php _e( 'User ID', 'affiliate-wp' ); ?></label>
 				</th>
 
