@@ -26,3 +26,6 @@ add_action( 'affwp_add_referral', 'affwp_add_referral' );
 
 // Process affiliate notification settings
 add_action( 'affwp_update_profile_settings', 'affwp_update_profile_settings' );
+
+// Automatically register new users as affiliates, if enabled
+add_action( 'user_register', 'affwp_auto_register_user_as_affiliate' );

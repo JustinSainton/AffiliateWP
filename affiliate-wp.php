@@ -5,7 +5,7 @@
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.0.6
+ * Version: 1.1
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  * @package AffiliateWP
  * @category Core
  * @author Pippin Williamson
- * @version 1.0.6
+ * @version 1.1
  */
 
 // Exit if accessed directly
@@ -46,15 +46,18 @@ final class Affiliate_WP {
 	 */
 	private static $instance;
 
-	private $version = '1.0.6';
+	private $version = '1.1';
 
 	// Class properties
 	public $affiliates;
 	public $referrals;
 	public $visits;
-	public $tracking;
 	public $settings;
+	public $tracking;
 	public $templates;
+	public $login;
+	public $register;
+	public $integrations;
 	public $emails;
 
 
@@ -162,6 +165,12 @@ final class Affiliate_WP {
 	 */
 	private function includes() {
 
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/actions.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-capabilities.php';
+
 		if( is_admin() ) {
 
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
@@ -187,11 +196,6 @@ final class Affiliate_WP {
 
 		}
 
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/actions.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-capabilities.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-graph.php';

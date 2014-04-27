@@ -46,16 +46,15 @@ class Affiliate_WP_Welcome {
 	 * @return void
 	 */
 	public function admin_menus() {
-		/*
-		// About Page
+
+		// What's New
 		add_dashboard_page(
-			__( 'Welcome to AffiliateWP', 'affiliate-wp' ),
-			__( 'Welcome to AffiliateWP', 'affiliate-wp' ),
+			__( 'What\'s new in AffiliateWP', 'affiliate-wp' ),
+			__( 'What\'s new in AffiliateWP', 'affiliate-wp' ),
 			$this->minimum_capability,
-			'affwp-about',
-			array( $this, 'about_screen' )
+			'affwp-what-is-new',
+			array( $this, 'whats_new_screen' )
 		);
-		*/
 
 		// Getting Started Page
 		add_dashboard_page(
@@ -84,13 +83,13 @@ class Affiliate_WP_Welcome {
 	 * @return void
 	 */
 	public function admin_head() {
-		//remove_submenu_page( 'index.php', 'affwp-about' );
+		remove_submenu_page( 'index.php', 'affwp-what-is-new' );
 		remove_submenu_page( 'index.php', 'affwp-getting-started' );
 		remove_submenu_page( 'index.php', 'affwp-credits' );
 
 		$page = isset( $_GET['page'] ) ? $_GET['page'] : false;
 
-		if ( 'affwp-about' != $page  && 'affwp-getting-started' != $page && 'affwp-credits' != $page ) {
+		if ( 'affwp-what-is-new' != $page  && 'affwp-getting-started' != $page && 'affwp-credits' != $page ) {
 			return;
 		}
 
@@ -143,9 +142,9 @@ class Affiliate_WP_Welcome {
 		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'affwp-getting-started';
 		?>
 		<h2 class="nav-tab-wrapper">
-			<!--<a class="nav-tab <?php echo $selected == 'affwp-about' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-about' ), 'index.php' ) ) ); ?>">
+			<a class="nav-tab <?php echo $selected == 'affwp-what-is-new' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-what-is-new' ), 'index.php' ) ) ); ?>">
 				<?php _e( "What's New", 'affiliate-wp' ); ?>
-			</a>-->
+			</a>
 			<a class="nav-tab <?php echo $selected == 'affwp-getting-started' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'affwp-getting-started' ), 'index.php' ) ) ); ?>">
 				<?php _e( 'Getting Started', 'affiliate-wp' ); ?>
 			</a>
@@ -163,7 +162,7 @@ class Affiliate_WP_Welcome {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function about_screen() {
+	public function whats_new_screen() {
 		list( $display_version ) = explode( '-', AFFILIATEWP_VERSION );
 		?>
 		<div class="wrap about-wrap">
@@ -440,7 +439,7 @@ class Affiliate_WP_Welcome {
 			exit;
 		} else { // Update
 			wp_safe_redirect( admin_url( 'index.php?page=affwp-getting-started' ) );
-			//wp_safe_redirect( admin_url( 'index.php?page=affwp-about' ) );
+			//wp_safe_redirect( admin_url( 'index.php?page=affwp-what-is-new' ) );
 			exit;
 		}
 	}
