@@ -64,7 +64,7 @@ function affwp_get_reports_tabs() {
 	$tabs                  = array();
 	$tabs['referrals']     = __( 'Referrals', 'affiliate-wp' );
 	$tabs['visits']        = __( 'Visits', 'affiliate-wp' );
-	$tabs['registrations'] = __( 'Registrations', 'affiliate-wp' );
+	$tabs['registrations'] = __( 'Affiliate Registrations', 'affiliate-wp' );
 
 	return apply_filters( 'affwp_reports_tabs', $tabs );
 }
