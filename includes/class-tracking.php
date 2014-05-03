@@ -326,7 +326,8 @@ class Affiliate_WP_Tracking {
 	 */
 	public function set_expiration_time() {
 		// Default time is 1 day
-		$this->expiration_time = apply_filters( 'affwp_cookie_expiration_time', 1 );
+		$days = affiliate_wp()->settings->get( 'cookie_exp', 1 );
+		$this->expiration_time = apply_filters( 'affwp_cookie_expiration_time', $days );
 	}
 
 	/**
