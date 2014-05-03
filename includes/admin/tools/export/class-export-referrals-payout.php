@@ -83,7 +83,23 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 
 				}
 
+				// TODO can't do this with minimums, need to track which ones are above minimum
+
 				affwp_set_referral_status( $referral->referral_id, 'paid' );
+
+			}
+
+			$minimum = affiliate_wp()->settings->get( 'payout_minimum', 0 );
+
+			if( $minimum && $minimum > 0 ) {
+
+				foreach( $data as $affiliate_id => $earnings ) {
+
+					if( $earnings < $minimum ) {
+						unset( $data[ $affiliate_id ] );
+					}
+
+				}
 
 			}
 
