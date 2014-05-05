@@ -97,7 +97,7 @@ class Affiliate_WP_Login {
 	 *
 	 * @since 1.0
 	 */
-	private function add_error( $error_id, $message = '' ) {
+	public function add_error( $error_id, $message = '' ) {
 		$this->errors[ $error_id ] = $message;
 	}
 
