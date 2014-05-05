@@ -100,7 +100,9 @@ p.affwp-error {
 #affwp-affiliate-dashboard-visits .referral-status {
 	width: 20%;
 }
-#affwp-affiliate-dashboard .affwp-send-notifications-wrap label {
+#affwp-affiliate-dashboard .affwp-send-notifications-wrap label,
+.affwp-form .affwp-tos,
+.affwp-form .affwp-user-remember {
 	width: auto;
 }
 .visit-converted i {
