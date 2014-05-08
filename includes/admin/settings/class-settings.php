@@ -267,7 +267,7 @@ class Affiliate_WP_Settings {
 				array(
 					'integrations' => array(
 						'name' => __( 'Integrations', 'affiliate-wp' ),
-						'desc' => __( 'Choose the integrations to enable. If you are not using any of these, you may use the <strong>[affiliate_conversion_script]</strong> short code to track and create referrals. Refer to the documentation for help using this.', 'affiliate-wp' ),
+						'desc' => sprintf( __( 'Choose the integrations to enable. If you are not using any of these, you may use the <strong>[affiliate_conversion_script]</strong> short code to track and create referrals. Refer to the <a href="%s" target="_blank">documentation</a> for help using this.', 'affiliate-wp' ), 'http://affiliatewp.com/docs/custom-referral-tracking/' ),
 						'type' => 'multicheck',
 						'options' => affiliate_wp()->integrations->get_integrations()
 					)
