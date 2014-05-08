@@ -34,6 +34,7 @@ function affwp_get_currencies() {
 		'HUF'  => __( 'Hungarian Forint', 'affiliate-wp' ),
 		'ILS'  => __( 'Israeli Shekel (&#8362;)', 'affiliate-wp' ),
 		'JPY'  => __( 'Japanese Yen (&yen;)', 'affiliate-wp' ),
+		'KRW'  => __( 'Korean Won (&#8361;)', 'affiliate-wp' ),
 		'MYR'  => __( 'Malaysian Ringgits', 'affiliate-wp' ),
 		'MXN'  => __( 'Mexican Peso (&#36;)', 'affiliate-wp' ),
 		'NZD'  => __( 'New Zealand Dollar (&#36;)', 'affiliate-wp' ),
@@ -179,6 +180,9 @@ function affwp_currency_filter( $amount ) {
 			case "JPY" :
 				$formatted = '&yen;' . $amount;
 				break;
+			case "KRW" :
+				$formatted = '&#8361;' . $amount;
+				break;
 			default :
 			    $formatted = $currency . ' ' . $amount;
 				break;
@@ -205,6 +209,9 @@ function affwp_currency_filter( $amount ) {
 				break;
 			case "JPY" :
 				$formatted = $amount . '&yen;';
+				break;
+			case "KRW" :
+				$formatted = $amount . '&#8361;';
 				break;
 			default :
 			    $formatted = $amount . ' ' . $currency;
@@ -237,6 +244,7 @@ function affwp_currency_decimal_filter( $decimals = 2 ) {
 		case 'RIAL' :
 		case 'JPY' :
 		case 'TWD' :
+		case 'KRW' :
 
 			$decimals = 0;
 			break;
