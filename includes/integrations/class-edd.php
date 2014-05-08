@@ -135,17 +135,28 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function discount_edit( $discount_id = 0 ) {
 
-		// TODO replace this with a select2 drop down
+		add_filter( 'affwp_is_admin_page', '__return_true' );
+		affwp_admin_scripts();
+
+		$affiliate_id = get_post_meta( $discount_id, 'affwp_discount_affiliate', true );
+		$user_id      = affwp_get_affiliate_user_id( $affiliate_id );
+		$user         = get_userdata( $user_id );
+		$user_name    = $user ? $user->user_login : '';
 ?>
 		<table class="form-table">
 			<tbody>
 				<tr class="form-field">
 					<th scope="row" valign="top">
-						<label for="affiliate_id"><?php _e( 'Affiliate Discount?', 'affiliate-wp' ); ?></label>
+						<label for="user_name"><?php _e( 'Affiliate Discount?', 'affiliate-wp' ); ?></label>
 					</th>
 					<td>
-						<input type="text" id="affiliate_id" name="affiliate_id" value="<?php echo esc_attr( get_post_meta( $discount_id, 'affwp_discount_affiliate', true ) ); ?>" style="width: 300px;"/>
-						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, select the affiliate it belongs to.', 'edd' ); ?></p>
+						<span class="affwp-ajax-search-wrap">
+							<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
+							<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" style="width: 300px;" />
+							<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+						</span>
+						<div id="affwp_user_search_results"></div>
+						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'edd' ); ?></p>
 					</td>
 				</tr>
 			</tbody>
@@ -161,11 +172,20 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function store_discount_affiliate( $details, $discount_id = 0 ) {
 
-		if( empty( $_POST['affiliate_id'] ) ) {
+		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
 		}
 
-		$affiliate_id = sanitize_text_field( $_POST['affiliate_id'] );
+		if( empty( $_POST['user_id'] ) ) {
+			$user = get_user_by( 'login', $_POST['user_name'] );
+			if( $user ) {
+				$user_id = $user->ID;
+			}
+		} else {
+			$user_id = absint( $_POST['user_id'] );
+		}
+
+		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_post_meta( $discount_id, 'affwp_discount_affiliate', $affiliate_id );
 	}

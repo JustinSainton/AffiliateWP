@@ -44,7 +44,7 @@ function affwp_is_admin_page() {
  *  @since 1.0
  *  @return void
  */
-function affwp_admin_scripts( $hook ) {
+function affwp_admin_scripts() {
 
 	if( ! affwp_is_admin_page() ) {
 		return;
@@ -70,7 +70,7 @@ add_action( 'admin_enqueue_scripts', 'affwp_admin_scripts' );
  *  @since 1.0
  *  @return void
  */
-function affwp_admin_styles( $hook ) {
+function affwp_admin_styles() {
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
