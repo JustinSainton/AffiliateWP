@@ -51,10 +51,20 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 			'date'   => ! empty( $this->date ) ? $this->date : '',
 		);
 
+		// Final data to be exported
 		$data         = array();
+
+		// The affiliates that have earnings to be paid
 		$affiliates   = array();
-		//$referral_ids = array();
+
+		// The list of referrals that are possibly getting marked as paid
+		$to_maybe_pay = array();
+
+		// Retrieve the referrals from the database
 		$referrals    = affiliate_wp()->referrals->get_referrals( $args );
+
+		// The minimum payout amount
+		$minimum      = ! empty( $_POST['minimum'] ) ? sanitize_text_field( affwp_sanitize_amount( $_POST['minimum'] ) ) : 0;
 
 		if( $referrals ) {
 
@@ -71,23 +81,46 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 				} else {
 
 					$email = affwp_get_affiliate_email( $referral->affiliate_id );
-		
+
 					$data[ $referral->affiliate_id ] = array(
 						'email'    => $email,
 						'amount'   => $referral->amount,
-						'currency' => ! empty( $referral->currency ) ? $referral->currency : affwp_get_currency() 
+						'currency' => ! empty( $referral->currency ) ? $referral->currency : affwp_get_currency()
 					);
 
-					$affiliates[]   = $referral->affiliate_id;
-					//$referral_ids[] = $referral->referral_id;
+					$affiliates[] = $referral->affiliate_id;
 
 				}
 
-				affwp_set_referral_status( $referral->referral_id, 'paid' );
+				// Add the referral to the list of referrals to maybe payout
+				if( ! array_key_exists( $referral->affiliate_id, $to_maybe_pay ) ) {
+
+					$to_maybe_pay[ $referral->affiliate_id ] = array();
+
+				}
+
+				$to_maybe_pay[ $referral->affiliate_id ][] = $referral->referral_id;
 
 			}
 
-			//affiliate_wp()->referrals->bulk_update_status( $referral_ids, 'paid' );
+			// Now determine which affiliates are above the minimum payout amount
+			if( $minimum > 0 ) {
+				foreach( $data as $affiliate_id => $payout ) {
+
+					if( $payout['amount'] < $minimum ) {
+						unset( $data[ $affiliate_id ] );
+						unset( $to_maybe_pay[ $affiliate_id ] );
+					}
+
+				}
+			}
+
+			// We now know which referrals should be marked as paid
+			foreach( $to_maybe_pay as $referral_list ) {
+				foreach( $referral_list as $referral_id ) {
+					affwp_set_referral_status( $referral_id, 'paid' );
+				}
+			}
 
 		}
 
