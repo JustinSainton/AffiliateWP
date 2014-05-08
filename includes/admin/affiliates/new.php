@@ -30,6 +30,24 @@
 			<tr class="form-row form-required">
 
 				<th scope="row">
+					<label for="rate_type"><?php _e( 'Referral Rate Type', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<select name="rate_type" id="rate_type">
+						<option value=""><?php _e( 'Site Default', 'affiliate-wp' ); ?></option>
+						<?php foreach( affwp_get_affiliate_rate_types() as $key => $type ) : ?>
+							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $type ); ?></option>
+						<?php endforeach; ?>
+					</select>
+					<div class="description"><?php _e( 'The affiliate\'s referral rate type.', 'affiliate-wp' ); ?></div>
+				</td>
+
+			</tr>
+
+			<tr class="form-row form-required">
+
+				<th scope="row">
 					<label for="rate"><?php _e( 'Rate', 'affiliate-wp' ); ?></label>
 				</th>
 

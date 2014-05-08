@@ -25,7 +25,7 @@ function affwp_search_users() {
 		echo json_encode( array( 'results' => $user_list, 'id' => 'found' ) );
 
 	} else {
-		echo json_encode( array( 'results' => '<p>' . __( 'No users found', 'rcp' ) . '</p>', 'id' => 'fail' ) );
+		echo json_encode( array( 'results' => '<p>' . __( 'No users found', 'affiliate-wp' ) . '</p>', 'id' => 'fail' ) );
 	}
 
 	die();

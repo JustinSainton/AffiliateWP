@@ -56,8 +56,9 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 
 		do_action( 'affwp_referral_accepted', $referral->affiliate_id, $referral );
 
-	} elseif( 'rejected' == $new_status || 'unpaid' == $new_status ) {
+	} elseif( 'paid' != $new_status && 'paid' == $old_status ) {
 
+		affwp_decrease_affiliate_earnings( $referral->affiliate_id, $referral->amount );
 		affwp_decrease_affiliate_referral_count( $referral->affiliate_id );
 
 	}
@@ -67,6 +68,50 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 		do_action( 'affwp_set_referral_status', $referral_id, $new_status, $old_status );
 	
 		return true;
+	}
+
+	return false;
+
+}
+
+/**
+ * Adds a new affiliate to the database
+ *  
+ * @since 1.0
+ * @return bool
+ */
+function affwp_add_referral( $data = array() ) {
+
+	if( empty( $data['user_id'] ) ) {
+
+		return false;
+
+	}
+
+	$user_id   = absint( $data['user_id'] );
+	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
+
+	if( $affiliate ) {
+
+		$args = array(
+			'affiliate_id' => $affiliate->affiliate_id,
+			'amount'       => ! empty( $data['amount'] )      ? sanitize_text_field( $data['amount'] )      : '',
+			'description'  => ! empty( $data['description'] ) ? sanitize_text_field( $data['description'] ) : '',
+			'reference'    => ! empty( $data['reference'] )   ? sanitize_text_field( $data['reference'] )   : '',
+			'context'      => ! empty( $data['context'] )     ? sanitize_text_field( $data['context'] )     : '',
+			'status'       => ! empty( $data['status'] )      ? sanitize_text_field( $data['status'] )      : ''
+		);
+
+		if( affiliate_wp()->referrals->add( $args ) ) {
+
+			if ( ! empty( $_POST['affwp_action'] ) ) {
+
+				wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_added' ) ); exit;
+			}
+
+			return true;
+		}
+
 	}
 
 	return false;
@@ -107,7 +152,17 @@ function affwp_delete_referral( $referral ) {
 
 function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0 ) {
 
-	return round( $amount * affwp_get_affiliate_rate( $affiliate_id ), 2 );
+	if( 'percentage' == affwp_get_affiliate_rate_type( $affiliate_id ) ) {
+
+		$referral_amount = round( $amount * affwp_get_affiliate_rate( $affiliate_id ), 2 );
+
+	} else {
+
+		$referral_amount = affwp_get_affiliate_rate( $affiliate_id );
+
+	}
+
+	return apply_filters( 'affwp_calc_referral_amount', $referral_amount, $affiliate_id, $amount, $reference );
 }
 
 function affwp_count_referrals( $affiliate_id = 0, $status = array(), $date = array() ) {

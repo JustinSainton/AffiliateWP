@@ -21,5 +21,11 @@ add_action( 'affwp_add_affiliate', 'affwp_add_affiliate' );
 // Process an affiliate update from the admin screen
 add_action( 'affwp_update_affiliate', 'affwp_update_affiliate' );
 
+// Process a referral creation from the admin screen
+add_action( 'affwp_add_referral', 'affwp_add_referral' );
+
 // Process affiliate notification settings
 add_action( 'affwp_update_profile_settings', 'affwp_update_profile_settings' );
+
+// Automatically register new users as affiliates, if enabled
+add_action( 'user_register', 'affwp_auto_register_user_as_affiliate' );

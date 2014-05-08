@@ -99,7 +99,8 @@ class Affiliate_WP_Graph {
 			'borderwidth'     => 2,
 			'bars'            => false,
 			'lines'           => true,
-			'points'          => true
+			'points'          => true,
+			'currency'        => true
 		);
 
 	}
@@ -151,7 +152,27 @@ class Affiliate_WP_Graph {
 		// Use minified libraries if SCRIPT_DEBUG is turned off
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		wp_enqueue_script( 'jquery-flot', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.flot' . $suffix . '.js' );
-		wp_enqueue_script( 'jquery-flot-resize', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.flot.resize' . $suffix . '.js' );
+		
+		if( $this->load_resize_script() ) {
+			wp_enqueue_script( 'jquery-flot-resize', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.flot.resize' . $suffix . '.js' );
+		}
+	}
+
+	/**
+	 * Determines if the resize script should be loaded
+	 *
+	 * @since 1.1
+	 */
+	public function load_resize_script() {
+			
+		$ret = true;
+
+		// The DMS theme is known to cause some issues with the resize script
+		if( defined( 'DMS_CORE' ) ) {
+			$ret = false;
+		}
+
+		return apply_filters( 'affwp_load_flot_resize', $ret );
 	}
 
 	/**
@@ -255,11 +276,16 @@ class Affiliate_WP_Graph {
 							$("#affwp-flot-tooltip").remove();
 							var x = item.datapoint[0].toFixed(2),
 							y = item.datapoint[1].toFixed(2);
-							if( affwp_vars.currency_pos == 'before' ) {
-								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + affwp_vars.currency_sign + y );
-							} else {
-								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y + affwp_vars.currency_sign );
-							}
+
+							<?php if( $this->get( 'currency' ) ) : ?>
+								if( affwp_vars.currency_pos == 'before' ) {
+									affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + affwp_vars.currency_sign + y );
+								} else {
+									affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y + affwp_vars.currency_sign );
+								}
+							<?php else : ?>
+								affwp_flot_tooltip( item.pageX, item.pageY, item.series.label + ' ' + y );
+							<?php endif; ?>
 						}
 					} else {
 						$("#affwp-flot-tooltip").remove();
@@ -326,10 +352,13 @@ class Affiliate_WP_Graph {
 		<form id="affwp-graphs-filter" method="get">
 			<div class="tablenav top">
 
-				<?php if( is_admin() ) : $page = isset( $_GET['page'] ) ? $_GET['page'] : 'affiliate-wp'; ?>
-				<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>"/>
+				<?php if( is_admin() ) : ?>
+					<?php $tab  = isset( $_GET['tab'] )  ? $_GET['tab']  : 'referral'; ?>
+					<?php $page = isset( $_GET['page'] ) ? $_GET['page'] : 'affiliate-wp'; ?>
+					<input type="hidden" name="tab" value="<?php echo esc_attr( $tab ); ?>"/>
+					<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>"/>
 				<?php else: ?>
-				<input type="hidden" name="page_id" value="<?php echo esc_attr( get_the_ID() ); ?>"/>
+					<input type="hidden" name="page_id" value="<?php echo esc_attr( get_the_ID() ); ?>"/>
 				<?php endif; ?>
 				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
 				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>

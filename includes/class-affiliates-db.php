@@ -11,9 +11,14 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	public function __construct() {
 		global $wpdb;
 
-		$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
+		if( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) {
+			// Allows a single affiliate table for the whole network
+			$this->table_name  = 'affiliate_wp_affiliates';
+		} else {
+			$this->table_name  = $wpdb->prefix . 'affiliate_wp_affiliates';
+		}
 		$this->primary_key = 'affiliate_id';
-		$this->version     = '1.0';
+		$this->version     = '1.1';
 	}
 
 	/**
@@ -27,6 +32,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			'affiliate_id'    => '%d',
 			'user_id'         => '%d',
 			'rate'            => '%s',
+			'rate_type'       => '%s',
 			'payment_email'   => '%s',
 			'status'          => '%s',
 			'earnings'        => '%s',
@@ -67,6 +73,11 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		);
 
 		$args  = wp_parse_args( $args, $defaults );
+
+		if( ! empty( $args['date_registered'] ) ) {
+			$args['date'] = $args['date_registered'];
+			unset( $args['date_registered'] );
+		}
 
 		$where = '';
 
@@ -111,7 +122,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				} else {
 
 					$args['search'] = esc_sql( $args['search'] );
-					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%{$args['search']}%'" );
+					$users = $wpdb->get_col( "SELECT ID FROM {$wpdb->users} WHERE display_name LIKE '%{$args['search']}%'" );
 					$users = ! empty( $users ) ? implode( ',', $users ) : 0;
 					$search = "`user_id` IN( {$users} )";
 
@@ -132,16 +143,55 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		}
 
+		// Affiliates registered on a date or date range
+		if( ! empty( $args['date'] ) ) {
+
+			if( is_array( $args['date'] ) ) {
+
+				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
+				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+
+				if( empty( $where ) ) {
+
+					$where .= " WHERE `date_registered` >= '{$start}' AND `date_registered` <= '{$end}'";
+				
+				} else {
+					
+					$where .= " AND `date_registered` >= '{$start}' AND `date_registered` <= '{$end}'";
+	
+				}
+
+			} else {
+
+				$year  = date( 'Y', strtotime( $args['date'] ) );
+				$month = date( 'm', strtotime( $args['date'] ) );
+				$day   = date( 'd', strtotime( $args['date'] ) );
+
+				if( empty( $where ) ) {
+					$where .= " WHERE";
+				} else {
+					$where .= " AND";
+				}
+
+				$where .= " $year = YEAR ( date_registered ) AND $month = MONTH ( date_registered ) AND $day = DAY ( date_registered )";
+			}
+
+		}
+
 		if( 'earnings' == $args['orderby'] ) {
 			$args['orderby'] = 'earnings+0';
+		}
+
+		if( 'date' == $args['orderby'] ) {
+			$args['orderby'] = 'date_registered';
 		}
 
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
 
-		if( $affiliates === false ) {
-			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+		if( false === $affiliates ) {
+			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
 		}
 
@@ -162,8 +212,8 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		$name = wp_cache_get( $cache_key, 'affiliates' );
 
-		if( $name === false ) {
-			$name = $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM $wpdb->users u INNER JOIN $this->table_name a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
+		if( false === $name ) {
+			$name = $wpdb->get_var( $wpdb->prepare( "SELECT u.display_name FROM {$wpdb->users} u INNER JOIN {$this->table_name} a ON u.ID = a.user_id WHERE a.affiliate_id = %d;", $affiliate_id ) );
 			wp_cache_set( $cache_key, $name, 'affiliates', 3600 );
 		}
 
@@ -184,7 +234,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			return false;
 		}
 
-		$affiliate = $wpdb->query( $wpdb->prepare( "SELECT 1 FROM $this->table_name WHERE $this->primary_key = %d;", $affiliate_id ) );
+		$affiliate = $wpdb->query( $wpdb->prepare( "SELECT 1 FROM {$this->table_name} WHERE {$this->primary_key} = %d;", $affiliate_id ) );
 
 		return ! empty( $affiliate );
 	}
@@ -265,7 +315,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				} else {
 
 					$args['search'] = esc_sql( $args['search'] );
-					$users = $wpdb->get_col( "SELECT ID FROM $wpdb->users WHERE display_name LIKE '%{$args['search']}%'" );
+					$users = $wpdb->get_col( "SELECT ID FROM {$wpdb->users} WHERE display_name LIKE '%{$args['search']}%'" );
 					$users = ! empty( $users ) ? implode( ',', $users ) : 0;
 					$search = "`user_id` IN( {$users} )";
 
@@ -290,8 +340,8 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		$count = wp_cache_get( $cache_key, 'affiliates' );
 
-		if( $count === false ) {
-			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
+		if( false === $count ) {
+			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM {$this->table_name} {$where};" );
 			wp_cache_set( $cache_key, $count, 'affiliates', 3600 );
 		}
 
@@ -312,6 +362,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
 			`user_id` bigint(20) NOT NULL,
 			`rate` tinytext NOT NULL,
+			`rate_type` tinytext NOT NULL,
 			`payment_email` mediumtext NOT NULL,
 			`status` tinytext NOT NULL,
 			`earnings` mediumtext NOT NULL,
