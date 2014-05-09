@@ -58,6 +58,70 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	}
 
 	/**
+	 * Records referrals for the affiliate if a discount code belonging to the affiliate is used
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
+	public function track_discount_referral( $payment_id = 0 ) {
+
+		$user_info = edd_get_payment_meta_user_info( $payment_id );
+
+		if ( isset( $user_info['discount'] ) && $user_info['discount'] != 'none' ) {
+
+			$discounts = array_map( 'trim', explode( ',', $user_info['discount'] ) );
+
+			if( empty( $discounts ) ) {
+				return;
+			}
+
+			foreach( $discounts as $code ) {
+
+				$discount_id  = edd_get_discount_id_by_code( $code );
+				$affiliate_id = get_post_meta( $discount_id, 'affwp_discount_affiliate', true );
+
+				if( ! $affiliate_id ) {
+					continue;
+				}
+
+				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
+
+				if( $existing ) {
+
+					// If a referral was already recored, overwrite it with the affiliate from the coupon
+					affiliate_wp()->referrals->update( $existing, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+
+				} else {
+
+					$amount = edd_get_payment_subtotal( $payment_id );
+					$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
+					
+					if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+						return false; // Ignore a zero amount referral
+					}
+
+					$referral_id = affiliate_wp()->referrals->add( array(
+						'amount'       => $amount,
+						'reference'    => $payment_id,
+						'description'  => $this->get_referral_description( $payment_id ),
+						'affiliate_id' => $affiliate_id,
+						'context'      => $this->context
+					) );
+
+					affwp_set_referral_status( $referral_id, 'unpaid' );
+
+					$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
+					$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+
+					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
+				}
+			}
+		}
+
+	}
+
+	/**
 	 * Sets a referral to unpaid when payment is completed
 	 *
 	 * @access  public
@@ -188,70 +252,6 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_post_meta( $discount_id, 'affwp_discount_affiliate', $affiliate_id );
-	}
-
-	/**
-	 * Records referrals for the affiliate if a discount code belonging to the affiliate is used
-	 *
-	 * @access  public
-	 * @since   1.1
-	*/
-	public function track_discount_referral( $payment_id = 0 ) {
-
-		$user_info = edd_get_payment_meta_user_info( $payment_id );
-
-		if ( isset( $user_info['discount'] ) && $user_info['discount'] != 'none' ) {
-
-			$discounts = array_map( 'trim', explode( ',', $user_info['discount'] ) );
-
-			if( empty( $discounts ) ) {
-				return;
-			}
-
-			foreach( $discounts as $code ) {
-
-				$discount_id  = edd_get_discount_id_by_code( $code );
-				$affiliate_id = get_post_meta( $discount_id, 'affwp_discount_affiliate', true );
-
-				if( ! $affiliate_id ) {
-					continue;
-				}
-
-				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
-
-				if( $existing ) {
-
-					// If a referral was already recored, overwrite it with the affiliate from the coupon
-					affiliate_wp()->referrals->update( $existing, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
-
-				} else {
-
-					$amount = edd_get_payment_subtotal( $payment_id );
-					$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
-					
-					if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
-						return false; // Ignore a zero amount referral
-					}
-
-					$referral_id = affiliate_wp()->referrals->add( array(
-						'amount'       => $amount,
-						'reference'    => $payment_id,
-						'description'  => $this->get_referral_description( $payment_id ),
-						'affiliate_id' => $affiliate_id,
-						'context'      => $this->context
-					) );
-
-					affwp_set_referral_status( $referral_id, 'unpaid' );
-
-					$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
-					$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
-
-					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
-
-				}
-			}
-		}
-
 	}
 
 	/**
