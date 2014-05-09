@@ -21,18 +21,23 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
-		//add_filter( 'woocommerce_coupon_data_tabs', array( $this, 'coupon_tab' ) );
 		add_action( 'woocommerce_coupon_options', array( $this, 'coupon_option' ) );
 		add_action( 'woocommerce_coupon_options_save', array( $this, 'store_discount_affiliate' ) );
 
 	}
 
+	/**
+	 * Store a pending referral when a new order is created
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function add_pending_referral( $order_id = 0, $posted ) {
 
 		$this->order = new WC_Order( $order_id );
 
 		// Check if an affiliate coupon was used
-		$affiliate_id = $this->affiliate_coupon_used();
+		$affiliate_id = $this->get_coupon_affiliate_id();
 
 		if( $affiliate_id ) {
 
@@ -82,36 +87,24 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 	}
 
-	private function affiliate_coupon_used() {
-		
-		$coupons = $this->order->get_used_coupons();
-
-		if( empty( $coupons ) ) {
-			return false;
-		}
-
-		foreach( $coupons as $code ) {
-
-			$coupon       = new WC_Coupon( $code );
-			$affiliate_id = get_post_meta( $coupon->id, 'affwp_discount_affiliate', true );
-
-			if( $affiliate_id ) {
-
-				return $affiliate_id;
-			
-			}
-
-		}
-
-		return false;
-	}
-
+	/**
+	 * Mark referral as complete when payment is completed
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function mark_referral_complete( $order_id = 0 ) {
 
 		$this->complete_referral( $order_id );
 
 	}
 
+	/**
+	 * Revoke the referral when the order is refunded
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function revoke_referral_on_refund( $order_id = 0 ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
@@ -122,6 +115,12 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Setup the reference link
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function reference_link( $reference = 0, $referral ) {
 
 		if( empty( $referral->context ) || 'woocommerce' != $referral->context ) {
@@ -133,25 +132,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		$url = get_edit_post_link( $reference );
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
-	}
-
-	/**
-	 * Register a custom tab in the Coupon metabox
-	 *
-	 * @access  public
-	 * @since   1.1
-	*/
-	public function coupon_tab( $tabs ) {
-
-		// This can't be used until WooCommerce adds an action to the bottom of coupon_options div
-
-		$tabs['affiliatewp'] = array(
-			'label'  => __( 'Affiliate Tracking', 'affiliate-wp' ),
-			'target' => 'affiliate_wp_tracking',
-			'class'  => '',
-		);
-
-		return $tabs;
 	}
 
 	/**
@@ -209,6 +189,36 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_post_meta( $coupon_id, 'affwp_discount_affiliate', $affiliate_id );
+	}
+
+	/**
+	 * Retrieve the affiliate ID for the coupon used, if any
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
+	private function get_coupon_affiliate_id() {
+		
+		$coupons = $this->order->get_used_coupons();
+
+		if( empty( $coupons ) ) {
+			return false;
+		}
+
+		foreach( $coupons as $code ) {
+
+			$coupon       = new WC_Coupon( $code );
+			$affiliate_id = get_post_meta( $coupon->id, 'affwp_discount_affiliate', true );
+
+			if( $affiliate_id ) {
+
+				return $affiliate_id;
+			
+			}
+
+		}
+
+		return false;
 	}
 
 	/**
