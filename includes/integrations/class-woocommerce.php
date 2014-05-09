@@ -2,8 +2,20 @@
 
 class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	
+	/**
+	 * The order object
+	 *
+	 * @access  private
+	 * @since   1.1
+	*/
 	private $order;
 
+	/**
+	 * Setup actions and filters
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function init() {
 
 		$this->context = 'woocommerce';
