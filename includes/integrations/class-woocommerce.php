@@ -2,6 +2,8 @@
 
 class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	
+	private $order;
+
 	public function init() {
 
 		$this->context = 'woocommerce';
@@ -27,33 +29,81 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 	public function add_pending_referral( $order_id = 0, $posted ) {
 
-		if( $this->was_referred() ) {
+		$this->order = new WC_Order( $order_id );
 
-			$order       = new WC_Order( $order_id );
+		// Check if an affiliate coupon was used
+		$affiliate_id = $this->affiliate_coupon_used();
 
-			if( $this->get_affiliate_email() == $order->billing_email ) {
+		if( $affiliate_id ) {
+
+			if( affwp_get_affiliate_email( $affiliate_id ) == $this->order->billing_email ) {
 				return; // Customers cannot refer themselves
 			}
 
-			$description = ''; 
-			$items       = $order->get_items();
-			foreach( $items as $key => $item ) {
-				$description .= $item['name'];
-				if( $key + 1 < count( $items ) ) {
-					$description .= ', ';
-				}
+			$amount = $this->order->get_total();
+			$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
+			
+			if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+				return false; // Ignore a zero amount referral
 			}
 
-			$this->insert_pending_referral( $order->get_total(), $order_id, $description );
+			$referral_id = affiliate_wp()->referrals->add( array(
+				'amount'       => $amount,
+				'reference'    => $order_id,
+				'description'  => $this->get_referral_description(),
+				'affiliate_id' => $affiliate_id,
+				'context'      => $this->context
+			) );
+
+			$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
+			$name   = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+
+			$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
+		} elseif( $this->was_referred() ) {
+
+			if( $this->get_affiliate_email() == $this->order->billing_email ) {
+				return; // Customers cannot refer themselves
+			}
+
+			if( 0 == $this->order->get_total() && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+				return false; // Ignore a zero amount referral
+			}
+
+			$this->insert_pending_referral( $this->order->get_total(), $order_id, $this->get_referral_description() );
 		
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
 			$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
 
-			$order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ),$referral->referral_id, $amount, $name ) );
+			$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ),$referral->referral_id, $amount, $name ) );
 
 		}
 
+	}
+
+	private function affiliate_coupon_used() {
+		
+		$coupons = $this->order->get_used_coupons();
+
+		if( empty( $coupons ) ) {
+			return false;
+		}
+
+		foreach( $coupons as $code ) {
+
+			$coupon       = new WC_Coupon( $code );
+			$affiliate_id = get_post_meta( $coupon->id, 'affwp_discount_affiliate', true );
+
+			if( $affiliate_id ) {
+
+				return $affiliate_id;
+			
+			}
+
+		}
+
+		return false;
 	}
 
 	public function mark_referral_complete( $order_id = 0 ) {
@@ -159,6 +209,27 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_post_meta( $coupon_id, 'affwp_discount_affiliate', $affiliate_id );
+	}
+
+	/**
+	 * Retrieves the referral description
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
+	public function get_referral_description() {
+		
+		$description = ''; 
+		$items       = $this->order->get_items();
+		foreach( $items as $key => $item ) {
+			$description .= $item['name'];
+			if( $key + 1 < count( $items ) ) {
+				$description .= ', ';
+			}
+		}
+
+		return $description;
+
 	}
 	
 }
