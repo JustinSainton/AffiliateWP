@@ -13,6 +13,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$this->context = 'edd';
 
 		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 10, 2 );
+		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
 		add_action( 'edd_complete_purchase', array( $this, 'mark_referral_complete' ) );
 		add_action( 'edd_update_payment_status', array( $this, 'revoke_referral_on_refund' ), 10, 3 );
 		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
@@ -24,7 +25,6 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		add_action( 'edd_edit_discount_form_bottom', array( $this, 'discount_edit' ) );
 		add_action( 'edd_post_update_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
 		add_action( 'edd_post_insert_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
-		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
 	}
 
 	/**
@@ -192,6 +192,27 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	}
 
 	/**
+	 * Retrieves the referral description
+	 *
+	 * @access  public
+	 * @since   1.1
+	*/
+	public function get_referral_description( $payment_id = 0 ) {
+
+		$description = '';
+		$downloads   = edd_get_payment_meta_downloads( $payment_id );
+		foreach( $downloads as $key => $item ) {
+			$description .= get_the_title( $item['id'] );
+			if( $key + 1 < count( $downloads ) ) {
+				$description .= ', ';
+			}
+		}
+
+		return $description;
+
+	}
+
+	/**
 	 * Shows the affiliate drop down on the discount edit / add screens
 	 *
 	 * @access  public
@@ -252,27 +273,6 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_post_meta( $discount_id, 'affwp_discount_affiliate', $affiliate_id );
-	}
-
-	/**
-	 * Retrieves the referral description
-	 *
-	 * @access  public
-	 * @since   1.1
-	*/
-	public function get_referral_description( $payment_id = 0 ) {
-
-		$description = '';
-		$downloads   = edd_get_payment_meta_downloads( $payment_id );
-		foreach( $downloads as $key => $item ) {
-			$description .= get_the_title( $item['id'] );
-			if( $key + 1 < count( $downloads ) ) {
-				$description .= ', ';
-			}
-		}
-
-		return $description;
-
 	}
 
 }
