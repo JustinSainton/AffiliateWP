@@ -69,8 +69,11 @@ class Affiliate_WP_Register {
 
 		}
 
-		if( empty( $_POST['affwp_tos'] ) ) {
-			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
+		$terms_of_use =  affiliate_wp()->settings->get( 'terms_of_use' );
+		if( ! empty( $terms_of_use ) ) {
+			if( empty( $_POST['affwp_tos'] ) ) {
+				$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
+			}
 		}
 
 		if( ! empty( $_POST['affwp_honeypot'] ) ) {
