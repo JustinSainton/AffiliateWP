@@ -42,12 +42,15 @@
 
 		<?php endif; ?>
 
-		<p>
-			<label class="affwp-tos" for="affwp-tos">
-				<input id="affwp-tos" class="required" type="checkbox" name="affwp_tos" />
-				<?php printf( __( 'Agree to our <a href="%s" target="_blank">Terms of Use</a>', 'affiliate-wp' ), esc_url( get_permalink( affiliate_wp()->settings->get( 'terms_of_use' ) ) ) ); ?>
-			</label>
-		</p>
+		<?php $terms_of_use =  affiliate_wp()->settings->get( 'terms_of_use' ); ?>
+		<?php if( !empty( $terms_of_use ) ): ?>
+			<p>
+				<label class="affwp-tos" for="affwp-tos">
+					<input id="affwp-tos" class="required" type="checkbox" name="affwp_tos" />
+					<?php printf( __( 'Agree to our <a href="%s" target="_blank">Terms of Use</a>', 'affiliate-wp' ), esc_url( get_permalink( affiliate_wp()->settings->get( 'terms_of_use' ) ) ) ); ?>
+				</label>
+			</p>
+		<?php endif;?>
 
 		<p>
 			<input type="hidden" name="affwp_honeypot" value="" />
