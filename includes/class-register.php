@@ -135,6 +135,7 @@ class Affiliate_WP_Register {
 			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
 		}
 
+		do_action( 'affwp_register_user', $affiliate_id, $status );
 	}
 
 	/**
