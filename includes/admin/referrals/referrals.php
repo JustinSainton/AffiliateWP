@@ -519,7 +519,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$this->unpaid_count   = affiliate_wp()->referrals->count( array( 'status' => 'unpaid' ) );
 		$this->pending_count  = affiliate_wp()->referrals->count( array( 'status' => 'pending' ) );
 		$this->rejected_count = affiliate_wp()->referrals->count( array( 'status' => 'rejected' ) );
-		$this->total_count    = $this->paid_count + $this->pending_count + $this->rejected_count;
+		$this->total_count    = $this->paid_count + $this->unpaid_count + $this->pending_count + $this->rejected_count;
 	}
 
 	/**
