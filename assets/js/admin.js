@@ -6,6 +6,12 @@ jQuery(document).ready(function($) {
 		$('#affwp-referrals-export-form').slideToggle();
 	});
 
+	$('#affwp-referrals-export-form').submit(function() {
+		if( ! confirm( affwp_vars.confirm ) ) {
+			return false;
+		}
+	});
+
 	// datepicker
 	if( $('.affwp-datepicker').length ) {
 		$('.affwp-datepicker').datepicker();

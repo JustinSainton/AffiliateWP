@@ -58,6 +58,7 @@ function affwp_admin_scripts( $hook ) {
 		'affwp_version' => AFFILIATEWP_VERSION,
 		'currency_sign' => affwp_currency_filter(''),
 		'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
+		'confirm'       => __( 'Are you sure you want to generate the payout file? All included referrals will be marked as Paid.', 'affiliate-wp' ),
 	));
 
 	wp_enqueue_script( 'jquery-ui-datepicker' );
