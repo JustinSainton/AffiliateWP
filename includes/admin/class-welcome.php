@@ -166,8 +166,8 @@ class Affiliate_WP_Welcome {
 		list( $display_version ) = explode( '-', AFFILIATEWP_VERSION );
 		?>
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to AffiliateWP %s', 'affiliate-wp' ), esc_html( $display_version ) ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for Installing AffiliateWP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), esc_html( $display_version ) ); ?></div>
+			<h1><?php printf( __( 'Welcome to AffiliateWP v%s', 'affiliate-wp' ), esc_html( $display_version ) ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for installing AffiliateWP v%s. The best affiliate marketing plugin for WordPress.', 'affiliate-wp' ), esc_html( $display_version ) ); ?></div>
 			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), esc_html( $display_version ) ); ?></span></div>
 
 			<?php $this->tabs(); ?>
@@ -177,9 +177,9 @@ class Affiliate_WP_Welcome {
 
 				<div class="feature-section">
 					<h4><?php _e( 'Coupon Code Tracking', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Affiliate coupon tracking has been one of the number one most requested features, and one we are thrilled to introduce with version 1.1.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'Affiliate coupon tracking has been one of the most requested features, and one we are thrilled to introduce with version 1.1.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'This allows you to connect a coupon code to a specific affiliate so the affiliate is credited a referral anytime the coupon is redeemed.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'For version 1.1, we have included coupon code tracking support for Easy Digital Downloads, WooCommerce, and Restrict Content Pro. More integations will get added soon.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'For version 1.1, we have included coupon code tracking support for Easy Digital Downloads, WooCommerce, and Restrict Content Pro. More integrations will get added soon.', 'affiliate-wp' );?></p>
 
 					<h4><?php _e( 'Minimum Earnings for Affiliate Payout', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'With the minimum amount option, you can set the minimum amount that affiliates need to have earned before their referrals are included in the payout.', 'affiliate-wp' );?></p>
@@ -195,13 +195,13 @@ class Affiliate_WP_Welcome {
 						<h4><?php _e( 'Affiliate Registration Graph', 'affiliate-wp' );?></h4>
 						<p><?php _e( 'A new section has been added to the Reports page that lets you see affiliate registrations over time.', 'affiliate-wp' );?></p>
 
-						<h4><?php _e( 'Auo Register Users as Affiliates', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'We have introduced a new option to autmatically register new WordPress users as affiliates when their user accounts are created.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Auto Register Users as Affiliates', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'We have introduced a new option to automatically register new WordPress users as affiliates when their user accounts are created.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div>
 						<h4><?php _e( 'Most Valuable Affiliates', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The Overview page has gotten a new widget that shows your top 5 most valuable affiliates, based on earnings.', 'affiliate-wp' );?></p>
+						<p><?php _e( 'The Overview page now has a new widget that shows your top 5 most valuable affiliates, based on earnings.', 'affiliate-wp' );?></p>
 
 						<h4><?php _e( 'Shortcode to Affiliate-only Content', 'affiliate-wp' );?></h4>
 						<p><?php _e( 'We have added a new shortcode that lets you show specific content to logged-in affiliates only.', 'affiliate-wp' );?></p>
@@ -236,7 +236,7 @@ class Affiliate_WP_Welcome {
 		?>
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to AffiliateWP %s', 'affiliate-wp' ), esc_html( $display_version ) ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for Installing AffiliateWP %s. Affiliate marketing for WordPress you\'ll love ', 'affiliate-wp' ), esc_html( $display_version ) ); ?></div>
+			<div class="about-text"><?php printf( __( 'Thank you for installing AffiliateWP v%s. The best affiliate marketing plugin for WordPress.', 'affiliate-wp' ), esc_html( $display_version ) ); ?></div>
 			<div class="affwp-badge"><span><?php printf( __( 'Version %s', 'affiliate-wp' ), esc_html( $display_version ) ); ?></span></div>
 
 			<?php $this->tabs(); ?>
@@ -252,7 +252,7 @@ class Affiliate_WP_Welcome {
 					<h4><?php _e( 'The Overview Page', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'The overview page gives you a quick summary of your recent affiliate activity, including recent registrations, referrals, and visits.' ,'affiliate-wp' ); ?></p>
 					<p><?php _e( 'It also provides a quick summary of your affiliates\' referral earnings.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'If you allow affiliate registrations, you can also easily accept or reject affiliate\'s appliications directly from the Overview page', 'affiliate-wp' ); ?></p>
+					<p><?php _e( 'If you allow affiliate registrations, you can also easily accept or reject affiliate\'s applications directly from the Overview page', 'affiliate-wp' ); ?></p>
 				</div>
 
 				<h3><?php _e( 'Adding Affiliates', 'affiliate-wp' );?></h3>
