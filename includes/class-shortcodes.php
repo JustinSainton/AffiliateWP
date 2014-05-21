@@ -10,6 +10,7 @@ class Affiliate_WP_Shortcodes {
 		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
 		add_shortcode( 'affiliate_referral_url', array( $this, 'referral_url' ) );
 		add_shortcode( 'affiliate_content', array( $this, 'affiliate_content' ) );
+		add_shortcode( 'non_affiliate_content', array( $this, 'non_affiliate_content' ) );
 	}
 
 	/**
@@ -163,6 +164,21 @@ class Affiliate_WP_Shortcodes {
 	public function affiliate_content( $atts, $content = null ) {
 
 		if ( ! affwp_is_affiliate() ) {
+			return;
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Non Affiliate content shortcode.
+	 * Renders the content if the current user is not an affiliate.
+	 * @since  1.1
+	 * @return string 
+	 */
+	public function non_affiliate_content( $atts, $content = null ) {
+
+		if ( affwp_is_affiliate() ) {
 			return;
 		}
 
