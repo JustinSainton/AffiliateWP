@@ -70,6 +70,9 @@ class Affiliate_WP_Referrals_Graph extends Affiliate_WP_Graph {
 			'affiliate_id' => $this->get( 'affiliate_id' )
 		) );
 
+		$pending[] = array( strtotime( $start ) * 1000 );
+		$pending[] = array( strtotime( $end ) * 1000 );
+
 		if( $referrals ) {
 			foreach( $referrals as $referral ) {
 
