@@ -54,6 +54,10 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		$args  = wp_parse_args( $args, $defaults );
 
+		if( $args['number'] < 1 ) {
+			$args['number'] = 999999999999;
+		}
+
 		$where = '';
 
 		// visits for specific affiliates

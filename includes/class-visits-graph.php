@@ -66,6 +66,7 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 			'orderby'      => 'date',
 			'order'        => 'ASC',
 			'date'         => $date,
+			'number'       => -1,
 			'affiliate_id' => $this->get( 'affiliate_id' )
 		) );
 
