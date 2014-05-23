@@ -700,6 +700,10 @@ class Affiliate_WP_Settings {
 
 	public function check_license() {
 
+		if( ! empty( $_POST['affwp_settings'] ) ) {
+			return; // Don't fire when saving settings
+		}
+
 		$status = get_transient( 'affwp_license_check' );
 
 		// Run the license check a maximum of once per day
