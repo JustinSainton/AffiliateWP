@@ -6,7 +6,7 @@ class Affiliate_WP_Upgrades {
 
 	public function __construct() {
 
-		add_action( 'admin_init', array( $this, 'init' ) );
+		add_action( 'admin_init', array( $this, 'init' ), -9999 );
 
 	}
 

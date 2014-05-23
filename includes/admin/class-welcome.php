@@ -438,8 +438,7 @@ class Affiliate_WP_Welcome {
 			wp_safe_redirect( admin_url( 'index.php?page=affwp-getting-started' ) );
 			exit;
 		} else { // Update
-			wp_safe_redirect( admin_url( 'index.php?page=affwp-getting-started' ) );
-			//wp_safe_redirect( admin_url( 'index.php?page=affwp-what-is-new' ) );
+			wp_safe_redirect( admin_url( 'index.php?page=affwp-what-is-new' ) );
 			exit;
 		}
 	}
