@@ -135,7 +135,7 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 	 * @since 1.1
 	 */
 	public function get_conversion_rate() {
-		return round( ( $this->converted / $this->total ) * 100, 2 );
+		return $this->total > 0 ? round( ( $this->converted / $this->total ) * 100, 2 ) : 0;
 	}
 
 }
