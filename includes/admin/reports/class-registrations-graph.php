@@ -24,16 +24,17 @@ class Affiliate_WP_Registrations_Graph extends Affiliate_WP_Graph {
 			'date'     => $date
 		) );
 
+		$affiliate_data = array();
+		$affiliate_data[] = array( strtotime( $start ) * 1000 );
+		$affiliate_data[] = array( strtotime( $end ) * 1000 );
+
 		if( $affiliates ) {
 
-			$affiliate_data = array();
-			$affiliate_data[] = array( strtotime( $start ) * 1000, 0 );
 			foreach( $affiliates as $affiliate ) {
 
 				$affiliate_data[] = array( strtotime( $affiliate->date_registered ) * 1000, 1 );
 
 			}
-			$affiliate_data[] = array( strtotime( $end ) * 1000, 0 );
 
 		}
 
