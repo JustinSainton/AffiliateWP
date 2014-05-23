@@ -19,7 +19,7 @@
 		</p>
 
 		<p>
-			<label for="affwp-user-remember">
+			<label class="affwp-user-remember" for="affwp-user-remember">
 				<input id="affwp-user-remember" type="checkbox" name="affwp_user_remember" value="1" /><?php _e( 'Remember Me', 'affiliate-wp' ); ?>
 			</label>
 		</p>
