@@ -79,6 +79,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			unset( $args['date_registered'] );
 		}
 
+		if( $args['number'] < 1 ) {
+			$args['number'] = 999999999999;
+		}
+
 		$where = '';
 
 		// affiliates for specific users
