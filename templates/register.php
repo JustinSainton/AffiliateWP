@@ -42,6 +42,8 @@
 
 		<?php endif; ?>
 
+		<?php do_action( 'affwp_register_fields_before_tos' ); ?>
+
 		<?php $terms_of_use =  affiliate_wp()->settings->get( 'terms_of_use' ); ?>
 		<?php if( !empty( $terms_of_use ) ): ?>
 			<p>
@@ -51,6 +53,8 @@
 				</label>
 			</p>
 		<?php endif;?>
+
+		<?php do_action( 'affwp_register_fields_before_submit' ); ?>
 
 		<p>
 			<input type="hidden" name="affwp_honeypot" value="" />

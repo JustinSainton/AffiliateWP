@@ -12,6 +12,7 @@ class Affiliate_WP_Register {
 	public function __construct() {
 
 		add_action( 'affwp_affiliate_register', array( $this, 'process_registration' ) );
+		add_action( 'user_register', array( $this, 'auto_register_user_as_affiliate' ) );
 
 	}
 
@@ -153,6 +154,26 @@ class Affiliate_WP_Register {
 		wp_set_auth_cookie( $user_id, $remember );
 		wp_set_current_user( $user_id, $user_login );
 		do_action( 'wp_login', $user_login, $user );
+
+	}
+
+	/**
+	 * Register a user as an affiliate during user registration
+	 *
+	 * @since 1.1
+	 * @return bool
+	 */
+	public function auto_register_user_as_affiliate( $user_id = 0 ) {
+
+		if( ! affiliate_wp()->settings->get( 'auto_register' ) ) {
+			return;
+		}
+
+		if( did_action( 'process_registration' ) ) {
+			return;
+		}
+
+		affwp_add_affiliate( array( 'user_id' => $user_id ) );
 
 	}
 

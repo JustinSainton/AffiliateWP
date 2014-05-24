@@ -175,3 +175,13 @@ table.affwp_table td a {
 	content: "\f158";
 	color: #ef6c5e;
 }
+
+/* WooCommerce Admin Tweaks */
+.affwp-woo-coupon-field .affwp-ajax-search-wrap {
+	position: relative;
+	display:inline-block;
+}
+.affwp-woo-coupon-field #affwp_user_search_results {
+	left: 0;
+	top: 25px;
+}

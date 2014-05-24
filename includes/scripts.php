@@ -29,7 +29,7 @@ function affwp_is_admin_page() {
 		'affiliate-wp-tools',
 		'affiliate-wp-settings',
 		'affwp-getting-started',
-		'affwp-about',
+		'affwp-what-is-new',
 		'affwp-credits'
 	);
 		
@@ -44,7 +44,7 @@ function affwp_is_admin_page() {
  *  @since 1.0
  *  @return void
  */
-function affwp_admin_scripts( $hook ) {
+function affwp_admin_scripts() {
 
 	if( ! affwp_is_admin_page() ) {
 		return;
@@ -58,6 +58,7 @@ function affwp_admin_scripts( $hook ) {
 		'affwp_version' => AFFILIATEWP_VERSION,
 		'currency_sign' => affwp_currency_filter(''),
 		'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
+		'confirm'       => __( 'Are you sure you want to generate the payout file? All included referrals will be marked as Paid.', 'affiliate-wp' ),
 	));
 
 	wp_enqueue_script( 'jquery-ui-datepicker' );
@@ -70,7 +71,7 @@ add_action( 'admin_enqueue_scripts', 'affwp_admin_scripts' );
  *  @since 1.0
  *  @return void
  */
-function affwp_admin_styles( $hook ) {
+function affwp_admin_styles() {
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 

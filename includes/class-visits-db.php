@@ -54,6 +54,10 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		$args  = wp_parse_args( $args, $defaults );
 
+		if( $args['number'] < 1 ) {
+			$args['number'] = 999999999999;
+		}
+
 		$where = '';
 
 		// visits for specific affiliates
@@ -63,7 +67,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$affiliate_ids = implode( ',', $args['affiliate_id'] );
 			} else {
 				$affiliate_ids = intval( $args['affiliate_id'] );
-			}	
+			}
 
 			$where .= "WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
 
@@ -76,7 +80,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$referral_ids = implode( ',', $args['referral_id'] );
 			} else {
 				$referral_ids = intval( $args['referral_id'] );
-			}	
+			}
 
 			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
 
@@ -87,17 +91,36 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 			if( is_array( $args['date'] ) ) {
 
-				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
-				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+				if( ! empty( $args['date']['start'] ) ) {
 
-				if( empty( $where ) ) {
+					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
 
-					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
-				
-				} else {
-					
-					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
-	
+					if( ! empty( $where ) ) {
+
+						$where .= " AND `date` >= '{$start}'";
+
+					} else {
+
+						$where .= " WHERE `date` >= '{$start}'";
+
+					}
+
+				}
+
+				if( ! empty( $args['date']['end'] ) ) {
+
+					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+
+					if( ! empty( $where ) ) {
+
+						$where .= " AND `date` <= '{$end}'";
+
+					} else {
+
+						$where .= " WHERE `date` <= '{$end}'";
+
+					}
+
 				}
 
 			} else {
@@ -164,7 +187,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$affiliate_ids = implode( ',', $args['affiliate_id'] );
 			} else {
 				$affiliate_ids = intval( $args['affiliate_id'] );
-			}	
+			}
 
 			$where .= " WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
 

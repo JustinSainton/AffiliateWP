@@ -152,7 +152,27 @@ class Affiliate_WP_Graph {
 		// Use minified libraries if SCRIPT_DEBUG is turned off
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		wp_enqueue_script( 'jquery-flot', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.flot' . $suffix . '.js' );
-		wp_enqueue_script( 'jquery-flot-resize', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.flot.resize' . $suffix . '.js' );
+		
+		if( $this->load_resize_script() ) {
+			wp_enqueue_script( 'jquery-flot-resize', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.flot.resize' . $suffix . '.js' );
+		}
+	}
+
+	/**
+	 * Determines if the resize script should be loaded
+	 *
+	 * @since 1.1
+	 */
+	public function load_resize_script() {
+			
+		$ret = true;
+
+		// The DMS theme is known to cause some issues with the resize script
+		if( defined( 'DMS_CORE' ) ) {
+			$ret = false;
+		}
+
+		return apply_filters( 'affwp_load_flot_resize', $ret );
 	}
 
 	/**

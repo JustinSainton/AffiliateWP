@@ -293,7 +293,6 @@ function affwp_month_num_to_name( $n ) {
 	return date_i18n( "M", $timestamp );
 }
 
-
 /**
  * Checks whether function is disabled.
  *

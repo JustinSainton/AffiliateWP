@@ -206,12 +206,25 @@ class Affiliate_WP_Settings {
 						'type' => 'text',
 						'std' => 'ref'
 					),
+					'referral_rate_type' => array(
+						'name' => __( 'Referral Rate Type', 'affiliate-wp' ),
+						'desc' => __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ),
+						'type' => 'select',
+						'options' => affwp_get_affiliate_rate_types()
+					),
 					'referral_rate' => array(
-						'name' => __( 'Referral Rate (%)', 'affiliate-wp' ),
-						'desc' => __( 'The default referral rate for affiliates. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
+						'name' => __( 'Referral Rate', 'affiliate-wp' ),
+						'desc' => __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
 						'type' => 'number',
 						'size' => 'small',
 						'std' => '20'
+					),
+					'cookie_exp' => array(
+						'name' => __( 'Cookie Expiration', 'affiliate-wp' ),
+						'desc' => __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ),
+						'type' => 'number',
+						'size' => 'small',
+						'std' => '1'
 					),
 					'currency_settings' => array(
 						'name' => '<strong>' . __( 'Currency Settings', 'affiliate-wp' ) . '</strong>',
@@ -276,6 +289,11 @@ class Affiliate_WP_Settings {
 					'require_approval' => array(
 						'name' => __( 'Require approval', 'affiliate-wp' ),
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'auto_register' => array(
+						'name' => __( 'Auto Register New Users', 'affiliate-wp' ),
+						'desc' => __( 'Automatically register new users as affiliates?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'revoke_on_refund' => array(
@@ -681,6 +699,10 @@ class Affiliate_WP_Settings {
 	}
 
 	public function check_license() {
+
+		if( ! empty( $_POST['affwp_settings'] ) ) {
+			return; // Don't fire when saving settings
+		}
 
 		$status = get_transient( 'affwp_license_check' );
 

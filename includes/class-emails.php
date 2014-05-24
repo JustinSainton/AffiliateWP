@@ -60,7 +60,7 @@ class Affiliate_WP_Emails {
 				$subject  = __( 'Affiliate Application Accepted', 'affiliate-wp' );
 				$message  = sprintf( __( "Congratulations %s!\n\n", "affiliate-wp" ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) );
 				$message .= sprintf( __( "Your affiliate application on %s has been accepted!\n\n", "affiliate-wp" ), home_url() );
-				$message .= sprintf( __( "Log into your affiliate area at %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
+				$message .= sprintf( __( "Log into your affiliate area at %s\n\n", "affiliate-wp" ), affiliate_wp()->login->get_login_url() );
 
 				$subject = apply_filters( 'affwp_application_accepted_subject', $subject, $args );
 				$message = apply_filters( 'affwp_application_accepted_email', $message, $args );
@@ -71,9 +71,10 @@ class Affiliate_WP_Emails {
 
 				$email    = affwp_get_affiliate_email( $args['affiliate_id'] );
 				$subject  = __( 'Referral Awarded!', 'affiliate-wp' );
+				$amount   = html_entity_decode( affwp_currency_filter( $args['amount'] ), ENT_COMPAT, 'UTF-8' );
 				$message  = sprintf( __( "Congratulations %s!\n\n", "affiliate-wp" ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) );
-				$message .= sprintf( __( "You have been awarded a new referral of %s on %s!\n\n", "affiliate-wp" ), affwp_currency_filter( $args['amount'] ), home_url() );
-				$message .= sprintf( __( "Log into your affiliate area to view your earnings or disable these notifications: %s\n\n", "affiliate-wp" ), get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
+				$message .= sprintf( __( "You have been awarded a new referral of %s on %s!\n\n", "affiliate-wp" ), $amount, home_url() );
+				$message .= sprintf( __( "Log into your affiliate area to view your earnings or disable these notifications: %s\n\n", "affiliate-wp" ), affiliate_wp()->login->get_login_url() );
 
 				$subject = apply_filters( 'affwp_new_referral_subject', $subject, $args );
 				$message = apply_filters( 'affwp_new_referral_email', $message, $args );
