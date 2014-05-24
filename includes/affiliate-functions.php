@@ -652,7 +652,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if( affiliate_wp()->affiliates->add( $args ) ) {
 
-			if ( ! empty( $_POST['affwp_action'] ) ) {
+			if ( ! empty( $_POST['affwp_action'] ) && is_admin() ) {
 
 				wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
 			}
@@ -744,20 +744,4 @@ function affwp_update_profile_settings( $data = array() ) {
 	if ( ! empty( $_POST['affwp_action'] ) ) {
 		wp_redirect( add_query_arg( 'affwp_notice', 'profile-updated' ) ); exit;
 	}
-}
-
-/**
- * Register a user as an affiliate during user registration
- *
- * @since 1.1
- * @return bool
- */
-function affwp_auto_register_user_as_affiliate( $user_id = 0 ) {
-
-	if( ! affiliate_wp()->settings->get( 'auto_register' ) ) {
-		return;
-	}
-	
-	affwp_add_affiliate( array( 'user_id' => $user_id ) );
-
 }
