@@ -132,10 +132,6 @@ class Affiliate_WP_Register {
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
 		) );
 
-		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
-			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
-		}
-
 		do_action( 'affwp_register_user', $affiliate_id, $status );
 	}
 

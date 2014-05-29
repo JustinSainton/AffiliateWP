@@ -4,9 +4,17 @@ class Affiliate_WP_Emails {
 
 	public function __construct() {
 
+		add_action( 'affwp_register_user', array( $this, 'notify_on_registration' ), 10, 2 );
 		add_action( 'affwp_set_affiliate_status', array( $this, 'notify_on_approval' ), 10, 3 );
 		add_action( 'affwp_referral_accepted', array( $this, 'notify_of_new_referral' ), 10, 2 );
 
+	}
+
+	public function notify_on_registration( $affiliate_id = 0, $status = '' ) {
+
+		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
+		}
 	}
 
 	public function notify_on_approval( $affiliate_id = 0, $status = '', $old_status = '' ) {
