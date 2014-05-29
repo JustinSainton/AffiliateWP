@@ -99,7 +99,7 @@ class Affiliate_WP_Register {
 	 */
 	private function register_user() {
 
-		$status  = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
+		$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
 
 		if( ! is_user_logged_in() ) {
 

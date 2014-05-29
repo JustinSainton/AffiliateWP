@@ -645,8 +645,9 @@ function affwp_add_affiliate( $data = array() ) {
 	if( ! affiliate_wp()->affiliates->get_by( 'user_id', $user_id ) ) {
 
 		$args = array(
-			'user_id' => $user_id,
-			'rate'    => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : '',
+			'user_id'       => $user_id,
+			'status'        => affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active',
+			'rate'          => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : '',
 			'payment_email' => ! empty( $data['payment_email'] ) ? sanitize_text_field( $data['payment_email'] ) : ''
 		);
 
