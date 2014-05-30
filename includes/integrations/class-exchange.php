@@ -33,7 +33,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	public function mark_referral_complete( $transaction, $old_status, $old_status_cleared ) {
 
-		if( 'paid' == $transaction->get_status() && 'paid' != $old_status ) {
+		$new_status         = it_exchange_get_transaction_status( $transaction->ID );
+		$new_status_cleared = it_exchange_transaction_is_cleared_for_delivery( $transaction->ID );
+
+		if ( ( $new_status != $old_status ) && ! $old_status_cleared && $new_status_cleared ) {
 
 			$this->complete_referral( $transaction->ID );
 

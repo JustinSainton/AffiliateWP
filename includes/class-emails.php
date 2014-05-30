@@ -4,9 +4,17 @@ class Affiliate_WP_Emails {
 
 	public function __construct() {
 
+		add_action( 'affwp_register_user', array( $this, 'notify_on_registration' ), 10, 3 );
 		add_action( 'affwp_set_affiliate_status', array( $this, 'notify_on_approval' ), 10, 3 );
 		add_action( 'affwp_referral_accepted', array( $this, 'notify_of_new_referral' ), 10, 2 );
 
+	}
+
+	public function notify_on_registration( $affiliate_id = 0, $status = '', $args = array() ) {
+
+		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id, 'name' => $args['display_name'] ) );
+		}
 	}
 
 	public function notify_on_approval( $affiliate_id = 0, $status = '', $old_status = '' ) {
@@ -42,10 +50,10 @@ class Affiliate_WP_Emails {
 				$email    = get_option( 'admin_email' );
 				$subject  = __( 'New Affiliate Registration', 'affiliate-wp' );
 				$message  = "A new affiliate has registered on your site, " . home_url() ."\n\n";
-				$message .= __( 'Name: ', 'affiliate-wp' ) . affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) . "\n\n";
+				$message .= sprintf( __( 'Name: %s', 'affiliate-wp' ), $args['name'] ) . "\n\n";
 
 				if( affiliate_wp()->settings->get( 'require_approval' ) ) {
-					$message .= sprintf( "Review pending applications: %s\n\n", admin_url( 'admin.php?page=affiliate-wp-affiliates&status=pending' ) ); 
+					$message .= sprintf( "Review pending applications: %s\n\n", admin_url( 'admin.php?page=affiliate-wp-affiliates&status=pending' ) );
 
 				}
 

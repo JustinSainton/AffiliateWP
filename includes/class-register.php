@@ -100,7 +100,7 @@ class Affiliate_WP_Register {
 	 */
 	private function register_user() {
 
-		$status  = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
+		$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
 
 		if( ! is_user_logged_in() ) {
 
@@ -124,6 +124,8 @@ class Affiliate_WP_Register {
 		} else {
 
 			$user_id = get_current_user_id();
+			$user    = (array) get_userdata( $user_id );
+			$args    = (array) $user['data'];
 
 		}
 
@@ -133,11 +135,7 @@ class Affiliate_WP_Register {
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
 		) );
 
-		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
-			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
-		}
-
-		do_action( 'affwp_register_user', $affiliate_id, $status );
+		do_action( 'affwp_register_user', $affiliate_id, $status, $args );
 	}
 
 	/**
