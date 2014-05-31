@@ -82,7 +82,8 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 		$args = array(
 			'status'       => $this->status,
 			'date'         => ! empty( $this->date ) ? $this->date : '',
-			'affiliate_id' => $this->affiliate
+			'affiliate_id' => $this->affiliate,
+			'number'       => -1
 		);
 
 		$data         = array();

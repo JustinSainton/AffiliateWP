@@ -49,6 +49,7 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 		$args = array(
 			'status' => 'unpaid',
 			'date'   => ! empty( $this->date ) ? $this->date : '',
+			'number' => -1
 		);
 
 		// Final data to be exported
