@@ -47,7 +47,7 @@ class Affiliate_WP_Emails {
 
 			case 'registration' :
 
-				$email    = get_option( 'admin_email' );
+				$email    = apply_filters( 'affwp_registration_admin_email', get_option( 'admin_email' ) );
 				$subject  = __( 'New Affiliate Registration', 'affiliate-wp' );
 				$message  = "A new affiliate has registered on your site, " . home_url() ."\n\n";
 				$message .= sprintf( __( 'Name: %s', 'affiliate-wp' ), $args['name'] ) . "\n\n";
