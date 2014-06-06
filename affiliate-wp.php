@@ -59,6 +59,7 @@ final class Affiliate_WP {
 	public $register;
 	public $integrations;
 	public $emails;
+	public $assets;
 
 
 	/**
@@ -94,6 +95,7 @@ final class Affiliate_WP {
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
 			self::$instance->emails       = new Affiliate_WP_Emails;
+			self::$instance->assets       = new Affiliate_WP_Assets;
 
 			self::$instance->updater();
 		}
@@ -207,6 +209,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-templates.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-tracking.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-assets.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/referral-functions.php';

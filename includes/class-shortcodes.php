@@ -4,13 +4,15 @@ class Affiliate_WP_Shortcodes {
 
 	public function __construct() {
 
-		add_shortcode( 'affiliate_area', array( $this, 'affiliate_area' ) );
-		add_shortcode( 'affiliate_login', array( $this, 'affiliate_login' ) );
-		add_shortcode( 'affiliate_registration', array( $this, 'affiliate_registration' ) );
-		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script' ) );
-		add_shortcode( 'affiliate_referral_url', array( $this, 'referral_url' ) );
-		add_shortcode( 'affiliate_content', array( $this, 'affiliate_content' ) );
-		add_shortcode( 'non_affiliate_content', array( $this, 'non_affiliate_content' ) );
+		add_shortcode( 'affiliate_area', 				array( $this, 'affiliate_area' 			) );
+		add_shortcode( 'affiliate_login', 				array( $this, 'affiliate_login' 		) );
+		add_shortcode( 'affiliate_registration', 		array( $this, 'affiliate_registration' 	) );
+		add_shortcode( 'affiliate_conversion_script', 	array( $this, 'conversion_script' 		) );
+		add_shortcode( 'affiliate_referral_url', 		array( $this, 'referral_url' 			) );
+		add_shortcode( 'affiliate_content', 			array( $this, 'affiliate_content' 		) );
+		add_shortcode( 'non_affiliate_content', 		array( $this, 'non_affiliate_content' 	) );
+		add_shortcode( 'affiliate_link', 				array( $this, 'affiliate_link' 			) );
+
 	}
 
 	/**
@@ -181,6 +183,31 @@ class Affiliate_WP_Shortcodes {
 		if ( affwp_is_affiliate() ) {
 			return;
 		}
+
+		return $content;
+	}
+
+	/**
+	 * Affiliate link shortcode.
+	 * Renders the content if the current user is not an affiliate.
+	 * @since  1.1.3
+	 * @return string 
+	 */
+	public function affiliate_link( $atts, $content = null ) {
+
+		extract( shortcode_atts( array(
+				'id'		=> '',
+				'link'		=> '',
+				'preview'	=> 'yes',
+				'text'		=> get_bloginfo( 'name' )
+			),
+			$atts, 'affiliate_link' )
+		);
+
+		if ( ! affwp_is_affiliate() )
+			return;
+
+		$content = affiliate_wp()->assets->link_html( $id, $link, $preview, $text );
 
 		return $content;
 	}
