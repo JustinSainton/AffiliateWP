@@ -26,7 +26,10 @@ function affwp_visits_admin() {
 		<?php do_action( 'affwp_affiliates_page_top' ); ?>
 		<form id="affwp-visits-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
 			<?php $visits_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-affiliates' ); ?>
-			<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
+			<span class="affwp-ajax-search-wrap">
+				<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" placeholder="<?php _e( 'Affiliate name', 'affiliate-wp' ); ?>" />
+				<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+			</span>
 			<div id="affwp_user_search_results"></div>
 			<input type="hidden" name="user_id" id="user_id" value=""/>
 			<input type="hidden" name="page" value="affiliate-wp-visits" />
@@ -213,7 +216,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	function column_referrer( $visit ) {
 
-		$referrer = ! empty( $visit->referrer ) ? '<a href="' . esc_url( $visit->referrer ) . '" taret="_blank">' . $visit->referrer . '</a>' : __( 'Direct traffic' );
+		$referrer = ! empty( $visit->referrer ) ? '<a href="' . esc_url( $visit->referrer ) . '" taret="_blank">' . $visit->referrer . '</a>' : __( 'Direct traffic', 'affiliate-wp' );
 		return $referrer;
 	}
 
@@ -272,8 +275,9 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function visits_data() {
 		
-		$page    = isset( $_GET['paged'] )   ? absint( $_GET['paged'] )   : 1;
-		$user_id = isset( $_GET['user_id'] ) ? absint( $_GET['user_id'] ) : false;
+		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )     : 1;
+		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )   : false;
+		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] ) : false;
 		
 		$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
 		$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
@@ -286,7 +290,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 			$date['end']   = $to . ' 23:59:59';
 		}
 
-		if( ! empty( $user_id ) ) {
+		if( ! empty( $user_id ) && empty( $affiliate_id ) ) {
 
 			$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
 
@@ -295,7 +299,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 		$visits = affiliate_wp()->visits->get_visits( array(
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
-			'affiliate_id' => ! empty( $affiliate_id ) ? $affiliate_id : false,
+			'affiliate_id' => $affiliate_id,
 			'date'         => $date
 		) );
 		return $visits;

@@ -12,7 +12,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		global $wpdb;
 
-		$this->table_name  = $wpdb->prefix . 'affiliate_wp_referrals';
+		if( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) {
+			// Allows a single referrals table for the whole network
+			$this->table_name  = 'affiliate_wp_referrals';
+		} else {
+			$this->table_name  = $wpdb->prefix . 'affiliate_wp_referrals';
+		}
 		$this->primary_key = 'referral_id';
 		$this->version     = '1.0';
 
@@ -68,13 +73,21 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$args = wp_parse_args( $data, $defaults );
 
+		if( empty( $args['affiliate_id'] ) ) {
+			return false;
+		}
+
+		if( ! affiliate_wp()->affiliates->affiliate_exists( $args['affiliate_id'] ) ) {
+			return false;
+		}
+
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {
 
 			wp_cache_flush();
 
-			do_action( 'affwp_add_referral', $add );
+			do_action( 'affwp_insert_referral', $add );
 
 			return $add;
 		}

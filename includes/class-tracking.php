@@ -20,7 +20,7 @@ class Affiliate_WP_Tracking {
 		 * Referrals are tracked via javascript by default
 		 * This fails on sites that have jQuery errors, so a fallback method is available
 		 * With the fallback, the template_redirect action is used
-		 */ 
+		 */
 
 		if( ! $this->use_fallback_method() ) {
 
@@ -104,7 +104,7 @@ class Affiliate_WP_Tracking {
 	 *
 	 * @since 1.0
 	 */
-	public function conversion_script( $args = array(), $md5 = '' ) {
+	public function conversion_script( $args = array() ) {
 
 		$defaults = array(
 			'amount'      => '',
@@ -114,6 +114,30 @@ class Affiliate_WP_Tracking {
 		);
 
 		$args = wp_parse_args( $args, $defaults );
+
+		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) ) {
+			// Allow the amount to be passed via a query string or post request
+			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( $_REQUEST['amount'] ) );
+		}
+
+		if( empty( $args['reference'] ) && ! empty( $_REQUEST['reference'] ) ) {
+			// Allow the reference to be passed via a query string or post request
+			$args['reference'] = sanitize_text_field( $_REQUEST['reference'] );
+		}
+
+		if( empty( $args['context'] ) && ! empty( $_REQUEST['context'] ) ) {
+			$args['context'] = sanitize_text_field( $_REQUEST['context'] );
+		}
+
+		if( empty( $args['description'] ) && ! empty( $_REQUEST['description'] ) ) {
+			$args['description'] = sanitize_text_field( $_REQUEST['description'] );
+		}
+
+		if( empty( $args['status'] ) && ! empty( $_REQUEST['status'] ) ) {
+			$args['status'] = sanitize_text_field( $_REQUEST['status'] );
+		}
+
+		$md5 = md5( $args['amount'] . $args['description'] . $args['reference'] . $args['context'] . $args['status'] );
 
 ?>
 		<script type="text/javascript">
@@ -225,7 +249,7 @@ class Affiliate_WP_Tracking {
 			// Store the visit in the DB
 			$referal_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
-				'amount'       => sanitize_text_field( $_POST['amount'] ),
+				'amount'       => affwp_calc_referral_amount( sanitize_text_field( $_POST['amount'] ), $affiliate_id ),
 				'status'       => $status,
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
@@ -302,7 +326,8 @@ class Affiliate_WP_Tracking {
 	 */
 	public function set_expiration_time() {
 		// Default time is 1 day
-		$this->expiration_time = apply_filters( 'affwp_cookie_expiration_time', 1 );
+		$days = affiliate_wp()->settings->get( 'cookie_exp', 1 );
+		$this->expiration_time = apply_filters( 'affwp_cookie_expiration_time', $days );
 	}
 
 	/**
@@ -374,7 +399,7 @@ class Affiliate_WP_Tracking {
 
 		$active = 'active' == affwp_get_affiliate_status( $affiliate_id );
 
-		$valid  = affiliate_wp()->affiliates->get_column( 'affiliate_id', $affiliate_id );
+		$valid  = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
 
 		return ! empty( $valid ) && ! $is_self && $active;
 	}
@@ -438,7 +463,7 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function use_fallback_method() {
-		
+
 		$use_fallback = affiliate_wp()->settings->get( 'tracking_fallback', false );
 
 		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );

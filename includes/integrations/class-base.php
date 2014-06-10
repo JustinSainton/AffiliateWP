@@ -21,8 +21,12 @@ abstract class Affiliate_WP_Base {
 			return false; // Referral already created for this reference
 		}
 
+		$amount = affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
+		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+			return false; // Ignore a zero amount referral
+		}
 		return affiliate_wp()->referrals->add( array(
-			'amount'       => affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference ),
+			'amount'       => $amount,
 			'reference'    => $reference,
 			'description'  => $description,
 			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
@@ -49,7 +53,7 @@ abstract class Affiliate_WP_Base {
 			return false;
 		}
 
-		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'unpaid' ) ) ) {
+		if ( affwp_set_referral_status( $referral->referral_id, 'unpaid' ) ) {
 
 			// Update the visit ID that spawned this referral
 			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );

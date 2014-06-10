@@ -10,17 +10,19 @@ class Affiliate_WP_Integrations {
 
 	public function get_integrations() {
 
-		return array(
-			'edd'          => 'Easy Digital Downloads',
-			'exchange'     => 'iThemes Exchange',
+		return apply_filters( 'affwp_integrations', array(
+			'edd'         => 'Easy Digital Downloads',
 			'gravityforms' => 'Gravity Forms',
-			'rcp'          => 'Restrict Content Pro',
-			'pmp'          => 'Paid Memberships Pro',
-			'shopp'        => 'Shopp',
-			'wishlist'     => 'Wishlist Memberships',
-			'woocommerce'  => 'WooCommerce',
-			'wpec'         => 'WP e-Commerce',
-		);
+			'exchange'    => 'iThemes Exchange',
+			'membermouse' => 'MemberMouse',
+			'jigoshop'    => 'Jigoshop',
+			'rcp'         => 'Restrict Content Pro',
+			'pmp'         => 'Paid Memberships Pro',
+			'shopp'       => 'Shopp',
+			'woocommerce' => 'WooCommerce',
+			'wpec'        => 'WP e-Commerce',
+		) );
+
 	}
 
 	public function get_enabled_integrations() {
@@ -36,7 +38,9 @@ class Affiliate_WP_Integrations {
 
 		foreach( $enabled as $filename => $integration ) {
 
-			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php';
+			if( file_exists( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php' ) ) {
+				require_once AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php';
+			}
 
 		}
 

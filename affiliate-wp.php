@@ -4,8 +4,8 @@
  * Plugin URI: http://affiliatewp.com
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
- * Author URI: http://pippinsplugins.com
- * Version: 0.1
+ * Author URI: http://affiliatewp.com
+ * Version: 1.1.2
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  * @package AffiliateWP
  * @category Core
  * @author Pippin Williamson
- * @version 0.1
+ * @version 1.1.2
  */
 
 // Exit if accessed directly
@@ -46,15 +46,18 @@ final class Affiliate_WP {
 	 */
 	private static $instance;
 
-	private $version = '0.1';
+	private $version = '1.1.2';
 
 	// Class properties
 	public $affiliates;
 	public $referrals;
 	public $visits;
-	public $tracking;
 	public $settings;
+	public $tracking;
 	public $templates;
+	public $login;
+	public $register;
+	public $integrations;
 	public $emails;
 
 
@@ -162,10 +165,17 @@ final class Affiliate_WP {
 	 */
 	private function includes() {
 
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/actions.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-capabilities.php';
+
 		if( is_admin() ) {
 
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-addon-updater.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-notices.php';
@@ -186,14 +196,10 @@ final class Affiliate_WP {
 
 		}
 
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/actions.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-capabilities.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-graph.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-integrations.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-login.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-db.php';
@@ -288,6 +294,4 @@ endif; // End if class_exists check
 function affiliate_wp() {
 	return Affiliate_WP::instance();
 }
-
-// Get AffiliateWP Running
 affiliate_wp();

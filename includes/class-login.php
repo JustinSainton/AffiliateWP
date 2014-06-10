@@ -76,7 +76,7 @@ class Affiliate_WP_Login {
 	}
 
 	/**
-	 * Log the user in 
+	 * Log the user in
 	 *
 	 * @since 1.0
 	 */
@@ -97,7 +97,7 @@ class Affiliate_WP_Login {
 	 *
 	 * @since 1.0
 	 */
-	private function add_error( $error_id, $message = '' ) {
+	public function add_error( $error_id, $message = '' ) {
 		$this->errors[ $error_id ] = $message;
 	}
 
@@ -112,16 +112,25 @@ class Affiliate_WP_Login {
 			return;
 		}
 
-		echo '<div class="affwp_errors">';
+		echo '<div class="affwp-errors">';
 
 		foreach( $this->errors as $error_id => $error ) {
 
-			echo '<p class="affwp_error">' . esc_html( $error ) . '</p>';
+			echo '<p class="affwp-error">' . esc_html( $error ) . '</p>';
 
 		}
 
 		echo '</div>';
 
+	}
+
+	/**
+	 * Retrieves the login URL
+	 *
+	 * @since 1.1
+	 */
+	function get_login_url() {
+	    return apply_filters( 'affwp_login_url', get_permalink( affiliate_wp()->settings->get( 'affiliates_page' ) ) );
 	}
 
 }

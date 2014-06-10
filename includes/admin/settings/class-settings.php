@@ -70,7 +70,7 @@ class Affiliate_WP_Settings {
 				add_settings_field(
 					'affwp_settings[' . $key . ']',
 					$name,
-					is_callable( array( $this, $option['type'] . '_callback' ) ) ? array( $this, $option['type'] . '_callback' ) : array( $this, 'missing_callback' ),
+					is_callable( array( $this, $option[ 'type' ] . '_callback' ) ) ? array( $this, $option[ 'type' ] . '_callback' ) : array( $this, 'missing_callback' ),
 					'affwp_settings_' . $tab,
 					'affwp_settings_' . $tab,
 					array(
@@ -106,25 +106,39 @@ class Affiliate_WP_Settings {
 
 		parse_str( $_POST['_wp_http_referer'], $referrer );
 
-		$saved    = get_option( 'affwp_settings' );
+		$saved    = get_option( 'affwp_settings', array() );
+		if( ! is_array( $saved ) ) {
+			$saved = array();
+		}
 		$settings = $this->get_registered_settings();
 		$tab      = isset( $referrer['tab'] ) ? $referrer['tab'] : 'general';
 
 		$input = $input ? $input : array();
 		$input = apply_filters( 'affwp_settings_' . $tab . '_sanitize', $input );
-		
+
 		// Ensure a value is always passed for every checkbox
-		foreach ( $settings[ $tab ] as $key => $setting ) {
-			if ( isset( $settings[ $tab ][ $key ]['type'] ) && 'checkbox' == $settings[ $tab ][ $key ]['type'] ) {
-				$input[ $key ] = ! empty( $input[ $key ] );
+		if( ! empty( $settings[ $tab ] ) ) {
+			foreach ( $settings[ $tab ] as $key => $setting ) {
+
+				// Single checkbox
+				if ( isset( $settings[ $tab ][ $key ][ 'type' ] ) && 'checkbox' == $settings[ $tab ][ $key ][ 'type' ] ) {
+					$input[ $key ] = ! empty( $input[ $key ] );
+				}
+
+				// Multicheck list
+				if ( isset( $settings[ $tab ][ $key ][ 'type' ] ) && 'multicheck' == $settings[ $tab ][ $key ][ 'type' ] ) {
+					if( empty( $input[ $key ] ) ) {
+						$input[ $key ] = array();
+					}
+				}
 			}
 		}
-
+		
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
 
 			// Get the setting type (checkbox, select, etc)
-			$type = isset( $settings[$tab][$key]['type'] ) ? $settings[$tab][$key]['type'] : false;
+			$type = isset( $settings[ $tab ][ $key ][ 'type' ] ) ? $settings[ $tab ][ $key ][ 'type' ] : false;
 
 			if ( $type ) {
 				// Field type specific filter
@@ -132,7 +146,7 @@ class Affiliate_WP_Settings {
 			}
 
 			// General filter
-			$input[$key] = apply_filters( 'affwp_settings_sanitize', $value, $key );
+			$input[ $key ] = apply_filters( 'affwp_settings_sanitize', $value, $key );
 		}
 
 		add_settings_error( 'affwp-notices', '', __( 'Settings updated.', 'affiliate-wp' ), 'updated' );
@@ -188,16 +202,29 @@ class Affiliate_WP_Settings {
 					),
 					'referral_var' => array(
 						'name' => __( 'Referral Variable', 'affiliate-wp' ),
-						'desc' => __( 'The URL variable for referral URLs.', 'affiliate-wp' ),
+						'desc' => sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ),
 						'type' => 'text',
 						'std' => 'ref'
 					),
+					'referral_rate_type' => array(
+						'name' => __( 'Referral Rate Type', 'affiliate-wp' ),
+						'desc' => __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ),
+						'type' => 'select',
+						'options' => affwp_get_affiliate_rate_types()
+					),
 					'referral_rate' => array(
-						'name' => __( 'Referral Rate (%)', 'affiliate-wp' ),
-						'desc' => __( 'The default referral rate for affiliates. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
+						'name' => __( 'Referral Rate', 'affiliate-wp' ),
+						'desc' => __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
 						'type' => 'number',
 						'size' => 'small',
 						'std' => '20'
+					),
+					'cookie_exp' => array(
+						'name' => __( 'Cookie Expiration', 'affiliate-wp' ),
+						'desc' => __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ),
+						'type' => 'number',
+						'size' => 'small',
+						'std' => '1'
 					),
 					'currency_settings' => array(
 						'name' => '<strong>' . __( 'Currency Settings', 'affiliate-wp' ) . '</strong>',
@@ -240,7 +267,7 @@ class Affiliate_WP_Settings {
 				array(
 					'integrations' => array(
 						'name' => __( 'Integrations', 'affiliate-wp' ),
-						'desc' => __( 'Choose the integrations to enable. If you are not using any of these, you may use the <strong>[affiliate_conversion_script]</strong> short code to track and create referrals. Refer to the documentation for help using this.', 'affiliate-wp' ),
+						'desc' => sprintf( __( 'Choose the integrations to enable. If you are not using any of these, you may use the <strong>[affiliate_conversion_script]</strong> short code to track and create referrals. Refer to the <a href="%s" target="_blank">documentation</a> for help using this.', 'affiliate-wp' ), 'http://affiliatewp.com/docs/custom-referral-tracking/' ),
 						'type' => 'multicheck',
 						'options' => affiliate_wp()->integrations->get_integrations()
 					)
@@ -264,6 +291,11 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'auto_register' => array(
+						'name' => __( 'Auto Register New Users', 'affiliate-wp' ),
+						'desc' => __( 'Automatically register new users as affiliates?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'revoke_on_refund' => array(
 						'name' => __( 'Reject Unpaid Referrals on Refund?', 'affiliate-wp' ),
 						'desc' => __( 'Should unpaid referrals get automatically rejected when the originating purchase is refunded or revoked?', 'affiliate-wp' ),
@@ -272,6 +304,11 @@ class Affiliate_WP_Settings {
 					'tracking_fallback' => array(
 						'name' => __( 'Use Fallback Referral Tracking Method?', 'affiliate-wp' ),
 						'desc' => __( 'The method used to track referral links can fail on sites that have jQuery errors. Check this if referrals are not getting tracked properly.', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'ignore_zero_referrals' => array(
+						'name' => __( 'Ignore Zero Referrals?', 'affiliate-wp' ),
+						'desc' => __( 'Check this box if you would like AffiliateWP to completely ignore referrals for a zero total amount. This can be useful for multi-price products that start at zero, or if a discount was used, which resulted in a zero amount. Please note: if this setting is enabled and a visit results in a zero referral, then the visit would be considered not converted.', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'uninstall_on_delete' => array(
@@ -413,7 +450,7 @@ class Affiliate_WP_Settings {
 		$html = '<input type="text" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
 		$license_status = $this->get( 'license_status' );
 		$license_key = ! empty( $value ) ? $value : false;
-		
+
 		if( 'valid' === $license_status && ! empty( $license_key ) ) {
 			$html .= '<input type="submit" class="button" name="affwp_deactivate_license" value="' . esc_attr__( 'Deactivate License', 'affiliate-wp' ) . '"/>';
 			$html .= '<span style="color:green;">&nbsp;' . __( 'Your license is valid!', 'affiliate-wp' ) . '</span>';
@@ -618,10 +655,12 @@ class Affiliate_WP_Settings {
 
 		update_option( 'affwp_settings', $options );
 
+		delete_transient( 'affwp_license_check' );
+
 	}
 
 	public function deactivate_license() {
-		
+
 		if( ! isset( $_POST['affwp_settings'] ) )
 			return;
 
@@ -655,10 +694,16 @@ class Affiliate_WP_Settings {
 
 		update_option( 'affwp_settings', $options );
 
+		delete_transient( 'affwp_license_check' );
+
 	}
 
 	public function check_license() {
-		
+
+		if( ! empty( $_POST['affwp_settings'] ) ) {
+			return; // Don't fire when saving settings
+		}
+
 		$status = get_transient( 'affwp_license_check' );
 
 		// Run the license check a maximum of once per day
@@ -689,8 +734,16 @@ class Affiliate_WP_Settings {
 
 			set_transient( 'affwp_license_check', $license_data->license, DAY_IN_SECONDS );
 
+			$status = $license_data->license;
+
 		}
 
+		return $status;
+
+	}
+
+	public function is_license_valid() {
+		return $this->check_license() == 'valid';
 	}
 
 }

@@ -17,10 +17,30 @@
 				</th>
 
 				<td>
-					<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
-					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+					<span class="affwp-ajax-search-wrap">
+						<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
+						<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+					</span>
 					<div id="affwp_user_search_results"></div>
 					<div class="description"><?php _e( 'Begin typing the name of the affiliate to perform a search for their associated user account.', 'affiliate-wp' ); ?></div>
+				</td>
+
+			</tr>
+
+			<tr class="form-row form-required">
+
+				<th scope="row">
+					<label for="rate_type"><?php _e( 'Referral Rate Type', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<select name="rate_type" id="rate_type">
+						<option value=""><?php _e( 'Site Default', 'affiliate-wp' ); ?></option>
+						<?php foreach( affwp_get_affiliate_rate_types() as $key => $type ) : ?>
+							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $type ); ?></option>
+						<?php endforeach; ?>
+					</select>
+					<div class="description"><?php _e( 'The affiliate\'s referral rate type.', 'affiliate-wp' ); ?></div>
 				</td>
 
 			</tr>
@@ -46,7 +66,7 @@
 
 				<td>
 					<input type="text" name="payment_email" id="payment_email" />
-					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email', 'affiliate-wp' ); ?></div>
+					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email.', 'affiliate-wp' ); ?></div>
 				</td>
 
 			</tr>

@@ -2,10 +2,13 @@
 
 class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 
+	public $total     = 0;
+	public $converted = 0;
+
 	/**
 	 * Get things started
 	 *
-	 * @since 1.0
+	 * @since 1.1
 	 */
 	public function __construct( $_data = array() ) {
 
@@ -43,7 +46,7 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 	/**
 	 * Retrieve referral data
 	 *
-	 * @since 1.0
+	 * @since 1.1
 	 */
 	public function get_data() {
 
@@ -54,53 +57,87 @@ class Affiliate_WP_Visits_Graph extends Affiliate_WP_Graph {
 
 		$start = $dates['year'] . '-' . $dates['m_start'] . '-' . $dates['day'] . ' 00:00:00';
 		$end   = $dates['year_end'] . '-' . $dates['m_end'] . '-' . $dates['day_end'] . ' 23:59:59';
+
 		$date  = array(
 			'start' => $start,
 			'end'   => $end
 		);
 
-		//echo '<pre>'; print_r( $date ); echo '</pre>'; exit;
-
 		$visits = affiliate_wp()->visits->get_visits( array(
 			'orderby'      => 'date',
 			'order'        => 'ASC',
 			'date'         => $date,
+			'number'       => -1,
 			'affiliate_id' => $this->get( 'affiliate_id' )
 		) );
 
+		$converted_data   = array();
+		$unconverted_data = array();
+
 		if( $visits ) {
+
+			// Loop through each visit and find how many there are per day
 			foreach( $visits as $visit ) {
 
-				switch( $visit->status ) {
+				$date = date( 'Y-m-d', strtotime( $visit->date ) );
 
-					case 'converted' :
+				$this->total += 1;
 
-						$converted[] = array( strtotime( $visit->date ) * 1000, $visit->url );
+				if( ! empty( $visit->referral_id ) ) {
 
-						break;
+					if( array_key_exists( $date, $converted_data ) ) {
+						$converted_data[ $date ] += 1;
+					} else {
+						$converted_data[ $date ] = 1;
+					}
 
-					case 'unconverted' :
+					$this->converted += 1;
 
-						$unconverted[] = array( strtotime( $visit->date ) * 1000, $visit->url );
+				} else {
 
-						break;
-
-					default :
-
-						break;
+					if( array_key_exists( $date, $unconverted_data ) ) {
+						$unconverted_data[ $date ] += 1;
+					} else {
+						$unconverted_data[ $date ] = 1;
+					}
 
 				}
 
 			}
 		}
 
+		$converted_visits = array();
+		foreach( $converted_data as $date => $count ) {
+
+			$converted_visits[] = array( strtotime( $date ) * 1000, $count );
+
+		}
+
+		$unconverted_visits = array();
+		$unconverted_visits[] = array( strtotime( $start ) * 1000 );
+		$unconverted_visits[] = array( strtotime( $end ) * 1000 );
+		foreach( $unconverted_data as $date => $count ) {
+
+			$unconverted_visits[] = array( strtotime( $date ) * 1000, $count );
+
+		}
+
 		$data = array(
-			__( 'Converted Visits', 'affiliate-wp' )   => $converted,
-			__( 'Unconverted Visits', 'affiliate-wp' ) => $unconverted,
+			__( 'Converted Visits', 'affiliate-wp' )   => $converted_visits,
+			__( 'Unconverted Visits', 'affiliate-wp' ) => $unconverted_visits
 		);
 
 		return $data;
 
+	}
+
+	/**
+	 * Retrieve conversion rate for successful visits
+	 *
+	 * @since 1.1
+	 */
+	public function get_conversion_rate() {
+		return $this->total > 0 ? round( ( $this->converted / $this->total ) * 100, 2 ) : 0;
 	}
 
 }

@@ -107,7 +107,7 @@ function affwp_affiliates_dashboard() {
 					<div class="postbox">
 						<h3><?php _e( 'Latest Affiliate Registrations', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<?php $affiliates = affiliate_wp()->affiliates->get_affiliates( array( 'number' => 5 ) ); ?>
+							<?php $affiliates = affiliate_wp()->affiliates->get_affiliates( apply_filters( 'affwp_overview_latest_affiliate_registrations', array( 'number' => 5 ) ) ); ?>
 							<table class="affwp_table">
 
 								<thead>
@@ -156,10 +156,49 @@ function affwp_affiliates_dashboard() {
 				</div>
 				<div id="postbox-container-2" class="postbox-container">
 					<?php do_action( 'affwp_overview_right_top' ); ?>
+					
+					<div class="postbox">
+						<h3><?php _e( 'Most Valuable Affiliates', 'affiliate-wp' ); ?></h3>
+						<div class="inside">
+							<?php $affiliates = affiliate_wp()->affiliates->get_affiliates( apply_filters( 'affwp_overview_most_valuable_affiliates', array( 'number' => 5, 'orderby' => 'earnings', 'order' => 'DESC' ) ) ); ?>
+							<table class="affwp_table">
+
+								<thead>
+
+									<tr>
+										<th><?php _e( 'Affiliate', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Earnings', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Referrals', 'affiliate-wp' ); ?></th>
+										<th><?php _e( 'Visits', 'affiliate-wp' ); ?></th>
+									</tr>
+
+								</thead>
+
+								<tbody>
+								<?php if( $affiliates ) : ?>
+									<?php foreach( $affiliates as $affiliate  ) : ?>	
+										<tr>
+											<td><?php echo affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id ); ?></td>
+											<td><?php echo affwp_currency_filter( $affiliate->earnings ); ?></td>
+											<td><?php echo absint( $affiliate->referrals ); ?></td>
+											<td><?php echo absint( $affiliate->visits ); ?></td>
+										</tr>
+									<?php endforeach; ?>
+								<?php else : ?>
+									<tr>
+										<td colspan="3"><?php _e( 'No registered affiliates', 'affiliate-wp' ); ?></td>
+									</tr>
+								<?php endif; ?>
+								</tbody>
+
+							</table>
+						</div>
+					</div>
+
 					<div class="postbox">
 						<h3><?php _e( 'Recent Referrals', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<?php $referrals = affiliate_wp()->referrals->get_referrals( array( 'number' => 5, 'status' => 'unpaid' ) ); ?>
+							<?php $referrals = affiliate_wp()->referrals->get_referrals( apply_filters( 'affwp_overview_recent_referrals', array( 'number' => 5, 'status' => 'unpaid' ) ) ); ?>
 							<table class="affwp_table">
 
 								<thead>
@@ -194,7 +233,7 @@ function affwp_affiliates_dashboard() {
 					<div class="postbox">
 						<h3><?php _e( 'Recent Referral Visits', 'affiliate-wp' ); ?></h3>
 						<div class="inside">
-							<?php $visits = affiliate_wp()->visits->get_visits( array( 'number' => 8 ) ); ?>
+							<?php $visits = affiliate_wp()->visits->get_visits( apply_filters( 'affwp_overview_recent_referral_visits', array( 'number' => 8 ) ) ); ?>
 							<table class="affwp_table">
 
 								<thead>

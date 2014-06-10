@@ -1,18 +1,20 @@
-jQuery(document).ready(function($) {
-	$('#affwp_generate_ref_url').submit(function() {
-		var url = $('#affwp_url').val(),
-			ref_var = $('#affwp_referral_var').val(),
-			aff_id = $('#affwp_affiliate_id').val();
+jQuery(document).ready( function($) {
+	$( '#affwp-generate-ref-url' ).submit( function() {
+		var url    = $( '#affwp-url' ).val(),
+		    refVar = $( '#affwp-referral-var' ).val(),
+		    affId  = $( '#affwp-affiliate-id' ).val();
 
-		if( url.indexOf( "?" ) < 0 ) {
-			ref_var = '?' + ref_var;
+		if ( url.indexOf( '?' ) < 0 ) {
+			refVar = '?' + refVar;
 		} else {
-			ref_var = '&' + ref_var;
+			refVar = '&' + refVar;
 		}
 
-		url = url + ref_var + '=' + aff_id;
-		$('#affwp_referral_url_wrap').slideDown();
-		$('#affwp_referral_url').val( url ).focus();
+		url = url + refVar + '=' + affId;
+
+		$( '.affwp-referral-url-wrap' ).slideDown();
+		$( '#affwp-referral-url' ).val( url ).focus();
+
 		return false;
-	})
+	});
 });

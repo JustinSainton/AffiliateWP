@@ -2,10 +2,13 @@
 
 function affiliate_wp_install() {
 
+	// Create affiliate caps
+	$roles = new Affiliate_WP_Capabilities;
+	$roles->add_caps();
+
 	affiliate_wp()->affiliates->create_table();
 	affiliate_wp()->referrals->create_table();
 	affiliate_wp()->visits->create_table();
-
 
 	if ( ! get_option( 'affwp_is_installed' ) ) {
 		$affiliate_area = wp_insert_post(
@@ -25,11 +28,8 @@ function affiliate_wp_install() {
 
 	}
 
-	// Create affiliate caps
-	$roles = new Affiliate_WP_Capabilities;
-	$roles->add_caps();
-
 	update_option( 'affwp_is_installed', '1' );
+	update_option( 'affwp_version', AFFILIATEWP_VERSION );
 	
 	// Bail if activating from network, or bulk
 	if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
@@ -43,6 +43,7 @@ function affiliate_wp_install() {
 register_activation_hook( AFFILIATEWP_PLUGIN_FILE, 'affiliate_wp_install' );
 
 function affiliate_wp_check_if_installed() {
+
 	// this is mainly for network activated installs
 	if( ! get_option( 'affwp_is_installed' ) ) {
 		affiliate_wp_install();

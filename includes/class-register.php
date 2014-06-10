@@ -12,11 +12,12 @@ class Affiliate_WP_Register {
 	public function __construct() {
 
 		add_action( 'affwp_affiliate_register', array( $this, 'process_registration' ) );
+		add_action( 'user_register', array( $this, 'auto_register_user_as_affiliate' ) );
 
 	}
 
 	/**
-	 * Process registration form submission 
+	 * Process registration form submission
 	 *
 	 * @since 1.0
 	 */
@@ -38,12 +39,21 @@ class Affiliate_WP_Register {
 				$this->add_error( 'username_unavailable', __( 'Username already taken', 'affiliate-wp' ) );
 			}
 
+
 			if( ! validate_username( $data['affwp_user_login'] ) ) {
 				$this->add_error( 'username_invalid', __( 'Invalid username', 'affiliate-wp' ) );
 			}
 
+			if( email_exists( $data['affwp_user_email'] ) ) {
+				$this->add_error( 'email_unavailable', __( 'Email address already taken', 'affiliate-wp' ) );
+			}
+
 			if( empty( $data['affwp_user_email'] ) || ! is_email( $data['affwp_user_email'] ) ) {
 				$this->add_error( 'email_invalid', __( 'Invalid email', 'affiliate-wp' ) );
+			}
+
+			if( ! empty( $data['affwp_payment_email'] ) && $data['affwp_payment_email'] != $data['affwp_user_email'] && ! is_email( $data['affwp_payment_email'] ) ) {
+				$this->add_error( 'payment_email_invalid', __( 'Invalid payment email', 'affiliate-wp' ) );
 			}
 
 			if( empty( $_POST['affwp_user_pass'] ) ) {
@@ -62,6 +72,10 @@ class Affiliate_WP_Register {
 
 		if( empty( $_POST['affwp_tos'] ) ) {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
+		}
+
+		if( ! empty( $_POST['affwp_honeypot'] ) ) {
+			$this->add_error( 'spam', __( 'Nice try honey bear, don\'t touch our honey', 'affiliate-wp' ) );
 		}
 
 		if( affwp_is_affiliate() ) {
@@ -85,7 +99,7 @@ class Affiliate_WP_Register {
 	 */
 	private function register_user() {
 
-		$status  = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
+		$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
 
 		if( ! is_user_logged_in() ) {
 
@@ -103,21 +117,24 @@ class Affiliate_WP_Register {
 			);
 
 			$user_id = wp_insert_user( $args );
-		
+
 			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
 
 		} else {
 
 			$user_id = get_current_user_id();
+			$user    = (array) get_userdata( $user_id );
+			$args    = (array) $user['data'];
 
 		}
 
-		$affiliate_id = affiliate_wp()->affiliates->add( array( 'status' => $status, 'user_id' => $user_id ) );
+		$affiliate_id       = affiliate_wp()->affiliates->add( array(
+			'status'        => $status,
+			'user_id'       => $user_id,
+			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
+		) );
 
-		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
-			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id ) );
-		}
-
+		do_action( 'affwp_register_user', $affiliate_id, $status, $args );
 	}
 
 	/**
@@ -138,11 +155,31 @@ class Affiliate_WP_Register {
 	}
 
 	/**
-	 * Register a submission error 
+	 * Register a user as an affiliate during user registration
+	 *
+	 * @since 1.1
+	 * @return bool
+	 */
+	public function auto_register_user_as_affiliate( $user_id = 0 ) {
+
+		if( ! affiliate_wp()->settings->get( 'auto_register' ) ) {
+			return;
+		}
+
+		if( did_action( 'process_registration' ) ) {
+			return;
+		}
+
+		affwp_add_affiliate( array( 'user_id' => $user_id ) );
+
+	}
+
+	/**
+	 * Register a submission error
 	 *
 	 * @since 1.0
 	 */
-	private function add_error( $error_id, $message = '' ) {
+	public function add_error( $error_id, $message = '' ) {
 		$this->errors[ $error_id ] = $message;
 	}
 
@@ -157,11 +194,11 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		echo '<div class="affwp_errors">';
+		echo '<div class="affwp-errors">';
 
 		foreach( $this->errors as $error_id => $error ) {
 
-			echo '<p class="affwp_error">' . esc_html( $error ) . '</p>';
+			echo '<p class="affwp-error">' . esc_html( $error ) . '</p>';
 
 		}
 

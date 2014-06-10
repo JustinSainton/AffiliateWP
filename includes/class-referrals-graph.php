@@ -67,8 +67,12 @@ class Affiliate_WP_Referrals_Graph extends Affiliate_WP_Graph {
 			'orderby'      => 'date',
 			'order'        => 'ASC',
 			'date'         => $date,
+			'number'       => -1,
 			'affiliate_id' => $this->get( 'affiliate_id' )
 		) );
+
+		$pending[] = array( strtotime( $start ) * 1000 );
+		$pending[] = array( strtotime( $end ) * 1000 );
 
 		if( $referrals ) {
 			foreach( $referrals as $referral ) {
@@ -109,10 +113,10 @@ class Affiliate_WP_Referrals_Graph extends Affiliate_WP_Graph {
 		}
 
 		$data = array(
-			__( 'Unpaid Referrals', 'affiliate-wp' )   => $unpaid,
-			__( 'Pending Referrals', 'affiliate-wp' )  => $pending,
-			__( 'Rejected Referrals', 'affiliate-wp' ) => $rejected,
-			__( 'Paid Referrals', 'affiliate-wp' )     => $paid,
+			__( 'Unpaid Referral Earnings', 'affiliate-wp' )   => $unpaid,
+			__( 'Pending Referral Earnings', 'affiliate-wp' )  => $pending,
+			__( 'Rejected Referral Earnings', 'affiliate-wp' ) => $rejected,
+			__( 'Paid Referral Earnings', 'affiliate-wp' )     => $paid,
 		);
 
 		return $data;
