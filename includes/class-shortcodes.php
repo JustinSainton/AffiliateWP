@@ -194,12 +194,12 @@ class Affiliate_WP_Shortcodes {
 	 * @return string 
 	 */
 	public function affiliate_link( $atts, $content = null ) {
-
 		extract( shortcode_atts( array(
-				'id'		=> '',
-				'link'		=> '',
-				'preview'	=> 'yes',
-				'text'		=> get_bloginfo( 'name' )
+				'id'		=> '', 						// ID of the image in Media Library
+				'image'		=> '', 						// External URL to image hosted off-site
+				'link'		=> '', 						// Where the banner links to
+				'preview'	=> 'yes', 					// Display an image preview above HTML code
+				'text'		=> get_bloginfo( 'name' ) 	// Text shown in alt/title tags
 			),
 			$atts, 'affiliate_link' )
 		);
@@ -207,7 +207,7 @@ class Affiliate_WP_Shortcodes {
 		if ( ! affwp_is_affiliate() )
 			return;
 
-		$content = affiliate_wp()->assets->link_html( $id, $link, $preview, $text );
+		$content = affiliate_wp()->assets->link_html( $id, $image, $link, $preview, $text );
 
 		return $content;
 	}
