@@ -719,7 +719,7 @@ function affwp_update_profile_settings( $data = array() ) {
 		return false;
 	}
 
-	if( affwp_get_affiliate_id() != $data['affiliate_id'] && ! currenct_user_can( 'manage_affiliates' ) ) {
+	if( affwp_get_affiliate_id() != $data['affiliate_id'] && ! current_user_can( 'manage_affiliates' ) ) {
 		return false;
 	}
 
