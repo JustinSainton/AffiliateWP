@@ -12,7 +12,7 @@ class Affiliate_WP_Emails {
 
 	public function notify_on_registration( $affiliate_id = 0, $status = '', $args = array() ) {
 
-		if( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+		if ( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
 			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id, 'name' => $args['display_name'] ) );
 		}
 	}
@@ -30,7 +30,7 @@ class Affiliate_WP_Emails {
 
 		$user_id = affwp_get_affiliate_user_id( $affiliate_id );
 
-		if( ! get_user_meta( $user_id, 'affwp_referral_notifications', true ) ) {
+		if ( ! get_user_meta( $user_id, 'affwp_referral_notifications', true ) ) {
 			return;
 		}
 
@@ -39,7 +39,7 @@ class Affiliate_WP_Emails {
 
 	public function notification( $type = '', $args = array() ) {
 
-		if( empty( $type ) ) {
+		if ( empty( $type ) ) {
 			return false;
 		}
 
@@ -47,14 +47,25 @@ class Affiliate_WP_Emails {
 
 			case 'registration' :
 
-				$email    = apply_filters( 'affwp_registration_admin_email', get_option( 'admin_email' ) );
+				$email    			= apply_filters( 'affwp_registration_admin_email', get_option( 'admin_email' ) );
+				$user_info 			= get_userdata( affwp_get_affiliate_user_id( $args['affiliate_id'] ) );
+				$user_url 			= $user_info->user_url;
+				$promotion_method 	= get_user_meta( affwp_get_affiliate_user_id( $args['affiliate_id'] ), 'affwp_promotion_method', true );
+
 				$subject  = __( 'New Affiliate Registration', 'affiliate-wp' );
 				$message  = "A new affiliate has registered on your site, " . home_url() ."\n\n";
 				$message .= sprintf( __( 'Name: %s', 'affiliate-wp' ), $args['name'] ) . "\n\n";
 
-				if( affiliate_wp()->settings->get( 'require_approval' ) ) {
-					$message .= sprintf( "Review pending applications: %s\n\n", admin_url( 'admin.php?page=affiliate-wp-affiliates&status=pending' ) );
+				if ( $user_url ) {
+					$message .= __( 'Website URL: ', 'affiliate-wp' ) . esc_attr( $user_url ) . "\n\n";
+				}
+ 
+				if ( $promotion_method ) {
+					$message .= __( 'Promotion method: ', 'affiliate-wp' ) . esc_attr( $promotion_method ) . "\n\n";
+				}
 
+				if ( affiliate_wp()->settings->get( 'require_approval' ) ) {
+					$message .= sprintf( "Review pending applications: %s\n\n", admin_url( 'admin.php?page=affiliate-wp-affiliates&status=pending' ) );
 				}
 
 				$subject = apply_filters( 'affwp_registration_subject', $subject, $args );
