@@ -53,7 +53,7 @@
 
 				<td>
 					<input type="text" name="rate" id="rate" />
-					<p class="description"><?php _e( 'The affiliate\'s referral rate. Such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
+					<p class="description"><?php _e( 'The affiliate\'s referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>

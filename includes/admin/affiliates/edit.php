@@ -1,9 +1,9 @@
 <?php
-	$affiliate 		= affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
-	$user_info 		= get_userdata( $affiliate->user_id );
-	$rate_type 		= ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
-	$rate      		= ! empty( $affiliate->rate ) ? $affiliate->rate : '';
-	$email     		= ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
+$affiliate 		= affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
+$user_info 		= get_userdata( $affiliate->user_id );
+$rate_type 		= ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
+$rate      		= ! empty( $affiliate->rate ) ? $affiliate->rate : '';
+$email     		= ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
 ?>
 <div class="wrap">
 
@@ -67,7 +67,7 @@
 
 				<td>
 					<input class="small-text" type="text" name="rate" id="rate" value="<?php echo esc_attr( $rate ); ?>"/>
-					<p class="description"><?php _e( 'The affiliate\'s referral rate. Such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
+					<p class="description"><?php _e( 'The affiliate\'s referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -79,8 +79,8 @@
 				</th>
 
 				<td>
-					<input class="regular-text" type="text" name="account_email" id="account-email" value="<?php echo $user_info->user_email; ?>" disabled="1" />
-					<p class="description"><?php _e( 'The account email can only be changed from the affiliate\'s WordPress profile.', 'affiliate-wp' ); ?></p>
+					<input class="regular-text" type="text" name="account_email" id="account-email" value="<?php echo $user_info->user_email; ?>" />
+					<p class="description"><?php _e( 'The affiliate\'s account email. Updating this will change the email address shown on the user\'s profile page.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
