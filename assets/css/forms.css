@@ -27,16 +27,19 @@ table.affwp-table th {
 	margin-bottom: 1em;
 }
 
+.affwp-form textarea,
 .affwp-form input[type="text"],
 .affwp-form input[type="password"],
-.affwp-form input[type="email"] {
+.affwp-form input[type="email"],
+.affwp-form input[type="url"] {
 	display: inline-block;
 	width: 200px;
 }
 
 .affwp-form input[type="text"].required,
 .affwp-form input[type="password"].required,
-.affwp-form input[type="email"].required {
+.affwp-form input[type="email"].required,
+.affwp-form input[type="url"].required {
 	color: inherit;
 }
 
