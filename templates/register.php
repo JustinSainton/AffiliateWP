@@ -31,6 +31,16 @@
 			</p>
 
 			<p>
+				<label for="affwp-user-url"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
+				<input id="affwp-user-url" type="url" name="affwp_user_url" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
+			</p>
+			 
+			<p>
+				<label for="affwp-promotion-method"><?php _e( 'How will you promote us?', 'affiliate-wp' ); ?></label>
+				<textarea id="affwp-promotion-method" name="affwp_promotion_method" rows="5" cols="30"></textarea>
+			</p>
+
+			<p>
 				<label for="affwp-user-pass"><?php _e( 'Password', 'affiliate-wp' ); ?></label>
 				<input id="affwp-user-pass" class="password required" type="password" name="affwp_user_pass" />
 			</p>
