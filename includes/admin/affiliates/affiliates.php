@@ -15,17 +15,21 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function affwp_affiliates_admin() {
 
-	if( isset( $_GET['action'] ) && 'view_affiliate' == $_GET['action'] ) {
+	if ( isset( $_GET['action'] ) && 'view_affiliate' == $_GET['action'] ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/view.php';
 
-	} else if( isset( $_GET['action'] ) && 'add_affiliate' == $_GET['action'] ) {
+	} else if ( isset( $_GET['action'] ) && 'add_affiliate' == $_GET['action'] ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/new.php';
 
-	} else if( isset( $_GET['action'] ) && 'edit_affiliate' == $_GET['action'] ) {
+	} else if ( isset( $_GET['action'] ) && 'edit_affiliate' == $_GET['action'] ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
+
+	} else if ( isset( $_GET['action'] ) && 'review_affiliate' == $_GET['action'] ) {
+
+			include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
 	} else {
 
@@ -344,9 +348,10 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$row_actions['reports'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) . '">' . __( 'Reports', 'affiliate-wp' ) . '</a>';
 		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
-		if( strtolower( $affiliate->status ) == 'active' ) {
+		if ( strtolower( $affiliate->status ) == 'active' ) {
 			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_deactivated', 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		} elseif( strtolower( $affiliate->status ) == 'pending' ) {
+			$row_actions['review'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'review_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Review', 'affiliate-wp' ) . '</a>';
 			$row_actions['accept'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
 			$row_actions['reject'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 		} else {
@@ -407,7 +412,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 
 		$ids = array_map( 'absint', $ids );
 
-		if( empty( $ids ) ) {
+		if ( empty( $ids ) ) {
 			return;
 		}
 

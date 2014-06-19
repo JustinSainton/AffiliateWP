@@ -72,6 +72,11 @@ table.affwp_table td a {
 	margin: 0 8px 20px;
 }
 
+/* Review page */
+#affwp_review_affiliate .button + .button {
+	margin-left: 8px;
+}
+
 /* Referrals page */
 #affwp-referrals-export-form,
 #affwp_unpaid_counts,
