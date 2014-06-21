@@ -679,10 +679,10 @@ function affwp_update_affiliate( $data = array() ) {
 		return false;
 	}
 
-	$args         	= array();
-	$affiliate_id 	= absint( $data['affiliate_id'] );
-	$affiliate 		= affwp_get_affiliate( $affiliate_id );
-	$user_id 		= $affiliate->user_id;
+	$args         = array();
+	$affiliate_id = absint( $data['affiliate_id'] );
+	$affiliate    = affwp_get_affiliate( $affiliate_id );
+	$user_id      = $affiliate->user_id;
 
 	$args['account_email'] = ! empty( $data['account_email' ] ) && is_email( $data['account_email' ] ) ? sanitize_text_field( $data['account_email'] ) : '';
 	$args['payment_email'] = ! empty( $data['payment_email' ] ) && is_email( $data['payment_email' ] ) ? sanitize_text_field( $data['payment_email'] ) : '';

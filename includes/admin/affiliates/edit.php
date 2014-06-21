@@ -1,9 +1,9 @@
 <?php
-$affiliate 		= affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
-$user_info 		= get_userdata( $affiliate->user_id );
-$rate_type 		= ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
-$rate      		= ! empty( $affiliate->rate ) ? $affiliate->rate : '';
-$email     		= ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
+$affiliate = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
+$user_info = get_userdata( $affiliate->user_id );
+$rate_type = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
+$rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
+$email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
 ?>
 <div class="wrap">
 
