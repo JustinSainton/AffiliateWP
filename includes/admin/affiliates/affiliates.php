@@ -28,8 +28,8 @@ function affwp_affiliates_admin() {
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
 	} else if ( isset( $_GET['action'] ) && 'review_affiliate' == $_GET['action'] ) {
-
-			include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
+		
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
 	} else {
 
