@@ -35,7 +35,7 @@ class Affiliate_WP_Login {
 		$user = get_user_by( 'login', $_POST['affwp_user_login'] );
 
 		if( ! $user ) {
-			$this->add_error( 'no_such_user', __( 'Invalid username', 'affiliate-wp' ) );
+			$this->add_error( 'no_such_user', __( 'No such user', 'affiliate-wp' ) );
 		}
 
 		if( empty( $_POST['affwp_user_pass'] ) ) {
