@@ -96,19 +96,19 @@ class Affiliate_WP_Register {
 	public function required_fields() {
 		$required_fields = array(
 			'affwp_user_name' 	=> array(
-				'error_id' 		=> 'empty_name',
+				'error_id'      => 'empty_name',
 				'error_message' => __( 'Please enter your name', 'affiliate-wp' )
 			),
 			'affwp_user_login' 	=> array(
-				'error_id' 		=> 'empty_username',
+				'error_id'      => 'empty_username',
 				'error_message' => __( 'Invalid username', 'affiliate-wp' )
 			),
 			'affwp_user_url' 	=> array(
-				'error_id' 		=> 'invalid_url',
+				'error_id'      => 'invalid_url',
 				'error_message' => __( 'Please enter a website URL', 'affiliate-wp' )
 			),
 			'affwp_user_pass' 	=> array(
-				'error_id' 		=> 'empty_password',
+				'error_id'      => 'empty_password',
 				'error_message' => __( 'Please enter a password', 'affiliate-wp' )
 			)
 		);
@@ -132,13 +132,13 @@ class Affiliate_WP_Register {
 			$user_last  = isset( $name[1] ) ? $name[1] : '';
 
 			$args = array(
-				'user_login'   	=> sanitize_text_field( $_POST['affwp_user_login'] ),
-				'user_email'   	=> sanitize_text_field( $_POST['affwp_user_email'] ),
-				'user_pass'    	=> sanitize_text_field( $_POST['affwp_user_pass'] ),
-				'display_name' 	=> $user_first . ' ' . $user_last,
-				'first_name'   	=> $user_first,
-				'last_name' 	=> $user_last,
-				'user_url'		=> sanitize_text_field( $_POST['affwp_user_url'] ),
+				'user_login'    => sanitize_text_field( $_POST['affwp_user_login'] ),
+				'user_email'    => sanitize_text_field( $_POST['affwp_user_email'] ),
+				'user_pass'     => sanitize_text_field( $_POST['affwp_user_pass'] ),
+				'display_name'  => $user_first . ' ' . $user_last,
+				'first_name'    => $user_first,
+				'last_name'     => $user_last,
+				'user_url'      => sanitize_text_field( $_POST['affwp_user_url'] ),
 			);
 
 			$user_id = wp_insert_user( $args );
