@@ -47,10 +47,10 @@ class Affiliate_WP_Emails {
 
 			case 'registration' :
 
-				$email    			= apply_filters( 'affwp_registration_admin_email', get_option( 'admin_email' ) );
-				$user_info 			= get_userdata( affwp_get_affiliate_user_id( $args['affiliate_id'] ) );
-				$user_url 			= $user_info->user_url;
-				$promotion_method 	= get_user_meta( affwp_get_affiliate_user_id( $args['affiliate_id'] ), 'affwp_promotion_method', true );
+				$email              = apply_filters( 'affwp_registration_admin_email', get_option( 'admin_email' ) );
+				$user_info          = get_userdata( affwp_get_affiliate_user_id( $args['affiliate_id'] ) );
+				$user_url           = $user_info->user_url;
+				$promotion_method   = get_user_meta( affwp_get_affiliate_user_id( $args['affiliate_id'] ), 'affwp_promotion_method', true );
 
 				$subject  = __( 'New Affiliate Registration', 'affiliate-wp' );
 				$message  = "A new affiliate has registered on your site, " . home_url() ."\n\n";
