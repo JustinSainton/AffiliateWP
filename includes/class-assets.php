@@ -56,7 +56,12 @@ class Affiliate_WP_Assets {
 					$image_link = get_bloginfo( 'name' );
 				}
 			?>
-			<p><textarea spellcheck="false" rows="3"><a title="<?php echo esc_attr( $text ); ?>" href="<?php echo esc_url( trailingslashit( $url ) ) . '?' . affiliate_wp()->tracking->get_referral_var() . '=' . affwp_get_affiliate_id(); ?>"><?php echo $image_link; ?></a></textarea></p>
+			
+			<?php 
+				$text = '<a href="' . esc_url( trailingslashit( $url ) ) . '?' . affiliate_wp()->tracking->get_referral_var() . '=' . affwp_get_affiliate_id() .'" title="' . esc_attr( $text ) . '">' . $image_link . '</a>';
+				echo '<p>' . esc_html( $text ) . '</p>'; 
+			?>
+			
 		</div>
 
 	<?php
