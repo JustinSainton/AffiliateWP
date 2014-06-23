@@ -15,6 +15,21 @@ function affwp_do_actions() {
 }
 add_action( 'init', 'affwp_do_actions' );
 
+/**
+ * Hooks AffiliateWP actions, when present in the $_POST superglobal. Every affwp_action
+ * present in $_POST is called using WordPress's do_action function. These
+ * functions are called on init.
+ *
+ * @since 1.2
+ * @return void
+*/
+function affwp_post_actions() {
+	if ( isset( $_POST['affwp_action'] ) ) {
+		do_action( 'affwp_' . $_POST['affwp_action'], $_POST );
+	}
+}
+add_action( 'init', 'affwp_post_actions' );
+
 // Process an affiliate creation from the admin screen
 add_action( 'affwp_add_affiliate', 'affwp_add_affiliate' );
 

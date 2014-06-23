@@ -1,4 +1,7 @@
-<?php affiliate_wp()->login->print_errors(); ?>
+<?php 
+global $affwp_login_redirect;
+affiliate_wp()->login->print_errors();
+?>
 
 <form id="affwp-login-form" class="affwp-form" action="" method="post">
 	<?php do_action( 'affwp_affiliate_login_form_top' ); ?>
@@ -25,6 +28,7 @@
 		</p>
 
 		<p>
+			<input type="hidden" name="affwp_redirect" value="<?php echo esc_url( $affwp_login_redirect ); ?>"/>
 			<input type="hidden" name="affwp_login_nonce" value="<?php echo wp_create_nonce( 'affwp-login-nonce' ); ?>" />
 			<input type="hidden" name="affwp_action" value="user_login" />
 			<input type="submit" class="button" value="<?php esc_attr_e( 'Login', 'affiliate-wp' ); ?>" />

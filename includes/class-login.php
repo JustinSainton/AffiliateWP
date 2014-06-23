@@ -15,6 +15,22 @@ class Affiliate_WP_Login {
 
 	}
 
+	public function login_form( $redirect = '' ) {
+		global $affwp_login_redirect;
+
+		if ( empty( $redirect ) ) {
+			$redirect = affiliate_wp()->tracking->get_current_page_url();
+		}
+
+		$affwp_login_redirect = $redirect;
+
+		ob_start();
+
+		affiliate_wp()->templates->get_template_part( 'login' );
+		
+		return apply_filters( 'affwp_login_form', ob_get_clean() );
+	}
+
 	/**
 	 * Process the loginform submission
 	 *
@@ -60,12 +76,15 @@ class Affiliate_WP_Login {
 
 
 		// only log the user in if there are no errors
-		if( empty( $this->errors ) ) {
+		if ( empty( $this->errors ) ) {
 
 			$remember = isset( $_POST['affwp_user_remember'] );
 
 			$this->log_user_in( $user->ID, $_POST['affwp_user_login'], $remember );
 
+			$redirect = apply_filters( 'affwp_login_redirect', $data['affwp_redirect'] );
+			wp_redirect( $redirect ); exit;
+			
 		} else {
 
 			if( function_exists( 'limit_login_failed' ) ) {
