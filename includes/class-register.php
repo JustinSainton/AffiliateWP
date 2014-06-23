@@ -17,6 +17,30 @@ class Affiliate_WP_Register {
 	}
 
 	/**
+	 * Register Form
+	 *
+	 * @since 1.2
+	 * @global $affwp_register_redirect
+	 * @param string $redirect Redirect page URL
+	 * @return string Register form
+	*/
+	public function register_form( $redirect = '' ) {
+		global $affwp_register_redirect;
+
+		if ( empty( $redirect ) ) {
+			$redirect = affiliate_wp()->tracking->get_current_page_url();
+		}
+
+		$affwp_register_redirect = $redirect;
+
+		ob_start();
+
+		affiliate_wp()->templates->get_template_part( 'register' );
+		
+		return apply_filters( 'affwp_register_form', ob_get_clean() );
+
+	}
+	/**
 	 * Process registration form submission
 	 *
 	 * @since 1.0
@@ -90,6 +114,8 @@ class Affiliate_WP_Register {
 
 			$this->register_user();
 
+			$redirect = apply_filters( 'affwp_register_redirect', $data['affwp_redirect'] );
+			wp_redirect( $redirect ); exit;
 		}
 	}
 
@@ -102,7 +128,7 @@ class Affiliate_WP_Register {
 
 		$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
 
-		if( ! is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 
 			$name       = explode( ' ', sanitize_text_field( $_POST['affwp_user_name'] ) );
 			$user_first = $name[0];
@@ -146,7 +172,7 @@ class Affiliate_WP_Register {
 	private function log_user_in( $user_id = 0, $user_login = '', $remember = false ) {
 
 		$user = get_userdata( $user_id );
-		if( ! $user )
+		if ( ! $user )
 			return;
 
 		wp_set_auth_cookie( $user_id, $remember );
@@ -163,11 +189,11 @@ class Affiliate_WP_Register {
 	 */
 	public function auto_register_user_as_affiliate( $user_id = 0 ) {
 
-		if( ! affiliate_wp()->settings->get( 'auto_register' ) ) {
+		if ( ! affiliate_wp()->settings->get( 'auto_register' ) ) {
 			return;
 		}
 
-		if( did_action( 'process_registration' ) ) {
+		if ( did_action( 'process_registration' ) ) {
 			return;
 		}
 
@@ -191,7 +217,7 @@ class Affiliate_WP_Register {
 	 */
 	public function print_errors() {
 
-		if( empty( $this->errors ) ) {
+		if ( empty( $this->errors ) ) {
 			return;
 		}
 
