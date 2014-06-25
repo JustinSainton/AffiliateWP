@@ -36,7 +36,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 
 		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
 		<p><?php printf( __( 'Your referral URL is: <strong>%s</strong>', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) ) ); ?></p>
-		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'Enter any URL on this form below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
 		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
