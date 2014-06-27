@@ -45,8 +45,6 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			//echo '<pre>'; var_dump( json_decode( $affiliate_data['order_products'] ) ); echo '</pre>'; exit;
-
 			$description = '';
 			foreach( json_decode( $affiliate_data['order_products'] ) as $product ) {
 				$description .= $product->name;
