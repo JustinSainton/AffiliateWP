@@ -48,16 +48,34 @@ final class Affiliate_WP {
 
 	private $version = '1.1.2';
 
-	// Class properties
+	/** @var Affiliate_WP_DB_Affiliates */
 	public $affiliates;
+
+    /** @var Affiliate_WP_Referrals_DB */
 	public $referrals;
+
+    /** @var Affiliate_WP_Visits_DB */
 	public $visits;
+
+    /** @var Affiliate_WP_Settings */
 	public $settings;
+
+    /** @var Affiliate_WP_Tracking */
 	public $tracking;
+
+    /** @var Affiliate_WP_Templates */
 	public $templates;
+
+    /** @var Affiliate_WP_Login */
 	public $login;
+
+    /** @var Affiliate_WP_Register */
 	public $register;
+
+    /** @var Affiliate_WP_Integrations */
 	public $integrations;
+
+    /** @var Affiliate_WP_Emails */
 	public $emails;
 
 
@@ -74,7 +92,7 @@ final class Affiliate_WP {
 	 * @uses Affiliate_WP::includes() Include the required files
 	 * @uses Affiliate_WP::setup_actions() Setup the hooks and actions
 	 * @uses Affiliate_WP::updater() Setup the plugin updater
-	 * @return The one true Affiliate_WP
+	 * @return Affiliate_WP
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Affiliate_WP ) ) {
