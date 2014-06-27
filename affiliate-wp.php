@@ -48,34 +48,84 @@ final class Affiliate_WP {
 
 	private $version = '1.1.2';
 
-	/** @var Affiliate_WP_DB_Affiliates */
+	/**
+	 * The affiliates DB instance variable.
+	 *
+	 * @var Affiliate_WP_DB_Affiliates
+	 * @since 1.0
+	 */
 	public $affiliates;
 
-    /** @var Affiliate_WP_Referrals_DB */
+	/**
+	 * The referrals instance variable.
+	 *
+	 * @var Affiliate_WP_Referrals_DB
+	 * @since 1.0
+	 */
 	public $referrals;
 
-    /** @var Affiliate_WP_Visits_DB */
+	/**
+	 * The visits DB instance variable
+	 *
+	 * @var Affiliate_WP_Visits_DB
+	 * @since 1.0
+	 */
 	public $visits;
 
-    /** @var Affiliate_WP_Settings */
+	/**
+	 * The settings instance variable
+	 *
+	 * @var Affiliate_WP_Settings
+	 * @since 1.0
+	 */
 	public $settings;
 
-    /** @var Affiliate_WP_Tracking */
+	/**
+	 * The affiliate tracking handler instance variable
+	 *
+	 * @var Affiliate_WP_Tracking
+	 * @since 1.0
+	 */
 	public $tracking;
 
-    /** @var Affiliate_WP_Templates */
+	/**
+	 * The template loader instance variable
+	 *
+	 * @var Affiliate_WP_Templates
+	 * @since 1.0
+	 */
 	public $templates;
 
-    /** @var Affiliate_WP_Login */
+	/**
+	 * The affiliate login handler instance variable
+	 *
+	 * @var Affiliate_WP_Login
+	 * @since 1.0
+	 */
 	public $login;
 
-    /** @var Affiliate_WP_Register */
+	/**
+	 * The affiliate registration handler instance variable
+	 *
+	 * @var Affiliate_WP_Register
+	 * @since 1.0
+	 */
 	public $register;
 
-    /** @var Affiliate_WP_Integrations */
+	/**
+	 * The integrations handler instance variable
+	 *
+	 * @var Affiliate_WP_Integrations
+	 * @since 1.0
+	 */
 	public $integrations;
 
-    /** @var Affiliate_WP_Emails */
+	/**
+	 * The email notification handler instance variable
+	 *
+	 * @var Affiliate_WP_Emails
+	 * @since 1.0
+	 */
 	public $emails;
 
 
