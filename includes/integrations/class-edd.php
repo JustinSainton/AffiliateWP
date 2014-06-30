@@ -29,6 +29,11 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		// Integration with EDD commissions to adjust commission rates if a referral is present
 		add_filter( 'eddc_calc_commission_amount', array( $this, 'commission_rate' ), 10, 2 );
 		add_filter( 'affwp_settings_integrations', array( $this, 'commission_settings' ), 10 );
+
+		// Per product referral rates
+		add_action( 'edd_meta_box_settings_fields', array( $this, 'download_settings' ), 100 );
+		add_filter( 'edd_metabox_fields_save', array( $this, 'download_save_fields' ) );
+
 	}
 
 	/**
@@ -332,6 +337,57 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		}
 		
 		return $settings;
+	}
+
+	/**
+	 * Adds per-product referral rate settings input fields
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
+	public function download_settings( $download_id = 0 ) {
+
+		$rate = $this->get_product_rate( $download_id );
+
+?>
+		<p>
+			<strong><?php _e( 'Affiliate Rates:', 'affiliate-wp' ); ?></strong>
+		</p>
+
+		<p>
+			<label for="affwp_product_rate">
+				<input type="text" name="_affwp_edd_product_rate" id="affwp_product_rate" class="small-text" value="<?php echo esc_attr( $rate['rate'] ); ?>" />
+				<?php _e( 'Referral Rate', 'affiliate-wp' ); ?>
+			</label>
+		</p>
+
+		<p>
+			<label for="affwp_product_rate_type">
+				<select name="_affwp_edd_product_rate_type" id="affwp_product_rate_type">
+					<option value=""><?php _e( 'Default', 'affiliate-wp' ); ?></option>
+					<?php foreach( affwp_get_affiliate_rate_types() as $key => $option ) : ?>
+						<option value="<?php echo esc_attr( $key ); ?>"<?php selected( $key, $rate['type'] ); ?>><?php echo esc_html( $option ); ?></option>
+					<?php endforeach; ?>
+				</select>
+				<?php _e( 'Referral Type', 'affiliate-wp' ); ?>
+			</label>
+		</p>
+
+		<p><?php _e( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' ); ?></p>
+<?php
+	}
+
+	/**
+	 * Tells EDD to save our product settings
+	 *
+	 * @access  public
+	 * @since   1.2
+	 * @return  array
+	*/
+	public function download_save_fields( $fields = array() ) {
+		$fields[] = '_affwp_edd_product_rate';
+		$fields[] = '_affwp_edd_product_rate_type';
+		return $fields;
 	}
 
 }

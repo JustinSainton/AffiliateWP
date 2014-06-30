@@ -17,15 +17,17 @@ abstract class Affiliate_WP_Base {
 	}
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
+
 		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
 
 		$amount = affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
+
 		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
-		
+
 		return affiliate_wp()->referrals->add( array(
 			'amount'       => $amount,
 			'reference'    => $reference,
@@ -99,6 +101,28 @@ abstract class Affiliate_WP_Base {
 
 	public function get_affiliate_email() {
 		return affwp_get_affiliate_email( affiliate_wp()->tracking->get_affiliate_id() );
+	}
+
+	/**
+	 * Retrieves the rate and type for a specific product
+	 *
+	 * @access  public
+	 * @since   1.2
+	 * @return  array
+	*/
+	public function get_product_rate( $product_id = 0 ) {
+
+		$rate = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate', true );
+		$type = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate_type', true );
+
+		if( $rate ) {
+
+			return array( 'rate' => $rate, 'type' => $type );
+
+		}
+
+		return false;
+
 	}
 
 }
