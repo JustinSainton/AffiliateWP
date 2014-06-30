@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
-	
+
 	public function init() {
 
 		$this->context = 'membermouse';
@@ -18,7 +18,7 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 		if( $this->was_referred() ) {
 
 			$membership = new MM_MembershipLevel( $member_data['membership_level'] );
-			
+
 			if( ! $membership->isFree() ) {
 				return;
 			}
@@ -86,6 +86,6 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
-	
+
 }
 new Affiliate_WP_Membermouse;
