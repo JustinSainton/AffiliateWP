@@ -45,16 +45,12 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			//echo '<pre>'; var_dump( json_decode( $affiliate_data['order_products'] ) ); echo '</pre>'; exit;
+			$products = json_decode( $affiliate_data['order_products'] );
 
-			$description = '';
-			foreach( json_decode( $affiliate_data['order_products'] ) as $product ) {
-				$description .= $product->name;
-				if( $key + 1 < count( $affiliate_data['order_products'] ) ) {
-					$description .= ', ';
-				}
-			}
-			
+			if ( ! is_array( $products ) ) $products = array();
+
+			$description = implode( ', ', $products );
+
 			$reference = $affiliate_data['member_id'] . '|' . $affiliate_data['order_number'];
 
 			$this->insert_pending_referral( $affiliate_data['order_total'], $reference, $description );
