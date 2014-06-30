@@ -12,6 +12,7 @@ class Affiliate_WP_Integrations {
 
 		return apply_filters( 'affwp_integrations', array(
 			'edd'         => 'Easy Digital Downloads',
+			'gravityforms' => 'Gravity Forms',
 			'exchange'    => 'iThemes Exchange',
 			'membermouse' => 'MemberMouse',
 			'jigoshop'    => 'Jigoshop',
@@ -21,6 +22,7 @@ class Affiliate_WP_Integrations {
 			'woocommerce' => 'WooCommerce',
 			'wpec'        => 'WP e-Commerce',
 		) );
+
 	}
 
 	public function get_enabled_integrations() {
