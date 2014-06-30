@@ -47,7 +47,9 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 			$products = json_decode( $affiliate_data['order_products'] );
 
-			if ( ! is_array( $products ) ) $products = array();
+			if ( ! is_array( $products ) ) {
+				$products = array();
+			}
 
 			$description = implode( ', ', $products );
 
