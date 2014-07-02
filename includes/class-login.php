@@ -16,41 +16,65 @@ class Affiliate_WP_Login {
 	}
 
 	/**
+	 * Login Form
+	 *
+	 * @since 1.2
+	 * @global $affwp_login_redirect
+	 * @param string $redirect Redirect page URL
+	 * @return string Login form
+	*/
+	public function login_form( $redirect = '' ) {
+		global $affwp_login_redirect;
+
+		if ( empty( $redirect ) ) {
+			$redirect = affiliate_wp()->tracking->get_current_page_url();
+		}
+
+		$affwp_login_redirect = $redirect;
+
+		ob_start();
+
+		affiliate_wp()->templates->get_template_part( 'login' );
+		
+		return apply_filters( 'affwp_login_form', ob_get_clean() );
+	}
+
+	/**
 	 * Process the loginform submission
 	 *
 	 * @since 1.0
 	 */
 	public function process_login( $data ) {
 
-		if( ! isset( $_POST['affwp_login_nonce'] ) || ! wp_verify_nonce( $_POST['affwp_login_nonce'], 'affwp-login-nonce' ) ) {
+		if ( ! isset( $_POST['affwp_login_nonce'] ) || ! wp_verify_nonce( $_POST['affwp_login_nonce'], 'affwp-login-nonce' ) ) {
 			return;
 		}
 
 		do_action( 'affwp_pre_process_login_form' );
 
-		if( empty( $data['affwp_user_login'] ) ) {
+		if ( empty( $data['affwp_user_login'] ) ) {
 			$this->add_error( 'empty_username', __( 'Invalid username', 'affiliate-wp' ) );
 		}
 
 		$user = get_user_by( 'login', $_POST['affwp_user_login'] );
 
-		if( ! $user ) {
+		if ( ! $user ) {
 			$this->add_error( 'no_such_user', __( 'No such user', 'affiliate-wp' ) );
 		}
 
-		if( empty( $_POST['affwp_user_pass'] ) ) {
+		if ( empty( $_POST['affwp_user_pass'] ) ) {
 			$this->add_error( 'empty_password', __( 'Please enter a password', 'affiliate-wp' ) );
 		}
 
-		if( $user ) {
+		if ( $user ) {
 			// check the user's login with their password
-			if( ! wp_check_password( $_POST['affwp_user_pass'], $user->user_pass, $user->ID ) ) {
+			if ( ! wp_check_password( $_POST['affwp_user_pass'], $user->user_pass, $user->ID ) ) {
 				// if the password is incorrect for the specified user
 				$this->add_error( 'password_incorrect', __( 'Incorrect password', 'affiliate-wp' ) );
 			}
 		}
 
-		if( function_exists( 'is_limit_login_ok' ) && ! is_limit_login_ok() ) {
+		if ( function_exists( 'is_limit_login_ok' ) && ! is_limit_login_ok() ) {
 
 			$this->add_error( 'limit_login_failed', limit_login_error_msg() );
 
@@ -60,15 +84,18 @@ class Affiliate_WP_Login {
 
 
 		// only log the user in if there are no errors
-		if( empty( $this->errors ) ) {
+		if ( empty( $this->errors ) ) {
 
 			$remember = isset( $_POST['affwp_user_remember'] );
 
 			$this->log_user_in( $user->ID, $_POST['affwp_user_login'], $remember );
 
+			$redirect = apply_filters( 'affwp_login_redirect', $data['affwp_redirect'] );
+			wp_redirect( $redirect ); exit;
+			
 		} else {
 
-			if( function_exists( 'limit_login_failed' ) ) {
+			if ( function_exists( 'limit_login_failed' ) ) {
 				limit_login_failed( $_POST['affwp_user_login'] );
 			}
 
@@ -83,7 +110,7 @@ class Affiliate_WP_Login {
 	private function log_user_in( $user_id = 0, $user_login = '', $remember = false ) {
 
 		$user = get_userdata( $user_id );
-		if( ! $user )
+		if ( ! $user )
 			return;
 
 		wp_set_auth_cookie( $user_id, $remember );
@@ -108,7 +135,7 @@ class Affiliate_WP_Login {
 	 */
 	public function print_errors() {
 
-		if( empty( $this->errors ) ) {
+		if ( empty( $this->errors ) ) {
 			return;
 		}
 
