@@ -1,4 +1,7 @@
-<?php affiliate_wp()->register->print_errors(); ?>
+<?php 
+global $affwp_register_redirect;
+affiliate_wp()->register->print_errors();
+?>
 
 <form id="affwp-register-form" class="affwp-form" action="" method="post">
 	<?php do_action( 'affwp_affiliate_register_form_top' ); ?>
@@ -58,6 +61,7 @@
 
 		<p>
 			<input type="hidden" name="affwp_honeypot" value="" />
+			<input type="hidden" name="affwp_redirect" value="<?php echo esc_url( $affwp_register_redirect ); ?>"/>
 			<input type="hidden" name="affwp_register_nonce" value="<?php echo wp_create_nonce( 'affwp-register-nonce' ); ?>" />
 			<input type="hidden" name="affwp_action" value="affiliate_register" />
 			<input class="button" type="submit" value="<?php esc_attr_e( 'Register', 'affiliate-wp' ); ?>" />
