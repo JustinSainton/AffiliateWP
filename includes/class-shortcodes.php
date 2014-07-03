@@ -166,7 +166,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		return $content;
+		return do_shortcode( $content );
 	}
 
 	/**
@@ -181,7 +181,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		return $content;
+		return do_shortcode( $content );
 	}
 
 }
