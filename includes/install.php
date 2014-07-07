@@ -9,6 +9,7 @@ function affiliate_wp_install() {
 	affiliate_wp()->affiliates->create_table();
 	affiliate_wp()->referrals->create_table();
 	affiliate_wp()->visits->create_table();
+	affiliate_wp()->creatives->create_table();
 
 	if ( ! get_option( 'affwp_is_installed' ) ) {
 		$affiliate_area = wp_insert_post(

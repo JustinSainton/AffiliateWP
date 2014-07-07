@@ -4,14 +4,15 @@ class Affiliate_WP_Shortcodes {
 
 	public function __construct() {
 
-		add_shortcode( 'affiliate_area', 				array( $this, 'affiliate_area' 			) );
-		add_shortcode( 'affiliate_login', 				array( $this, 'affiliate_login' 		) );
-		add_shortcode( 'affiliate_registration', 		array( $this, 'affiliate_registration' 	) );
-		add_shortcode( 'affiliate_conversion_script', 	array( $this, 'conversion_script' 		) );
-		add_shortcode( 'affiliate_referral_url', 		array( $this, 'referral_url' 			) );
-		add_shortcode( 'affiliate_content', 			array( $this, 'affiliate_content' 		) );
-		add_shortcode( 'non_affiliate_content', 		array( $this, 'non_affiliate_content' 	) );
-		add_shortcode( 'affiliate_link', 				array( $this, 'affiliate_link' 			) );
+		add_shortcode( 'affiliate_area',              array( $this, 'affiliate_area'         ) );
+		add_shortcode( 'affiliate_login',             array( $this, 'affiliate_login'        ) );
+		add_shortcode( 'affiliate_registration',      array( $this, 'affiliate_registration' ) );
+		add_shortcode( 'affiliate_conversion_script', array( $this, 'conversion_script'      ) );
+		add_shortcode( 'affiliate_referral_url',      array( $this, 'referral_url'           ) );
+		add_shortcode( 'affiliate_content',           array( $this, 'affiliate_content'      ) );
+		add_shortcode( 'non_affiliate_content',       array( $this, 'non_affiliate_content'  ) );
+		add_shortcode( 'affiliate_creative',          array( $this, 'affiliate_creative'     ) );
+		add_shortcode( 'affiliate_creatives',         array( $this, 'affiliate_creatives'     ) );
 
 	}
 
@@ -188,28 +189,57 @@ class Affiliate_WP_Shortcodes {
 	}
 
 	/**
-	 * Affiliate link shortcode.
-	 * Renders the content if the current user is not an affiliate.
-	 * @since  1.1.3
+	 * Affiliate creative shortcode.
+	 * 
+	 * @since  1.1.4
 	 * @return string 
 	 */
-	public function affiliate_link( $atts, $content = null ) {
-		extract( shortcode_atts( array(
-				'id'		=> '', 						// ID of the image in Media Library
-				'image'		=> '', 						// External URL to image hosted off-site
-				'link'		=> '', 						// Where the banner links to
-				'preview'	=> 'yes', 					// Display an image preview above HTML code
-				'text'		=> get_bloginfo( 'name' ) 	// Text shown in alt/title tags
-			),
-			$atts, 'affiliate_link' )
+	public function affiliate_creative( $atts, $content = null ) {
+
+		shortcode_atts( 
+			array(
+				'id'         => '',                    // ID of the creative
+				'image_id'   => '',                    // ID of image from media library if not using creatives section
+				'image_link' => '',                    // External URL if image is hosted off-site
+				'link'       => '',                    // Where the banner links to
+				'preview'    => 'yes',                 // Display an image/text preview above HTML code
+				'text'       => get_bloginfo( 'name' ) // Text shown in alt/title tags
+			), 
+			$atts, 
+			'affiliate_creative'
 		);
 
 		if ( ! affwp_is_affiliate() )
 			return;
 
-		$content = affiliate_wp()->assets->link_html( $id, $image, $link, $preview, $text );
+		$content = affiliate_wp()->creative->affiliate_creative( $atts );
 
-		return $content;
+		return do_shortcode( $content );
+	}
+
+	/**
+	 * Affiliate creatives shortcode.
+	 * Shows all the creatives from Affiliates -> Creatives
+	 * 
+	 * @since  1.1.4
+	 * @return string 
+	 */
+	public function affiliate_creatives( $atts, $content = null ) {
+
+		shortcode_atts( 
+			array(
+				'preview' => 'yes' // Display an image/text preview above HTML code
+			), 
+			$atts, 
+			'affiliate_creatives'
+		);
+
+		if ( ! affwp_is_affiliate() )
+			return;
+
+		$content = affiliate_wp()->creative->affiliate_creatives( $atts );
+
+		return do_shortcode( $content );
 	}
 
 }

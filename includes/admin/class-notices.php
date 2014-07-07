@@ -118,6 +118,26 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
+			case 'creative_updated' :
+
+				$message = __( 'Creative updated successfully', 'affiliate-wp' );
+
+				$message .= '<p>'. sprintf( __( '<a href="%s">Back to Creatives</a>', 'affiliate-wp' ), admin_url( 'admin.php?page=affiliate-wp-creatives' ) ) .'</p>';
+
+				break;
+
+			case 'creative_added' :
+
+				$message = __( 'Creative added successfully', 'affiliate-wp' );
+
+				break;
+
+			case 'creative_deleted' :
+
+				$message = __( 'Creative deleted successfully', 'affiliate-wp' );
+
+				break;
+
 			case 'settings-imported' :
 
 				$message = __( 'Settings successfully imported', 'affiliate-wp' );

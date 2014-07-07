@@ -48,6 +48,7 @@ class Affiliate_WP_Capabilities {
 			$wp_roles->add_cap( 'administrator', 'manage_affiliates' );
 			$wp_roles->add_cap( 'administrator', 'manage_referrals' );
 			$wp_roles->add_cap( 'administrator', 'manage_visits' );
+			$wp_roles->add_cap( 'administrator', 'manage_creatives' );
 		}
 	}
 
@@ -73,6 +74,7 @@ class Affiliate_WP_Capabilities {
 			$wp_roles->remove_cap( 'administrator', 'manage_affiliates' );
 			$wp_roles->remove_cap( 'administrator', 'manage_referrals' );
 			$wp_roles->remove_cap( 'administrator', 'manage_visits' );
+			$wp_roles->remove_cap( 'administrator', 'manage_creatives' );
 
 		}
 	}

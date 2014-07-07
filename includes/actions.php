@@ -26,3 +26,9 @@ add_action( 'affwp_add_referral', 'affwp_add_referral' );
 
 // Process affiliate notification settings
 add_action( 'affwp_update_profile_settings', 'affwp_update_profile_settings' );
+
+// Process a creative creation from the admin screen
+add_action( 'affwp_add_creative', 'affwp_add_creative' );
+
+// Process an creative update from the admin screen
+add_action( 'affwp_update_creative', 'affwp_update_creative' );

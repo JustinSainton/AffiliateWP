@@ -52,6 +52,7 @@ final class Affiliate_WP {
 	public $affiliates;
 	public $referrals;
 	public $visits;
+	public $creatives;
 	public $settings;
 	public $tracking;
 	public $templates;
@@ -59,7 +60,7 @@ final class Affiliate_WP {
 	public $register;
 	public $integrations;
 	public $emails;
-	public $assets;
+	public $creative;
 
 
 	/**
@@ -88,6 +89,7 @@ final class Affiliate_WP {
 			self::$instance->affiliates   = new Affiliate_WP_DB_Affiliates;
 			self::$instance->referrals    = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits       = new Affiliate_WP_Visits_DB;
+			self::$instance->creatives    = new Affiliate_WP_Creatives_DB;
 			self::$instance->settings     = new Affiliate_WP_Settings;
 			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->templates    = new Affiliate_WP_Templates;
@@ -95,7 +97,7 @@ final class Affiliate_WP {
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
 			self::$instance->emails       = new Affiliate_WP_Emails;
-			self::$instance->assets       = new Affiliate_WP_Assets;
+			self::$instance->creative     = new Affiliate_WP_Creatives;
 
 			self::$instance->updater();
 		}
@@ -186,6 +188,7 @@ final class Affiliate_WP {
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/reports/reports.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/visits.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/creatives/creatives.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/tools.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-upgrades.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-welcome.php';
@@ -209,11 +212,13 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-templates.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-tracking.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-assets.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/referral-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/creative-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
 	}

@@ -25,6 +25,7 @@ function affwp_is_admin_page() {
 		'affiliate-wp-affiliates',
 		'affiliate-wp-referrals',
 		'affiliate-wp-visits',
+		'affiliate-wp-creatives',
 		'affiliate-wp-reports',
 		'affiliate-wp-tools',
 		'affiliate-wp-settings',
@@ -60,6 +61,11 @@ function affwp_admin_scripts() {
 		'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
 		'confirm'       => __( 'Are you sure you want to generate the payout file? All included referrals will be marked as Paid.', 'affiliate-wp' ),
 	));
+
+	// only enqueue for creatives page
+	if ( isset( $_GET['action'] ) && ( $_GET['action'] == 'add_creative' || $_GET['action'] == 'edit_creative' ) ) {
+		wp_enqueue_media();
+	}
 
 	wp_enqueue_script( 'jquery-ui-datepicker' );
 }
@@ -99,11 +105,11 @@ function affwp_frontend_scripts_and_styles() {
 
 	global $post;
 
-	if( ! is_object( $post ) ) {
+	if ( ! is_object( $post ) ) {
 		return;
 	}
 
-	if( has_shortcode( $post->post_content, 'affiliate_area' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
+	if ( has_shortcode( $post->post_content, 'affiliate_area' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
 		
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
@@ -120,3 +126,22 @@ function affwp_frontend_scripts_and_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'affwp_frontend_scripts_and_styles' );
+
+/**
+ *  Load the frontend creative styles for the [affiliate_creative] and [affiliate_creatives] shortcodes
+ *  
+ *  @since 1.1.4
+ *  @return void
+ */
+function affwp_frontend_creative_styles() {
+	global $post;
+
+	if ( ! is_object( $post ) ) {
+		return;
+	}
+
+	if ( has_shortcode( $post->post_content, 'affiliate_creative' ) || has_shortcode( $post->post_content, 'affiliate_creatives' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) { ?>
+		<style>.affwp-creative{margin-bottom: 4em;}</style>
+	<?php }
+}
+add_action( 'wp_head', 'affwp_frontend_creative_styles' );
