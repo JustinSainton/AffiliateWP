@@ -188,7 +188,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 				<label for="affwp-referral-notifications"><?php _e( 'Enable New Referral Notifications', 'affiliate-wp' ); ?></label>
 			</div>
 
-			<?php do_action( 'affwp_affiliate_dashboard_before_submit' ); ?>
+			<?php do_action( 'affwp_affiliate_dashboard_before_submit', $affiliate_id, $user_id ); ?>
 			
 			<div class="affwp-save-profile-wrap">
 				<input type="hidden" name="affwp_action" value="update_profile_settings" />
