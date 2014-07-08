@@ -31,6 +31,30 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 			<tr class="form-row form-required">
 
 				<th scope="row">
+					<label for="affiliate_id"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<?php echo esc_attr( $user_info->user_login ); ?>
+				</td>
+
+			</tr>
+
+			<tr class="form-row form-required">
+
+				<th scope="row">
+					<label for="affiliate_id"><?php _e( 'Email Address', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<?php echo esc_attr( $user_info->user_email ); ?>
+				</td>
+
+			</tr>
+
+			<tr class="form-row form-required">
+
+				<th scope="row">
 					<label for="user_id"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
 				</th>
 
