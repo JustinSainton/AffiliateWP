@@ -28,6 +28,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		// Integration with EDD commissions to adjust commission rates if a referral is present
 		add_filter( 'eddc_calc_commission_amount', array( $this, 'commission_rate' ), 10, 2 );
+		add_filter( 'affwp_settings_integrations', array( $this, 'commission_settings' ), 10 );
 	}
 
 	/**
@@ -286,6 +287,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function commission_rate( $amount, $args ) {
 
+		if( ! affiliate_wp()->settings->get( 'edd_adjust_commissions' ) ) {
+			return $amount;
+		}
+
 		$referral_amount = affiliate_wp()->referrals->get_column_by( 'amount', 'reference', $args['payment_id']  );
 
 		if( ! $referral_amount ) {
@@ -306,6 +311,27 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 
 		return $amount;
+	}
+
+	/**
+	 * Add a setting to toggle whether referrals adjust EDD commissions
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
+	public function commission_settings( $settings ) {
+
+		if( function_exists( 'eddc_record_commission' ) ) {
+
+			$settings[ 'edd_adjust_commissions' ] = array(
+				'name' => __( 'Adjust EDD Commissions', 'affiliate-wp' ),
+				'desc' => __( 'Should AffiliateWP adjust the commission amounts recorded for purchases that include affiliate referrals? This will subtract the referral amount from the base amount used to calculate the commission total.', 'affiliate-wp' ),
+				'type' => 'checkbox'
+			);
+
+		}
+		
+		return $settings;
 	}
 
 }
