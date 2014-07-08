@@ -1,6 +1,22 @@
-<?php 
+<?php
 global $affwp_register_redirect;
 affiliate_wp()->register->print_errors();
+
+if( ! array_key_exists( 'empty_name', affiliate_wp()->register->get_errors() ) ){
+	$affwp_user_name =  sanitize_text_field( $_POST['affwp_user_name'] );
+}
+
+if( ! array_key_exists( 'empty_username', affiliate_wp()->register->get_errors() )  && ! array_key_exists( 'username_unavailable', affiliate_wp()->register->get_errors() ) && ! array_key_exists( 'username_invalid', affiliate_wp()->register->get_errors() ) ){
+	$affwp_user_login = sanitize_text_field( $_POST['affwp_user_login'] );
+}
+
+if( ! array_key_exists( 'email_unavailable', affiliate_wp()->register->get_errors() ) && ! array_key_exists( 'email_invalid', affiliate_wp()->register->get_errors() ) ){
+	$affwp_user_email 	= sanitize_text_field( $_POST['affwp_user_email'] );
+}
+
+if( ! array_key_exists( 'payment_email_invalid', affiliate_wp()->register->get_errors() ) ){
+	$affwp_payment_email =  sanitize_text_field( $_POST['affwp_payment_email'] );
+}
 ?>
 
 <form id="affwp-register-form" class="affwp-form" action="" method="post">
@@ -15,22 +31,22 @@ affiliate_wp()->register->print_errors();
 
 			<p>
 				<label for="affwp-user-name"><?php _e( 'Your Name', 'affiliate-wp' ); ?></label>
-				<input id="affwp-user-name" class="required" type="text" name="affwp_user_name" title="<?php esc_attr_e( 'Your Name', 'affiliate-wp' ); ?>" />
+				<input id="affwp-user-name" class="required" type="text" name="affwp_user_name" value="<?php if( ! empty( $affwp_user_name ) ) { echo $affwp_user_name; } ?>" title="<?php esc_attr_e( 'Your Name', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
 				<label for="affwp-user-login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
-				<input id="affwp-user-login" class="required" type="text" name="affwp_user_login" title="<?php esc_attr_e( 'Username', 'affiliate-wp' ); ?>" />
+				<input id="affwp-user-login" class="required" type="text" name="affwp_user_login" value="<?php if( ! empty( $affwp_user_login ) ) { echo $affwp_user_login; } ?>" title="<?php esc_attr_e( 'Username', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
 				<label for="affwp-user-email"><?php _e( 'Account Email', 'affiliate-wp' ); ?></label>
-				<input id="affwp-user-email" class="required" type="email" name="affwp_user_email" title="<?php esc_attr_e( 'Email Address', 'affiliate-wp' ); ?>" />
+				<input id="affwp-user-email" class="required" type="email" name="affwp_user_email" value="<?php if( ! empty( $affwp_user_email ) ) { echo $affwp_user_email; } ?>" title="<?php esc_attr_e( 'Email Address', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
 				<label for="affwp-payment-email"><?php _e( 'Payment Email (if different)', 'affiliate-wp' ); ?></label>
-				<input id="affwp-payment-email" type="email" name="affwp_payment_email" title="<?php esc_attr_e( 'Payment Email Address', 'affiliate-wp' ); ?>" />
+				<input id="affwp-payment-email" type="email" name="affwp_payment_email" value="<?php if( ! empty( $affwp_payment_email ) ) { echo $affwp_payment_email; } ?>" title="<?php esc_attr_e( 'Payment Email Address', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
