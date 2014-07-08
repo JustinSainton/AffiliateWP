@@ -156,6 +156,7 @@ class Affiliate_WP_Tracking {
 						action      : 'affwp_track_conversion',
 						affiliate   : ref,
 						amount      : '<?php echo $args["amount"]; ?>',
+						status      : '<?php echo $args["status"]; ?>',
 						description : '<?php echo $args["description"]; ?>',
 						context     : '<?php echo $args["context"]; ?>',
 						reference   : '<?php echo $args["reference"]; ?>',
