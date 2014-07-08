@@ -241,7 +241,7 @@ class Affiliate_WP_Register {
 	public function get_errors() {
 
 		if ( empty( $this->errors ) ) {
-			return;
+			return array();
 		}
 
 		return $this->errors;

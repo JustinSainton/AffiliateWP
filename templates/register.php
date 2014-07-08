@@ -4,20 +4,22 @@ affiliate_wp()->register->print_errors();
 
 $errors = affiliate_wp()->register->get_errors();
 
-if( ! array_key_exists( 'empty_name', $errors ) ){
-	$user_name =  sanitize_text_field( $_POST['affwp_user_name'] );
-}
+if( ! empty ( $errors ) ){
+	if( ! array_key_exists( 'empty_name', $errors ) ){
+		$user_name =  sanitize_text_field( $_POST['affwp_user_name'] );
+	}
 
-if( ! array_key_exists( 'empty_username', $errors )  && ! array_key_exists( 'username_unavailable', $errors ) && ! array_key_exists( 'username_invalid', $errors ) ){
-	$user_login = sanitize_text_field( $_POST['affwp_user_login'] );
-}
+	if( ! array_key_exists( 'empty_username', $errors )  && ! array_key_exists( 'username_unavailable', $errors ) && ! array_key_exists( 'username_invalid', $errors ) ){
+		$user_login = sanitize_text_field( $_POST['affwp_user_login'] );
+	}
 
-if( ! array_key_exists( 'email_unavailable', $errors ) && ! array_key_exists( 'email_invalid', $errors ) ){
-	$user_email 	= sanitize_text_field( $_POST['affwp_user_email'] );
-}
+	if( ! array_key_exists( 'email_unavailable', $errors ) && ! array_key_exists( 'email_invalid', $errors ) ){
+		$user_email 	= sanitize_text_field( $_POST['affwp_user_email'] );
+	}
 
-if( ! array_key_exists( 'payment_email_invalid', $errors ) ){
-	$payment_email =  sanitize_text_field( $_POST['affwp_payment_email'] );
+	if( ! array_key_exists( 'payment_email_invalid', $errors ) ){
+		$payment_email =  sanitize_text_field( $_POST['affwp_payment_email'] );
+	}
 }
 ?>
 
