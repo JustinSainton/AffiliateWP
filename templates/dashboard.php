@@ -36,7 +36,7 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 
 		<p><?php printf( __( 'Your affiliate ID is: <strong>%d</strong>', 'affiliate-wp' ), $affiliate_id ); ?></p>
 		<p><?php printf( __( 'Your referral URL is: <strong>%s</strong>', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) ) ); ?></p>
-		<p><?php _e( 'Enter any URL on this website below to generate a referral link!', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'Enter any URL from this website in the form below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 		<?php
 		$base_url     = isset( $_GET['url'] ) ? urldecode( $_GET['url'] ) : home_url( '/' );
@@ -188,6 +188,8 @@ $payment_email = affwp_get_affiliate_email( $affiliate_id );
 				<label for="affwp-referral-notifications"><?php _e( 'Enable New Referral Notifications', 'affiliate-wp' ); ?></label>
 			</div>
 
+			<?php do_action( 'affwp_affiliate_dashboard_before_submit', $affiliate_id, $user_id ); ?>
+			
 			<div class="affwp-save-profile-wrap">
 				<input type="hidden" name="affwp_action" value="update_profile_settings" />
 				<input type="hidden" id="affwp-affiliate-id" name="affiliate_id" value="<?php echo esc_attr( $affiliate_id ); ?>" />
