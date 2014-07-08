@@ -33,7 +33,7 @@ class Affiliate_WP_Register {
 
 			// Loop through required fields and show error message
 			foreach ( $this->required_fields() as $field_name => $value ) {
-				if ( in_array( $value, $this->required_fields() ) && empty( $_POST[ $field_name ] ) ) {
+				if ( empty( $_POST[ $field_name ] ) ) {
 					$this->add_error( $value['error_id'], $value['error_message'] );
 				}
 			}
