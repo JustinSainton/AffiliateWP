@@ -83,6 +83,8 @@ class Affiliate_WP_Admin_Notices {
 
 					$message = __( 'Affiliate request was rejected', 'affiliate-wp' );
 
+					break;
+
 				case 'stats_recounted' :
 
 					$message = __( 'Affiliate stats have been recounted!', 'affiliate-wp' );
