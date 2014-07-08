@@ -19,13 +19,13 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
-	
+
 		// Discount code tracking actions and filters
 		add_action( 'edd_add_discount_form_bottom', array( $this, 'discount_edit' ) );
 		add_action( 'edd_edit_discount_form_bottom', array( $this, 'discount_edit' ) );
 		add_action( 'edd_post_update_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
 		add_action( 'edd_post_insert_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
-	
+
 		// Integration with EDD commissions to adjust commission rates if a referral is present
 		add_filter( 'eddc_calc_commission_amount', array( $this, 'commission_rate' ), 10, 2 );
 	}
@@ -98,7 +98,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 					$amount = edd_get_payment_subtotal( $payment_id );
 					$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
-					
+
 					if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 						return false; // Ignore a zero amount referral
 					}
