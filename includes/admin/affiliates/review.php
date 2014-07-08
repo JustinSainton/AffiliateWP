@@ -1,10 +1,10 @@
 <?php
-$affiliate 			= affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
-$affiliate_id 		= $affiliate->affiliate_id;
-$user_info 			= get_userdata( $affiliate_id );
-$user_url			= $user_info->user_url;
-$name 				= affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
-$promotion_method 	= get_user_meta( $affiliate_id, 'affwp_promotion_method', true );
+$affiliate        = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
+$affiliate_id     = $affiliate->affiliate_id;
+$name             = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+$user_info        = get_userdata( $affiliate->user_id );
+$user_url         = $user_info->user_url;
+$promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method', true );
 ?>
 <div class="wrap">
 
