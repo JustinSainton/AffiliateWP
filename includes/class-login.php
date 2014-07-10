@@ -91,7 +91,10 @@ class Affiliate_WP_Login {
 			$this->log_user_in( $user->ID, $_POST['affwp_user_login'], $remember );
 
 			$redirect = apply_filters( 'affwp_login_redirect', $data['affwp_redirect'] );
-			wp_redirect( $redirect ); exit;
+
+			if ( $redirect ) {
+				wp_redirect( $redirect ); exit;
+			}
 			
 		} else {
 

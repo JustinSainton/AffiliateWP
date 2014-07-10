@@ -115,7 +115,11 @@ class Affiliate_WP_Register {
 			$this->register_user();
 
 			$redirect = apply_filters( 'affwp_register_redirect', $data['affwp_redirect'] );
-			wp_redirect( $redirect ); exit;
+
+			if ( $redirect ) {
+				wp_redirect( $redirect ); exit;
+			}
+			
 		}
 	}
 
