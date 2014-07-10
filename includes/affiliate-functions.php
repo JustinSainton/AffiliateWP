@@ -744,7 +744,7 @@ function affwp_update_profile_settings( $data = array() ) {
 		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ) );
 	}
 
-	do_action( 'affwp_update_profile_settings', $data );
+	do_action( 'affwp_update_affiliate_profile_settings', $data );
 
 	if ( ! empty( $_POST['affwp_action'] ) ) {
 		wp_redirect( add_query_arg( 'affwp_notice', 'profile-updated' ) ); exit;
