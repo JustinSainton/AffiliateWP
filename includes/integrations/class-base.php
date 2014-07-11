@@ -17,14 +17,14 @@ abstract class Affiliate_WP_Base {
 	}
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
-		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
+		if ( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
 
-		do_action( 'affwp_insert_pending_referral', $amount, $reference, $description, $data );
-
 		$amount = affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
-		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+		$amount = apply_filters( 'affwp_insert_pending_referral', $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
+
+		if ( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
 		return affiliate_wp()->referrals->add( array(
@@ -38,7 +38,7 @@ abstract class Affiliate_WP_Base {
 		) );
 
 	}
-	
+
 	public function complete_referral( $reference = 0 ) {
 		if ( empty( $reference ) ) {
 			return false;
@@ -76,16 +76,16 @@ abstract class Affiliate_WP_Base {
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context );
 
-		if( empty( $referral ) ) {
+		if ( empty( $referral ) ) {
 			return false;
 		}
 
-		if( is_object( $referral ) && 'paid' == $referral->status ) {
+		if ( is_object( $referral ) && 'paid' == $referral->status ) {
 			// This referral has already been paid so it cannot be rejected
 			return false;
 		}
 
-		if( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ) ) ) {
+		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ) ) ) {
 
 			return true;
 
