@@ -152,6 +152,12 @@ table.affwp_table td a {
 	background: rgba(255, 255, 255, 0.3);
 }
 
+@media screen and ( max-width: 1024px ) {
+	#affwp-affiliates-filter th {
+		width: auto!important;
+	}
+}
+
 /* Visits page */
 #affwp-visits-filter #url {
 	width: 250px;
