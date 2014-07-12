@@ -27,6 +27,10 @@ function affwp_affiliates_admin() {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
+	} else if( isset( $_GET['action'] ) && 'delete_affiliate' == $_GET['action'] ) {
+
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
+
 	} else {
 
 		$affiliates_table = new AffWP_Affiliates_Table();
@@ -50,6 +54,54 @@ function affwp_affiliates_admin() {
 <?php
 
 	}
+
+}
+
+/**
+ * Process affiliate deletion requests
+ *
+ * @since 1.2
+ * @param $data array
+ * @return void
+ */
+function affwp_process_affiliate_deletion( $data ) {
+
+	if( ! is_admin() ) {
+		return;
+	}
+
+	if( ! current_user_can( 'manage_affiliates' ) ) {
+		wp_die( __( 'You do not have permission to delete affiliate accounts', 'affiliate-wp' ) );
+	}
+
+	if( ! wp_verify_nonce( $data['affwp_delete_affiliates_nonce'], 'affwp_delete_affiliates_nonce' ) ) {
+		wp_die( __( 'Security check failed', 'affiliate-wp' ) );
+	}
+
+	if( empty( $data['affwp_affiliate_ids'] ) || ! is_array( $data['affwp_affiliate_ids'] ) ) {
+		wp_die( __( 'No affiliate IDs specified for deletion', 'affiliate-wp' ) );
+	}
+
+	$to_delete    = array_map( 'absint', $data['affwp_affiliate_ids'] );
+	$delete_users = isset( $data['affwp_delete_users_too'] ) && current_user_can( 'delete_users' );
+
+	foreach( $to_delete as $affiliate_id ) {
+
+		if( $delete_users ) {
+
+			require_once( ABSPATH . 'wp-admin/includes/user.php' );
+
+			$user_id = affwp_get_affiliate_user_id( $affiliate_id );
+			wp_delete_user( $user_id );
+
+		}
+
+		affwp_delete_affiliate( $affiliate_id, true );
+
+	}
+
+	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_deleted' ) ); exit;
+
 
 }
 
@@ -353,7 +405,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_actived', 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'affiliate_deleted', 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affwp_delete_affiliate_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete_affiliate', 'affiliate_ids[]' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
 
@@ -419,10 +471,6 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 
 			if ( 'reject' === $this->current_action() ) {
 				affwp_set_affiliate_status( $id, 'rejected' );
-			}
-
-			if ( 'delete' === $this->current_action() ) {
-				affiliate_wp()->affiliates->delete( $id );
 			}
 
 			if ( 'activate' === $this->current_action() ) {

@@ -18,6 +18,9 @@ add_action( 'init', 'affwp_do_actions' );
 // Process an affiliate creation from the admin screen
 add_action( 'affwp_add_affiliate', 'affwp_add_affiliate' );
 
+// Process affiliate deletion
+add_action( 'affwp_delete_affiliates', 'affwp_process_affiliate_deletion' );
+
 // Process an affiliate update from the admin screen
 add_action( 'affwp_update_affiliate', 'affwp_update_affiliate' );
 
