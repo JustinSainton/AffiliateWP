@@ -158,6 +158,17 @@ table.affwp_table td a {
 	}
 }
 
+@media screen and ( max-width: 650px ) {
+	#affwp-affiliates-filter th#referrals,
+	#affwp-affiliates-filter th#visits,
+	#affwp-affiliates-filter th#rate,
+	#affwp-affiliates-filter .column-referrals,
+	#affwp-affiliates-filter .column-visits,
+	#affwp-affiliates-filter .column-rate {
+		display: none!important;
+	}
+}
+
 /* Visits page */
 #affwp-visits-filter #url {
 	width: 250px;
