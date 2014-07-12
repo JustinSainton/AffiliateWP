@@ -27,7 +27,7 @@ function affwp_affiliates_admin() {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
-	} else if( isset( $_GET['action'] ) && 'delete_affiliate' == $_GET['action'] ) {
+	} else if( isset( $_GET['action'] ) && 'delete' == $_GET['action'] ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
 
@@ -405,7 +405,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_actived', 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
-		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete_affiliate', 'affiliate_ids[]' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
 

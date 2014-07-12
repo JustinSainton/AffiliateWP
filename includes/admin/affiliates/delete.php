@@ -1,11 +1,11 @@
 <?php
-if( ! empty( $_GET['affiliate_ids'] ) && is_array( $_GET['affiliate_ids'] ) ) {
+if( ! empty( $_GET['affiliate_id'] ) && is_array( $_GET['affiliate_id'] ) ) {
 
-	$to_delete = array_map( 'absint', $_GET['affiliate_ids'] );
+	$to_delete = array_map( 'absint', $_GET['affiliate_id'] );
 
 } else {
 
-	$to_delete = ! empty( $_GET['affiliate_ids'] ) ? array( absint( $_GET['affiliate_ids'] ) ) : array();
+	$to_delete = ! empty( $_GET['affiliate_id'] ) ? array( absint( $_GET['affiliate_id'] ) ) : array();
 
 }
 ?>
