@@ -36,7 +36,7 @@ class Affiliate_WP_Register {
 		ob_start();
 
 		affiliate_wp()->templates->get_template_part( 'register' );
-		
+
 		return apply_filters( 'affwp_register_form', ob_get_clean() );
 
 	}
@@ -62,7 +62,6 @@ class Affiliate_WP_Register {
 			if( username_exists( $data['affwp_user_login'] ) ) {
 				$this->add_error( 'username_unavailable', __( 'Username already taken', 'affiliate-wp' ) );
 			}
-
 
 			if( ! validate_username( $data['affwp_user_login'] ) ) {
 				$this->add_error( 'username_invalid', __( 'Invalid username', 'affiliate-wp' ) );
@@ -236,5 +235,22 @@ class Affiliate_WP_Register {
 		echo '</div>';
 
 	}
+
+	/**
+	 * Get errors
+	 *
+	 * @since 1.1
+	 * @return array
+	 */
+	public function get_errors() {
+
+		if ( empty( $this->errors ) ) {
+			return array();
+		}
+
+		return $this->errors;
+
+	}
+
 
 }
