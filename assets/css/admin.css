@@ -133,19 +133,19 @@ table.affwp_table td a {
 }
 
 /* Affiliates page */
-#affwp-affiliates-filter #name {
+#affwp-affiliates-filter .column-name {
 	width: 180px;
 }
-#affwp-affiliates-filter #affiliate_id,
-#affwp-affiliates-filter #rate {
+#affwp-affiliates-filter .column-affiliate_id,
+#affwp-affiliates-filter .column-rate {
 	width: 80px;
 }
-#affwp-affiliates-filter #earnings,
-#affwp-affiliates-filter #referrals {
+#affwp-affiliates-filter .column-earnings,
+#affwp-affiliates-filter .column-referrals {
 	width: 140px;
 }
-#affwp-affiliates-filter #visits,
-#affwp-affiliates-filter #status {
+#affwp-affiliates-filter .column-visits,
+#affwp-affiliates-filter .column-status {
 	width: 100px;
 }
 #affwp_edit_affiliate input:disabled {
@@ -153,19 +153,45 @@ table.affwp_table td a {
 }
 
 @media screen and ( max-width: 1024px ) {
-	#affwp-affiliates-filter th {
-		width: auto!important;
+	#affwp-affiliates-filter .manage-column {
+		width: auto;
 	}
 }
 
-@media screen and ( max-width: 650px ) {
-	#affwp-affiliates-filter th#referrals,
-	#affwp-affiliates-filter th#visits,
-	#affwp-affiliates-filter th#rate,
+@media screen and ( max-width: 782px ) {
+	#affwp-affiliates-filter .column-affiliate_id,
+	#affwp-affiliates-filter .column-rate,
 	#affwp-affiliates-filter .column-referrals,
-	#affwp-affiliates-filter .column-visits,
-	#affwp-affiliates-filter .column-rate {
-		display: none!important;
+	#affwp-affiliates-filter .column-visits {
+		display: none;
+	}
+	#affwp-affiliates-filter .column-cb {
+		width: 8%;
+	}
+	#affwp-affiliates-filter .column-name {
+		width: 10%;
+	}
+	#affwp-affiliates-filter .column-actions {
+		width: 15%;
+	}
+}
+
+@media screen and ( max-width: 500px ) {
+	#affwp-affiliates-filter .column-affiliate_id,
+	#affwp-affiliates-filter .column-rate,
+	#affwp-affiliates-filter .column-referrals,
+	#affwp-affiliates-filter .column-status,
+	#affwp-affiliates-filter .column-visits {
+		display: none;
+	}
+	#affwp-affiliates-filter .column-cb {
+		width: 10%;
+	}
+	#affwp-affiliates-filter .column-name {
+		width: 25%;
+	}
+	#affwp-affiliates-filter .column-actions {
+		width: 25%;
 	}
 }
 
