@@ -171,7 +171,6 @@ table.affwp_table td a {
 	#affwp-affiliates-filter .column-affiliate_id,
 	#affwp-affiliates-filter .column-rate,
 	#affwp-affiliates-filter .column-referrals,
-	#affwp-affiliates-filter .column-status,
 	#affwp-affiliates-filter .column-visits {
 		display: none;
 	}
@@ -181,7 +180,7 @@ table.affwp_table td a {
 	}
 }
 
-@media screen and ( min-width: 1024px ) {
+@media screen and ( min-width: 1025px ) {
 	#affwp-affiliates-filter .column-actions {
 		width: 30%;
 	}
