@@ -85,7 +85,6 @@ table.affwp_table td a {
 	background-image:      -o-linear-gradient(bottom, #f5f5f5, #fafafa);
 	background-image: linear-gradient(to top, #f5f5f5, #fafafa);
 	border-color: #dfdfdf;
-	//position: relative;
 	overflow: auto;
 	margin: 8px 0;
 	padding: 12px;
@@ -95,10 +94,7 @@ table.affwp_table td a {
 	font-size: 13px;
 	line-height: 2.1em;
 }
-#affwp-referrals-filter-form #amount,
-#affwp-referrals-filter-form #affiliate {
-	width: 100px;
-}
+
 .affwp-status.pending i,
 .affwp-status.unpaid i,
 .affwp-status.paid i,
@@ -132,78 +128,19 @@ table.affwp_table td a {
 	color: #ef6c5e;
 }
 
-/* Affiliates page */
-#affwp-affiliates-filter .column-name {
-	width: 180px;
-}
-#affwp-affiliates-filter .column-affiliate_id,
-#affwp-affiliates-filter .column-rate {
-	width: 80px;
-}
-#affwp-affiliates-filter .column-earnings,
-#affwp-affiliates-filter .column-referrals {
-	width: 140px;
-}
-#affwp-affiliates-filter .column-visits,
-#affwp-affiliates-filter .column-status {
-	width: 100px;
-}
 #affwp_edit_affiliate input:disabled {
 	background: rgba(255, 255, 255, 0.3);
 }
 
-@media screen and ( max-width: 1024px ) {
-	#affwp-affiliates-filter .manage-column {
-		width: auto;
-	}
-}
-
-@media screen and ( max-width: 782px ) {
-	#affwp-affiliates-filter .column-affiliate_id,
-	#affwp-affiliates-filter .column-rate,
-	#affwp-affiliates-filter .column-referrals,
-	#affwp-affiliates-filter .column-visits {
-		display: none;
-	}
-	#affwp-affiliates-filter .column-cb {
-		width: 8%;
-	}
-	#affwp-affiliates-filter .column-name {
-		width: 10%;
-	}
-	#affwp-affiliates-filter .column-actions {
-		width: 15%;
-	}
-}
-
-@media screen and ( max-width: 500px ) {
-	#affwp-affiliates-filter .column-affiliate_id,
-	#affwp-affiliates-filter .column-rate,
-	#affwp-affiliates-filter .column-referrals,
-	#affwp-affiliates-filter .column-status,
-	#affwp-affiliates-filter .column-visits {
-		display: none;
-	}
-	#affwp-affiliates-filter .column-cb {
-		width: 10%;
-	}
-	#affwp-affiliates-filter .column-name {
-		width: 25%;
-	}
-	#affwp-affiliates-filter .column-actions {
-		width: 25%;
-	}
-}
-
 /* Visits page */
 #affwp-visits-filter #url {
-	width: 250px;
+	width: 30%;
 }
 
 .visit-converted i {
 	display: inline-block;
 	position: relative;
-	top:2px;
+	top: 2px;
 	left: 2px;
 }
 .visit-converted i:before {
@@ -227,4 +164,31 @@ table.affwp_table td a {
 .affwp-woo-coupon-field #affwp_user_search_results {
 	left: 0;
 	top: 25px;
+}
+
+/* Media Queries */
+@media screen and ( max-width: 782px ) {
+	#affwp-affiliates-filter .column-affiliate_id,
+	#affwp-affiliates-filter .column-rate,
+	#affwp-affiliates-filter .column-referrals,
+	#affwp-affiliates-filter .column-status,
+	#affwp-affiliates-filter .column-visits {
+		display: none;
+	}
+
+	#affwp-affiliates-filter .column-actions span {
+		display: block;
+	}
+}
+
+@media screen and ( min-width: 1024px ) {
+	#affwp-affiliates-filter .column-actions {
+		width: 30%;
+	}
+}
+
+@media screen and ( min-width: 680px ) {
+	#affwp-referrals-filter-form .column-actions {
+		width: 24%;
+	}
 }
