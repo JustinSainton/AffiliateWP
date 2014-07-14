@@ -22,20 +22,24 @@ abstract class Affiliate_WP_Base {
 		}
 
 		$amount = affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
-		$amount = apply_filters( 'affwp_insert_pending_referral', $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
 
 		if ( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
-		return affiliate_wp()->referrals->add( array(
-			'amount'       => $amount,
-			'reference'    => $reference,
-			'description'  => $description,
-			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
-			'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
-			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
-			'context'      => $this->context
-		) );
+
+		return affiliate_wp()->referrals->add( 
+			apply_filters( 'affwp_insert_pending_referral', 
+				array(
+					'amount'       => $amount,
+					'reference'    => $reference,
+					'description'  => $description,
+					'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
+					'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
+					'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
+					'context'      => $this->context
+				), $amount, $reference, $description, affiliate_wp()->tracking->get_affiliate_id(), affiliate_wp()->tracking->get_visit_id(), $data, $this->context
+			)
+		);
 
 	}
 
