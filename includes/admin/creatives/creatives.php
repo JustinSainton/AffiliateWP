@@ -6,7 +6,7 @@
  * @subpackage  Admin/Affiliates
  * @copyright   Copyright (c) 2014, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       1.1.4
+ * @since       1.2
  */
 
 
@@ -46,16 +46,12 @@ function affwp_creatives_admin() {
 				<?php $creatives_table->display() ?>
 			</form>
 
-				
-
 			<?php do_action( 'affwp_affiliates_page_bottom' ); ?>
 		</div>
 
 <?php
 	}
 }
-
-
 
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {
@@ -67,7 +63,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
  *
  * Renders the Affiliates table on the Affiliates page
  *
- * @since 1.1.4
+ * @since 1.2
  */
 class AffWP_Creatives_Table extends WP_List_Table {
 
@@ -75,38 +71,38 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Number of results to show per page
 	 *
 	 * @var string
-	 * @since 1.1.4
+	 * @since 1.2
 	 */
 	public $per_page = 30;
 
 	/**
 	 *
-	 * Total number of affiliates
+	 * Total number of creatives
 	 * @var string
-	 * @since 1.1.4
+	 * @since 1.2
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of affiliates
+	 * Active number of creatives
 	 *
 	 * @var string
-	 * @since 1.1.4
+	 * @since 1.2
 	 */
 	public $active_count;
 
 	/**
-	 * Inactive number of affiliates
+	 * Inactive number of creatives
 	 *
 	 * @var string
-	 * @since 1.1.4
+	 * @since 1.2
 	 */
 	public $inactive_count;
 
 	/**
 	 * Get things started
 	 *
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @uses AffWP_Creatives_Table::get_creative_counts()
 	 * @see WP_List_Table::__construct()
 	 */
@@ -124,7 +120,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Show the search field
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 *
 	 * @param string $text Label for the search box
 	 * @param string $input_id ID of the search box
@@ -151,10 +147,34 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	}
 
 	/**
+	 * Retrieve the view types
+	 *
+	 * @access public
+	 * @since 1.0
+	 * @return array $views All the views available
+	 */
+	public function get_views() {
+		$base           = admin_url( 'admin.php?page=affiliate-wp-creatives' );
+
+		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
+		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
+		$active_count   = '&nbsp;<span class="count">(' . $this->active_count . ')</span>';
+		$inactive_count = '&nbsp;<span class="count">(' . $this->inactive_count  . ')</span>';
+
+		$views = array(
+			'all'		=> sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( 'status', $base ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'affiliate-wp') . $total_count ),
+			'active'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'active', $base ), $current === 'active' ? ' class="current"' : '', __('Active', 'affiliate-wp') . $active_count ),
+			'inactive'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'inactive', $base ), $current === 'inactive' ? ' class="current"' : '', __('Inactive', 'affiliate-wp') . $inactive_count ),
+		);
+
+		return $views;
+	}
+
+	/**
 	 * Retrieve the table columns
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return array $columns Array of all the list table columns
 	 */
 	public function get_columns() {
@@ -173,7 +193,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Retrieve the table's sortable columns
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return array Array of all the sortable columns
 	 */
 	public function get_sortable_columns() {
@@ -187,7 +207,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * This function renders most of the columns in the list table.
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 *
 	 * @param array $creative Contains all the data of the creatives
 	 * @param string $column_name The name of the column
@@ -208,7 +228,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Render the URL column
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return string URL
 	 */
 	function column_url( $creative ) {
@@ -219,7 +239,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Render the shortcode column
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return string Shortcode for creative
 	 */
 	function column_shortcode( $creative ) {
@@ -230,7 +250,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Render the actions column
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @param array $creative Contains all the data for the creative column
 	 * @return string action links
 	 */
@@ -249,7 +269,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	/**
 	 * Message to be displayed when there are no items
 	 *
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @access public
 	 */
 	function no_items() {
@@ -260,7 +280,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Process the bulk actions
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return void
 	 */
 	public function process_bulk_action() {
@@ -290,29 +310,36 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Retrieve the creative counts
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return void
 	 */
 	public function get_creative_counts() {
-		$this->total_count = affiliate_wp()->creatives->count();
+
+		$search = isset( $_GET['s'] ) ? $_GET['s'] : '';
+
+		$this->active_count   = affiliate_wp()->creatives->count( array( 'status' => 'active', 'search' => $search ) );
+		$this->inactive_count = affiliate_wp()->creatives->count( array( 'status' => 'inactive', 'search' => $search ) );
+		$this->total_count    = $this->active_count + $this->inactive_count;
 	}
 
 	/**
 	 * Retrieve all the data for all the Creatives
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @return array $creatives_data Array of all the data for the Creatives
 	 */
 	public function creatives_data() {
 		
 		$page = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
-		$status  = isset( $_GET['status'] )   ? $_GET['status']          : '';
+		$status  = isset( $_GET['status'] ) ? $_GET['status'] : '';
+		$search  = isset( $_GET['s'] ) ? $_GET['s'] : '';
 
 		$creatives = affiliate_wp()->creatives->get_creatives( array(
 			'number'  => $this->per_page,
 			'offset'  => $this->per_page * ( $page - 1 ),
 			'status'  => $status,
+			'search'  => $search,
 		) );
 
 		return $creatives;
@@ -323,7 +350,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * Setup the final data for the table
 	 *
 	 * @access public
-	 * @since 1.1.4
+	 * @since 1.2
 	 * @uses AffWP_Creatives_Table::get_columns()
 	 * @uses AffWP_Creatives_Table::get_sortable_columns()
 	 * @uses AffWP_Creatives_Table::process_bulk_action()
@@ -349,13 +376,28 @@ class AffWP_Creatives_Table extends WP_List_Table {
 
 		$current_page = $this->get_pagenum();
 
+		$status = isset( $_GET['status'] ) ? $_GET['status'] : 'any';
+
+		switch( $status ) {
+			case 'active':
+				$total_items = $this->active_count;
+				break;
+			case 'inactive':
+				$total_items = $this->inactive_count;
+				break;
+			case 'any':
+				$total_items = $this->total_count;
+				break;
+		}
+
 		$this->items = $data;
 
 		$this->set_pagination_args( array(
-				'total_items' => $this->total_count,
+				'total_items' => $total_items,
 				'per_page'    => $per_page,
-				'total_pages' => ceil( $this->total_count / $per_page )
+				'total_pages' => ceil( $total_items / $per_page )
 			)
 		);
+
 	}
 }

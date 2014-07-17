@@ -37,17 +37,18 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 	 * Retrieve creatives from the database
 	 *
 	 * @access  public
-	 * @since   1.0
+	 * @since   1.2
 	*/
 	public function get_creatives( $args = array() ) {
 		global $wpdb;
 
 		$defaults = array(
-			'number'      => 20,
-			'offset'      => 0,
+			'number' => 20,
+			'offset' => 0,
+			'status' => '',
 		);
 
-		$args  = wp_parse_args( $args, $defaults );
+		$args = wp_parse_args( $args, $defaults );
 
 		if ( $args['number'] < 1 ) {
 			$args['number'] = 999999999999;
@@ -55,29 +56,55 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 
 		$where = '';
 
-		// visits for specific affiliates
-		if ( ! empty( $args['affiliate_id'] ) ) {
+		if ( ! empty( $args['status'] ) ) {
 
-			if ( is_array( $args['affiliate_id'] ) ) {
-				$affiliate_ids = implode( ',', $args['affiliate_id'] );
+			if( ! empty( $where ) ) {
+				$where .= "AND `status` = '" . $args['status'] . "' ";
 			} else {
-				$affiliate_ids = intval( $args['affiliate_id'] );
+				$where .= "WHERE `status` = '" . $args['status'] . "' ";
+			}
+		}
+
+		// search
+		if ( ! empty( $args['search'] ) ) {
+
+			// search creatives by ID
+			if ( is_numeric( $args['search'] ) ) {
+
+				$creative_ids = esc_sql( $args['search'] );
+				$search = "`creative_id` IN( {$creative_ids} )";
+
+			} 
+			// search creatives by name
+			elseif ( is_string( $args['search'] ) ) {
+				$args['search'] = esc_sql( $args['search'] );
+
+				$names = affiliate_wp()->creatives->get_by( 'name', $args['search'] );
+				$where .= "WHERE `name` = '" . $args['search'] . "' ";
 			}
 
-			$where .= "WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
+			if( ! empty( $search ) ) {
+
+				if( ! empty( $where ) ) {
+					$search = "AND " . $search;
+				} else {
+					$search = "WHERE " . $search;
+				}
+
+				$where .= $search;
+			}
 
 		}
-
 		$cache_key = md5( 'affwp_creatives_' . serialize( $args ) );
 
-		$visits = wp_cache_get( $cache_key, 'creatives' );
+		$creatives = wp_cache_get( $cache_key, 'creatives' );
 		
-		if ( $visits === false ) {
-			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY creative_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
-			wp_cache_set( $cache_key, $visits, 'creatives', 3600 );
+		if ( $creatives === false ) {
+			$creatives = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY creative_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			wp_cache_set( $cache_key, $creatives, 'creatives', 3600 );
 		}
 
-		return $visits;
+		return $creatives;
 
 	}
 
@@ -85,7 +112,7 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 	 * Add a new creative
 	 *
 	 * @access  public
-	 * @since   1.0
+	 * @since   1.2
 	*/
 	public function add( $data = array() ) {
 
@@ -115,10 +142,63 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 	 * Count the total number of creatives in the database
 	 *
 	 * @access  public
-	 * @since   1.1.4
+	 * @since   1.2
 	*/
-	public function count( $data = array() ) {
-		// to do
+	public function count( $args = array() ) {
+		global $wpdb;
+
+		$where = '';
+
+		if ( ! empty( $args['status'] ) ) {
+
+			if( is_array( $args['status'] ) ) {
+				$where .= " WHERE `status` IN('" . implode( "','", $args['status'] ) . "') ";
+			} else {
+				$where .= " WHERE `status` = '" . $args['status'] . "' ";
+			}
+
+		}
+
+		if ( ! empty( $args['search'] ) ) {
+
+			if ( is_numeric( $args['search'] ) ) {
+
+				$creative_ids = esc_sql( $args['search'] );
+				$search = "`creative_id` IN( {$creative_ids} )";
+
+			} 
+			// search creatives by name
+			elseif ( is_string( $args['search'] ) ) {
+
+				$args['search'] = esc_sql( $args['search'] );
+				$names = affiliate_wp()->creatives->get_by( 'name', $args['search'] );
+				$where = "WHERE `name` = '" . $args['search'] . "' ";
+
+			}
+
+			if ( ! empty( $search ) ) {
+
+				if( ! empty( $where ) ) {
+					$search = "AND " . $search;
+				} else {
+					$search = "WHERE " . $search;
+				}
+
+				$where .= $search;
+			}
+
+		}
+
+		$cache_key = md5( 'affwp_creatives_count' . serialize( $args ) );
+
+		$count = wp_cache_get( $cache_key, 'creatives' );
+
+		if ( false === $count ) {
+			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM {$this->table_name} {$where};" );
+			wp_cache_set( $cache_key, $count, 'creatives', 3600 );
+		}
+
+		return $count;
 	}
 
 	public function create_table() {
