@@ -280,6 +280,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 		
 		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )          : 1;
 		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )        : false;
+		$referral_id  = isset( $_GET['referral'] )  ? absint( $_GET['referral'] )       : false;
 		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] )      : false;
 		$order        = isset( $_GET['order'] )     ? $_GET['order']                    : 'DESC';
 		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']                  : 'date';
@@ -302,10 +303,19 @@ class AffWP_Visits_Table extends WP_List_Table {
 
 		}
 
+		if ( strpos( $search, 'referral:' ) !== false ) {
+			$referral_id = absint( trim( str_replace( 'referral:', '', $search ) ) );
+			$search      = '';
+		} elseif ( strpos( $search, 'affiliate:' ) !== false ) {
+			$affiliate_id = absint( trim( str_replace( 'affiliate:', '', $search ) ) );
+			$search       = '';
+		}
+
 		$visits = affiliate_wp()->visits->get_visits( array(
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
 			'affiliate_id' => $affiliate_id,
+			'referral_id'  => $referral_id,
 			'date'         => $date,
 			'orderby'      => $orderby,
 			'order'        => $order,
