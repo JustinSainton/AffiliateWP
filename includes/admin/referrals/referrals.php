@@ -457,7 +457,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'delete'         => __( 'Delete', 'affiliate-wp' ),
 		);
 
-		return $actions;
+		return apply_filters( 'affwp_referrals_bulk_actions', $actions );
 	}
 
 	/**
