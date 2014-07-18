@@ -23,7 +23,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 				</th>
 
 				<td>
-					<?php echo esc_attr( $name ); ?>
+					<?php echo esc_html( $name ); ?>
 				</td>
 
 			</tr>
@@ -35,7 +35,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 				</th>
 
 				<td>
-					<?php echo esc_attr( $user_info->user_login ); ?>
+					<?php echo esc_html( $user_info->user_login ); ?>
 				</td>
 
 			</tr>
@@ -47,7 +47,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 				</th>
 
 				<td>
-					<?php echo esc_attr( $user_info->user_email ); ?>
+					<?php echo esc_html( $user_info->user_email ); ?>
 				</td>
 
 			</tr>

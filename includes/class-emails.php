@@ -57,7 +57,7 @@ class Affiliate_WP_Emails {
 				$message .= sprintf( __( 'Name: %s', 'affiliate-wp' ), $args['name'] ) . "\n\n";
 
 				if ( $user_url ) {
-					$message .= __( 'Website URL: ', 'affiliate-wp' ) . esc_attr( $user_url ) . "\n\n";
+					$message .= __( 'Website URL: ', 'affiliate-wp' ) . esc_url( $user_url ) . "\n\n";
 				}
  
 				if ( $promotion_method ) {
