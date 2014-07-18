@@ -503,6 +503,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 				affwp_set_referral_status( $id, 'unpaid' );
 			}
 
+			do_action( 'affwp_referrals_do_bulk_action_' . $this->current_action(), $id );
+
 		}
 
 	}
