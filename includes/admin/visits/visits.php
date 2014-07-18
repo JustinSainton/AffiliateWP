@@ -13,6 +13,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/contextual-help.php';
+
 function affwp_visits_admin() {
 
 
