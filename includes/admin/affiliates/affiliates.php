@@ -319,7 +319,13 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$row_actions  = array();
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
 		
-		return sprintf( '<a href="%s">%s</a>', get_edit_user_link( $affiliate->user_id ), $name );
+		if( $name ) {
+			$name = sprintf( '<a href="%s">%s</a>', get_edit_user_link( $affiliate->user_id ), $name );
+		} else {
+			$name = __( '(user deleted)', 'affiliate-wp' );
+		}
+
+		return $name;
 	}
 
 	/**
