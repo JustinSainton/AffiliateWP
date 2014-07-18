@@ -93,19 +93,17 @@ jQuery(document).ready(function($) {
 
 		// When an image is selected, run a callback.
 		file_frame.on( 'select', function() {
-
 			var attachment = file_frame.state().get('selection').first().toJSON();
 			formfield.val(attachment.url);
-			
-			if ( $('#preview_image img') ) {
-				$('#preview_image').show();
+		
+			var img = $('<img />');
+			img.attr('src', attachment.url);
+			// replace previous image with new one if selected
+			$('#preview_image').empty().append( img );
 
-				var img = $('<img />'); 
-				img.attr('src', attachment.url);
-				img.appendTo('#preview_image');
-			}
-			else {
-				$('#preview_image').show().find('img').attr('src', attachment.url);
+			// show preview div when image exists
+			if ( $('#preview_image img') ) {
+				$('#preview_image').show();	
 			}
 		});
 
