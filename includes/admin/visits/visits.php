@@ -276,12 +276,13 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function visits_data() {
 		
-		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )     : 1;
-		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )   : false;
-		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] ) : false;
-		$order        = isset( $_GET['order'] )     ? $_GET['order']               : 'DESC';
-		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']             : 'date';
-		
+		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )          : 1;
+		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )        : false;
+		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] )      : false;
+		$order        = isset( $_GET['order'] )     ? $_GET['order']                    : 'DESC';
+		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']                  : 'date';
+		$search       = isset( $_GET['s'] )         ? sanitize_text_field( $_GET['s'] ) : '';
+
 		$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
 		$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
 
@@ -305,7 +306,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 			'affiliate_id' => $affiliate_id,
 			'date'         => $date,
 			'orderby'      => $orderby,
-			'order'        => $order
+			'order'        => $order,
+			'search'       => $search
 		) );
 		return $visits;
 	}

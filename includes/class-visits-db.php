@@ -54,7 +54,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'orderby'      => 'visit_id'
 		);
 
-		$args  = wp_parse_args( $args, $defaults );
+		$args = wp_parse_args( $args, $defaults );
 
 		if( $args['number'] < 1 ) {
 			$args['number'] = 999999999999;
@@ -140,6 +140,26 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$where .= " $year = YEAR ( date ) AND $month = MONTH ( date ) AND $day = DAY ( date )";
 			}
 
+		}
+
+		// Build the search query
+		if( ! empty( $args['search'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if ( filter_var( $args['search'], FILTER_VALIDATE_IP ) ) { 
+
+				$where .= " `ip` LIKE '%%" . $args['search'] . "%%' ";
+
+			} else {
+				
+				$where .= " ( `referrer` LIKE '%%" . $args['search'] . "%%' OR `url` LIKE '%%" . $args['search'] . "%%' ) ";
+
+			}
 		}
 
 		$cache_key = md5( 'affwp_visits_' . serialize( $args ) );
