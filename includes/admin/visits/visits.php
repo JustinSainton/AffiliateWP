@@ -169,7 +169,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		return array(
-			'name'   => array( 'name', false )
+			'date'      => array( 'date', false ),
+			'converted' => array( 'referral_id', false )
 		);
 	}
 
@@ -278,6 +279,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )     : 1;
 		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )   : false;
 		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] ) : false;
+		$order        = isset( $_GET['order'] )     ? $_GET['order']               : 'DESC';
+		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']             : 'date';
 		
 		$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
 		$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
@@ -300,7 +303,9 @@ class AffWP_Visits_Table extends WP_List_Table {
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
 			'affiliate_id' => $affiliate_id,
-			'date'         => $date
+			'date'         => $date,
+			'orderby'      => $orderby,
+			'order'        => $order
 		) );
 		return $visits;
 	}

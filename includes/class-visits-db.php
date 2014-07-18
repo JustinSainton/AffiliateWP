@@ -50,6 +50,8 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'offset'       => 0,
 			'affiliate_id' => 0,
 			'referral_id'  => 0,
+			'order'        => 'DESC',
+			'orderby'      => 'visit_id'
 		);
 
 		$args  = wp_parse_args( $args, $defaults );
@@ -145,7 +147,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		$visits = wp_cache_get( $cache_key, 'visits' );
 		
 		if( $visits === false ) {
-			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY visit_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $visits, 'visits', 3600 );
 		}
 
