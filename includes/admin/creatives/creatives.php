@@ -84,7 +84,7 @@ function affwp_process_creative_deletion( $data ) {
 	$to_delete = array_map( 'absint', $data['affwp_creative_ids'] );
 
 	foreach ( $to_delete as $creative_id ) {
-		affwp_delete_creative( $creative_id, true );
+		affwp_delete_creative( $creative_id );
 	}
 
 	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_deleted' ) ); exit;
@@ -273,10 +273,6 @@ class AffWP_Creatives_Table extends WP_List_Table {
 		return $this->row_actions( $row_actions, true );
 
 	}
-
-
-		
-
 
 	/**
 	 * Message to be displayed when there are no items
