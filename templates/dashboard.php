@@ -42,7 +42,7 @@
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'settings' ? ' active' : ''; ?>">
 			<a href="<?php echo esc_url( add_query_arg( 'tab', 'settings' ) ); ?>"><?php _e( 'Settings', 'affiliate-wp' ); ?></a>
 		</li>
-		<?php do_action( 'affwp_affiliate_dashboard_tabs', affwp_get_affiliate_id() ); ?>
+		<?php do_action( 'affwp_affiliate_dashboard_tabs', affwp_get_affiliate_id(), $active_tab ); ?>
 	</ul>
 
 	<?php affiliate_wp()->templates->get_template_part( 'dashboard-tab', $active_tab ); ?>
