@@ -27,6 +27,10 @@ function affwp_creatives_admin() {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/creatives/edit.php';
 
+	} else if( isset( $_GET['action'] ) && 'delete' == $_GET['action'] ) {
+
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/creatives/delete.php';
+
 	} else {
 
 		$creatives_table = new AffWP_Creatives_Table();
@@ -50,6 +54,41 @@ function affwp_creatives_admin() {
 
 <?php
 	}
+}
+
+/**
+ * Process creative deletion requests
+ *
+ * @since 1.2
+ * @param $data array
+ * @return void
+ */
+function affwp_process_creative_deletion( $data ) {
+
+	if ( ! is_admin() ) {
+		return;
+	}
+
+	if ( ! current_user_can( 'manage_creatives' ) ) {
+		wp_die( __( 'You do not have permission to delete a creative', 'affiliate-wp' ) );
+	}
+
+	if ( ! wp_verify_nonce( $data['affwp_delete_creatives_nonce'], 'affwp_delete_creatives_nonce' ) ) {
+		wp_die( __( 'Security check failed', 'affiliate-wp' ) );
+	}
+
+	if ( empty( $data['affwp_creative_ids'] ) || ! is_array( $data['affwp_creative_ids'] ) ) {
+		wp_die( __( 'No creative IDs specified for deletion', 'affiliate-wp' ) );
+	}
+
+	$to_delete = array_map( 'absint', $data['affwp_creative_ids'] );
+
+	foreach ( $to_delete as $creative_id ) {
+		affwp_delete_creative( $creative_id, true );
+	}
+
+	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_deleted' ) ); exit;
+
 }
 
 // Load WP_List_Table if not loaded
@@ -257,13 +296,17 @@ class AffWP_Creatives_Table extends WP_List_Table {
 
 		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_creative', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
-		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'creative_deleted', 'action' => 'delete', 'creative_id' => $creative->creative_id ) ), 'affwp_delete_creative_nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'creative_id' => $creative->creative_id, 'affwp_notice' => false ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_creative_row_actions', $row_actions, $creative );
 
 		return $this->row_actions( $row_actions, true );
 
 	}
+
+
+		
+
 
 	/**
 	 * Message to be displayed when there are no items

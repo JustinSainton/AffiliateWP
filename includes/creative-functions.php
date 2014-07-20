@@ -83,3 +83,23 @@ function affwp_update_creative( $data = array() ) {
 	return false;
 
 }
+
+/**
+ * Deletes a creative
+ *
+ * @since 1.2
+ * @param $delete_data bool
+ * @return bool
+ */
+function affwp_delete_creative( $creative ) {
+
+	if ( is_object( $creative ) && isset( $creative->creative_id ) ) {
+		$creative_id = $creative->creative_id;
+	} elseif ( is_numeric( $creative ) ) {
+		$creative_id = absint( $creative );
+	} else {
+		return false;
+	}
+
+	return affiliate_wp()->creatives->delete( $creative_id );
+}

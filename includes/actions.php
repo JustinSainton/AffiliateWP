@@ -32,3 +32,6 @@ add_action( 'affwp_add_creative', 'affwp_add_creative' );
 
 // Process an creative update from the admin screen
 add_action( 'affwp_update_creative', 'affwp_update_creative' );
+
+// Process creativs deletions
+add_action( 'affwp_delete_creatives', 'affwp_process_creative_deletion' );
