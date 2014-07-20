@@ -320,7 +320,7 @@ class Affiliate_WP_Settings {
 			)
 		);
 
-		return $settings;
+		return apply_filters( 'affwp_settings', $settings );
 	}
 
 
