@@ -1,4 +1,4 @@
-<div id="affwp-affiliate-dashboard-url-generator" class="affwp-tab-content active">
+<div id="affwp-affiliate-dashboard-url-generator" class="affwp-tab-content">
 		
 	<h4><?php _e( 'Referral URL Generator', 'affiliate-wp' ); ?></h4>
 
