@@ -38,7 +38,6 @@ function affwp_creatives_admin() {
 			</h2>
 			<?php do_action( 'affwp_affiliates_page_top' ); ?>
 			<form id="affwp-creatives-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-creatives' ); ?>">
-				<?php $creatives_table->search_box( __( 'Search', 'affiliate-wp' ), 'affwp-creatives' ); ?>
 
 				<input type="hidden" name="page" value="affiliate-wp-creatives" />
 
