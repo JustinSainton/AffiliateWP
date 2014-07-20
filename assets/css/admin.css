@@ -35,7 +35,7 @@ table.affwp_table td {
 	text-align: left;
 	border: 1px solid #eee;
 	color: #666;
-	padding: 0.3em 1em;,
+	padding: 0.3em 1em;
 	max-width: 100%;
 }
 table.affwp_table th {
@@ -70,6 +70,11 @@ table.affwp_table td a {
 /* Affiliate Overview */
 #affwp-dashboard-widgets-wrap .postbox {
 	margin: 0 8px 20px;
+}
+
+/* Review page */
+#affwp_review_affiliate .button + .button {
+	margin-left: 8px;
 }
 
 /* Referrals page */

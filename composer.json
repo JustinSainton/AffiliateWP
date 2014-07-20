@@ -1,0 +1,20 @@
+{
+    "name": "affiliatewp/AffiliateWP",
+    "description": "Affiliate Plugin for WordPress",
+    "keywords": ["wordpress", "affiliate"],
+    "homepage": "http://affiliatewp.com/",
+    "authors": [
+        {
+            "name": "Pippin Williamson",
+            "homepage": "http://pippinsplugins.com/"
+        },
+        {
+            "name": "Andrew Munro",
+            "homepage": "http://sumobi.com/"
+        }
+    ],
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
