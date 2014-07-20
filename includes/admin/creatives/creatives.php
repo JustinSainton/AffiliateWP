@@ -155,36 +155,6 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	}
 
 	/**
-	 * Show the search field
-	 *
-	 * @access public
-	 * @since 1.2
-	 *
-	 * @param string $text Label for the search box
-	 * @param string $input_id ID of the search box
-	 *
-	 * @return svoid
-	 */
-	public function search_box( $text, $input_id ) {
-		if ( empty( $_REQUEST['s'] ) && !$this->has_items() )
-			return;
-
-		$input_id = $input_id . '-search-input';
-
-		if ( ! empty( $_REQUEST['orderby'] ) )
-			echo '<input type="hidden" name="orderby" value="' . esc_attr( $_REQUEST['orderby'] ) . '" />';
-		if ( ! empty( $_REQUEST['order'] ) )
-			echo '<input type="hidden" name="order" value="' . esc_attr( $_REQUEST['order'] ) . '" />';
-		?>
-		<p class="search-box">
-			<label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
-			<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php _admin_search_query(); ?>" />
-			<?php submit_button( $text, 'button', false, false, array( 'ID' => 'search-submit' ) ); ?>
-		</p>
-	<?php
-	}
-
-	/**
 	 * Retrieve the view types
 	 *
 	 * @access public
@@ -356,11 +326,8 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function get_creative_counts() {
-
-		$search = isset( $_GET['s'] ) ? $_GET['s'] : '';
-
-		$this->active_count   = affiliate_wp()->creatives->count( array( 'status' => 'active', 'search' => $search ) );
-		$this->inactive_count = affiliate_wp()->creatives->count( array( 'status' => 'inactive', 'search' => $search ) );
+		$this->active_count   = affiliate_wp()->creatives->count( array( 'status' => 'active' ) );
+		$this->inactive_count = affiliate_wp()->creatives->count( array( 'status' => 'inactive' ) );
 		$this->total_count    = $this->active_count + $this->inactive_count;
 	}
 
@@ -375,13 +342,12 @@ class AffWP_Creatives_Table extends WP_List_Table {
 		
 		$page = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 		$status  = isset( $_GET['status'] ) ? $_GET['status'] : '';
-		$search  = isset( $_GET['s'] ) ? $_GET['s'] : '';
+
 
 		$creatives = affiliate_wp()->creatives->get_creatives( array(
 			'number'  => $this->per_page,
 			'offset'  => $this->per_page * ( $page - 1 ),
 			'status'  => $status,
-			'search'  => $search,
 		) );
 
 		return $creatives;

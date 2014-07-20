@@ -65,36 +65,6 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 			}
 		}
 
-		// search
-		if ( ! empty( $args['search'] ) ) {
-
-			// search creatives by ID
-			if ( is_numeric( $args['search'] ) ) {
-
-				$creative_ids = esc_sql( $args['search'] );
-				$search = "`creative_id` IN( {$creative_ids} )";
-
-			} 
-			// search creatives by name
-			elseif ( is_string( $args['search'] ) ) {
-				$args['search'] = esc_sql( $args['search'] );
-
-				$names = affiliate_wp()->creatives->get_by( 'name', $args['search'] );
-				$where .= "WHERE `name` = '" . $args['search'] . "' ";
-			}
-
-			if( ! empty( $search ) ) {
-
-				if( ! empty( $where ) ) {
-					$search = "AND " . $search;
-				} else {
-					$search = "WHERE " . $search;
-				}
-
-				$where .= $search;
-			}
-
-		}
 		$cache_key = md5( 'affwp_creatives_' . serialize( $args ) );
 
 		$creatives = wp_cache_get( $cache_key, 'creatives' );
@@ -155,36 +125,6 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 				$where .= " WHERE `status` IN('" . implode( "','", $args['status'] ) . "') ";
 			} else {
 				$where .= " WHERE `status` = '" . $args['status'] . "' ";
-			}
-
-		}
-
-		if ( ! empty( $args['search'] ) ) {
-
-			if ( is_numeric( $args['search'] ) ) {
-
-				$creative_ids = esc_sql( $args['search'] );
-				$search = "`creative_id` IN( {$creative_ids} )";
-
-			} 
-			// search creatives by name
-			elseif ( is_string( $args['search'] ) ) {
-
-				$args['search'] = esc_sql( $args['search'] );
-				$names = affiliate_wp()->creatives->get_by( 'name', $args['search'] );
-				$where = "WHERE `name` = '" . $args['search'] . "' ";
-
-			}
-
-			if ( ! empty( $search ) ) {
-
-				if( ! empty( $where ) ) {
-					$search = "AND " . $search;
-				} else {
-					$search = "WHERE " . $search;
-				}
-
-				$where .= $search;
 			}
 
 		}
