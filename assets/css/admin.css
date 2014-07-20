@@ -77,7 +77,8 @@ table.affwp_table td a {
 #affwp_unpaid_counts,
 #affwp_unpaid_earnings,
 #affwp_total_earnings,
-#affwp_affiliate_stats {
+#affwp_affiliate_stats,
+.affwp-gray-form {
 	clear: both;	background: #f5f5f5;
 	background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5f5), to(#fafafa));
 	background-image: -webkit-linear-gradient(bottom, #f5f5f5, #fafafa);
