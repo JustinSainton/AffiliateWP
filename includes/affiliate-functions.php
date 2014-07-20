@@ -276,9 +276,10 @@ function affwp_get_affiliate_email( $affiliate ) {
  * Deletes an affiliate
  *
  * @since 1.0
+ * @param $delete_data bool
  * @return bool
  */
-function affwp_delete_affiliate( $affiliate ) {
+function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 
 	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
@@ -288,7 +289,20 @@ function affwp_delete_affiliate( $affiliate ) {
 		return false;
 	}
 
-	// TODO: also delete all referrals and visits here
+	if( $delete_data ) {
+	
+		$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
+		$visits    = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
+
+		foreach( $referrals as $referral ) {
+			affiliate_wp()->referrals->delete( $referral->referral_id );
+		}
+
+		foreach( $visits as $visit ) {
+			affiliate_wp()->visits->delete( $visit->visit_id );
+		}
+
+	}
 
 	return affiliate_wp()->affiliates->delete( $affiliate_id );
 

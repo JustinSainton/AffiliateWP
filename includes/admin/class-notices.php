@@ -50,7 +50,7 @@ class Affiliate_WP_Admin_Notices {
 
 				case 'affiliate_deleted' :
 
-					$message = __( 'Affiliate deleted successfully', 'affiliate-wp' );
+					$message = __( 'Affiliate account(s) deleted successfully', 'affiliate-wp' );
 
 					break;
 

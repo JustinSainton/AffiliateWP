@@ -13,6 +13,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/contextual-help.php';
+
 function affwp_visits_admin() {
 
 
@@ -169,7 +171,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		return array(
-			'name'   => array( 'name', false )
+			'date'      => array( 'date', false ),
+			'converted' => array( 'referral_id', false )
 		);
 	}
 
@@ -275,10 +278,14 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function visits_data() {
 		
-		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )     : 1;
-		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )   : false;
-		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] ) : false;
-		
+		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )          : 1;
+		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )        : false;
+		$referral_id  = isset( $_GET['referral'] )  ? absint( $_GET['referral'] )       : false;
+		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] )      : false;
+		$order        = isset( $_GET['order'] )     ? $_GET['order']                    : 'DESC';
+		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']                  : 'date';
+		$search       = isset( $_GET['s'] )         ? sanitize_text_field( $_GET['s'] ) : '';
+
 		$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
 		$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
 
@@ -296,11 +303,23 @@ class AffWP_Visits_Table extends WP_List_Table {
 
 		}
 
+		if ( strpos( $search, 'referral:' ) !== false ) {
+			$referral_id = absint( trim( str_replace( 'referral:', '', $search ) ) );
+			$search      = '';
+		} elseif ( strpos( $search, 'affiliate:' ) !== false ) {
+			$affiliate_id = absint( trim( str_replace( 'affiliate:', '', $search ) ) );
+			$search       = '';
+		}
+
 		$visits = affiliate_wp()->visits->get_visits( array(
 			'number'       => $this->per_page,
 			'offset'       => $this->per_page * ( $page - 1 ),
 			'affiliate_id' => $affiliate_id,
-			'date'         => $date
+			'referral_id'  => $referral_id,
+			'date'         => $date,
+			'orderby'      => $orderby,
+			'order'        => $order,
+			'search'       => $search
 		) );
 		return $visits;
 	}

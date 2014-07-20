@@ -35,7 +35,7 @@ abstract class Affiliate_WP_DB {
 
 	public function get_column_by( $column, $column_where, $column_value ) {
 		global $wpdb;
-		return $wpdb->get_col( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value LIMIT 1;" );
+		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value LIMIT 1;" );
 	}
 
 	public function insert( $data, $type = '' ) {

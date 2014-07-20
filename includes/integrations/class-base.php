@@ -25,6 +25,7 @@ abstract class Affiliate_WP_Base {
 		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
+		
 		return affiliate_wp()->referrals->add( array(
 			'amount'       => $amount,
 			'reference'    => $reference,

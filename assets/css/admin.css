@@ -82,7 +82,8 @@ table.affwp_table td a {
 #affwp_unpaid_counts,
 #affwp_unpaid_earnings,
 #affwp_total_earnings,
-#affwp_affiliate_stats {
+#affwp_affiliate_stats,
+.affwp-gray-form {
 	clear: both;	background: #f5f5f5;
 	background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5f5), to(#fafafa));
 	background-image: -webkit-linear-gradient(bottom, #f5f5f5, #fafafa);
@@ -99,10 +100,7 @@ table.affwp_table td a {
 	font-size: 13px;
 	line-height: 2.1em;
 }
-#affwp-referrals-filter-form #amount,
-#affwp-referrals-filter-form #affiliate {
-	width: 100px;
-}
+
 .affwp-status.pending i,
 .affwp-status.unpaid i,
 .affwp-status.paid i,
@@ -136,35 +134,19 @@ table.affwp_table td a {
 	color: #ef6c5e;
 }
 
-/* Affiliates page */
-#affwp-affiliates-filter #name {
-	width: 180px;
-}
-#affwp-affiliates-filter #affiliate_id,
-#affwp-affiliates-filter #rate {
-	width: 80px;
-}
-#affwp-affiliates-filter #earnings,
-#affwp-affiliates-filter #referrals {
-	width: 140px;
-}
-#affwp-affiliates-filter #visits,
-#affwp-affiliates-filter #status {
-	width: 100px;
-}
 #affwp_edit_affiliate input:disabled {
 	background: rgba(255, 255, 255, 0.3);
 }
 
 /* Visits page */
 #affwp-visits-filter #url {
-	width: 250px;
+	width: 30%;
 }
 
 .visit-converted i {
 	display: inline-block;
 	position: relative;
-	top:2px;
+	top: 2px;
 	left: 2px;
 }
 .visit-converted i:before {
@@ -188,4 +170,30 @@ table.affwp_table td a {
 .affwp-woo-coupon-field #affwp_user_search_results {
 	left: 0;
 	top: 25px;
+}
+
+/* Media Queries */
+@media screen and ( max-width: 782px ) {
+	#affwp-affiliates-filter .column-affiliate_id,
+	#affwp-affiliates-filter .column-rate,
+	#affwp-affiliates-filter .column-referrals,
+	#affwp-affiliates-filter .column-visits {
+		display: none;
+	}
+
+	#affwp-affiliates-filter .column-actions span {
+		display: block;
+	}
+}
+
+@media screen and ( min-width: 1025px ) {
+	#affwp-affiliates-filter .column-actions {
+		width: 30%;
+	}
+}
+
+@media screen and ( min-width: 680px ) {
+	#affwp-referrals-filter-form .column-actions {
+		width: 24%;
+	}
 }

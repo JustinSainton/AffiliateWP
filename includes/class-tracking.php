@@ -346,7 +346,7 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function was_referred() {
-		return isset( $_COOKIE['affwp_ref'] );
+		return isset( $_COOKIE['affwp_ref'] ) && $this->is_valid_affiliate( $_COOKIE['affwp_ref'] );
 	}
 
 	/**
