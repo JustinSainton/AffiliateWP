@@ -53,6 +53,9 @@ abstract class Affiliate_WP_Base {
 			return false;
 		}
 
+		if ( ! apply_filters( 'affwp_auto_complete_referral', true ) )
+			return false;
+
 		if ( affwp_set_referral_status( $referral->referral_id, 'unpaid' ) ) {
 
 			// Update the visit ID that spawned this referral

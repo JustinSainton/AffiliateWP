@@ -21,6 +21,7 @@ class Affiliate_WP_Integrations {
 			'woocommerce' => 'WooCommerce',
 			'wpec'        => 'WP e-Commerce',
 		) );
+
 	}
 
 	public function get_enabled_integrations() {

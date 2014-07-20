@@ -5,7 +5,7 @@
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.1.2
+ * Version: 1.1.4
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  * @package AffiliateWP
  * @category Core
  * @author Pippin Williamson
- * @version 1.1.2
+ * @version 1.1.4
  */
 
 // Exit if accessed directly
@@ -46,18 +46,86 @@ final class Affiliate_WP {
 	 */
 	private static $instance;
 
-	private $version = '1.1.2';
+	private $version = '1.1.4';
 
-	// Class properties
+	/**
+	 * The affiliates DB instance variable.
+	 *
+	 * @var Affiliate_WP_DB_Affiliates
+	 * @since 1.0
+	 */
 	public $affiliates;
+
+	/**
+	 * The referrals instance variable.
+	 *
+	 * @var Affiliate_WP_Referrals_DB
+	 * @since 1.0
+	 */
 	public $referrals;
+
+	/**
+	 * The visits DB instance variable
+	 *
+	 * @var Affiliate_WP_Visits_DB
+	 * @since 1.0
+	 */
 	public $visits;
+
+	/**
+	 * The settings instance variable
+	 *
+	 * @var Affiliate_WP_Settings
+	 * @since 1.0
+	 */
 	public $settings;
+
+	/**
+	 * The affiliate tracking handler instance variable
+	 *
+	 * @var Affiliate_WP_Tracking
+	 * @since 1.0
+	 */
 	public $tracking;
+
+	/**
+	 * The template loader instance variable
+	 *
+	 * @var Affiliate_WP_Templates
+	 * @since 1.0
+	 */
 	public $templates;
+
+	/**
+	 * The affiliate login handler instance variable
+	 *
+	 * @var Affiliate_WP_Login
+	 * @since 1.0
+	 */
 	public $login;
+
+	/**
+	 * The affiliate registration handler instance variable
+	 *
+	 * @var Affiliate_WP_Register
+	 * @since 1.0
+	 */
 	public $register;
+
+	/**
+	 * The integrations handler instance variable
+	 *
+	 * @var Affiliate_WP_Integrations
+	 * @since 1.0
+	 */
 	public $integrations;
+
+	/**
+	 * The email notification handler instance variable
+	 *
+	 * @var Affiliate_WP_Emails
+	 * @since 1.0
+	 */
 	public $emails;
 
 
@@ -74,7 +142,7 @@ final class Affiliate_WP {
 	 * @uses Affiliate_WP::includes() Include the required files
 	 * @uses Affiliate_WP::setup_actions() Setup the hooks and actions
 	 * @uses Affiliate_WP::updater() Setup the plugin updater
-	 * @return The one true Affiliate_WP
+	 * @return Affiliate_WP
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Affiliate_WP ) ) {

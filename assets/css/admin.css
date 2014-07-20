@@ -35,7 +35,7 @@ table.affwp_table td {
 	text-align: left;
 	border: 1px solid #eee;
 	color: #666;
-	padding: 0.3em 1em;,
+	padding: 0.3em 1em;
 	max-width: 100%;
 }
 table.affwp_table th {
@@ -90,7 +90,6 @@ table.affwp_table td a {
 	background-image:      -o-linear-gradient(bottom, #f5f5f5, #fafafa);
 	background-image: linear-gradient(to top, #f5f5f5, #fafafa);
 	border-color: #dfdfdf;
-	//position: relative;
 	overflow: auto;
 	margin: 8px 0;
 	padding: 12px;

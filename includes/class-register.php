@@ -17,6 +17,31 @@ class Affiliate_WP_Register {
 	}
 
 	/**
+	 * Register Form
+	 *
+	 * @since 1.2
+	 * @global $affwp_register_redirect
+	 * @param string $redirect Redirect page URL
+	 * @return string Register form
+	*/
+	public function register_form( $redirect = '' ) {
+		global $affwp_register_redirect;
+
+		if ( empty( $redirect ) ) {
+			$redirect = affiliate_wp()->tracking->get_current_page_url();
+		}
+
+		$affwp_register_redirect = $redirect;
+
+		ob_start();
+
+		affiliate_wp()->templates->get_template_part( 'register' );
+
+		return apply_filters( 'affwp_register_form', ob_get_clean() );
+
+	}
+	
+	/**
 	 * Process registration form submission
 	 *
 	 * @since 1.0
@@ -82,6 +107,14 @@ class Affiliate_WP_Register {
 		// only log the user in if there are no errors
 		if ( empty( $this->errors ) ) {
 			$this->register_user();
+
+
+			$redirect = apply_filters( 'affwp_register_redirect', $data['affwp_redirect'] );
+
+			if ( $redirect ) {
+				wp_redirect( $redirect ); exit;
+			}
+			
 		}
 
 	}
@@ -237,5 +270,22 @@ class Affiliate_WP_Register {
 		echo '</div>';
 
 	}
+
+	/**
+	 * Get errors
+	 *
+	 * @since 1.1
+	 * @return array
+	 */
+	public function get_errors() {
+
+		if ( empty( $this->errors ) ) {
+			return array();
+		}
+
+		return $this->errors;
+
+	}
+
 
 }
