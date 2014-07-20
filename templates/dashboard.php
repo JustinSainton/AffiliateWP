@@ -27,11 +27,21 @@
 	<?php do_action( 'affwp_affiliate_dashboard_notices', affwp_get_affiliate_id() ); ?>
 
 	<ul id="affwp-affiliate-dashboard-tabs">
-		<li><a href="<?php echo esc_url( add_query_arg( 'tab', 'urls' ) ); ?>"><?php _e( 'Affilate URLs', 'affiliate-wp' ); ?></a></li>
-		<li><a href="<?php echo esc_url( add_query_arg( 'tab', 'stats' ) ); ?>"><?php _e( 'Statistics', 'affiliate-wp' ); ?></a></li>
-		<li><a href="<?php echo esc_url( add_query_arg( 'tab', 'graphs' ) ); ?>"><?php _e( 'Graphs', 'affiliate-wp' ); ?></a></li>
-		<li><a href="<?php echo esc_url( add_query_arg( 'tab', 'visits' ) ); ?>"><?php _e( 'Visits', 'affiliate-wp' ); ?></a></li>
-		<li><a href="<?php echo esc_url( add_query_arg( 'tab', 'settings' ) ); ?>"><?php _e( 'Settings', 'affiliate-wp' ); ?></a></li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'urls' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'urls' ) ); ?>"><?php _e( 'Affilate URLs', 'affiliate-wp' ); ?></a>
+		</li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'stats' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'stats' ) ); ?>"><?php _e( 'Statistics', 'affiliate-wp' ); ?></a>
+		</li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'graphs' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'graphs' ) ); ?>"><?php _e( 'Graphs', 'affiliate-wp' ); ?></a>
+		</li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'visits' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'visits' ) ); ?>"><?php _e( 'Visits', 'affiliate-wp' ); ?></a>
+		</li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'settings' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'settings' ) ); ?>"><?php _e( 'Settings', 'affiliate-wp' ); ?></a>
+		</li>
 		<?php do_action( 'affwp_affiliate_dashboard_tabs', affwp_get_affiliate_id() ); ?>
 	</ul>
 
