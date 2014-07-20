@@ -7,7 +7,7 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 
 	<form method="post" id="affwp_edit_affiliate">
 
-		<?php do_action( 'affwp_edit_affiliate_top', $creative ); ?>
+		<?php do_action( 'affwp_edit_creative_top', $creative ); ?>
 
 		<table class="form-table">
 
@@ -93,7 +93,7 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 
 		</table>
 
-		<?php do_action( 'affwp_edit_affiliate_bottom', $creative ); ?>
+		<?php do_action( 'affwp_edit_creative_bottom', $creative ); ?>
 
 		<input type="hidden" name="affwp_action" value="update_creative" />
 

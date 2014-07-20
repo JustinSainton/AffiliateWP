@@ -4,7 +4,7 @@
 	
 	<form method="post" id="affwp_add_creative">
 
-		<?php do_action( 'affwp_new_affiliate_top' ); ?>
+		<?php do_action( 'affwp_new_creative_top' ); ?>
 
 		<p><?php printf( __( 'Use this screen to add a new creative, such as a text link or image banner.', 'affiliate-wp' ), admin_url( 'user-new.php' ) ); ?></p>
 
@@ -86,7 +86,6 @@
 
 		<?php do_action( 'affwp_new_creative_bottom' ); ?>
 
-		<!-- <input type="hidden" name="user_id" id="user_id" value="" /> -->
 		<input type="hidden" name="affwp_action" value="add_creative" />
 
 		<?php submit_button( __( 'Add Creative', 'affiliate-wp' ) ); ?>
