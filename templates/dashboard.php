@@ -28,7 +28,7 @@
 
 	<ul id="affwp-affiliate-dashboard-tabs">
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'urls' ? ' active' : ''; ?>">
-			<a href="<?php echo esc_url( add_query_arg( 'tab', 'urls' ) ); ?>"><?php _e( 'Affilate URLs', 'affiliate-wp' ); ?></a>
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'urls' ) ); ?>"><?php _e( 'Affiliate URLs', 'affiliate-wp' ); ?></a>
 		</li>
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'stats' ? ' active' : ''; ?>">
 			<a href="<?php echo esc_url( add_query_arg( 'tab', 'stats' ) ); ?>"><?php _e( 'Statistics', 'affiliate-wp' ); ?></a>
