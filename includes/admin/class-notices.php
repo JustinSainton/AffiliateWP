@@ -138,6 +138,18 @@ class Affiliate_WP_Admin_Notices {
 
 				break;
 
+			case 'creative_activated' :
+
+				$message = __( 'Creative activated', 'affiliate-wp' );
+
+				break;
+
+			case 'creative_deactivated' :
+
+				$message = __( 'Creative deactivated', 'affiliate-wp' );
+
+				break;
+
 			case 'settings-imported' :
 
 				$message = __( 'Settings successfully imported', 'affiliate-wp' );

@@ -266,6 +266,12 @@ class AffWP_Creatives_Table extends WP_List_Table {
 
 		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_creative', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
+		if ( strtolower( $creative->status ) == 'active' ) {
+			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'creative_deactivated', 'action' => 'deactivate', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+		} else {
+			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'creative_activated', 'action' => 'activate', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+		}
+
 		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'creative_id' => $creative->creative_id, 'affwp_notice' => false ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_creative_row_actions', $row_actions, $creative );
@@ -308,6 +314,14 @@ class AffWP_Creatives_Table extends WP_List_Table {
 
 			if ( 'delete' === $this->current_action() ) {
 				affiliate_wp()->creatives->delete( $id );
+			}
+
+			if ( 'activate' === $this->current_action() ) {
+				affwp_set_creative_status( $id, 'active' );
+			}
+
+			if ( 'deactivate' === $this->current_action() ) {
+				affwp_set_creative_status( $id, 'inactive' );
 			}
 
 		}

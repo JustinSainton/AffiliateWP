@@ -103,3 +103,30 @@ function affwp_delete_creative( $creative ) {
 
 	return affiliate_wp()->creatives->delete( $creative_id );
 }
+
+/**
+ * Sets the status for a creative
+ *
+ * @since 1.0
+ * @return bool
+ */
+function affwp_set_creative_status( $creative, $status = '' ) {
+
+	if ( is_object( $creative ) && isset( $creative->creative_id ) ) {
+		$creative_id = $creative->creative_id;
+	} elseif ( is_numeric( $creative ) ) {
+		$creative_id = absint( $creative );
+	} else {
+		return false;
+	}
+
+	$old_status = affiliate_wp()->creatives->get_column( 'status', $creative_id );
+
+	do_action( 'affwp_set_creative_status', $creative_id, $status, $old_status );
+
+	if( affiliate_wp()->creatives->update( $creative_id, array( 'status' => $status ) ) ) {
+
+		return true;
+	}
+
+}
