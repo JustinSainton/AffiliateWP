@@ -79,6 +79,9 @@ class Affiliate_WP_Settings {
 						'name'    => isset( $option['name'] ) ? $option['name'] : null,
 						'section' => $tab,
 						'size'    => isset( $option['size'] ) ? $option['size'] : null,
+						'max'     => isset( $option['max'] ) ? $option['max'] : null,
+						'min'     => isset( $option['min'] ) ? $option['min'] : null,
+						'step'    => isset( $option['step'] ) ? $option['step'] : null,
 						'options' => isset( $option['options'] ) ? $option['options'] : '',
 						'std'     => isset( $option['std'] ) ? $option['std'] : ''
 					)
@@ -217,6 +220,7 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
 						'type' => 'number',
 						'size' => 'small',
+						'step' => '0.5',
 						'std' => '20'
 					),
 					'cookie_exp' => array(
@@ -320,7 +324,7 @@ class Affiliate_WP_Settings {
 			)
 		);
 
-		return $settings;
+		return apply_filters( 'affwp_settings', $settings );
 	}
 
 

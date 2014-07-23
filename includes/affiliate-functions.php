@@ -22,17 +22,17 @@ function affwp_is_affiliate( $user_id = 0 ) {
  */
 function affwp_get_affiliate_id( $user_id = 0 ) {
 
-	if( ! is_user_logged_in() && empty( $user_id ) ) {
+	if ( ! is_user_logged_in() && empty( $user_id ) ) {
 		return false;
 	}
 
-	if( empty( $user_id ) ) {
+	if ( empty( $user_id ) ) {
 		$user_id = get_current_user_id();
 	}
 
 	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
 
-	if( $affiliate ) {
+	if ( $affiliate ) {
 		return $affiliate->affiliate_id;
 	}
 
@@ -48,9 +48,9 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
  */
 function affwp_get_affiliate_user_id( $affiliate ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -68,9 +68,9 @@ function affwp_get_affiliate_user_id( $affiliate ) {
  */
 function affwp_get_affiliate( $affiliate ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -87,9 +87,9 @@ function affwp_get_affiliate( $affiliate ) {
  */
 function affwp_get_affiliate_status( $affiliate ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -106,9 +106,9 @@ function affwp_get_affiliate_status( $affiliate ) {
  */
 function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -118,7 +118,7 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
 	do_action( 'affwp_set_affiliate_status', $affiliate_id, $status, $old_status );
 
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ) {
 
 		return true;
 	}
@@ -138,7 +138,7 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 
 	$affiliate_rate = affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
 
-	if( ! empty( $affiliate_rate ) ) {
+	if ( ! empty( $affiliate_rate ) ) {
 
 		$rate = $affiliate_rate;
 
@@ -146,10 +146,10 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 
 	$type = affwp_get_affiliate_rate_type( $affiliate_id );
 
-	if( 'percentage' == $type ) {
+	if ( 'percentage' == $type ) {
 
 		// Sanitize the rate and ensure it's in the proper format
-		if( $rate > 1 ) {
+		if ( $rate > 1 ) {
 			$rate = $rate / 100;
 		}
 
@@ -158,7 +158,7 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 	$rate = apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id, $type );
 
 	// If rate should be formatted, format it based on the type
-	if( $formatted ) {
+	if ( $formatted ) {
 
 		switch( $type ) {
 
@@ -203,13 +203,13 @@ function affwp_get_affiliate_rate_type( $affiliate_id = 0 ) {
 
 	$affiliate_rate_type = affiliate_wp()->affiliates->get_column( 'rate_type', $affiliate_id );
 
-	if( ! empty( $affiliate_rate_type ) ) {
+	if ( ! empty( $affiliate_rate_type ) ) {
 
 		$type = $affiliate_rate_type;
 
 	}
 
-	if( ! array_key_exists( $type, $types ) ) {
+	if ( ! array_key_exists( $type, $types ) ) {
 		$type = 'percentage';
 	}
 
@@ -245,9 +245,9 @@ function affwp_get_affiliate_email( $affiliate ) {
 
 	global $wpdb;
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -255,14 +255,14 @@ function affwp_get_affiliate_email( $affiliate ) {
 
 	$affiliate   = affwp_get_affiliate( $affiliate_id );
 
-	if( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
+	if ( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
 		$email   = $affiliate->payment_email;
 	} else {
 		$user_id = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
 		$email   = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
 	}
 
-	if( $email ) {
+	if ( $email ) {
 
 		return $email;
 
@@ -276,19 +276,33 @@ function affwp_get_affiliate_email( $affiliate ) {
  * Deletes an affiliate
  *
  * @since 1.0
+ * @param $delete_data bool
  * @return bool
  */
-function affwp_delete_affiliate( $affiliate ) {
+function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
 	}
 
-	// TODO: also delete all referrals and visits here
+	if( $delete_data ) {
+	
+		$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
+		$visits    = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
+
+		foreach( $referrals as $referral ) {
+			affiliate_wp()->referrals->delete( $referral->referral_id );
+		}
+
+		foreach( $visits as $visit ) {
+			affiliate_wp()->visits->delete( $visit->visit_id );
+		}
+
+	}
 
 	return affiliate_wp()->affiliates->delete( $affiliate_id );
 
@@ -302,9 +316,9 @@ function affwp_delete_affiliate( $affiliate ) {
  */
 function affwp_get_affiliate_earnings( $affiliate, $formatted = false ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -312,13 +326,13 @@ function affwp_get_affiliate_earnings( $affiliate, $formatted = false ) {
 
 	$earnings = affiliate_wp()->affiliates->get_column( 'earnings', $affiliate_id );
 
-	if( empty( $earnings ) ) {
+	if ( empty( $earnings ) ) {
 
 		$earnings = 0;
 
 	}
 
-	if( $formatted ) {
+	if ( $formatted ) {
 
 		$earnings = affwp_currency_filter( $earnings );
 
@@ -335,18 +349,18 @@ function affwp_get_affiliate_earnings( $affiliate, $formatted = false ) {
  */
 function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
 	}
 
-	$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+	$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid', 'number' => -1 ) );
 	$earnings = 0;
 
-	if( ! empty( $referrals ) ) {
+	if ( ! empty( $referrals ) ) {
 
 
 		foreach( $referrals as $referral ) {
@@ -356,7 +370,7 @@ function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
 		}
 	}
 
-	if( $formatted ) {
+	if ( $formatted ) {
 
 		$earnings = affwp_currency_filter( $earnings );
 
@@ -373,18 +387,18 @@ function affwp_get_affiliate_unpaid_earnings( $affiliate, $formatted = false ) {
  */
 function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 
-	if( empty( $affiliate_id ) ) {
+	if ( empty( $affiliate_id ) ) {
 		return false;
 	}
 
-	if( empty( $amount ) || floatval( $amount ) <= 0 ) {
+	if ( empty( $amount ) || floatval( $amount ) <= 0 ) {
 		return false;
 	}
 
 	$earnings = affwp_get_affiliate_earnings( $affiliate_id );
 	$earnings += $amount;
 	$earnings = round( $earnings, 2 );
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
 		$alltime = get_option( 'affwp_alltime_earnings' );
 		$alltime += $amount;
 		update_option( 'affwp_alltime_earnings', $alltime );
@@ -407,25 +421,25 @@ function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
  */
 function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 
-	if( empty( $affiliate_id ) ) {
+	if ( empty( $affiliate_id ) ) {
 		return false;
 	}
 
-	if( empty( $amount ) || floatval( $amount ) <= 0 ) {
+	if ( empty( $amount ) || floatval( $amount ) <= 0 ) {
 		return false;
 	}
 
 	$earnings = affwp_get_affiliate_earnings( $affiliate_id );
 	$earnings -= $amount;
 	$earnings = round( $earnings, 2 );
-	if( $earnings < 0 ) {
+	if ( $earnings < 0 ) {
 		$earnings = 0;
 	}
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
 
 		$alltime = get_option( 'affwp_alltime_earnings' );
 		$alltime -= $amount;
-		if( $alltime < 0 ) {
+		if ( $alltime < 0 ) {
 			$alltime = 0;
 		}
 		update_option( 'affwp_alltime_earnings', $alltime );
@@ -448,9 +462,9 @@ function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
  */
 function affwp_get_affiliate_referral_count( $affiliate ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -467,14 +481,14 @@ function affwp_get_affiliate_referral_count( $affiliate ) {
  */
 function affwp_increase_affiliate_referral_count( $affiliate_id = 0 ) {
 
-	if( empty( $affiliate_id ) ) {
+	if ( empty( $affiliate_id ) ) {
 		return false;
 	}
 
 	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
 	$referrals += 1;
 
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
 
 		return $referrals;
 
@@ -494,16 +508,16 @@ function affwp_increase_affiliate_referral_count( $affiliate_id = 0 ) {
  */
 function affwp_decrease_affiliate_referral_count( $affiliate_id = 0 ) {
 
-	if( empty( $affiliate_id ) ) {
+	if ( empty( $affiliate_id ) ) {
 		return false;
 	}
 
 	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
 	$referrals -= 1;
-	if( $referrals < 0 ) {
+	if ( $referrals < 0 ) {
 		$referrals = 0;
 	}
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
 
 		return $referrals;
 
@@ -523,9 +537,9 @@ function affwp_decrease_affiliate_referral_count( $affiliate_id = 0 ) {
  */
 function affwp_get_affiliate_visit_count( $affiliate ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -533,7 +547,7 @@ function affwp_get_affiliate_visit_count( $affiliate ) {
 
 	$visits = affiliate_wp()->affiliates->get_column( 'visits', $affiliate_id );
 
-	if( $visits < 0 ) {
+	if ( $visits < 0 ) {
 		$visits = 0;
 	}
 
@@ -548,14 +562,14 @@ function affwp_get_affiliate_visit_count( $affiliate ) {
  */
 function affwp_increase_affiliate_visit_count( $affiliate_id = 0 ) {
 
-	if( empty( $affiliate_id ) ) {
+	if ( empty( $affiliate_id ) ) {
 		return false;
 	}
 
 	$visits = affwp_get_affiliate_visit_count( $affiliate_id );
 	$visits += 1;
 
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
 
 		return $visits;
 
@@ -575,18 +589,18 @@ function affwp_increase_affiliate_visit_count( $affiliate_id = 0 ) {
  */
 function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 
-	if( empty( $affiliate_id ) ) {
+	if ( empty( $affiliate_id ) ) {
 		return false;
 	}
 
 	$visits = affwp_get_affiliate_visit_count( $affiliate_id );
 	$visits -= 1;
 
-	if( $visits < 0 ) {
+	if ( $visits < 0 ) {
 		$visits = 0;
 	}
 
-	if( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
 
 		return $visits;
 
@@ -606,9 +620,9 @@ function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
  */
 function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
-	if( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
 		$affiliate_id = $affiliate->affiliate_id;
-	} elseif( is_numeric( $affiliate ) ) {
+	} elseif ( is_numeric( $affiliate ) ) {
 		$affiliate_id = absint( $affiliate );
 	} else {
 		return false;
@@ -618,7 +632,7 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 
 	$referrals = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => array( 'paid', 'unpaid' ) ) );
 	$visits    = affwp_get_affiliate_visit_count( $affiliate_id );
-	if( $visits > 0 ) {
+	if ( $visits > 0 ) {
 		$rate = round( ( $referrals / $visits ) * 100, 2 );
 	}
 
@@ -634,7 +648,7 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
  */
 function affwp_add_affiliate( $data = array() ) {
 
-	if( empty( $data['user_id'] ) ) {
+	if ( empty( $data['user_id'] ) ) {
 
 		return false;
 
@@ -642,7 +656,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 	$user_id = absint( $data['user_id'] );
 
-	if( ! affiliate_wp()->affiliates->get_by( 'user_id', $user_id ) ) {
+	if ( ! affiliate_wp()->affiliates->get_by( 'user_id', $user_id ) ) {
 
 		$args = array(
 			'user_id'       => $user_id,
@@ -651,7 +665,7 @@ function affwp_add_affiliate( $data = array() ) {
 			'payment_email' => ! empty( $data['payment_email'] ) ? sanitize_text_field( $data['payment_email'] ) : ''
 		);
 
-		if( affiliate_wp()->affiliates->add( $args ) ) {
+		if ( affiliate_wp()->affiliates->add( $args ) ) {
 
 			if ( ! empty( $_POST['affwp_action'] ) && is_admin() ) {
 
@@ -676,19 +690,23 @@ function affwp_add_affiliate( $data = array() ) {
 function affwp_update_affiliate( $data = array() ) {
 
 	if ( empty( $data['affiliate_id'] ) ) {
-
 		return false;
-
 	}
 
 	$args         = array();
 	$affiliate_id = absint( $data['affiliate_id'] );
+	$affiliate    = affwp_get_affiliate( $affiliate_id );
+	$user_id      = $affiliate->user_id;
 
+	$args['account_email'] = ! empty( $data['account_email' ] ) && is_email( $data['account_email' ] ) ? sanitize_text_field( $data['account_email'] ) : '';
 	$args['payment_email'] = ! empty( $data['payment_email' ] ) && is_email( $data['payment_email' ] ) ? sanitize_text_field( $data['payment_email'] ) : '';
 	$args['rate']          = ! empty( $data['rate' ] )      ? sanitize_text_field( $data['rate'] )      : 0;
 	$args['rate_type']     = ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '';
 
 	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
+
+		// update affiliate's account email
+		wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) );
 
 		if ( ! empty( $_POST['affwp_action'] ) ) {
 			// This is an update call from the edit screen
@@ -711,22 +729,23 @@ function affwp_update_affiliate( $data = array() ) {
  */
 function affwp_update_profile_settings( $data = array() ) {
 
-	if( ! is_user_logged_in() ) {
+	if ( ! is_user_logged_in() ) {
 		return false;
 	}
 
-	if( empty( $data['affiliate_id'] ) ) {
+	if ( empty( $data['affiliate_id'] ) ) {
 		return false;
 	}
 
-	if( affwp_get_affiliate_id() != $data['affiliate_id'] && ! currenct_user_can( 'manage_affiliates' ) ) {
+	if ( affwp_get_affiliate_id() != $data['affiliate_id'] && ! current_user_can( 'manage_affiliates' ) ) {
+
 		return false;
 	}
 
 	$affiliate_id = absint( $data['affiliate_id'] );
 	$user_id      = affwp_get_affiliate_user_id( $affiliate_id );
 
-	if( ! empty( $data['referral_notifications'] ) ) {
+	if ( ! empty( $data['referral_notifications'] ) ) {
 
 		update_user_meta( $user_id, 'affwp_referral_notifications', '1' );
 
@@ -736,11 +755,11 @@ function affwp_update_profile_settings( $data = array() ) {
 
 	}
 
-	if( ! empty( $data['payment_email'] ) && is_email( $data['payment_email'] ) ) {
-
+	if ( ! empty( $data['payment_email'] ) && is_email( $data['payment_email'] ) ) {
 		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ) );
-
 	}
+
+	do_action( 'affwp_update_affiliate_profile_settings', $data );
 
 	if ( ! empty( $_POST['affwp_action'] ) ) {
 		wp_redirect( add_query_arg( 'affwp_notice', 'profile-updated' ) ); exit;

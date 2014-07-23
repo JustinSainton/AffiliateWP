@@ -26,17 +26,17 @@ class Affiliate_WP_Shortcodes {
 
 		ob_start();
 
-		if( is_user_logged_in() && affwp_is_affiliate() ) {
+		if ( is_user_logged_in() && affwp_is_affiliate() ) {
 
 			affiliate_wp()->templates->get_template_part( 'dashboard' );
 
-		} elseif( is_user_logged_in() && affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
+		} elseif ( is_user_logged_in() && affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
 
 			affiliate_wp()->templates->get_template_part( 'register' );
 
 		} else {
 
-			if( affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
+			if ( affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
 
 				affiliate_wp()->templates->get_template_part( 'register' );
 
@@ -44,7 +44,7 @@ class Affiliate_WP_Shortcodes {
 				affiliate_wp()->templates->get_template_part( 'no', 'access' );
 			}
 
-			if( ! is_user_logged_in() ) {
+			if ( ! is_user_logged_in() ) {
 
 				affiliate_wp()->templates->get_template_part( 'login' );
 
@@ -63,21 +63,21 @@ class Affiliate_WP_Shortcodes {
 	 *  @return string
 	 */
 	public function affiliate_login( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+				'redirect' => '',
+			), $atts, 'affiliate_login' )
+		);
 
-		ob_start();
-
-		if( ! is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 			wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
 
-			affiliate_wp()->templates->get_template_part( 'login' );
-
+			return affiliate_wp()->login->login_form( $redirect );
 		}
 
-		return ob_get_clean();
-
 	}
+
 
 	/**
 	 *  Renders the affiliate registration form
@@ -86,24 +86,23 @@ class Affiliate_WP_Shortcodes {
 	 *  @return string
 	 */
 	public function affiliate_registration( $atts, $content = null ) {
+		extract( shortcode_atts( array(
+				'redirect' => '',
+			), $atts, 'affiliate_registration' )
+		);
 
-		ob_start();
-
-		if( ! affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
+		if ( ! affiliate_wp()->settings->get( 'allow_affiliate_registration' ) ) {
 			return;
 		}
 
-		if( affwp_is_affiliate() ) {
+		if ( affwp_is_affiliate() ) {
 			return;
 		}
 
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
 
-
-		affiliate_wp()->templates->get_template_part( 'register' );
-
-		return ob_get_clean();
+		return affiliate_wp()->register->register_form( $redirect );
 
 	}
 
@@ -151,7 +150,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function referral_url( $atts, $content = null ) {
 
-		if( ! affwp_is_affiliate() ) {
+		if ( ! affwp_is_affiliate() ) {
 			return;
 		}
 
@@ -170,7 +169,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		return $content;
+		return do_shortcode( $content );
 	}
 
 	/**
@@ -185,7 +184,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		return $content;
+		return do_shortcode( $content );
 	}
 
 	/**

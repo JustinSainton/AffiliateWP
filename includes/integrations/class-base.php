@@ -25,6 +25,7 @@ abstract class Affiliate_WP_Base {
 		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
+		
 		return affiliate_wp()->referrals->add( array(
 			'amount'       => $amount,
 			'reference'    => $reference,
@@ -52,6 +53,9 @@ abstract class Affiliate_WP_Base {
 			// This referral has already been completed, rejected, or paid
 			return false;
 		}
+
+		if ( ! apply_filters( 'affwp_auto_complete_referral', true ) )
+			return false;
 
 		if ( affwp_set_referral_status( $referral->referral_id, 'unpaid' ) ) {
 

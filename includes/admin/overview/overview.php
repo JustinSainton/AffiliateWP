@@ -129,10 +129,8 @@ function affwp_affiliates_dashboard() {
 												<td>
 													<?php
 													if( 'pending' == $affiliate->status ) {
-														$accept_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=accept&affiliate_id=' . $affiliate->affiliate_id );
-														$reject_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=reject&affiliate_id=' . $affiliate->affiliate_id );
-														echo '<a href="' . esc_url( $accept_url ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
-														echo ' | <a href="' . esc_url( $reject_url ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+														$review_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=review_affiliate&affiliate_id=' . $affiliate->affiliate_id );
+														echo '<a href="' . esc_url( $review_url ) . '">' . __( 'Review', 'affiliate-wp' ) . '</a>';
 													} else {
 														$affiliate_report_url = admin_url( 'admin.php?page=affiliate-wp-affiliates&action=view_affiliate&affiliate_id=' . $affiliate->affiliate_id );
 														echo '<a href="' . esc_url( $affiliate_report_url ) . '">' . __( 'View Report', 'affiliate-wp' ) . '</a>';
