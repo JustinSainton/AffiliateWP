@@ -2,6 +2,12 @@
 
 class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
 	public function __construct() {
 		global $wpdb;
 
@@ -15,6 +21,12 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 		$this->version     = '1.0';
 	}
 
+	/**
+	 * Database columns
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
 	public function get_columns() {
 		return array(
 			'creative_id'  => '%d',
@@ -27,6 +39,12 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 		);
 	}
 
+	/**
+	 * Default column values
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
 	public function get_column_defaults() {
 		return array(
 			'date' => date( 'Y-m-d H:i:s' ),
