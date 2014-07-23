@@ -89,8 +89,8 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 		$defaults = array(
 			'status' => 'active',
 			'date'   => current_time( 'mysql' ),
-			'url'	=> '',
-			'image' => '',
+			'url'	 => '',
+			'image'  => '',
 		);
 
 		$args = wp_parse_args( $data, $defaults );
