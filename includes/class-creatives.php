@@ -24,44 +24,26 @@ class Affiliate_WP_Creatives {
 
 		$defaults = array(
 			'id'            => '',
-			'link'          => '',
-			'text'          => '',
+			'link'          => affiliate_wp()->creatives->get_column( 'url', $id ),
+			'text'          => affiliate_wp()->creatives->get_column( 'text', $id ),
 			'image_id'      => '',
-			'image_link'	=> '',
+			'image_link'	=> affiliate_wp()->creatives->get_column( 'image', $id ),
 			'preview'       => 'yes',
 		);
 
 		$args = wp_parse_args( $args, $defaults );
-		extract( $args, EXTR_SKIP );
 
-		// if ID is set it will use the parameters set with the creative
-		// also makes sure the shortcode parameters cannot override the already set up creative
-		if ( $id ) {
+		// if no link is specified, use the current site URL
+		$link = ! empty( $args['link'] ) ? $args['link'] : get_site_url();
 
-			// don't show creatives that aren't active
-			if ( 'active' !== affiliate_wp()->creatives->get_column( 'status', $id ) ) {
-				return;
-			}
-
-			$text       = affiliate_wp()->creatives->get_column( 'text', $id );
-			$link       = affiliate_wp()->creatives->get_column( 'url', $id );
-			$image_link = affiliate_wp()->creatives->get_column( 'image', $id );
-			$image_id   = '';
-		} 
-		// user is manually creating a banner using the shortcode parameters and does not have one setup in creatives
-		else {
-			// if no link is specified, use the current site URL
-			$link = $link ? $link : get_site_url();
-
-			// if no text is specified, use the site name
-			$text = $text ? $text : get_bloginfo( 'name' );
-		}
+		// if no text is specified, use the site name
+		$text = ! empty( $args['text'] ) ? $args['text'] : get_bloginfo( 'name' );
 
 		// get the image attributes from image_id
-		$image_attributes = wp_get_attachment_image_src( $image_id, 'full' );
+		$attributes = ! empty( $args['image_id'] ) ? wp_get_attachment_image_src( $args['image_id'], 'full' ) : '';
 
 		// load the HTML required for the creative
-		return $this->html( $id, $link, $image_link, $image_attributes, $preview, $text );
+		return $this->html( $id, $args['link'], $args['image_link'], $args['attributes'], $args['preview'], $args['text'] );
 
 	}
 
