@@ -38,9 +38,10 @@ class Affiliate_WP_Creatives {
 		// also makes sure the shortcode parameters cannot override the already set up creative
 		if ( $id ) {
 
-			// don't show an inactive creative
-			if ( 'inactive' == affiliate_wp()->creatives->get_column( 'status', $id ) )
+			// don't show creatives that aren't active
+			if ( 'active' !== affiliate_wp()->creatives->get_column( 'status', $id ) ) {
 				return;
+			}
 
 			$text       = affiliate_wp()->creatives->get_column( 'text', $id );
 			$link       = affiliate_wp()->creatives->get_column( 'url', $id );
