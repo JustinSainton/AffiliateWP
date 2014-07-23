@@ -63,14 +63,10 @@ class Affiliate_WP_Creatives {
 
 		ob_start();
 
-		$creatives = affiliate_wp()->creatives->get_creatives();
+		$creatives = affiliate_wp()->creatives->get_creatives( array( 'status' => 'active' ) );
 
 		if ( $creatives ) {
 			foreach ( $creatives as $creative ) {
-
-				// don't show an inactive creative
-				if ( 'inactive' == affiliate_wp()->creatives->get_column( 'status', $creative->creative_id ) )
-					continue;
 
 				$url   = $creative->url;
 				$image = $creative->image;
