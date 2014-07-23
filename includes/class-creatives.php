@@ -43,7 +43,7 @@ class Affiliate_WP_Creatives {
 		$attributes = ! empty( $args['image_id'] ) ? wp_get_attachment_image_src( $args['image_id'], 'full' ) : '';
 
 		// load the HTML required for the creative
-		return $this->html( $id, $args['link'], $args['image_link'], $args['attributes'], $args['preview'], $args['text'] );
+		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'] );
 
 	}
 
@@ -60,7 +60,6 @@ class Affiliate_WP_Creatives {
 		);
 
 		$args = wp_parse_args( $args, $defaults );
-		extract( $args, EXTR_SKIP );
 
 		ob_start();
 
@@ -77,7 +76,7 @@ class Affiliate_WP_Creatives {
 				$image = $creative->image;
 				$text  = $creative->text;
 
-				echo $this->html( $creative->creative_id, $url, $image, $image_attributes = '', $preview, $text );	
+				echo $this->html( $creative->creative_id, $url, $image, '', $args['preview'], $text );	
 			}
 		}
 
