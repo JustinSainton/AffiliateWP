@@ -27,19 +27,20 @@ abstract class Affiliate_WP_Base {
 			return false; // Ignore a zero amount referral
 		}
 
-		return affiliate_wp()->referrals->add( 
-			apply_filters( 'affwp_insert_pending_referral', 
-				array(
-					'amount'       => $amount,
-					'reference'    => $reference,
-					'description'  => $description,
-					'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
-					'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
-					'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
-					'context'      => $this->context
-				), $amount, $reference, $description, affiliate_wp()->tracking->get_affiliate_id(), affiliate_wp()->tracking->get_visit_id(), $data, $this->context
-			)
-		);
+		$affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
+		$visit_id     = affiliate_wp()->tracking->get_visit_id();
+
+		$args = apply_filters( 'affwp_insert_pending_referral', array(
+			'amount'       => $amount,
+			'reference'    => $reference,
+			'description'  => $description,
+			'affiliate_id' => $affiliate_id,
+			'visit_id'     => $visit_id,
+			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
+			'context'      => $this->context
+		), $amount, $reference, $description, $affiliate_id, $visit_id, $data, $this->context );
+
+		return affiliate_wp()->referrals->add( $args );
 
 	}
 
