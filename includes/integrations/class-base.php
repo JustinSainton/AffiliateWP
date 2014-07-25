@@ -17,23 +17,29 @@ abstract class Affiliate_WP_Base {
 	}
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
-		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
+		if ( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
 
 		$amount = affwp_calc_referral_amount( $amount, affiliate_wp()->tracking->get_affiliate_id(), $reference );
-		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+
+		if ( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
-		return affiliate_wp()->referrals->add( array(
-			'amount'       => $amount,
-			'reference'    => $reference,
-			'description'  => $description,
-			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
-			'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
-			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
-			'context'      => $this->context
-		) );
+
+		return affiliate_wp()->referrals->add( 
+			apply_filters( 'affwp_insert_pending_referral', 
+				array(
+					'amount'       => $amount,
+					'reference'    => $reference,
+					'description'  => $description,
+					'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
+					'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
+					'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
+					'context'      => $this->context
+				), $amount, $reference, $description, affiliate_wp()->tracking->get_affiliate_id(), affiliate_wp()->tracking->get_visit_id(), $data, $this->context
+			)
+		);
 
 	}
 
@@ -77,16 +83,16 @@ abstract class Affiliate_WP_Base {
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context );
 
-		if( empty( $referral ) ) {
+		if ( empty( $referral ) ) {
 			return false;
 		}
 
-		if( is_object( $referral ) && 'paid' == $referral->status ) {
+		if ( is_object( $referral ) && 'paid' == $referral->status ) {
 			// This referral has already been paid so it cannot be rejected
 			return false;
 		}
 
-		if( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ) ) ) {
+		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ) ) ) {
 
 			return true;
 
