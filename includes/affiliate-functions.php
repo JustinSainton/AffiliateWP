@@ -667,11 +667,6 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if ( affiliate_wp()->affiliates->add( $args ) ) {
 
-			if ( ! empty( $_POST['affwp_action'] ) && is_admin() ) {
-
-				wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) ); exit;
-			}
-
 			return true;
 		}
 
@@ -706,14 +701,11 @@ function affwp_update_affiliate( $data = array() ) {
 	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
 		// update affiliate's account email
-		wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) );
+		if( wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) ) ) {
 
-		if ( ! empty( $_POST['affwp_action'] ) ) {
-			// This is an update call from the edit screen
-			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&action=edit_affiliate&affwp_notice=affiliate_updated&affiliate_id=' . $affiliate_id ) ); exit;
+			return true;
+		
 		}
-
-		return true;
 
 	}
 

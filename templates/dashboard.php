@@ -39,6 +39,9 @@
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'visits' ? ' active' : ''; ?>">
 			<a href="<?php echo esc_url( add_query_arg( 'tab', 'visits' ) ); ?>"><?php _e( 'Visits', 'affiliate-wp' ); ?></a>
 		</li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'creatives' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'creatives' ) ); ?>"><?php _e( 'Creatives', 'affiliate-wp' ); ?></a>
+		</li>
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'settings' ? ' active' : ''; ?>">
 			<a href="<?php echo esc_url( add_query_arg( 'tab', 'settings' ) ); ?>"><?php _e( 'Settings', 'affiliate-wp' ); ?></a>
 		</li>

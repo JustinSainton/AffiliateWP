@@ -101,11 +101,6 @@ function affwp_add_referral( $data = array() ) {
 
 		if( affiliate_wp()->referrals->add( $args ) ) {
 
-			if ( ! empty( $_POST['affwp_action'] ) ) {
-
-				wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_added' ) ); exit;
-			}
-
 			return true;
 		}
 
