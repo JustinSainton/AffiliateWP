@@ -46,6 +46,11 @@ final class Affiliate_WP {
 	 */
 	private static $instance;
 
+	/**
+	 * The version number of AffiliateWP
+	 *
+	 * @since 1.0
+	 */
 	private $version = '1.1.4';
 
 	/**
