@@ -147,15 +147,21 @@ function affwp_delete_referral( $referral ) {
 	return false;
 }
 
-function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0 ) {
+function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0, $rate = '' ) {
+
+	if( empty( $rate ) ) {
+
+		$rate = affwp_get_affiliate_rate( $affiliate_id );
+
+	}
 
 	if( 'percentage' == affwp_get_affiliate_rate_type( $affiliate_id ) ) {
 
-		$referral_amount = round( $amount * affwp_get_affiliate_rate( $affiliate_id ), 2 );
+		$referral_amount = round( $amount * $rate, 2 );
 
 	} else {
 
-		$referral_amount = affwp_get_affiliate_rate( $affiliate_id );
+		$referral_amount = $rate;
 
 	}
 

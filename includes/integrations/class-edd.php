@@ -52,15 +52,31 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$inserted = $this->insert_pending_referral( $payment_data['price'], $payment_id, $this->get_referral_description( $payment_id ) );
+			$downloads = edd_get_payment_meta_cart_details( $payment_id );
+			if( is_array( $downloads ) ) {
+				
+				// Calculate the referral amount based on product prices
+				$referral_total = 0.00;
+				foreach( $downloads as $download ) {
 
-			if ( false !== $inserted ) { //only continue if the insert was a success
+					$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
 
-				$referral = affiliate_wp()->referrals->get_by( 'reference', $payment_id, 'edd' );
-				$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
-				$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
+				}
 
-				edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ),$referral->referral_id, $amount, $name ) );
+			} else {
+
+				$referral_total = $this->calculate_referral_amount( $payment_data['price'], $payment_id );
+
+			}
+
+			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $this->get_referral_description( $payment_id ) );
+
+			if ( false !== $referral_id ) { //only continue if the insert was a success
+
+				$amount = affwp_currency_filter( affwp_format_amount( $referral_total ) );
+				$name   = affiliate_wp()->affiliates->get_affiliate_name( affiliate_wp()->tracking->get_affiliate_id() );
+
+				edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
 			}
 		}
 
@@ -102,15 +118,29 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				} else {
 
-					$amount = edd_get_payment_subtotal( $payment_id );
-					$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
+					$downloads = edd_get_payment_meta_cart_details( $payment_id );
+					if( is_array( $downloads ) ) {
+						
+						// Calculate the referral amount based on product prices
+						$referral_total = 0.00;
+						foreach( $downloads as $download ) {
 
-					if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+							$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
+
+						}
+
+					} else {
+
+						$referral_total = $this->calculate_referral_amount( edd_get_payment_subtotal( $payment_id ), $payment_id );
+
+					}
+
+					if( 0 == $referral_total && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 						return false; // Ignore a zero amount referral
 					}
 
 					$referral_id = affiliate_wp()->referrals->add( array(
-						'amount'       => $amount,
+						'amount'       => $referral_total,
 						'reference'    => $payment_id,
 						'description'  => $this->get_referral_description( $payment_id ),
 						'affiliate_id' => $affiliate_id,
@@ -119,10 +149,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 					affwp_set_referral_status( $referral_id, 'unpaid' );
 
-					$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
-					$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+					$referral_total = affwp_currency_filter( affwp_format_amount( $referral_total ) );
+					$name           = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
 
-					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $referral_total, $name ) );
 
 				}
 			}
@@ -356,20 +386,8 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		<p>
 			<label for="affwp_product_rate">
-				<input type="text" name="_affwp_edd_product_rate" id="affwp_product_rate" class="small-text" value="<?php echo esc_attr( $rate['rate'] ); ?>" />
+				<input type="text" name="_affwp_edd_product_rate" id="affwp_product_rate" class="small-text" value="<?php echo esc_attr( $rate ); ?>" />
 				<?php _e( 'Referral Rate', 'affiliate-wp' ); ?>
-			</label>
-		</p>
-
-		<p>
-			<label for="affwp_product_rate_type">
-				<select name="_affwp_edd_product_rate_type" id="affwp_product_rate_type">
-					<option value=""><?php _e( 'Default', 'affiliate-wp' ); ?></option>
-					<?php foreach( affwp_get_affiliate_rate_types() as $key => $option ) : ?>
-						<option value="<?php echo esc_attr( $key ); ?>"<?php selected( $key, $rate['type'] ); ?>><?php echo esc_html( $option ); ?></option>
-					<?php endforeach; ?>
-				</select>
-				<?php _e( 'Referral Type', 'affiliate-wp' ); ?>
 			</label>
 		</p>
 
@@ -386,7 +404,6 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function download_save_fields( $fields = array() ) {
 		$fields[] = '_affwp_edd_product_rate';
-		$fields[] = '_affwp_edd_product_rate_type';
 		return $fields;
 	}
 
