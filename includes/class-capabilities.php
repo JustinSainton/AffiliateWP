@@ -36,9 +36,11 @@ class Affiliate_WP_Capabilities {
 	public function add_caps() {
 		global $wp_roles;
 
-		if ( class_exists('WP_Roles') )
-			if ( ! isset( $wp_roles ) )
+		if ( class_exists('WP_Roles') ) {
+			if ( ! isset( $wp_roles ) ) {
 				$wp_roles = new WP_Roles();
+			}
+		}
 
 		if ( is_object( $wp_roles ) ) {
 
