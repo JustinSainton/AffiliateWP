@@ -110,7 +110,7 @@ class Affiliate_WP_Creatives {
 				// Image preview - using ID of image from media library
 				if ( $image_attributes ) : ?> 
 				<p>
-					<a href="<?php echo esc_url( trailingslashit( $this->ref_link( $url ) ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
+					<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
 						<img src="<?php echo $image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>" alt="<?php echo esc_attr( $text ); ?>">
 					</a>
 				</p>
@@ -122,14 +122,14 @@ class Affiliate_WP_Creatives {
 					$image_size = getimagesize( $image ); // get the image's dimensions
 				?>
 					<p>
-						<a href="<?php echo esc_url( trailingslashit( $this->ref_link( $url ) ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
+						<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
 							<img src="<?php echo $image; ?>" <?php echo $image_size[3]; ?> alt="<?php echo esc_attr( $text ); ?>">
 						</a>
 					</p>
 
 				<?php else : // text link preview ?>
 					<p>
-						<a href="<?php echo esc_url( trailingslashit( $this->ref_link( $url ) ) ); ?>" title="<?php echo esc_attr( $text ); ?>"><?php echo esc_attr( $text ); ?></a>
+						<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>"><?php echo esc_attr( $text ); ?></a>
 					</p>
 				<?php endif; ?>
 
