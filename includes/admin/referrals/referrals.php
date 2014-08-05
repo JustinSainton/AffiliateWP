@@ -366,7 +366,9 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
 			
-			} else {
+			}
+
+			if( 'rejected' != $referral->status ) {
 			
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 			
