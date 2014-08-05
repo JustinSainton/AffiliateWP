@@ -34,7 +34,9 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 				}
 			}
 
-			$this->insert_pending_referral( $order->total, $order_id->order, $description );
+			$referral_total = $this->calculate_referral_amount( $order->total, $order_id->order );			
+
+			$this->insert_pending_referral( $referral_total, $order_id->order, $description );
 
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $order_id->order, 'shopp' );
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
