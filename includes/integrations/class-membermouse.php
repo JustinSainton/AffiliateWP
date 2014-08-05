@@ -55,7 +55,9 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 			$reference = $affiliate_data['member_id'] . '|' . $affiliate_data['order_number'];
 
-			$this->insert_pending_referral( $affiliate_data['order_total'], $reference, $description );
+			$referral_total = $this->calculate_referral_amount( $affiliate_data['order_total'], $reference );
+
+			$this->insert_pending_referral( $referral_total, $reference, $description );
 			$this->complete_referral( $reference );
 
 		}
