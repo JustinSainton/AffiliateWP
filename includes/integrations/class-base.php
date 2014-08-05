@@ -2,24 +2,67 @@
 
 abstract class Affiliate_WP_Base {
 
+	/**
+	 * The context for referrals. This refers to the integration that is being used.
+	 *
+	 * @access  public
+	 * @since   1.2
+	 */
 	public $context;
 
+	/**
+	 * The ID of the referring affiliate
+	 *
+	 * @access  public
+	 * @since   1.2
+	 */
 	public $affiliate_id;
 
+	/**
+	 * Constructor
+	 *
+	 * @access  public
+	 * @since   1.0
+	 */
 	public function __construct() {
 
 		$this->affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
 		$this->init();
 	}
 
+	/**
+	 * Gets things started
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @return  void
+	 */
 	public function init() {
 
 	}
 
+	/**
+	 * Determines if the current session was referred through an affiliate link
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @return  bool
+	 */
 	public function was_referred() {
 		return affiliate_wp()->tracking->was_referred();
 	}
 
+	/**
+	 * Inserts a pending referal. Used when orders are initially created
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @param   $amount The final referral commission amount
+	 * @param   $reference The reference column for the referral per the current context
+	 * @param   $description A plaintext description of the refferral
+	 * @param   $data Any custom data that can be passed to and stored with the referral
+	 * @return  bool
+	 */
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
 
 		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
@@ -50,6 +93,14 @@ abstract class Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Completes a referal. Used when orders are marked as completed
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @param   $reference The reference column for the referral to complete per the current context
+	 * @return  bool
+	 */
 	public function complete_referral( $reference = 0 ) {
 		if ( empty( $reference ) ) {
 			return false;
@@ -83,6 +134,14 @@ abstract class Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Rejects a referal. Used when orders are refunded, deleted, or voided
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @param   $reference The reference column for the referral to reject per the current context
+	 * @return  bool
+	 */
 	public function reject_referral( $reference = 0 ) {
 		if ( empty( $reference ) ) {
 			return false;
@@ -109,6 +168,13 @@ abstract class Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Retrieves the email address of the referring affiliate
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @return  string
+	 */
 	public function get_affiliate_email() {
 		return affwp_get_affiliate_email( $this->affiliate_id );
 	}
@@ -119,7 +185,7 @@ abstract class Affiliate_WP_Base {
 	 * @access  public
 	 * @since   1.2
 	 * @return  array
-	*/
+	 */
 	public function calculate_referral_amount( $base_amount = '', $reference = '', $product_id = 0 ) {
 
 		$rate = '';
