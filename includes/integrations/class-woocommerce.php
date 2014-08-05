@@ -68,7 +68,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				'amount'       => $amount,
 				'reference'    => $order_id,
 				'description'  => $this->get_referral_description(),
-				'affiliate_id' => $affiliate_id,
+				'affiliate_id' => $this->$affiliate_id,
 				'context'      => $this->context
 			) );
 

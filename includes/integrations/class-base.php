@@ -4,12 +4,14 @@ abstract class Affiliate_WP_Base {
 
 	public $context;
 
+	public $affiliate_id;
+
 	public function __construct() {
 		$this->init();
 	}
 
 	public function init() {
-
+		$this->affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
 	}
 
 	public function was_referred() {
@@ -34,7 +36,7 @@ abstract class Affiliate_WP_Base {
 			'amount'       => $amount,
 			'reference'    => $reference,
 			'description'  => $description,
-			'affiliate_id' => affiliate_wp()->tracking->get_affiliate_id(),
+			'affiliate_id' => $this->affiliate_id,
 			'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
 			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
 			'context'      => $this->context
@@ -102,7 +104,7 @@ abstract class Affiliate_WP_Base {
 	}
 
 	public function get_affiliate_email() {
-		return affwp_get_affiliate_email( affiliate_wp()->tracking->get_affiliate_id() );
+		return affwp_get_affiliate_email( $this->affiliate_id );
 	}
 
 	/**
@@ -114,13 +116,12 @@ abstract class Affiliate_WP_Base {
 	*/
 	public function calculate_referral_amount( $base_amount = '', $reference = '', $product_id = 0 ) {
 
-		$rate         = '';
-		$affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
+		$rate = '';
 
 		if( ! empty( $product_id ) ) {
 
 			$rate = $this->get_product_rate( $product_id );
-			$type = affwp_get_affiliate_rate_type( $affiliate_id );
+			$type = affwp_get_affiliate_rate_type( $this->affiliate_id );
 
 			if ( 'percentage' == $type ) {
 
@@ -135,7 +136,7 @@ abstract class Affiliate_WP_Base {
 
 		}
 
-		$amount = affwp_calc_referral_amount( $base_amount, $affiliate_id, $reference, $rate );
+		$amount = affwp_calc_referral_amount( $base_amount, $this->affiliate_id, $reference, $rate );
 	
 		return $amount;
 
