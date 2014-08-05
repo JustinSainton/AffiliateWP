@@ -51,7 +51,9 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 				}
 			}
 
-			$this->insert_pending_referral( $order->get_total(), $order_id, $description );
+			$referral_total = $this->calculate_referral_amount( $order->get_total(), $order_id );
+
+			$this->insert_pending_referral( $referral_total, $order_id, $description );
 
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
