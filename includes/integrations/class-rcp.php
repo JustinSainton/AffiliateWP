@@ -76,9 +76,10 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$key = get_user_meta( $user_id, 'rcp_subscription_key', true );
+			$key   = get_user_meta( $user_id, 'rcp_subscription_key', true );
+			$total = $this->calculate_referral_amount( $price, $key );
 
-			$this->insert_pending_referral( $price, $key, rcp_get_subscription( $user_id ) );
+			$this->insert_pending_referral( $total, $key, rcp_get_subscription( $user_id ) );
 		}
 
 	}
