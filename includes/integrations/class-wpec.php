@@ -4,7 +4,7 @@ class Affiliate_WP_WPEC extends Affiliate_WP_Base {
 	
 	public function init() {
 
-		$this->content = 'wpec';
+		$this->context = 'wpec';
 
 		add_action( 'wpsc_update_purchase_log_status', array( $this, 'add_pending_referral' ), 10, 4 );
 		add_action( 'wpsc_update_purchase_log_status', array( $this, 'mark_referral_complete' ), 10, 4 );
