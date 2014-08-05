@@ -7,11 +7,13 @@ abstract class Affiliate_WP_Base {
 	public $affiliate_id;
 
 	public function __construct() {
+
+		$this->affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
 		$this->init();
 	}
 
 	public function init() {
-		$this->affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
+
 	}
 
 	public function was_referred() {
@@ -153,7 +155,6 @@ abstract class Affiliate_WP_Base {
 	public function get_product_rate( $product_id = 0 ) {
 
 		$rate = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate', true );
-
 		if( empty( $rate ) ) {
 
 			$rate = affwp_get_affiliate_rate();
