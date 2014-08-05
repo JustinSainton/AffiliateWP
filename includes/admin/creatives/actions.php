@@ -8,26 +8,20 @@
  */
 function affwp_process_add_creative( $data ) {
 
-	if( ! is_admin() ) {
-
+	if ( ! is_admin() ) {
 		return false;
-
 	}
 
-	if( ! current_user_can( 'manage_creatives' ) ) {
-
+	if ( ! current_user_can( 'manage_creatives' ) ) {
 		wp_die( __( 'You do not have permission to manage creatives', 'affiliate-wp' ) );
-
 	}
 
-	if( affwp_add_creative( $data ) ) {
-
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_added' ) ); exit;
-
+	if ( affwp_add_creative( $data ) ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_added' ) ); 
+		exit;
 	} else {
-
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_added_failed' ) ); exit;
-
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_added_failed' ) ); 
+		exit;
 	}
 
 }
@@ -64,7 +58,8 @@ function affwp_process_creative_deletion( $data ) {
 		affwp_delete_creative( $creative_id );
 	}
 
-	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_deleted' ) ); exit;
+	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_deleted' ) ); 
+	exit;
 
 }
 add_action( 'affwp_delete_creatives', 'affwp_process_creative_deletion' );
@@ -77,26 +72,20 @@ add_action( 'affwp_delete_creatives', 'affwp_process_creative_deletion' );
  */
 function affwp_process_update_creative( $data ) {
 
-	if( ! is_admin() ) {
-
+	if ( ! is_admin() ) {
 		return false;
-
 	}
 
-	if( ! current_user_can( 'manage_creatives' ) ) {
-
+	if ( ! current_user_can( 'manage_creatives' ) ) {
 		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ) );
-
 	}
 
-	if( affwp_update_creative( $data ) ) {
-
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&action=edit_creative&affwp_notice=creative_updated&creative_id=' . $data['creative_id'] ) ); exit;
-
+	if ( affwp_update_creative( $data ) ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&action=edit_creative&affwp_notice=creative_updated&creative_id=' . $data['creative_id'] ) );
+		exit;
 	} else {
-
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&action=edit_creative&affwp_notice=creative_update_failed' ) ); exit;
-
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&action=edit_creative&affwp_notice=creative_update_failed' ) );
+		exit;
 	}
 
 }

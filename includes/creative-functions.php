@@ -66,9 +66,7 @@ function affwp_update_creative( $data = array() ) {
 	$args['status'] = ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : '';
 
 	if ( affiliate_wp()->creatives->update( $creative_id, $args ) ) {
-
 		return true;
-
 	}
 
 	return false;
@@ -115,8 +113,7 @@ function affwp_set_creative_status( $creative, $status = '' ) {
 
 	do_action( 'affwp_set_creative_status', $creative_id, $status, $old_status );
 
-	if( affiliate_wp()->creatives->update( $creative_id, array( 'status' => $status ) ) ) {
-
+	if ( affiliate_wp()->creatives->update( $creative_id, array( 'status' => $status ) ) ) {
 		return true;
 	}
 
