@@ -67,18 +67,6 @@ function affwp_referrals_admin() {
 
 }
 
-function affwp_generate_referral_payout_file( $data ) {
-
-	$export = new Affiliate_WP_Referral_Payout_Export;
-	$export->date = array(
-		'start' => $data['from'],
-		'end'   => $data['to'] . ' 23:59:59'
-	);
-	$export->export();
-
-}
-add_action( 'affwp_generate_referral_payout', 'affwp_generate_referral_payout_file' );
-
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';

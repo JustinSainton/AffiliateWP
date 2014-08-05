@@ -26,3 +26,21 @@ function affwp_process_add_referral( $data ) {
 
 }
 add_action( 'affwp_add_referral', 'affwp_process_add_referral' );
+
+/**
+ * Process the referral payout file generation
+ *
+ * @since 1.0
+ * @return void
+ */
+function affwp_generate_referral_payout_file( $data ) {
+
+	$export = new Affiliate_WP_Referral_Payout_Export;
+	$export->date = array(
+		'start' => $data['from'],
+		'end'   => $data['to'] . ' 23:59:59'
+	);
+	$export->export();
+
+}
+add_action( 'affwp_generate_referral_payout', 'affwp_generate_referral_payout_file' );
