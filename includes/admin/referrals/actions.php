@@ -16,7 +16,7 @@ function affwp_process_add_referral( $data ) {
 		wp_die( __( 'You do not have permission to manage referrals', 'affiliate-wp' ) );
 	}
 
-	if ( affwp_add_creative( $data ) ) {
+	if ( affwp_add_referral( $data ) ) {
 		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_added' ) );
 		exit;
 	} else {
