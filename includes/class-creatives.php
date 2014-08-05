@@ -102,7 +102,7 @@ class Affiliate_WP_Creatives {
 		$id_class = $id ? ' creative-' . $id : '';
 		ob_start();
 	?>
-		<div class="affwp-creative<?php echo $id_class; ?>">
+		<div class="affwp-creative<?php echo esc_attr( $id_class ); ?>">
 
 			<?php if ( $preview != 'no' ) : ?>
 
@@ -111,19 +111,19 @@ class Affiliate_WP_Creatives {
 				if ( $image_attributes ) : ?> 
 				<p>
 					<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
-						<img src="<?php echo $image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>" alt="<?php echo esc_attr( $text ); ?>">
+						<img src="<?php echo esc_attr( $image_attributes[0] ); ?>" width="<?php echo esc_attr( $image_attributes[1] ); ?>" height="<?php echo esc_attr( $image_attributes[2] ); ?>" alt="<?php echo esc_attr( $text ); ?>">
 					</a>
 				</p>
 				
 				<?php
 				// Image preview - External image URL or picked from media library
 				elseif ( $image_link ) :
-					$image      = esc_url( $image_link );
+					$image      = $image_link;
 					$image_size = getimagesize( $image ); // get the image's dimensions
 				?>
 					<p>
 						<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
-							<img src="<?php echo $image; ?>" <?php echo $image_size[3]; ?> alt="<?php echo esc_attr( $text ); ?>">
+							<img src="<?php echo esc_attr( $image ); ?>" <?php echo $image_size[3]; ?> alt="<?php echo esc_attr( $text ); ?>">
 						</a>
 					</p>
 
@@ -140,11 +140,11 @@ class Affiliate_WP_Creatives {
 
 				// Image - media library
 				if ( $image_attributes ) {
-					$image_or_text = '<img src="' . $image_attributes[0] . '" alt="' . esc_attr( $text ) .'" />';
+					$image_or_text = '<img src="' . esc_attr( $image_attributes[0] ) . '" alt="' . esc_attr( $text ) .'" />';
 				}
 				// Image - External URL
 				elseif ( $image_link ) {
-					$image_or_text = '<img src="' . $image_link . '" alt="' . esc_attr( $text ) .'" />';
+					$image_or_text = '<img src="' . esc_attr( $image_link ) . '" alt="' . esc_attr( $text ) .'" />';
 				}
 				// Show site name when no image
 				else {
