@@ -18,7 +18,7 @@ abstract class Affiliate_WP_Base {
 
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
 
-		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->content ) ) {
+		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
 			return false; // Allow extensions to prevent referrals from being created
 		}
 
