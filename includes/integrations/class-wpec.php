@@ -32,7 +32,9 @@ class Affiliate_WP_WPEC extends Affiliate_WP_Base {
 				}
 			}
 
-			$this->insert_pending_referral( $order->get( 'totalprice' ), $order_id, $description );
+			$referral_total = $this->calculate_referral_amount( $order->get( 'totalprice' ), $order_id );
+
+			$this->insert_pending_referral( $referral_total, $order_id, $description );
 		}
 
 	}
