@@ -61,54 +61,6 @@ function affwp_affiliates_admin() {
 
 }
 
-/**
- * Process affiliate deletion requests
- *
- * @since 1.2
- * @param $data array
- * @return void
- */
-function affwp_process_affiliate_deletion( $data ) {
-
-	if( ! is_admin() ) {
-		return;
-	}
-
-	if( ! current_user_can( 'manage_affiliates' ) ) {
-		wp_die( __( 'You do not have permission to delete affiliate accounts', 'affiliate-wp' ) );
-	}
-
-	if( ! wp_verify_nonce( $data['affwp_delete_affiliates_nonce'], 'affwp_delete_affiliates_nonce' ) ) {
-		wp_die( __( 'Security check failed', 'affiliate-wp' ) );
-	}
-
-	if( empty( $data['affwp_affiliate_ids'] ) || ! is_array( $data['affwp_affiliate_ids'] ) ) {
-		wp_die( __( 'No affiliate IDs specified for deletion', 'affiliate-wp' ) );
-	}
-
-	$to_delete    = array_map( 'absint', $data['affwp_affiliate_ids'] );
-	$delete_users = isset( $data['affwp_delete_users_too'] ) && current_user_can( 'delete_users' );
-
-	foreach( $to_delete as $affiliate_id ) {
-
-		if( $delete_users ) {
-
-			require_once( ABSPATH . 'wp-admin/includes/user.php' );
-
-			$user_id = affwp_get_affiliate_user_id( $affiliate_id );
-			wp_delete_user( $user_id );
-
-		}
-
-		affwp_delete_affiliate( $affiliate_id, true );
-
-	}
-
-	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_deleted' ) ); exit;
-
-
-}
-
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';

@@ -56,41 +56,6 @@ function affwp_creatives_admin() {
 	}
 }
 
-/**
- * Process creative deletion requests
- *
- * @since 1.2
- * @param $data array
- * @return void
- */
-function affwp_process_creative_deletion( $data ) {
-
-	if ( ! is_admin() ) {
-		return;
-	}
-
-	if ( ! current_user_can( 'manage_creatives' ) ) {
-		wp_die( __( 'You do not have permission to delete a creative', 'affiliate-wp' ) );
-	}
-
-	if ( ! wp_verify_nonce( $data['affwp_delete_creatives_nonce'], 'affwp_delete_creatives_nonce' ) ) {
-		wp_die( __( 'Security check failed', 'affiliate-wp' ) );
-	}
-
-	if ( empty( $data['affwp_creative_ids'] ) || ! is_array( $data['affwp_creative_ids'] ) ) {
-		wp_die( __( 'No creative IDs specified for deletion', 'affiliate-wp' ) );
-	}
-
-	$to_delete = array_map( 'absint', $data['affwp_creative_ids'] );
-
-	foreach ( $to_delete as $creative_id ) {
-		affwp_delete_creative( $creative_id );
-	}
-
-	wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_deleted' ) ); exit;
-
-}
-
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';

@@ -37,10 +37,6 @@ function affwp_add_creative( $data = array() ) {
 
 	if ( affiliate_wp()->creatives->add( $args ) ) {
 
-		if ( ! empty( $_POST['affwp_action'] ) && is_admin() ) {
-			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&affwp_notice=creative_added' ) ); exit;
-		}
-
 		return true;
 	}
 
@@ -70,11 +66,6 @@ function affwp_update_creative( $data = array() ) {
 	$args['status'] = ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : '';
 
 	if ( affiliate_wp()->creatives->update( $creative_id, $args ) ) {
-
-		if ( ! empty( $_POST['affwp_action'] ) ) {
-			// This is an update call from the edit screen
-			wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-creatives&action=edit_creative&affwp_notice=creative_updated&creative_id=' . $creative_id ) ); exit;
-		}
 
 		return true;
 
