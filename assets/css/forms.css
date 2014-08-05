@@ -34,6 +34,9 @@ table.affwp-table th {
 .affwp-form input[type="url"] {
 	display: inline-block;
 	width: 200px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .affwp-form input[type="text"].required,
@@ -52,8 +55,13 @@ table.affwp-table th {
 	width: 200px;
 }
 
-.affwp-referral-url-submit-wrap {
-	margin-top: 10px;
+.affwp-base-url-wrap, 
+.affwp-referral-url-wrap {
+	margin-bottom: 10px;
+}
+
+#affwp-generate-ref-url input {
+	width: 100%;
 }
 
 .affwp-errors,
