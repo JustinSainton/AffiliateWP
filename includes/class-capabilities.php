@@ -63,10 +63,13 @@ class Affiliate_WP_Capabilities {
 	 * @return void
 	 */
 	public function remove_caps() {
-		if ( class_exists( 'WP_Roles' ) )
-			if ( ! isset( $wp_roles ) )
-				$wp_roles = new WP_Roles();
 
+		if ( class_exists('WP_Roles') ) {
+			if ( ! isset( $wp_roles ) ) {
+				$wp_roles = new WP_Roles();
+			}
+		}
+		
 		if ( is_object( $wp_roles ) ) {
 
 			/** Site Administrator Capabilities */
