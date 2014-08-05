@@ -19,7 +19,7 @@ class Affiliate_WP_Registrations_Graph extends Affiliate_WP_Graph {
 		);
 
 		$affiliates = affiliate_wp()->affiliates->get_affiliates( array(
-			'orderby'  => 'date',
+			'orderby'  => 'date_registered',
 			'order'    => 'ASC',
 			'number'   => -1,
 			'date'     => $date
