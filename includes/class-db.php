@@ -25,16 +25,37 @@ abstract class Affiliate_WP_DB {
 
 	public function get_by( $column, $row_id ) {
 		global $wpdb;
+
+		if( empty( $row_id ) ) {
+
+			return false;
+
+		}
+
 		return $wpdb->get_row( "SELECT * FROM $this->table_name WHERE $column = '$row_id' LIMIT 1;" );
 	}
 
 	public function get_column( $column, $row_id ) {
 		global $wpdb;
+
+		if( empty( $row_id ) ) {
+
+			return false;
+
+		}
+
 		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id LIMIT 1;" );
 	}
 
 	public function get_column_by( $column, $column_where, $column_value ) {
 		global $wpdb;
+
+		if( empty( $column ) || empty( $column_where ) || empty( $column_value ) ) {
+
+			return false;
+
+		}
+
 		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $column_where = $column_value LIMIT 1;" );
 	}
 
