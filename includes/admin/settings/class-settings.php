@@ -177,7 +177,7 @@ class Affiliate_WP_Settings {
 					),
 					'license_key' => array(
 						'name' => __( 'License Key', 'affiliate-wp' ),
-						'desc' => sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'http://affiliatewp.com/support/' ),
+						'desc' => '<p class="description">' . sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'http://affiliatewp.com/support/' ) . '</p>',
 						'type' => 'license'
 					),
 
@@ -188,13 +188,13 @@ class Affiliate_WP_Settings {
 					),
 					'affiliates_page' => array(
 						'name' => __( 'Affiliate Area', 'affiliate-wp' ),
-						'desc' => __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
 						'options' => affwp_get_pages()
 					),
 					'terms_of_use' => array(
 						'name' => __( 'Terms of Use', 'affiliate-wp' ),
-						'desc' => __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
 						'options' => affwp_get_pages()
 					),
@@ -205,19 +205,19 @@ class Affiliate_WP_Settings {
 					),
 					'referral_var' => array(
 						'name' => __( 'Referral Variable', 'affiliate-wp' ),
-						'desc' => sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ),
+						'desc' => '<p class="description">' . sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ) . '</p>',
 						'type' => 'text',
 						'std' => 'ref'
 					),
 					'referral_rate_type' => array(
 						'name' => __( 'Referral Rate Type', 'affiliate-wp' ),
-						'desc' => __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
 						'options' => affwp_get_affiliate_rate_types()
 					),
 					'referral_rate' => array(
 						'name' => __( 'Referral Rate', 'affiliate-wp' ),
-						'desc' => __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ) . '</p>',
 						'type' => 'number',
 						'size' => 'small',
 						'step' => '0.5',
@@ -225,7 +225,7 @@ class Affiliate_WP_Settings {
 					),
 					'cookie_exp' => array(
 						'name' => __( 'Cookie Expiration', 'affiliate-wp' ),
-						'desc' => __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ) . '</p>',
 						'type' => 'number',
 						'size' => 'small',
 						'std' => '1'
@@ -237,13 +237,13 @@ class Affiliate_WP_Settings {
 					),
 					'currency' => array(
 						'name' => __( 'Currency', 'affiliate-wp' ),
-						'desc' => __( 'Choose your currency. Note that some payment gateways have currency restrictions.', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Choose your currency. Note that some payment gateways have currency restrictions.', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
 						'options' => affwp_get_currencies()
 					),
 					'currency_position' => array(
 						'name' => __( 'Currency Position', 'affiliate-wp' ),
-						'desc' => __( 'Choose the location of the currency sign.', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Choose the location of the currency sign.', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
 						'options' => array(
 							'before' => __( 'Before - $10', 'affiliate-wp' ),
@@ -252,14 +252,14 @@ class Affiliate_WP_Settings {
 					),
 					'thousands_separator' => array(
 						'name' => __( 'Thousands Separator', 'affiliate-wp' ),
-						'desc' => __( 'The symbol (usually , or .) to separate thousands', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'The symbol (usually , or .) to separate thousands', 'affiliate-wp' ) . '</p>',
 						'type' => 'text',
 						'size' => 'small',
 						'std' => ','
 					),
 					'decimal_separator' => array(
 						'name' => __( 'Decimal Separator', 'affiliate-wp' ),
-						'desc' => __( 'The symbol (usually , or .) to separate decimal points', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'The symbol (usually , or .) to separate decimal points', 'affiliate-wp' ) . '</p>',
 						'type' => 'text',
 						'size' => 'small',
 						'std' => '.'
