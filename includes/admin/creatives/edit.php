@@ -97,7 +97,7 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 
 		<input type="hidden" name="affwp_action" value="update_creative" />
 
-		<?php submit_button( __( 'Edit Creative', 'affiliate-wp' ) ); ?>
+		<?php submit_button( __( 'Update Creative', 'affiliate-wp' ) ); ?>
 
 	</form>
 

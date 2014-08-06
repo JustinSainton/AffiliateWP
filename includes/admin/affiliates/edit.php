@@ -104,7 +104,7 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 
 		<input type="hidden" name="affwp_action" value="update_affiliate" />
 
-		<?php submit_button( __( 'Edit Affiliate', 'affiliate-wp' ) ); ?>
+		<?php submit_button( __( 'Update Affiliate', 'affiliate-wp' ) ); ?>
 
 	</form>
 
