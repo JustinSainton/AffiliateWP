@@ -177,14 +177,14 @@ class Affiliate_WP_Welcome {
 
 				<div class="feature-section">
 					<h4><?php _e( 'Per-Product Referral Rates', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'With version 1.2, you can now set referral rates on a per-product basis for WooCommerce and Easy Digital Downloads.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'With version 1.2, you can now set referral rates on a per-product basis. Per-product referral rates are supported for both Easy Digital Downloads and WooCommerce, with more integrations on the way.', 'affiliate-wp' );?></p>
 
-					<h4><?php _e( 'Creatives Creator', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'We have introduced a new admin section for creating the affiliate creatives that are then automatically displayed in your affiliate area.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'Easily add your text links, your images, and other assets you want to be easily available to your affiliates.', 'affiliate-wp' );?></p>
+					<h4><?php _e( 'Affiliate Creatives', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'We have introduced a new admin section for affiliate creatives that you can share with your affiliates. Easily add image and text creatives which are shown in affiliate area for your affiliates. Creatives can also be shown anywhere with a simple shortcode.', 'affiliate-wp' );?></p>
+					
 
 					<h4><?php _e( 'Improved Affiliate Area', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'The Affiliate Area has been simplified and improved with the introduction of a tabbed interface that separates the components into individual tabs.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'The Affiliate Area has been simplified and improved with the introduction of a tabbed interface.', 'affiliate-wp' );?></p>
 				</div>
 			</div>
 
@@ -197,12 +197,12 @@ class Affiliate_WP_Welcome {
 						<p><?php _e( 'If you use Commissions for Easy Digital Downloads, you can now automatically adjust the commission rate when a referral is present.', 'affiliate-wp' );?></p>
 
 						<h4><?php _e( 'New Primary URL and Promotion Method Fields', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The affiliate registration form now includes a Primary URL and Promotional Method fields.', 'affiliate-wp' );?></p>
+						<p><?php _e( 'The affiliate registration form now includes fields for learning how your affiliates will be promoting your products and services.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div>
 						<h4><?php _e( 'Registration Form Retains Values on Error', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The Overview page now has a new widget that shows your top 5 most valuable affiliates, based on earnings.', 'affiliate-wp' );?></p>
+						<p><?php _e( 'When there\'s an error on the affiliate registration form, it no longer clears the entire form, making it easier for your affiliates to complete their registration.', 'affiliate-wp' );?></p>
 
 						<h4><?php _e( 'Improved Affiliate Deletion', 'affiliate-wp' );?></h4>
 						<p><?php _e( 'When you delete an affiliate account, you now have the option to also delete the user account and all affiliate data.', 'affiliate-wp' );?></p>
@@ -210,10 +210,10 @@ class Affiliate_WP_Welcome {
 
 					<div class="last-feature">
 						<h4><?php _e( 'Option to Disable the TOS Field', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The Terms of Service checkbox can now be automatically disabled by .', 'affiliate-wp' );?></p>
+						<p><?php _e( 'The Terms of Service checkbox on the affiliate registration form will now automatically be disabled when the corresponding page is not set in the admin.', 'affiliate-wp' );?></p>
 
 						<h4><?php _e( 'Enhanced Visit Search Options','affiliate-wp' );?></h4>
-						<p><?php _e( 'The Visits page now can be searched with various methods in order to view visits from specifici affiliates, referrals, and more.', 'affiliate-wp' );?></p>
+						<p><?php _e( 'The Visits page now can be searched with various methods in order to view visits from specific affiliates, referrals, and more.', 'affiliate-wp' );?></p>
 					</div>
 				</div>
 			</div>
