@@ -94,10 +94,14 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				'context'      => $this->context
 			) );
 
-			$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
-			$name   = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+			if( $referral_id ) {
 
-			$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+				$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
+				$name   = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
+
+				$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
+			}
 
 		}
 
