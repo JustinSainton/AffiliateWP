@@ -1,0 +1,2050 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateWP\n"
+"POT-Creation-Date: 2014-08-02 23:49+0800\n"
+"PO-Revision-Date: 2014-08-09 09:43+0800\n"
+"Last-Translator: guxin <z@guxin.net>\n"
+"Language-Team: Chris Christoff <chriscct7@gmail.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: affiliate-wp.php:183 affiliate-wp.php:195
+msgid "Cheatin&#8217; huh?"
+msgstr "你作弊&#8217;哼?"
+
+#: includes/admin/affiliates/affiliates.php:36
+#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
+#: includes/admin/class-welcome.php:291
+msgid "Affiliates"
+msgstr "加盟"
+
+#: includes/admin/affiliates/affiliates.php:37
+msgid "Add New"
+msgstr "新建"
+
+#: includes/admin/affiliates/affiliates.php:41
+#: includes/admin/referrals/referrals.php:53
+#: includes/admin/visits/visits.php:28
+msgid "Search"
+msgstr "搜索"
+
+#: includes/admin/affiliates/affiliates.php:183
+#: includes/admin/referrals/referrals.php:205
+msgid "All"
+msgstr "所有"
+
+#: includes/admin/affiliates/affiliates.php:184
+msgid "Active"
+msgstr "激活"
+
+#: includes/admin/affiliates/affiliates.php:185
+msgid "Inactive"
+msgstr "停用"
+
+#: includes/admin/affiliates/affiliates.php:186
+#: includes/admin/referrals/new.php:92
+#: includes/admin/referrals/referrals.php:208
+#: includes/admin/tools/tools.php:187
+msgid "Pending"
+msgstr "待定"
+
+#: includes/admin/affiliates/affiliates.php:187
+#: includes/admin/referrals/new.php:93
+#: includes/admin/referrals/referrals.php:209
+#: includes/admin/tools/tools.php:188
+msgid "Rejected"
+msgstr "否定"
+
+#: includes/admin/affiliates/affiliates.php:203
+msgid "Name"
+msgstr "名称"
+
+#: includes/admin/affiliates/affiliates.php:204
+#: includes/admin/tools/export/class-export.php:69
+msgid "ID"
+msgstr "ID"
+
+#: includes/admin/affiliates/affiliates.php:205
+#: includes/admin/affiliates/view.php:11
+#: includes/admin/overview/overview.php:170
+msgid "Earnings"
+msgstr "佣金"
+
+#: includes/admin/affiliates/affiliates.php:206
+#: includes/admin/affiliates/new.php:51
+msgid "Rate"
+msgstr "推广费"
+
+#: includes/admin/affiliates/affiliates.php:207 templates/dashboard.php:73
+msgid "Paid Referrals"
+msgstr "有薪推广"
+
+#: includes/admin/affiliates/affiliates.php:208
+#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:301
+#: includes/admin/overview/overview.php:172
+#: includes/admin/reports/reports.php:66
+#: includes/admin/reports/reports.php:185 includes/admin/tools/tools.php:104
+#: includes/admin/visits/visits.php:25 templates/dashboard.php:74
+msgid "Visits"
+msgstr "访问"
+
+#: includes/admin/affiliates/affiliates.php:209
+#: includes/admin/overview/overview.php:117
+#: includes/admin/referrals/new.php:85
+#: includes/admin/referrals/referrals.php:231
+#: includes/admin/tools/export/class-export-referrals.php:67
+msgid "Status"
+msgstr "状态"
+
+#: includes/admin/affiliates/affiliates.php:210
+#: includes/admin/overview/overview.php:118
+#: includes/admin/referrals/referrals.php:230
+msgid "Actions"
+msgstr "操作"
+
+#: includes/admin/affiliates/affiliates.php:344
+#: includes/admin/class-menu.php:16
+msgid "Reports"
+msgstr "报表"
+
+#: includes/admin/affiliates/affiliates.php:345
+msgid "Edit"
+msgstr "编辑"
+
+#: includes/admin/affiliates/affiliates.php:348
+#: includes/admin/affiliates/affiliates.php:387
+msgid "Deactivate"
+msgstr "停用"
+
+#: includes/admin/affiliates/affiliates.php:350
+#: includes/admin/affiliates/affiliates.php:384
+#: includes/admin/overview/overview.php:134
+#: includes/admin/referrals/referrals.php:364
+#: includes/admin/referrals/referrals.php:453
+msgid "Accept"
+msgstr "接受"
+
+#: includes/admin/affiliates/affiliates.php:351
+#: includes/admin/affiliates/affiliates.php:385
+#: includes/admin/overview/overview.php:135
+#: includes/admin/referrals/referrals.php:368
+#: includes/admin/referrals/referrals.php:454
+msgid "Reject"
+msgstr "否定"
+
+#: includes/admin/affiliates/affiliates.php:353
+#: includes/admin/affiliates/affiliates.php:386
+msgid "Activate"
+msgstr "激活"
+
+#: includes/admin/affiliates/affiliates.php:356
+#: includes/admin/affiliates/affiliates.php:388
+#: includes/admin/referrals/referrals.php:374
+#: includes/admin/referrals/referrals.php:457
+msgid "Delete"
+msgstr "删除"
+
+#: includes/admin/affiliates/affiliates.php:372
+msgid "No affiliates found."
+msgstr "未发现加盟。"
+
+#: includes/admin/affiliates/edit.php:9 includes/admin/affiliates/edit.php:93
+msgid "Edit Affiliate"
+msgstr "编辑加盟"
+
+#: includes/admin/affiliates/edit.php:20
+#: includes/admin/tools/export/class-export-referrals.php:61
+msgid "Affiliate ID"
+msgstr "加盟者ID"
+
+#: includes/admin/affiliates/edit.php:25
+msgid "The affiliate's ID. This cannot be changed."
+msgstr "加盟者ID，这是不能被修改的。"
+
+#: includes/admin/affiliates/edit.php:33
+msgid "User ID"
+msgstr "用户ID"
+
+#: includes/admin/affiliates/edit.php:38
+msgid "The affiliate's user ID. This cannot be changed."
+msgstr "加盟者的用户ID，这是不能被修改的"
+
+#: includes/admin/affiliates/edit.php:46 includes/admin/affiliates/new.php:33
+#: includes/admin/settings/class-settings.php:210
+msgid "Referral Rate Type"
+msgstr "推广费类型"
+
+#: includes/admin/affiliates/edit.php:51 includes/admin/affiliates/new.php:38
+msgid "Site Default"
+msgstr "网站默认"
+
+#: includes/admin/affiliates/edit.php:56 includes/admin/affiliates/new.php:43
+msgid "The affiliate's referral rate type."
+msgstr "选择加盟者推广费的类型。"
+
+#: includes/admin/affiliates/edit.php:64
+#: includes/admin/settings/class-settings.php:216
+msgid "Referral Rate"
+msgstr "推广费"
+
+#: includes/admin/affiliates/edit.php:69
+msgid ""
+"The affiliate's referral rate. If left blank, the site default will be used."
+msgstr "加盟者的推广费。如果留空，将使用该网站的默认设置。"
+
+#: includes/admin/affiliates/edit.php:77 includes/admin/affiliates/new.php:64
+msgid "Payment Email"
+msgstr "收款邮箱"
+
+#: includes/admin/affiliates/edit.php:82 includes/admin/affiliates/new.php:69
+msgid ""
+"Affiliate's payment email for systems such as PayPal, Moneybookers, or "
+"others. Leave blank to use the affiliate's user email."
+msgstr "加盟者收款邮箱，如贝宝，支付宝等。留空默认使用加盟者的用户邮箱。"
+
+#: includes/admin/affiliates/new.php:3
+msgid "New Affiliate"
+msgstr "新加盟"
+
+#: includes/admin/affiliates/new.php:9
+#, php-format
+msgid ""
+"Use this screen to register a new affiliate. Each affiliate is tied directly "
+"to a user account, so if the user account for the affiliate does not yet "
+"exist, <a href=\"%s\" target=\"_blank\">create one</a>."
+msgstr ""
+"使用该界面来注册一个新的加盟。各加盟是直接绑到用户帐户，所以如果下属的用户帐"
+"户不存在,<a href=\"%s\" target=\"_blank\">创建一个 </a>."
+
+#: includes/admin/affiliates/new.php:16
+msgid "User"
+msgstr "用户"
+
+#: includes/admin/affiliates/new.php:25
+msgid ""
+"Begin typing the name of the affiliate to perform a search for their "
+"associated user account."
+msgstr "开始键入下属执行搜索的名称相关联的用户帐户。"
+
+#: includes/admin/affiliates/new.php:56
+msgid ""
+"Referral rate, such as 20 for 20%. If left blank, the site default will be "
+"used."
+msgstr "推广费,如20或20%。如果留空,网站将使用默认值。"
+
+#: includes/admin/affiliates/new.php:81
+msgid "Add Affiliate"
+msgstr "添加加盟者"
+
+#: includes/admin/affiliates/view.php:7
+#, php-format
+msgid "Affiliate: #%d %s"
+msgstr "加盟：#%d %s"
+
+#: includes/admin/affiliates/view.php:18
+msgid "Total earnings"
+msgstr "总佣金"
+
+#: includes/admin/affiliates/view.php:19
+msgid "Total unpaid earnings"
+msgstr "总未支付佣金"
+
+#: includes/admin/affiliates/view.php:20
+msgid "Total paid referrals"
+msgstr "总有薪推广"
+
+#: includes/admin/affiliates/view.php:21
+msgid "Total unpaid referrals"
+msgstr "总无薪推广"
+
+#: includes/admin/affiliates/view.php:22
+msgid "Total pending referrals"
+msgstr "总待确认推广"
+
+#: includes/admin/affiliates/view.php:23
+msgid "Total rejected referrals"
+msgstr "总否定推广"
+
+#: includes/admin/affiliates/view.php:24
+msgid "Total visits"
+msgstr "总访问量"
+
+#: includes/admin/ajax-actions.php:28
+msgid "No users found"
+msgstr "未发现用户"
+
+#: includes/admin/class-menu.php:12 includes/admin/overview/overview.php:19
+#: includes/admin/referrals/contextual-help.php:37
+msgid "Overview"
+msgstr "概述"
+
+#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:296
+#: includes/admin/overview/overview.php:171
+#: includes/admin/referrals/referrals.php:30
+#: includes/admin/reports/reports.php:65 includes/admin/tools/tools.php:103
+msgid "Referrals"
+msgstr "推广"
+
+#: includes/admin/class-menu.php:17
+msgid "Tools"
+msgstr "工具"
+
+#: includes/admin/class-menu.php:18
+msgid "Settings"
+msgstr "设置"
+
+#: includes/admin/class-menu.php:19 includes/admin/tools/migration.php:15
+msgid "AffiliateWP Migration"
+msgstr "AffiliateWP 迁移"
+
+#: includes/admin/class-notices.php:16
+#: includes/admin/settings/class-settings.php:152
+msgid "Settings updated."
+msgstr "设置已更新。"
+
+#: includes/admin/class-notices.php:25
+msgid "Affiliate added successfully"
+msgstr "添加加盟成功"
+
+#: includes/admin/class-notices.php:31
+msgid "Affiliate wasn't added, please try again."
+msgstr "加盟没有添加，请再试一次"
+
+#: includes/admin/class-notices.php:38
+msgid "Affiliate updated successfully"
+msgstr "加盟更新成功"
+
+#: includes/admin/class-notices.php:40
+#, php-format
+msgid "<a href=\"%s\">Back to Affiliates</a>"
+msgstr "<a href=\"%s\">返回加盟</a>"
+
+#: includes/admin/class-notices.php:46
+msgid "Affiliate update failed, please try again"
+msgstr "更新加盟失败，请再试一次"
+
+#: includes/admin/class-notices.php:53
+msgid "Affiliate deleted successfully"
+msgstr "加盟成功删除"
+
+#: includes/admin/class-notices.php:59
+msgid "Affiliate deletion failed, please try again"
+msgstr "删除加盟失败，请再试一次"
+
+#: includes/admin/class-notices.php:66
+msgid "Affiliate account activated"
+msgstr "加盟账户激活"
+
+#: includes/admin/class-notices.php:72
+msgid "Affiliate account deactivated"
+msgstr "加盟账户已停用"
+
+#: includes/admin/class-notices.php:78
+msgid "Affiliate request was accepted"
+msgstr "加盟请求被接受"
+
+#: includes/admin/class-notices.php:84
+msgid "Affiliate request was rejected"
+msgstr "加盟请求被拒绝"
+
+#: includes/admin/class-notices.php:88
+msgid "Affiliate stats have been recounted!"
+msgstr "加盟数据已经讲述了!"
+
+#: includes/admin/class-notices.php:94
+msgid "Referral added successfully"
+msgstr "添加推广成功"
+
+#: includes/admin/class-notices.php:100
+msgid "Referral updated successfully"
+msgstr "推广成功更新"
+
+#: includes/admin/class-notices.php:106
+msgid "Referral update failed, please try again"
+msgstr "更新推广失败，请再试一次"
+
+#: includes/admin/class-notices.php:112
+msgid "Referral deleted successfully"
+msgstr "推广成功删除"
+
+#: includes/admin/class-notices.php:118
+msgid "Referral deletion failed, please try again"
+msgstr "删除推广失败，请再试一次"
+
+#: includes/admin/class-notices.php:125
+msgid "Settings successfully imported"
+msgstr "设置成功导入"
+
+#: includes/admin/class-welcome.php:52 includes/admin/class-welcome.php:53
+msgid "What's new in AffiliateWP"
+msgstr "What's new in AffiliateWP"
+
+#: includes/admin/class-welcome.php:61 includes/admin/class-welcome.php:62
+msgid "Getting started with AffiliateWP"
+msgstr "Getting started with AffiliateWP"
+
+#: includes/admin/class-welcome.php:70 includes/admin/class-welcome.php:71
+msgid "The people that build AffiliateWP"
+msgstr "The people that build AffiliateWP"
+
+#: includes/admin/class-welcome.php:146
+msgid "What's New"
+msgstr "What's New"
+
+#: includes/admin/class-welcome.php:149 includes/admin/plugins.php:50
+msgid "Getting Started"
+msgstr "Getting Started"
+
+#: includes/admin/class-welcome.php:152
+msgid "Credits"
+msgstr "Credits"
+
+#: includes/admin/class-welcome.php:169
+#, php-format
+msgid "Welcome to AffiliateWP v%s"
+msgstr "Welcome to AffiliateWP v%s"
+
+#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:239
+#, php-format
+msgid ""
+"Thank you for installing AffiliateWP v%s. The best affiliate marketing "
+"plugin for WordPress."
+msgstr "感谢您安装 AffiliateWP v%s，wordpress上最好的推广插件。"
+
+#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:240
+#: includes/admin/class-welcome.php:336
+#, php-format
+msgid "Version %s"
+msgstr "Version %s"
+
+#: includes/admin/class-welcome.php:176
+msgid "New features"
+msgstr "New features"
+
+#: includes/admin/class-welcome.php:179
+msgid "Coupon Code Tracking"
+msgstr "Coupon Code Tracking"
+
+#: includes/admin/class-welcome.php:180
+msgid ""
+"Affiliate coupon tracking has been one of the most requested features, and "
+"one we are thrilled to introduce with version 1.1."
+msgstr ""
+"Affiliate coupon tracking has been one of the most requested features, and "
+"one we are thrilled to introduce with version 1.1."
+
+#: includes/admin/class-welcome.php:181
+msgid ""
+"This allows you to connect a coupon code to a specific affiliate so the "
+"affiliate is credited a referral anytime the coupon is redeemed."
+msgstr ""
+"This allows you to connect a coupon code to a specific affiliate so the "
+"affiliate is credited a referral anytime the coupon is redeemed."
+
+#: includes/admin/class-welcome.php:182
+msgid ""
+"For version 1.1, we have included coupon code tracking support for Easy "
+"Digital Downloads, WooCommerce, and Restrict Content Pro. More integrations "
+"will get added soon."
+msgstr ""
+"For version 1.1, we have included coupon code tracking support for Easy "
+"Digital Downloads, WooCommerce, and Restrict Content Pro. More integrations "
+"will get added soon."
+
+#: includes/admin/class-welcome.php:184
+msgid "Minimum Earnings for Affiliate Payout"
+msgstr "Minimum Earnings for Affiliate Payout"
+
+#: includes/admin/class-welcome.php:185
+msgid ""
+"With the minimum amount option, you can set the minimum amount that "
+"affiliates need to have earned before their referrals are included in the "
+"payout."
+msgstr ""
+"With the minimum amount option, you can set the minimum amount that "
+"affiliates need to have earned before their referrals are included in the "
+"payout."
+
+#: includes/admin/class-welcome.php:186
+msgid ""
+"This is great for sites that want to keep the affiliate system locked down "
+"to serious affiliates."
+msgstr ""
+"This is great for sites that want to keep the affiliate system locked down "
+"to serious affiliates."
+
+#: includes/admin/class-welcome.php:191
+msgid "Additional Updates"
+msgstr "Additional Updates"
+
+#: includes/admin/class-welcome.php:195
+msgid "Affiliate Registration Graph"
+msgstr "Affiliate Registration Graph"
+
+#: includes/admin/class-welcome.php:196
+msgid ""
+"A new section has been added to the Reports page that lets you see affiliate "
+"registrations over time."
+msgstr ""
+"A new section has been added to the Reports page that lets you see affiliate "
+"registrations over time."
+
+#: includes/admin/class-welcome.php:198
+msgid "Auto Register Users as Affiliates"
+msgstr "Auto Register Users as Affiliates"
+
+#: includes/admin/class-welcome.php:199
+msgid ""
+"We have introduced a new option to automatically register new WordPress "
+"users as affiliates when their user accounts are created."
+msgstr ""
+"We have introduced a new option to automatically register new WordPress "
+"users as affiliates when their user accounts are created."
+
+#: includes/admin/class-welcome.php:203
+#: includes/admin/overview/overview.php:161
+msgid "Most Valuable Affiliates"
+msgstr "最优推广"
+
+#: includes/admin/class-welcome.php:204
+msgid ""
+"The Overview page now has a new widget that shows your top 5 most valuable "
+"affiliates, based on earnings."
+msgstr ""
+"The Overview page now has a new widget that shows your top 5 most valuable "
+"affiliates, based on earnings."
+
+#: includes/admin/class-welcome.php:206
+msgid "Shortcode to Affiliate-only Content"
+msgstr "Shortcode to Affiliate-only Content"
+
+#: includes/admin/class-welcome.php:207
+msgid ""
+"We have added a new shortcode that lets you show specific content to logged-"
+"in affiliates only."
+msgstr ""
+"We have added a new shortcode that lets you show specific content to logged-"
+"in affiliates only."
+
+#: includes/admin/class-welcome.php:211
+msgid "Custom Cookie Expiration Option"
+msgstr "Custom Cookie Expiration Option"
+
+#: includes/admin/class-welcome.php:212
+msgid ""
+"The expiration time for the affiliate tracking cookies can now be set from "
+"the Settings page."
+msgstr ""
+"The expiration time for the affiliate tracking cookies can now be set from "
+"the Settings page."
+
+#: includes/admin/class-welcome.php:214
+msgid "More Actions"
+msgstr "More Actions"
+
+#: includes/admin/class-welcome.php:215
+msgid ""
+"Numerous new action and filter hooks have been added to make AffiliateWP "
+"even more developer friendly."
+msgstr ""
+"Numerous new action and filter hooks have been added to make AffiliateWP "
+"even more developer friendly."
+
+#: includes/admin/class-welcome.php:221 includes/admin/class-welcome.php:308
+msgid "Go to AffiliateWP Settings"
+msgstr "Go to AffiliateWP Settings"
+
+#: includes/admin/class-welcome.php:238 includes/admin/class-welcome.php:334
+#, php-format
+msgid "Welcome to AffiliateWP %s"
+msgstr "Welcome to AffiliateWP %s"
+
+#: includes/admin/class-welcome.php:244
+msgid ""
+"Use the tips below to get started using AffiliateWP. You will be up and "
+"running in no time!"
+msgstr ""
+"Use the tips below to get started using AffiliateWP. You will be up and "
+"running in no time!"
+
+#: includes/admin/class-welcome.php:247
+msgid "Overview of Affiliates and Referrals"
+msgstr "Overview of Affiliates and Referrals"
+
+#: includes/admin/class-welcome.php:252
+msgid "The Overview Page"
+msgstr "The Overview Page"
+
+#: includes/admin/class-welcome.php:253
+msgid ""
+"The overview page gives you a quick summary of your recent affiliate "
+"activity, including recent registrations, referrals, and visits."
+msgstr ""
+"The overview page gives you a quick summary of your recent affiliate "
+"activity, including recent registrations, referrals, and visits."
+
+#: includes/admin/class-welcome.php:254
+msgid "It also provides a quick summary of your affiliates' referral earnings."
+msgstr ""
+"It also provides a quick summary of your affiliates' referral earnings."
+
+#: includes/admin/class-welcome.php:255
+msgid ""
+"If you allow affiliate registrations, you can also easily accept or reject "
+"affiliate's applications directly from the Overview page"
+msgstr ""
+"If you allow affiliate registrations, you can also easily accept or reject "
+"affiliate's applications directly from the Overview page"
+
+#: includes/admin/class-welcome.php:258
+msgid "Adding Affiliates"
+msgstr "Adding Affiliates"
+
+#: includes/admin/class-welcome.php:263
+msgid "Affiliates &rarr; Add New"
+msgstr "Affiliates &rarr; Add New"
+
+#: includes/admin/class-welcome.php:264
+msgid ""
+"From the main Affiliates page, site admins can easily add new affiliates to "
+"AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
+msgstr ""
+"From the main Affiliates page, site admins can easily add new affiliates to "
+"AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
+
+#: includes/admin/class-welcome.php:266
+msgid "Affiliate Registration"
+msgstr "Affiliate Registration"
+
+#: includes/admin/class-welcome.php:267
+msgid ""
+"When enabled, affiliates can register themselves via the Affiliate Area. If "
+"they already have a user account on your site, they can register by simply "
+"agreeing to the terms of use. If they need to create an entirely new "
+"account, they have that option as well!"
+msgstr ""
+"When enabled, affiliates can register themselves via the Affiliate Area. If "
+"they already have a user account on your site, they can register by simply "
+"agreeing to the terms of use. If they need to create an entirely new "
+"account, they have that option as well!"
+
+#: includes/admin/class-welcome.php:269
+msgid "Moderate Registrations"
+msgstr "Moderate Registrations"
+
+#: includes/admin/class-welcome.php:270
+msgid ""
+"Affiliate registrations can be moderated and require that a site admin "
+"approve each registration before the affiliate is permitted to begin "
+"tracking referrals."
+msgstr ""
+"Affiliate registrations can be moderated and require that a site admin "
+"approve each registration before the affiliate is permitted to begin "
+"tracking referrals."
+
+#: includes/admin/class-welcome.php:271
+msgid ""
+"Each time an affiliate registers, site admins can log into the site and "
+"approve or reject the application."
+msgstr ""
+"Each time an affiliate registers, site admins can log into the site and "
+"approve or reject the application."
+
+#: includes/admin/class-welcome.php:274
+#: includes/admin/settings/class-settings.php:187 includes/install.php:16
+msgid "Affiliate Area"
+msgstr "加盟页面"
+
+#: includes/admin/class-welcome.php:279
+msgid "A Dashboard For Your Affiliates"
+msgstr "A Dashboard For Your Affiliates"
+
+#: includes/admin/class-welcome.php:280
+msgid ""
+"The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
+"em> short code, gives your affiliates access to their performance reports."
+msgstr ""
+"The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
+"em> short code, gives your affiliates access to their performance reports."
+
+#: includes/admin/class-welcome.php:281
+msgid ""
+"Affiliates can easily see how much they have earned, how much is awaiting "
+"payment, and even how their referral URLs have done over time."
+msgstr ""
+"Affiliates can easily see how much they have earned, how much is awaiting "
+"payment, and even how their referral URLs have done over time."
+
+#: includes/admin/class-welcome.php:282
+msgid ""
+"A log of the referral links that have been clicked and where they were "
+"clicked on from, and whether the link converted into a successful referral, "
+"is also available to affiliates."
+msgstr ""
+"A log of the referral links that have been clicked and where they were "
+"clicked on from, and whether the link converted into a successful referral, "
+"is also available to affiliates."
+
+#: includes/admin/class-welcome.php:287
+msgid "Quick Terminology"
+msgstr "Quick Terminology"
+
+#: includes/admin/class-welcome.php:292
+msgid ""
+"These are your best friends. They are the users that are actively promoting "
+"your products and services through referral URLs. When they create a "
+"customer for you, they get paid back in the form of a commission."
+msgstr ""
+"These are your best friends. They are the users that are actively promoting "
+"your products and services through referral URLs. When they create a "
+"customer for you, they get paid back in the form of a commission."
+
+#: includes/admin/class-welcome.php:297
+msgid ""
+"These are the commission records created anytime an affiliate successfully "
+"sends a potential customer to your site and that customer makes a purchase."
+msgstr ""
+"These are the commission records created anytime an affiliate successfully "
+"sends a potential customer to your site and that customer makes a purchase."
+
+#: includes/admin/class-welcome.php:302
+msgid ""
+"These are unique hits on the referral URLs shared out by your affiliates. "
+"Each time a potential customer clicks on a referral URL, a visit is recorded."
+msgstr ""
+"These are unique hits on the referral URLs shared out by your affiliates. "
+"Each time a potential customer clicks on a referral URL, a visit is recorded."
+
+#: includes/admin/class-welcome.php:312
+msgid "Need Help?"
+msgstr "Need Help?"
+
+#: includes/admin/class-welcome.php:315
+msgid "Phenomenal Support"
+msgstr "Phenomenal Support"
+
+#: includes/admin/class-welcome.php:316
+msgid ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, visit our <a href=\"http://affiliatewp.com/"
+"support\">support</a> page to open a ticket."
+msgstr ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, visit our <a href=\"http://affiliatewp.com/"
+"support\">support</a> page to open a ticket."
+
+#: includes/admin/class-welcome.php:335
+msgid "Thank you for updating to the latest version!"
+msgstr "Thank you for updating to the latest version!"
+
+#: includes/admin/class-welcome.php:340
+msgid ""
+"AffiliateWP is created by developers from around the world that aim to "
+"provide the #1 affiliate platform for WordPress. Here are just some of the "
+"faces that have helped build AffiliateWP:"
+msgstr ""
+"AffiliateWP is created by developers from around the world that aim to "
+"provide the #1 affiliate platform for WordPress. Here are just some of the "
+"faces that have helped build AffiliateWP:"
+
+#: includes/admin/class-welcome.php:367
+#, php-format
+msgid "View %s"
+msgstr "查看 %s"
+
+#: includes/admin/overview/overview.php:26
+msgid "Totals"
+msgstr "总计"
+
+#: includes/admin/overview/overview.php:35
+#: includes/admin/reports/reports.php:86 includes/admin/tools/tools.php:102
+#: templates/dashboard.php:95
+msgid "Paid Earnings"
+msgstr "已付佣金"
+
+#: includes/admin/overview/overview.php:36
+#: includes/admin/reports/reports.php:87
+msgid "Paid Earnings This Month"
+msgstr "本月已付佣金"
+
+#: includes/admin/overview/overview.php:37
+#: includes/admin/reports/reports.php:88
+msgid "Paid Earnings Today"
+msgstr "今日已付佣金"
+
+#: includes/admin/overview/overview.php:61
+#: includes/admin/reports/reports.php:138 templates/dashboard.php:72
+msgid "Unpaid Referrals"
+msgstr "无薪推广"
+
+#: includes/admin/overview/overview.php:62
+#: includes/admin/reports/reports.php:139
+msgid "Unpaid Referrals This Month"
+msgstr "本月无薪推广"
+
+#: includes/admin/overview/overview.php:63
+#: includes/admin/reports/reports.php:140
+msgid "Unpaid Referrals Today"
+msgstr "今日无薪推广"
+
+#: includes/admin/overview/overview.php:86
+#: includes/admin/reports/reports.php:112 templates/dashboard.php:94
+msgid "Unpaid Earnings"
+msgstr "未付佣金"
+
+#: includes/admin/overview/overview.php:87
+#: includes/admin/reports/reports.php:113
+msgid "Unpaid Earnings This Month"
+msgstr "本月未付佣金"
+
+#: includes/admin/overview/overview.php:88
+#: includes/admin/reports/reports.php:114
+msgid "Unpaid Earnings Today"
+msgstr "今日未付佣金"
+
+#: includes/admin/overview/overview.php:108
+msgid "Latest Affiliate Registrations"
+msgstr "最近注册"
+
+#: includes/admin/overview/overview.php:116
+#: includes/admin/overview/overview.php:169
+#: includes/admin/overview/overview.php:207
+#: includes/admin/overview/overview.php:242
+#: includes/admin/referrals/new.php:16
+#: includes/admin/referrals/referrals.php:226
+#: includes/admin/visits/visits.php:153
+msgid "Affiliate"
+msgstr "加盟者"
+
+#: includes/admin/overview/overview.php:138
+msgid "View Report"
+msgstr "查看报表"
+
+#: includes/admin/overview/overview.php:146
+msgid "No affiliate registrations yet"
+msgstr "没有加盟者注册"
+
+#: includes/admin/overview/overview.php:189
+msgid "No registered affiliates"
+msgstr "未发现加盟者"
+
+#: includes/admin/overview/overview.php:199
+msgid "Recent Referrals"
+msgstr "最近推广"
+
+#: includes/admin/overview/overview.php:208
+#: includes/admin/referrals/new.php:33
+#: includes/admin/referrals/referrals.php:225
+#: includes/admin/tools/export/class-export-referrals-payout.php:34
+#: includes/admin/tools/export/class-export-referrals.php:63
+msgid "Amount"
+msgstr "金额"
+
+#: includes/admin/overview/overview.php:209
+#: includes/admin/referrals/new.php:46
+#: includes/admin/referrals/referrals.php:228
+msgid "Description"
+msgstr "描述"
+
+#: includes/admin/overview/overview.php:225
+msgid "No referrals recorded yet"
+msgstr "没有推广记录"
+
+#: includes/admin/overview/overview.php:234
+msgid "Recent Referral Visits"
+msgstr "最近访问"
+
+#: includes/admin/overview/overview.php:243 templates/dashboard.php:137
+msgid "URL"
+msgstr "网址"
+
+#: includes/admin/overview/overview.php:244
+#: includes/admin/visits/visits.php:156 templates/dashboard.php:139
+msgid "Converted"
+msgstr "转换"
+
+#: includes/admin/overview/overview.php:263
+msgid "No referral visits recorded yet"
+msgstr "未发现推广访问记录"
+
+#: includes/admin/plugins.php:27
+msgid "General Settings"
+msgstr "常规设置"
+
+#: includes/admin/referrals/contextual-help.php:29
+msgid "For more information:"
+msgstr "欲了解更多信息："
+
+#: includes/admin/referrals/contextual-help.php:30
+#, php-format
+msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
+msgstr "访问 <a href=\"%s\">文档</a> 在 AffiliateWP 网站。"
+
+#: includes/admin/referrals/contextual-help.php:31
+#, php-format
+msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
+msgstr "<a href=\"%s\">问一个问题</a> 在 <a href=\"%s\">GitHub</a>."
+
+#: includes/admin/referrals/contextual-help.php:39
+msgid "This screen provides access to your site's referral history."
+msgstr "该界面可以访问你网站的推广历史。"
+
+#: includes/admin/referrals/contextual-help.php:40
+msgid ""
+"<strong>Reference</strong>: this refers to the order number (or similar) "
+"that created this referral."
+msgstr "<strong>参考</strong>：这指的是创造了这个推荐的顺序号（或类似）。"
+
+#: includes/admin/referrals/contextual-help.php:41
+msgid "Referral statuses:"
+msgstr "推广状态："
+
+#: includes/admin/referrals/contextual-help.php:43
+msgid ""
+"<strong>Paid</strong> - this is a referral that has been paid to the "
+"affiliate"
+msgstr "<strong>已付</strong> -  这是已经支付佣金给加盟者的推广"
+
+#: includes/admin/referrals/contextual-help.php:44
+msgid ""
+"<strong>Unpaid</strong> - this is a referral that has been accepted but not "
+"yet paid to the affiliate"
+msgstr "<strong>未付</strong> - 这个推荐已被接受,但尚未付款给加盟者"
+
+#: includes/admin/referrals/contextual-help.php:45
+msgid ""
+"<strong>Pending</strong> - this is a referral that is waiting to be accepted"
+msgstr "<strong>待确认</strong> -这是一个待确认的推广"
+
+#: includes/admin/referrals/contextual-help.php:46
+msgid ""
+"<strong>Rejected</strong> - this is a referral that has been rejected and "
+"will not be paid to the affiliate"
+msgstr "<strong>否定</strong> - 这个推广已经被否定，佣金不会被支付给推广者。"
+
+#: includes/admin/referrals/contextual-help.php:52
+msgid "Searching Referrals"
+msgstr "搜索推广"
+
+#: includes/admin/referrals/contextual-help.php:54
+msgid "Referrals can be searched in several different ways:"
+msgstr "推广可以几种不同的方式搜索："
+
+#: includes/admin/referrals/contextual-help.php:56
+msgid "You can enter the referral's ID number"
+msgstr "您可以输入推广的ID号"
+
+#: includes/admin/referrals/contextual-help.php:57
+msgid "You can enter the referral reference prefixed by 'ref:'"
+msgstr "您可以输入推广参考前缀为 'ref:'"
+
+#: includes/admin/referrals/contextual-help.php:58
+msgid "You can enter the referral context prefixed by 'context:'"
+msgstr "您可以输入推广上下文前缀为 '环境：':"
+
+#: includes/admin/referrals/contextual-help.php:59
+msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
+msgstr "您可以输入这个加盟者ID的前缀'加盟者：'"
+
+#: includes/admin/referrals/contextual-help.php:65
+msgid "Exporting Referrals"
+msgstr "导出推广"
+
+#: includes/admin/referrals/contextual-help.php:67
+msgid ""
+"Referrals can be exported directly to a CSV file in order to make it easier "
+"for your own accounting needs and for you to payout your affiliates's "
+"earnings."
+msgstr ""
+"推广人可以直接导出到CSV文件，以便使它更容易为自己的财务需求，并为您支付您的附"
+"属机构的盈利。"
+
+#: includes/admin/referrals/contextual-help.php:68
+msgid ""
+"The CSV file generated is structured properly for PayPal's Mass Payment "
+"system so you can easily payout all of your affiliates at once via PayPal."
+msgstr ""
+"生成CSV文件结构合理的PayPal的集中付款系统，让您可以轻松地支付所有附属公司的一"
+"次通过PayPal。"
+
+#: includes/admin/referrals/new.php:3
+msgid "New Referral"
+msgstr "新推广"
+
+#: includes/admin/referrals/new.php:9
+msgid ""
+"Use this screen to manually create a new referral record for an affiliate."
+msgstr "使用此界面可以手动为加盟者创建一个新的推广记录。"
+
+#: includes/admin/referrals/new.php:25
+msgid ""
+"Enter the name of the affiliate or enter a partial name or email to perform "
+"a search."
+msgstr "输入加盟者账户或注册邮箱执行搜索。"
+
+#: includes/admin/referrals/new.php:38
+msgid "The amount of the referral, such as 15."
+msgstr "输入推广金额，例如：15。"
+
+#: includes/admin/referrals/new.php:51
+msgid "Enter a description for this referral."
+msgstr "输入此推广的说明"
+
+#: includes/admin/referrals/new.php:59
+#: includes/admin/referrals/referrals.php:227
+#: includes/admin/tools/export/class-export-referrals.php:65
+msgid "Reference"
+msgstr "参考"
+
+#: includes/admin/referrals/new.php:64
+msgid ""
+"Enter a reference for this referral (optional). Usually this would be the "
+"transaction ID of the associated purchase."
+msgstr "为此参考（可选） 输入参考。通常为关联的购买交易ID。"
+
+#: includes/admin/referrals/new.php:72
+#: includes/admin/tools/export/class-export-referrals.php:66
+msgid "Context"
+msgstr "缘由"
+
+#: includes/admin/referrals/new.php:77
+msgid ""
+"Enter a context for this referral (optional). Usually this is used to help "
+"identify the payment system that was used for the transaction."
+msgstr "为此推广（可选） 输入上下文。通常这用来帮助确定用于交易的支付系统。"
+
+#: includes/admin/referrals/new.php:90
+#: includes/admin/referrals/referrals.php:207
+#: includes/admin/tools/tools.php:186
+msgid "Unpaid"
+msgstr "未付"
+
+#: includes/admin/referrals/new.php:91
+#: includes/admin/referrals/referrals.php:206
+#: includes/admin/tools/tools.php:185
+msgid "Paid"
+msgstr "已付"
+
+#: includes/admin/referrals/new.php:95
+msgid "Select the status of the referral."
+msgstr "选择推广状态。"
+
+#: includes/admin/referrals/new.php:107
+msgid "Add Referral"
+msgstr "添加推广"
+
+#: includes/admin/referrals/referrals.php:35
+msgid "Add New Referral"
+msgstr "添加新推广"
+
+#: includes/admin/referrals/referrals.php:36
+msgid "Generate Payout File"
+msgstr "生成支付文件"
+
+#: includes/admin/referrals/referrals.php:37
+msgid "Close"
+msgstr "关闭"
+
+#: includes/admin/referrals/referrals.php:41
+#: includes/admin/referrals/referrals.php:433
+#: includes/admin/tools/tools.php:181 includes/admin/visits/visits.php:36
+msgid "From - mm/dd/yyyy"
+msgstr "从 - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:42
+#: includes/admin/referrals/referrals.php:434
+#: includes/admin/tools/tools.php:182 includes/admin/visits/visits.php:37
+msgid "To - mm/dd/yyyy"
+msgstr "到 - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:43
+msgid "Minimum amount"
+msgstr "最低金额"
+
+#: includes/admin/referrals/referrals.php:45
+msgid "Generate CSV File"
+msgstr "生成CSV文件"
+
+#: includes/admin/referrals/referrals.php:46
+#, php-format
+msgid ""
+"This will mark all unpaid referrals in this timeframe as paid. To export "
+"referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s"
+"\">Tools &rarr; Export</a> page."
+msgstr ""
+"这将标记所有未付推广在这个时间段为已支付，导出推广以外的状态<em>未付</em>，"
+"去 <a href=\"%s\">工具 &rarr; 导出</a>页面."
+
+#: includes/admin/referrals/referrals.php:229
+#: includes/admin/tools/export/class-export-referrals.php:68
+#: includes/admin/tools/export/class-export.php:70
+#: includes/admin/visits/visits.php:157
+msgid "Date"
+msgstr "日期"
+
+#: includes/admin/referrals/referrals.php:352
+#: includes/admin/referrals/referrals.php:456
+msgid "Mark as Unpaid"
+msgstr "标记为佣金未支付"
+
+#: includes/admin/referrals/referrals.php:358
+#: includes/admin/referrals/referrals.php:455
+msgid "Mark as Paid"
+msgstr "标记为佣金已支付"
+
+#: includes/admin/referrals/referrals.php:388
+msgid "No referrals found."
+msgstr "没有发现推广。"
+
+#: includes/admin/referrals/referrals.php:412
+msgid "Bulk Actions"
+msgstr "批量操作"
+
+#: includes/admin/referrals/referrals.php:424
+msgid "Apply"
+msgstr "应用"
+
+#: includes/admin/referrals/referrals.php:438
+#: includes/admin/visits/visits.php:39 includes/class-graph.php:401
+msgid "Filter"
+msgstr "确认"
+
+#: includes/admin/reports/class-registrations-graph.php:43
+#: includes/admin/reports/reports.php:67
+msgid "Affiliate Registrations"
+msgstr "加盟者注册"
+
+#: includes/admin/reports/reports.php:186
+msgid "Successful Conversions"
+msgstr "成功转换"
+
+#: includes/admin/reports/reports.php:187 templates/dashboard.php:75
+msgid "Conversion Rate"
+msgstr "转换率"
+
+#: includes/admin/settings/class-settings.php:171
+msgid "License Settings"
+msgstr "许可证设置"
+
+#: includes/admin/settings/class-settings.php:176
+msgid "License Key"
+msgstr "许可密钥"
+
+#: includes/admin/settings/class-settings.php:177
+#, php-format
+msgid ""
+"Please enter your license key. An active license key is needed for automatic "
+"plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
+msgstr ""
+"请输入您的许可证密钥，用于自动更新和<a href=\"%s\" target=\"_blank\">支持</"
+"a>."
+
+#: includes/admin/settings/class-settings.php:182
+msgid "Pages"
+msgstr "页面"
+
+#: includes/admin/settings/class-settings.php:188
+msgid "This is the page where affiliates will manage their affiliate account."
+msgstr "选择一个页面,加盟者可在此页面管理自己的帐户。"
+
+#: includes/admin/settings/class-settings.php:193
+msgid "Terms of Use"
+msgstr "使用条款"
+
+#: includes/admin/settings/class-settings.php:194
+msgid "Select the page that shows the terms of use for Affiliate Registration"
+msgstr "选择一个页面显示加盟者注册的使用条款"
+
+#: includes/admin/settings/class-settings.php:199
+msgid "Referral Settings"
+msgstr "推广设置"
+
+#: includes/admin/settings/class-settings.php:204
+msgid "Referral Variable"
+msgstr "推广别名"
+
+#: includes/admin/settings/class-settings.php:205
+#, php-format
+msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
+msgstr "输入推广别名，例如： <strong>%s</strong>."
+
+#: includes/admin/settings/class-settings.php:211
+msgid "Should referrals be based on a percentage or flat rate amounts?"
+msgstr "推广费应该基于一个百分比或固定金额"
+
+#: includes/admin/settings/class-settings.php:217
+msgid ""
+"Default referral rate. A percentage if Referral Rate Type is Percentage, a "
+"flat amount otherwise. Rates can be set for each affiliate individually as "
+"well."
+msgstr ""
+"默认推广费，如果推广费类型为百分比则使用百分比，否则为固定金额。可以为每一个"
+"加盟者单独设置推广费。"
+
+#: includes/admin/settings/class-settings.php:223
+msgid "Cookie Expiration"
+msgstr "Cookie 过期"
+
+#: includes/admin/settings/class-settings.php:224
+msgid "How many days should the referral tracking cookie be valid for?"
+msgstr "推广的有效期是多少天？"
+
+#: includes/admin/settings/class-settings.php:230
+msgid "Currency Settings"
+msgstr "货币设置"
+
+#: includes/admin/settings/class-settings.php:231
+msgid "Configure the currency options"
+msgstr "配置货币设置"
+
+#: includes/admin/settings/class-settings.php:235
+#: includes/admin/tools/export/class-export-referrals-payout.php:35
+#: includes/admin/tools/export/class-export-referrals.php:64
+msgid "Currency"
+msgstr "货币"
+
+#: includes/admin/settings/class-settings.php:236
+msgid ""
+"Choose your currency. Note that some payment gateways have currency "
+"restrictions."
+msgstr "选择您的货币，需要注意的是某些货币受限于支付网关。"
+
+#: includes/admin/settings/class-settings.php:241
+msgid "Currency Position"
+msgstr "货币位置"
+
+#: includes/admin/settings/class-settings.php:242
+msgid "Choose the location of the currency sign."
+msgstr "设置货币符号的显示位置。"
+
+#: includes/admin/settings/class-settings.php:245
+msgid "Before - $10"
+msgstr "￥315173858"
+
+#: includes/admin/settings/class-settings.php:246
+msgid "After - 10$"
+msgstr "11378071￥"
+
+#: includes/admin/settings/class-settings.php:250
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+#: includes/admin/settings/class-settings.php:251
+msgid "The symbol (usually , or .) to separate thousands"
+msgstr "符号通常用 , 或 .) 来分隔千位"
+
+#: includes/admin/settings/class-settings.php:257
+msgid "Decimal Separator"
+msgstr "小数点分隔符"
+
+#: includes/admin/settings/class-settings.php:258
+msgid "The symbol (usually , or .) to separate decimal points"
+msgstr "符号通常用 , 或 .) 来分隔小数点"
+
+#: includes/admin/settings/class-settings.php:269
+#: includes/admin/settings/display-settings.php:74
+msgid "Integrations"
+msgstr "集成"
+
+#: includes/admin/settings/class-settings.php:270
+#, php-format
+msgid ""
+"Choose the integrations to enable. If you are not using any of these, you "
+"may use the <strong>[affiliate_conversion_script]</strong> short code to "
+"track and create referrals. Refer to the <a href=\"%s\" target=\"_blank"
+"\">documentation</a> for help using this."
+msgstr ""
+"勾选需要集成的项目。如果你不想集成以上所列项目，您可以使用"
+"[affiliate_conversion_script]简码来跟踪并创建推广。请参考 <a href=\"%s\" "
+"target=\"_blank\">文档</a>来获取帮助、"
+
+#: includes/admin/settings/class-settings.php:280
+msgid "Allow affiliate registration"
+msgstr "允许注册加盟"
+
+#: includes/admin/settings/class-settings.php:281
+msgid "Should affiliates be able to register accounts for themselves?"
+msgstr "允许用户自己注册为加盟者？"
+
+#: includes/admin/settings/class-settings.php:285
+msgid "Notify Admins"
+msgstr "通知管理员"
+
+#: includes/admin/settings/class-settings.php:286
+msgid "Notify site admins of new affiliate registrations?"
+msgstr "如有新用户注册为加盟者，邮件通知网站管理员吗？"
+
+#: includes/admin/settings/class-settings.php:290
+msgid "Require approval"
+msgstr "是否审核"
+
+#: includes/admin/settings/class-settings.php:291
+msgid ""
+"Require that site admins approve affiliates before they can begin earning "
+"referrals?"
+msgstr "是否经过网站管理员的审核，加盟者才能开始赚取推广费？"
+
+#: includes/admin/settings/class-settings.php:295
+msgid "Auto Register New Users"
+msgstr "新用户自动注册"
+
+#: includes/admin/settings/class-settings.php:296
+msgid "Automatically register new users as affiliates?"
+msgstr "新用户注册自动成为加盟者？"
+
+#: includes/admin/settings/class-settings.php:300
+msgid "Reject Unpaid Referrals on Refund?"
+msgstr "拒绝未付款推广转换？"
+
+#: includes/admin/settings/class-settings.php:301
+msgid ""
+"Should unpaid referrals get automatically rejected when the originating "
+"purchase is refunded or revoked?"
+msgstr "如果推广的交易未付款或已退款给客户，是否自动拒绝转换？"
+
+#: includes/admin/settings/class-settings.php:305
+msgid "Use Fallback Referral Tracking Method?"
+msgstr "使用后备推广追踪方法?"
+
+#: includes/admin/settings/class-settings.php:306
+msgid ""
+"The method used to track referral links can fail on sites that have jQuery "
+"errors. Check this if referrals are not getting tracked properly."
+msgstr ""
+"如果网站有jQuery错误，默认的推广追踪方式可能会失效，那么你可以勾选此设置使用"
+"后备追踪方式。"
+
+#: includes/admin/settings/class-settings.php:310
+msgid "Ignore Zero Referrals?"
+msgstr "忽略零推广？"
+
+#: includes/admin/settings/class-settings.php:311
+msgid ""
+"Check this box if you would like AffiliateWP to completely ignore referrals "
+"for a zero total amount. This can be useful for multi-price products that "
+"start at zero, or if a discount was used, which resulted in a zero amount. "
+"Please note: if this setting is enabled and a visit results in a zero "
+"referral, then the visit would be considered not converted."
+msgstr ""
+"勾选此选项后，如果商品是免费的或者因顾客使用了折扣代码造成商品价格为零，那么"
+"此推广将忽略并且不计入转换！"
+
+#: includes/admin/settings/class-settings.php:315
+msgid "Remove Data on Uninstall?"
+msgstr "删除数据卸载该插件吗?"
+
+#: includes/admin/settings/class-settings.php:316
+msgid ""
+"Check this box if you would like AffiliateWP to completely remove all of its "
+"data when the plugin is deleted."
+msgstr "勾选此设置后，如果你删除该插件的所有数据，本插件将一并删除。"
+
+#: includes/admin/settings/class-settings.php:455
+msgid "Deactivate License"
+msgstr "禁用许可证"
+
+#: includes/admin/settings/class-settings.php:456
+msgid "Your license is valid!"
+msgstr "您的许可证是有效的！"
+
+#: includes/admin/settings/class-settings.php:459
+msgid "Renew Your License"
+msgstr "更新许可证"
+
+#: includes/admin/settings/class-settings.php:460
+msgid ""
+"Your license has expired, renew today to continue getting updates and "
+"support!"
+msgstr "您的许可证过期了,现在更新继续获取更新和支持!"
+
+#: includes/admin/settings/class-settings.php:462
+msgid "Activate License"
+msgstr "激活许可证"
+
+#: includes/admin/settings/class-settings.php:556
+#, php-format
+msgid ""
+"The callback function used for the <strong>%s</strong> setting is missing."
+msgstr "回调函数用于<strong>%s</strong> 设置丢失。"
+
+#: includes/admin/settings/display-settings.php:73
+msgid "General"
+msgstr "常规"
+
+#: includes/admin/settings/display-settings.php:75
+msgid "Misc"
+msgstr "杂项"
+
+#: includes/admin/tools/export/class-export-referrals-payout.php:33
+#: includes/admin/tools/export/class-export-referrals.php:62
+msgid "Email"
+msgstr "邮箱"
+
+#: includes/admin/tools/export/class-export.php:173
+msgid "You do not have permission to export data."
+msgstr "你没有权限导出数据"
+
+#: includes/admin/tools/export/class-export.php:173
+msgid "Error"
+msgstr "错误"
+
+#: includes/admin/tools/import/import.php:23
+msgid "Please upload a valid .json file"
+msgstr "请上传有效的 .json 文件"
+
+#: includes/admin/tools/import/import.php:29
+msgid "Please upload a file to import"
+msgstr "请上传文件导入"
+
+#: includes/admin/tools/migration.php:17
+msgid ""
+"The upgrade process is running, please be patient. This could take several "
+"minutes to complete while affiliate records are upgraded in batches of 100."
+msgstr ""
+"运行升级过程中，请耐心等待。这可能需要几分钟时间才能完成，而加盟的记录都升级"
+"为100批次。"
+
+#: includes/admin/tools/migration.php:18
+#, php-format
+msgid "Step %d running"
+msgstr "步骤%d 运行"
+
+#: includes/admin/tools/tools.php:74
+msgid "Export / Import"
+msgstr "导出/导入设置"
+
+#: includes/admin/tools/tools.php:75
+msgid "Recount Stats"
+msgstr "重新统计"
+
+#: includes/admin/tools/tools.php:76
+msgid "Migration Assistant"
+msgstr "迁移助手"
+
+#: includes/admin/tools/tools.php:92
+msgid "Recount Affiliate Stats"
+msgstr "重算加盟统计"
+
+#: includes/admin/tools/tools.php:94
+msgid "Use this tool to recount affiliate statistics."
+msgstr "使用此工具来重新计算加盟的统计资料。"
+
+#: includes/admin/tools/tools.php:98 includes/admin/tools/tools.php:177
+#: includes/admin/visits/visits.php:30
+msgid "Affiliate name"
+msgstr "加盟者名称"
+
+#: includes/admin/tools/tools.php:107
+msgid ""
+"Enter the name of the affiliate or begin typing to perform a search based on "
+"the affiliate's name."
+msgstr "输入的加盟者账户或键入要执行搜索的加盟者名称。"
+
+#: includes/admin/tools/tools.php:112
+msgid "Recount"
+msgstr "重新计算"
+
+#: includes/admin/tools/tools.php:135
+msgid ""
+"These tools assist in migrating affiliate and referral data from existing "
+"platforms."
+msgstr "这些工具帮助您从现有平台迁移加盟及推广数据。"
+
+#: includes/admin/tools/tools.php:140
+msgid "Affiliates Pro"
+msgstr "Affiliates Pro"
+
+#: includes/admin/tools/tools.php:142
+msgid ""
+"Use this tool migrate existing affiliate / referral data from Affiliates Pro "
+"to AffiliateWP."
+msgstr "使用这个工具从Affiliates Pro迁移现有加盟/推广数据到AffiliateWP."
+
+#: includes/admin/tools/tools.php:143
+msgid ""
+"<strong>NOTE:</strong> this tool should only ever be used on a fresh "
+"install. If you have already collected affiliate or referral data, do not "
+"use this tool."
+msgstr ""
+"<strong>注意：</strong>这个工具只能使用在全新安装的插件。如果你已经收集到加盟"
+"或推广，请不要使用这个工具。"
+
+#: includes/admin/tools/tools.php:149
+msgid "Migrate Data from Affiliates Pro"
+msgstr "将数据从Affiliates Pro迁移"
+
+#: includes/admin/tools/tools.php:171
+msgid "Export Referrals"
+msgstr "导出推广"
+
+#: includes/admin/tools/tools.php:173
+msgid "Export referrals to a CSV file."
+msgstr "导出推广为CSV文件"
+
+#: includes/admin/tools/tools.php:184
+msgid "All Statuses"
+msgstr "所有状态"
+
+#: includes/admin/tools/tools.php:191
+msgid ""
+"To search for a affiliate, enter the affiliate's login name, first name, or "
+"last name. Leave blank to export referrals for all affiliates."
+msgstr "输入加盟者的登录账户，名字或姓氏。留空导出所有加盟者的推广。"
+
+#: includes/admin/tools/tools.php:196 includes/admin/tools/tools.php:210
+msgid "Export"
+msgstr "导出"
+
+#: includes/admin/tools/tools.php:203
+msgid "Export Settings"
+msgstr "导出设置"
+
+#: includes/admin/tools/tools.php:205
+msgid ""
+"Export the AffiliateWP settings for this site as a .json file. This allows "
+"you to easily import the configuration into another site."
+msgstr ""
+"导出AffiliateWP设置并下载 .json文件. 这样您就可以轻松导入并配置您的其他网站."
+
+#: includes/admin/tools/tools.php:217
+msgid "Import Settings"
+msgstr "导入设置 "
+
+#: includes/admin/tools/tools.php:219
+msgid ""
+"Import the AffiliateWP settings from a .json file. This file can be obtained "
+"by exporting the settings on another site using the form above."
+msgstr "导入一个 .json 文件。此文件可在当前页的导出设置选项中导出。"
+
+#: includes/admin/tools/tools.php:227
+msgid "Import"
+msgstr "导入"
+
+#: includes/admin/visits/visits.php:151
+msgid "Landing Page"
+msgstr "登陆页面"
+
+#: includes/admin/visits/visits.php:152 templates/dashboard.php:138
+msgid "Referring URL"
+msgstr "来源网站"
+
+#: includes/admin/visits/visits.php:154
+msgid "Referral ID"
+msgstr "推广ID"
+
+#: includes/admin/visits/visits.php:155
+msgid "IP"
+msgstr "IP"
+
+#: includes/admin/visits/visits.php:219 templates/dashboard.php:149
+msgid "Direct traffic"
+msgstr "直接访问"
+
+#: includes/admin/visits/visits.php:244
+msgid "No visits found."
+msgstr "未发现。"
+
+#: includes/affiliate-functions.php:230
+msgid "Percentage (%)"
+msgstr "百分比 (%)"
+
+#: includes/affiliate-functions.php:231
+#, php-format
+msgid "Flat %s"
+msgstr "固定 %s"
+
+#: includes/class-emails.php:51
+msgid "New Affiliate Registration"
+msgstr "新加盟注册"
+
+#: includes/class-emails.php:53
+#, php-format
+msgid "Name: %s"
+msgstr "昵称：%s"
+
+#: includes/class-emails.php:68
+msgid "Affiliate Application Accepted"
+msgstr "加盟申请受理"
+
+#: includes/class-emails.php:69 includes/class-emails.php:83
+#, php-format
+msgid ""
+"Congratulations %s!\n"
+"\n"
+msgstr ""
+"恭喜%s!\n"
+"\n"
+
+#: includes/class-emails.php:70
+#, php-format
+msgid ""
+"Your affiliate application on %s has been accepted!\n"
+"\n"
+msgstr ""
+"在%s你的加盟申请已被接受!\n"
+"\n"
+
+#: includes/class-emails.php:71
+#, php-format
+msgid ""
+"Log into your affiliate area at %s\n"
+"\n"
+msgstr ""
+"登入您的加盟区位于%s\n"
+"\n"
+
+#: includes/class-emails.php:81
+msgid "Referral Awarded!"
+msgstr "推广奖励！"
+
+#: includes/class-emails.php:84
+#, php-format
+msgid ""
+"You have been awarded a new referral of %s on %s!\n"
+"\n"
+msgstr ""
+"你已经获得%s上的一个新推广%s!\n"
+"\n"
+
+#: includes/class-emails.php:85
+#, php-format
+msgid ""
+"Log into your affiliate area to view your earnings or disable these "
+"notifications: %s\n"
+"\n"
+msgstr ""
+"登录到您的加盟区查看您的佣金或停用这些通知： %s\n"
+"\n"
+
+#: includes/class-graph.php:332
+msgid "Today"
+msgstr "今日"
+
+#: includes/class-graph.php:333
+msgid "Yesterday"
+msgstr "昨天"
+
+#: includes/class-graph.php:334
+msgid "This Week"
+msgstr "本周"
+
+#: includes/class-graph.php:335
+msgid "Last Week"
+msgstr "上周"
+
+#: includes/class-graph.php:336
+msgid "This Month"
+msgstr "本月"
+
+#: includes/class-graph.php:337
+msgid "Last Month"
+msgstr "上月"
+
+#: includes/class-graph.php:338
+msgid "This Quarter"
+msgstr "本季"
+
+#: includes/class-graph.php:339
+msgid "Last Quarter"
+msgstr "上季"
+
+#: includes/class-graph.php:340
+msgid "This Year"
+msgstr "今年"
+
+#: includes/class-graph.php:341
+msgid "Last Year"
+msgstr "去年"
+
+#: includes/class-graph.php:342
+msgid "Custom"
+msgstr "自定义"
+
+#: includes/class-graph.php:377
+msgid "From"
+msgstr "从"
+
+#: includes/class-graph.php:388
+msgid "To"
+msgstr "到"
+
+#: includes/class-login.php:32 includes/class-register.php:35
+#: includes/class-register.php:44
+msgid "Invalid username"
+msgstr "用户不存在"
+
+#: includes/class-login.php:38
+msgid "No such user"
+msgstr "用户不存在"
+
+#: includes/class-login.php:42 includes/class-register.php:60
+msgid "Please enter a password"
+msgstr "请输入密码"
+
+#: includes/class-login.php:49
+msgid "Incorrect password"
+msgstr "密码不正确"
+
+#: includes/class-referrals-graph.php:116
+msgid "Unpaid Referral Earnings"
+msgstr "未付推广佣金"
+
+#: includes/class-referrals-graph.php:117
+msgid "Pending Referral Earnings"
+msgstr "待确认的推广佣金"
+
+#: includes/class-referrals-graph.php:118
+msgid "Rejected Referral Earnings"
+msgstr "被否定的推广佣金"
+
+#: includes/class-referrals-graph.php:119
+msgid "Paid Referral Earnings"
+msgstr "已付的推广佣金"
+
+#: includes/class-register.php:39
+msgid "Username already taken"
+msgstr "此用户名已存在"
+
+#: includes/class-register.php:48
+msgid "Email address already taken"
+msgstr "电子邮件地址已被使用"
+
+#: includes/class-register.php:52
+msgid "Invalid email"
+msgstr "无效的邮箱"
+
+#: includes/class-register.php:56
+msgid "Invalid payment email"
+msgstr "无效的收款邮箱"
+
+#: includes/class-register.php:64
+msgid "Passwords do not match"
+msgstr "密码不匹配"
+
+#: includes/class-register.php:68
+msgid "Please enter your name"
+msgstr "请输入您的姓名"
+
+#: includes/class-register.php:75
+msgid "Please agree to our terms of use"
+msgstr "请同意我们的使用条款"
+
+#: includes/class-register.php:79
+msgid "Nice try honey bear, don't touch our honey"
+msgstr "不错的尝试吃蜂蜜的熊，不要碰我们的蜂蜜"
+
+#: includes/class-register.php:83
+msgid "You are already registered as an affiliate"
+msgstr "你已经注册为加盟"
+
+#: includes/class-visits-graph.php:126
+msgid "Converted Visits"
+msgstr "转换后访问"
+
+#: includes/class-visits-graph.php:127
+msgid "Unconverted Visits"
+msgstr "未转换访问"
+
+#: includes/integrations/class-edd.php:54
+#: includes/integrations/class-edd.php:116
+#: includes/integrations/class-jigoshop.php:60
+#: includes/integrations/class-shopp.php:50
+#: includes/integrations/class-woocommerce.php:78
+#: includes/integrations/class-woocommerce.php:96
+#, php-format
+msgid "Referral #%d for %s recorded for %s"
+msgstr "推广 #%d 的 %s 记录为 %s"
+
+#: includes/integrations/class-edd.php:235
+#: includes/integrations/class-rcp.php:158
+#: includes/integrations/class-woocommerce.php:168
+msgid "Affiliate Discount?"
+msgstr "推广优惠？"
+
+#: includes/integrations/class-edd.php:244
+#: includes/integrations/class-rcp.php:167
+#: includes/integrations/class-woocommerce.php:174
+msgid ""
+"If you would like to connect this discount to an affiliate, enter the name "
+"of the affiliate it belongs to."
+msgstr "如果你想将此优惠卷跟加盟者挂钩，请输入加盟者账户ID，"
+
+#: includes/misc-functions.php:25
+msgid "US Dollars (&#36;)"
+msgstr "US Dollars (&#36;)"
+
+#: includes/misc-functions.php:26
+msgid "Euros (&euro;)"
+msgstr "Euros (&euro;)"
+
+#: includes/misc-functions.php:27
+msgid "Pounds Sterling (&pound;)"
+msgstr "Pounds Sterling (&pound;)"
+
+#: includes/misc-functions.php:28
+msgid "Australian Dollars (&#36;)"
+msgstr "Australian Dollars (&#36;)"
+
+#: includes/misc-functions.php:29
+msgid "Brazilian Real (R&#36;)"
+msgstr "Brazilian Real (R&#36;)"
+
+#: includes/misc-functions.php:30
+msgid "Canadian Dollars (&#36;)"
+msgstr "Canadian Dollars (&#36;)"
+
+#: includes/misc-functions.php:31
+msgid "Czech Koruna"
+msgstr "Czech Koruna"
+
+#: includes/misc-functions.php:32
+msgid "Danish Krone"
+msgstr "Danish Krone"
+
+#: includes/misc-functions.php:33
+msgid "Hong Kong Dollar (&#36;)"
+msgstr "港币 (&#36;)"
+
+#: includes/misc-functions.php:34
+msgid "Hungarian Forint"
+msgstr "Hungarian Forint"
+
+#: includes/misc-functions.php:35
+msgid "Israeli Shekel (&#8362;)"
+msgstr "Israeli Shekel (&#8362;)"
+
+#: includes/misc-functions.php:36
+msgid "Japanese Yen (&yen;)"
+msgstr "Japanese Yen (&yen;)"
+
+#: includes/misc-functions.php:37
+msgid "Korean Won (&#8361;)"
+msgstr "Korean Won (&#8361;)"
+
+#: includes/misc-functions.php:38
+msgid "Malaysian Ringgits"
+msgstr "Malaysian Ringgits"
+
+#: includes/misc-functions.php:39
+msgid "Mexican Peso (&#36;)"
+msgstr "Mexican Peso (&#36;)"
+
+#: includes/misc-functions.php:40
+msgid "New Zealand Dollar (&#36;)"
+msgstr "New Zealand Dollar (&#36;)"
+
+#: includes/misc-functions.php:41
+msgid "Norwegian Krone"
+msgstr "Norwegian Krone"
+
+#: includes/misc-functions.php:42
+msgid "Philippine Pesos"
+msgstr "Philippine Pesos"
+
+#: includes/misc-functions.php:43
+msgid "Polish Zloty"
+msgstr "Polish Zloty"
+
+#: includes/misc-functions.php:44
+msgid "Singapore Dollar (&#36;)"
+msgstr "Singapore Dollar (&#36;)"
+
+#: includes/misc-functions.php:45
+msgid "Swedish Krona"
+msgstr "Swedish Krona"
+
+#: includes/misc-functions.php:46
+msgid "Swiss Franc"
+msgstr "Swiss Franc"
+
+#: includes/misc-functions.php:47
+msgid "Taiwan New Dollars"
+msgstr "Taiwan New Dollars"
+
+#: includes/misc-functions.php:48
+msgid "Thai Baht (&#3647;)"
+msgstr "Thai Baht (&#3647;)"
+
+#: includes/misc-functions.php:49
+msgid "Indian Rupee (&#8377;)"
+msgstr "Indian Rupee (&#8377;)"
+
+#: includes/misc-functions.php:50
+msgid "Turkish Lira (&#8378;)"
+msgstr "Turkish Lira (&#8378;)"
+
+#: includes/misc-functions.php:51
+msgid "Iranian Rial (&#65020;)"
+msgstr "Iranian Rial (&#65020;)"
+
+#: includes/misc-functions.php:52
+msgid "Russian Rubles"
+msgstr "Russian Rubles"
+
+#: includes/scripts.php:61
+msgid ""
+"Are you sure you want to generate the payout file? All included referrals "
+"will be marked as Paid."
+msgstr "你确定你想生成支付文件吗?所有包括推广将标记为已支付。"
+
+#: templates/dashboard.php:13
+msgid "Your affiliate account is pending approval"
+msgstr "您申请加盟账户等待审核"
+
+#: templates/dashboard.php:17
+msgid "Your affiliate account is not active"
+msgstr "您的加盟者帐号未激活"
+
+#: templates/dashboard.php:21
+msgid "Your affiliate account request has been rejected"
+msgstr "您申请加盟者账户已被拒绝"
+
+#: templates/dashboard.php:27
+msgid "Your affiliate profile has been updated"
+msgstr "您的加盟资料已更新"
+
+#: templates/dashboard.php:33
+msgid "Referral URL Generator"
+msgstr "生成推广链接"
+
+#: templates/dashboard.php:37
+#, php-format
+msgid "Your affiliate ID is: <strong>%d</strong>"
+msgstr "您的加盟ID：<strong>%d</strong>"
+
+#: templates/dashboard.php:38
+#, php-format
+msgid "Your referral URL is: <strong>%s</strong>"
+msgstr "您的推广链接：<strong>%s</strong>"
+
+#: templates/dashboard.php:39
+msgid "Enter any URL on this website below to generate a referral link!"
+msgstr "在下面输入本站任意页面地址，系统将自动为您生成独一无二的推广链接！"
+
+#: templates/dashboard.php:48
+msgid "Page URL"
+msgstr "页面地址"
+
+#: templates/dashboard.php:54
+msgid "Referral URL"
+msgstr "推广地址"
+
+#: templates/dashboard.php:56
+msgid "(now copy this referral link and share it anywhere)"
+msgstr "(现在复制这个推广链接然后分享它到任何地方)"
+
+#: templates/dashboard.php:62
+msgid "Generate URL"
+msgstr "生成地址"
+
+#: templates/dashboard.php:67
+msgid "Stats"
+msgstr "统计"
+
+#: templates/dashboard.php:96
+msgid "Commission Rate"
+msgstr "佣金率"
+
+#: templates/dashboard.php:111
+msgid "Referrals Over Time"
+msgstr "实时统计并实时更新推广"
+
+#: templates/dashboard.php:122
+msgid "Referral URL Visits"
+msgstr "推广链接访问量"
+
+#: templates/dashboard.php:160
+msgid "You have not received any visits yet."
+msgstr "您的推广地址还未产生任何流量。"
+
+#: templates/dashboard.php:177
+msgid "Profile Settings"
+msgstr "资料设置"
+
+#: templates/dashboard.php:182
+msgid "Your payment email"
+msgstr "您的收款邮箱"
+
+#: templates/dashboard.php:188
+msgid "Enable New Referral Notifications"
+msgstr "启用新推广通知"
+
+#: templates/dashboard.php:194
+msgid "Save Profile Settings"
+msgstr "保存设置"
+
+#: templates/login.php:7
+msgid "Log into Your Account"
+msgstr "登录您的加盟账户"
+
+#: templates/login.php:12 templates/login.php:13 templates/register.php:19
+#: templates/register.php:20
+msgid "Username"
+msgstr "用户名："
+
+#: templates/login.php:17 templates/register.php:34
+msgid "Password"
+msgstr "密　码："
+
+#: templates/login.php:23
+msgid "Remember Me"
+msgstr "记住我"
+
+#: templates/login.php:30
+msgid "Login"
+msgstr "登录"
+
+#: templates/login.php:34
+msgid "Lost Password?"
+msgstr "忘记密码"
+
+#: templates/no-access.php:1
+msgid "The affiliate area is available only for registered affiliates."
+msgstr "此页面仅供加盟者使用。"
+
+#: templates/register.php:7
+msgid "Register a New Affiliate Account"
+msgstr "注册为加盟者账户"
+
+#: templates/register.php:14 templates/register.php:15
+msgid "Your Name"
+msgstr "您的姓名"
+
+#: templates/register.php:24
+msgid "Account Email"
+msgstr "账户邮箱"
+
+#: templates/register.php:25
+msgid "Email Address"
+msgstr "邮箱地址"
+
+#: templates/register.php:29
+msgid "Payment Email (if different)"
+msgstr "收款邮箱（如不同）"
+
+#: templates/register.php:30
+msgid "Payment Email Address"
+msgstr "收款邮箱"
+
+#: templates/register.php:39
+msgid "Confirm Password"
+msgstr "重复密码"
+
+#: templates/register.php:52
+#, php-format
+msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
+msgstr "同意我们的<a href=\"%s\" target=\"_blank\">使用条款</a>"
+
+#: templates/register.php:63
+msgid "Register"
+msgstr "注册"
