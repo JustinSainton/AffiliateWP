@@ -57,8 +57,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		if( $this->was_referred() || $affiliate_id ) {
 
-			if( $affiliate_id ) {
-				$this->$affiliate_id = $affiliate_id;
+			if( false !== $affiliate_id ) {
+				$this->affiliate_id = $affiliate_id;
 			}
 
 			if( affwp_get_affiliate_email( $this->affiliate_id ) == $this->order->billing_email ) {
