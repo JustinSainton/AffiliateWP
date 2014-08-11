@@ -117,7 +117,7 @@ class Affiliate_WP_Tracking {
 
 		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) ) {
 			// Allow the amount to be passed via a query string or post request
-			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( $_REQUEST['amount'] ) );
+			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( urldecode( $_REQUEST['amount'] ) ) );
 		}
 
 		if( empty( $args['reference'] ) && ! empty( $_REQUEST['reference'] ) ) {
@@ -250,7 +250,7 @@ class Affiliate_WP_Tracking {
 			// Store the visit in the DB
 			$referal_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
-				'amount'       => affwp_calc_referral_amount( sanitize_text_field( $_POST['amount'] ), $affiliate_id ),
+				'amount'       => affwp_calc_referral_amount( sanitize_text_field( urldecode( $_POST['amount'] ) ), $affiliate_id ),
 				'status'       => $status,
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
