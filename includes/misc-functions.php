@@ -82,6 +82,9 @@ function affwp_sanitize_amount( $amount ) {
 	$thousands_sep = affiliate_wp()->settings->get( 'thousands_separator', ',' );
 	$decimal_sep   = affiliate_wp()->settings->get( 'decimal_separator', '.' );
 
+	// Remove non-numeric numbers
+	$amount = preg_replace("/([^0-9\\.])/i", "", $amount );
+
 	// Sanitize the amount
 	if ( $decimal_sep == ',' && false !== ( $found = strpos( $amount, $decimal_sep ) ) ) {
 		if ( $thousands_sep == '.' && false !== ( $found = strpos( $amount, $thousands_sep ) ) ) {
