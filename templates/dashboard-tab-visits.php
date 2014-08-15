@@ -3,7 +3,7 @@
 	<h4><?php _e( 'Referral URL Visits', 'affiliate-wp' ); ?></h4>
 
 	<?php
-	$per_page = 20;
+	$per_page = 1;
 	$page     = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 	$visits   = affiliate_wp()->visits->get_visits( array(
 		'number'       => $per_page,
@@ -51,6 +51,9 @@
 			'current'      => $page,
 			'total'        => ceil( affwp_get_affiliate_visit_count( affwp_get_affiliate_id() ) / $per_page ),
 			'add_fragment' => '#affwp-affiliate-dashboard-visits',
+			'add_args'     => array(
+				'tab'      => 'visits'
+			)
 		) );
 		?>
 	</div>
