@@ -388,7 +388,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function bulk_actions() {
+	public function bulk_actions( $which = '' ) {
 		
 		if ( is_null( $this->_actions ) ) {
 			$no_new_actions = $this->_actions = $this->get_bulk_actions();
