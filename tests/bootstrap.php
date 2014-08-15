@@ -10,5 +10,8 @@ function _manually_load_plugin() {
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
+// Install AffiliateWP
+affiliate_wp_install();
+
 require $_tests_dir . '/includes/bootstrap.php';
 
