@@ -39,7 +39,7 @@ class Affiliate_Tests extends WP_UnitTestCase {
 
 		$affiliate_id = affiliate_wp()->affiliates->add( $args );
 
-		$this->assertTrue( $affiliate_id );
+		$this->assertGreaterThan( 0, $affiliate_id );
 
 	}
 }
