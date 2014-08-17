@@ -1562,7 +1562,7 @@ msgid ""
 "\">documentation</a> for help using this."
 msgstr ""
 "Choisissez les intégrations à activer. Si vous n'utilisez pas l'un de ces, "
-"vous pouvez utiliser les <strong>[affiliate_conversion_script]</ strong> "
+"vous pouvez utiliser les <strong>[affiliate_conversion_script]</strong> "
 "code court pour suivre et créer des références. Reportez-vous à la "
 "documentation de l'aide en utilisant ce."
 
@@ -1690,7 +1690,7 @@ msgstr "Activer la licence"
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr ""
-"La fonction de rappel utilisée pour l'% s </ strong> réglage <strong> est "
+"La fonction de rappel utilisée pour l'% s </strong> réglage <strong> est "
 "manquant."
 
 #: includes/admin/settings/display-settings.php:73
@@ -1877,7 +1877,7 @@ msgid ""
 "<strong>Reference</strong>: this refers to the order number (or similar) "
 "that created this referral."
 msgstr ""
-"<strong>Référence</ strong>: il s'agit du numéro d'ordre (ou similaire) qui "
+"<strong>Référence</strong>: il s'agit du numéro d'ordre (ou similaire) qui "
 "a créé cette saisine."
 
 #: includes/admin/referrals/contextual-help.php:41
