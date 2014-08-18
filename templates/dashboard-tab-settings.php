@@ -2,7 +2,7 @@
 
 	<h4><?php _e( 'Profile Settings', 'affiliate-wp' ); ?></h4>
 
-	<form id="affwp-affiliate-dashboard-profile" class="affwp-form" method="post">
+	<form id="affwp-affiliate-dashboard-profile-form" class="affwp-form" method="post">
 		<div class="affwp-payment-email-wrap">
 			<label for="affwp-payment-email"><?php _e( 'Your payment email', 'affiliate-wp' ); ?></label>
 			<input id="affwp-payment-email" type="email" name="payment_email" value="<?php echo esc_attr( affwp_get_affiliate_email( affwp_get_affiliate_id() ) ); ?>" />
