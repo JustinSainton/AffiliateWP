@@ -3,7 +3,7 @@
 	<h4><?php _e( 'Referral URL Visits', 'affiliate-wp' ); ?></h4>
 
 	<?php
-	$per_page = 1;
+	$per_page = 30;
 	$page     = get_query_var( 'page' ) ? get_query_var( 'page' ) : 1;
 	$visits   = affiliate_wp()->visits->get_visits( array(
 		'number'       => $per_page,
