@@ -80,7 +80,7 @@ function affwp_process_affiliate_deletion( $data ) {
 add_action( 'affwp_delete_affiliates', 'affwp_process_affiliate_deletion' );
 
 /**
- * Process the add affiliate request
+ * Process the update affiliate request
  *
  * @since 1.2
  * @return void
