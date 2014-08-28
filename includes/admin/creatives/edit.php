@@ -18,7 +18,7 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 				</th>
 
 				<td>
-					<input type="text" name="name" id="name" value="<?php echo esc_attr( $creative->name ); ?>" class="regular-text" />
+					<input type="text" name="name" id="name" value="<?php echo esc_attr( stripslashes( $creative->name ) ); ?>" class="regular-text" />
 					<p class="description"><?php _e( 'The name of this creative. For your identification only.', 'affiliate-wp' ); ?></p>
 				</td>
 
@@ -44,7 +44,7 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 				</th>
 
 				<td>
-					<input type="text" name="text" id="text" value="<?php echo esc_attr( $creative->text ); ?>" class="regular-text" />
+					<input type="text" name="text" id="text" value="<?php echo esc_attr( stripslashes( $creative->text ) ); ?>" class="regular-text" />
 					<p class="description"><?php _e( 'Text for this creative.', 'affiliate-wp' ); ?></p>
 				</td>
 
