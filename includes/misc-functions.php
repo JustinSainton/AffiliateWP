@@ -23,6 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function affwp_get_currencies() {
 
 	$currencies = array(
+		'USD' => __( 'US Dollars', 'affiliate-wp' ),
+		'EUR' => __( 'Euros', 'affiliate-wp' ),
 		'AED' => __( 'United Arab Emirates Dirham', 'affiliate-wp' ),
 		'AUD' => __( 'Australian Dollars', 'affiliate-wp' ),
 		'BDT' => __( 'Bangladeshi Taka', 'affiliate-wp' ),
@@ -35,7 +37,6 @@ function affwp_get_currencies() {
 		'CZK' => __( 'Czech Koruna', 'affiliate-wp' ),
 		'DKK' => __( 'Danish Krone', 'affiliate-wp' ),
 		'DOP' => __( 'Dominican Peso', 'affiliate-wp' ),
-		'EUR' => __( 'Euros', 'affiliate-wp' ),
 		'HKD' => __( 'Hong Kong Dollar', 'affiliate-wp' ),
 		'HRK' => __( 'Croatia kuna', 'affiliate-wp' ),
 		'HUF' => __( 'Hungarian Forint', 'affiliate-wp' ),
@@ -65,7 +66,6 @@ function affwp_get_currencies() {
 		'TWD' => __( 'Taiwan New Dollars', 'affiliate-wp' ),
 		'THB' => __( 'Thai Baht', 'affiliate-wp' ),
 		'TRY' => __( 'Turkish Lira', 'affiliate-wp' ),
-		'USD' => __( 'US Dollars', 'affiliate-wp' ),
 		'VND' => __( 'Vietnamese Dong', 'affiliate-wp' ),
 		'EGP' => __( 'Egyptian Pound', 'affiliate-wp' ),
 	);
