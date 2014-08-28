@@ -72,7 +72,7 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 }
 
 /**
- * Adds a new affiliate to the database
+ * Adds a new referral to the database
  *  
  * @since 1.0
  * @return bool

@@ -21,35 +21,53 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return array $currencies A list of the available currencies
  */
 function affwp_get_currencies() {
+
 	$currencies = array(
-		'USD'  => __( 'US Dollars (&#36;)', 'affiliate-wp' ),
-		'EUR'  => __( 'Euros (&euro;)', 'affiliate-wp' ),
-		'GBP'  => __( 'Pounds Sterling (&pound;)', 'affiliate-wp' ),
-		'AUD'  => __( 'Australian Dollars (&#36;)', 'affiliate-wp' ),
-		'BRL'  => __( 'Brazilian Real (R&#36;)', 'affiliate-wp' ),
-		'CAD'  => __( 'Canadian Dollars (&#36;)', 'affiliate-wp' ),
-		'CZK'  => __( 'Czech Koruna', 'affiliate-wp' ),
-		'DKK'  => __( 'Danish Krone', 'affiliate-wp' ),
-		'HKD'  => __( 'Hong Kong Dollar (&#36;)', 'affiliate-wp' ),
-		'HUF'  => __( 'Hungarian Forint', 'affiliate-wp' ),
-		'ILS'  => __( 'Israeli Shekel (&#8362;)', 'affiliate-wp' ),
-		'JPY'  => __( 'Japanese Yen (&yen;)', 'affiliate-wp' ),
-		'KRW'  => __( 'Korean Won (&#8361;)', 'affiliate-wp' ),
-		'MYR'  => __( 'Malaysian Ringgits', 'affiliate-wp' ),
-		'MXN'  => __( 'Mexican Peso (&#36;)', 'affiliate-wp' ),
-		'NZD'  => __( 'New Zealand Dollar (&#36;)', 'affiliate-wp' ),
-		'NOK'  => __( 'Norwegian Krone', 'affiliate-wp' ),
-		'PHP'  => __( 'Philippine Pesos', 'affiliate-wp' ),
-		'PLN'  => __( 'Polish Zloty', 'affiliate-wp' ),
-		'SGD'  => __( 'Singapore Dollar (&#36;)', 'affiliate-wp' ),
-		'SEK'  => __( 'Swedish Krona', 'affiliate-wp' ),
-		'CHF'  => __( 'Swiss Franc', 'affiliate-wp' ),
-		'TWD'  => __( 'Taiwan New Dollars', 'affiliate-wp' ),
-		'THB'  => __( 'Thai Baht (&#3647;)', 'affiliate-wp' ),
-		'INR'  => __( 'Indian Rupee (&#8377;)', 'affiliate-wp' ),
-		'TRY'  => __( 'Turkish Lira (&#8378;)', 'affiliate-wp' ),
-		'RIAL' => __( 'Iranian Rial (&#65020;)', 'affiliate-wp' ),
-		'RUB'  => __( 'Russian Rubles', 'affiliate-wp' )
+		'AED' => __( 'United Arab Emirates Dirham', 'affiliate-wp' ),
+		'AUD' => __( 'Australian Dollars', 'affiliate-wp' ),
+		'BDT' => __( 'Bangladeshi Taka', 'affiliate-wp' ),
+		'BRL' => __( 'Brazilian Real', 'affiliate-wp' ),
+		'BGN' => __( 'Bulgarian Lev', 'affiliate-wp' ),
+		'CAD' => __( 'Canadian Dollars', 'affiliate-wp' ),
+		'CLP' => __( 'Chilean Peso', 'affiliate-wp' ),
+		'CNY' => __( 'Chinese Yuan', 'affiliate-wp' ),
+		'COP' => __( 'Colombian Peso', 'affiliate-wp' ),
+		'CZK' => __( 'Czech Koruna', 'affiliate-wp' ),
+		'DKK' => __( 'Danish Krone', 'affiliate-wp' ),
+		'DOP' => __( 'Dominican Peso', 'affiliate-wp' ),
+		'EUR' => __( 'Euros', 'affiliate-wp' ),
+		'HKD' => __( 'Hong Kong Dollar', 'affiliate-wp' ),
+		'HRK' => __( 'Croatia kuna', 'affiliate-wp' ),
+		'HUF' => __( 'Hungarian Forint', 'affiliate-wp' ),
+		'ISK' => __( 'Icelandic krona', 'affiliate-wp' ),
+		'IDR' => __( 'Indonesia Rupiah', 'affiliate-wp' ),
+		'INR' => __( 'Indian Rupee', 'affiliate-wp' ),
+		'NPR' => __( 'Nepali Rupee', 'affiliate-wp' ),
+		'ILS' => __( 'Israeli Shekel', 'affiliate-wp' ),
+		'JPY' => __( 'Japanese Yen', 'affiliate-wp' ),
+		'KIP' => __( 'Lao Kip', 'affiliate-wp' ),
+		'KRW' => __( 'South Korean Won', 'affiliate-wp' ),
+		'MYR' => __( 'Malaysian Ringgits', 'affiliate-wp' ),
+		'MXN' => __( 'Mexican Peso', 'affiliate-wp' ),
+		'NGN' => __( 'Nigerian Naira', 'affiliate-wp' ),
+		'NOK' => __( 'Norwegian Krone', 'affiliate-wp' ),
+		'NZD' => __( 'New Zealand Dollar', 'affiliate-wp' ),
+		'PYG' => __( 'Paraguayan Guaraní', 'affiliate-wp' ),
+		'PHP' => __( 'Philippine Pesos', 'affiliate-wp' ),
+		'PLN' => __( 'Polish Zloty', 'affiliate-wp' ),
+		'GBP' => __( 'Pounds Sterling', 'affiliate-wp' ),
+		'RON' => __( 'Romanian Leu', 'affiliate-wp' ),
+		'RUB' => __( 'Russian Ruble', 'affiliate-wp' ),
+		'SGD' => __( 'Singapore Dollar', 'affiliate-wp' ),
+		'ZAR' => __( 'South African rand', 'affiliate-wp' ),
+		'SEK' => __( 'Swedish Krona', 'affiliate-wp' ),
+		'CHF' => __( 'Swiss Franc', 'affiliate-wp' ),
+		'TWD' => __( 'Taiwan New Dollars', 'affiliate-wp' ),
+		'THB' => __( 'Thai Baht', 'affiliate-wp' ),
+		'TRY' => __( 'Turkish Lira', 'affiliate-wp' ),
+		'USD' => __( 'US Dollars', 'affiliate-wp' ),
+		'VND' => __( 'Vietnamese Dong', 'affiliate-wp' ),
+		'EGP' => __( 'Egyptian Pound', 'affiliate-wp' ),
 	);
 
 	return apply_filters( 'affwp_currencies', $currencies );
@@ -177,6 +195,9 @@ function affwp_currency_filter( $amount ) {
 			case "CAD" :
 			case "HKD" :
 			case "MXN" :
+			case 'RON' : 
+				$formatted = 'lei' . $amount;
+				break;
 			case "SGD" :
 				$formatted = '&#36;' . $amount;
 				break;
@@ -207,6 +228,8 @@ function affwp_currency_filter( $amount ) {
 			case "CAD" :
 			case "HKD" :
 			case "MXN" :
+			case 'RON' : 
+				$formatted = $amount . 'lei';
 			case "SGD" :
 				$formatted = $amount . '&#36;';
 				break;

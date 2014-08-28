@@ -53,7 +53,7 @@ abstract class Affiliate_WP_Base {
 	}
 
 	/**
-	 * Inserts a pending referal. Used when orders are initially created
+	 * Inserts a pending referral. Used when orders are initially created
 	 *
 	 * @access  public
 	 * @since   1.0
