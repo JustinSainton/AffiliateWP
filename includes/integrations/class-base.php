@@ -122,9 +122,6 @@ abstract class Affiliate_WP_Base {
 
 		if ( affwp_set_referral_status( $referral->referral_id, 'unpaid' ) ) {
 
-			// Update the visit ID that spawned this referral
-			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );
-
 			do_action( 'affwp_complete_referral', $referral->referral_id, $referral, $reference );
 
 			return true;
