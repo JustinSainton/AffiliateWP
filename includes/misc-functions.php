@@ -230,6 +230,7 @@ function affwp_currency_filter( $amount ) {
 			case "MXN" :
 			case 'RON' : 
 				$formatted = $amount . 'lei';
+				break;
 			case "SGD" :
 				$formatted = $amount . '&#36;';
 				break;
