@@ -195,11 +195,11 @@ function affwp_currency_filter( $amount ) {
 			case "CAD" :
 			case "HKD" :
 			case "MXN" :
-			case 'RON' : 
-				$formatted = 'lei' . $amount;
-				break;
 			case "SGD" :
 				$formatted = '&#36;' . $amount;
+				break;
+			case 'RON' : 
+				$formatted = 'lei' . $amount;
 				break;
 			case "JPY" :
 				$formatted = '&yen;' . $amount;
@@ -228,11 +228,11 @@ function affwp_currency_filter( $amount ) {
 			case "CAD" :
 			case "HKD" :
 			case "MXN" :
-			case 'RON' : 
-				$formatted = $amount . 'lei';
-				break;
 			case "SGD" :
 				$formatted = $amount . '&#36;';
+				break;
+			case 'RON' : 
+				$formatted = $amount . 'lei';
 				break;
 			case "JPY" :
 				$formatted = $amount . '&yen;';
