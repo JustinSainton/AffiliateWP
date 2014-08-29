@@ -3,12 +3,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.5.4\n"
 "Project-Id-Version: AffiliateWP\n"
 "Language: de\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Pippin Williamson <pippin@pippinsplugins.com>\n"
 "Language-Team: \n"
 
 #: affiliate-wp.php:115 affiliate-wp.php:127
@@ -375,7 +375,7 @@ msgstr "Partner erfolgreich aktualisiert"
 
 #: includes/admin/class-notices.php:38
 msgid "<a href=\"%s\">Back to Affiliates</a>"
-msgstr "<a href=\"%s\"> Zurück zu Affiliates </ a>"
+msgstr "<a href=\"%s\"> Zurück zu Affiliates </a>"
 
 #: includes/admin/class-notices.php:44
 msgid "Affiliate update failed, please try again"
@@ -1408,7 +1408,7 @@ msgid ""
 msgstr ""
 "Bitte geben Sie Ihren Lizenzschlüssel ein. Ein aktiver Lizenzschlüssel wird "
 "für automatische Plugin-Updates und <a href=\"%s\" target=\"_blank\"> "
-"Support </ a> benötigt."
+"Support </a> benötigt."
 
 #: includes/admin/settings/class-settings.php:182
 msgid "Pages"
@@ -2026,8 +2026,8 @@ msgstr "Passwort bestätigen"
 #: templates/register.php:50
 msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
 msgstr ""
-"Zustimmen zu unseren <a href=\"%s\" target=\"_blank\"> Nutzungsbedingungen "
-"</ a>"
+"Zustimmen zu unseren <a href=\"%s\" target=\"_blank\"> Nutzungsbedingungen </"
+"a>"
 
 #: templates/register.php:60
 msgid "Register"
