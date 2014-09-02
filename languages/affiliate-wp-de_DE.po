@@ -3,12 +3,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.5\n"
 "Project-Id-Version: AffiliateWP\n"
 "Language: de\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Pippin Williamson <pippin@pippinsplugins.com>\n"
+"Last-Translator: Andrew Munro, Sumobi <andrew@sumobi.com>\n"
 "Language-Team: \n"
 
 #: affiliate-wp.php:115 affiliate-wp.php:127
@@ -774,7 +774,7 @@ msgid ""
 "The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
 "em> short code, gives your affiliates access to their performance reports."
 msgstr ""
-"Der Affiliate Bereich kann auf jeder Seite mit dem <em> [affiliate_area] </ "
+"Der Affiliate Bereich kann auf jeder Seite mit dem <em> [affiliate_area] </"
 "em> Shortcode angezeigtwerden und gibt Ihrem Partner den Zugriff auf dessen "
 "Leistungsberichte."
 
@@ -846,7 +846,7 @@ msgid ""
 msgstr ""
 "Wir tun unser Bestes, um Ihnen den besten Support bieten können. Wenn Sie "
 "auf ein Problem stoßen oder eine Frage haben, besuchen Sie unseren <a href="
-"\"http://affiliatewp.com/support\"> Support </ a>, um ein Ticket zu öffnen."
+"\"http://affiliatewp.com/support\"> Support </a>, um ein Ticket zu öffnen."
 
 #: includes/admin/class-welcome.php:335
 msgid "Thank you for updating to the latest version!"
@@ -879,7 +879,7 @@ msgstr ""
 "Verwenden Sie diese Anzeige um ein neuen Affiliate-Partner zu registrieren. "
 "Jeder Affiliate wird direkt an ein Benutzerkonto gebunden. Wenn das "
 "Benutzerkonto für den Partner noch nicht existiert, <a href=\"%s\" target="
-"\"_blank\"> erstellen Sie einen</ a>."
+"\"_blank\"> erstellen Sie einen</a>."
 
 #: includes/admin/affiliates/new.php:16
 msgid "User"
@@ -1528,7 +1528,7 @@ msgstr ""
 "Wählen Sie Integrationen zum aktivieren. Wenn Sie diese nicht nutzen, können "
 "Sie den Shortcode <strong> [affiliate_conversion_script] </strong> "
 "verwenden, um Verkäufe zu tracken und Provisionsauzahlungen zu generieren. "
-"In der <a href=\"%s\" target=\"_blank\"> Dokumentation </ a> finden Sie "
+"In der <a href=\"%s\" target=\"_blank\"> Dokumentation </a> finden Sie "
 "weitere Hilfe."
 
 #: includes/admin/settings/class-settings.php:280
@@ -1729,9 +1729,9 @@ msgid ""
 "\">Tools &rarr; Export</a> page."
 msgstr ""
 "Dies wird alle nicht ausbezahkten Verkäufe in diesem Zeitraum als bezahlt "
-"markieren. Um Überweisungen mit einem anderen als <em> nicht ausbezhalt </ "
+"markieren. Um Überweisungen mit einem anderen als <em> nicht ausbezhalt </"
 "em>-Status zu exportieren, gehen Sie zu der <a href=\"%s\">Tools &rarr; "
-"Export </ a>-Seite."
+"Export </a>-Seite."
 
 #: includes/admin/referrals/referrals.php:228
 #: includes/admin/referrals/new.php:46
@@ -1820,13 +1820,13 @@ msgstr "Für weitere Informationen:"
 #: includes/admin/referrals/contextual-help.php:30
 msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
 msgstr ""
-"Besuchen Sie die <a href=\"%s\"> Dokumentation </ a> auf der AffiliateWP "
+"Besuchen Sie die <a href=\"%s\"> Dokumentation </a> auf der AffiliateWP "
 "Website."
 
 #: includes/admin/referrals/contextual-help.php:31
 msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
 msgstr ""
-"<a href=\"%s\"> Melden Sie ein Problem</a> auf  <a href=\"%s\"> GitHub </ a>."
+"<a href=\"%s\"> Melden Sie ein Problem</a> auf  <a href=\"%s\"> GitHub </a>."
 
 #: includes/admin/referrals/contextual-help.php:39
 msgid "This screen provides access to your site's referral history."
