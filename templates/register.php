@@ -4,21 +4,23 @@ affiliate_wp()->register->print_errors();
 
 $errors = affiliate_wp()->register->get_errors();
 
-if( ! empty ( $errors ) ){
-	if( ! array_key_exists( 'empty_name', $errors ) ){
-		$user_name =  sanitize_text_field( $_POST['affwp_user_name'] );
-	}
+if( ! is_user_logged_in() ){
+	if( ! empty ( $errors ) ){
+		if( ! array_key_exists( 'empty_name', $errors ) ){
+			$user_name =  sanitize_text_field( $_POST['affwp_user_name'] );
+		}
 
-	if( ! array_key_exists( 'empty_username', $errors )  && ! array_key_exists( 'username_unavailable', $errors ) && ! array_key_exists( 'username_invalid', $errors ) ){
-		$user_login = sanitize_text_field( $_POST['affwp_user_login'] );
-	}
+		if( ! array_key_exists( 'empty_username', $errors )  && ! array_key_exists( 'username_unavailable', $errors ) && ! array_key_exists( 'username_invalid', $errors ) ){
+			$user_login = sanitize_text_field( $_POST['affwp_user_login'] );
+		}
 
-	if( ! array_key_exists( 'email_unavailable', $errors ) && ! array_key_exists( 'email_invalid', $errors ) ){
-		$user_email 	= sanitize_text_field( $_POST['affwp_user_email'] );
-	}
+		if( ! array_key_exists( 'email_unavailable', $errors ) && ! array_key_exists( 'email_invalid', $errors ) ){
+			$user_email 	= sanitize_text_field( $_POST['affwp_user_email'] );
+		}
 
-	if( ! array_key_exists( 'payment_email_invalid', $errors ) ){
-		$payment_email =  sanitize_text_field( $_POST['affwp_payment_email'] );
+		if( ! array_key_exists( 'payment_email_invalid', $errors ) ){
+			$payment_email =  sanitize_text_field( $_POST['affwp_payment_email'] );
+		}
 	}
 }
 ?>
@@ -57,7 +59,7 @@ if( ! empty ( $errors ) ){
 				<label for="affwp-user-url"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
 				<input id="affwp-user-url" type="url" name="affwp_user_url" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
 			</p>
-			 
+
 			<p>
 				<label for="affwp-promotion-method"><?php _e( 'How will you promote us?', 'affiliate-wp' ); ?></label>
 				<textarea id="affwp-promotion-method" name="affwp_promotion_method" rows="5" cols="30"></textarea>
