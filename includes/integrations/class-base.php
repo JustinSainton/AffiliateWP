@@ -224,7 +224,7 @@ abstract class Affiliate_WP_Base {
 		$rate = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate', true );
 		if( empty( $rate ) ) {
 
-			$rate = affwp_get_affiliate_rate();
+			$rate = affwp_get_affiliate_rate( $this->affiliate_id );
 
 		}
 
