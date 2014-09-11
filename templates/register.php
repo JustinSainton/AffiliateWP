@@ -4,7 +4,7 @@ affiliate_wp()->register->print_errors();
 
 $errors = affiliate_wp()->register->get_errors();
 
-if( ! empty ( $errors ) ){
+if( ! is_user_logged_in() && ! empty ( $errors ) ){
 	if( ! array_key_exists( 'empty_name', $errors ) ){
 		$user_name =  sanitize_text_field( $_POST['affwp_user_name'] );
 	}
@@ -57,7 +57,7 @@ if( ! empty ( $errors ) ){
 				<label for="affwp-user-url"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
 				<input id="affwp-user-url" type="url" name="affwp_user_url" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
 			</p>
-			 
+
 			<p>
 				<label for="affwp-promotion-method"><?php _e( 'How will you promote us?', 'affiliate-wp' ); ?></label>
 				<textarea id="affwp-promotion-method" name="affwp_promotion_method" rows="5" cols="30"></textarea>
