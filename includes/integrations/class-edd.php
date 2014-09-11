@@ -379,8 +379,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function download_settings( $download_id = 0 ) {
 
-		$rate = $this->get_product_rate( $download_id );
-
+		$rate = get_post_meta( $download_id, '_affwp_' . $this->context . '_product_rate', true );
 ?>
 		<p>
 			<strong><?php _e( 'Affiliate Rates:', 'affiliate-wp' ); ?></strong>
