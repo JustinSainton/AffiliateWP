@@ -23,6 +23,9 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 		$payment_email = sanitize_text_field( $_POST['affwp_payment_email'] );
 	}
 
+	$url    = sanitize_text_field( $_POST['affwp_user_url'] );
+	$method = sanitize_text_field( $_POST['affwp_promotion_method'] );
+
 }
 ?>
 
@@ -58,12 +61,12 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 
 			<p>
 				<label for="affwp-user-url"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
-				<input id="affwp-user-url" type="url" name="affwp_user_url" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
+				<input id="affwp-user-url" type="url" name="affwp_user_url" value="<?php if( ! empty( $url ) ) { echo $url; } ?>" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
 				<label for="affwp-promotion-method"><?php _e( 'How will you promote us?', 'affiliate-wp' ); ?></label>
-				<textarea id="affwp-promotion-method" name="affwp_promotion_method" rows="5" cols="30"></textarea>
+				<textarea id="affwp-promotion-method" name="affwp_promotion_method" rows="5" cols="30"><?php if( ! empty( $method ) ) { echo esc_textarea( $method ); } ?></textarea>
 			</p>
 
 			<p>
