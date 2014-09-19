@@ -35,6 +35,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
+		add_action( 'init', array( $this, 'rewrites' ) );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
 
