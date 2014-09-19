@@ -200,7 +200,27 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_visit() {
 
-		$affiliate_id = absint( $_POST['affiliate'] );
+		$affiliate_id = $_POST['affiliate'];
+
+		if( is_numeric( $affiliate_id ) ) {
+
+			$affiliate_id = absint( $affiliate_id );
+
+		} else {
+
+			$user = get_user_by( 'login', $affiliate_id );
+
+			if( $user ) {
+
+				$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+			} else {
+
+				$affiliate_id = false;
+
+			}
+
+		}
 
 		if( $this->is_valid_affiliate( $affiliate_id ) ) {
 
