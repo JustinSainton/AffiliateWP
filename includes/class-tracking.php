@@ -47,13 +47,25 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function header_scripts() {
+
+		$ref = get_query_var( $this->get_referral_var() );
+
+		if( empty( $ref ) ) {
+
+			$ref = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
+
+		}
+
 ?>
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
 
 			var cookie = $.cookie( 'affwp_ref' );
-			var ref = affwp_get_query_vars()["<?php echo $this->get_referral_var(); ?>"];
-
+			<?php if( empty( $ref ) ) : ?>
+				var ref = affwp_get_query_vars()["<?php echo $this->get_referral_var(); ?>"];
+			<?php else : ?>
+				var ref = "<?php echo $ref; ?>";
+			<?php endif; ?>
 			// If a referral var is present and a referral cookie is not already set
 			if( ref && ! cookie ) {
 
@@ -195,13 +207,24 @@ class Affiliate_WP_Tracking {
 	}
 
 	/**
+	 * Registers the rewrite rules for pretty affiliate links
+	 *
+	 * @since 1.0
+	 */
+	public function rewrites() {
+
+		 add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
+
+	}
+
+	/**
 	 * Record referral visit via ajax
 	 *
 	 * @since 1.0
 	 */
 	public function track_visit() {
 
-		$affiliate_id = $_POST['affiliate'];
+		$affiliate_id = stripslashes( $_POST['affiliate'] );
 
 		if( is_numeric( $affiliate_id ) ) {
 
@@ -252,7 +275,7 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_conversion() {
 
-		$affiliate_id = $_POST['affiliate'];
+		$affiliate_id = stripslashes( $_POST['affiliate'] );
 
 		if( is_numeric( $affiliate_id ) ) {
 
@@ -318,19 +341,45 @@ class Affiliate_WP_Tracking {
 	 */
 	public function fallback_track_visit() {
 
-		$ref = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
+		$affiliate_id = get_query_var( $this->get_referral_var() );
 
-		if( empty( $ref ) ) {
+		if( empty( $affiliate_id ) ) {
+
+			$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
+
+		}
+
+		if( empty( $affiliate_id ) ) {
 			return;
 		}
 
-		if( $this->is_valid_affiliate( $ref ) && ! $this->get_visit_id() ) {
+		if( is_numeric( $affiliate_id ) ) {
 
-			$this->set_affiliate_id( $ref );
+			$affiliate_id = absint( $affiliate_id );
+
+		} else {
+
+			$user = get_user_by( 'login', $affiliate_id );
+
+			if( $user ) {
+
+				$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+			} else {
+
+				$affiliate_id = false;
+
+			}
+
+		}
+
+		if( $this->is_valid_affiliate( $affiliate_id ) && ! $this->get_visit_id() ) {
+
+			$this->set_affiliate_id( $affiliate_id );
 
 			// Store the visit in the DB
 			$visit_id = affiliate_wp()->visits->add( array(
-				'affiliate_id' => $ref,
+				'affiliate_id' => $affiliate_id,
 				'ip'           => $this->get_ip(),
 				'url'          => $this->get_current_page_url(),
 				'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : ''
