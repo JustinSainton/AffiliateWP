@@ -231,7 +231,27 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_conversion() {
 
-		$affiliate_id = absint( $_POST['affiliate'] );
+		$affiliate_id = $_POST['affiliate'];
+
+		if( is_numeric( $affiliate_id ) ) {
+
+			$affiliate_id = absint( $affiliate_id );
+
+		} else {
+
+			$user = get_user_by( 'login', $affiliate_id );
+
+			if( $user ) {
+
+				$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+			} else {
+
+				$affiliate_id = false;
+
+			}
+
+		}
 
 		if( $this->is_valid_affiliate( $affiliate_id ) ) {
 
@@ -373,7 +393,34 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function get_affiliate_id() {
-		return ! empty( $_COOKIE['affwp_ref'] ) ? absint( $_COOKIE['affwp_ref'] ) : false;
+
+		$affiliate_id = ! empty( $_COOKIE['affwp_ref'] ) ? $_COOKIE['affwp_ref'] : false;
+
+		if( ! empty( $cookie ) ) {
+
+			if( is_numeric( $affiliate_id ) ) {
+
+				$affiliate_id = absint( $affiliate_id );
+
+			} else {
+
+				$user = get_user_by( 'login', $affiliate_id );
+
+				if( $user ) {
+
+					$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+				} else {
+
+					$affiliate_id = false;
+
+				}
+
+			}
+
+		}
+
+		return $affiliate_id;
 	}
 
 	/**
