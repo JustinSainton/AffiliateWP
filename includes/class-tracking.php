@@ -317,7 +317,7 @@ class Affiliate_WP_Tracking {
 	 */
 	public function fallback_track_visit() {
 
-		$ref = ! empty( $_GET[ $this->get_referral_var() ] ) ? absint( $_GET[ $this->get_referral_var() ] ) : false;
+		$ref = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
 
 		if( empty( $ref ) ) {
 			return;
