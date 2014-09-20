@@ -113,10 +113,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
 
-				if( $existing ) {
+				if( ! empty( $existing->referral_id ) ) {
 
 					// If a referral was already recored, overwrite it with the affiliate from the coupon
-					affiliate_wp()->referrals->update( $existing, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+					affiliate_wp()->referrals->update( $existing->referral_id, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
 
 				} else {
 
