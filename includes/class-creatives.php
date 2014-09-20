@@ -28,7 +28,7 @@ class Affiliate_WP_Creatives {
 			'text'          => affiliate_wp()->creatives->get_column( 'text', $id ),
 			'image_id'      => '',
 			'image_link'	=> affiliate_wp()->creatives->get_column( 'image', $id ),
-			'preview'       => 'yes',
+			'preview'       => 'yes'
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -71,8 +71,9 @@ class Affiliate_WP_Creatives {
 				$url   = $creative->url;
 				$image = $creative->image;
 				$text  = $creative->text;
+				$desc  = ! empty( $creative->description ) ? $creative->description : '';
 
-				echo $this->html( $creative->creative_id, $url, $image, '', $args['preview'], $text );	
+				echo $this->html( $creative->creative_id, $url, $image, '', $args['preview'], $text, $desc );	
 			}
 		}
 
@@ -97,7 +98,7 @@ class Affiliate_WP_Creatives {
 	 * @param  $image the image URL. Either the URL from the image column in DB or external URL of image.
 	 * @return string
 	 */
-	public function html( $id = '', $url, $image_link, $image_attributes, $preview, $text ) {
+	public function html( $id = '', $url, $image_link, $image_attributes, $preview, $text, $desc = '' ) {
 		
 		$id_class = $id ? ' creative-' . $id : '';
 		ob_start();
@@ -156,6 +157,10 @@ class Affiliate_WP_Creatives {
 				$creative = '<a href="' . esc_url( $this->ref_link( $url ) ) .'" title="' . esc_attr( $text ) . '">' . $image_or_text . '</a>';
 				echo '<p>' . esc_html( $creative ) . '</p>'; 
 			?>
+
+			<?php if( ! empty( $desc ) ) : ?>
+				<p class="affwp-creative-desc"><?php echo $desc; ?></p>
+			<?php endif; ?>
 			
 		</div>
 
