@@ -61,7 +61,7 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 
 			<p>
 				<label for="affwp-user-url"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
-				<input id="affwp-user-url" type="url" name="affwp_user_url" value="<?php if( ! empty( $url ) ) { echo $url; } ?>" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
+				<input id="affwp-user-url" type="text" name="affwp_user_url" value="<?php if( ! empty( $url ) ) { echo $url; } ?>" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
