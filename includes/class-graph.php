@@ -353,13 +353,16 @@ class Affiliate_WP_Graph {
 			<div class="tablenav top">
 
 				<?php if( is_admin() ) : ?>
-					<?php $tab  = isset( $_GET['tab'] )  ? $_GET['tab']  : 'referral'; ?>
+					<?php $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'referral'; ?>
 					<?php $page = isset( $_GET['page'] ) ? $_GET['page'] : 'affiliate-wp'; ?>
-					<input type="hidden" name="tab" value="<?php echo esc_attr( $tab ); ?>"/>
 					<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>"/>
 				<?php else: ?>
+					<?php $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'graphs'; ?>
 					<input type="hidden" name="page_id" value="<?php echo esc_attr( get_the_ID() ); ?>"/>
 				<?php endif; ?>
+				
+				<input type="hidden" name="tab" value="<?php echo esc_attr( $tab ); ?>"/>
+				
 				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
 				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>
 				<input type="hidden" name="action" value="view_affiliate"/>
