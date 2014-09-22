@@ -66,7 +66,12 @@ function affwp_process_affiliate_deletion( $data ) {
 			require_once( ABSPATH . 'wp-admin/includes/user.php' );
 
 			$user_id = affwp_get_affiliate_user_id( $affiliate_id );
-			wp_delete_user( $user_id );
+
+			if( (int) $user_id !== (int) get_current_user_id() ) {
+				// Don't allow a user to delete themself
+				wp_delete_user( $user_id );
+			}
+
 		}
 
 		affwp_delete_affiliate( $affiliate_id, true );
