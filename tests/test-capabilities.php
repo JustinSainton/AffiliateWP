@@ -2,8 +2,24 @@
 
 class Capabilities_Tests extends WP_UnitTestCase {
 
-	function test_get_capabilities() {
-		$this->assertFalse( false );
+	protected $_user_id = 1;
+
+	function setUp() {
+		parent::setUp();
+	}
+
+	function test_admin_has_caps() {
+
+		$user = new WP_User( $this->user_id );
+
+		$this->assertTrue( $user->has_cap( 'view_affiliate_reports' ) );
+		$this->assertTrue( $user->has_cap( 'export_affiliate_data' ) );
+		$this->assertTrue( $user->has_cap( 'manage_affiliate_options' ) );
+		$this->assertTrue( $user->has_cap( 'manage_affiliates' ) );
+		$this->assertTrue( $user->has_cap( 'manage_referrals' ) );
+		$this->assertTrue( $user->has_cap( 'manage_visits' ) );
+		$this->assertTrue( $user->has_cap( 'manage_creatives' ) );
+
 	}
 
 }
