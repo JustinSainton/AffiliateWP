@@ -10,7 +10,7 @@ class Capabilities_Tests extends WP_UnitTestCase {
 
 	function test_admin_has_caps() {
 
-		$user = new WP_User( $this->user_id );
+		$user = new WP_User( $this->_user_id );
 
 		$this->assertTrue( $user->has_cap( 'view_affiliate_reports' ) );
 		$this->assertTrue( $user->has_cap( 'export_affiliate_data' ) );
