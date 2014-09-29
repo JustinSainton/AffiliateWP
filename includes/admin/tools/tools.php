@@ -138,6 +138,21 @@ function affwp_migration_tab() {
 			</div><!-- .postbox -->
 	
 			<div class="postbox">
+				<h3><span><?php _e( 'User Accounts', 'affiliate-wp' ); ?></span></h3>
+				<div class="inside">
+					<p><?php _e( 'Use this tool create affiliate accounts for each of your existing WordPress user accounts.', 'affiliate-wp' ); ?></p>
+					<form method="get">
+						<input type="hidden" name="type" value="users"/>
+						<input type="hidden" name="part" value="affiliates"/>
+						<input type="hidden" name="page" value="affiliate-wp-migrate"/>
+						<p>
+							<input type="submit" value="<?php _e( 'Create Affiliate Accounts', 'affiliate-wp' ); ?>" class="button"/>
+						</p>
+					</form>
+				</div><!-- .inside -->
+			</div><!-- .postbox -->
+
+			<div class="postbox">
 				<h3><span>Affiliates Pro</span></h3>
 				<div class="inside">
 					<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
@@ -152,6 +167,7 @@ function affwp_migration_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
+
 		</div><!-- .metabox-holder -->
 	</div><!-- #affwp-dashboard-widgets-wrap -->
 <?php
