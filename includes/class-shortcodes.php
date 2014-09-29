@@ -154,7 +154,17 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), home_url( '/' ) );
+		shortcode_atts( 
+			array(
+				'url' => ''
+			), 
+			$atts, 
+			'affiliate_referral_url'
+		);
+
+		$base = ! empty( $atts[ 'url' ] ) ? $atts[ 'url' ] : home_url( '/' );
+
+		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $base );
 	}
 
 	/**
