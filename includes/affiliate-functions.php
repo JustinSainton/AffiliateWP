@@ -691,12 +691,13 @@ function affwp_update_affiliate( $data = array() ) {
 	$args         = array();
 	$affiliate_id = absint( $data['affiliate_id'] );
 	$affiliate    = affwp_get_affiliate( $affiliate_id );
-	$user_id      = $affiliate->user_id;
+	$user_id      = empty( $affiliate->user_id ) ? absint( $data['user_id'] ) : $affiliate->user_id;
 
 	$args['account_email'] = ! empty( $data['account_email' ] ) && is_email( $data['account_email' ] ) ? sanitize_text_field( $data['account_email'] ) : '';
 	$args['payment_email'] = ! empty( $data['payment_email' ] ) && is_email( $data['payment_email' ] ) ? sanitize_text_field( $data['payment_email'] ) : '';
 	$args['rate']          = ! empty( $data['rate' ] )      ? sanitize_text_field( $data['rate'] )      : 0;
 	$args['rate_type']     = ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '';
+	$args['user_id']       = $user_id;
 
 	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
 
