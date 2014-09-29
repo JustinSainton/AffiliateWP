@@ -86,14 +86,17 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				return false; // Ignore a zero amount referral
 			}
 
-			$referral_id = affiliate_wp()->referrals->add( array(
+			$description = $this->get_referral_description();
+			$visit_id    = affiliate_wp()->tracking->get_visit_id();
+
+			$referral_id = affiliate_wp()->referrals->add( apply_filters( 'affwp_insert_pending_referral', array(
 				'amount'       => $amount,
 				'reference'    => $order_id,
-				'description'  => $this->get_referral_description(),
+				'description'  => $description,
 				'affiliate_id' => $this->affiliate_id,
-				'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
+				'visit_id'     => $visit_id,
 				'context'      => $this->context
-			) );
+			), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
 
 			if( $referral_id ) {
 
