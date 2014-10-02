@@ -53,15 +53,18 @@ class Affiliate_WP_Migrate_WP_Affiliate extends Affiliate_WP_Migrate_Base {
 				}
 
 				$user = get_user_by( 'email', $affiliate->email );
-				if( ! $user ) {
+
+				if( is_wp_error( $user ) || ! $user ) {
+
 					$user_id = wp_insert_user( array(
 						'user_email' => $affiliate->email,
 						'first_name' => $affiliate->firstname,
 						'last_name'  => $affiliate->lastname,
 						'user_url'   => $affiliate->website,
 						'user_pass'  => '',
-						'user_login' => $affiliate->refid
+						'user_login' => $affiliate->email
 					) );
+
 				} else {
 					$user_id = $user->ID;
 				}
