@@ -13,7 +13,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$this->context = 'edd';
 
 		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 10, 2 );
-		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
+		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 9 );
 		add_action( 'edd_complete_purchase', array( $this, 'mark_referral_complete' ) );
 		add_action( 'edd_update_payment_status', array( $this, 'revoke_referral_on_refund' ), 10, 3 );
 		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
