@@ -65,19 +65,35 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
+			$cart_discount = $this->order->get_total_discount();
+
 			$items = $this->order->get_items();
+
 			if( is_array( $items ) ) {
 
 				// Calculate the referral amount based on product prices
 				$amount = 0.00;
 				foreach( $items as $product ) {
 
-					$amount += $this->calculate_referral_amount( $product['line_total'], $order_id, $product['product_id'] );
+					// The order discount has to be divided across the items
+					
+					$discount = 0;
+	
+					if( $cart_discount > 0 ) {
+
+						$discount = $cart_discount / count( $items );
+	
+					}
+
+					$product_total = $product['line_total'] - $discount;
+					
+					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
 				}
 
 			} else {
 
+				$total  = $this->order->get_total() - $cart_discount;
 				$amount = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
 
 			}

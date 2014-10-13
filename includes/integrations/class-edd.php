@@ -13,7 +13,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$this->context = 'edd';
 
 		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 10, 2 );
-		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
+		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 9 );
 		add_action( 'edd_complete_purchase', array( $this, 'mark_referral_complete' ) );
 		add_action( 'edd_update_payment_status', array( $this, 'revoke_referral_on_refund' ), 10, 3 );
 		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
@@ -111,31 +111,35 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					continue;
 				}
 
+				$this->affiliate_id = $affiliate_id;
+
 				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
 
-				if( ! empty( $existing->referral_id ) ) {
+				$downloads = edd_get_payment_meta_cart_details( $payment_id );
+				
+				if ( is_array( $downloads ) ) {
+					
+					// Calculate the referral amount based on product prices
+					$referral_total = 0.00;
+					foreach ( $downloads as $download ) {
 
-					// If a referral was already recored, overwrite it with the affiliate from the coupon
-					affiliate_wp()->referrals->update( $existing->referral_id, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+						$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
+
+					}
 
 				} else {
 
-					$downloads = edd_get_payment_meta_cart_details( $payment_id );
-					if( is_array( $downloads ) ) {
-						
-						// Calculate the referral amount based on product prices
-						$referral_total = 0.00;
-						foreach( $downloads as $download ) {
+					$referral_total = $this->calculate_referral_amount( edd_get_payment_subtotal( $payment_id ), $payment_id );
 
-							$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
+				}
 
-						}
 
-					} else {
+				if ( ! empty( $existing->referral_id ) ) {
 
-						$referral_total = $this->calculate_referral_amount( edd_get_payment_subtotal( $payment_id ), $payment_id );
+					// If a referral was already recorded, overwrite it with the affiliate from the coupon
+					affiliate_wp()->referrals->update( $existing->referral_id, array( 'affiliate_id' => $this->affiliate_id, 'status' => 'unpaid', 'amount' => $referral_total ) );
 
-					}
+				} else {
 
 					if( 0 == $referral_total && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 						return false; // Ignore a zero amount referral
@@ -145,11 +149,9 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 						'amount'       => $referral_total,
 						'reference'    => $payment_id,
 						'description'  => $this->get_referral_description( $payment_id ),
-						'affiliate_id' => $affiliate_id,
+						'affiliate_id' => $this->affiliate_id,
 						'context'      => $this->context
 					) );
-
-					affwp_set_referral_status( $referral_id, 'unpaid' );
 
 					$referral_total = affwp_currency_filter( affwp_format_amount( $referral_total ) );
 					$name           = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
