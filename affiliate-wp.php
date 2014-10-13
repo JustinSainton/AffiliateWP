@@ -136,10 +136,18 @@ final class Affiliate_WP {
 	/**
 	 * The creatives instance variable
 	 *
-	 * @var Affiliate_WP_Creatives
+	 * @var Affiliate_WP_Creatives_DB
 	 * @since 1.2
 	 */
 	public $creatives;
+
+	/**
+	 * The creative class instance variable
+	 *
+	 * @var Affiliate_WP_Creatives
+	 * @since 1.3
+	 */
+	public $creative;
 
 	/**
 	 * Main Affiliate_WP Instance
@@ -167,7 +175,6 @@ final class Affiliate_WP {
 			self::$instance->affiliates   = new Affiliate_WP_DB_Affiliates;
 			self::$instance->referrals    = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits       = new Affiliate_WP_Visits_DB;
-			self::$instance->creatives    = new Affiliate_WP_Creatives_DB;
 			self::$instance->settings     = new Affiliate_WP_Settings;
 			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->templates    = new Affiliate_WP_Templates;
@@ -175,6 +182,7 @@ final class Affiliate_WP {
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
 			self::$instance->emails       = new Affiliate_WP_Emails;
+			self::$instance->creatives    = new Affiliate_WP_Creatives_DB;
 			self::$instance->creative     = new Affiliate_WP_Creatives;
 
 			self::$instance->updater();
