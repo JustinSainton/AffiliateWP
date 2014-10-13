@@ -57,13 +57,14 @@ class Affiliate_WP_Creatives {
 		
 		$defaults = array(
 			'preview' => 'yes',
+			'status'  => 'active'
 		);
 
 		$args = wp_parse_args( $args, $defaults );
 
 		ob_start();
 
-		$creatives = affiliate_wp()->creatives->get_creatives( array( 'status' => 'active' ) );
+		$creatives = affiliate_wp()->creatives->get_creatives( $args );
 
 		if ( $creatives ) {
 			foreach ( $creatives as $creative ) {
