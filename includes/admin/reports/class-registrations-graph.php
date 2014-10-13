@@ -19,7 +19,7 @@ class Affiliate_WP_Registrations_Graph extends Affiliate_WP_Graph {
 		);
 
 		$affiliates = affiliate_wp()->affiliates->get_affiliates( array(
-			'orderby'  => 'date',
+			'orderby'  => 'date_registered',
 			'order'    => 'ASC',
 			'number'   => -1,
 			'date'     => $date
@@ -33,7 +33,32 @@ class Affiliate_WP_Registrations_Graph extends Affiliate_WP_Graph {
 
 			foreach( $affiliates as $affiliate ) {
 
-				$affiliate_data[] = array( strtotime( $affiliate->date_registered ) * 1000, 1 );
+				if( 'today' == $dates['range'] || 'yesterday' == $dates['range'] ) {
+
+					$point = strtotime( $affiliate->date_registered ) * 1000;
+
+					$affiliate_data[ $point ] = array( $point, 1 );
+
+				} else {
+
+					$time      = date( 'Y-n-d', strtotime( $affiliate->date_registered ) );
+					$timestamp = strtotime( $time ) * 1000;
+
+					if( array_key_exists( $time, $affiliate_data ) && isset( $affiliate_data[ $time ][1] ) ) {
+
+						$count = $affiliate_data[ $time ][1] += 1;
+
+						$affiliate_data[ $time ] = array( $timestamp, $count );
+					
+					} else {
+
+						$affiliate_data[ $time ] = array( $timestamp, 1 );
+						
+					}
+
+					
+				}
+
 
 			}
 
@@ -45,15 +70,6 @@ class Affiliate_WP_Registrations_Graph extends Affiliate_WP_Graph {
 
 		return $data;
 
-	}
-
-	/**
-	 * Retrieve conversion rate for successful visits
-	 *
-	 * @since 1.1
-	 */
-	public function get_conversion_rate() {
-		return round( ( $this->converted / $this->total ) * 100, 2 );
 	}
 
 }

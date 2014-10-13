@@ -1,5 +1,6 @@
 <?php
 $affiliate = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
+$user_info = get_userdata( $affiliate->user_id );
 $rate_type = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
 $rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
 $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
@@ -21,8 +22,8 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input type="text" name="affiliate_id" id="affiliate_id" value="<?php echo esc_attr( $affiliate->affiliate_id ); ?>" disabled="1"/>
-					<div class="description"><?php _e( 'The affiliate\'s ID. This cannot be changed.', 'affiliate-wp' ); ?></div>
+					<input class="small-text" type="text" name="affiliate_id" id="affiliate_id" value="<?php echo esc_attr( $affiliate->affiliate_id ); ?>" disabled="1" />
+					<p class="description"><?php _e( 'The affiliate\'s ID. This cannot be changed.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -34,8 +35,8 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input type="text" name="user_id" id="user_id" value="<?php echo esc_attr( $affiliate->user_id ); ?>" disabled="1"/>
-					<div class="description"><?php _e( 'The affiliate\'s user ID. This cannot be changed.', 'affiliate-wp' ); ?></div>
+					<input class="small-text" type="text" name="user_id" id="user_id" value="<?php echo esc_attr( $affiliate->user_id ); ?>" disabled="1" />
+					<p class="description"><?php _e( 'The affiliate\'s user ID. This cannot be changed.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -53,7 +54,7 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 							<option value="<?php echo esc_attr( $key ); ?>"<?php selected( $rate_type, $key ); ?>><?php echo esc_html( $type ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<div class="description"><?php _e( 'The affiliate\'s referral rate type.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'The affiliate\'s referral rate type.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -65,8 +66,21 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input type="text" name="rate" id="rate" value="<?php echo esc_attr( $rate ); ?>"/>
-					<div class="description"><?php _e( 'The affiliate\'s referral rate. If left blank, the site default will be used.', 'affiliate-wp' ); ?></div>
+					<input class="small-text" type="text" name="rate" id="rate" value="<?php echo esc_attr( $rate ); ?>"/>
+					<p class="description"><?php _e( 'The affiliate\'s referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
+				</td>
+
+			</tr>
+
+			<tr class="form-row">
+
+				<th scope="row">
+					<label for="account-email"><?php _e( 'Account Email', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<input class="regular-text" type="text" name="account_email" id="account-email" value="<?php echo $user_info->user_email; ?>" />
+					<p class="description"><?php _e( 'The affiliate\'s account email. Updating this will change the email address shown on the user\'s profile page.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -78,8 +92,8 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input type="text" name="payment_email" id="payment_email" value="<?php echo esc_attr( $email ); ?>"/>
-					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email.', 'affiliate-wp' ); ?></div>
+					<input class="regular-text" type="text" name="payment_email" id="payment_email" value="<?php echo esc_attr( $email ); ?>"/>
+					<p class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -90,7 +104,7 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 
 		<input type="hidden" name="affwp_action" value="update_affiliate" />
 
-		<?php submit_button( __( 'Edit Affiliate', 'affiliate-wp' ) ); ?>
+		<?php submit_button( __( 'Update Affiliate', 'affiliate-wp' ) ); ?>
 
 	</form>
 

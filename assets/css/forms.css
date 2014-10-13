@@ -27,16 +27,22 @@ table.affwp-table th {
 	margin-bottom: 1em;
 }
 
+.affwp-form textarea,
 .affwp-form input[type="text"],
 .affwp-form input[type="password"],
-.affwp-form input[type="email"] {
+.affwp-form input[type="email"],
+.affwp-form input[type="url"] {
 	display: inline-block;
 	width: 200px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .affwp-form input[type="text"].required,
 .affwp-form input[type="password"].required,
-.affwp-form input[type="email"].required {
+.affwp-form input[type="email"].required,
+.affwp-form input[type="url"].required {
 	color: inherit;
 }
 
@@ -49,8 +55,13 @@ table.affwp-table th {
 	width: 200px;
 }
 
-.affwp-referral-url-submit-wrap {
-	margin-top: 10px;
+.affwp-base-url-wrap, 
+.affwp-referral-url-wrap {
+	margin-bottom: 10px;
+}
+
+#affwp-generate-ref-url input {
+	width: 100%;
 }
 
 .affwp-errors,
@@ -79,6 +90,26 @@ p.affwp-error {
 
 #affwp-graphs-filter {
 	margin-bottom: 20px;
+}
+
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li {
+	display: inline-block;
+	padding: 0 10px 0 0;
+	margin: 0;
+}
+
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li.active {
+	font-weight: bold;
+}
+
+#affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs li a {
+	text-decoration: none;
 }
 
 #affwp-affiliate-dashboard .affwp-graph {

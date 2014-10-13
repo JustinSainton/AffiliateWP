@@ -22,7 +22,7 @@
 						<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 					</span>
 					<div id="affwp_user_search_results"></div>
-					<div class="description"><?php _e( 'Begin typing the name of the affiliate to perform a search for their associated user account.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Begin typing the name of the affiliate to perform a search for their associated user account.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -40,7 +40,7 @@
 							<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $type ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<div class="description"><?php _e( 'The affiliate\'s referral rate type.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'The affiliate\'s referral rate type.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -48,12 +48,12 @@
 			<tr class="form-row form-required">
 
 				<th scope="row">
-					<label for="rate"><?php _e( 'Rate', 'affiliate-wp' ); ?></label>
+					<label for="rate"><?php _e( 'Referral Rate', 'affiliate-wp' ); ?></label>
 				</th>
 
 				<td>
 					<input type="text" name="rate" id="rate" />
-					<div class="description"><?php _e( 'Referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'The affiliate\'s referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -66,7 +66,7 @@
 
 				<td>
 					<input type="text" name="payment_email" id="payment_email" />
-					<div class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Affiliate\'s payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate\'s user email.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>

@@ -353,13 +353,16 @@ class Affiliate_WP_Graph {
 			<div class="tablenav top">
 
 				<?php if( is_admin() ) : ?>
-					<?php $tab  = isset( $_GET['tab'] )  ? $_GET['tab']  : 'referral'; ?>
+					<?php $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'referral'; ?>
 					<?php $page = isset( $_GET['page'] ) ? $_GET['page'] : 'affiliate-wp'; ?>
-					<input type="hidden" name="tab" value="<?php echo esc_attr( $tab ); ?>"/>
 					<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>"/>
 				<?php else: ?>
+					<?php $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'graphs'; ?>
 					<input type="hidden" name="page_id" value="<?php echo esc_attr( get_the_ID() ); ?>"/>
 				<?php endif; ?>
+				
+				<input type="hidden" name="tab" value="<?php echo esc_attr( $tab ); ?>"/>
+				
 				<?php if( isset( $_GET['affiliate_id'] ) ) : ?>
 				<input type="hidden" name="affiliate_id" value="<?php echo absint( $_GET['affiliate_id'] ); ?>"/>
 				<input type="hidden" name="action" value="view_affiliate"/>
@@ -421,12 +424,12 @@ function affwp_get_report_dates() {
 	$current_time = current_time( 'timestamp' );
 
 	$dates['range']      = isset( $_GET['range'] )      ? $_GET['range']      : 'this_month';
-	$dates['day']        = isset( $_GET['day'] )        ? $_GET['day']        : null;
-	$dates['day_end']    = isset( $_GET['day_end'] )    ? $_GET['day_end']    : null;
-	$dates['m_start']    = isset( $_GET['m_start'] )    ? $_GET['m_start']    : 1;
-	$dates['m_end']      = isset( $_GET['m_end'] )      ? $_GET['m_end']      : 12;
 	$dates['year']       = isset( $_GET['year_start'] ) ? $_GET['year_start'] : date( 'Y', $current_time );
 	$dates['year_end']   = isset( $_GET['year_end'] )   ? $_GET['year_end']   : date( 'Y', $current_time );
+	$dates['m_start']    = isset( $_GET['m_start'] )    ? $_GET['m_start']    : 1;
+	$dates['m_end']      = isset( $_GET['m_end'] )      ? $_GET['m_end']      : 12;
+	$dates['day']        = isset( $_GET['day'] )        ? $_GET['day']        : 1;
+	$dates['day_end']    = isset( $_GET['day_end'] )    ? $_GET['day_end']    : cal_days_in_month( CAL_GREGORIAN, $dates['m_start'], $dates['year'] );
 
 	// Modify dates based on predefined ranges
 	switch ( $dates['range'] ) :

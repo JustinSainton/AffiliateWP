@@ -36,9 +36,11 @@ class Affiliate_WP_Capabilities {
 	public function add_caps() {
 		global $wp_roles;
 
-		if ( class_exists('WP_Roles') )
-			if ( ! isset( $wp_roles ) )
+		if ( class_exists('WP_Roles') ) {
+			if ( ! isset( $wp_roles ) ) {
 				$wp_roles = new WP_Roles();
+			}
+		}
 
 		if ( is_object( $wp_roles ) ) {
 
@@ -48,6 +50,7 @@ class Affiliate_WP_Capabilities {
 			$wp_roles->add_cap( 'administrator', 'manage_affiliates' );
 			$wp_roles->add_cap( 'administrator', 'manage_referrals' );
 			$wp_roles->add_cap( 'administrator', 'manage_visits' );
+			$wp_roles->add_cap( 'administrator', 'manage_creatives' );
 		}
 	}
 
@@ -60,10 +63,13 @@ class Affiliate_WP_Capabilities {
 	 * @return void
 	 */
 	public function remove_caps() {
-		if ( class_exists( 'WP_Roles' ) )
-			if ( ! isset( $wp_roles ) )
-				$wp_roles = new WP_Roles();
 
+		if ( class_exists('WP_Roles') ) {
+			if ( ! isset( $wp_roles ) ) {
+				$wp_roles = new WP_Roles();
+			}
+		}
+		
 		if ( is_object( $wp_roles ) ) {
 
 			/** Site Administrator Capabilities */
@@ -73,6 +79,7 @@ class Affiliate_WP_Capabilities {
 			$wp_roles->remove_cap( 'administrator', 'manage_affiliates' );
 			$wp_roles->remove_cap( 'administrator', 'manage_referrals' );
 			$wp_roles->remove_cap( 'administrator', 'manage_visits' );
+			$wp_roles->remove_cap( 'administrator', 'manage_creatives' );
 
 		}
 	}

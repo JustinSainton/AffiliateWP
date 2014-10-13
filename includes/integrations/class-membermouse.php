@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
-	
+
 	public function init() {
 
 		$this->context = 'membermouse';
@@ -18,7 +18,7 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 		if( $this->was_referred() ) {
 
 			$membership = new MM_MembershipLevel( $member_data['membership_level'] );
-			
+
 			if( ! $membership->isFree() ) {
 				return;
 			}
@@ -45,19 +45,19 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			//echo '<pre>'; var_dump( json_decode( $affiliate_data['order_products'] ) ); echo '</pre>'; exit;
+			$products = json_decode( $affiliate_data['order_products'] );
 
-			$description = '';
-			foreach( json_decode( $affiliate_data['order_products'] ) as $product ) {
-				$description .= $product->name;
-				if( $key + 1 < count( $affiliate_data['order_products'] ) ) {
-					$description .= ', ';
-				}
+			if ( ! is_array( $products ) ) {
+				$products = array();
 			}
-			
+
+			$description = implode( ', ', $products );
+
 			$reference = $affiliate_data['member_id'] . '|' . $affiliate_data['order_number'];
 
-			$this->insert_pending_referral( $affiliate_data['order_total'], $reference, $description );
+			$referral_total = $this->calculate_referral_amount( $affiliate_data['order_total'], $reference );
+
+			$this->insert_pending_referral( $referral_total, $reference, $description );
 			$this->complete_referral( $reference );
 
 		}
@@ -90,6 +90,6 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
-	
+
 }
 new Affiliate_WP_Membermouse;

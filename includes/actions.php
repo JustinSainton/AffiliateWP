@@ -15,14 +15,6 @@ function affwp_do_actions() {
 }
 add_action( 'init', 'affwp_do_actions' );
 
-// Process an affiliate creation from the admin screen
-add_action( 'affwp_add_affiliate', 'affwp_add_affiliate' );
-
-// Process an affiliate update from the admin screen
-add_action( 'affwp_update_affiliate', 'affwp_update_affiliate' );
-
-// Process a referral creation from the admin screen
-add_action( 'affwp_add_referral', 'affwp_add_referral' );
-
 // Process affiliate notification settings
 add_action( 'affwp_update_profile_settings', 'affwp_update_profile_settings' );
+

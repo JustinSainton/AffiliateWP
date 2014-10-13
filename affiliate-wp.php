@@ -5,7 +5,7 @@
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.1.3
+ * Version: 1.2.7
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  * @package AffiliateWP
  * @category Core
  * @author Pippin Williamson
- * @version 1.1.3
+ * @version 1.2.7
  */
 
 // Exit if accessed directly
@@ -46,20 +46,100 @@ final class Affiliate_WP {
 	 */
 	private static $instance;
 
-	private $version = '1.1.3';
+	/**
+	 * The version number of AffiliateWP
+	 *
+	 * @since 1.0
+	 */
+	private $version = '1.2.7';
 
-	// Class properties
+	/**
+	 * The affiliates DB instance variable.
+	 *
+	 * @var Affiliate_WP_DB_Affiliates
+	 * @since 1.0
+	 */
 	public $affiliates;
+
+	/**
+	 * The referrals instance variable.
+	 *
+	 * @var Affiliate_WP_Referrals_DB
+	 * @since 1.0
+	 */
 	public $referrals;
+
+	/**
+	 * The visits DB instance variable
+	 *
+	 * @var Affiliate_WP_Visits_DB
+	 * @since 1.0
+	 */
 	public $visits;
+
+	/**
+	 * The settings instance variable
+	 *
+	 * @var Affiliate_WP_Settings
+	 * @since 1.0
+	 */
 	public $settings;
+
+	/**
+	 * The affiliate tracking handler instance variable
+	 *
+	 * @var Affiliate_WP_Tracking
+	 * @since 1.0
+	 */
 	public $tracking;
+
+	/**
+	 * The template loader instance variable
+	 *
+	 * @var Affiliate_WP_Templates
+	 * @since 1.0
+	 */
 	public $templates;
+
+	/**
+	 * The affiliate login handler instance variable
+	 *
+	 * @var Affiliate_WP_Login
+	 * @since 1.0
+	 */
 	public $login;
+
+	/**
+	 * The affiliate registration handler instance variable
+	 *
+	 * @var Affiliate_WP_Register
+	 * @since 1.0
+	 */
 	public $register;
+
+	/**
+	 * The integrations handler instance variable
+	 *
+	 * @var Affiliate_WP_Integrations
+	 * @since 1.0
+	 */
 	public $integrations;
+
+	/**
+	 * The email notification handler instance variable
+	 *
+	 * @var Affiliate_WP_Emails
+	 * @since 1.0
+	 */
 	public $emails;
 
+	/**
+	 * The creatives instance variable
+	 *
+	 * @var Affiliate_WP_Creatives
+	 * @since 1.2
+	 */
+	public $creatives;
 
 	/**
 	 * Main Affiliate_WP Instance
@@ -74,7 +154,7 @@ final class Affiliate_WP {
 	 * @uses Affiliate_WP::includes() Include the required files
 	 * @uses Affiliate_WP::setup_actions() Setup the hooks and actions
 	 * @uses Affiliate_WP::updater() Setup the plugin updater
-	 * @return The one true Affiliate_WP
+	 * @return Affiliate_WP
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Affiliate_WP ) ) {
@@ -87,6 +167,7 @@ final class Affiliate_WP {
 			self::$instance->affiliates   = new Affiliate_WP_DB_Affiliates;
 			self::$instance->referrals    = new Affiliate_WP_Referrals_DB;
 			self::$instance->visits       = new Affiliate_WP_Visits_DB;
+			self::$instance->creatives    = new Affiliate_WP_Creatives_DB;
 			self::$instance->settings     = new Affiliate_WP_Settings;
 			self::$instance->tracking     = new Affiliate_WP_Tracking;
 			self::$instance->templates    = new Affiliate_WP_Templates;
@@ -94,6 +175,7 @@ final class Affiliate_WP {
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
 			self::$instance->emails       = new Affiliate_WP_Emails;
+			self::$instance->creative     = new Affiliate_WP_Creatives;
 
 			self::$instance->updater();
 		}
@@ -174,12 +256,16 @@ final class Affiliate_WP {
 		if( is_admin() ) {
 
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/AFFWP_Plugin_Updater.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-addon-updater.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-menu.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/affiliates.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/class-notices.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/creatives/actions.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/creatives/creatives.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/overview/overview.php';
+			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/actions.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/referrals.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/reports/reports.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/display-settings.php';
@@ -207,10 +293,13 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-templates.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-tracking.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/referral-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/creative-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
 	}

@@ -13,18 +13,27 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$this->context = 'edd';
 
 		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 10, 2 );
-		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 10 );
+		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 9 );
 		add_action( 'edd_complete_purchase', array( $this, 'mark_referral_complete' ) );
 		add_action( 'edd_update_payment_status', array( $this, 'revoke_referral_on_refund' ), 10, 3 );
 		add_action( 'edd_payment_delete', array( $this, 'revoke_referral_on_delete' ), 10 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
-	
+
 		// Discount code tracking actions and filters
 		add_action( 'edd_add_discount_form_bottom', array( $this, 'discount_edit' ) );
 		add_action( 'edd_edit_discount_form_bottom', array( $this, 'discount_edit' ) );
 		add_action( 'edd_post_update_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
 		add_action( 'edd_post_insert_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
+
+		// Integration with EDD commissions to adjust commission rates if a referral is present
+		add_filter( 'eddc_calc_commission_amount', array( $this, 'commission_rate' ), 10, 2 );
+		add_filter( 'affwp_settings_integrations', array( $this, 'commission_settings' ), 10 );
+
+		// Per product referral rates
+		add_action( 'edd_meta_box_settings_fields', array( $this, 'download_settings' ), 100 );
+		add_filter( 'edd_metabox_fields_save', array( $this, 'download_save_fields' ) );
+
 	}
 
 	/**
@@ -43,15 +52,33 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$inserted = $this->insert_pending_referral( $payment_data['price'], $payment_id, $this->get_referral_description( $payment_id ) );
+			$downloads = edd_get_payment_meta_cart_details( $payment_id );
+			if( is_array( $downloads ) ) {
+				
+				// Calculate the referral amount based on product prices
+				$referral_total = 0.00;
+				foreach( $downloads as $download ) {
 
-			if ( false !== $inserted ) { //only continue if the insert was a success
+					$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
 
-				$referral = affiliate_wp()->referrals->get_by( 'reference', $payment_id, 'edd' );
-				$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
-				$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
+				}
 
-				edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ),$referral->referral_id, $amount, $name ) );
+			} else {
+
+				$referral_total = $this->calculate_referral_amount( $payment_data['price'], $payment_id );
+
+			}
+
+			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $this->get_referral_description( $payment_id ) );
+
+			//only continue if the insert was a success
+			if ( false !== $referral_id ) {
+
+
+				$amount = affwp_currency_filter( affwp_format_amount( $referral_total ) );
+				$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
+
+				edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
 			}
 		}
 
@@ -84,36 +111,52 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					continue;
 				}
 
+				$this->affiliate_id = $affiliate_id;
+
 				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
 
-				if( $existing ) {
+				$downloads = edd_get_payment_meta_cart_details( $payment_id );
+				
+				if ( is_array( $downloads ) ) {
+					
+					// Calculate the referral amount based on product prices
+					$referral_total = 0.00;
+					foreach ( $downloads as $download ) {
 
-					// If a referral was already recored, overwrite it with the affiliate from the coupon
-					affiliate_wp()->referrals->update( $existing, array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+						$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
+
+					}
 
 				} else {
 
-					$amount = edd_get_payment_subtotal( $payment_id );
-					$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
-					
-					if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+					$referral_total = $this->calculate_referral_amount( edd_get_payment_subtotal( $payment_id ), $payment_id );
+
+				}
+
+
+				if ( ! empty( $existing->referral_id ) ) {
+
+					// If a referral was already recorded, overwrite it with the affiliate from the coupon
+					affiliate_wp()->referrals->update( $existing->referral_id, array( 'affiliate_id' => $this->affiliate_id, 'status' => 'unpaid', 'amount' => $referral_total ) );
+
+				} else {
+
+					if( 0 == $referral_total && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 						return false; // Ignore a zero amount referral
 					}
 
 					$referral_id = affiliate_wp()->referrals->add( array(
-						'amount'       => $amount,
+						'amount'       => $referral_total,
 						'reference'    => $payment_id,
 						'description'  => $this->get_referral_description( $payment_id ),
-						'affiliate_id' => $affiliate_id,
+						'affiliate_id' => $this->affiliate_id,
 						'context'      => $this->context
 					) );
 
-					affwp_set_referral_status( $referral_id, 'unpaid' );
+					$referral_total = affwp_currency_filter( affwp_format_amount( $referral_total ) );
+					$name           = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
 
-					$amount   = affwp_currency_filter( affwp_format_amount( $amount ) );
-					$name     = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
-
-					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+					edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $referral_total, $name ) );
 
 				}
 			}
@@ -273,6 +316,98 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_post_meta( $discount_id, 'affwp_discount_affiliate', $affiliate_id );
+	}
+
+	/**
+	 * Adjust the commission rate recorded if a referral is present
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
+	public function commission_rate( $amount, $args ) {
+
+		if( ! affiliate_wp()->settings->get( 'edd_adjust_commissions' ) ) {
+			return $amount;
+		}
+
+		$referral_amount = affiliate_wp()->referrals->get_column_by( 'amount', 'reference', $args['payment_id']  );
+
+		if( ! $referral_amount ) {
+			return $amount;
+		}
+
+		if( 'flat' == $args['type'] ) {
+			return $args['rate'] - $referral_amount;
+		}
+
+		$args['price'] -= $referral_amount;
+
+		if ( $args['rate'] >= 1 ) {
+			$amount = $args['price'] * ( $args['rate'] / 100 ); // rate format = 10 for 10%
+		} else {
+			$amount = $args['price'] * $args['rate']; // rate format set as 0.10 for 10%
+		}
+
+
+		return $amount;
+	}
+
+	/**
+	 * Add a setting to toggle whether referrals adjust EDD commissions
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
+	public function commission_settings( $settings ) {
+
+		if( function_exists( 'eddc_record_commission' ) ) {
+
+			$settings[ 'edd_adjust_commissions' ] = array(
+				'name' => __( 'Adjust EDD Commissions', 'affiliate-wp' ),
+				'desc' => __( 'Should AffiliateWP adjust the commission amounts recorded for purchases that include affiliate referrals? This will subtract the referral amount from the base amount used to calculate the commission total.', 'affiliate-wp' ),
+				'type' => 'checkbox'
+			);
+
+		}
+		
+		return $settings;
+	}
+
+	/**
+	 * Adds per-product referral rate settings input fields
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
+	public function download_settings( $download_id = 0 ) {
+
+		$rate = get_post_meta( $download_id, '_affwp_' . $this->context . '_product_rate', true );
+?>
+		<p>
+			<strong><?php _e( 'Affiliate Rates:', 'affiliate-wp' ); ?></strong>
+		</p>
+
+		<p>
+			<label for="affwp_product_rate">
+				<input type="text" name="_affwp_edd_product_rate" id="affwp_product_rate" class="small-text" value="<?php echo esc_attr( $rate ); ?>" />
+				<?php _e( 'Referral Rate', 'affiliate-wp' ); ?>
+			</label>
+		</p>
+
+		<p><?php _e( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' ); ?></p>
+<?php
+	}
+
+	/**
+	 * Tells EDD to save our product settings
+	 *
+	 * @access  public
+	 * @since   1.2
+	 * @return  array
+	*/
+	public function download_save_fields( $fields = array() ) {
+		$fields[] = '_affwp_edd_product_rate';
+		return $fields;
 	}
 
 }

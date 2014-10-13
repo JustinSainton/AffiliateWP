@@ -117,7 +117,7 @@ class Affiliate_WP_Tracking {
 
 		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) ) {
 			// Allow the amount to be passed via a query string or post request
-			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( $_REQUEST['amount'] ) );
+			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( urldecode( $_REQUEST['amount'] ) ) );
 		}
 
 		if( empty( $args['reference'] ) && ! empty( $_REQUEST['reference'] ) ) {
@@ -156,6 +156,7 @@ class Affiliate_WP_Tracking {
 						action      : 'affwp_track_conversion',
 						affiliate   : ref,
 						amount      : '<?php echo $args["amount"]; ?>',
+						status      : '<?php echo $args["status"]; ?>',
 						description : '<?php echo $args["description"]; ?>',
 						context     : '<?php echo $args["context"]; ?>',
 						reference   : '<?php echo $args["reference"]; ?>',
@@ -249,7 +250,7 @@ class Affiliate_WP_Tracking {
 			// Store the visit in the DB
 			$referal_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
-				'amount'       => affwp_calc_referral_amount( sanitize_text_field( $_POST['amount'] ), $affiliate_id ),
+				'amount'       => affwp_calc_referral_amount( sanitize_text_field( urldecode( $_POST['amount'] ) ), $affiliate_id ),
 				'status'       => $status,
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
@@ -345,7 +346,7 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function was_referred() {
-		return isset( $_COOKIE['affwp_ref'] );
+		return isset( $_COOKIE['affwp_ref'] ) && $this->is_valid_affiliate( $_COOKIE['affwp_ref'] );
 	}
 
 	/**

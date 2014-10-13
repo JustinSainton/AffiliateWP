@@ -36,12 +36,15 @@ function affwp_referrals_admin() {
 				<button class="button-primary affwp-referrals-export-toggle"><?php _e( 'Generate Payout File', 'affiliate-wp' ); ?></button>
 				<button class="button-primary affwp-referrals-export-toggle" style="display:none"><?php _e( 'Close', 'affiliate-wp' ); ?></button>
 				
+				<?php do_action( 'affwp_referrals_page_buttons' ); ?>
+
 				<form id="affwp-referrals-export-form" style="display:none;" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-referrals' ); ?>" method="post">
 					<p>
 						<input type="text" class="affwp-datepicker" autocomplete="off" name="from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
 						<input type="text" class="affwp-datepicker" autocomplete="off" name="to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>"/>
 						<input type="text" class="affwp-text" name="minimum" placeholder="<?php esc_attr_e( 'Minimum amount', 'affiliate-wp' ); ?>"/>
 						<input type="hidden" name="affwp_action" value="generate_referral_payout"/>
+						<?php do_action( 'affwp_referrals_page_csv_export_form' ); ?>
 						<input type="submit" value="<?php _e( 'Generate CSV File', 'affiliate-wp' ); ?>" class="button-secondary"/>
 						<p><?php printf( __( 'This will mark all unpaid referrals in this timeframe as paid. To export referrals with a status other than <em>unpaid</em>, go to the <a href="%s">Tools &rarr; Export</a> page.', 'affiliate-wp' ), admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ) ); ?></p>
 					</p>
@@ -63,18 +66,6 @@ function affwp_referrals_admin() {
 	}
 
 }
-
-function affwp_generate_referral_payout_file( $data ) {
-
-	$export = new Affiliate_WP_Referral_Payout_Export;
-	$export->date = array(
-		'start' => $data['from'],
-		'end'   => $data['to'] . ' 23:59:59'
-	);
-	$export->export();
-
-}
-add_action( 'affwp_generate_referral_payout', 'affwp_generate_referral_payout_file' );
 
 // Load WP_List_Table if not loaded
 if ( ! class_exists( 'WP_List_Table' ) ) {
@@ -363,7 +354,9 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
 			
-			} else {
+			}
+
+			if( 'rejected' != $referral->status ) {
 			
 				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 			
@@ -373,7 +366,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		
 		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral_id' => $referral->referral_id ) ) ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
 		
-		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links ) );
+		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links, $referral ) );
 
 		return '<div class="action-links">' . implode( ' | ', $action_links ) . '</div>';
 	}
@@ -395,7 +388,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @since 1.0
 	 * @return void
 	 */
-	public function bulk_actions() {
+	public function bulk_actions( $which = '' ) {
 		
 		if ( is_null( $this->_actions ) ) {
 			$no_new_actions = $this->_actions = $this->get_bulk_actions();
@@ -457,7 +450,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'delete'         => __( 'Delete', 'affiliate-wp' ),
 		);
 
-		return $actions;
+		return apply_filters( 'affwp_referrals_bulk_actions', $actions );
 	}
 
 	/**
@@ -502,6 +495,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			if ( 'mark_as_unpaid' === $this->current_action() ) {
 				affwp_set_referral_status( $id, 'unpaid' );
 			}
+
+			do_action( 'affwp_referrals_do_bulk_action_' . $this->current_action(), $id );
 
 		}
 

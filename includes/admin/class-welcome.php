@@ -176,14 +176,15 @@ class Affiliate_WP_Welcome {
 				<h3><?php _e( 'New features', 'affiliate-wp' );?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'Coupon Code Tracking', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Affiliate coupon tracking has been one of the most requested features, and one we are thrilled to introduce with version 1.1.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'This allows you to connect a coupon code to a specific affiliate so the affiliate is credited a referral anytime the coupon is redeemed.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'For version 1.1, we have included coupon code tracking support for Easy Digital Downloads, WooCommerce, and Restrict Content Pro. More integrations will get added soon.', 'affiliate-wp' );?></p>
+					<h4><?php _e( 'Per-Product Referral Rates', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'With version 1.2, you can now set referral rates on a per-product basis. Per-product referral rates are supported for both Easy Digital Downloads and WooCommerce, with more integrations on the way.', 'affiliate-wp' );?></p>
 
-					<h4><?php _e( 'Minimum Earnings for Affiliate Payout', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'With the minimum amount option, you can set the minimum amount that affiliates need to have earned before their referrals are included in the payout.', 'affiliate-wp' );?></p>
-					<p><?php _e( 'This is great for sites that want to keep the affiliate system locked down to serious affiliates.', 'affiliate-wp' );?></p>
+					<h4><?php _e( 'Affiliate Creatives', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'We have introduced a new admin section for affiliate creatives that you can share with your affiliates. Easily add image and text creatives which are shown in affiliate area for your affiliates. Creatives can also be shown anywhere with a simple shortcode.', 'affiliate-wp' );?></p>
+					
+
+					<h4><?php _e( 'Improved Affiliate Area', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'The Affiliate Area has been simplified and improved with the introduction of a tabbed interface.', 'affiliate-wp' );?></p>
 				</div>
 			</div>
 
@@ -192,27 +193,27 @@ class Affiliate_WP_Welcome {
 
 				<div class="feature-section col three-col">
 					<div>
-						<h4><?php _e( 'Affiliate Registration Graph', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'A new section has been added to the Reports page that lets you see affiliate registrations over time.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Integration with EDD Commissions', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'If you use Commissions for Easy Digital Downloads, you can now automatically adjust the commission rate when a referral is present.', 'affiliate-wp' );?></p>
 
-						<h4><?php _e( 'Auto Register Users as Affiliates', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'We have introduced a new option to automatically register new WordPress users as affiliates when their user accounts are created.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'New Primary URL and Promotion Method Fields', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'The affiliate registration form now includes fields for learning how your affiliates will be promoting your products and services.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div>
-						<h4><?php _e( 'Most Valuable Affiliates', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The Overview page now has a new widget that shows your top 5 most valuable affiliates, based on earnings.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Registration Form Retains Values on Error', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'When there\'s an error on the affiliate registration form, it no longer clears the entire form, making it easier for your affiliates to complete their registration.', 'affiliate-wp' );?></p>
 
-						<h4><?php _e( 'Shortcode to Affiliate-only Content', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'We have added a new shortcode that lets you show specific content to logged-in affiliates only.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Improved Affiliate Deletion', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'When you delete an affiliate account, you now have the option to also delete the user account and all affiliate data.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div class="last-feature">
-						<h4><?php _e( 'Custom Cookie Expiration Option', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The expiration time for the affiliate tracking cookies can now be set from the Settings page.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Option to Disable the TOS Field', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'The Terms of Service checkbox on the affiliate registration form will now automatically be disabled when the corresponding page is not set in the admin.', 'affiliate-wp' );?></p>
 
-						<h4><?php _e( 'More Actions','affiliate-wp' );?></h4>
-						<p><?php _e( 'Numerous new action and filter hooks have been added to make AffiliateWP even more developer friendly.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Enhanced Visit Search Options','affiliate-wp' );?></h4>
+						<p><?php _e( 'The Visits page now can be searched with various methods in order to view visits from specific affiliates, referrals, and more.', 'affiliate-wp' );?></p>
 					</div>
 				</div>
 			</div>

@@ -50,9 +50,11 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'offset'       => 0,
 			'affiliate_id' => 0,
 			'referral_id'  => 0,
+			'order'        => 'DESC',
+			'orderby'      => 'visit_id'
 		);
 
-		$args  = wp_parse_args( $args, $defaults );
+		$args = wp_parse_args( $args, $defaults );
 
 		if( $args['number'] < 1 ) {
 			$args['number'] = 999999999999;
@@ -140,12 +142,32 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		}
 
+		// Build the search query
+		if( ! empty( $args['search'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if ( filter_var( $args['search'], FILTER_VALIDATE_IP ) ) { 
+
+				$where .= " `ip` LIKE '%%" . $args['search'] . "%%' ";
+
+			} else {
+				
+				$where .= " ( `referrer` LIKE '%%" . $args['search'] . "%%' OR `url` LIKE '%%" . $args['search'] . "%%' ) ";
+
+			}
+		}
+
 		$cache_key = md5( 'affwp_visits_' . serialize( $args ) );
 
 		$visits = wp_cache_get( $cache_key, 'visits' );
 		
 		if( $visits === false ) {
-			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY visit_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $visits, 'visits', 3600 );
 		}
 

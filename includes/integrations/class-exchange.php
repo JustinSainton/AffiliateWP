@@ -25,7 +25,9 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$this->insert_pending_referral( $transaction->total, $transaction_id, $transaction->description );
+			$referral_total = $this->calculate_referral_amount( $transaction->total, $transaction_id );
+
+			$this->insert_pending_referral( $referral_total, $transaction_id, $transaction->description );
 	
 		}
 
