@@ -2,6 +2,14 @@
 
 class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
+	/**
+	 * The transaction object
+	 *
+	 * @access  private
+	 * @since   1.3
+	*/
+	private $transaction;
+
 	public function init() {
 
 		$this->context = 'it-exchange';
@@ -22,13 +30,13 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	public function add_pending_referral( $transaction_id = 0 ) {
 
 		$has_coupon  = false;
-		$transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
+		$this->transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
 
-		if ( $transaction->coupons && is_array( $transaction->coupons ) ) {
+		if ( $this->transaction->coupons && is_array( $this->transaction->coupons ) ) {
 
-			if( ! empty( $transaction->coupons['cart'] ) ) {
+			if( ! empty( $this->transaction->coupons['cart'] ) ) {
 
-				foreach( $transaction->coupons['cart'] as $coupon ) {
+				foreach( $this->transaction->coupons['cart'] as $coupon ) {
 
 					$affiliate_id = get_post_meta( $coupon['id'], 'affwp_coupon_affiliate', true );
 
@@ -48,13 +56,13 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 		if( $this->was_referred() || $has_coupon ) {
 
-			if( $this->get_affiliate_email() == $transaction->shipping_address['email'] ) {
+			if( $this->get_affiliate_email() == $this->transaction->shipping_address['email'] ) {
 				return; // Customers cannot refer themselves
 			}
 
-			$referral_total = $this->calculate_referral_amount( $transaction->total, $transaction_id );
+			$referral_total = $this->calculate_referral_amount( $this->transaction->total, $transaction_id );
 
-			$this->insert_pending_referral( $referral_total, $transaction_id, $transaction->description );
+			$this->insert_pending_referral( $referral_total, $transaction_id, $this->transaction->description );
 
 		}
 
