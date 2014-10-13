@@ -59,6 +59,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				$referral_total = 0.00;
 				foreach( $downloads as $download ) {
 
+					if( get_post_meta( $download['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+						continue; // Referrals are disabled on this product
+					}
+
 					$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
 
 				}
@@ -73,7 +77,6 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 			//only continue if the insert was a success
 			if ( false !== $referral_id ) {
-
 
 				$amount = affwp_currency_filter( affwp_format_amount( $referral_total ) );
 				$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
@@ -122,6 +125,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					// Calculate the referral amount based on product prices
 					$referral_total = 0.00;
 					foreach ( $downloads as $download ) {
+
+						if( get_post_meta( $download['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+							continue; // Referrals are disabled on this product
+						}
 
 						$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
 
@@ -245,10 +252,17 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$description = '';
 		$downloads   = edd_get_payment_meta_downloads( $payment_id );
 		foreach( $downloads as $key => $item ) {
+
+			if( get_post_meta( $item['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
 			$description .= get_the_title( $item['id'] );
+
 			if( $key + 1 < count( $downloads ) ) {
 				$description .= ', ';
 			}
+
 		}
 
 		return $description;
@@ -381,7 +395,8 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function download_settings( $download_id = 0 ) {
 
-		$rate = get_post_meta( $download_id, '_affwp_' . $this->context . '_product_rate', true );
+		$rate     = get_post_meta( $download_id, '_affwp_' . $this->context . '_product_rate', true );
+		$disabled = get_post_meta( $download_id, '_affwp_' . $this->context . '_referrals_disabled', true );
 ?>
 		<p>
 			<strong><?php _e( 'Affiliate Rates:', 'affiliate-wp' ); ?></strong>
@@ -391,6 +406,13 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			<label for="affwp_product_rate">
 				<input type="text" name="_affwp_edd_product_rate" id="affwp_product_rate" class="small-text" value="<?php echo esc_attr( $rate ); ?>" />
 				<?php _e( 'Referral Rate', 'affiliate-wp' ); ?>
+			</label>
+		</p>
+
+		<p>
+			<label for="affwp_disable_referrals">
+				<input type="checkbox" name="_affwp_edd_referrals_disabled" id="affwp_disable_referrals" value="1"<?php checked( $disabled, true ); ?> />
+				<?php printf( __( 'Disable referrals on this %s', 'affiliate-wp' ), edd_get_label_singular() ); ?>
 			</label>
 		</p>
 
@@ -407,6 +429,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function download_save_fields( $fields = array() ) {
 		$fields[] = '_affwp_edd_product_rate';
+		$fields[] = '_affwp_edd_referrals_disabled';
 		return $fields;
 	}
 
