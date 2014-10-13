@@ -22,7 +22,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	public function add_pending_referral( $transaction_id = 0 ) {
 
 		$has_coupon  = false;
-		$transaction = get_post_meta( $transaction_id, '_it_exchange_cart_object', true );
+		$transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
 
 		if ( $transaction->coupons && is_array( $transaction->coupons ) ) {
 
