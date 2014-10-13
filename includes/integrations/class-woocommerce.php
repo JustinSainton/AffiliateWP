@@ -50,7 +50,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function add_pending_referral( $order_id = 0, $posted ) {
 
-		$this->order = new WC_Order( $order_id );
+		$this->order = apply_filters( 'affwp_get_woocommerce_order', new WC_Order( $order_id ) );
 
 		// Check if an affiliate coupon was used
 		$affiliate_id = $this->get_coupon_affiliate_id();
