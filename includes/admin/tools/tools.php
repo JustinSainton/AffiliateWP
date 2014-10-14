@@ -17,6 +17,7 @@ require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-recount.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/import/import.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/export.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export.php';
+require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-affiliates.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-referrals.php';
 require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/export/class-export-referrals-payout.php';
 
@@ -137,6 +138,21 @@ function affwp_migration_tab() {
 			</div><!-- .postbox -->
 	
 			<div class="postbox">
+				<h3><span><?php _e( 'User Accounts', 'affiliate-wp' ); ?></span></h3>
+				<div class="inside">
+					<p><?php _e( 'Use this tool create affiliate accounts for each of your existing WordPress user accounts.', 'affiliate-wp' ); ?></p>
+					<form method="get">
+						<input type="hidden" name="type" value="users"/>
+						<input type="hidden" name="part" value="affiliates"/>
+						<input type="hidden" name="page" value="affiliate-wp-migrate"/>
+						<p>
+							<input type="submit" value="<?php _e( 'Create Affiliate Accounts', 'affiliate-wp' ); ?>" class="button"/>
+						</p>
+					</form>
+				</div><!-- .inside -->
+			</div><!-- .postbox -->
+
+			<div class="postbox">
 				<h3><span>Affiliates Pro</span></h3>
 				<div class="inside">
 					<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
@@ -151,6 +167,7 @@ function affwp_migration_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
+
 		</div><!-- .metabox-holder -->
 	</div><!-- #affwp-dashboard-widgets-wrap -->
 <?php
@@ -167,6 +184,29 @@ function affwp_export_import_tab() {
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
 		<div class="metabox-holder">	
+			
+			<div class="postbox">
+				<h3><span><?php _e( 'Export Affiliates', 'affiliate-wp' ); ?></span></h3>
+				<div class="inside">
+					<p><?php _e( 'Export affiliates to a CSV file.', 'affiliate-wp' ); ?></p>
+					<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-tools&tab=export_import' ); ?>">
+						<p>
+							<select name="status" id="status">
+								<option value="0"><?php _e( 'All Statuses', 'affiliate-wp' ); ?></option>
+								<option value="active"><?php _e( 'Active', 'affiliate-wp' ); ?></option>
+								<option value="pending"><?php _e( 'Pending', 'affiliate-wp' ); ?></option>
+								<option value="rejected"><?php _e( 'Rejected', 'affiliate-wp' ); ?></option>
+							</select>
+						</p>
+						<p>
+							<input type="hidden" name="affwp_action" value="export_affiliates" />
+							<?php wp_nonce_field( 'affwp_export_affiliates_nonce', 'affwp_export_affiliates_nonce' ); ?>
+							<?php submit_button( __( 'Export', 'affiliate-wp' ), 'secondary', 'submit', false ); ?>
+						</p>
+					</form>
+				</div><!-- .inside -->
+			</div><!-- .postbox -->
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Export Referrals', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">

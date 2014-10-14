@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
-	
+
 	/**
 	 * The order object
 	 *
@@ -21,7 +21,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		$this->context = 'woocommerce';
 
 		add_action( 'woocommerce_checkout_order_processed', array( $this, 'add_pending_referral' ), 10, 2 );
-		
+
 		// There should be an option to choose which of these is used
 		add_action( 'woocommerce_order_status_completed', array( $this, 'mark_referral_complete' ), 10 );
 		add_action( 'woocommerce_order_status_processing', array( $this, 'mark_referral_complete' ), 10 );
@@ -30,7 +30,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
-	
+
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
 		add_action( 'woocommerce_coupon_options', array( $this, 'coupon_option' ) );
@@ -50,7 +50,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function add_pending_referral( $order_id = 0, $posted ) {
 
-		$this->order = new WC_Order( $order_id );
+		$this->order = apply_filters( 'affwp_get_woocommerce_order', new WC_Order( $order_id ) );
 
 		// Check if an affiliate coupon was used
 		$affiliate_id = $this->get_coupon_affiliate_id();
@@ -65,35 +65,60 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
+			$cart_discount = $this->order->get_total_discount();
+
 			$items = $this->order->get_items();
+
+			//echo '<pre>'; print_r( $items ); echo '</pre>'; exit;
+
 			if( is_array( $items ) ) {
 
 				// Calculate the referral amount based on product prices
 				$amount = 0.00;
 				foreach( $items as $product ) {
 
-					$amount += $this->calculate_referral_amount( $product['line_total'], $order_id, $product['product_id'] );
+					if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+						continue; // Referrals are disabled on this product
+					}
+
+					// The order discount has to be divided across the items
+
+					$discount = 0;
+
+					if( $cart_discount > 0 ) {
+
+						$discount = $cart_discount / count( $items );
+
+					}
+
+					$product_total = $product['line_total'] - $discount;
+
+					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
 				}
 
 			} else {
 
+				$total  = $this->order->get_total() - $cart_discount;
 				$amount = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
 
 			}
-			
+
 			if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 				return false; // Ignore a zero amount referral
 			}
 
-			$referral_id = affiliate_wp()->referrals->add( array(
+			$description = $this->get_referral_description();
+			$visit_id    = affiliate_wp()->tracking->get_visit_id();
+
+			$referral_id = affiliate_wp()->referrals->add( apply_filters( 'affwp_insert_pending_referral', array(
 				'amount'       => $amount,
 				'reference'    => $order_id,
-				'description'  => $this->get_referral_description(),
+				'description'  => $description,
 				'affiliate_id' => $this->affiliate_id,
-				'visit_id'     => affiliate_wp()->tracking->get_visit_id(),
+				'visit_id'     => $visit_id,
 				'context'      => $this->context
-			) );
+			), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
 
 			if( $referral_id ) {
 
@@ -219,7 +244,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	 * @since   1.1
 	*/
 	private function get_coupon_affiliate_id() {
-		
+
 		$coupons = $this->order->get_used_coupons();
 
 		if( empty( $coupons ) ) {
@@ -234,7 +259,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			if( $affiliate_id ) {
 
 				return $affiliate_id;
-			
+
 			}
 
 		}
@@ -249,10 +274,15 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	 * @since   1.1
 	*/
 	public function get_referral_description() {
-		
-		$description = ''; 
+
+		$description = '';
 		$items       = $this->order->get_items();
 		foreach( $items as $key => $item ) {
+
+			if( get_post_meta( $item['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
 			$description .= $item['name'];
 			if( $key + 1 < count( $items ) ) {
 				$description .= ', ';
@@ -273,17 +303,18 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		global $post;
 
-		if( isset( $post->ID ) ) {
-
-			$rate = $this->get_product_rate( $post->ID );
-		
-		} else {
-
-			$rate = '';
-
-		}
-		
-		woocommerce_wp_text_input( array( 'id' => '_affwp_woocommerce_product_rate', 'label' => __( 'Affiliate Rate', 'affiliate-wp' ), 'desc_tip' => true, 'description' => __( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' ) ) );
+		woocommerce_wp_text_input( array( 
+			'id'          => '_affwp_woocommerce_product_rate',
+			'label'       => __( 'Affiliate Rate', 'affiliate-wp' ),
+			'desc_tip'    => true,
+			'description' => __( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' )
+		) );
+		woocommerce_wp_checkbox( array( 
+			'id'          => '_affwp_woocommerce_referrals_disabled',
+			'label'       => __( 'Disable referrals', 'affiliate-wp' ),
+			'description' => __( 'This will prevent orders of this product from generating referral commissions for affiliates.', 'affiliate-wp' ),
+			'cbvalue'     => 1
+		) );
 
 	}
 
@@ -325,14 +356,24 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 			$rate = sanitize_text_field( $_POST['_affwp_' . $this->context . '_product_rate'] );
 			update_post_meta( $post_id, '_affwp_' . $this->context . '_product_rate', $rate );
-	
+
 		} else {
 
 			delete_post_meta( $post_id, '_affwp_' . $this->context . '_product_rate' );
 
 		}
 
+		if( isset( $_POST['_affwp_' . $this->context . '_referrals_disabled'] ) ) {
+
+			update_post_meta( $post_id, '_affwp_' . $this->context . '_referrals_disabled', 1 );
+
+		} else {
+
+			delete_post_meta( $post_id, '_affwp_' . $this->context . '_referrals_disabled' );
+
+		}
+
 	}
-	
+
 }
 new Affiliate_WP_WooCommerce;

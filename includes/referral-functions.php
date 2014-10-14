@@ -45,7 +45,7 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 	}
 
 	if( affiliate_wp()->referrals->update( $referral_id, array( 'status' => $new_status ) ) ) {
-		
+
 		if( 'paid' == $new_status ) {
 
 			affwp_increase_affiliate_earnings( $referral->affiliate_id, $referral->amount );
@@ -66,7 +66,7 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 		}
 
 		do_action( 'affwp_set_referral_status', $referral_id, $new_status, $old_status );
-	
+
 		return true;
 	}
 
@@ -76,37 +76,47 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 
 /**
  * Adds a new referral to the database
- *  
+ *
  * @since 1.0
  * @return bool
  */
 function affwp_add_referral( $data = array() ) {
 
-	if( empty( $data['user_id'] ) ) {
+	if( empty( $data['user_id'] ) && empty( $data['affiliate_id'] ) ) {
 
 		return false;
 
 	}
 
-	$user_id   = absint( $data['user_id'] );
-	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
+	if( empty( $data['affiliate_id'] ) ) {
 
-	if( $affiliate ) {
+		$user_id      = absint( $data['user_id'] );
+		$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
 
-		$args = array(
-			'affiliate_id' => $affiliate->affiliate_id,
-			'amount'       => ! empty( $data['amount'] )      ? sanitize_text_field( $data['amount'] )      : '',
-			'description'  => ! empty( $data['description'] ) ? sanitize_text_field( $data['description'] ) : '',
-			'reference'    => ! empty( $data['reference'] )   ? sanitize_text_field( $data['reference'] )   : '',
-			'context'      => ! empty( $data['context'] )     ? sanitize_text_field( $data['context'] )     : '',
-			'status'       => ! empty( $data['status'] )      ? sanitize_text_field( $data['status'] )      : ''
-		);
+		if( ! empty( $affiliate_id ) ) {
 
-		if( affiliate_wp()->referrals->add( $args ) ) {
+			$data['affiliate_id'] = $affiliate_id;
 
-			return true;
+		} else {
+
+			return false;
+
 		}
 
+	}
+
+	$args = array(
+		'affiliate_id' => absint( $data['affiliate_id'] ),
+		'amount'       => ! empty( $data['amount'] )      ? sanitize_text_field( $data['amount'] )      : '',
+		'description'  => ! empty( $data['description'] ) ? sanitize_text_field( $data['description'] ) : '',
+		'reference'    => ! empty( $data['reference'] )   ? sanitize_text_field( $data['reference'] )   : '',
+		'context'      => ! empty( $data['context'] )     ? sanitize_text_field( $data['context'] )     : '',
+		'status'       => ! empty( $data['status'] )      ? sanitize_text_field( $data['status'] )      : 'pending'
+	);
+
+	if( affiliate_wp()->referrals->add( $args ) ) {
+
+		return true;
 	}
 
 	return false;

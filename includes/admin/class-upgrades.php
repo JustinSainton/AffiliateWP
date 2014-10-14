@@ -82,6 +82,20 @@ class Affiliate_WP_Upgrades {
 
 	}
 
+	/**
+	 * Perform database upgrades for version 1.3
+	 *
+	 * @access  public
+	 * @since   1.2.1
+	*/
+	private function v13_upgrades() {
+
+		@affiliate_wp()->creatives->create_table();
+
+		$this->upgraded = true;
+
+	}
+
 
 }
 new Affiliate_WP_Upgrades;
