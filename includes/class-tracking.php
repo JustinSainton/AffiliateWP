@@ -28,6 +28,8 @@ class Affiliate_WP_Tracking {
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 			add_action( 'wp_ajax_nopriv_affwp_track_visit', array( $this, 'track_visit' ) );
 			add_action( 'wp_ajax_affwp_track_visit', array( $this, 'track_visit' ) );
+			add_action( 'wp_ajax_affwp_get_affiliate_id', array( $this, 'get_affiliate_id_from_login' ) );
+			add_action( 'wp_ajax_nopriv_affwp_get_affiliate_id', array( $this, 'get_affiliate_id_from_login' ) );
 
 		} else {
 
@@ -169,27 +171,7 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_visit() {
 
-		$affiliate_id = stripslashes( $_POST['affiliate'] );
-
-		if( is_numeric( $affiliate_id ) ) {
-
-			$affiliate_id = absint( $affiliate_id );
-
-		} else {
-
-			$user = get_user_by( 'login', $affiliate_id );
-
-			if( $user ) {
-
-				$affiliate_id = affwp_get_affiliate_id( $user->ID );
-
-			} else {
-
-				$affiliate_id = false;
-
-			}
-
-		}
+		$affiliate_id = absint( $_POST['affiliate'] );
 
 		if( $this->is_valid_affiliate( $affiliate_id ) ) {
 
@@ -220,27 +202,7 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_conversion() {
 
-		$affiliate_id = stripslashes( $_POST['affiliate'] );
-
-		if( is_numeric( $affiliate_id ) ) {
-
-			$affiliate_id = absint( $affiliate_id );
-
-		} else {
-
-			$user = get_user_by( 'login', $affiliate_id );
-
-			if( $user ) {
-
-				$affiliate_id = affwp_get_affiliate_id( $user->ID );
-
-			} else {
-
-				$affiliate_id = false;
-
-			}
-
-		}
+		$affiliate_id = absint( $_POST['affiliate'] );
 
 		if( $this->is_valid_affiliate( $affiliate_id ) ) {
 
@@ -298,25 +260,7 @@ class Affiliate_WP_Tracking {
 			return;
 		}
 
-		if( is_numeric( $affiliate_id ) ) {
-
-			$affiliate_id = absint( $affiliate_id );
-
-		} else {
-
-			$user = get_user_by( 'login', $affiliate_id );
-
-			if( $user ) {
-
-				$affiliate_id = affwp_get_affiliate_id( $user->ID );
-
-			} else {
-
-				$affiliate_id = false;
-
-			}
-
-		}
+		$affiliate_id = absint( $affiliate_id );
 
 		if( $this->is_valid_affiliate( $affiliate_id ) && ! $this->get_visit_id() ) {
 
@@ -414,29 +358,46 @@ class Affiliate_WP_Tracking {
 
 		if( ! empty( $cookie ) ) {
 
-			if( is_numeric( $affiliate_id ) ) {
+			$affiliate_id = absint( $affiliate_id );
 
-				$affiliate_id = absint( $affiliate_id );
+		}
 
-			} else {
+		return $affiliate_id;
+	}
 
-				$user = get_user_by( 'login', $affiliate_id );
+	/**
+	 * Get the affiliate's ID from their user login
+	 *
+	 * @since 1.3
+	 */
+	public function get_affiliate_id_from_login() {
 
-				if( $user ) {
+		$success      = 0;
+		$affiliate_id = 0;
 
-					$affiliate_id = affwp_get_affiliate_id( $user->ID );
+		if( ! empty( $_POST['affiliate'] ) ) {
 
-				} else {
+			$user = get_user_by( 'login', sanitize_text_field( $_POST['affiliate'] ) );
 
-					$affiliate_id = false;
+			if( $user ) {
 
+				$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+				if( $affiliate_id ) {
+					$success = 1;
 				}
 
 			}
 
 		}
 
-		return $affiliate_id;
+		$return = array(
+			'success'      => $success,
+			'affiliate_id' => $affiliate_id
+		);
+
+		wp_send_json_success( $return );
+
 	}
 
 	/**
