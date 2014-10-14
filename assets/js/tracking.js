@@ -1,9 +1,28 @@
 jQuery(document).ready( function($) {
 
     var cookie = $.cookie( 'affwp_ref' );
+
+    if( cookie ) {
+        return;
+    }
+
     var ref = affwp_get_query_vars()[AFFWP.referral_var];
 
-    if( ! $.isNumeric( ref ) && ! cookie ) {
+    if( typeof ref == 'undefined' ) {
+
+        // See if we are using a pretty affiliate URL
+        var path = window.location.pathname.split( '/' );
+
+        $.each( path, function( key, value ) {
+            if( AFFWP.referral_var == value ) {
+                ref = path[ key + 1 ];
+            }
+        });
+
+    }
+
+
+    if( ! $.isNumeric( ref ) ) {
 
         // If a username was provided instead of an affiliate ID number, we need to retrieve the ID
         $.ajax({
