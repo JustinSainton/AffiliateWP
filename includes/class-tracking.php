@@ -28,8 +28,8 @@ class Affiliate_WP_Tracking {
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 			add_action( 'wp_ajax_nopriv_affwp_track_visit', array( $this, 'track_visit' ) );
 			add_action( 'wp_ajax_affwp_track_visit', array( $this, 'track_visit' ) );
-			add_action( 'wp_ajax_affwp_get_affiliate_id', array( $this, 'get_affiliate_id_from_login' ) );
-			add_action( 'wp_ajax_nopriv_affwp_get_affiliate_id', array( $this, 'get_affiliate_id_from_login' ) );
+			add_action( 'wp_ajax_affwp_get_affiliate_id', array( $this, 'ajax_get_affiliate_id_from_login' ) );
+			add_action( 'wp_ajax_nopriv_affwp_get_affiliate_id', array( $this, 'ajax_get_affiliate_id_from_login' ) );
 
 		} else {
 
@@ -254,6 +254,10 @@ class Affiliate_WP_Tracking {
 
 			$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
 
+			if( ! is_numeric( $affiliate_id ) ) {
+				$affiliate_id = $this->get_affiliate_id_from_login( $affiliate_id );
+			}
+
 		}
 
 		if( empty( $affiliate_id ) ) {
@@ -370,22 +374,43 @@ class Affiliate_WP_Tracking {
 	 *
 	 * @since 1.3
 	 */
-	public function get_affiliate_id_from_login() {
+	public function get_affiliate_id_from_login( $login = '' ) {
+
+		$affiliate_id = 0;
+
+		if( ! empty( $login ) ) {
+
+			$user = get_user_by( 'login', sanitize_text_field( $login ) );
+
+			if( $user ) {
+
+				$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+			}
+
+		}
+
+		return $affiliate_id;
+
+	}
+
+	/**
+	 * Get the affiliate's ID from their user login
+	 *
+	 * @since 1.3
+	 */
+	public function ajax_get_affiliate_id_from_login() {
 
 		$success      = 0;
 		$affiliate_id = 0;
 
 		if( ! empty( $_POST['affiliate'] ) ) {
 
-			$user = get_user_by( 'login', sanitize_text_field( $_POST['affiliate'] ) );
+			$affiliate_id = $this->get_affiliate_id_from_login( $_POST['affiliate'] );
 
-			if( $user ) {
+			if( ! empty( $affiliate_id ) ) {
 
-				$affiliate_id = affwp_get_affiliate_id( $user->ID );
-
-				if( $affiliate_id ) {
-					$success = 1;
-				}
+				$success = 1;
 
 			}
 
