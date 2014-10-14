@@ -69,11 +69,14 @@ class Affiliate_WP_Upgrades {
 	 * Perform database upgrades for version 1.3
 	 *
 	 * @access  public
-	 * @since   1.2.1
-	*/
+	 * @since   1.3
+	 */
 	private function v13_upgrades() {
 
 		@affiliate_wp()->creatives->create_table();
+
+		// Clear rewrite rules
+		flush_rewrite_rules();
 
 		$this->upgraded = true;
 
