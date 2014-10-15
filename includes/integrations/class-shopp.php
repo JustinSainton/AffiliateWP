@@ -2,6 +2,14 @@
 
 class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 	
+	/**
+	 * The order object
+	 *
+	 * @access  private
+	 * @since   1.3
+	*/
+	private $order;
+
 	public function init() {
 		$this->context = 'shopp';
 
@@ -17,24 +25,25 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 	public function add_pending_referral( $order_id = 0 ) {
 
 		if( $this->was_referred() ) {
-			$order = shopp_order( $order_id->order );
 
-			$customer_email = $order->email;
+			$this->order = apply_filters( 'affwp_get_shopp_order', shopp_order( $$this->order_id->order ) );
+
+			$customer_email = $this->order->email;
 
 			if( $this->get_affiliate_email() == $customer_email ) {
 				return; // Customers cannot refer themselves
 			}
 
 			$description = '';
-			foreach( $order->purchased as $key => $item ) {
+			foreach( $this->order->purchased as $key => $item ) {
 				$description .= $item->name;
 
-				if( $key + 1 < count( $order->purchased ) ) {
+				if( $key + 1 < count( $this->order->purchased ) ) {
 					$description .= ', ';
 				}
 			}
 
-			$referral_total = $this->calculate_referral_amount( $order->total, $order_id->order );			
+			$referral_total = $this->calculate_referral_amount( $this->order->total, $order_id->order );			
 
 			$this->insert_pending_referral( $referral_total, $order_id->order, $description );
 

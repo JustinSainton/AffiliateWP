@@ -28,6 +28,8 @@ class Affiliate_WP_Tracking {
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 			add_action( 'wp_ajax_nopriv_affwp_track_visit', array( $this, 'track_visit' ) );
 			add_action( 'wp_ajax_affwp_track_visit', array( $this, 'track_visit' ) );
+			add_action( 'wp_ajax_affwp_get_affiliate_id', array( $this, 'ajax_get_affiliate_id_from_login' ) );
+			add_action( 'wp_ajax_nopriv_affwp_get_affiliate_id', array( $this, 'ajax_get_affiliate_id_from_login' ) );
 
 		} else {
 
@@ -35,6 +37,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
+		add_action( 'init', array( $this, 'rewrites' ) );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
 
@@ -48,53 +51,9 @@ class Affiliate_WP_Tracking {
 	public function header_scripts() {
 ?>
 		<script type="text/javascript">
-		jQuery(document).ready(function($) {
-
-			var cookie = $.cookie( 'affwp_ref' );
-			var ref = affwp_get_query_vars()["<?php echo $this->get_referral_var(); ?>"];
-
-			// If a referral var is present and a referral cookie is not already set
-			if( ref && ! cookie ) {
-
-				var cookie_value = ref;
-
-				// Set the cookie and expire it after 24 hours
-				$.cookie( 'affwp_ref', cookie_value, { expires: <?php echo $this->get_expiration_time(); ?>, path: '/' } );
-
-				// Fire an ajax request to log the hit
-				$.ajax({
-					type: "POST",
-					data: {
-						action: 'affwp_track_visit',
-						affiliate: ref,
-						url: document.URL,
-						referrer: document.referrer
-					},
-					url: affwp_scripts.ajaxurl,
-					success: function (response) {
-						$.cookie( 'affwp_ref_visit_id', response, { expires: <?php echo $this->get_expiration_time(); ?>, path: '/' } );
-					}
-
-				}).fail(function (response) {
-					if ( window.console && window.console.log ) {
-						console.log( response );
-					}
-				}).done(function (response) {
-				});
-
-			}
-
-			function affwp_get_query_vars() {
-				var vars = [], hash;
-				var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-				for(var i = 0; i < hashes.length; i++) {
-					hash = hashes[i].split('=');
-					vars.push(hash[0]);
-					vars[hash[0]] = hash[1];
-				}
-				return vars;
-			}
-		});
+		var AFFWP = AFFWP || {};
+		AFFWP.referral_var = '<?php echo $this->get_referral_var(); ?>';
+		AFFWP.expiration = <?php echo $this->get_expiration_time(); ?>;
 		</script>
 <?php
 	}
@@ -189,8 +148,23 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function load_scripts() {
+
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
 		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie.js', array( 'jquery' ), '1.4.0' );
+		wp_enqueue_script( 'affwp-tracking', AFFILIATEWP_PLUGIN_URL . 'assets/js/tracking' . $suffix . '.js', array( 'jquery-cookie' ), AFFILIATEWP_VERSION );
 		wp_localize_script( 'jquery-cookie', 'affwp_scripts', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	}
+
+	/**
+	 * Registers the rewrite rules for pretty affiliate links
+	 *
+	 * @since 1.0
+	 */
+	public function rewrites() {
+
+		 add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
+
 	}
 
 	/**
@@ -277,19 +251,31 @@ class Affiliate_WP_Tracking {
 	 */
 	public function fallback_track_visit() {
 
-		$ref = ! empty( $_GET[ $this->get_referral_var() ] ) ? absint( $_GET[ $this->get_referral_var() ] ) : false;
+		$affiliate_id = get_query_var( $this->get_referral_var() );
 
-		if( empty( $ref ) ) {
+		if( empty( $affiliate_id ) ) {
+
+			$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
+
+			if( ! is_numeric( $affiliate_id ) ) {
+				$affiliate_id = $this->get_affiliate_id_from_login( $affiliate_id );
+			}
+
+		}
+
+		if( empty( $affiliate_id ) ) {
 			return;
 		}
 
-		if( $this->is_valid_affiliate( $ref ) && ! $this->get_visit_id() ) {
+		$affiliate_id = absint( $affiliate_id );
 
-			$this->set_affiliate_id( $ref );
+		if( $this->is_valid_affiliate( $affiliate_id ) && ! $this->get_visit_id() ) {
+
+			$this->set_affiliate_id( $affiliate_id );
 
 			// Store the visit in the DB
 			$visit_id = affiliate_wp()->visits->add( array(
-				'affiliate_id' => $ref,
+				'affiliate_id' => $affiliate_id,
 				'ip'           => $this->get_ip(),
 				'url'          => $this->get_current_page_url(),
 				'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : ''
@@ -346,7 +332,8 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function was_referred() {
-		return isset( $_COOKIE['affwp_ref'] ) && $this->is_valid_affiliate( $_COOKIE['affwp_ref'] );
+		$bool = isset( $_COOKIE['affwp_ref'] ) && $this->is_valid_affiliate( $_COOKIE['affwp_ref'] );
+		return (bool) apply_filters( 'affwp_was_referred', $bool, $this );
 	}
 
 	/**
@@ -373,7 +360,72 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function get_affiliate_id() {
-		return ! empty( $_COOKIE['affwp_ref'] ) ? absint( $_COOKIE['affwp_ref'] ) : false;
+
+		$affiliate_id = ! empty( $_COOKIE['affwp_ref'] ) ? $_COOKIE['affwp_ref'] : false;
+
+		if( ! empty( $cookie ) ) {
+
+			$affiliate_id = absint( $affiliate_id );
+
+		}
+
+		return $affiliate_id;
+	}
+
+	/**
+	 * Get the affiliate's ID from their user login
+	 *
+	 * @since 1.3
+	 */
+	public function get_affiliate_id_from_login( $login = '' ) {
+
+		$affiliate_id = 0;
+
+		if( ! empty( $login ) ) {
+
+			$user = get_user_by( 'login', sanitize_text_field( $login ) );
+
+			if( $user ) {
+
+				$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+			}
+
+		}
+
+		return $affiliate_id;
+
+	}
+
+	/**
+	 * Get the affiliate's ID from their user login
+	 *
+	 * @since 1.3
+	 */
+	public function ajax_get_affiliate_id_from_login() {
+
+		$success      = 0;
+		$affiliate_id = 0;
+
+		if( ! empty( $_POST['affiliate'] ) ) {
+
+			$affiliate_id = $this->get_affiliate_id_from_login( $_POST['affiliate'] );
+
+			if( ! empty( $affiliate_id ) ) {
+
+				$success = 1;
+
+			}
+
+		}
+
+		$return = array(
+			'success'      => $success,
+			'affiliate_id' => $affiliate_id
+		);
+
+		wp_send_json_success( $return );
+
 	}
 
 	/**

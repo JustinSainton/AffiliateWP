@@ -44,7 +44,7 @@ abstract class Affiliate_WP_DB {
 
 		}
 
-		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = $row_id LIMIT 1;" );
+		return $wpdb->get_var( "SELECT $column FROM $this->table_name WHERE $this->primary_key = '$row_id' LIMIT 1;" );
 	}
 
 	public function get_column_by( $column, $column_where, $column_value ) {

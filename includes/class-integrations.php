@@ -11,15 +11,16 @@ class Affiliate_WP_Integrations {
 	public function get_integrations() {
 
 		return apply_filters( 'affwp_integrations', array(
-			'edd'         => 'Easy Digital Downloads',
-			'exchange'    => 'iThemes Exchange',
-			'membermouse' => 'MemberMouse',
-			'jigoshop'    => 'Jigoshop',
-			'rcp'         => 'Restrict Content Pro',
-			'pmp'         => 'Paid Memberships Pro',
-			'shopp'       => 'Shopp',
-			'woocommerce' => 'WooCommerce',
-			'wpec'        => 'WP e-Commerce',
+			'edd'          => 'Easy Digital Downloads',
+			'gravityforms' => 'Gravity Forms',
+			'exchange'     => 'iThemes Exchange',
+			'membermouse'  => 'MemberMouse',
+			'jigoshop'     => 'Jigoshop',
+			'rcp'          => 'Restrict Content Pro',
+			'pmp'          => 'Paid Memberships Pro',
+			'shopp'        => 'Shopp',
+			'woocommerce'  => 'WooCommerce',
+			'wpec'         => 'WP e-Commerce',
 		) );
 
 	}

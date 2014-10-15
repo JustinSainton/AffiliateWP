@@ -10,6 +10,9 @@ class Capabilities_Tests extends WP_UnitTestCase {
 
 	function test_admin_has_caps() {
 
+		$roles = new Affiliate_WP_Capabilities;
+		$roles->add_caps();
+
 		$user = new WP_User( $this->_user_id );
 
 		$this->assertTrue( $user->has_cap( 'view_affiliate_reports' ) );
