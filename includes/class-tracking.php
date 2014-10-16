@@ -6,6 +6,8 @@ class Affiliate_WP_Tracking {
 
 	private $expiration_time;
 
+	public $referral;
+
 	/**
 	 * Get things started
 	 *
@@ -185,6 +187,8 @@ class Affiliate_WP_Tracking {
 
 		if ( ! empty( $ref ) ) {
 
+			$this->referral = $ref;
+
 			// unset ref var from $wp_query
 			$query->set( $key, null );
 
@@ -202,7 +206,7 @@ class Affiliate_WP_Tracking {
 
 			}
 
-		}	
+		}
 
 	}
 
@@ -290,20 +294,20 @@ class Affiliate_WP_Tracking {
 	 */
 	public function fallback_track_visit() {
 
-		$affiliate_id = get_query_var( $this->get_referral_var() );
+		$affiliate_id = $this->referral;
 
 		if( empty( $affiliate_id ) ) {
 
 			$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
 
-			if( ! is_numeric( $affiliate_id ) ) {
-				$affiliate_id = $this->get_affiliate_id_from_login( $affiliate_id );
-			}
-
 		}
 
 		if( empty( $affiliate_id ) ) {
 			return;
+		}
+
+		if( ! is_numeric( $affiliate_id ) ) {
+			$affiliate_id = $this->get_affiliate_id_from_login( $affiliate_id );
 		}
 
 		$affiliate_id = absint( $affiliate_id );
