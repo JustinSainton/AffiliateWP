@@ -189,7 +189,7 @@ abstract class Affiliate_WP_Base {
 
 		if( ! empty( $product_id ) ) {
 
-			$rate = $this->get_product_rate( $product_id, $reference );
+			$rate = $this->get_product_rate( $product_id, $args = array( 'reference' => $reference ) );
 			$type = affwp_get_affiliate_rate_type( $this->affiliate_id );
 
 			if ( 'percentage' == $type ) {
@@ -219,7 +219,7 @@ abstract class Affiliate_WP_Base {
 	 * @since   1.2
 	 * @return  float
 	*/
-	public function get_product_rate( $product_id = 0, $reference = 0 ) {
+	public function get_product_rate( $product_id = 0, $args = array() ) {
 
 		$rate = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate', true );
 		if( empty( $rate ) ) {
@@ -228,7 +228,7 @@ abstract class Affiliate_WP_Base {
 
 		}
 
-		return apply_filters( 'affwp_get_product_rate', (float) $rate, $product_id, $reference, $this->affiliate_id, $this->context );
+		return apply_filters( 'affwp_get_product_rate', (float) $rate, $product_id, $args, $this->affiliate_id, $this->context );
 
 	}
 
