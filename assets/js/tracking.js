@@ -33,7 +33,6 @@ jQuery(document).ready( function($) {
             },
             url: affwp_scripts.ajaxurl,
             success: function (response) {
-                console.log( response );
                 if( '1' == response.data.success ) {
                     affwp_track_visit( response.data.affiliate_id );
                 }

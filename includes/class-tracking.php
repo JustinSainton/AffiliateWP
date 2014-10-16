@@ -24,7 +24,6 @@ class Affiliate_WP_Tracking {
 
 		if( ! $this->use_fallback_method() ) {
 
-			add_action( 'wp_head', array( $this, 'header_scripts' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
 			add_action( 'wp_ajax_nopriv_affwp_track_visit', array( $this, 'track_visit' ) );
 			add_action( 'wp_ajax_affwp_track_visit', array( $this, 'track_visit' ) );
@@ -37,9 +36,12 @@ class Affiliate_WP_Tracking {
 
 		}
 
+		add_action( 'wp_head', array( $this, 'header_scripts' ) );
 		add_action( 'init', array( $this, 'rewrites' ) );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
+		add_action( 'wp_ajax_affwp_check_js', array( $this, 'check_js' ) );
+		add_action( 'wp_ajax_nopriv_affwp_check_js', array( $this, 'check_js' ) );
 
 	}
 
@@ -54,6 +56,18 @@ class Affiliate_WP_Tracking {
 		var AFFWP = AFFWP || {};
 		AFFWP.referral_var = '<?php echo $this->get_referral_var(); ?>';
 		AFFWP.expiration = <?php echo $this->get_expiration_time(); ?>;
+<?php if( 1 !== (int) get_option( 'affwp_js_works' ) )  : ?>
+		jQuery(document).ready(function($) {
+			// Check if JS is working properly. If it is, we update an update in the DB
+			$.ajax({
+				type: "POST",
+				data: {
+					action: 'affwp_check_js'
+				},
+				url: '<?php echo admin_url( "admin-ajax.php" ); ?>'
+			});
+		});
+<?php endif; ?>
 		</script>
 <?php
 	}
@@ -517,9 +531,25 @@ class Affiliate_WP_Tracking {
 	 */
 	public function use_fallback_method() {
 
+		$js_works     = (int) get_option( 'affwp_js_works' );
+
 		$use_fallback = affiliate_wp()->settings->get( 'tracking_fallback', false );
 
+		$use_fallback = $use_fallback || 2 === $js_works;
+
 		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );
+	}
+
+	/**
+	 * Set whether JS works or not. This is called via ajax.
+	 *
+	 * @since 1.4
+	 */
+	public function check_js() {
+
+		update_option( 'affwp_js_works', 1 );
+	
+		die( '1' );
 	}
 
 }
