@@ -3,7 +3,7 @@
 	<h4><?php _e( 'Creatives', 'affiliate-wp' ); ?></h4>
 
 	<?php
-	$per_page  = 1;
+	$per_page  = 30;
 	$page      = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 	$args      = array(
 		'number' => $per_page,
