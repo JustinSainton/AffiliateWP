@@ -38,6 +38,7 @@ class Affiliate_WP_Tracking {
 		}
 
 		add_action( 'init', array( $this, 'rewrites' ) );
+		add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ) );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
 
@@ -159,11 +160,49 @@ class Affiliate_WP_Tracking {
 	/**
 	 * Registers the rewrite rules for pretty affiliate links
 	 *
-	 * @since 1.0
+	 * @since 1.3
 	 */
 	public function rewrites() {
 
-		 add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
+		add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
+
+	}
+
+	/**
+	 * Removes our tracking query arg so as not to interfere with the WP query, see https://core.trac.wordpress.org/ticket/25143
+	 *
+	 * @since 1.3.1
+	 */
+	public function unset_query_arg( $query ) {
+
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		$key = affiliate_wp()->tracking->get_referral_var();
+
+		$ref = $query->get( $key );
+
+		if ( ! empty( $ref ) ) {
+
+			// unset ref var from $wp_query
+			$query->set( $key, null );
+
+			global $wp;
+
+			// unset ref var from $wp
+			unset( $wp->query_vars[ $key ] );
+
+			// if in home (because $wp->query_vars is empty) and 'show_on_front' is page
+			if ( empty( $wp->query_vars ) && get_option( 'show_on_front' ) === 'page' ) {
+
+			 	// reset and re-parse query vars
+				$wp->query_vars['page_id'] = get_option( 'page_on_front' );
+				$query->parse_query( $wp->query_vars );
+
+			}
+
+		}	
 
 	}
 
