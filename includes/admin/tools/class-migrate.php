@@ -39,6 +39,16 @@ class Affiliate_WP_Migrate {
 
 				break;
 
+			case 'wp-affiliate' :
+
+				require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate-wp-affiliate.php';
+
+				$migrate = new Affiliate_WP_Migrate_WP_Affiliate;
+
+				$migrate->process( $step, $part );
+
+				break;
+
 			case 'users' :
 
 				require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate-users.php';
