@@ -228,7 +228,7 @@ abstract class Affiliate_WP_Base {
 
 		}
 
-		return (float) $rate;
+		return apply_filters( 'affwp_get_product_rate', (float) $rate, $product_id, $this->affiliate_id, $this->context );
 
 	}
 

@@ -32,6 +32,9 @@ function affiliate_wp_install() {
 	update_option( 'affwp_is_installed', '1' );
 	update_option( 'affwp_version', AFFILIATEWP_VERSION );
 	
+	// Clear rewrite rules
+	flush_rewrite_rules();
+
 	// Bail if activating from network, or bulk
 	if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
 		return;

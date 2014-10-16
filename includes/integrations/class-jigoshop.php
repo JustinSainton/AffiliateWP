@@ -9,6 +9,15 @@
 class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 
 	/**
+	 * The order object
+	 *
+	 * @access  private
+	 * @since   1.3
+	*/
+	private $order;
+
+
+	/**
 	 * Initiate
 	 *
 	 * @function init()
@@ -36,14 +45,14 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			$order = new jigoshop_order( $order_id ); // Fetch order
+			$this->order = apply_filters( 'affwp_get_jigoshop_order', new jigoshop_order( $order_id ) ); // Fetch order
 
-			if( $this->get_affiliate_email() == $order->billing_email ) {
+			if( $this->get_affiliate_email() == $this->order->billing_email ) {
 				return; // Customers cannot refer themselves
 			}
 
 			$description = ''; 
-			$items       = $order->get_items();
+			$items       = $this->order->get_items();
 			foreach( $items as $key => $item ) {
 				$description .= $item['name'];
 				if( $key + 1 < count( $items ) ) {
@@ -51,7 +60,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 				}
 			}
 
-			$referral_total = $this->calculate_referral_amount( $order->get_total(), $order_id );
+			$referral_total = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
 
 			$this->insert_pending_referral( $referral_total, $order_id, $description );
 
@@ -59,7 +68,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
 			$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
 
-			$order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name ) );
+			$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name ) );
 
 		}
 
