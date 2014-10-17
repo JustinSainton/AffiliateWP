@@ -56,7 +56,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 		if( $this->was_referred() || $has_coupon ) {
 
-			if( $this->get_affiliate_email() == $this->transaction->shipping_address['email'] ) {
+			if( $this->get_affiliate_email() === $this->transaction->shipping_address['email'] ) {
 				return; // Customers cannot refer themselves
 			}
 
