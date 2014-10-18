@@ -275,18 +275,18 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function get_referral_description() {
 
+		$prefix      = '';
 		$description = '';
 		$items       = $this->order->get_items();
-		foreach( $items as $key => $item ) {
 
-			if( get_post_meta( $item['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+		foreach ( $items as $key => $item ) {
+
+			if ( get_post_meta( $item['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 				continue; // Referrals are disabled on this product
 			}
 
-			$description .= $item['name'];
-			if( $key + 1 < count( $items ) ) {
-				$description .= ', ';
-			}
+			$description .= $prefix . $item['name'];
+		    $prefix = ', ';
 		}
 
 		return $description;
