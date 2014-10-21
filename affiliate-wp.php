@@ -333,6 +333,7 @@ final class Affiliate_WP {
 					'version' 	=> AFFILIATEWP_VERSION,
 					'license' 	=> $license_key,
 					'item_name' => 'AffiliateWP',
+					'item_id'   => 17,
 					'author' 	=> 'Pippin Williamson'
 				)
 			);
