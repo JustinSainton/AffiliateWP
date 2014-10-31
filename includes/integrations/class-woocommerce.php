@@ -93,6 +93,12 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 					$product_total = $product['line_total'] - $discount;
 
+					if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+						$product_total += $product['line_tax'];
+
+					}
+
 					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
 				}
@@ -100,7 +106,14 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			} else {
 
 				$total  = $this->order->get_total() - $cart_discount;
-				$amount = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
+
+				if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+					$total -= $this->order->get_cart_tax();
+
+				}
+
+				$amount = $this->calculate_referral_amount( $total, $order_id );
 
 			}
 

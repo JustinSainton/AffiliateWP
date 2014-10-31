@@ -60,7 +60,28 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$referral_total = $this->calculate_referral_amount( $this->transaction->total, $transaction_id );
+			$total = 0;
+			foreach( $this->transaction->products as $product ) {
+
+				$total += $product['product_subtotal'];
+
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+				$options  = it_exchange_get_option( 'addon_taxes_simple' );
+				$tax_rate = empty( $options['default-tax-rate'] ) ? 1 : (float) $options['default-tax-rate'];
+				
+				$tax      = $total * ( $tax_rate / 100 );
+				$amount   = $this->transaction->total - $tax;
+			
+			} else {
+			
+				$amount = $this->transaction->total;
+			
+			}
+
+			$referral_total = $this->calculate_referral_amount( $amount, $transaction_id );
 
 			$this->insert_pending_referral( $referral_total, $transaction_id, $this->transaction->description );
 
