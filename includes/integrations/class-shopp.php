@@ -51,10 +51,10 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 			$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
 			$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
 
-			$user = wp_get_current_user();
-			$Note = new ShoppMetaObject();
-			$Note->parent  = $order_id->order;
-			$Note->context = 'purchase';
+			$user                 = wp_get_current_user();
+			$Note                 = new ShoppMetaObject();
+			$Note->parent         = $order_id->order;
+			$Note->context        = 'purchase';
 			$Note->type           = 'order_note';
 			$Note->value          = new stdClass();
 			$Note->value->author  = $user->ID;

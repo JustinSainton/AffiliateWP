@@ -62,7 +62,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 
 			$amount = $this->order->order_total;
 
-			if(  affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
 				$amount -= $this->order->get_total_tax();
 
