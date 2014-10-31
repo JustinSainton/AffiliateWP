@@ -26,7 +26,7 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			$this->order = apply_filters( 'affwp_get_shopp_order', shopp_order( $$this->order_id->order ) );
+			$this->order = apply_filters( 'affwp_get_shopp_order', shopp_order( $order_id->order ) );
 
 			$customer_email = $this->order->email;
 
@@ -43,7 +43,14 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 				}
 			}
 
-			$referral_total = $this->calculate_referral_amount( $this->order->total, $order_id->order );			
+			$amount = $this->order->total;
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+				$amount -= $this->order->tax;
+
+			}
+
+			$referral_total = $this->calculate_referral_amount( $amount, $order_id->order );			
 
 			$this->insert_pending_referral( $referral_total, $order_id->order, $description );
 
