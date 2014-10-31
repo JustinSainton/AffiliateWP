@@ -52,7 +52,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 			}
 
 			$description = ''; 
-			$items       = $this->order->get_items();
+			$items       = $this->order->items;
 			foreach( $items as $key => $item ) {
 				$description .= $item['name'];
 				if( $key + 1 < count( $items ) ) {
@@ -60,7 +60,15 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 				}
 			}
 
-			$referral_total = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
+			$amount = $this->order->order_total;
+
+			if(  affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+				$amount -= $this->order->get_total_tax();
+
+			}
+
+			$referral_total = $this->calculate_referral_amount( $amount, $order_id );
 
 			$this->insert_pending_referral( $referral_total, $order_id, $description );
 
