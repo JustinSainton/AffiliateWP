@@ -148,12 +148,25 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					continue; // Referrals are disabled on this product
 				}
 
-				$referral_total += $this->calculate_referral_amount( $download['price'], $payment_id, $download['id'] );
+				if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+					$amount = $download['price'] - $download['tax'];
+				} else {
+					$amount = $download['price'];
+				}
+
+				$referral_total += $this->calculate_referral_amount( $amount, $payment_id, $download['id'] );
 
 			}
 
 		} else {
-			$referral_total = $this->calculate_referral_amount( edd_get_payment_subtotal( $payment_id ), $payment_id );
+
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$amount = edd_get_payment_subtotal( $payment_id );
+			} else {
+				$amount = edd_get_payment_amount( $payment_id );
+			}
+
+			$referral_total = $this->calculate_referral_amount( $amount, $payment_id );
 		}
 
 		return $referral_total;
