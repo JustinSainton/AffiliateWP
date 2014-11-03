@@ -41,6 +41,7 @@ class Affiliate_WP_Tracking {
 
 		add_action( 'init', array( $this, 'rewrites' ) );
 		add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ) );
+		add_action( 'redirect_canonical', array( $this, 'prevent_canonical_redirect' ), 0, 2 );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
 
@@ -207,6 +208,31 @@ class Affiliate_WP_Tracking {
 			}
 
 		}
+
+	}
+
+	/**
+	 * Filters on canonical redirects
+	 *
+	 * @since 1.4
+	 * @return string
+	 */
+	public function prevent_canonical_redirect( $redirect_url, $requested_url ) {
+
+		if( ! is_front_page() ) {
+			return $redirect_url;
+		}
+
+		$key = affiliate_wp()->tracking->get_referral_var();
+		$ref = get_query_var( $key );
+
+		if( ! empty( $ref ) || false !== strpos( $requested_url, $key ) ) {
+
+			$redirect_url = $requested_url;
+
+		}
+
+		return $redirect_url;
 
 	}
 
