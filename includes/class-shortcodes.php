@@ -154,15 +154,19 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		shortcode_atts( 
-			array(
-				'url' => ''
-			), 
-			$atts, 
-			'affiliate_referral_url'
-		);
+		shortcode_atts( array(
+			'url' => ''
+		), $atts, 'affiliate_referral_url' );
 
-		$base = ! empty( $atts[ 'url' ] ) ? $atts[ 'url' ] : home_url( '/' );
+		if( ! empty( $content ) ) {
+
+			$base = $content;
+
+		} else {
+
+			$base = ! empty( $atts[ 'url' ] ) ? $atts[ 'url' ] : home_url( '/' );
+
+		}
 
 		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $base );
 	}
@@ -171,7 +175,7 @@ class Affiliate_WP_Shortcodes {
 	 * Affiliate content shortcode.
 	 * Renders the content if the current user is an affiliate.
 	 * @since  1.0.4
-	 * @return string 
+	 * @return string
 	 */
 	public function affiliate_content( $atts, $content = null ) {
 
@@ -186,7 +190,7 @@ class Affiliate_WP_Shortcodes {
 	 * Non Affiliate content shortcode.
 	 * Renders the content if the current user is not an affiliate.
 	 * @since  1.1
-	 * @return string 
+	 * @return string
 	 */
 	public function non_affiliate_content( $atts, $content = null ) {
 
@@ -199,13 +203,13 @@ class Affiliate_WP_Shortcodes {
 
 	/**
 	 * Affiliate creative shortcode.
-	 * 
+	 *
 	 * @since  1.1.4
-	 * @return string 
+	 * @return string
 	 */
 	public function affiliate_creative( $atts, $content = null ) {
 
-		shortcode_atts( 
+		shortcode_atts(
 			array(
 				'id'         => '',                    // ID of the creative
 				'image_id'   => '',                    // ID of image from media library if not using creatives section
@@ -213,8 +217,8 @@ class Affiliate_WP_Shortcodes {
 				'link'       => '',                    // Where the banner links to
 				'preview'    => 'yes',                 // Display an image/text preview above HTML code
 				'text'       => get_bloginfo( 'name' ) // Text shown in alt/title tags
-			), 
-			$atts, 
+			),
+			$atts,
 			'affiliate_creative'
 		);
 
@@ -229,17 +233,17 @@ class Affiliate_WP_Shortcodes {
 	/**
 	 * Affiliate creatives shortcode.
 	 * Shows all the creatives from Affiliates -> Creatives
-	 * 
+	 *
 	 * @since  1.1.4
-	 * @return string 
+	 * @return string
 	 */
 	public function affiliate_creatives( $atts, $content = null ) {
 
-		shortcode_atts( 
+		shortcode_atts(
 			array(
 				'preview' => 'yes' // Display an image/text preview above HTML code
-			), 
-			$atts, 
+			),
+			$atts,
 			'affiliate_creatives'
 		);
 
