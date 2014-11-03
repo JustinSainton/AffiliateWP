@@ -7,7 +7,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 		$this->context = 'pmp';
 
 		add_action( 'pmpro_add_order', array( $this, 'add_pending_referral' ), 10 );
-		add_action( 'pmpro_added_order', array( $this, 'mark_referral_complete' ), 10 );
+		add_action( 'pmpro_updated_order', array( $this, 'mark_referral_complete' ), 10 );
 		add_action( 'admin_init', array( $this, 'revoke_referral_on_refund_and_cancel' ), 10);
 		add_action( 'pmpro_delete_order', array( $this, 'revoke_referral_on_delete' ), 10, 2 );
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
@@ -23,22 +23,26 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$referral_total = $this->calculate_referral_amount( $order->subtotal, $order->payment_transaction_id );
+			$referral_total = $this->calculate_referral_amount( $order->subtotal, $order->code );
 
-			$this->insert_pending_referral( $referral_total, $order->payment_transaction_id, $order->membership_name );
+			$this->insert_pending_referral( $referral_total, $order->code, $order->membership_name );
 		}
 
 	}
 
 	public function mark_referral_complete( $order ) {
 
-		// Now update the referral to have a nice reference. PMP doesn't make the order ID available early enough
-		$referral = affiliate_wp()->referrals->get_by( 'reference', $order->payment_transaction_id );
-		if( $referral ) {
-			affiliate_wp()->referrals->update( $referral->referral_id, array( 'reference' => $order->id ) );
+		if( 'success' !== strtolower( $order->status ) ) {
+			return;
 		}
 
-		$this->complete_referral( $order->id );
+		// Now update the referral to have a nice reference. PMP doesn't make the order ID available early enough
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $order->code );
+		if( $referral ) {
+			affiliate_wp()->referrals->update( $referral->referral_id, array( 'custom' => $order->id ) );
+		}
+
+		$this->complete_referral( $order->code );
 	}
 
 	public function revoke_referral_on_refund_and_cancel() {
