@@ -25,7 +25,17 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 			$referral_total = $this->calculate_referral_amount( $order->subtotal, $order->code );
 
-			$this->insert_pending_referral( $referral_total, $order->code, $order->membership_name );
+			$referral_id = $this->insert_pending_referral( $referral_total, $order->code, $order->membership_name );
+
+			if( 'success' === strtolower( $order->status ) ) {
+
+				if( $referral ) {
+					affiliate_wp()->referrals->update( $referral_id, array( 'custom' => $order->id ) );
+				}
+
+				$this->complete_referral( $order->code );
+
+			}
 		}
 
 	}
