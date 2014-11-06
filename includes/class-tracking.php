@@ -41,6 +41,7 @@ class Affiliate_WP_Tracking {
 
 		add_action( 'init', array( $this, 'rewrites' ) );
 		add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ) );
+		add_action( 'redirect_canonical', array( $this, 'prevent_canonical_redirect' ), 0, 2 );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
 
@@ -77,7 +78,7 @@ class Affiliate_WP_Tracking {
 
 		$args = wp_parse_args( $args, $defaults );
 
-		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) ) {
+		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) && 0 !== $args['amount'] ) {
 			// Allow the amount to be passed via a query string or post request
 			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( urldecode( $_REQUEST['amount'] ) ) );
 		}
@@ -211,6 +212,31 @@ class Affiliate_WP_Tracking {
 	}
 
 	/**
+	 * Filters on canonical redirects
+	 *
+	 * @since 1.4
+	 * @return string
+	 */
+	public function prevent_canonical_redirect( $redirect_url, $requested_url ) {
+
+		if( ! is_front_page() ) {
+			return $redirect_url;
+		}
+
+		$key = affiliate_wp()->tracking->get_referral_var();
+		$ref = get_query_var( $key );
+
+		if( ! empty( $ref ) || false !== strpos( $requested_url, $key ) ) {
+
+			$redirect_url = $requested_url;
+
+		}
+
+		return $redirect_url;
+
+	}
+
+	/**
 	 * Record referral visit via ajax
 	 *
 	 * @since 1.0
@@ -263,11 +289,15 @@ class Affiliate_WP_Tracking {
 			}
 
 			$status = ! empty( $_POST['status'] ) ? $_POST['status'] : 'unpaid';
+			$amount = sanitize_text_field( urldecode( $_POST['amount'] ) );
+			if( $amount > 0 ) {
+				$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
+			}
 
 			// Store the visit in the DB
 			$referal_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
-				'amount'       => affwp_calc_referral_amount( sanitize_text_field( urldecode( $_POST['amount'] ) ), $affiliate_id ),
+				'amount'       => $amount,
 				'status'       => $status,
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),

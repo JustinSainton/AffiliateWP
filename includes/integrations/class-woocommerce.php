@@ -69,8 +69,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 			$items = $this->order->get_items();
 
-			//echo '<pre>'; print_r( $items ); echo '</pre>'; exit;
-
 			if( is_array( $items ) ) {
 
 				// Calculate the referral amount based on product prices
@@ -81,17 +79,13 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 						continue; // Referrals are disabled on this product
 					}
 
-					// The order discount has to be divided across the items
+					$product_total = $product['line_total'];
 
-					$discount = 0;
+					if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
-					if( $cart_discount > 0 ) {
-
-						$discount = $cart_discount / count( $items );
+						$product_total += $product['line_tax'];
 
 					}
-
-					$product_total = $product['line_total'] - $discount;
 
 					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
@@ -100,7 +94,14 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			} else {
 
 				$total  = $this->order->get_total() - $cart_discount;
-				$amount = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
+
+				if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+					$total -= $this->order->get_cart_tax();
+
+				}
+
+				$amount = $this->calculate_referral_amount( $total, $order_id );
 
 			}
 

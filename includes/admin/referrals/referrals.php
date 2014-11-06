@@ -510,10 +510,19 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function get_referral_counts() {
-		$this->paid_count     = affiliate_wp()->referrals->count( array( 'status' => 'paid' ) );
-		$this->unpaid_count   = affiliate_wp()->referrals->count( array( 'status' => 'unpaid' ) );
-		$this->pending_count  = affiliate_wp()->referrals->count( array( 'status' => 'pending' ) );
-		$this->rejected_count = affiliate_wp()->referrals->count( array( 'status' => 'rejected' ) );
+
+		$affiliate_id = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id'] : ''; 
+
+		if( is_array( $affiliate_id ) ) {
+			$affiliate_id = array_map( 'absint', $affiliate_id );
+		} else {
+			$affiliate_id = absint( $affiliate_id );
+		}
+
+		$this->paid_count     = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'paid' ) );
+		$this->unpaid_count   = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'unpaid' ) );
+		$this->pending_count  = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'pending' ) );
+		$this->rejected_count = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'rejected' ) );
 		$this->total_count    = $this->paid_count + $this->unpaid_count + $this->pending_count + $this->rejected_count;
 	}
 

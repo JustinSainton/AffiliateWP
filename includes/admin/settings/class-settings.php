@@ -223,6 +223,11 @@ class Affiliate_WP_Settings {
 						'step' => '0.5',
 						'std' => '20'
 					),
+					'exclude_tax' => array(
+						'name' => __( 'Exclude Tax', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Should taxes be excluded from referral calculations?', 'affiliate-wp' ) . '</p>',
+						'type' => 'checkbox'
+					),
 					'cookie_exp' => array(
 						'name' => __( 'Cookie Expiration', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ) . '</p>',
