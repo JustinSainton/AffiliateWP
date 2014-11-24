@@ -55,11 +55,8 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 			}
 
-			if( is_object( $products ) || is_array( $products ) ) {
-
-				$description = implode( ', ', (array) $products );
-
-			} else {
+			$description = '';
+			if( is_string( $products ) ) {
 
 				$description = $products;
 
