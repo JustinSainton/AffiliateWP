@@ -13,7 +13,7 @@ function affwp_process_add_creative( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_creatives' ) ) {
-		wp_die( __( 'You do not have permission to manage creatives', 'affiliate-wp' ) );
+		wp_die( __( 'You do not have permission to manage creatives', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( affwp_add_creative( $data ) ) {
@@ -41,15 +41,15 @@ function affwp_process_creative_deletion( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_creatives' ) ) {
-		wp_die( __( 'You do not have permission to delete a creative', 'affiliate-wp' ) );
+		wp_die( __( 'You do not have permission to delete a creative', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( ! wp_verify_nonce( $data['affwp_delete_creatives_nonce'], 'affwp_delete_creatives_nonce' ) ) {
-		wp_die( __( 'Security check failed', 'affiliate-wp' ) );
+		wp_die( __( 'Security check failed', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( empty( $data['affwp_creative_ids'] ) || ! is_array( $data['affwp_creative_ids'] ) ) {
-		wp_die( __( 'No creative IDs specified for deletion', 'affiliate-wp' ) );
+		wp_die( __( 'No creative IDs specified for deletion', 'affiliate-wp' ), array( 'response' => 400 ) );
 	}
 
 	$to_delete = array_map( 'absint', $data['affwp_creative_ids'] );
@@ -77,7 +77,7 @@ function affwp_process_update_creative( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_creatives' ) ) {
-		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ) );
+		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( affwp_update_creative( $data ) ) {
