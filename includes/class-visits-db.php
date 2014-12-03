@@ -31,6 +31,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	public function get_column_defaults() {
 		return array(
 			'affiliate_id' => 0,
+			'referral_id'  => 0,
 			'date'         => date( 'Y-m-d H:i:s' ),
 			'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : ''
 		);
