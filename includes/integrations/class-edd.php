@@ -135,7 +135,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function get_referral_total( $payment_id = 0, $affiliate_id = 0 ) {
 
-		$downloads = edd_get_payment_meta_cart_details( $payment_id );
+		$downloads = apply_filters( 'affwp_get_edd_cart_details', edd_get_payment_meta_cart_details( $payment_id ) );
 
 		if ( is_array( $downloads ) ) {
 			
