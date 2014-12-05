@@ -220,7 +220,7 @@ class Affiliate_WP_Settings {
 						'desc' => '<p class="description">' . __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ) . '</p>',
 						'type' => 'number',
 						'size' => 'small',
-						'step' => '0.5',
+						'step' => '0.01',
 						'std' => '20'
 					),
 					'exclude_tax' => array(
