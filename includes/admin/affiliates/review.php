@@ -52,6 +52,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 
 			</tr>
 
+			<?php if ( $user_url ) : ?>
 			<tr class="form-row form-required">
 
 				<th scope="row">
@@ -63,7 +64,8 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 				</td>
 
 			</tr>
-
+			<?php endif; ?>
+			
 			<?php if ( $promotion_method ) : ?>
 				<tr class="form-row form-required">
 

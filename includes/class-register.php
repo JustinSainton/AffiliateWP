@@ -170,20 +170,12 @@ class Affiliate_WP_Register {
 				'user_pass'     => sanitize_text_field( $_POST['affwp_user_pass'] ),
 				'display_name'  => $user_first . ' ' . $user_last,
 				'first_name'    => $user_first,
-				'last_name'     => $user_last,
-				'user_url'      => sanitize_text_field( $_POST['affwp_user_url'] ),
+				'last_name'     => $user_last
 			);
 
 			$user_id = wp_insert_user( $args );
 
 			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
-
-			// add promotion method to user meta
-			$promotion_method = isset( $_POST['affwp_promotion_method'] ) ? sanitize_text_field( $_POST['affwp_promotion_method'] ) : '';
-			
-			if ( $promotion_method ) {
-				update_user_meta( $user_id, 'affwp_promotion_method', $promotion_method );
-			}
 
 		} else {
 
@@ -191,6 +183,20 @@ class Affiliate_WP_Register {
 			$user    = (array) get_userdata( $user_id );
 			$args    = (array) $user['data'];
 
+		}
+
+		// promotion method
+		$promotion_method = isset( $_POST['affwp_promotion_method'] ) ? sanitize_text_field( $_POST['affwp_promotion_method'] ) : '';
+		
+		if ( $promotion_method ) {
+			update_user_meta( $user_id, 'affwp_promotion_method', $promotion_method );
+		}
+
+		// website URL
+		$website_url = isset( $_POST['affwp_user_url'] ) ? sanitize_text_field( $_POST['affwp_user_url'] ) : '';
+
+		if ( $website_url ) {
+			wp_update_user( array( 'ID' => $user_id, 'user_url' => $website_url ) );
 		}
 
 		$affiliate_id       = affiliate_wp()->affiliates->add( array(
