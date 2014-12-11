@@ -104,7 +104,11 @@ class Affiliate_WP_Exchange_Per_Product_Feature extends IT_Exchange_Product_Feat
 
 		$new_value = ITUtility::merge_defaults( $new_value, $defaults );
 
-		$new_value['rate'] = trim( absint( $new_value['rate'] ) );
+		$new_value['rate'] = trim( $new_value['rate'] );
+
+		if ( ! empty( $new_value['rate'] ) ) {
+			$new_value['rate'] = absint( $new_value['rate'] );
+		}
 
 		$res1 = update_post_meta( $product_id, '_affwp_it-exchange_product_rate', $new_value['rate'] );
 		$res2 = update_post_meta( $product_id, '_affwp_it-exchange_referrals_disabled', (bool) $new_value['disabled'] );
