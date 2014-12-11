@@ -62,31 +62,32 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$total = 0;
-			foreach( $this->transaction->products as $product ) {
+			$total          = floatval( $this->transaction->total );
+			$total_taxes    = floatval( $this->transaction->taxes_raw );
 
-				$total += $product['product_subtotal'];
+			$sub_total = 0;
 
+			foreach ( $this->transaction->products as $product ) {
+				$sub_total += $product['product_subtotal'];
 			}
 
-			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+			$referral_total = $total;
 
-				$options  = it_exchange_get_option( 'addon_taxes_simple' );
-				$tax_rate = empty( $options['default-tax-rate'] ) ? 1 : (float) $options['default-tax-rate'];
-
-				$tax      = $total * ( $tax_rate / 100 );
-				$amount   = $this->transaction->total - $tax;
-
-			} else {
-
-				$amount = $this->transaction->total;
-
+			if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$referral_total -= $total_taxes;
 			}
 
-			$referral_total = $this->calculate_referral_amount( $amount, $transaction_id );
+			$amount = 0;
 
-			$this->insert_pending_referral( $referral_total, $transaction_id, $this->transaction->description );
+			foreach ( $this->transaction->products as $product ) {
 
+				$product_percent_of_cart = (float) $product['product_subtotal'] / $sub_total;
+				$referral_product_price = (float) $product_percent_of_cart * (float) $referral_total;
+
+				$amount += $this->calculate_referral_amount( $referral_product_price, $transaction_id, $product['product_id'] );
+			}
+
+			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description );
 		}
 
 	}
