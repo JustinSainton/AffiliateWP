@@ -25,6 +25,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		add_action( 'it_exchange_basic_coupons_saved_coupon', array( $this, 'store_coupon_affiliate' ), 10, 2 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+
+		add_action( 'it_libraries_loaded', array( $this, 'load_product_feature' ) );
 	}
 
 	public function add_pending_referral( $transaction_id = 0 ) {
@@ -71,14 +73,14 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 				$options  = it_exchange_get_option( 'addon_taxes_simple' );
 				$tax_rate = empty( $options['default-tax-rate'] ) ? 1 : (float) $options['default-tax-rate'];
-				
+
 				$tax      = $total * ( $tax_rate / 100 );
 				$amount   = $this->transaction->total - $tax;
-			
+
 			} else {
-			
+
 				$amount = $this->transaction->total;
-			
+
 			}
 
 			$referral_total = $this->calculate_referral_amount( $amount, $transaction_id );
@@ -224,5 +226,11 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Load the product feature for controlling per-product rates.
+	 */
+	public function load_product_feature() {
+		require_once ( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-exchange-feature.php' );
+	}
 }
 new Affiliate_WP_Exchange;
