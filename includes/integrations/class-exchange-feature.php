@@ -201,7 +201,7 @@ class Affiliate_WP_Exchange_Per_Product_Feature extends IT_Exchange_Product_Feat
 
 		$product_type = it_exchange_get_product_type( $product_id );
 
-		return ( ! it_exchange_product_type_supports_feature( $product_type, $this->slug ) );
+		return it_exchange_product_type_supports_feature( $product_type, $this->slug );
 	}
 }
 
