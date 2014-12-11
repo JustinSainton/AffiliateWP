@@ -81,6 +81,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 			foreach ( $this->transaction->products as $product ) {
 
+				if ( get_post_meta( $product['product_id'], "_affwp_{$this->context}_referrals_disabled", true ) ) {
+					continue;
+				}
+
 				$product_percent_of_cart = (float) $product['product_subtotal'] / $sub_total;
 				$referral_product_price = (float) $product_percent_of_cart * (float) $referral_total;
 
