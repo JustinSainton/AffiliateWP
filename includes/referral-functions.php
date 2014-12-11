@@ -83,9 +83,7 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 function affwp_add_referral( $data = array() ) {
 
 	if( empty( $data['user_id'] ) && empty( $data['affiliate_id'] ) ) {
-
 		return false;
-
 	}
 
 	if( empty( $data['affiliate_id'] ) ) {
@@ -111,10 +109,16 @@ function affwp_add_referral( $data = array() ) {
 		'description'  => ! empty( $data['description'] ) ? sanitize_text_field( $data['description'] ) : '',
 		'reference'    => ! empty( $data['reference'] )   ? sanitize_text_field( $data['reference'] )   : '',
 		'context'      => ! empty( $data['context'] )     ? sanitize_text_field( $data['context'] )     : '',
-		'status'       => ! empty( $data['status'] )      ? sanitize_text_field( $data['status'] )      : 'pending'
+		'status'       => 'pending',
 	);
 
-	if( affiliate_wp()->referrals->add( $args ) ) {
+	$referral_id = affiliate_wp()->referrals->add( $args );
+
+	if( $referral_id ) {
+
+		$status = ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : 'pending';
+
+		affwp_set_referral_status( $referral_id, $status );
 
 		return true;
 	}
