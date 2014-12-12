@@ -177,6 +177,10 @@ function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference
 
 	}
 
+	if( $referral_amount < 0 ) {
+		$referral_amount = 0;
+	}
+
 	return apply_filters( 'affwp_calc_referral_amount', $referral_amount, $affiliate_id, $amount, $reference, $product_id );
 }
 

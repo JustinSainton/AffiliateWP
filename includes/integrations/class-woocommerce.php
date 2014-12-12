@@ -97,6 +97,10 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 					}
 
+					if( $product_total <= 0 ) {
+						continue;
+					}
+
 					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
 				}

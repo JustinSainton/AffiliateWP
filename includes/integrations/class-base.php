@@ -206,7 +206,7 @@ abstract class Affiliate_WP_Base {
 		}
 
 		$amount = affwp_calc_referral_amount( $base_amount, $this->affiliate_id, $reference, $rate, $product_id );
-	
+
 		return $amount;
 
 	}
