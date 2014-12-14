@@ -19,8 +19,8 @@ class Affiliate_WP_Exchange_Per_Product_Feature extends IT_Exchange_Product_Feat
 	public function __construct() {
 		$args = array(
 			'slug'          => 'affwp-per-product-rate',
-			'description'   => __( "Manage per-product affiliate rates.", 'affiliate-wp' ),
-			'metabox_title' => __( "Affiliate WP", 'affiliate-wp' )
+			'description'   => __( 'Manage per-product affiliate rates.', 'affiliate-wp' ),
+			'metabox_title' => __( 'Affiliate WP', 'affiliate-wp' )
 		);
 
 		parent::IT_Exchange_Product_Feature_Abstract( $args );
