@@ -177,7 +177,7 @@ class Affiliate_WP_Exchange_Per_Product_Feature extends IT_Exchange_Product_Feat
 	 */
 	function product_has_feature( $result, $product_id, $options = array() ) {
 
-		$supports = it_exchange_product_supports_feature( $product_id, $this->slug );
+		$supports  = it_exchange_product_supports_feature( $product_id, $this->slug );
 		$not_empty = it_exchange_get_product_feature( $product_id, $this->slug, array( 'field' => 'rate' ) ) != '';
 
 		return $supports && $not_empty;
@@ -204,5 +204,4 @@ class Affiliate_WP_Exchange_Per_Product_Feature extends IT_Exchange_Product_Feat
 		return it_exchange_product_type_supports_feature( $product_type, $this->slug );
 	}
 }
-
 new Affiliate_WP_Exchange_Per_Product_Feature();
