@@ -233,6 +233,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	/**
 	 * Load the product feature for controlling per-product rates.
+	 * @access  public
+	 * @since   1.5
 	 */
 	public function load_product_feature() {
 		require_once ( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/extras/class-exchange-feature.php' );
