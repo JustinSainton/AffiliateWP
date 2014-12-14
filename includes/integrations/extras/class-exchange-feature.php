@@ -75,8 +75,8 @@ class Affiliate_WP_Exchange_Per_Product_Feature extends IT_Exchange_Product_Feat
 		}
 
 		$data = array(
-			'rate'      => $_POST['_affwp_it-exchange_product_rate'],
-			'disabled'  => (bool) isset( $_POST['_affwp_it-exchange_referrals_disabled'] ) ? $_POST['_affwp_it-exchange_referrals_disabled'] : false
+			'rate'      => sanitize_text_field( $_POST['_affwp_it-exchange_product_rate'] ),
+			'disabled'  => (bool) isset( $_POST['_affwp_it-exchange_referrals_disabled'] ) ? 1 : false
 		);
 
 		it_exchange_update_product_feature( $product_id, $this->slug, $data );
