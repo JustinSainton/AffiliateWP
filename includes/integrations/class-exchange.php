@@ -25,6 +25,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		add_action( 'it_exchange_basic_coupons_saved_coupon', array( $this, 'store_coupon_affiliate' ), 10, 2 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+
+		add_action( 'it_libraries_loaded', array( $this, 'load_product_feature' ) );
 	}
 
 	public function add_pending_referral( $transaction_id = 0 ) {
@@ -60,31 +62,36 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			$total = 0;
-			foreach( $this->transaction->products as $product ) {
+			$total          = floatval( $this->transaction->total );
+			$total_taxes    = floatval( $this->transaction->taxes_raw );
 
-				$total += $product['product_subtotal'];
+			$sub_total = 0;
 
+			foreach ( $this->transaction->products as $product ) {
+				$sub_total += $product['product_subtotal'];
 			}
 
-			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+			$referral_total = $total;
 
-				$options  = it_exchange_get_option( 'addon_taxes_simple' );
-				$tax_rate = empty( $options['default-tax-rate'] ) ? 1 : (float) $options['default-tax-rate'];
-				
-				$tax      = $total * ( $tax_rate / 100 );
-				$amount   = $this->transaction->total - $tax;
-			
-			} else {
-			
-				$amount = $this->transaction->total;
-			
+			if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$referral_total -= $total_taxes;
 			}
 
-			$referral_total = $this->calculate_referral_amount( $amount, $transaction_id );
+			$amount = 0;
 
-			$this->insert_pending_referral( $referral_total, $transaction_id, $this->transaction->description );
+			foreach ( $this->transaction->products as $product ) {
 
+				if ( get_post_meta( $product['product_id'], "_affwp_{$this->context}_referrals_disabled", true ) ) {
+					continue;
+				}
+
+				$product_percent_of_cart = (float) $product['product_subtotal'] / $sub_total;
+				$referral_product_price = (float) $product_percent_of_cart * (float) $referral_total;
+
+				$amount += $this->calculate_referral_amount( $referral_product_price, $transaction_id, $product['product_id'] );
+			}
+
+			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description );
 		}
 
 	}
@@ -224,5 +231,11 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Load the product feature for controlling per-product rates.
+	 */
+	public function load_product_feature() {
+		require_once ( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/extras/class-exchange-feature.php' );
+	}
 }
 new Affiliate_WP_Exchange;
