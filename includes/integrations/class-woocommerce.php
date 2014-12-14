@@ -30,6 +30,9 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'wc-on-hold_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'wc-processing_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'wc-completed_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
@@ -168,7 +171,15 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function revoke_referral_on_refund( $order_id = 0 ) {
 
+		if( is_object( $order_id ) ) {
+			$order_id = get_post( $order_id )->ID;
+		}
+
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+			return;
+		}
+
+		if( 'shop_order' != get_post_type( $order_id ) ) {
 			return;
 		}
 
