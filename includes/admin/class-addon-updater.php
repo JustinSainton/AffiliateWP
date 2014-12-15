@@ -41,8 +41,10 @@ class AffWP_AddOn_Updater {
 	 * @return void
 	 */
 	private function hook() {
-		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'pre_set_site_transient_update_plugins_filter' ) );
+		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ) );
 		add_filter( 'plugins_api', array( $this, 'plugins_api_filter' ), 10, 3 );
+		add_action( 'after_plugin_row_' . $this->name, array( $this, 'show_update_notification' ), 10, 2 );
+		add_action( 'admin_init', array( $this, 'show_changelog' ) );
 	}
 
 	/**
@@ -58,19 +60,31 @@ class AffWP_AddOn_Updater {
 	 * @param array $_transient_data Update array build by Wordpress.
 	 * @return array Modified update array with custom plugin data.
 	 */
-	function pre_set_site_transient_update_plugins_filter( $_transient_data ) {
+	function check_update( $_transient_data ) {
 
+		global $pagenow;
 
-		if( empty( $_transient_data ) ) return $_transient_data;
+		if( 'plugins.php' == $pagenow && is_multisite() ) {
+			return $_transient_data;
+		}
 
-		$to_send = array( 'slug' => $this->slug );
+		if( ! is_object( $_transient_data ) ) {
+			$_transient_data = new stdClass;
+		}
 
-		$api_response = $this->api_request( 'plugin_latest_version', $to_send );
+		if ( empty( $_transient_data->response ) || empty( $_transient_data->response[ $this->name ] ) ) {
 
-		if( false !== $api_response && is_object( $api_response ) && isset( $api_response->new_version ) ) {
-			if( version_compare( $this->version, $api_response->new_version, '<' ) ) {
-				$_transient_data->response[$this->name] = $api_response;
+			$api_response = $this->api_request( 'plugin_latest_version', array( 'slug' => $this->slug ) );
+
+			if( false !== $api_response && is_object( $api_response ) && isset( $api_response->new_version ) ) {
+				if( version_compare( $this->version, $api_response->new_version, '<' ) ) {
+					$_transient_data->response[ $this->name ] = $api_response;
+				}
 			}
+
+			$_transient_data->last_checked = time();
+			$_transient_data->checked[ $this->name ] = $this->version;
+
 		}
 
 		return $_transient_data;
@@ -101,6 +115,97 @@ class AffWP_AddOn_Updater {
 	}
 
 	/**
+     * show update nofication row -- needed for multisite subsites, because WP won't tell you otherwise!
+     *
+     * @param string  $file
+     * @param array   $plugin
+     */
+	public function show_update_notification( $file, $plugin ) {
+
+		if( ! current_user_can( 'update_plugins' ) ) {
+			return;
+		}
+
+		if( ! is_multisite() || is_network_admin() ) {
+			return;
+		}
+
+		if ( $this->name != $file ) {
+			return;
+		}
+
+		// Remove our filter on the site transient
+		remove_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ), 10 );
+
+		$update_cache = get_site_transient( 'update_plugins' );
+
+		if ( ! is_object( $update_cache ) || empty( $update_cache->response ) || empty( $update_cache->response[ $this->name ] ) ) {
+
+			$cache_key    = md5( 'affwp_plugin_' . sanitize_key( $this->name ) . '_version_info' );
+			$version_info = get_transient( $cache_key );
+
+			if( false === $version_info ) {
+
+				$version_info = $this->api_request( 'plugin_latest_version', array( 'slug' => $this->slug ) );
+
+				set_transient( $cache_key, $version_info, 3600 );
+			}
+
+
+			if( ! is_object( $version_info ) ) {
+				return;
+			}
+
+			if( version_compare( $this->version, $version_info->new_version, '<' ) ) {
+
+				$update_cache->response[ $this->name ] = $version_info;
+
+			}
+
+			$update_cache->last_checked = time();
+			$update_cache->checked[ $this->name ] = $this->version;
+
+			set_site_transient( 'update_plugins', $update_cache );
+
+		} else {
+
+			$version_info = $update_cache->response[ $this->name ];
+
+		}
+
+		if ( ! empty( $update_cache->response[ $this->name ] ) && version_compare( $this->version, $update_cache->response[ $this->name ]->new_version, '<' ) ) {
+
+			// build a plugin list row, with update notification
+			$wp_list_table = _get_list_table( 'WP_Plugins_List_Table' );
+			echo '<tr class="plugin-update-tr"><td colspan="' . $wp_list_table->get_column_count() . '" class="plugin-update colspanchange"><div class="update-message">';
+
+			$changelog_link = self_admin_url( 'index.php?affwp_action=view_plugin_changelog&plugin=' . $this->name . '&slug=' . $this->slug . '&addon_id=' . $this->addon_id . '&TB_iframe=true&width=772&height=911' );
+
+			if ( empty( $version_info->download_link ) ) {
+				printf(
+					__( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.', 'affiliate-wp' ),
+					esc_html( $version_info->name ),
+					esc_url( $changelog_link ),
+					esc_html( $version_info->new_version )
+				);
+			} else {
+				printf(
+					__( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.', 'affiliate-wp' ),
+					esc_html( $version_info->name ),
+					esc_url( $changelog_link ),
+					esc_html( $version_info->new_version ),
+					esc_url( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' ) . $this->name, 'upgrade-plugin_' . $this->name ) )
+				);
+			}
+
+			echo '</div></td></tr>';
+		}
+
+		// Restore our filter
+		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ) );
+	}
+
+	/**
 	 * Calls the API and, if successful, returns the object delivered by the API.
 	 *
 	 * @uses get_bloginfo()
@@ -119,17 +224,23 @@ class AffWP_AddOn_Updater {
 
 		$data['license'] = affiliate_wp()->settings->get( 'license_key' );
 
-		if( $data['slug'] != $this->slug )
+		if( empty( $data['license'] ) ) {
 			return;
+		}
 
-		if( empty( $data['license'] ) )
+		if( empty( $data['addon_id'] ) ) {
+			$data['addon_id'] = $this->addon_id;
+		}
+
+		if( empty( $data['addon_id'] ) ) {
 			return;
+		}
 
 		$api_params = array(
 			'affwp_action' 	=> 'get_version',
 			'license' 		=> $data['license'],
-			'id' 			=> $this->addon_id,
-			'slug' 			=> $this->slug,
+			'id' 			=> $data['addon_id'],
+			'slug' 			=> $data['slug'],
 			'url'           => home_url()
 		);
 
@@ -140,10 +251,43 @@ class AffWP_AddOn_Updater {
 			if( $request && isset( $request->sections ) ) {
 				$request->sections = maybe_unserialize( $request->sections );
 			}
+
 			return $request;
+
 		} else {
+
 			return false;
+
 		}
+
+	}
+
+	public function show_changelog() {
+
+		if( empty( $_REQUEST['affwp_action'] ) || 'view_plugin_changelog' != $_REQUEST['affwp_action'] ) {
+		    return;
+		}
+
+		if( empty( $_REQUEST['plugin'] ) ) {
+		    return;
+		}
+
+		if( empty( $_REQUEST['slug'] ) ) {
+		    return;
+		}
+
+		if( ! current_user_can( 'update_plugins' ) ) {
+			wp_die( __( 'You do not have permission to install plugin updates', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
+		}
+
+		$response = $this->api_request( 'plugin_latest_version', array( 'slug' => $_REQUEST['slug'], 'addon_id' => $_REQUEST['addon_id'] ) );
+
+		if( $response && isset( $response->sections['changelog'] ) ) {
+			echo '<div style="background:#fff;padding:10px;height:100%;">' . $response->sections['changelog'] . '</div>';
+		}
+
+		exit;
+
 	}
 
 }
