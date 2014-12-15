@@ -142,6 +142,10 @@ class AFFWP_Plugin_Updater {
 
             set_site_transient( 'update_plugins', $update_cache );
 
+        } else {
+
+            $version_info = $update_cache->response[ $this->name ];
+
         }
 
         // Restore our filter
