@@ -36,6 +36,9 @@
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'graphs' ? ' active' : ''; ?>">
 			<a href="<?php echo esc_url( add_query_arg( 'tab', 'graphs' ) ); ?>"><?php _e( 'Graphs', 'affiliate-wp' ); ?></a>
 		</li>
+		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'referrals' ? ' active' : ''; ?>">
+			<a href="<?php echo esc_url( add_query_arg( 'tab', 'referrals' ) ); ?>"><?php _e( 'Referrals', 'affiliate-wp' ); ?></a>
+		</li>
 		<li class="affwp-affiliate-dashboard-tab<?php echo $active_tab == 'visits' ? ' active' : ''; ?>">
 			<a href="<?php echo esc_url( add_query_arg( 'tab', 'visits' ) ); ?>"><?php _e( 'Visits', 'affiliate-wp' ); ?></a>
 		</li>
