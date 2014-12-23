@@ -292,6 +292,7 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 
 	if( $delete_data ) {
 	
+		$user_id   = affwp_get_affiliate_user_id( $affiliate_id );
 		$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
 		$visits    = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
 
@@ -302,6 +303,9 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 		foreach( $visits as $visit ) {
 			affiliate_wp()->visits->delete( $visit->visit_id );
 		}
+
+		delete_user_meta( $user_id, 'affwp_referral_notifications' );
+		delete_user_meta( $user_id, 'affwp_promotion_method' );
 
 	}
 
