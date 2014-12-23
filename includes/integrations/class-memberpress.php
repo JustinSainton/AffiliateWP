@@ -86,7 +86,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 		$referral_total = $this->calculate_referral_amount( $txn->amount, $txn->subscription_id, $txn->product_id );
 
 		// Store a pending referral
-		$this->insert_pending_referral( $referral_total, $txn->subscription_id, get_the_title( $txn->product_id ) );
+		$this->insert_pending_referral( $referral_total, $txn->subscription_id, get_the_title( $txn->product_id ), $txn->trans_num );
 
 		// Mark the referral as complete
 		$this->complete_referral( $txn->subscription_id );
@@ -119,16 +119,18 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 		}
 
-		if( false !== strpos( $reference, 't_' ) ) {
+		if( ! empty( $referral->custom ) ) {
 
-			$url = admin_url( 'admin.php?page=memberpress-trans&search=' . $reference );
-		
+			$search = $referral->custom;
+
 		} else {
-			
-			$url = admin_url( 'admin.php?page=memberpress-subscriptions&search=' . $reference );
+
+			$search = $reference;
 
 		}
 
+		$url = admin_url( 'admin.php?page=memberpress-trans&search=' . $search );
+		
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
 }
