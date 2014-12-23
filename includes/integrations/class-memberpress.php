@@ -108,7 +108,6 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			$this->reject_referral( $txn->subscription_id );
 		
 		}
-
 	
 	}
 
@@ -129,7 +128,6 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			$url = admin_url( 'admin.php?page=memberpress-subscriptions&search=' . $reference );
 
 		}
-
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
