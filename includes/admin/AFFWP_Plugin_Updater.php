@@ -68,8 +68,14 @@ class AFFWP_Plugin_Updater {
      */
     function check_update( $_transient_data ) {
 
+        global $pagenow;
+
         if( ! is_object( $_transient_data ) ) {
             $_transient_data = new stdClass;
+        }
+
+        if( 'plugins.php' == $pagenow && is_multisite() ) {
+            return $_transient_data;
         }
 
         if ( empty( $_transient_data->response ) || empty( $_transient_data->response[ $this->name ] ) ) {
@@ -135,6 +141,10 @@ class AFFWP_Plugin_Updater {
             $update_cache->checked[ $this->name ] = $this->version;
 
             set_site_transient( 'update_plugins', $update_cache );
+
+        } else {
+
+            $version_info = $update_cache->response[ $this->name ];
 
         }
 
