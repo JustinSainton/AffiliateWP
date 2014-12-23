@@ -3,9 +3,9 @@
 	<h4><?php _e( 'Referrals', 'affiliate-wp' ); ?></h4>
 
 	<?php
-	$per_page = 30;
-	$page     = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-	$referrals   = affiliate_wp()->referrals->get_referrals( array(
+	$per_page  = 30;
+	$page      = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+	$referrals = affiliate_wp()->referrals->get_referrals( array(
 		'number'       => $per_page,
 		'offset'       => $per_page * ( $page - 1 ),
 		'affiliate_id' => affwp_get_affiliate_id(),
