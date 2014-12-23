@@ -70,7 +70,7 @@ class Affiliate_WP_Login {
 			// check the user's login with their password
 			if ( ! wp_check_password( $_POST['affwp_user_pass'], $user->user_pass, $user->ID ) ) {
 				// if the password is incorrect for the specified user
-				$this->add_error( 'password_incorrect', __( 'Incorrect password', 'affiliate-wp' ) );
+				$this->add_error( 'password_incorrect', __( 'Incorrect username or password', 'affiliate-wp' ) );
 			}
 		}
 
