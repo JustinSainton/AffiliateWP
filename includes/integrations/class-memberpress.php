@@ -2,6 +2,12 @@
 
 class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function init() {
 
 		$this->context = 'memberpress';
@@ -16,6 +22,12 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Set a flag during a recurring signup so that we can identify this when the payment is processed
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function set_referred_flag_on_signup( $product_price, $user, $product_id, $txn_id ) {
 
 		if( $this->was_referred() ) {
@@ -29,6 +41,12 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Store a pending referraling when a one-time product is purchased
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function add_pending_referral( $txn ) {
 
 		// Pending referrals are only created for one-time purchases
@@ -56,6 +74,12 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 		}
 	}
 
+	/**
+	 * Update a referral to Unpaid when a one-time purchase is completed
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function mark_referral_complete( $txn ) {
 
 		// Completes a referral for a one-time purchase
@@ -67,6 +91,12 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 		$this->complete_referral( $txn->trans_num );
 	}
 
+	/**
+	 * Mark a referral from a subscription as Unpaid when the payment is completed
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function mark_subscription_referral_complete( $txn ) {
 
 		// Completes a referral for a subscription payment
@@ -93,6 +123,12 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Reject referrals when the transaction is refunded
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function revoke_referral_on_refund( $txn ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
@@ -111,6 +147,12 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	
 	}
 
+	/**
+	 * Setup the reference link
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
 	public function reference_link( $reference = 0, $referral ) {
 
 		if( empty( $referral->context ) || 'memberpress' != $referral->context ) {
