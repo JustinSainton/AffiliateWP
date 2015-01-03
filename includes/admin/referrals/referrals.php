@@ -21,6 +21,10 @@ function affwp_referrals_admin() {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/new.php';
 
+	} else if( isset( $_GET['action'] ) && 'edit_referral' == $_GET['action'] ) {
+
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/referrals/edit.php';
+
 	} else {
 
 		$referrals_table = new AffWP_Referrals_Table();
@@ -364,6 +368,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 
 		}
 		
+		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'edit_referral', 'referral_id' => $referral->referral_id ) ) ) . '" class="edit">' . __( 'Edit', 'affiliate-wp' ) . '</a></span>';
 		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral_id' => $referral->referral_id ) ) ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
 		
 		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links, $referral ) );

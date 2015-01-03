@@ -101,6 +101,7 @@
 
 		<?php do_action( 'affwp_new_referral_bottom' ); ?>
 
+		<?php echo wp_nonce_field( 'affwp_add_referral_nonce', 'affwp_add_referral_nonce' ); ?>
 		<input type="hidden" name="user_id" id="user_id" value="" />
 		<input type="hidden" name="affwp_action" value="add_referral" />
 
