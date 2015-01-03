@@ -44,9 +44,16 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 			}
 
 			$amount = $this->order->total;
+
 			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
 				$amount -= $this->order->tax;
+
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
+
+				$amount -= $this->order->shipping;
 
 			}
 
