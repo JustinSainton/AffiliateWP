@@ -69,6 +69,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			$cart_discount = $this->order->get_total_discount();
+			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
 
@@ -84,7 +85,9 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 					// The order discount has to be divided across the items
 
-					$discount = 0;
+					$product_total = $product['line_total']
+					$discount      = 0;
+					$shipping      = 0;
 
 					if( $cart_discount > 0 ) {
 
@@ -92,7 +95,15 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 					}
 
-					$product_total = $product['line_total'] - $discount;
+					$product_total -= $discount;
+
+					if( $cart_shipping > 0 && affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
+
+						$shipping       = $cart_shipping / count( $items );
+						$product_total -= $shipping;
+
+					}
+
 
 					if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
