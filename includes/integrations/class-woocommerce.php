@@ -100,6 +100,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 					$shipping       = $cart_shipping / count( $items );
 					$product_total -= $shipping;
 
+				} elseif( $cart_shipping > 0 ) {
+
+					$shipping       = $cart_shipping / count( $items );
+					$product_total += $shipping;
+
 				}
 
 
