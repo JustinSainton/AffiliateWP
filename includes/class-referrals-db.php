@@ -114,14 +114,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			return false;
 		}
 
-		if( $referral->status !== $data['status'] ) {
-			affwp_set_referral_status( $referral, $data['status'] );
-			unset( $data['status'] );
-		}
-
 		$update = $this->update( $referral_id, $data );
 
 		if( $update ) {
+
+			if( $referral->status !== $data['status'] ) {
+				affwp_set_referral_status( $referral, $data['status'] );
+			}
 
 			return $update;
 		}
