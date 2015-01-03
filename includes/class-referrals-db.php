@@ -122,7 +122,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				affwp_set_referral_status( $referral, $data['status'] );
 
-			} else {
+			} elseif( 'paid' === $referral->status ) {
 
 				if( $referral->amount > $data['amount'] ) {
 
