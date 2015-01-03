@@ -19,8 +19,8 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 				</th>
 
 				<td>
-					<input class="small-text" type="text" name="affiliate_id" id="affiliate_id" value="<?php echo esc_attr( $referral->affiliate_id ); ?>" />
-					<p class="description"><?php _e( 'The affiliate\'s ID this referral belongs to.', 'affiliate-wp' ); ?></p>
+					<input class="small-text" type="text" name="affiliate_id" id="affiliate_id" value="<?php echo esc_attr( $referral->affiliate_id ); ?>" disabled="disabled"/>
+					<p class="description"><?php _e( 'The affiliate\'s ID this referral belongs to. This value cannot be changed.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
