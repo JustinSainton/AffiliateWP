@@ -97,6 +97,33 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	}
 
 	/**
+	 * Update a referral
+	 *
+	 * @access  public
+	 * @since   1.5
+	*/
+	public function update_referral( $referral_id = 0, $data = array() ) {
+
+		if( empty( $referral_id ) ) {
+			return false;
+		}
+
+		if( ! $this->get( $referral_id ) ) {
+			return false;
+		}
+
+		$update = $this->update( $referral_id, $data );
+
+		if( $update ) {
+
+			return $update;
+		}
+
+		return false;
+
+	}
+
+	/**
 	 * Retrieve a referral by a specific field. Optionally let's you retreive via field that also has a specific context
 	 *
 	 * @access  public

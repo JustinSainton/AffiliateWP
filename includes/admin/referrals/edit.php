@@ -101,7 +101,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 
 		<?php echo wp_nonce_field( 'affwp_edit_referral_nonce', 'affwp_edit_referral_nonce' ); ?>
 		<input type="hidden" name="referral_id" value="<?php echo absint( $referral->referral_id ); ?>" />
-		<input type="hidden" name="affwp_action" value="update_referral" />
+		<input type="hidden" name="affwp_action" value="process_update_referral" />
 
 		<?php submit_button( __( 'Update Referral', 'affiliate-wp' ) ); ?>
 

@@ -51,16 +51,16 @@ function affwp_process_update_referral( $data ) {
 		wp_die( __( 'Security check failed', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
-	if ( affwp_add_referral( $data ) ) {
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_added' ) );
+	if ( affiliate_wp()->referrals->update_referral( $data['referral_id'], $data ) ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_edited' ) );
 		exit;
 	} else {
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_add_failed' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_edit_failed' ) );
 		exit;
 	}
 
 }
-add_action( 'affwp_update_referral', 'affwp_process_update_referral' );
+add_action( 'affwp_process_update_referral', 'affwp_process_update_referral' );
 
 /**
  * Process the referral payout file generation
