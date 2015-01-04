@@ -52,10 +52,10 @@ function affwp_process_update_referral( $data ) {
 	}
 
 	if ( affiliate_wp()->referrals->update_referral( $data['referral_id'], $data ) ) {
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_edited' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_updated' ) );
 		exit;
 	} else {
-		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_edit_failed' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_update_failed' ) );
 		exit;
 	}
 
