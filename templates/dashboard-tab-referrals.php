@@ -51,7 +51,7 @@
 			'total'        => ceil( affwp_count_referrals( affwp_get_affiliate_id() ) / $per_page ),
 			'add_fragment' => '#affwp-affiliate-dashboard-referrals',
 			'add_args'     => array(
-				'tab'      => 'referrals'
+			'tab'          => 'referrals'
 			)
 		) );
 		?>
