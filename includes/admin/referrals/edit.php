@@ -33,7 +33,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 
 				<td>
 					<input type="text" name="amount" id="amount" value="<?php echo esc_attr( $referral->amount ); ?>" />
-					<div class="description"><?php _e( 'The amount of the referral, such as 15.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'The amount of the referral, such as 15.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -46,7 +46,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 
 				<td>
 					<input type="text" name="description" id="description" value="<?php echo esc_attr( $referral->description ); ?>" />
-					<div class="description"><?php _e( 'Enter a description for this referral.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter a description for this referral.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -59,7 +59,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 
 				<td>
 					<input type="text" name="reference" id="reference" value="<?php echo esc_attr( $referral->reference ); ?>" />
-					<div class="description"><?php _e( 'Enter a reference for this referral (optional). Usually this would be the transaction ID of the associated purchase.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter a reference for this referral (optional). Usually this would be the transaction ID of the associated purchase.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -72,7 +72,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 
 				<td>
 					<input type="text" name="context" id="context" value="<?php echo esc_attr( $referral->context ); ?>" />
-					<div class="description"><?php _e( 'Enter a context for this referral (optional). Usually this is used to help identify the payment system that was used for the transaction.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter a context for this referral (optional). Usually this is used to help identify the payment system that was used for the transaction.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -90,7 +90,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 						<option value="pending"<?php selected( 'pending', $referral->status ); ?>><?php _e( 'Pending', 'affiliate-wp' ); ?></option>
 						<option value="rejected"<?php selected( 'rejected', $referral->status ); ?>><?php _e( 'Rejected', 'affiliate-wp' ); ?></option>
 					</select>
-					<div class="description"><?php _e( 'Select the status of the referral.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Select the status of the referral.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
