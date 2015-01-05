@@ -69,56 +69,52 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			$cart_discount = $this->order->get_total_discount();
+			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
+			echo $cart_shipping;
+			echo '<pre>'; print_r( $items ); echo '</pre>';
 
-			if( is_array( $items ) ) {
+			// Calculate the referral amount based on product prices
+			$amount = 0.00;
+			foreach( $items as $product ) {
 
-				// Calculate the referral amount based on product prices
-				$amount = 0.00;
-				foreach( $items as $product ) {
+				if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+					continue; // Referrals are disabled on this product
+				}
 
-					if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
-						continue; // Referrals are disabled on this product
-					}
+				// The order discount has to be divided across the items
 
-					// The order discount has to be divided across the items
+				$product_total = $product['line_total'];
+				$discount      = 0;
+				$shipping      = 0;
 
-					$discount = 0;
+				if( $cart_discount > 0 ) {
 
-					if( $cart_discount > 0 ) {
-
-						$discount = $cart_discount / count( $items );
-
-					}
-
-					$product_total = $product['line_total'] - $discount;
-
-					if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
-
-						$product_total += $product['line_tax'];
-
-					}
-
-					if( $product_total <= 0 ) {
-						continue;
-					}
-
-					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
+					$discount = $cart_discount / count( $items );
 
 				}
 
-			} else {
+				$product_total -= $discount;
 
-				$total  = $this->order->get_total() - $cart_discount;
+				if( $cart_shipping > 0 && ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
-				if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
-
-					$total -= $this->order->get_cart_tax();
+					$shipping       = $cart_shipping / count( $items );
+					$product_total += $shipping;
 
 				}
 
-				$amount = $this->calculate_referral_amount( $total, $order_id );
+				if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+
+					$product_total += $product['line_tax'];
+
+				}
+
+				if( $product_total <= 0 ) {
+					continue;
+				}
+
+				$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
 			}
 

@@ -68,6 +68,12 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 
 			}
 
+			if( affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
+
+				$amount -= $this->order->order_shipping;
+
+			}
+
 			$referral_total = $this->calculate_referral_amount( $amount, $order_id );
 
 			$this->insert_pending_referral( $referral_total, $order_id, $description );

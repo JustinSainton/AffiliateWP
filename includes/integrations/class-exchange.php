@@ -62,10 +62,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
+			$sub_total      = 0;
 			$total          = floatval( $this->transaction->total );
 			$total_taxes    = floatval( $this->transaction->taxes_raw );
-
-			$sub_total = 0;
+			$shipping       = floatval( $this->transaction->shipping_total );
 
 			foreach ( $this->transaction->products as $product ) {
 				$sub_total += $product['product_subtotal'];
@@ -74,7 +74,15 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 			$referral_total = $total;
 
 			if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+			
 				$referral_total -= $total_taxes;
+			
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_shipping' ) && $shipping > 0 ) {
+
+				$referral_total -= $shipping / 100;
+
 			}
 
 			$amount = 0;

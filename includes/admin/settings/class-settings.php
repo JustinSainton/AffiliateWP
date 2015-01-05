@@ -223,6 +223,11 @@ class Affiliate_WP_Settings {
 						'step' => '0.01',
 						'std' => '20'
 					),
+					'exclude_shipping' => array(
+						'name' => __( 'Exclude Shipping', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Should shipping costs be excluded from referral calculations?', 'affiliate-wp' ) . '</p>',
+						'type' => 'checkbox'
+					),
 					'exclude_tax' => array(
 						'name' => __( 'Exclude Tax', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . __( 'Should taxes be excluded from referral calculations?', 'affiliate-wp' ) . '</p>',

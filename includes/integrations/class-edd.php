@@ -142,7 +142,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			// Calculate the referral amount based on product prices
 			$referral_total = 0.00;
 
-			foreach ( $downloads as $download ) {
+			foreach ( $downloads as $key => $download ) {
 
 				if( get_post_meta( $download['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 					continue; // Referrals are disabled on this product
@@ -152,6 +152,28 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					$amount = $download['price'] - $download['tax'];
 				} else {
 					$amount = $download['price'];
+				}
+
+				if( class_exists( 'EDD_Simple_Shipping' ) ) {
+					
+					if( isset( $download['fees'] ) ) {
+
+						foreach( $download['fees'] as $fee_id => $fee ) {
+
+							if( false !== strpos( $fee_id, 'shipping' ) ) {
+
+								if( ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
+
+									$amount += $fee['amount'];
+									
+								}
+
+							}
+
+						}
+
+					}
+					
 				}
 
 				$referral_total += $this->calculate_referral_amount( $amount, $payment_id, $download['id'] );
