@@ -72,6 +72,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
+			echo $cart_shipping;
+			echo '<pre>'; print_r( $items ); echo '</pre>';
 
 			// Calculate the referral amount based on product prices
 			$amount = 0.00;
@@ -95,18 +97,12 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 				$product_total -= $discount;
 
-				if( $cart_shipping > 0 && affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
-
-					$shipping       = $cart_shipping / count( $items );
-					$product_total -= $shipping;
-
-				} elseif( $cart_shipping > 0 ) {
+				if( $cart_shipping > 0 && ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
 					$shipping       = $cart_shipping / count( $items );
 					$product_total += $shipping;
 
 				}
-
 
 				if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
