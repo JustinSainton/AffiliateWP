@@ -9,6 +9,7 @@
 		'number'       => $per_page,
 		'offset'       => $per_page * ( $page - 1 ),
 		'affiliate_id' => affwp_get_affiliate_id(),
+		'status'       => array( 'paid', 'unpaid', 'rejected' )
 	) );
 	?>
 
