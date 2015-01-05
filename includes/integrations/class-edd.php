@@ -162,11 +162,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 							if( false !== strpos( $fee_id, 'shipping' ) ) {
 
-								if( affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
-
-									$amount -= $fee['amount'];
-								
-								} else {
+								if( ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
 									$amount += $fee['amount'];
 									
