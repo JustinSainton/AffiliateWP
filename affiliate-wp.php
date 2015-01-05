@@ -387,7 +387,7 @@ endif; // End if class_exists check
  * Example: <?php $affiliate_wp = affiliate_wp(); ?>
  *
  * @since 1.0
- * @return AffiliateWP The one true Affiliate_WP Instance
+ * @return Affiliate_WP The one true Affiliate_WP Instance
  */
 function affiliate_wp() {
 	return Affiliate_WP::instance();
