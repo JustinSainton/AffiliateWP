@@ -186,6 +186,19 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
 }
 
 /**
+ * Determine if an affiliate has a custom rate
+ *
+ * @since 1.5
+ * @return bool
+ */
+function affwp_affiliate_has_custom_rate( $affiliate_id = 0 ) {
+
+	$ret = (bool) affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
+
+	return apply_filters( 'affwp_affiliate_has_custom_rate', $ret, $affiliate_id );
+}
+
+/**
  * Retrieves the referral rate type for an affiliate
  *
  * Either "flat" or "percentage"
