@@ -27,7 +27,7 @@
 
 			</tr>
 
-			<tr class="form-row form-required">
+			<tr class="form-row">
 
 				<th scope="row">
 					<label for="rate_type"><?php _e( 'Referral Rate Type', 'affiliate-wp' ); ?></label>
@@ -45,7 +45,7 @@
 
 			</tr>
 
-			<tr class="form-row form-required">
+			<tr class="form-row">
 
 				<th scope="row">
 					<label for="rate"><?php _e( 'Referral Rate', 'affiliate-wp' ); ?></label>
@@ -58,7 +58,7 @@
 
 			</tr>
 
-			<tr class="form-row form-required">
+			<tr class="form-row">
 
 				<th scope="row">
 					<label for="payment_email"><?php _e( 'Payment Email', 'affiliate-wp' ); ?></label>
