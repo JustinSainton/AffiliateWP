@@ -20,13 +20,13 @@ function affwp_process_settings_import() {
 	$extension = end( explode( '.', $_FILES['import_file']['name'] ) );
 
     if( $extension != 'json' ) {
-        wp_die( __( 'Please upload a valid .json file', 'affiliate-wp' ), array( 'response' => 400 ) );
+        wp_die( __( 'Please upload a valid .json file', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 400 ) );
     }
 
 	$import_file = $_FILES['import_file']['tmp_name'];
 
 	if( empty( $import_file ) ) {
-		wp_die( __( 'Please upload a file to import', 'affiliate-wp' ), array( 'response' => 400 ) );
+		wp_die( __( 'Please upload a file to import', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 400 ) );
 	}
 
 	// Retrieve the settings from the file and convert the json object to an array

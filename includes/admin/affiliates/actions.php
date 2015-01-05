@@ -17,7 +17,7 @@ function affwp_process_add_affiliate( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_affiliates' ) ) {
-		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( affwp_add_affiliate( $data ) ) {
@@ -46,15 +46,15 @@ function affwp_process_affiliate_deletion( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_affiliates' ) ) {
-		wp_die( __( 'You do not have permission to delete affiliate accounts', 'affiliate-wp' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to delete affiliate accounts', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( ! wp_verify_nonce( $data['affwp_delete_affiliates_nonce'], 'affwp_delete_affiliates_nonce' ) ) {
-		wp_die( __( 'Security check failed', 'affiliate-wp' ), array( 'response' => 403 ) );
+		wp_die( __( 'Security check failed', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( empty( $data['affwp_affiliate_ids'] ) || ! is_array( $data['affwp_affiliate_ids'] ) ) {
-		wp_die( __( 'No affiliate IDs specified for deletion', 'affiliate-wp' ), array( 'response' => 400 ) );
+		wp_die( __( 'No affiliate IDs specified for deletion', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 400 ) );
 	}
 
 	$to_delete    = array_map( 'absint', $data['affwp_affiliate_ids'] );
@@ -101,7 +101,7 @@ function affwp_process_update_affiliate( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_affiliates' ) ) {
-		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( affwp_update_affiliate( $data ) ) {

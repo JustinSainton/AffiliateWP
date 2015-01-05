@@ -13,7 +13,7 @@ function affwp_process_add_referral( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_referrals' ) ) {
-		wp_die( __( 'You do not have permission to manage referrals', 'affiliate-wp' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to manage referrals', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( affwp_add_referral( $data ) ) {
