@@ -161,8 +161,11 @@ function affwp_delete_referral( $referral ) {
 
 function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0, $rate = '', $product_id = 0 ) {
 
-	if( empty( $rate ) ) {
+	$has_custom = affwp_affiliate_has_custom_rate( $affiliate_id );
 
+	if( $has_custom || empty( $rate ) ) {
+
+		// If the affiliate has a custom rate set, use it. If no rate is specified, use the fallback
 		$rate = affwp_get_affiliate_rate( $affiliate_id );
 
 	}
