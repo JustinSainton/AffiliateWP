@@ -9,6 +9,7 @@
 		'number'       => $per_page,
 		'offset'       => $per_page * ( $page - 1 ),
 		'affiliate_id' => affwp_get_affiliate_id(),
+		'status'       => array( 'paid', 'unpaid', 'rejected' )
 	) );
 	?>
 
@@ -27,10 +28,10 @@
 
 				<?php foreach ( $referrals as $referral ) : ?>
 					<tr>
-						<td><?php echo affwp_currency_filter( affwp_format_amount( $referral->amount ) ); ?></td>
-						<td><?php echo $referral->description; ?></td>
-						<td><?php echo $referral->status; ?></td>
-						<td><?php echo date_i18n( get_option( 'date_format' ), strtotime( $referral->date ) ); ?></td>
+						<td class="referral-amount"><?php echo affwp_currency_filter( affwp_format_amount( $referral->amount ) ); ?></td>
+						<td class="referral-description"><?php echo $referral->description; ?></td>
+						<td class="referral-status <?php echo $referral->status; ?>"><?php echo $referral->status; ?></td>
+						<td class="referral-date"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $referral->date ) ); ?></td>
 					</tr>
 				<?php endforeach; ?>
 
@@ -51,7 +52,7 @@
 			'total'        => ceil( affwp_count_referrals( affwp_get_affiliate_id() ) / $per_page ),
 			'add_fragment' => '#affwp-affiliate-dashboard-referrals',
 			'add_args'     => array(
-				'tab'      => 'referrals'
+			'tab'          => 'referrals'
 			)
 		) );
 		?>
