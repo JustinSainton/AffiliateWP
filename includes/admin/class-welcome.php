@@ -202,14 +202,11 @@ class Affiliate_WP_Welcome {
 					<div>
 						<h4><?php _e( 'Affiliate-Specific Rates', 'affiliate-wp' );?></h4>
 						<p><?php _e( 'If an affiliate has a specific rate set on their account, that rate will always be used, even if a product with a product-specific rate is purchased.', 'affiliate-wp' );?></p>
-
-						<h4><?php _e( 'Better Cleanup', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'When an affiliate account is deleted, metadata associated with the account is also deleted, ensuring your database stays nice and pretty.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div>
-						<h4><?php _e( 'Per-Product Rates in iThemes Exchange', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'iThemes Exchange now supports per-product referral rates. The rate can be set from the product edit screen.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Better Cleanup', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'When an affiliate account is deleted, metadata associated with the account is also deleted, ensuring your database stays nice and pretty.', 'affiliate-wp' );?></p>
 
 					</div>
 
