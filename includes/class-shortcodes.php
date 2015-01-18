@@ -149,26 +149,38 @@ class Affiliate_WP_Shortcodes {
 	 *  @return string
 	 */
 	public function referral_url( $atts, $content = null ) {
-
 		if ( ! affwp_is_affiliate() ) {
 			return;
 		}
 
 		shortcode_atts( array(
-			'url' => ''
+			'url'    => '',
+			'format' => '',
+			'pretty' => ''
 		), $atts, 'affiliate_referral_url' );
 
-		if( ! empty( $content ) ) {
-
+		// base URL
+		if ( ! empty( $content ) ) {
 			$base = $content;
-
 		} else {
-
-			$base = ! empty( $atts[ 'url' ] ) ? $atts[ 'url' ] : home_url( '/' );
-
+			$base = ! empty( $atts[ 'url' ] ) ? trailingslashit( esc_url( $atts[ 'url' ] ) ) : home_url( '/' );
 		}
 
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $base );
+		// get affiliate username
+		$affiliate = affwp_get_affiliate( affwp_get_affiliate_id() );
+		$user_info = get_userdata( $affiliate->user_id );
+		$username  = esc_html( $user_info->user_login );
+
+		// format
+		$format = isset( $atts['format'] ) && 'username' == $atts['format'] ? $username : affwp_get_affiliate_id();
+
+		if ( isset( $atts['pretty'] ) && 'yes' == $atts['pretty'] ) {
+			$content = $base . affiliate_wp()->tracking->get_referral_var() . '/' . $format;
+		} else {
+			$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );
+		}
+		
+		return $content;
 	}
 
 	/**
