@@ -40,6 +40,37 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 
 }
 
+
+/**
+ * Retrieves the username of the specified affiliate
+ *
+ * If no affiliate ID is given, it will check the currently logged in affiliate
+ *
+ * @since 1.0
+ * @return string username if affiliate exists, boolean false otherwise
+ */
+function affwp_get_affiliate_username( $affiliate_id = 0 ) {
+
+	if ( ! is_user_logged_in() && empty( $affiliate_id ) ) {
+		return false;
+	}
+
+	if ( empty( $affiliate_id ) ) {
+		$affiliate_id = affwp_get_affiliate_id();
+	}
+
+	$affiliate = affwp_get_affiliate( $affiliate_id );
+
+	if ( $affiliate ) {
+		$user_info = get_userdata( $affiliate->user_id );
+		$username  = esc_html( $user_info->user_login );
+		return esc_html( $username );
+	}
+
+	return false;
+
+}
+
 /**
  * Retrieves an affiliate's user ID
  *
