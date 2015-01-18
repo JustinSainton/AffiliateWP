@@ -159,6 +159,36 @@ class Affiliate_WP_Shortcodes {
 			'pretty' => ''
 		), $atts, 'affiliate_referral_url' );
 
+		// get affiliate username
+		$affiliate = affwp_get_affiliate( affwp_get_affiliate_id() );
+		$user_info = get_userdata( $affiliate->user_id );
+		$username  = esc_html( $user_info->user_login );
+
+		// format passed in from shortcode
+		if ( isset( $atts['format'] ) ) {
+			if ( 'id' == $atts['format'] ) {
+				$format = affwp_get_affiliate_id();
+			} elseif ( 'username' == $atts['format'] ) {
+				$format = $username;
+			}
+		} elseif ( ! isset( $format ) ) {
+			// get format from settings
+			$format = affiliate_wp()->settings->get( 'referral_format' );
+
+			switch ( $format ) {
+				case 'id':
+					$format = affwp_get_affiliate_id();
+				break;
+				
+				case 'username':
+					$format = $username;
+				break;
+			}
+		}
+
+		// pretty affiliate URLs
+		$is_pretty_affiliate_urls = affiliate_wp()->settings->get( 'referral_pretty_urls' );
+
 		// base URL
 		if ( ! empty( $content ) ) {
 			$base = $content;
@@ -166,15 +196,17 @@ class Affiliate_WP_Shortcodes {
 			$base = ! empty( $atts[ 'url' ] ) ? trailingslashit( esc_url( $atts[ 'url' ] ) ) : home_url( '/' );
 		}
 
-		// get affiliate username
-		$affiliate = affwp_get_affiliate( affwp_get_affiliate_id() );
-		$user_info = get_userdata( $affiliate->user_id );
-		$username  = esc_html( $user_info->user_login );
-
-		// format
-		$format = isset( $atts['format'] ) && 'username' == $atts['format'] ? $username : affwp_get_affiliate_id();
-
-		if ( isset( $atts['pretty'] ) && 'yes' == $atts['pretty'] ) {
+		// pretty affiliate URLS is enabled via shortcode
+		if ( isset( $atts['pretty'] ) ) {
+			if ( 'yes' == $atts['pretty'] ) {
+				// pretty affiliate URLs enabled
+				$content = $base . affiliate_wp()->tracking->get_referral_var() . '/' . $format;
+			} elseif ( 'no' == $atts['pretty'] ) {
+				// pretty affiliate URLS disabled
+				$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );
+			}		
+		} elseif ( $is_pretty_affiliate_urls ) {
+			// pretty affiliate URLs enabled from settings
 			$content = $base . affiliate_wp()->tracking->get_referral_var() . '/' . $format;
 		} else {
 			$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );

@@ -166,6 +166,10 @@ class Affiliate_WP_Settings {
 	*/
 	function get_registered_settings() {
 
+		// get currently logged in username
+		$user_info = get_userdata( get_current_user_id() );
+		$username  = esc_html( $user_info->user_login );
+
 		$settings = array(
 			/** General Settings */
 			'general' => apply_filters( 'affwp_settings_general',
@@ -208,6 +212,20 @@ class Affiliate_WP_Settings {
 						'desc' => '<p class="description">' . sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ) . '</p>',
 						'type' => 'text',
 						'std' => 'ref'
+					),
+					'referral_format' => array(
+						'name' => __( 'Referral Format', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . sprintf( __( 'Appends either the affiliate\'s ID or Username to the affiliate\'s referral URL.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) . '</p>',
+						'type' => 'select',
+						'options' => array( 
+							'id'       => __( 'ID', 'affiliate-wp' ),
+							'username' => __( 'Username', 'affiliate-wp' ),
+						)
+					),
+					'referral_pretty_urls' => array(
+						'name' => __( 'Pretty Affiliate URLs', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . sprintf( __( 'Show pretty affiliate referrals. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ) . '</p>',
+						'type' => 'checkbox'
 					),
 					'referral_rate_type' => array(
 						'name' => __( 'Referral Rate Type', 'affiliate-wp' ),
