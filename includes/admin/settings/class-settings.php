@@ -168,7 +168,7 @@ class Affiliate_WP_Settings {
 
 		// get currently logged in username
 		$user_info = get_userdata( get_current_user_id() );
-		$username  = esc_html( $user_info->user_login );
+		$username  = $user_info ? esc_html( $user_info->user_login ) : '';
 
 		$settings = array(
 			/** General Settings */
