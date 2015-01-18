@@ -160,9 +160,7 @@ class Affiliate_WP_Shortcodes {
 		), $atts, 'affiliate_referral_url' );
 
 		// get affiliate username
-		$affiliate = affwp_get_affiliate( affwp_get_affiliate_id() );
-		$user_info = get_userdata( $affiliate->user_id );
-		$username  = esc_html( $user_info->user_login );
+		$username = affwp_get_affiliate_username();
 
 		// format passed in from shortcode
 		if ( isset( $atts['format'] ) ) {
@@ -200,14 +198,14 @@ class Affiliate_WP_Shortcodes {
 		if ( isset( $atts['pretty'] ) ) {
 			if ( 'yes' == $atts['pretty'] ) {
 				// pretty affiliate URLs enabled
-				$content = $base . affiliate_wp()->tracking->get_referral_var() . '/' . $format;
+				$content = $base . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
 			} elseif ( 'no' == $atts['pretty'] ) {
 				// pretty affiliate URLS disabled
 				$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );
 			}		
 		} elseif ( $is_pretty_affiliate_urls ) {
 			// pretty affiliate URLs enabled from settings
-			$content = $base . affiliate_wp()->tracking->get_referral_var() . '/' . $format;
+			$content = $base . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
 		} else {
 			$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );
 		}
