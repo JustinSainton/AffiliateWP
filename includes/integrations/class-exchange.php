@@ -245,7 +245,9 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	 * @since   1.5
 	 */
 	public function load_product_feature() {
-		require_once ( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/extras/class-exchange-feature.php' );
+		if( class_exists( 'IT_Exchange_Product_Feature_Abstract' ) ) {
+			require_once ( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/extras/class-exchange-feature.php' );
+		}
 	}
 }
 new Affiliate_WP_Exchange;
