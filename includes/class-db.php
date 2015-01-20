@@ -120,6 +120,8 @@ abstract class Affiliate_WP_DB {
 
 		wp_cache_flush();
 
+		do_action( 'affwp_post_update', $data );
+
 		return true;
 	}
 
