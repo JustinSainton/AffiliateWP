@@ -49,7 +49,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 		// Now update the referral to have a nice reference. PMP doesn't make the order ID available early enough
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $order->code );
 		if( $referral ) {
-			affiliate_wp()->referrals->update( $referral->referral_id, array( 'custom' => $order->id ) );
+			affiliate_wp()->referrals->update( $referral->referral_id, array( 'custom' => $order->id ), '', 'referral' );
 		}
 
 		$this->complete_referral( $order->code );
