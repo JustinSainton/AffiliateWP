@@ -65,7 +65,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			if( affwp_get_affiliate_email( $this->affiliate_id ) == $this->order->billing_email ) {
-				return; // Customers cannot refer themselves
+				return false; // Customers cannot refer themselves
+			}
+
+			if( affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context ) ) {
+				return false; // Referral already created for this reference
 			}
 
 			$cart_discount = $this->order->get_total_discount();
