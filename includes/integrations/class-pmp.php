@@ -30,7 +30,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 			if( 'success' === strtolower( $order->status ) ) {
 
 				if( $referral_id ) {
-					affiliate_wp()->referrals->update( $referral_id, array( 'custom' => $order->id ) );
+					affiliate_wp()->referrals->update( $referral_id, array( 'custom' => $order->id ), '', 'referral' );
 				}
 
 				$this->complete_referral( $order->code );
