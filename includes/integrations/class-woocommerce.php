@@ -72,8 +72,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
-			echo $cart_shipping;
-			echo '<pre>'; print_r( $items ); echo '</pre>';
 
 			// Calculate the referral amount based on product prices
 			$amount = 0.00;
