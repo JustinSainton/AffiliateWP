@@ -103,7 +103,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				if ( ! empty( $existing->referral_id ) ) {
 
 					// If a referral was already recorded, overwrite it with the linked discount affiliate
-					affiliate_wp()->referrals->update( $existing->referral_id, array( 'affiliate_id' => $this->affiliate_id, 'status' => 'unpaid', 'amount' => $referral_total ) );
+					affiliate_wp()->referrals->update( $existing->referral_id, array( 'affiliate_id' => $this->affiliate_id, 'status' => 'unpaid', 'amount' => $referral_total ), '', 'referral' );
 
 				} else {
 					// new referral

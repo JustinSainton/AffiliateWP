@@ -114,7 +114,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			return false;
 		}
 
-		$update = $this->update( $referral_id, $data );
+		$update = $this->update( $referral_id, $data, '', 'referral' );
 
 		if( $update ) {
 

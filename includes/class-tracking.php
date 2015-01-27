@@ -305,7 +305,7 @@ class Affiliate_WP_Tracking {
 				'visit_id'     => $this->get_visit_id()
 			) );
 
-			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referal_id ) );
+			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referal_id ), '', 'visit' );
 
 			echo $referal_id; exit;
 
