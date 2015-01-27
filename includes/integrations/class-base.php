@@ -155,7 +155,7 @@ abstract class Affiliate_WP_Base {
 			return false;
 		}
 
-		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ) ) ) {
+		if ( affiliate_wp()->referrals->update( $referral->referral_id, array( 'status' => 'rejected' ), '', 'referral' ) ) {
 
 			return true;
 
