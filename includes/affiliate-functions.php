@@ -723,7 +723,7 @@ function affwp_update_affiliate( $data = array() ) {
 	$args['rate_type']     = ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '';
 	$args['user_id']       = $user_id;
 
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args, '', 'affiliate' ) ) {
 
 		// update affiliate's account email
 		if( wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) ) ) {
@@ -773,7 +773,7 @@ function affwp_update_profile_settings( $data = array() ) {
 	}
 
 	if ( ! empty( $data['payment_email'] ) && is_email( $data['payment_email'] ) ) {
-		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ) );
+		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ), '', 'affiliate' );
 	}
 
 	do_action( 'affwp_update_affiliate_profile_settings', $data );

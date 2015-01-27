@@ -89,7 +89,7 @@ abstract class Affiliate_WP_DB {
 		return $wpdb->insert_id;
 	}
 
-	public function update( $row_id, $data = array(), $where = '' ) {
+	public function update( $row_id, $data = array(), $where = '', $type = '' ) {
 		global $wpdb;
 
 		// Row ID must be positive integer
@@ -120,8 +120,8 @@ abstract class Affiliate_WP_DB {
 
 		wp_cache_flush();
 
-		do_action( 'affwp_post_update', $data );
-
+		do_action( 'affwp_post_update_' . $type, $data );
+		
 		return true;
 	}
 
