@@ -12,6 +12,7 @@ class Affiliate_WP_Integrations {
 
 		return apply_filters( 'affwp_integrations', array(
 			'edd'          => 'Easy Digital Downloads',
+			'formidablepro'=> 'Formidable Pro',
 			'gravityforms' => 'Gravity Forms',
 			'exchange'     => 'iThemes Exchange',
 			'membermouse'  => 'MemberMouse',
