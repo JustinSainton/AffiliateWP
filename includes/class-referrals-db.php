@@ -616,17 +616,17 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		$sql = "CREATE TABLE " . $this->table_name . " (
-		`referral_id` bigint(20) NOT NULL AUTO_INCREMENT,
-		`affiliate_id` bigint(20) NOT NULL,
-		`visit_id` bigint(20) NOT NULL,
-		`description` longtext NOT NULL,
-		`status` tinytext NOT NULL,
-		`amount` mediumtext NOT NULL,
-		`currency` char(3) NOT NULL,
-		`custom` longtext NOT NULL,
-		`context` tinytext NOT NULL,
-		`reference` mediumtext NOT NULL,
-		`date` datetime NOT NULL,
+		referral_id bigint(20) NOT NULL AUTO_INCREMENT,
+		affiliate_id bigint(20) NOT NULL,
+		visit_id bigint(20) NOT NULL,
+		description longtext NOT NULL,
+		status tinytext NOT NULL,
+		amount mediumtext NOT NULL,
+		currency char(3) NOT NULL,
+		custom longtext NOT NULL,
+		context tinytext NOT NULL,
+		reference mediumtext NOT NULL,
+		date datetime NOT NULL,
 		PRIMARY KEY  (referral_id),
 		KEY affiliate_id (affiliate_id)
 		) CHARACTER SET utf8 COLLATE utf8_general_ci;";
