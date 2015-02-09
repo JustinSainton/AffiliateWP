@@ -362,16 +362,16 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		$sql = "CREATE TABLE {$this->table_name} (
-			`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
-			`user_id` bigint(20) NOT NULL,
-			`rate` tinytext NOT NULL,
-			`rate_type` tinytext NOT NULL,
-			`payment_email` mediumtext NOT NULL,
-			`status` tinytext NOT NULL,
-			`earnings` mediumtext NOT NULL,
-			`referrals` bigint(20) NOT NULL,
-			`visits` bigint(20) NOT NULL,
-			`date_registered` datetime NOT NULL,
+			affiliate_id bigint(20) NOT NULL AUTO_INCREMENT,
+			user_id bigint(20) NOT NULL,
+			rate tinytext NOT NULL,
+			rate_type tinytext NOT NULL,
+			payment_email mediumtext NOT NULL,
+			status tinytext NOT NULL,
+			earnings mediumtext NOT NULL,
+			referrals bigint(20) NOT NULL,
+			visits bigint(20) NOT NULL,
+			date_registered datetime NOT NULL,
 			PRIMARY KEY  (affiliate_id),
 			KEY user_id (user_id)
 			) CHARACTER SET utf8 COLLATE utf8_general_ci;";
