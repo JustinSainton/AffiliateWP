@@ -158,11 +158,11 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				if( empty( $where ) ) {
 
 					$where .= " WHERE `date_registered` >= '{$start}' AND `date_registered` <= '{$end}'";
-				
+
 				} else {
-					
+
 					$where .= " AND `date_registered` >= '{$start}' AND `date_registered` <= '{$end}'";
-	
+
 				}
 
 			} else {
@@ -190,12 +190,23 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			$args['orderby'] = 'date_registered';
 		}
 
+		if( 'name' == $args['orderby'] ) {
+			$args['orderby'] = 'display_name';
+		}
+
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
 
+
 		if( false === $affiliates ) {
-			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+			if( 'display_name' == $args['orderby'] ) {
+				$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} a INNER JOIN {$wpdb->users} u ON a.user_id = u.ID {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			} else {
+				$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			}
+
 			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
 		}
 
