@@ -1719,7 +1719,7 @@ msgstr ""
 
 #: includes/admin/tools/tools.php:143
 msgid ""
-"Use this tool create affiliate accounts for each of your existing WordPress "
+"Use this tool to create affiliate accounts for each of your existing WordPress "
 "user accounts."
 msgstr ""
 
