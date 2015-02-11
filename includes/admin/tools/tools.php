@@ -88,7 +88,7 @@ function affwp_get_tools_tabs() {
 function affwp_recount_tab() {
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
-		<div class="metabox-holder">	
+		<div class="metabox-holder">
 			<div class="postbox">
 				<h3><span><?php _e( 'Recount Affiliate Stats', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -130,17 +130,17 @@ add_action( 'affwp_tools_tab_recount', 'affwp_recount_tab' );
 function affwp_migration_tab() {
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
-		<div class="metabox-holder">	
+		<div class="metabox-holder">
 			<div class="postbox">
 				<div class="inside">
 					<p><?php _e( 'These tools assist in migrating affiliate and referral data from existing platforms.', 'affiliate-wp' ); ?></p>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-	
+
 			<div class="postbox">
 				<h3><span><?php _e( 'User Accounts', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
-					<p><?php _e( 'Use this tool create affiliate accounts for each of your existing WordPress user accounts.', 'affiliate-wp' ); ?></p>
+					<p><?php _e( 'Use this tool to create affiliate accounts for each of your existing WordPress user accounts.', 'affiliate-wp' ); ?></p>
 					<form method="get">
 						<input type="hidden" name="type" value="users"/>
 						<input type="hidden" name="part" value="affiliates"/>
@@ -198,8 +198,8 @@ add_action( 'affwp_tools_tab_migration', 'affwp_migration_tab' );
 function affwp_export_import_tab() {
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
-		<div class="metabox-holder">	
-			
+		<div class="metabox-holder">
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Export Affiliates', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -253,7 +253,7 @@ function affwp_export_import_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-	
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Export Settings', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -267,7 +267,7 @@ function affwp_export_import_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-	
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Import Settings', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
