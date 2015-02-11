@@ -47,7 +47,7 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 	 * @var int
 	 * @since 1.0
 	 */
-	public $affiliate;
+	public $affiliate = null;
 
 	/**
 	 * Set the CSV columns

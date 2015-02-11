@@ -149,7 +149,7 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 
 	do_action( 'affwp_set_affiliate_status', $affiliate_id, $status, $old_status );
 
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'status' => $status ), '', 'affiliate' ) ) {
 
 		return true;
 	}
@@ -447,7 +447,7 @@ function affwp_increase_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 	$earnings = affwp_get_affiliate_earnings( $affiliate_id );
 	$earnings += $amount;
 	$earnings = round( $earnings, 2 );
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ), '', 'affiliate' ) ) {
 		$alltime = get_option( 'affwp_alltime_earnings' );
 		$alltime += $amount;
 		update_option( 'affwp_alltime_earnings', $alltime );
@@ -484,7 +484,7 @@ function affwp_decrease_affiliate_earnings( $affiliate_id = 0, $amount = '' ) {
 	if ( $earnings < 0 ) {
 		$earnings = 0;
 	}
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ), '', 'affiliate' ) ) {
 
 		$alltime = get_option( 'affwp_alltime_earnings' );
 		$alltime -= $amount;
@@ -537,7 +537,7 @@ function affwp_increase_affiliate_referral_count( $affiliate_id = 0 ) {
 	$referrals = affwp_get_affiliate_referral_count( $affiliate_id );
 	$referrals += 1;
 
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ), '', 'affiliate' ) ) {
 
 		return $referrals;
 
@@ -566,7 +566,7 @@ function affwp_decrease_affiliate_referral_count( $affiliate_id = 0 ) {
 	if ( $referrals < 0 ) {
 		$referrals = 0;
 	}
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $referrals ), '', 'affiliate' ) ) {
 
 		return $referrals;
 
@@ -618,7 +618,7 @@ function affwp_increase_affiliate_visit_count( $affiliate_id = 0 ) {
 	$visits = affwp_get_affiliate_visit_count( $affiliate_id );
 	$visits += 1;
 
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ), '', 'affiliate' ) ) {
 
 		return $visits;
 
@@ -649,7 +649,7 @@ function affwp_decrease_affiliate_visit_count( $affiliate_id = 0 ) {
 		$visits = 0;
 	}
 
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ) ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $visits ), '', 'affiliate' ) ) {
 
 		return $visits;
 
@@ -754,7 +754,7 @@ function affwp_update_affiliate( $data = array() ) {
 	$args['rate_type']     = ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '';
 	$args['user_id']       = $user_id;
 
-	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args ) ) {
+	if ( affiliate_wp()->affiliates->update( $affiliate_id, $args, '', 'affiliate' ) ) {
 
 		// update affiliate's account email
 		if( wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) ) ) {
@@ -804,7 +804,7 @@ function affwp_update_profile_settings( $data = array() ) {
 	}
 
 	if ( ! empty( $data['payment_email'] ) && is_email( $data['payment_email'] ) ) {
-		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ) );
+		affiliate_wp()->affiliates->update( $affiliate_id, array( 'payment_email' => $data['payment_email'] ), '', 'affiliate' );
 	}
 
 	do_action( 'affwp_update_affiliate_profile_settings', $data );

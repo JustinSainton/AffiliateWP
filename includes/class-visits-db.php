@@ -253,13 +253,13 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		$sql = "CREATE TABLE {$this->table_name} (
-			`visit_id` bigint(20) NOT NULL AUTO_INCREMENT,
-			`affiliate_id` bigint(20) NOT NULL,
-			`referral_id` bigint(20) NOT NULL,
-			`url` mediumtext NOT NULL,
-			`referrer` mediumtext NOT NULL,
-			`ip` tinytext NOT NULL,
-			`date` datetime NOT NULL,
+			visit_id bigint(20) NOT NULL AUTO_INCREMENT,
+			affiliate_id bigint(20) NOT NULL,
+			referral_id bigint(20) NOT NULL,
+			url mediumtext NOT NULL,
+			referrer mediumtext NOT NULL,
+			ip tinytext NOT NULL,
+			date datetime NOT NULL,
 			PRIMARY KEY  (visit_id),
 			KEY affiliate_id (affiliate_id)
 			) CHARACTER SET utf8 COLLATE utf8_general_ci;";

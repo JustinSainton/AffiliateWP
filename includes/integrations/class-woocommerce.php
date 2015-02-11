@@ -30,6 +30,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_pending_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_pending_to_failed', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'wc-on-hold_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'wc-processing_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'wc-completed_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
@@ -65,15 +67,17 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			if( affwp_get_affiliate_email( $this->affiliate_id ) == $this->order->billing_email ) {
-				return; // Customers cannot refer themselves
+				return false; // Customers cannot refer themselves
+			}
+
+			if( affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context ) ) {
+				return false; // Referral already created for this reference
 			}
 
 			$cart_discount = $this->order->get_total_discount();
 			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
-			echo $cart_shipping;
-			echo '<pre>'; print_r( $items ); echo '</pre>';
 
 			// Calculate the referral amount based on product prices
 			$amount = 0.00;

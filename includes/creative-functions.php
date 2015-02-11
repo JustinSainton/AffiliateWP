@@ -67,7 +67,7 @@ function affwp_update_creative( $data = array() ) {
 	$args['image']        = ! empty( $data['image'] ) ? sanitize_text_field( $data['image'] ) : '';
 	$args['status']       = ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : '';
 
-	if ( affiliate_wp()->creatives->update( $creative_id, $args ) ) {
+	if ( affiliate_wp()->creatives->update( $creative_id, $args, '', 'creative' ) ) {
 		return true;
 	}
 
@@ -115,7 +115,7 @@ function affwp_set_creative_status( $creative, $status = '' ) {
 
 	do_action( 'affwp_set_creative_status', $creative_id, $status, $old_status );
 
-	if ( affiliate_wp()->creatives->update( $creative_id, array( 'status' => $status ) ) ) {
+	if ( affiliate_wp()->creatives->update( $creative_id, array( 'status' => $status ), '', 'creative' ) ) {
 		return true;
 	}
 
