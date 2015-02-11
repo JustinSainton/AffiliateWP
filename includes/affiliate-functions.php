@@ -828,8 +828,6 @@ function affwp_update_profile_settings( $data = array() ) {
  */
 function affwp_get_affiliate_referral_url( $args = array() ) {
 
-	//$base_url = isset( $args['base_url'] ) ? trailingslashit( $args['base_url'] ) : apply_filters( 'affwp_affiliate_referral_url_base', home_url( '/' ) );
-
 	// base URL
 	if ( isset( $args['base_url'] ) ) {
 		$base_url = trailingslashit( $args['base_url'] );
@@ -837,7 +835,7 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 		$base_url = affwp_get_affiliate_base_url();
 	}
 
-	$format   = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format_value();
+	$format = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format_value();
 
 	// set up URLs
 	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
