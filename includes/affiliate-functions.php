@@ -824,23 +824,29 @@ function affwp_update_profile_settings( $data = array() ) {
  *
  * @since  1.6
  * @return string
- * @param  $base Base URL passed in from [affiliate_referral_url] shortcode
- * @param  $format Format (id or username) passed in from [affiliate_referral_url] shortcode or creatives section
+ * @param  $args array of arguments. $base_url, $format, $pretty
  */
 function affwp_get_affiliate_referral_url( $args = array() ) {
 
-	$base_url = isset( $args['base_url'] ) ? trailingslashit( $args['base_url'] ) : home_url( '/' );
+	//$base_url = isset( $args['base_url'] ) ? trailingslashit( $args['base_url'] ) : apply_filters( 'affwp_affiliate_referral_url_base', home_url( '/' ) );
+
+	// base URL
+	if ( isset( $args['base_url'] ) ) {
+		$base_url = trailingslashit( $args['base_url'] );
+	} else {
+		$base_url = affwp_get_affiliate_base_url();
+	}
+
 	$format   = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format_value();
 
 	// set up URLs
-	$pretty_urls     = $base_url . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
-	$non_pretty_urls = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base_url );
+	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
+	$non_pretty_urls = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, trailingslashit( $base_url ) );
 	
 	// set explicitly by shortcode to have the pretty parameter
 	if ( isset( $args['pretty'] ) && true === (bool) $args['pretty'] ) {
 		$referral_url = $pretty_urls;
-	} 
-	else {
+	} else {
 		if ( isset( $args['pretty'] ) && (bool) false === $args['pretty'] ) {
 			$referral_url = $non_pretty_urls;
 		} elseif ( affwp_is_pretty_referral_urls() ) {
@@ -855,16 +861,15 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 }
 
 /**
- * Get the Referral URL
- * The Referral URL input field value in dashboard-tab-urls.php
+ * Gets the base URL that is then displayed in the Page URL input field of the affiliate area
  *
- * @since  1.6
+ * @since 1.6
  * @return string
  */
-function affwp_get_affiliate_area_referral_url() {
+function affwp_get_affiliate_base_url() {
 
-	$referral_url = isset( $_GET['url'] ) ? affwp_get_affiliate_referral_url( array( 'base_url' => urldecode( $_GET['url'] ) ) ) : home_url( '/' );
+	$base_url = isset( $_GET['url'] ) ? trailingslashit( urldecode( $_GET['url'] ) ) : apply_filters( 'affwp_affiliate_referral_url_base', home_url( '/' ) );
 
-	return $referral_url;
+	return $base_url;
 
 }

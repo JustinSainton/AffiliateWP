@@ -406,17 +406,3 @@ function affwp_is_pretty_referral_urls() {
 	return (bool) false;
 
 }
-
-/**
- * Gets the base URL that is then displayed in the Page URL input field of the affiliate area
- *
- * @since 1.6
- * @return string
- */
-function affwp_get_affiliate_base_url() {
-
-	$base_url = isset( $_GET['url'] ) ? trailingslashit( urldecode( $_GET['url'] ) ) : home_url( '/' );
-
-	return $base_url;
-
-}
