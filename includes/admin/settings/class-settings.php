@@ -214,17 +214,18 @@ class Affiliate_WP_Settings {
 						'std' => 'ref'
 					),
 					'referral_format' => array(
-						'name' => __( 'Referral Format', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'Appends either the affiliate\'s ID or Username to the affiliate\'s referral URL.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) . '</p>',
+						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) . '</p>',
 						'type' => 'select',
 						'options' => array( 
 							'id'       => __( 'ID', 'affiliate-wp' ),
 							'username' => __( 'Username', 'affiliate-wp' ),
-						)
+						),
+						'std' => 'id'
 					),
 					'referral_pretty_urls' => array(
 						'name' => __( 'Pretty Affiliate URLs', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'Show pretty affiliate referrals. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ) . '</p>',
+						'desc' => '<p class="description">' . sprintf( __( 'Show pretty affiliate referrals to affiliates. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ) . '</p>',
 						'type' => 'checkbox'
 					),
 					'referral_rate_type' => array(
