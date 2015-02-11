@@ -162,54 +162,36 @@ class Affiliate_WP_Shortcodes {
 		// get affiliate username
 		$username = affwp_get_affiliate_username();
 
-		// format passed in from shortcode
-		if ( isset( $atts['format'] ) ) {
-			if ( 'id' == $atts['format'] ) {
-				$format = affwp_get_affiliate_id();
-			} elseif ( 'username' == $atts['format'] ) {
-				$format = $username;
-			}
-		} elseif ( ! isset( $format ) ) {
-			// get format from settings
-			$format = affiliate_wp()->settings->get( 'referral_format' );
-
-			switch ( $format ) {
-				case 'id':
-					$format = affwp_get_affiliate_id();
-				break;
-				
-				case 'username':
-					$format = $username;
-				break;
-			}
-		}
-
-		// pretty affiliate URLs
-		$is_pretty_affiliate_urls = affiliate_wp()->settings->get( 'referral_pretty_urls' );
+		// format
+		$format = isset( $atts['format'] ) ? $atts['format'] : '';
+		$format = affwp_get_referral_format_value( $format );
 
 		// base URL
 		if ( ! empty( $content ) ) {
-			$base = $content;
+			$base_url = $content;
 		} else {
-			$base = ! empty( $atts[ 'url' ] ) ? trailingslashit( esc_url( $atts[ 'url' ] ) ) : home_url( '/' );
+			$base_url = ! empty( $atts[ 'url' ] ) ? trailingslashit( esc_url( $atts[ 'url' ] ) ) : home_url( '/' );
 		}
 
-		// pretty affiliate URLS is enabled via shortcode
+		// pretty URLs
 		if ( isset( $atts['pretty'] ) ) {
 			if ( 'yes' == $atts['pretty'] ) {
-				// pretty affiliate URLs enabled
-				$content = $base . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
+				$pretty = true;
 			} elseif ( 'no' == $atts['pretty'] ) {
-				// pretty affiliate URLS disabled
-				$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );
-			}		
-		} elseif ( $is_pretty_affiliate_urls ) {
-			// pretty affiliate URLs enabled from settings
-			$content = $base . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
+				$pretty = false;
+			}
 		} else {
-			$content = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, $base );
+			$pretty = '';
 		}
-		
+
+		$args = array(
+			'base_url' => $base_url,
+			'format'   => $format,
+			'pretty'   => $pretty
+		);
+
+		$content = affwp_get_affiliate_referral_url( $args );
+
 		return $content;
 	}
 
