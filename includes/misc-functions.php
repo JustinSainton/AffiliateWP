@@ -358,17 +358,14 @@ function affwp_get_referral_format_value( $format = '' ) {
 	
 	switch ( $format ) {
 
-		case 'id':
-			$value = affwp_get_affiliate_id();
-			break;
-
 		case 'username':
 			$value = affwp_get_affiliate_username();
 			break;
 
+		case 'id':
 		default:
 			$value = affwp_get_affiliate_id();
-			break;	
+			break;
 
 	}
 
