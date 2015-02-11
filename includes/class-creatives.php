@@ -86,10 +86,9 @@ class Affiliate_WP_Creatives {
 	 *
 	 * @since  1.2
 	 * @return string Affiliate's referral link
-	 * @todo  Better handling of referral link once we introduce pretty affiliate URLs
 	 */
 	public function ref_link( $url = '' ) {
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $url );
+		return affwp_get_affiliate_referral_url( array( 'base_url' => $url ) );
 	}
 
 	/**
