@@ -165,7 +165,11 @@ table.affwp_table td a {
 /* WooCommerce Admin Tweaks */
 .affwp-woo-coupon-field .affwp-ajax-search-wrap {
 	position: relative;
-	display:inline-block;
+	display:block;
+	width: 100%;
+}
+.affwp-woo-coupon-field input#user_name.affwp-user-search {
+	width: 50%;
 }
 .affwp-woo-coupon-field #affwp_user_search_results {
 	left: 0;
