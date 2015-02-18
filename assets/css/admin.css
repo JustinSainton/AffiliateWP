@@ -171,11 +171,18 @@ table.affwp_table td a {
 .affwp-woo-coupon-field input#user_name.affwp-user-search {
 	width: 50%;
 }
+.affwp-woo-coupon-field .affwp-woo-coupon-input-wrap {
+	position: relative;
+}
 .affwp-woo-coupon-field #affwp_user_search_results {
 	left: 0;
 	top: -46px;
 }
-
+.affwp-woo-coupon-field .affwp-ajax {
+	position: absolute;
+	right: 5px;
+	top: 2px;
+}
 /* Media Queries */
 @media screen and ( max-width: 782px ) {
 	#affwp-affiliates-filter .column-affiliate_id,
