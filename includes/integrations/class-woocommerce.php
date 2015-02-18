@@ -90,16 +90,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				// The order discount has to be divided across the items
 
 				$product_total = $product['line_total'];
-				$discount      = 0;
 				$shipping      = 0;
-
-				if( $cart_discount > 0 ) {
-
-					$discount = $cart_discount / count( $items );
-
-				}
-
-				$product_total -= $discount;
 
 				if( $cart_shipping > 0 && ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
