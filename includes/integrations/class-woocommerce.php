@@ -74,7 +74,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				return false; // Referral already created for this reference
 			}
 
-			$cart_discount = $this->order->get_total_discount();
 			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
