@@ -12,7 +12,7 @@ class Affiliate_WP_Emails {
 
 	public function notify_on_registration( $affiliate_id = 0, $status = '', $args = array() ) {
 
-		if ( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+		if ( affiliate_wp()->settings->get( 'registration_notifications' ) && ! empty( $args['ID'] ) ) {
 			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id, 'name' => $args['display_name'] ) );
 		}
 	}
