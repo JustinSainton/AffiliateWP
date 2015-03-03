@@ -19,6 +19,14 @@ class Affiliate_WP_Emails {
 
 	public function notify_on_approval( $affiliate_id = 0, $status = '', $old_status = '' ) {
 
+		if( empty( $affiliate_id ) ) {
+			return;
+		}
+
+		if( empty( $status ) )  {
+			return;
+		}
+
 		if ( 'active' != $status || 'pending' != $old_status ) {
 			return;
 		}
