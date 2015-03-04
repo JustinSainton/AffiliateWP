@@ -164,7 +164,7 @@ class Affiliate_WP_Creatives {
 			
 			<?php 
 				$creative = '<a href="' . esc_url( $this->ref_link( $url ) ) .'" title="' . esc_attr( $text ) . '">' . $image_or_text . '</a>';
-				echo '<p>' . esc_html( $creative ) . '</p>'; 
+				echo '<pre><code>' . esc_html( $creative ) . '</code></pre>'; 
 			?>
 			
 		</div>
