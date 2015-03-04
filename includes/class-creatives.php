@@ -106,6 +106,10 @@ class Affiliate_WP_Creatives {
 	?>
 		<div class="affwp-creative<?php echo esc_attr( $id_class ); ?>">
 
+			<?php if ( ! empty( $desc ) ) : ?>
+				<p class="affwp-creative-desc"><?php echo $desc; ?></p>
+			<?php endif; ?>
+
 			<?php if ( $preview != 'no' ) : ?>
 
 				<?php 
