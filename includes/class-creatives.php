@@ -24,6 +24,7 @@ class Affiliate_WP_Creatives {
 
 		$defaults = array(
 			'id'            => '',
+			'description'   => affiliate_wp()->creatives->get_column( 'description', $id ),
 			'link'          => affiliate_wp()->creatives->get_column( 'url', $id ),
 			'text'          => affiliate_wp()->creatives->get_column( 'text', $id ),
 			'image_id'      => '',
@@ -42,8 +43,11 @@ class Affiliate_WP_Creatives {
 		// get the image attributes from image_id
 		$attributes = ! empty( $args['image_id'] ) ? wp_get_attachment_image_src( $args['image_id'], 'full' ) : '';
 
+		// description for creative
+		$desc = ! empty( $args['description'] ) ? $args['description'] : '';
+
 		// load the HTML required for the creative
-		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'] );
+		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'], $desc );
 
 	}
 
@@ -162,10 +166,6 @@ class Affiliate_WP_Creatives {
 				$creative = '<a href="' . esc_url( $this->ref_link( $url ) ) .'" title="' . esc_attr( $text ) . '">' . $image_or_text . '</a>';
 				echo '<p>' . esc_html( $creative ) . '</p>'; 
 			?>
-
-			<?php if( ! empty( $desc ) ) : ?>
-				<p class="affwp-creative-desc"><?php echo $desc; ?></p>
-			<?php endif; ?>
 			
 		</div>
 
