@@ -1,0 +1,355 @@
+<?php
+/**
+ * Emails
+ *
+ * This class handles all emails sent through AffiliateWP
+ *
+ * @package     AffiliateWP
+ * @subpackage  Classes/Emails
+ * @copyright   Copyright (c) 2015, Pippin Williamson
+ * @license     http://opensource.org/license/gpl-2.1.php GNU Public License
+ * @since       1.6
+ */
+
+
+// Exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) exit;
+
+
+/**
+ * AffWP_Emails class
+ *
+ * @since 1.6
+ */
+class AffWP_Emails {
+
+
+    /**
+     * Holds the from address
+     *
+     * @since 1.6
+     */
+    private $from_address;
+
+
+    /**
+     * Holds the from name
+     *
+     * @since 1.6
+     */
+    private $from_name;
+
+
+    /**
+     * Holds the email content type
+     *
+     * @since 1.6
+     */
+    private $content_type;
+
+
+    /**
+     * Holds the email headers
+     *
+     * @since 1.6
+     */
+    private $headers;
+
+
+    /**
+     * Whether to send email in HTML
+     *
+     * @since 1.6
+     */
+    private $html = true;
+
+
+    /**
+     * The email template to use
+     *
+     * @since 1.6
+     */
+    private $template;
+
+
+    /**
+     * The header text for the email
+     *
+     * @since 1.6
+     */
+    private $heading = '';
+
+
+    /**
+     * Get things going
+     *
+     * @since 1.6
+     * @return void
+     */
+    public function __construct() {
+
+        if( 'none' === $this->get_template() ) {
+            $this->html = false;
+        }
+
+        add_action( 'affwp_email_send_before', array( $this, 'send_before' ) );
+        add_action( 'affwp_email_send_after', array( $this, 'send_after' ) );
+    }
+
+
+    /**
+     * Set a property
+     *
+     * @since 1.6
+     * @return void
+     */
+    public function __set( $key, $value ) {
+        $this->$key = $value;
+    }
+
+
+    /**
+     * Get the email from name
+     *
+     * @since 1.6
+     * @return string The email from name
+     */
+    public function get_from_name() {
+        global $affwp_options;
+
+        if( ! $this->from_name ) {
+            $this->from_name = affiliate_wp()->settings->get( 'from_name', get_bloginfo( 'name' ) );
+        }
+
+        return apply_filters( 'affwp_email_from_name', wp_specialchars_decode( $this->from_name ), $this );
+    }
+
+
+    /**
+     * Get the email from address
+     *
+     * @since 1.6
+     * @return string The email from address
+     */
+    public function get_from_address() {
+        if( ! $this->from_address ) {
+            $this->from_address = affiliate_wp()->settings->get( 'from_email', get_option( 'admin_email' ) );
+        }
+
+        return apply_filters( 'affwp_email_from_address', $this->from_address, $this );
+    }
+
+
+    /**
+     * Get the email content type
+     *
+     * @since 1.6
+     * @return string The email content type
+     */
+    public function get_content_type() {
+        if( ! $this->content_type && $this->html ) {
+            $this->content_type = apply_filter( 'affwp_email_default_content_type', 'text/html', $this );
+        } elseif( ! $this->html ) {
+            $this->content_type = 'text/plain';
+        }
+
+        return apply_filters( 'affwp_email_content_type', $this->content_type, $this );
+    }
+
+
+    /**
+     * Get the email headers
+     *
+     * @since 1.6
+     * @return string The email headers
+     */
+    public function get_headers() {
+        if( ! $this->headers ) {
+            $this->headers  = "From: {$this->get_from_name()} <{$this->get_from_address()}>\r\n";
+            $this->headers .= "Reply-To: {$this->get_from_address()}\r\n";
+            $this->headers .= "Content-Type: {$this->get_content_type()}; charset=utf-8\r\n";
+        }
+
+        return apply_filters( 'affwp_email_headers', $this->headers, $this );
+    }
+
+
+    /**
+     * Retrieve email templates
+     *
+     * @since 1.6
+     * @return array The email templates
+     */
+    public function get_templates() {
+        $templates = array(
+            'default' => __( 'Default Template', 'affiliate-wp' ),
+            'none'    => __( 'No template, plain text only', 'affiliate-wp' )
+        );
+
+        return apply_filters( 'affwp_email_templates', $templates );
+    }
+
+
+    /**
+     * Get the enabled email template
+     *
+     * @since 1.6
+     * @return string|null
+     */
+    public function get_template() {
+        if( ! $this->template ) {
+            $this->template = affiliate_wp()->settings->get( 'email_template', 'default' );
+        }
+
+        return apply_filters( 'affwp_email_template', $this->template );
+    }
+
+
+    /**
+     * Get the header text for the email
+     *
+     * @since 1.6
+     * @return string The header text
+     */
+    public function get_heading() {
+        return apply_filters( 'affwp_email_heading', $this->heading );
+    }
+
+
+    /**
+     * Build the email
+     *
+     * @since 1.6
+     * @param string $message The email message
+     * @return string
+     */
+    public function build_email( $message ) {
+        if( false === $this->html ) {
+            return apply_filters( 'affwp_email_message', wp_strip_all_tags( $message ), $this );
+        }
+
+        $message = $this->text_to_html( $message );
+        
+        ob_start();
+
+        affiliate_wp()->templates->get_template_part( 'emails/header', $this->get_template(), true );
+
+        /**
+         * Hooks into the email header
+         *
+         * @since 1.6
+         */
+        do_action( 'affwp_email_header', $this );
+
+        if( has_action( 'affwp_email_template_' . $this->get_template() ) ) {
+            /**
+             * Hooks into the email template
+             *
+             * @since 1.6
+             */
+            do_action( 'affwp_email_template_' . $this->get_template() );
+        } else {
+            affiliate_wp()->templates->get_template_part( 'emails/body', $this->get_template(), true );
+        }
+
+        /**
+         * Hooks into the email body
+         *
+         * @since 1.6
+         */
+        do_action( 'affwp_email_body', $this );
+
+        affiliate_wp()->templates->get_template_part( 'emails/footer', $this->get_template(), true );
+
+        /**
+         * Hooks into the email footer
+         *
+         * @since 1.6
+         */
+        do_action( 'affwp_email_footer', $this );
+
+        $body    = ob_get_clean();
+
+        return apply_filters( 'affwp_email_message', $message, $this );
+    }
+
+
+    /**
+     * Send the email
+     *
+     * @since 1.6
+     * @param string $to The To address
+     * @param string $subject The subject line of the email
+     * @param string $message The body of the email
+     * @param string|array $attachments Attachments to the email
+     */
+    public function send( $to, $subject, $message, $attachments = '' ) {
+        if( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
+            _doing_it_wrong( __FUNCTION__, __( 'You cannot send emails with AffWP_Emails until init/admin_init has been reached', 'affiliate-wp' ), null );
+            return false;
+        }
+
+        /**
+         * Hooks before email is sent
+         *
+         * @since 1.6
+         */
+        do_action( 'affwp_email_send_before', $this );
+
+        $message = $this->build_email( $message );
+
+        $attachments = apply_filters( 'affwp_email_attachments', $attachments, $this );
+
+        $sent = wp_mail( $to, $subject, $message, $this->get_headers(), $attachments );
+
+        /**
+         * Hooks after the email is sent
+         *
+         * @since 1.6
+         */
+        do_action( 'affwp_email_send_after', $this );
+
+        return $sent;
+    }
+
+
+    /**
+     * Add filters/actions before the email is sent
+     *
+     * @since 1.6
+     */
+    public function send_before() {
+        add_filter( 'wp_mail_from', array( $this, 'get_from_address' ) );
+        add_filter( 'wp_mail_from_name', array( $this, 'get_from_name' ) );
+        add_filter( 'wp_mail_content_type', array( $this, 'get_content_type' ) );
+    }
+
+
+    /**
+     * Remove filters/actions after the email is sent
+     *
+     * @since 1.6
+     */
+    public function send_after() {
+        remove_filter( 'wp_mail_from', array( $this, 'get_from_address' ) );
+        remove_filter( 'wp_mail_from_name', array( $this, 'get_from_name' ) );
+        remove_filter( 'wp_mail_content_type', array( $this, 'get_content_type' ) );
+
+        // Reset heading to an empty string
+        $this->heading = '';
+    }
+
+
+    /**
+     * Converts text formatted HTML. This is primarily for turning line breaks into <p> and <br/> tags.
+     *
+     * @since 1.6
+     */
+    public function text_to_html( $message ) {
+        if( 'text/html' === $this->content_type || true === $this->html ) {
+            $message = wpautop( $message );
+        }
+
+        return $message;
+    }
+}
