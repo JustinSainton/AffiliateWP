@@ -4,11 +4,11 @@
  *
  * This class handles all emails sent through AffiliateWP
  *
- * @package	 AffiliateWP
+ * @package     AffiliateWP
  * @subpackage  Classes/Emails
  * @copyright   Copyright (c) 2015, Pippin Williamson
- * @license	 http://opensource.org/license/gpl-2.1.php GNU Public License
- * @since	   1.6
+ * @license     http://opensource.org/license/gpl-2.1.php GNU Public License
+ * @since       1.6
  */
 
 
