@@ -287,6 +287,23 @@ class Affiliate_WP_Settings {
 					)
 				)
 			),
+			/** Email Settings */
+			'emails' => apply_filters( 'affwp_settings_emails',
+				array(
+					'from_name' => array(
+						'name' => __( 'From Name', 'affiliate-wp' ),
+						'desc' => __( 'The name emails are said to come from. This should probably be your site name.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => get_bloginfo( 'name' )
+					),
+					'from_email' => array(
+						'name' => __( 'From Email', 'affiliate-wp' ),
+						'desc' => __( 'Email to send emails from. This will act as the "from" and "reply-to" address.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => get_bloginfo( 'admin_email' )
+					)
+				)
+			),
 			/** Misc Settings */
 			'misc' => apply_filters( 'affwp_settings_misc',
 				array(
