@@ -4,6 +4,8 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 
 	/**
 	 * @see Affiliate_WP_Base::init
+	 * @access  public
+	 * @since   1.6
 	 */
 	public function init() {
 
@@ -23,7 +25,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Add section to Formidable Pro form sections
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -44,7 +46,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Render Formidable Pro settings section
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -129,7 +131,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Save AffiliateWP section settings when form settings are updated
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -150,7 +152,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Add referral when form is submitted
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -179,7 +181,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Update referral status and add note to Formidable Pro entry
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -204,7 +206,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Update referral status and add note to Formidable Pro entry
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -229,7 +231,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Link to Formidable Pro entry in the referral reference column
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author   Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -256,7 +258,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Helper function to retrieve a value from an array
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
@@ -274,7 +276,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	/**
 	 * Helper function to retrieve a value from a multidimensional array
 	 *
-	 * @since
+	 * @since 1.6
 	 *
 	 * @author Naomi C. Bush <hello@naomicbush.com>
 	 *
