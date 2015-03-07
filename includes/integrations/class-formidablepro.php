@@ -36,8 +36,9 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	 */
 	public function frm_add_form_settings_section( $sections, $values ) {
 
-		$sections[ 'affiliateWP' ] = array( 'class'    => 'Affiliate_WP_Formidable_Pro',
-		                                    'function' => 'do_settings_section'
+		$sections[ 'affiliateWP' ] = array(
+			'class'    => 'Affiliate_WP_Formidable_Pro',
+		    'function' => 'do_settings_section'
 		);
 
 		return $sections;
@@ -72,8 +73,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 		<table class="form-table">
 			<tr>
 				<th scope="row" nowrap="nowrap">
-					<label
-						for="affiliatewp_referral_description_field"><?php _e( 'Referral description', 'affiliate-wp' ); ?></label>
+					<label for="affiliatewp_referral_description_field"><?php _e( 'Referral description', 'affiliate-wp' ); ?></label>
 				</th>
 				<td>
 					<select name="options[affiliatewp][referral_description_field]">
@@ -124,7 +124,6 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 				</td>
 			</tr>
 		</table>
-
 	<?php
 	}
 
@@ -165,8 +164,7 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 
 		if ( $this->was_referred() ) {
 
-			$form       = $frm_form->getOne( $form_id );
-
+			$form            = $frm_form->getOne( $form_id );
 			$description     = $frm_entry_meta->get_entry_meta( $entry_id, $form->options['affiliatewp']['referral_description_field'] );
 			$purchase_amount = floatval( $frm_entry_meta->get_entry_meta( $entry_id, $form->options['affiliatewp']['purchase_amount_field'] ) );
 
@@ -299,5 +297,4 @@ class Affiliate_WP_Formidable_Pro extends Affiliate_WP_Base {
 	}
 
 }
-
 new Affiliate_WP_Formidable_Pro;
