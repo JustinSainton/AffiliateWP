@@ -44,7 +44,7 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 		return false;
 	}
 
-	if( affiliate_wp()->referrals->update( $referral_id, array( 'status' => $new_status ) ) ) {
+	if( affiliate_wp()->referrals->update( $referral_id, array( 'status' => $new_status ), '', 'referral' ) ) {
 
 		if( 'paid' == $new_status ) {
 
@@ -54,7 +54,7 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 		} elseif ( 'unpaid' == $new_status && ( 'pending' == $old_status || 'rejected' == $old_status ) ) {
 
 			// Update the visit ID that spawned this referral
-			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ) );
+			affiliate_wp()->visits->update( $referral->visit_id, array( 'referral_id' => $referral->referral_id ), '', 'visit' );
 
 			do_action( 'affwp_referral_accepted', $referral->affiliate_id, $referral );
 

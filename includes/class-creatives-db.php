@@ -164,14 +164,14 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		$sql = "CREATE TABLE {$this->table_name} (
-			`creative_id` bigint(20) NOT NULL AUTO_INCREMENT,
-			`name` tinytext NOT NULL,
-			`description` longtext NOT NULL,
-			`url` varchar(255) NOT NULL,
-			`text` tinytext NOT NULL,
-			`image` varchar(255) NOT NULL,
-			`status` tinytext NOT NULL,
-			`date` datetime NOT NULL,
+			creative_id bigint(20) NOT NULL AUTO_INCREMENT,
+			name tinytext NOT NULL,
+			description longtext NOT NULL,
+			url varchar(255) NOT NULL,
+			text tinytext NOT NULL,
+			image varchar(255) NOT NULL,
+			status tinytext NOT NULL,
+			date datetime NOT NULL,
 			PRIMARY KEY  (creative_id),
 			KEY creative_id (creative_id)
 			) CHARACTER SET utf8 COLLATE utf8_general_ci;";

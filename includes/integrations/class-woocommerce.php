@@ -30,6 +30,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_pending_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_pending_to_failed', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'wc-on-hold_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'wc-processing_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'wc-completed_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
@@ -65,15 +67,16 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			if( affwp_get_affiliate_email( $this->affiliate_id ) == $this->order->billing_email ) {
-				return; // Customers cannot refer themselves
+				return false; // Customers cannot refer themselves
 			}
 
-			$cart_discount = $this->order->get_total_discount();
+			if( affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context ) ) {
+				return false; // Referral already created for this reference
+			}
+
 			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
-			echo $cart_shipping;
-			echo '<pre>'; print_r( $items ); echo '</pre>';
 
 			// Calculate the referral amount based on product prices
 			$amount = 0.00;
@@ -86,16 +89,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				// The order discount has to be divided across the items
 
 				$product_total = $product['line_total'];
-				$discount      = 0;
 				$shipping      = 0;
-
-				if( $cart_discount > 0 ) {
-
-					$discount = $cart_discount / count( $items );
-
-				}
-
-				$product_total -= $discount;
 
 				if( $cart_shipping > 0 && ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
@@ -223,9 +217,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		<p class="form-field affwp-woo-coupon-field">
 			<label for="user_name"><?php _e( 'Affiliate Discount?', 'affiliate-wp' ); ?></label>
 			<span class="affwp-ajax-search-wrap">
-				<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-				<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" style="width: 300px;" />
-				<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				<span class="affwp-woo-coupon-input-wrap">
+					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
+					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" />
+					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				</span>
 				<span id="affwp_user_search_results"></span>
 				<img class="help_tip" data-tip='<?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" />
 			</span>

@@ -158,11 +158,11 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 				if( empty( $where ) ) {
 
 					$where .= " WHERE `date_registered` >= '{$start}' AND `date_registered` <= '{$end}'";
-				
+
 				} else {
-					
+
 					$where .= " AND `date_registered` >= '{$start}' AND `date_registered` <= '{$end}'";
-	
+
 				}
 
 			} else {
@@ -190,12 +190,23 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 			$args['orderby'] = 'date_registered';
 		}
 
+		if( 'name' == $args['orderby'] ) {
+			$args['orderby'] = 'display_name';
+		}
+
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
 		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
 
+
 		if( false === $affiliates ) {
-			$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+			if( 'display_name' == $args['orderby'] ) {
+				$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} a INNER JOIN {$wpdb->users} u ON a.user_id = u.ID {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			} else {
+				$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+			}
+
 			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
 		}
 
@@ -362,16 +373,16 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		$sql = "CREATE TABLE {$this->table_name} (
-			`affiliate_id` bigint(20) NOT NULL AUTO_INCREMENT,
-			`user_id` bigint(20) NOT NULL,
-			`rate` tinytext NOT NULL,
-			`rate_type` tinytext NOT NULL,
-			`payment_email` mediumtext NOT NULL,
-			`status` tinytext NOT NULL,
-			`earnings` mediumtext NOT NULL,
-			`referrals` bigint(20) NOT NULL,
-			`visits` bigint(20) NOT NULL,
-			`date_registered` datetime NOT NULL,
+			affiliate_id bigint(20) NOT NULL AUTO_INCREMENT,
+			user_id bigint(20) NOT NULL,
+			rate tinytext NOT NULL,
+			rate_type tinytext NOT NULL,
+			payment_email mediumtext NOT NULL,
+			status tinytext NOT NULL,
+			earnings mediumtext NOT NULL,
+			referrals bigint(20) NOT NULL,
+			visits bigint(20) NOT NULL,
+			date_registered datetime NOT NULL,
 			PRIMARY KEY  (affiliate_id),
 			KEY user_id (user_id)
 			) CHARACTER SET utf8 COLLATE utf8_general_ci;";

@@ -7,6 +7,10 @@ function affwp_search_users() {
 		die( '-1' );
 	}
 
+	if( ! current_user_can( 'manage_affiliates' ) ) {
+		die( '-1' );
+	}
+
 	$search_query = htmlentities2( trim( $_POST['user_name'] ) );
 
 	$found_users = get_users( array(
