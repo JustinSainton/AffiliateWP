@@ -17,11 +17,11 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
- * AffWP_Emails class
+ * Affiliate_WP_Emails class
  *
  * @since 1.6
  */
-class AffWP_Emails {
+class Affiliate_WP_Emails {
 
 
 	/**

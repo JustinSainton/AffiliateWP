@@ -134,12 +134,12 @@ final class Affiliate_WP {
 	public $emails;
 
 	/**
-	 * The email object
+	 * The email template tags object
 	 *
-	 * @var AffWP_Emails
+	 * @var Affiliate_WP_Email_Tags
 	 * @since 1.6
 	 */
-	public $email;
+	public $email_tags;
 
 	/**
 	 * The creatives instance variable
@@ -190,7 +190,7 @@ final class Affiliate_WP {
 			self::$instance->register     = new Affiliate_WP_Register;
 			self::$instance->integrations = new Affiliate_WP_Integrations;
 			self::$instance->emails       = new Affiliate_WP_Emails;
-			self::$instance->email        = new AffWP_Emails;
+			self::$instance->email_tags   = new Affiliate_WP_Email_Tags;
 			self::$instance->creatives    = new Affiliate_WP_Creatives_DB;
 			self::$instance->creative     = new Affiliate_WP_Creatives;
 
@@ -300,7 +300,7 @@ final class Affiliate_WP {
 		}
 
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/class-affwp-emails.php';
-		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-emails.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/class-affwp-email-tags.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-referrals-graph.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-graph.php';
