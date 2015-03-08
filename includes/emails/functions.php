@@ -122,9 +122,54 @@ function affiliate_wp_setup_email_tags() {
 	// Setup default tags array
 	$email_tags = array(
 		array(
-			'tag'         => '',
-			'description' => '',
-			'function'    => ''
+			'tag'         => 'name',
+			'description' => __( 'The first name of the affiliate', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_first_name'
+		),
+		array(
+			'tag'         => 'fullname',
+			'description' => __( 'The full name of the affiliate', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_full_name'
+		),
+		array(
+			'tag'         => 'username',
+			'description' => __( 'The user name of the affiliate on the site', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_username'
+		),
+		array(
+			'tag'         => 'user_email',
+			'description' => __( 'The email address of the affiliate', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_user_email'
+		),
+		array(
+			'tag'         => 'website',
+			'description' => __( 'The website of the affiliate', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_website'
+		),
+		array(
+			'tag'         => 'promo_method',
+			'description' => __( 'The promo method used by the affiliate', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_promo_method'
+		),
+		array(
+			'tag'         => 'login_url',
+			'description' => __( 'The affiliate login URL to your website', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_login_url'
+		),
+		array(
+			'tag'         => 'amount',
+			'description' => __( 'The amount of a given referral', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_amount'
+		),
+		array(
+			'tag'         => 'sitename',
+			'description' => __( 'Your site name', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_sitename'
+		),
+		array(
+			'tag'         => 'ip_address',
+			'description' => __( 'The IP address of the affiliate', 'affiliate-wp' ),
+			'function'    => 'affiliate_wp_email_tag_ip_address'
 		)
 	);
 
