@@ -81,6 +81,20 @@ class Affiliate_WP_Emails {
 
 
 	/**
+	 * Container for storing all tags
+	 *
+	 * @since 1.6
+	 */
+	private $tags;
+
+	/**
+	 * Affiliate ID
+	 *
+	 * @since 1.6
+	 */
+	private $affiliate_id;
+
+	/**
 	 * Get things going
 	 *
 	 * @since 1.6
@@ -351,5 +365,101 @@ class Affiliate_WP_Emails {
 		}
 
 		return $message;
+	}
+
+	/**
+	 * Add an email tag
+	 *
+	 * @since 1.6
+	 * @param string $tag Email tag to be replaced in email
+	 * @param string $description The description fo the tag
+	 * @param callable $func Hook to run when email tag is found
+	 * @return void
+	 */
+	public function add_tag( $tag, $description, $func ) {
+		if( is_callable( $func ) ) {
+			$this->tags[$tag] = array(
+				'tag'         => $tag,
+				'description' => $description,
+				'func'        => $func
+			);
+		}
+	}
+
+
+	/**
+	 * Remove an email tag
+	 *
+	 * @since 1.6
+	 * @param string $tag Email tag to remove
+	 * @return void
+	 */
+	public function remove_tag( $tag ) {
+		unset( $this->tags[$tag] );
+	}
+
+
+	/**
+	 * Check if $tag is a registered email tag
+	 *
+	 * @since 1.6
+	 * @param string $tag Email tag that will be searched
+	 * @return bool True if exists, false otherwise
+	 */
+	public function email_tag_exists( $tag ) {
+		return array_key_exists( $tag, $this->tags );
+	}
+
+
+	/**
+	 * Returns a list of all email tags
+	 *
+	 * @since 1.6
+	 */
+	public function get_tags() {
+		return $this->tags;
+	}
+
+
+	/**
+	 * Search content for email tags and filter email tags through their hooks
+	 *
+	 * @since 1.6
+	 * @param string $content Content to search for email tags
+	 * @param int $affiliate_id The affiliate ID
+	 * @return string $content Filtered content
+	 */
+	public function do_tags( $content, $affiliate_id ) {
+		// Make sure there's at least one tag
+		if( empty( $this->tags ) || ! is_array( $this->tags ) ) {
+			return $content;
+		}
+
+		$this->affiliate_id = $affiliate_id;
+
+		$new_content = preg_replace_callback( "/{([A-z0-9\-\_]+)}/s", array( $this, 'do_tag' ), $content );
+
+		$this->affiliate_id = null;
+
+		return $new_content;
+	}
+
+
+	/**
+	 * Do a specific tag. This function should not be used. Please use affiliate_wp_do_email_tags instead.
+	 *
+	 * @since 1.6
+	 * @param $m Message
+	 */
+	public function do_tag( $m ) {
+		// Get tag
+		$tag = $m[1];
+
+		// Return tag if not set
+		if( ! $this->email_tag_exists( $tag ) ) {
+			return $m[0];
+		}
+
+		return call_user_func( $this->tags[$tag]['func'], $this->affiliate_id, $tag );
 	}
 }
