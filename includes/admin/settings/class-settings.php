@@ -585,7 +585,7 @@ class Affiliate_WP_Settings {
 			$value = isset( $args['std'] ) ? $args['std'] : '';
 
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
-		$html = '<textarea class="large-text" cols="50" rows="5" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']">' . esc_textarea( stripslashes( $value ) ) . '</textarea>';
+		$html = '<textarea class="large-text" cols="50" rows="5" id="affwp_settings_' . $args['id'] . '" name="affwp_settings[' . $args['id'] . ']">' . esc_textarea( stripslashes( $value ) ) . '</textarea>';
 		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
 
 		echo $html;
@@ -676,7 +676,7 @@ class Affiliate_WP_Settings {
 			$value = isset( $args['std'] ) ? $args['std'] : '';
 
 		ob_start();
-		wp_editor( stripslashes( $value ), 'affwp_settings[' . $args['id'] . ']', array( 'textarea_name' => 'affwp_settings[' . $args['id'] . ']' ) );
+		wp_editor( stripslashes( $value ), 'affwp_settings_' . $args['id'], array( 'textarea_name' => 'affwp_settings[' . $args['id'] . ']' ) );
 		$html = ob_get_clean();
 
 		$html .= '<br/><label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
