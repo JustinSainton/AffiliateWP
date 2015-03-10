@@ -162,7 +162,7 @@ class Affiliate_WP_Emails {
 	 */
 	public function get_content_type() {
 		if( ! $this->content_type && $this->html ) {
-			$this->content_type = apply_filter( 'affwp_email_default_content_type', 'text/html', $this );
+			$this->content_type = apply_filters( 'affwp_email_default_content_type', 'text/html', $this );
 		} elseif( ! $this->html ) {
 			$this->content_type = 'text/plain';
 		}
