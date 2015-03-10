@@ -276,6 +276,10 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 			if( $affiliate_id ) {
 
+				if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
+					continue;
+				}
+
 				return $affiliate_id;
 
 			}

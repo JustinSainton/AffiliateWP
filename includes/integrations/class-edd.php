@@ -94,6 +94,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				$this->affiliate_id = $affiliate_id;
 
+				if( ! affiliate_wp()->tracking->is_valid_affiliate( $this->affiliate_id ) ) {
+					continue;
+				}
+
 				$existing = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
 
 				// calculate the referral total
