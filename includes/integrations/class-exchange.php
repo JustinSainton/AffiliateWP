@@ -46,6 +46,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 						continue;
 					}
 
+					if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
+						continue;
+					}
+
 					$this->affiliate_id = $affiliate_id;
 					$has_coupon = true;
 					break;
