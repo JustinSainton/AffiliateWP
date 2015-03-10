@@ -123,13 +123,8 @@ function affiliate_wp_setup_email_tags() {
 	$email_tags = array(
 		array(
 			'tag'         => 'name',
-			'description' => __( 'The first name of the affiliate', 'affiliate-wp' ),
-			'function'    => 'affiliate_wp_email_tag_first_name'
-		),
-		array(
-			'tag'         => 'fullname',
 			'description' => __( 'The full name of the affiliate', 'affiliate-wp' ),
-			'function'    => 'affiliate_wp_email_tag_full_name'
+			'function'    => 'affiliate_wp_email_tag_name'
 		),
 		array(
 			'tag'         => 'username',
@@ -165,11 +160,6 @@ function affiliate_wp_setup_email_tags() {
 			'tag'         => 'sitename',
 			'description' => __( 'Your site name', 'affiliate-wp' ),
 			'function'    => 'affiliate_wp_email_tag_sitename'
-		),
-		array(
-			'tag'         => 'ip_address',
-			'description' => __( 'The IP address of the affiliate', 'affiliate-wp' ),
-			'function'    => 'affiliate_wp_email_tag_ip_address'
 		)
 	);
 
@@ -180,3 +170,101 @@ function affiliate_wp_setup_email_tags() {
 	}
 }
 add_action( 'affiliate_wp_add_email_tags', 'affiliate_wp_setup_email_tags' );
+
+
+/**
+ * Email template tag: name
+ * The affiliate's name
+ *
+ * @param int $affiliate_id
+ * @return string name
+ */
+function affiliate_wp_email_tag_name( $affiliate_id ) {
+	return affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] );
+}
+
+
+/**
+ * Email template tag: username
+ * The affiliate's username on the site
+ *
+ * @param int $affiliate_id
+ * @return string username
+ */
+function affiliate_wp_email_tag_username( $affiliate_id ) {
+	$user_info = get_userdata( affwp_get_affiliate_user_id( $affiliate_id ) );
+
+	return $user_info->user_login;
+}
+
+
+/**
+ * Email template tag: user_email
+ * The affiliate's email
+ *
+ * @param int $affiliate_id
+ * @return string email
+ */
+function affiliate_wp_email_tag_user_email( $affiliate_id ) {
+	return affwp_get_affiliate_email( $affiliate_id );
+}
+
+
+/**
+ * Email template tag: website
+ * The affiliate's website
+ *
+ * @param int $affiliate_id
+ * @return string website
+ */
+function affiliate_wp_email_tag_website( $affiliate_id ) {
+	$user_info = get_userdata( affwp_get_affiliate_user_id( $affiliate_id ) );
+
+	return $user_info->user_url;
+}
+
+
+/**
+ * Email template tag: promo_method
+ * The affiliate promo method
+ *
+ * @param int $affiliate_id
+ * @return string promo_method
+ */
+function affiliate_wp_email_tag_promo_method( $affiliate_id ) {
+	return get_user_meta( affwp_get_affiliate_user_id( $affiliate_id ), 'affwp_promotion_method', true );
+}
+
+
+/**
+ * Email template tag: login_url
+ * The affiliate login URL
+ *
+ * @return string login_url
+ */
+function affiliate_wp_email_tag_login_url() {
+	return esc_url( affiliate_wp()->login->get_login_url() );
+}
+
+
+/**
+ * Email template tag: amount
+ * The amount of an affiliate transaction
+ *
+ * @return string amount
+ */
+function affiliate_wp_email_tag_amount() {
+	// How should we pass this given that $args isn't used by ANY other tag?
+	return html_entity_decode( affwp_currency_filter( $args['amount'] ), ENT_COMPAT, 'UTF-8' );
+}
+
+
+/**
+ * Email template tag: sitename
+ * Your site name
+ *
+ * @return string sitename
+ */
+function affiliate_wp_email_tag_sitename() {
+	return wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
+}

@@ -317,7 +317,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Registration Email Content', 'affiliate-wp' ),
 						'desc' => __( 'Enter the email to send when a new affiliate registers. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affiliate_wp_get_emails_tags_list(),
 						'type' => 'rich_editor',
-						'std' => sprintf( __( 'A new affiliate has registered on your site, %s', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Name: ', 'affiliate-wp' ) . "{fullname}\n\n{website}\n\n{promo_method}"
+						'std' => sprintf( __( 'A new affiliate has registered on your site, %s', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Name: ', 'affiliate-wp' ) . "{name}\n\n{website}\n\n{promo_method}"
 					),
 					'accepted_subject' => array(
 						'name' => __( 'Application Accepted Email Subject', 'affiliate-wp' ),
