@@ -523,11 +523,11 @@ class Affiliate_WP_Tracking {
 
 		$is_self = is_user_logged_in() && get_current_user_id() == affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
 
-		$active = 'active' == affwp_get_affiliate_status( $affiliate_id );
+		$active = 'active' === affwp_get_affiliate_status( $affiliate_id );
 
 		$valid  = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
 
-		return ! empty( $valid ) && ! $is_self && $active;
+		return $valid && ! $is_self && $active;
 	}
 
 	/**
