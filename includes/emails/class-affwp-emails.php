@@ -337,7 +337,7 @@ class Affiliate_WP_Emails {
 				$message = affiliate_wp()->settings->get( 'accepted_email', false );
 
 				if( ! $message ) {
-					$message  = sprintf( __( 'Contratulations %s!', 'affiliate-wp' ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) ) . "\n\n";
+					$message  = sprintf( __( 'Congratulations %s!', 'affiliate-wp' ), affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] ) ) . "\n\n";
 					$message .= sprintf( __( 'Your affiliate application on %s has been accepted!', 'affiliate-wp' ), home_url() ) . "\n\n";
 					$message .= sprintf( __( 'Log into your affiliate area at %s', 'affiliate-wp' ), affiliate_wp()->login->get_login_url() ) . "\n\n";
 				}
