@@ -290,6 +290,11 @@ class Affiliate_WP_Settings {
 			/** Email Settings */
 			'emails' => apply_filters( 'affwp_settings_emails',
 				array(
+					'email_logo' => array(
+						'name' => __( 'Logo', 'affiliate-wp' ),
+						'desc' => __( 'Upload or choose a logo to be displayed at the top of emails.', 'affiliate-wp' ),
+						'type' => 'upload'
+					),
 					'from_name' => array(
 						'name' => __( 'From Name', 'affiliate-wp' ),
 						'desc' => __( 'The name emails are said to come from. This should probably be your site name.', 'affiliate-wp' ),
@@ -675,6 +680,28 @@ class Affiliate_WP_Settings {
 		$html = ob_get_clean();
 
 		$html .= '<br/><label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+
+		echo $html;
+	}
+
+	/**
+	 * Upload Callback
+	 *
+	 * Renders file upload fields.
+	 *
+	 * @since 1.6
+	 * @param array $args Arguements passed by the setting
+	 */
+	function upload_callback( $args ) {
+		if( isset( $this->options[ $args['id'] ] ) )
+			$value = $this->options[ $args['id'] ];
+		else
+			$value = isset( $args['std'] ) ? $args['std'] : '';
+
+		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
+		$html = '<input type="text" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
+		$html .= '<span>&nbsp;<input type="button" class="affwp_settings_upload_button button-secondary" value="' . __( 'Upload File', 'affiliate-wp' ) . '"/></span>';
+		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
 
 		echo $html;
 	}
