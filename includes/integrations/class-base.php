@@ -65,6 +65,8 @@ abstract class Affiliate_WP_Base {
 	 */
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
 
+		$this->affiliate_id = $this->get_affiliate_id();
+
 		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
 			return false; // Allow extensions to prevent referrals from being created
 		}
@@ -166,6 +168,17 @@ abstract class Affiliate_WP_Base {
 	}
 
 	/**
+	 * Retrieves the ID of the referring affiliate
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @return  string
+	 */
+	public function get_affiliate_id() {
+		return apply_filters( 'affwp_get_referring_affiliate_id', $this->affiliate_id );
+	}
+
+	/**
 	 * Retrieves the email address of the referring affiliate
 	 *
 	 * @access  public
@@ -173,7 +186,7 @@ abstract class Affiliate_WP_Base {
 	 * @return  string
 	 */
 	public function get_affiliate_email() {
-		return affwp_get_affiliate_email( $this->affiliate_id );
+		return affwp_get_affiliate_email( $this->get_affiliate_id() );
 	}
 
 	/**
@@ -186,6 +199,8 @@ abstract class Affiliate_WP_Base {
 	public function calculate_referral_amount( $base_amount = '', $reference = '', $product_id = 0 ) {
 
 		$rate = '';
+
+		$this->affiliate_id = $this->get_affiliate_id();
 
 		if( ! empty( $product_id ) ) {
 
