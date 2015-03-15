@@ -255,16 +255,8 @@ class Affiliate_WP_Emails {
 		 */
 		do_action( 'affwp_email_header', $this );
 
-		if( has_action( 'affwp_email_template_' . $this->get_template() ) ) {
-			/**
-			 * Hooks into the email template
-			 *
-			 * @since 1.6
-			 */
-			do_action( 'affwp_email_template_' . $this->get_template() );
-		} else {
-			affiliate_wp()->templates->get_template_part( 'emails/body', $this->get_template(), true );
-		}
+
+		affiliate_wp()->templates->get_template_part( 'emails/body', $this->get_template(), true );
 
 		/**
 		 * Hooks into the email body
