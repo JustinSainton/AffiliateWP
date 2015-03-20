@@ -287,6 +287,38 @@ function affwp_get_affiliate_email( $affiliate ) {
 }
 
 /**
+ * Retrieves the affiliate's user_login
+ *
+ * @since 1.6
+ * @return string
+ */
+function affwp_get_affiliate_login( $affiliate ) {
+
+	global $wpdb;
+
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif ( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	$affiliate = affwp_get_affiliate( $affiliate_id );
+	$user_id   = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+	$login     = $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+
+	if ( $login ) {
+
+		return $login;
+
+	}
+
+	return false;
+
+}
+
+/**
  * Deletes an affiliate
  *
  * @since 1.0
