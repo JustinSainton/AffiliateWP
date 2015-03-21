@@ -41,6 +41,27 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 }
 
 /**
+ * Determines whether or not the affiliate is active
+ *
+ * If no affiliate ID is given, it will check the currently logged in affiliate
+ *
+ * @since 1.6
+ * @return int
+ */
+function affwp_is_valid_affiliate( $affiliate_id = 0 ) {
+
+	if ( empty( $affiliate_id ) ) {
+		$affiliate_id = affwp_get_affiliate_id();
+	}
+
+	if ( 'active' == affwp_get_affiliate_status( $affiliate_id ) ) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * Retrieves an affiliate's user ID
  *
  * @since 1.0
