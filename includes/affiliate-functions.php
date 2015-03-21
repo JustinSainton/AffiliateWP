@@ -48,7 +48,7 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
  * @since 1.6
  * @return int
  */
-function affwp_is_valid_affiliate( $affiliate_id = 0 ) {
+function affwp_is_active_affiliate( $affiliate_id = 0 ) {
 
 	if ( empty( $affiliate_id ) ) {
 		$affiliate_id = affwp_get_affiliate_id();
