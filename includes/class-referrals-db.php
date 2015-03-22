@@ -68,7 +68,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	public function add( $data = array() ) {
 
 		$defaults = array(
-			'status' => 'pending'
+			'status' => 'pending',
+			'amount' => 0
 		);
 
 		$args = wp_parse_args( $data, $defaults );
@@ -80,6 +81,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		if( ! affiliate_wp()->affiliates->affiliate_exists( $args['affiliate_id'] ) ) {
 			return false;
 		}
+
+		$args['amount'] = affwp_sanitize_amount( $args['amount'] );
 
 		$add  = $this->insert( $args, 'referral' );
 
@@ -112,6 +115,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( ! $referral ) {
 			return false;
+		}
+
+		if( isset( $data['amount'] ) ) {
+			$data['amount'] = affwp_sanitize_amount( $data['amount'] );
 		}
 
 		$update = $this->update( $referral_id, $data, '', 'referral' );
