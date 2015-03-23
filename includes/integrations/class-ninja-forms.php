@@ -151,9 +151,12 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 		} else {
 
 			// This isn't an array, so $purchase_total can just be set to the string value.
-
-			$purchase_total = $total;
-
+			if ( ! empty( $total ) ) {
+				$purchase_total = $total;
+			} else {
+				$purchase_total = 0.00;
+			}
+			
 		}
 
 		return affwp_sanitize_amount( $purchase_total );
