@@ -51,7 +51,7 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 		$payment->set_data( $new_data );
 	}
 
-	public function reference_link( $reference = 0, $referral ) {
+	public function reference_link( $payment_id = 0, $referral ) {
 
 		if( empty( $referral->context ) || $this->context != $referral->context ) {
 			return $reference;
@@ -60,6 +60,7 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 		$payment = SI_Payment::get_instance( $payment_id );
 		$invoice_id = $payment->get_invoice_id();
 		$url = get_edit_post_link( $invoice_id );
+		$reference = get_the_title( $invoice_id );
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
