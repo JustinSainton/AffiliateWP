@@ -7,9 +7,7 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 		$this->context = 'marketpress';
 
 		add_action( 'mp_new_order', array( $this, 'add_pending_referral' ) );
-
 		add_action( 'mp_order_paid', array( $this, 'mark_referral_complete' ) );
-
 		add_action( 'trash_mp_order', array( $this, 'revoke_referral_on_delete' ), 10, 2 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
@@ -20,12 +18,10 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 		if ( $this->was_referred() ) {
 
-			if( '0' == $order->post_author ){
-
+			if( 0 == $order->post_author ) {
 				$customer_email = $order->mp_shipping_info[ 'email' ];
-
 			}
-			else{
+			else {
 
 				$user_id = $order->post_author;
 
