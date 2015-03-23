@@ -442,7 +442,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
-		return $affiliate_id;
+		return apply_filters( 'affwp_tracking_get_affiliate_id', $affiliate_id );
 	}
 
 	/**
@@ -466,7 +466,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
-		return $affiliate_id;
+		return apply_filters( 'affwp_tracking_get_affiliate_id', $affiliate_id );
 
 	}
 

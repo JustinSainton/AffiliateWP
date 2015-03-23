@@ -17,6 +17,7 @@ class Affiliate_WP_Integrations {
 			'exchange'     => 'iThemes Exchange',
 			'membermouse'  => 'MemberMouse',
 			'memberpress'  => 'MemberPress',
+			'ninja-forms'  => 'Ninja Forms',
 			'jigoshop'     => 'Jigoshop',
 			'rcp'          => 'Restrict Content Pro',
 			'pmp'          => 'Paid Memberships Pro',
