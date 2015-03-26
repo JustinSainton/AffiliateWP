@@ -22,10 +22,10 @@ jQuery(document).ready( function($) {
 			} else {
 				// has query strings
 
-				// split query string at first occurance of ?
+				// split query string at first occurrence of ?
 				var pieces = url.split('?');
 
-				// set url back to first piece
+				// set URL back to first piece
 				url = pieces[0];
 
 				// add trailing slash if missing
@@ -52,7 +52,7 @@ jQuery(document).ready( function($) {
 
 			} else {
 
-				// split query string at first occurance of ?
+				// split query string at first occurrence of ?
 				var pieces = url.split('?');
 
 				// set url back to first piece
