@@ -5,17 +5,42 @@ jQuery(document).ready( function($) {
 		var url       = $( '#affwp-url' ).val(),
 		    refVar    = $( '#affwp-referral-var' ).val(),
 		    affId     = $( '#affwp-affiliate-id' ).val(),
-		    refPretty = $( '#affwp-referral_pretty_urls' ).val(),
-		    refFormat = $( '#affwp-referral-format' ).val();
+		    refPretty = affwp_vars.pretty_affiliate_urls,
+		    refFormat = affwp_vars.referral_format
 
-		if ( ! url.match( /\/$/ ) ) {
-		    url += '/';
-		}
-
+		
 		if ( refPretty ) {
-			url = url + refVar + '/' + affId;
+			// pretty affiliate URLs
+
+			if ( url.indexOf( '?' ) < 0 ) {
+				// no query strings
+
+				// add trailing slash if missing
+				if ( ! url.match( /\/$/ ) ) {
+				    url += '/';
+				}
+
+				url = url + refVar + '/' + affId;
+
+			} else {
+				// has query strings
+
+				// split query string at first occurance of ?
+				var pieces = url.split('?');
+
+				// set url back to first piece
+				url = pieces[0];
+
+				// add trailing slash if missing
+				if ( ! url.match( /\/$/ ) ) {
+				    url += '/';
+				}
+
+				url = url + refVar + '/' + affId + '/?' + pieces[1]; 
+			}
+
 		} else {
-			// non-pretty
+			// non-pretty URLs
 			if ( url.indexOf( '?' ) < 0 ) {
 				refVar = '?' + refVar;
 			} else {
@@ -24,6 +49,9 @@ jQuery(document).ready( function($) {
 
 			url = url + refVar + '=' + affId;
 		}
+
+		// clearn URL to remove any instances of multiple slashes
+		url = url.replace(/([^:])(\/\/+)/g, '$1/');
 
 		$( '.affwp-referral-url-wrap' ).slideDown();
 		$( '#affwp-referral-url' ).val( url ).focus();
