@@ -38,6 +38,11 @@ jQuery(document).ready(function($) {
 				$('#affwp_user_search_results').html('');
 
 				$(search_response.results).appendTo('#affwp_user_search_results');
+
+				if( $('.affwp-woo-coupon-field').length ) {
+					var height = $('.affwp-woo-coupon-field #affwp_user_search_results' ).height();
+					$('.affwp-woo-coupon-field #affwp_user_search_results').css('top', '-' + height + 'px' );
+				}
 			}
 		});
 	});

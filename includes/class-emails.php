@@ -12,12 +12,20 @@ class Affiliate_WP_Emails {
 
 	public function notify_on_registration( $affiliate_id = 0, $status = '', $args = array() ) {
 
-		if ( affiliate_wp()->settings->get( 'registration_notifications' ) ) {
+		if ( affiliate_wp()->settings->get( 'registration_notifications' ) && ! empty( $args['ID'] ) ) {
 			affiliate_wp()->emails->notification( 'registration', array( 'affiliate_id' => $affiliate_id, 'name' => $args['display_name'] ) );
 		}
 	}
 
 	public function notify_on_approval( $affiliate_id = 0, $status = '', $old_status = '' ) {
+
+		if( empty( $affiliate_id ) ) {
+			return;
+		}
+
+		if( empty( $status ) )  {
+			return;
+		}
 
 		if ( 'active' != $status || 'pending' != $old_status ) {
 			return;
@@ -27,6 +35,10 @@ class Affiliate_WP_Emails {
 	}
 
 	public function notify_of_new_referral( $affiliate_id = 0, $referral ) {
+
+		if( empty( $referral ) ) {
+			return;
+		}
 
 		$user_id = affwp_get_affiliate_user_id( $affiliate_id );
 

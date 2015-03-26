@@ -74,7 +74,6 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				return false; // Referral already created for this reference
 			}
 
-			$cart_discount = $this->order->get_total_discount();
 			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
@@ -90,16 +89,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				// The order discount has to be divided across the items
 
 				$product_total = $product['line_total'];
-				$discount      = 0;
 				$shipping      = 0;
-
-				if( $cart_discount > 0 ) {
-
-					$discount = $cart_discount / count( $items );
-
-				}
-
-				$product_total -= $discount;
 
 				if( $cart_shipping > 0 && ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
@@ -227,9 +217,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		<p class="form-field affwp-woo-coupon-field">
 			<label for="user_name"><?php _e( 'Affiliate Discount?', 'affiliate-wp' ); ?></label>
 			<span class="affwp-ajax-search-wrap">
-				<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-				<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" style="width: 300px;" />
-				<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				<span class="affwp-woo-coupon-input-wrap">
+					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
+					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" />
+					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				</span>
 				<span id="affwp_user_search_results"></span>
 				<img class="help_tip" data-tip='<?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" />
 			</span>

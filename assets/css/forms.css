@@ -55,9 +55,8 @@ table.affwp-table th {
 	width: 200px;
 }
 
-.affwp-base-url-wrap, 
-.affwp-referral-url-wrap {
-	margin-bottom: 10px;
+.affwp-wrap {
+	margin-bottom: 20px;
 }
 
 #affwp-generate-ref-url input {

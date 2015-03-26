@@ -3,12 +3,12 @@
 	<h4><?php _e( 'Profile Settings', 'affiliate-wp' ); ?></h4>
 
 	<form id="affwp-affiliate-dashboard-profile-form" class="affwp-form" method="post">
-		<div class="affwp-payment-email-wrap">
+		<div class="affwp-wrap affwp-payment-email-wrap">
 			<label for="affwp-payment-email"><?php _e( 'Your payment email', 'affiliate-wp' ); ?></label>
 			<input id="affwp-payment-email" type="email" name="payment_email" value="<?php echo esc_attr( affwp_get_affiliate_email( affwp_get_affiliate_id() ) ); ?>" />
 		</div>
 
-		<div class="affwp-send-notifications-wrap">
+		<div class="affwp-wrap affwp-send-notifications-wrap">
 			<input id="affwp-referral-notifications" type="checkbox" name="referral_notifications" value="1"<?php checked( true, get_user_meta( affwp_get_affiliate_user_id( affwp_get_affiliate_id() ), 'affwp_referral_notifications', true ) ); ?>/>
 			<label for="affwp-referral-notifications"><?php _e( 'Enable New Referral Notifications', 'affiliate-wp' ); ?></label>
 		</div>

@@ -12,12 +12,12 @@
 	<p><?php _e( 'Enter any URL from this website in the form below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 	<form id="affwp-generate-ref-url" class="affwp-form" method="get" action="#affwp-generate-ref-url">
-		<div class="affwp-base-url-wrap">
+		<div class="affwp-wrap affwp-base-url-wrap">
 			<label for="affwp-url"><?php _e( 'Page URL', 'affiliate-wp' ); ?></label>
 			<input type="text" name="url" id="affwp-url" value="<?php echo esc_url( affwp_get_affiliate_base_url() ); ?>" />
 		</div>
 
-		<div class="affwp-referral-url-wrap" <?php if ( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
+		<div class="affwp-wrap affwp-referral-url-wrap" <?php if ( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
 			<label for="affwp-referral-url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 			<input type="text" id="affwp-referral-url" value="<?php echo esc_url( affwp_get_affiliate_referral_url() ); ?>" />
 			<div class="description"><?php _e( '(now copy this referral link and share it anywhere)', 'affiliate-wp' ); ?></div>
