@@ -118,7 +118,6 @@ function affwp_frontend_scripts_and_styles() {
 			'affwp_version'         => AFFILIATEWP_VERSION,
 			'permalinks'            => get_option( 'permalink_structure' ),
 			'pretty_affiliate_urls' => affwp_is_pretty_referral_urls(),
-			'referral_format'       => affwp_get_referral_format(),
 			'currency_sign'         => affwp_currency_filter(''),
 			'currency_pos'          => affiliate_wp()->settings->get( 'currency_position', 'before' ),
 		));

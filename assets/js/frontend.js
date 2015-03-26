@@ -2,14 +2,13 @@ jQuery(document).ready( function($) {
 
 	$( '#affwp-generate-ref-url' ).submit( function() {
 
-		var url       = $( '#affwp-url' ).val(),
-		    refVar    = $( '#affwp-referral-var' ).val(),
-		    affId     = $( '#affwp-affiliate-id' ).val(),
-		    refPretty = affwp_vars.pretty_affiliate_urls,
-		    refFormat = affwp_vars.referral_format
-
+		var url                 = $( '#affwp-url' ).val(),
+		    refVar              = $( '#affwp-referral-var' ).val(),
+		    affId               = $( '#affwp-affiliate-id' ).val(),
+		    prettyAffiliateUrls = affwp_vars.pretty_affiliate_urls,
+		    add                 = ''
 		
-		if ( refPretty ) {
+		if ( prettyAffiliateUrls ) {
 			// pretty affiliate URLs
 
 			if ( url.indexOf( '?' ) < 0 ) {
@@ -19,8 +18,6 @@ jQuery(document).ready( function($) {
 				if ( ! url.match( /\/$/ ) ) {
 				    url += '/';
 				}
-
-				url = url + refVar + '/' + affId;
 
 			} else {
 				// has query strings
@@ -36,21 +33,45 @@ jQuery(document).ready( function($) {
 				    url += '/';
 				}
 
-				url = url + refVar + '/' + affId + '/?' + pieces[1]; 
+				// add any query strings to the end
+				add = '/?' + pieces[1];
 			}
+
+			// build URL
+			url = url + refVar + '/' + affId + add;
 
 		} else {
 			// non-pretty URLs
+
 			if ( url.indexOf( '?' ) < 0 ) {
-				refVar = '?' + refVar;
+
+				// add trailing slash if missing
+				if ( ! url.match( /\/$/ ) ) {
+				    url += '/';
+				}
+
 			} else {
-				refVar = '&' + refVar;
+
+				// split query string at first occurance of ?
+				var pieces = url.split('?');
+
+				// set url back to first piece
+				url = pieces[0];
+
+				// add trailing slash if missing
+				if ( ! url.match( /\/$/ ) ) {
+				    url += '/';
+				}
+
+				// add any query strings to the end
+				add = '&' + pieces[1];
 			}
 
-			url = url + refVar + '=' + affId;
+			// build URL
+			url = url + '?' + refVar + '=' + affId + add;
 		}
 
-		// clearn URL to remove any instances of multiple slashes
+		// clean URL to remove any instances of multiple slashes
 		url = url.replace(/([^:])(\/\/+)/g, '$1/');
 
 		$( '.affwp-referral-url-wrap' ).slideDown();
@@ -58,5 +79,5 @@ jQuery(document).ready( function($) {
 
 		return false;
 	});
-
+	
 });
