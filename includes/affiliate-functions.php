@@ -40,6 +40,41 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 
 }
 
+
+/**
+ * Retrieves the username of the specified affiliate
+ *
+ * If no affiliate ID is given, it will check the currently logged in affiliate
+ *
+ * @since 1.6
+ * @return string username if affiliate exists, boolean false otherwise
+ */
+function affwp_get_affiliate_username( $affiliate_id = 0 ) {
+
+	if ( ! is_user_logged_in() && empty( $affiliate_id ) ) {
+		return false;
+	}
+
+	if ( empty( $affiliate_id ) ) {
+		$affiliate_id = affwp_get_affiliate_id();
+	}
+
+	$affiliate = affwp_get_affiliate( $affiliate_id );
+
+	if ( $affiliate ) {
+		$user_info = get_userdata( $affiliate->user_id );
+		
+		if ( $user_info ) {
+			$username  = esc_html( $user_info->user_login );
+			return esc_html( $username );
+		}
+		
+	}
+
+	return false;
+
+}
+
 /**
  * Determines whether or not the affiliate is active
  *
@@ -834,4 +869,66 @@ function affwp_update_profile_settings( $data = array() ) {
 	if ( ! empty( $_POST['affwp_action'] ) ) {
 		wp_redirect( add_query_arg( 'affwp_notice', 'profile-updated' ) ); exit;
 	}
+}
+
+/**
+ * Builds an affiliate's referral URL
+ * Used by creatives, referral URL generator and [affiliate_referral_url] shortcode
+ *
+ * @since  1.6
+ * @return string
+ * @param  $args array of arguments. $base_url, $format, $pretty
+ */
+function affwp_get_affiliate_referral_url( $args = array() ) {
+
+	// base URL
+	if ( isset( $args['base_url'] ) ) {
+		$base_url = trailingslashit( $args['base_url'] );
+	} else {
+		$base_url = affwp_get_affiliate_base_url();
+	}
+
+	$format = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format_value();
+
+	// set up URLs
+	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
+	$non_pretty_urls = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, trailingslashit( $base_url ) );
+	
+	// set explicitly by shortcode to have the pretty parameter
+	if ( isset( $args['pretty'] ) && true === (bool) $args['pretty'] ) {
+		$referral_url = $pretty_urls;
+	} else {
+		if ( isset( $args['pretty'] ) && false === (bool) $args['pretty'] ) {
+			$referral_url = $non_pretty_urls;
+		} elseif ( affwp_is_pretty_referral_urls() ) {
+			$referral_url = $pretty_urls;
+		} elseif ( ! affwp_is_pretty_referral_urls() ) {
+			$referral_url = $non_pretty_urls;
+		}
+	}
+
+	return $referral_url;
+	
+}
+
+/**
+ * Gets the base URL that is then displayed in the Page URL input field of the affiliate area
+ *
+ * @since 1.6
+ * @return string
+ */
+function affwp_get_affiliate_base_url() {
+
+	if( isset( $_GET['url'] ) ) {
+
+		$base_url = trailingslashit( urldecode( $_GET['url'] ) );
+
+	} else {
+		
+		$base_url = home_url( '/' );
+
+	}
+
+	return apply_filters( 'affwp_affiliate_referral_url_base', $base_url );
+
 }

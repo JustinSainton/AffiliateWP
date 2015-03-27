@@ -341,3 +341,65 @@ if ( ! function_exists( 'cal_days_in_month' ) ) {
 		return date( 't', mktime( 0, 0, 0, $month, 1, $year ) );
 	}
 }
+
+
+
+/**
+ * Get the referral format value
+ * 
+ * @since 1.6
+ * @param string $format referral format passed in via [affiliate_referral_url] shortcode
+ * @return string affiliate ID or username
+ */
+function affwp_get_referral_format_value( $format = '' ) {
+
+	// if the shortcode passes in a format we should use that, otherwise fallback to the value defined in the settings 
+	$format = $format ? $format : affwp_get_referral_format();
+	
+	switch ( $format ) {
+
+		case 'username':
+			$value = affwp_get_affiliate_username();
+			break;
+
+		case 'id':
+		default:
+			$value = affwp_get_affiliate_id();
+			break;
+
+	}
+
+	return $value;
+}
+
+/**
+ * Gets the referral format from Affiliates -> Settings -> General
+ * 
+ * @since  1.6
+ * @return string "id" or "username"
+ */
+function affwp_get_referral_format() {
+
+	$referral_format = affiliate_wp()->settings->get( 'referral_format' );
+
+	return $referral_format;
+
+}
+
+/**
+ * Checks whether pretty referral URLs is enabled from Affiliates -> Settings -> General
+ *
+ * @since  1.6
+ * @return boolean
+ */
+function affwp_is_pretty_referral_urls() {
+
+	$is_pretty_affiliate_urls = affiliate_wp()->settings->get( 'referral_pretty_urls' );
+
+	if ( $is_pretty_affiliate_urls ) {
+		return (bool) true;
+	}
+
+	return (bool) false;
+
+}

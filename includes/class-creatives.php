@@ -7,7 +7,7 @@
  * @package     AffiliateWP
  * @copyright   Copyright (c) 2012, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       2.1
+ * @since       1.2
  */
 
 class Affiliate_WP_Creatives {
@@ -15,7 +15,7 @@ class Affiliate_WP_Creatives {
 	/**
 	 * The [affiliate_creative] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creative( $args = array() ) {
@@ -54,7 +54,7 @@ class Affiliate_WP_Creatives {
 	/**
 	 * The [affiliate_creatives] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creatives( $args = array() ) {
@@ -88,18 +88,17 @@ class Affiliate_WP_Creatives {
 	/**
 	 * Returns the referral link to append to the end of a URL
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string Affiliate's referral link
-	 * @todo  Better handling of referral link once we introduce pretty affiliate URLs
 	 */
 	public function ref_link( $url = '' ) {
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $url );
+		return affwp_get_affiliate_referral_url( array( 'base_url' => $url ) );
 	}
 
 	/**
 	 * Shortcode HTML
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @param  $image the image URL. Either the URL from the image column in DB or external URL of image.
 	 * @return string
 	 */

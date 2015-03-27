@@ -155,20 +155,45 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		shortcode_atts( array(
-			'url' => ''
+			'url'    => '',
+			'format' => '',
+			'pretty' => ''
 		), $atts, 'affiliate_referral_url' );
 
-		if( ! empty( $content ) ) {
+		// get affiliate username
+		$username = affwp_get_affiliate_username();
 
-			$base = $content;
+		// format
+		$format = isset( $atts['format'] ) ? $atts['format'] : '';
+		$format = affwp_get_referral_format_value( $format );
 
+		// base URL
+		if ( ! empty( $content ) ) {
+			$base_url = $content;
 		} else {
-
-			$base = ! empty( $atts[ 'url' ] ) ? $atts[ 'url' ] : home_url( '/' );
-
+			$base_url = ! empty( $atts[ 'url' ] ) ? trailingslashit( esc_url( $atts[ 'url' ] ) ) : home_url( '/' );
 		}
 
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $base );
+		// pretty URLs
+		if ( isset( $atts['pretty'] ) ) {
+			if ( 'yes' == $atts['pretty'] ) {
+				$pretty = true;
+			} elseif ( 'no' == $atts['pretty'] ) {
+				$pretty = false;
+			}
+		} else {
+			$pretty = '';
+		}
+
+		$args = array(
+			'base_url' => $base_url,
+			'format'   => $format,
+			'pretty'   => $pretty
+		);
+
+		$content = affwp_get_affiliate_referral_url( $args );
+
+		return $content;
 	}
 
 	/**
