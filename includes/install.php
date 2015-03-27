@@ -7,6 +7,7 @@ function affiliate_wp_install() {
 	$roles->add_caps();
 
 	affiliate_wp()->affiliates->create_table();
+	affiliate_wp()->affiliate_meta->create_table();
 	affiliate_wp()->referrals->create_table();
 	affiliate_wp()->visits->create_table();
 	affiliate_wp()->creatives->create_table();

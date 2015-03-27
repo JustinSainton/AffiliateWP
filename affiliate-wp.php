@@ -5,7 +5,7 @@
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.5.4
+ * Version: 1.5.7
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  * @package AffiliateWP
  * @category Core
  * @author Pippin Williamson
- * @version 1.5.4
+ * @version 1.5.7
  */
 
 // Exit if accessed directly
@@ -51,7 +51,7 @@ final class Affiliate_WP {
 	 *
 	 * @since 1.0
 	 */
-	private $version = '1.5.4';
+	private $version = '1.5.7';
 
 	/**
 	 * The affiliates DB instance variable.
@@ -172,18 +172,19 @@ final class Affiliate_WP {
 			self::$instance->load_textdomain();
 
 			// Setup objects
-			self::$instance->affiliates   = new Affiliate_WP_DB_Affiliates;
-			self::$instance->referrals    = new Affiliate_WP_Referrals_DB;
-			self::$instance->visits       = new Affiliate_WP_Visits_DB;
-			self::$instance->settings     = new Affiliate_WP_Settings;
-			self::$instance->tracking     = new Affiliate_WP_Tracking;
-			self::$instance->templates    = new Affiliate_WP_Templates;
-			self::$instance->login        = new Affiliate_WP_Login;
-			self::$instance->register     = new Affiliate_WP_Register;
-			self::$instance->integrations = new Affiliate_WP_Integrations;
-			self::$instance->emails       = new Affiliate_WP_Emails;
-			self::$instance->creatives    = new Affiliate_WP_Creatives_DB;
-			self::$instance->creative     = new Affiliate_WP_Creatives;
+			self::$instance->affiliates     = new Affiliate_WP_DB_Affiliates;
+			self::$instance->affiliate_meta = new Affiliate_WP_Affiliate_Meta_DB;
+			self::$instance->referrals      = new Affiliate_WP_Referrals_DB;
+			self::$instance->visits         = new Affiliate_WP_Visits_DB;
+			self::$instance->settings       = new Affiliate_WP_Settings;
+			self::$instance->tracking       = new Affiliate_WP_Tracking;
+			self::$instance->templates      = new Affiliate_WP_Templates;
+			self::$instance->login          = new Affiliate_WP_Login;
+			self::$instance->register       = new Affiliate_WP_Register;
+			self::$instance->integrations   = new Affiliate_WP_Integrations;
+			self::$instance->emails         = new Affiliate_WP_Emails;
+			self::$instance->creatives      = new Affiliate_WP_Creatives_DB;
+			self::$instance->creative       = new Affiliate_WP_Creatives;
 
 			self::$instance->updater();
 		}
@@ -303,7 +304,9 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliate-meta-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-functions.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/affiliate-meta-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/misc-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/referral-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
