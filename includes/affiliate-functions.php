@@ -877,7 +877,7 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 	if ( isset( $args['pretty'] ) && true === (bool) $args['pretty'] ) {
 		$referral_url = $pretty_urls;
 	} else {
-		if ( isset( $args['pretty'] ) && (bool) false === $args['pretty'] ) {
+		if ( isset( $args['pretty'] ) && false === (bool) $args['pretty'] ) {
 			$referral_url = $non_pretty_urls;
 		} elseif ( affwp_is_pretty_referral_urls() ) {
 			$referral_url = $pretty_urls;
