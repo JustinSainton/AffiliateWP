@@ -2,6 +2,12 @@
 
 class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.6
+	*/
 	public function init() {
 
 		$this->context = 'marketpress';
@@ -14,6 +20,12 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Record a pending referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	*/
 	public function add_pending_referral( $order = array() ) {
 
 		if ( $this->was_referred() ) {
@@ -72,6 +84,12 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Mark a referral as complete when an order is completed
+	 *
+	 * @access  public
+	 * @since   1.6
+	*/
 	public function mark_referral_complete( $order = array() ) {
 
 		$order_id = $order->ID;
@@ -92,6 +110,12 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Revoke a referral when an order is deleted
+	 *
+	 * @access  public
+	 * @since   1.6
+	*/
 	public function revoke_referral_on_delete( $order_id = 0, $post ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
@@ -110,6 +134,12 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Set up the reference URL from the referral to the order
+	 *
+	 * @access  public
+	 * @since   1.6
+	*/
 	public function reference_link( $reference = 0, $referral ) {
 
 		if( empty( $referral->context ) || 'marketpress' != $referral->context ) {
