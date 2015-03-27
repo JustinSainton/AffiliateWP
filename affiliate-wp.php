@@ -62,6 +62,14 @@ final class Affiliate_WP {
 	public $affiliates;
 
 	/**
+	 * The affiliate meta DB instance variable.
+	 *
+	 * @var Affiliate_WP_Affiliate_Meta_DB
+	 * @since 1.6
+	 */
+	public $affiliate_meta;
+
+	/**
 	 * The referrals instance variable.
 	 *
 	 * @var Affiliate_WP_Referrals_DB
