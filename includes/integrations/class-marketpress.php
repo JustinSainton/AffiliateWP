@@ -83,7 +83,7 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 		 * mp_order_paid, this prevent completed referral being marked as pending
 		 */
 		if ( empty( $referral ) ) {
-	
+
 			$this->add_pending_referral( $order );
 
 		}
