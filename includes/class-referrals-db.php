@@ -335,6 +335,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		}
 
+		if( ! empty( $args['orderby'] ) && 'amount' == $args['orderby'] ) {
+			$args['orderby'] = 'amount+0';
+		}
+
 		$cache_key = md5( 'affwp_referrals_' . serialize( $args ) );
 
 		$referrals = wp_cache_get( $cache_key, 'referrals' );

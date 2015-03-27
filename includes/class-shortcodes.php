@@ -149,7 +149,8 @@ class Affiliate_WP_Shortcodes {
 	 *  @return string
 	 */
 	public function referral_url( $atts, $content = null ) {
-		if ( ! affwp_is_affiliate() ) {
+
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
 		}
 
@@ -203,7 +204,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_content( $atts, $content = null ) {
 
-		if ( ! affwp_is_affiliate() ) {
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
 		}
 
@@ -218,7 +219,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function non_affiliate_content( $atts, $content = null ) {
 
-		if ( affwp_is_affiliate() ) {
+		if ( affwp_is_affiliate() && affwp_is_active_affiliate() ) {
 			return;
 		}
 
@@ -246,8 +247,9 @@ class Affiliate_WP_Shortcodes {
 			'affiliate_creative'
 		);
 
-		if ( ! affwp_is_affiliate() )
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
+		}
 
 		$content = affiliate_wp()->creative->affiliate_creative( $atts );
 
@@ -271,8 +273,9 @@ class Affiliate_WP_Shortcodes {
 			'affiliate_creatives'
 		);
 
-		if ( ! affwp_is_affiliate() )
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
+		}
 
 		$content = affiliate_wp()->creative->affiliate_creatives( $atts );
 
