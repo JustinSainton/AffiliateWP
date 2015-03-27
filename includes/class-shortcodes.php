@@ -114,7 +114,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function conversion_script( $atts, $content = null ) {
 
-		shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				'amount'      => '',
 				'description' => '',
@@ -154,7 +154,7 @@ class Affiliate_WP_Shortcodes {
 			return;
 		}
 
-		shortcode_atts( array(
+		$atts = shortcode_atts( array(
 			'url'    => '',
 			'format' => '',
 			'pretty' => ''
@@ -234,7 +234,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_creative( $atts, $content = null ) {
 
-		shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				'id'         => '',                    // ID of the creative
 				'image_id'   => '',                    // ID of image from media library if not using creatives section
@@ -265,7 +265,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_creatives( $atts, $content = null ) {
 
-		shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				'preview' => 'yes' // Display an image/text preview above HTML code
 			),
