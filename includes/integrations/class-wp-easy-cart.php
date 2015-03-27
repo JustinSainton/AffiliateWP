@@ -46,9 +46,8 @@ class Affiliate_WP_EasyCart extends Affiliate_WP_Base {
 			}
 
 			$cart_shipping = $order_totals->shipping_total;
-			$cart_tax = $order_totals->tax_total;
-
-			$items = $cart->cart;
+			$cart_tax      = $order_totals->tax_total;
+			$items         = $cart->cart;
 
 			// Calculate the referral amount based on product prices
 			$amount = 0.00;
@@ -72,7 +71,7 @@ class Affiliate_WP_EasyCart extends Affiliate_WP_Base {
 
 				if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
-					$tax       = $cart_tax / count( $items );
+					$tax            = $cart_tax / count( $items );
 					$product_total += $tax;
 
 				}
@@ -100,15 +99,6 @@ class Affiliate_WP_EasyCart extends Affiliate_WP_Base {
 				'visit_id'     => $visit_id,
 				'context'      => $this->context
 			), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
-
-			if( $referral_id ) {
-
-				$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
-				$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
-
-				$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
-
-			}
 
 		}
 
