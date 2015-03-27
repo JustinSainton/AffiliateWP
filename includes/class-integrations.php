@@ -11,20 +11,21 @@ class Affiliate_WP_Integrations {
 	public function get_integrations() {
 
 		return apply_filters( 'affwp_integrations', array(
-			'edd'				=> 'Easy Digital Downloads',
-			'formidablepro'		=> 'Formidable Pro',
-			'gravityforms'		=> 'Gravity Forms',
-			'exchange'			=> 'iThemes Exchange',
-			'marketpress'		=> 'MarketPress',
-			'membermouse'		=> 'MemberMouse',
-			'memberpress'		=> 'MemberPress',
-			'jigoshop'			=> 'Jigoshop',
-			'rcp'				=> 'Restrict Content Pro',
-			'pmp'				=> 'Paid Memberships Pro',
-			'shopp'				=> 'Shopp',
-			'sproutinvoices'	=> 'Sprout Invoices',
-			'woocommerce'		=> 'WooCommerce',
-			'wpec'				=> 'WP e-Commerce',
+			'edd'            => 'Easy Digital Downloads',
+			'formidablepro'  => 'Formidable Pro',
+			'gravityforms'   => 'Gravity Forms',
+			'exchange'       => 'iThemes Exchange',
+			'marketpress'    => 'MarketPress',
+			'membermouse'    => 'MemberMouse',
+			'memberpress'    => 'MemberPress',
+			'jigoshop'       => 'Jigoshop',
+			'rcp'            => 'Restrict Content Pro',
+			'pmp'            => 'Paid Memberships Pro',
+			'shopp'          => 'Shopp',
+			'sproutinvoices' => 'Sprout Invoices',
+			'woocommerce'    => 'WooCommerce',
+			'wpeasycart'     => 'WP e-Commerce',
+			'wpec'           => 'WP e-Commerce',
 		) );
 
 	}
