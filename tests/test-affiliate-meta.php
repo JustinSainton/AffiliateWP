@@ -34,6 +34,7 @@ class Affiliate_Meta_Tests extends WP_UnitTestCase {
 	function test_get_metadata() {
 		$this->assertEmpty( affwp_get_affiliate_meta( $this->_affiliate_id ) );
 		$this->assertEmpty( affwp_get_affiliate_meta( $this->_affiliate_id, 'key_that_does_not_exist', true ) );
+		affwp_update_affiliate_meta( $this->_affiliate_id, 'test_key_2', '1' );
 		$this->assertEquals( '1', affwp_get_affiliate_meta( $this->_affiliate_id, 'test_key_2', true ) );
 		$this->assertInternalType( 'array', affwp_get_affiliate_meta( $this->_affiliate_id, 'test_key_2', false ) );
 	}
