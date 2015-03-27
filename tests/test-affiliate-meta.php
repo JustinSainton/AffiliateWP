@@ -39,7 +39,7 @@ class Affiliate_Meta_Tests extends WP_UnitTestCase {
 	}
 
 	function test_delete_metadata() {
-		affwp_update_affiliate_meta( $this->_affiliate_id, 'test_key', '1' )
+		affwp_update_affiliate_meta( $this->_affiliate_id, 'test_key', '1' );
 		$this->assertTrue( affwp_delete_affiliate_meta( $this->_affiliate_id, 'test_key' ) );
 		$this->assertFalse( affwp_delete_affiliate_meta( $this->_affiliate_id, 'key_that_does_not_exist' ) );
 	}
