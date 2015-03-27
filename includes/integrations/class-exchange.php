@@ -31,8 +31,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	public function add_pending_referral( $transaction_id = 0 ) {
 
-		$has_coupon  = false;
-		$this->transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
+		$has_coupon         = false;
+		$this->transaction  = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
 
 		if ( $this->transaction->coupons && is_array( $this->transaction->coupons ) ) {
 
@@ -43,6 +43,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 					$affiliate_id = get_post_meta( $coupon['id'], 'affwp_coupon_affiliate', true );
 
 					if( ! $affiliate_id ) {
+						continue;
+					}
+
+					if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
 						continue;
 					}
 

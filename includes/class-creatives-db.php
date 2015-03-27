@@ -62,9 +62,10 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 		global $wpdb;
 
 		$defaults = array(
-			'number' => 20,
-			'offset' => 0,
-			'status' => '',
+			'number'  => 20,
+			'offset'  => 0,
+			'status'  => '',
+			'orderby' => $this->primary_key
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -87,7 +88,9 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 		$cache_key = md5( 'affwp_creatives_' . serialize( $args ) );
 
 		$creatives = wp_cache_get( $cache_key, 'creatives' );
-		
+
+		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
+
 		if ( $creatives === false ) {
 			$creatives = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY creative_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $creatives, 'creatives', 3600 );

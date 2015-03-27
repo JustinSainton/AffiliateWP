@@ -46,7 +46,7 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			$user_id       = affwp_get_affiliate_user_id( $affiliate_id );
 			$discount_aff  = get_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_obj->id, true );
 
-			if( $discount_aff ) {
+			if( $discount_aff && affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
 
 				$affiliate_discount = true;
 
