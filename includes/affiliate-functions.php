@@ -898,8 +898,16 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
  */
 function affwp_get_affiliate_base_url() {
 
-	$base_url = isset( $_GET['url'] ) ? trailingslashit( urldecode( $_GET['url'] ) ) : apply_filters( 'affwp_affiliate_referral_url_base', home_url( '/' ) );
+	if( isset( $_GET['url'] ) ) {
 
-	return $base_url;
+		$base_url = trailingslashit( urldecode( $_GET['url'] ) );
+
+	} else {
+		
+		$base_url = home_url( '/' );
+
+	}
+
+	return apply_filters( 'affwp_affiliate_referral_url_base', $base_url );
 
 }
