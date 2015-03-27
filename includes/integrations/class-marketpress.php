@@ -19,36 +19,36 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 		if ( $this->was_referred() ) {
 
 			if( 0 == $order->post_author ) {
+
 				$customer_email = $order->mp_shipping_info[ 'email' ];
-			}
-			else {
 
-				$user_id = $order->post_author;
+			} else {
 
-				$user = get_userdata( $user_id );
-
+				$user_id        = $order->post_author;
+				$user           = get_userdata( $user_id );
 				$customer_email = $user->user_email;
 
 			}
 
 			if ( $this->get_affiliate_email() == $customer_email ) {
+
 				return; // Customers cannot refer themselves
+
 			}
 
-		    $amount = $order->mp_order_total;
-
-			$order_id = $order->ID;
-
+		    $amount      = $order->mp_order_total;
+			$order_id    = $order->ID;
 		    $description = array();
-
-		    $items = $order->mp_cart_info;
+		    $items       = $order->mp_cart_info;
 
 		    foreach( $items as $item ) {
+
 		        $order_items = $item;
 
-		        foreach ($order_items as $order_item){
+		        foreach( $order_items as $order_item ) {
 		            $description[] .= $order_item['name'];
 		        }
+
 		    }
 
 		    $description = join( ', ', $description );
@@ -78,12 +78,14 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
 
-		/**
+		/*
 		 * Add pending referral if referral not yet created because mp_order_paid hook is executed before
 		 * mp_order_paid, this prevent completed referral being marked as pending
-		**/
+		 */
 		if ( empty( $referral ) ) {
+	
 			$this->add_pending_referral( $order );
+
 		}
 
 		$this->complete_referral( $order_id );
@@ -93,11 +95,15 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 	public function revoke_referral_on_delete( $order_id = 0, $post ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+
 			return;
+
 		}
 
 		if( 'mp_order' != get_post_type( $order_id ) ) {
+
 			return;
+
 		}
 
 		$this->reject_referral( $order_id );
