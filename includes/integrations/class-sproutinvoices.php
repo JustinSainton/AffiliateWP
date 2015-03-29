@@ -24,10 +24,12 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 	}
 
 	public function mark_referral_complete( SI_Payment $payment ) {
-		
-		$this->complete_referral( $entry['id'] );
-
-		$referral = affiliate_wp()->referrals->get_by( 'reference', $entry['id'], $this->context );
+		$payment_id = $payment->get_id();
+		$this->complete_referral( $payment_id );
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
+		if ( !is_object( $referral ) ) {
+			return;
+		}
 		$amount   = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
 		$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
 		$note     = sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
@@ -55,9 +57,10 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 			return $reference;
 		}
 
-		$payment = SI_Payment::get_instance( $payment_id );
+		$payment = SI_Payment::get_instance( $reference );
 		$invoice_id = $payment->get_invoice_id();
 		$url = get_edit_post_link( $invoice_id );
+		$reference = get_the_title( $invoice_id );
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
