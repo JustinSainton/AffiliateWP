@@ -63,6 +63,11 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 	 * @since   1.6
 	 */
 	public function revoke_referral_on_refund( $payment_id = 0 ) {
+		
+		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+			return;
+		}
+
 		$this->reject_referral( $payment_id );
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $payment_id, $this->context );
@@ -70,7 +75,7 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 		$name     = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
 		$note     = sprintf( __( 'Referral #%d for %s for %s rejected', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
 
-		$payment = SI_Payment::get_instance( $payment_id );
+		$payment  = SI_Payment::get_instance( $payment_id );
 		$new_data = wp_parse_args( $payment->get_data(), array( 'affwp_notes' => $note ) );
 		$payment->set_data( $new_data );
 	}
