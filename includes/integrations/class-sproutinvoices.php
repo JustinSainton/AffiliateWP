@@ -2,6 +2,12 @@
 
 class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 
+	/**
+	 * Get things started
+	 *
+	 * @access  public
+	 * @since   1.6
+	 */
 	public function init() {
 		$this->context = 'sproutinvoices';
 
@@ -13,6 +19,12 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Record a pending referral when a payment is authorized
+	 *
+	 * @access  public
+	 * @since   1.6
+	 */
 	public function add_pending_referral( SI_Payment $payment ) {
 
 		if( $this->was_referred() ) {
@@ -23,6 +35,12 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 
 	}
 
+	/**
+	 * Update a referral to Unpaid when a payment is completed
+	 *
+	 * @access  public
+	 * @since   1.6
+	 */
 	public function mark_referral_complete( SI_Payment $payment ) {
 		$payment_id = $payment->get_id();
 		$this->complete_referral( $payment_id );
@@ -38,6 +56,12 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 		$payment->set_data( $new_data );
 	}
 
+	/**
+	 * Revoke a referral when a payment is refunded
+	 *
+	 * @access  public
+	 * @since   1.6
+	 */
 	public function revoke_referral_on_refund( $payment_id = 0 ) {
 		$this->reject_referral( $payment_id );
 
@@ -51,6 +75,12 @@ class Affiliate_WP_Sprout_Invoices extends Affiliate_WP_Base {
 		$payment->set_data( $new_data );
 	}
 
+	/**
+	 * Setup the reference link in the referrals table
+	 *
+	 * @access  public
+	 * @since   1.6
+	 */
 	public function reference_link( $reference = 0, $referral ) {
 
 		if( empty( $referral->context ) || $this->context != $referral->context ) {
