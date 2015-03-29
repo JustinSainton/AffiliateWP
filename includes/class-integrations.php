@@ -37,7 +37,7 @@ class Affiliate_WP_Integrations {
 
 		$enabled = apply_filters( 'affwp_enabled_integrations', $this->get_enabled_integrations() );
 
-		do_action( 'affiliate_wp_integrations_load' );
+		do_action( 'affwp_integrations_load' );
 
 		foreach( $enabled as $filename => $integration ) {
 
@@ -47,7 +47,7 @@ class Affiliate_WP_Integrations {
 
 		}
 
-		do_action( 'affiliate_wp_integrations_loaded' );
+		do_action( 'affwp_integrations_loaded' );
 
 	}
 
