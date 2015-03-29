@@ -177,7 +177,6 @@ final class Affiliate_WP {
 			self::$instance = new Affiliate_WP;
 			self::$instance->setup_constants();
 			self::$instance->includes();
-			self::$instance->load_textdomain();
 
 			// Setup objects
 			self::$instance->affiliates     = new Affiliate_WP_DB_Affiliates;
@@ -195,6 +194,8 @@ final class Affiliate_WP {
 			self::$instance->creative       = new Affiliate_WP_Creatives;
 
 			self::$instance->updater();
+			
+			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 		}
 		return self::$instance;
 	}
