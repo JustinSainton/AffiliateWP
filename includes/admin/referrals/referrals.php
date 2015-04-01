@@ -304,7 +304,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Displays the referral status
 	 */
 	public function column_status( $referral ) {
-		return '<span class="affwp-status ' . $referral->status . '"><i></i>' . $referral->status . '</span>';
+		return '<span class="affwp-status ' . $referral->status . '"><i></i>' . affwp_get_referral_status_label( $referral ) . '</span>';
 	}
 
 	/**
