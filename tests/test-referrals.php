@@ -19,7 +19,7 @@ class Referral_Tests extends WP_UnitTestCase {
 			'affiliate_id' => 1,
 			'amount'    => 10,
 			'status'    => 'pending',
-			'context'   => 'tests'
+			'context'   => 'tests',
 			'custom'    => 4,
 			'reference' => 5
 		);
