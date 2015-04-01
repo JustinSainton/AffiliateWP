@@ -30,6 +30,7 @@ class Referral_Tests extends WP_UnitTestCase {
 
 	function test_get_referral() {
 		$this->assertNull( affwp_get_referral( 0 ) );
+		$this->assertNotEmpty( affwp_get_referral( $this->_referral_id ) );
 	}
 
 	function test_get_referral_status() {
