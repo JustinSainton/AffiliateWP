@@ -24,7 +24,7 @@ class Referral_Tests extends WP_UnitTestCase {
 			'reference' => 5
 		);
 
-		$this->_referral_id = affiliate_wp()->referral->add( $args );
+		$this->_referral_id = affiliate_wp()->referrals->add( $args );
 
 	}
 
