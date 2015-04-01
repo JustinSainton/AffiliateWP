@@ -182,10 +182,6 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 		}
 
-		if( 'earnings' == $args['orderby'] ) {
-			$args['orderby'] = 'earnings+0';
-		}
-
 		if( 'date' == $args['orderby'] ) {
 			$args['orderby'] = 'date_registered';
 		}
@@ -195,6 +191,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		}
 
 		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
+		
+		if( 'earnings' == $args['orderby'] ) {
+			$args['orderby'] = 'earnings+0';
+		}
 
 		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
 
