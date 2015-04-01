@@ -40,5 +40,13 @@ class Referral_Tests extends WP_UnitTestCase {
 	function test_get_referral_status_label() {
 		$this->assertEquals( 'Pending', affwp_get_referral_status_label( $this->_referral_id ) );
 	}
+
+	function test_set_referral_status() {
+		$this->assertEquals( 'pending', affwp_get_referral_status( $this->_referral_id ) );
+		affwp_set_referral_status( $this->_referral_id, 'unpaid' );
+		$this->assertEquals( 'unpaid', affwp_get_referral_status( $this->_referral_id ) );
+		affwp_set_referral_status( $this->_referral_id, 'rejected' );
+		$this->assertEquals( 'rejected', affwp_get_referral_status( $this->_referral_id ) );
+	}
 }
 
