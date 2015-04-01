@@ -18,6 +18,7 @@ class Affiliate_WP_Integrations {
 			'marketpress'		=> 'MarketPress',
 			'membermouse'		=> 'MemberMouse',
 			'memberpress'		=> 'MemberPress',
+			'ninja-forms'       => 'Ninja Forms',
 			'jigoshop'			=> 'Jigoshop',
 			'rcp'				=> 'Restrict Content Pro',
 			'pmp'				=> 'Paid Memberships Pro',
