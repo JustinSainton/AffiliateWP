@@ -60,7 +60,11 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 			return;
 		}
 
-		affwp_set_referral_status( $sub_id, 'unpaid' );
+		$referral_id = affiliate_wp()->referrals->get_column_by( 'referral_id', 'reference', $sub_id );
+
+		if( $referral_id ) {
+			affwp_set_referral_status( $referral_id, 'unpaid' );
+		}
 
 	}
 
