@@ -16,12 +16,12 @@ class Referral_Tests extends WP_UnitTestCase {
 
 
 		$args = array(
-			'affiliate_id' => 1,
-			'amount'    => 10,
-			'status'    => 'pending',
-			'context'   => 'tests',
-			'custom'    => 4,
-			'reference' => 5
+			'affiliate_id' => $this->_affiliate_id,
+			'amount'       => 10,
+			'status'       => 'pending',
+			'context'      => 'tests',
+			'custom'       => 4,
+			'reference'    => 5
 		);
 
 		$this->_referral_id = affiliate_wp()->referrals->add( $args );
