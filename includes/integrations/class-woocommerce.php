@@ -161,8 +161,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function revoke_referral_on_refund( $order_id = 0 ) {
 
-		if( is_object( $order_id ) ) {
-			$order_id = get_post( $order_id )->ID;
+		if ( is_a( $order_id, 'WP_Post' ) ) {
+			$order_id = $order_id->ID;
 		}
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
