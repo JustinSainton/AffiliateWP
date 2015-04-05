@@ -21,7 +21,7 @@ if( ! defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function affwp_add_email_tag( $tag, $description, $func ) {
-	Affiliate_WP()->emails->add_tag( $tag, $description, $func );
+	affiliate_wp()->emails->add_tag( $tag, $description, $func );
 }
 
 
@@ -33,7 +33,7 @@ function affwp_add_email_tag( $tag, $description, $func ) {
  * @return void
  */
 function affwp_remove_email_tag( $tag ) {
-	Affiliate_WP()->emails->remove_tag( $tag );
+	affiliate_wp()->emails->remove_tag( $tag );
 }
 
 
@@ -45,7 +45,7 @@ function affwp_remove_email_tag( $tag ) {
  * @return bool True if exists, false otherwise
  */
 function affwp_email_tag_exists( $tag ) {
-	return Affiliate_WP()->emails->email_tag_exists( $tag );
+	return affiliate_wp()->emails->email_tag_exists( $tag );
 }
 
 
@@ -55,7 +55,7 @@ function affwp_email_tag_exists( $tag ) {
  * @since 1.6
  */
 function affwp_get_email_tags() {
-	return Affiliate_WP()->emails->get_tags();
+	return affiliate_wp()->emails->get_tags();
 }
 
 
@@ -94,7 +94,7 @@ function affwp_get_emails_tags_list() {
  */
 function affwp_do_email_tags( $content, $affiliate_id = 0 ) {
 	// Replace all tags
-	$content = Affiliate_WP()->emails->do_tags( $content, $affiliate_id );
+	$content = affiliate_wp()->emails->do_tags( $content, $affiliate_id );
 
 	return $content;
 }
