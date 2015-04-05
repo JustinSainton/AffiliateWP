@@ -85,22 +85,6 @@ function affwp_get_emails_tags_list() {
 
 
 /**
- * Search content for email tags and filter them
- *
- * @since 1.6
- * @param string $content Content to search for email tags
- * @param int $affiliate_id The affiliate ID
- * @return string $content The filtered content
- */
-function affwp_do_email_tags( $content, $affiliate_id = 0 ) {
-	// Replace all tags
-	$content = affiliate_wp()->emails->do_tags( $content, $affiliate_id );
-
-	return $content;
-}
-
-
-/**
  * Load email tags
  *
  * @since 1.6
