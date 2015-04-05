@@ -312,6 +312,8 @@ class Affiliate_WP_Emails {
 
 		$message = $this->build_email( $message );
 
+		$message = $this->parse_tags( $message );
+
 		$attachments = apply_filters( 'affwp_email_attachments', $attachments, $this );
 
 		$sent = wp_mail( $to, $subject, $message, $this->get_headers(), $attachments );
@@ -429,17 +431,14 @@ class Affiliate_WP_Emails {
 	 * @param int $affiliate_id The affiliate ID
 	 * @return string $content Filtered content
 	 */
-	public function do_tags( $content, $affiliate_id ) {
+	public function parse_tags( $content ) {
+
 		// Make sure there's at least one tag
 		if( empty( $this->tags ) || ! is_array( $this->tags ) ) {
 			return $content;
 		}
 
-		$this->affiliate_id = $affiliate_id;
-
 		$new_content = preg_replace_callback( "/{([A-z0-9\-\_]+)}/s", array( $this, 'do_tag' ), $content );
-
-		$this->affiliate_id = null;
 
 		return $new_content;
 	}
