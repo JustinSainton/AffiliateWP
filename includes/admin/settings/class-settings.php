@@ -334,7 +334,7 @@ class Affiliate_WP_Settings {
 					),
 					'registration_subject' => array(
 						'name' => __( 'Registration Email Subject', 'affiliate-wp' ),
-						'desc' => __( 'Enter the subject line for the registration email.', 'affiliate-wp' ),
+						'desc' => __( 'Enter the subject line for the registration email sent to admins when new affiliates register.', 'affiliate-wp' ),
 						'type' => 'text',
 						'std' => __( 'New Affiliate Registration', 'affiliate-wp' )
 					),
@@ -346,7 +346,7 @@ class Affiliate_WP_Settings {
 					),
 					'accepted_subject' => array(
 						'name' => __( 'Application Accepted Email Subject', 'affiliate-wp' ),
-						'desc' => __( 'Enter the subject line for accepted application emails.', 'affiliate-wp' ),
+						'desc' => __( 'Enter the subject line for accepted application emails sent to affiliates when their account is approved.', 'affiliate-wp' ),
 						'type' => 'text',
 						'std' => __( 'Affiliate Application Accepted', 'affiliate-wp' )
 					),
