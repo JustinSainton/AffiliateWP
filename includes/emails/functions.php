@@ -253,9 +253,8 @@ function affwp_email_tag_login_url() {
  *
  * @return string amount
  */
-function affwp_email_tag_amount() {
-	// How should we pass this given that $args isn't used by ANY other tag?
-	return html_entity_decode( affwp_currency_filter( $args['amount'] ), ENT_COMPAT, 'UTF-8' );
+function affwp_email_tag_amount( $affiliate_id = 0, $referral ) {
+	return html_entity_decode( affwp_currency_filter( $referral->amount ), ENT_COMPAT, 'UTF-8' );
 }
 
 

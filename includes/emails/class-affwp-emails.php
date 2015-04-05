@@ -95,6 +95,13 @@ class Affiliate_WP_Emails {
 	private $affiliate_id;
 
 	/**
+	 * Referral object
+	 *
+	 * @since 1.6
+	 */
+	private $referral;
+
+	/**
 	 * Get things going
 	 *
 	 * @since 1.6
@@ -453,6 +460,6 @@ class Affiliate_WP_Emails {
 			return $m[0];
 		}
 
-		return call_user_func( $this->tags[$tag]['func'], $this->affiliate_id, $tag );
+		return call_user_func( $this->tags[$tag]['func'], $this->affiliate_id, $this->referral, $tag );
 	}
 }

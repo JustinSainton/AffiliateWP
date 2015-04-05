@@ -31,6 +31,8 @@ function affwp_notify_on_registration( $affiliate_id = 0, $status = '', $args = 
 	}
 
 	$emails           = new Affiliate_WP_Emails;
+	$emails->__set( 'affiliate_id', $affiliate_id );
+
 	$email            = apply_filters( 'affwp_registration_admin_email', get_option( 'admin_email' ) );
 	$user_info        = get_userdata( affwp_get_affiliate_user_id( $affiliate_id ) );
 	$user_url         = $user_info->user_url;
@@ -88,6 +90,8 @@ function affwp_notify_on_approval( $affiliate_id = 0, $status = '', $old_status 
 	}
 
 	$emails       = new Affiliate_WP_Emails;
+	$emails->__set( 'affiliate_id', $affiliate_id );
+
 	$email        = affwp_get_affiliate_email( $affiliate_id );
 	$subject      = affiliate_wp()->settings->get( 'accepted_subject', __( 'Affiliate Application Accepted', 'affiliate-wp' ) );
 	$message      = affiliate_wp()->settings->get( 'accepted_email', '' );
@@ -133,6 +137,9 @@ function affwp_notify_on_new_referral( $affiliate_id = 0, $referral ) {
 	}
 
 	$emails  = new Affiliate_WP_Emails;
+	$emails->__set( 'affiliate_id', $affiliate_id );
+	$emails->__set( 'referral', $referral );
+
 	$email   = affwp_get_affiliate_email( $affiliate_id );
 	$subject = affiliate_wp()->settings->get( 'referral_subject', __( 'Referral Awarded!', 'affiliate-wp' ) );
 	$message = affiliate_wp()->settings->get( 'referral_email', false );
