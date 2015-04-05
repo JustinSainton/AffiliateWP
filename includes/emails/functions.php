@@ -11,6 +11,16 @@
 if( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Get a list of available email templates
+ *
+ * @since 1.6
+ * @return array
+ */
+function affwp_get_email_templates() {
+	return affiliate_wp()->emails->get_templates();
+}
+
+/**
  * Get a formatted HTML list of all available tags
  *
  * @since 1.6

@@ -61,7 +61,7 @@ $header_content_h1 = "
 	font-weight: 500;
 	line-height: 1.2;
 ";
-$header_img = edd_get_option( 'email_logo', '' );
+$header_img = affiliate_wp()->settings->get( 'email_logo', '' );
 ?>
 <!DOCTYPE html>
 <html>

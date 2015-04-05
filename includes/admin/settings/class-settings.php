@@ -295,6 +295,12 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Upload or choose a logo to be displayed at the top of emails.', 'affiliate-wp' ),
 						'type' => 'upload'
 					),
+					'email_template' => array(
+						'name' => __( 'Email Template', 'affiliate-wp' ),
+						'desc' => __( 'Choose a template to use for email messages.', 'affiliate-wp' ),
+						'type' => 'select',
+						'options' => affwp_get_email_templates()
+					),
 					'from_name' => array(
 						'name' => __( 'From Name', 'affiliate-wp' ),
 						'desc' => __( 'The name emails are said to come from. This should probably be your site name.', 'affiliate-wp' ),
