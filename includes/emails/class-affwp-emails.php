@@ -195,9 +195,9 @@ class Affiliate_WP_Emails {
 	 * @return array The email templates
 	 */
 	public function get_templates() {
-		$templates = array(
+		$templates    = array(
 			'default' => __( 'Default Template', 'affiliate-wp' ),
-			'none'	=> __( 'No template, plain text only', 'affiliate-wp' )
+			'none'	  => __( 'No template, plain text only', 'affiliate-wp' )
 		);
 
 		return apply_filters( 'affwp_email_templates', $templates );
@@ -238,6 +238,7 @@ class Affiliate_WP_Emails {
 	 * @return string
 	 */
 	public function build_email( $message ) {
+
 		if( false === $this->html ) {
 			return apply_filters( 'affwp_email_message', wp_strip_all_tags( $message ), $this );
 		}
@@ -289,6 +290,7 @@ class Affiliate_WP_Emails {
 	 * @param string|array $attachments Attachments to the email
 	 */
 	public function send( $to, $subject, $message, $attachments = '' ) {
+
 		if( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
 			_doing_it_wrong( __FUNCTION__, __( 'You cannot send emails with AffWP_Emails until init/admin_init has been reached', 'affiliate-wp' ), null );
 			return false;
