@@ -248,7 +248,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['start'] ) ) {
 
-					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
+					if( false !== strpos( $args['date']['start'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 00:00:00';
+					}
+
+					$start = date( $format, strtotime( $args['date']['start'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -264,7 +270,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['end'] ) ) {
 
-					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+					if( false !== strpos( $args['date']['end'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 23:59:59';
+					}
+
+					$end = date( $format, strtotime( $args['date']['end'] ) );
 
 					if( ! empty( $where ) ) {
 
