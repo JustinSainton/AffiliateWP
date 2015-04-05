@@ -23,14 +23,12 @@ if( ! defined( 'ABSPATH' ) ) exit;
  */
 class Affiliate_WP_Emails {
 
-
 	/**
 	 * Holds the from address
 	 *
 	 * @since 1.6
 	 */
 	private $from_address;
-
 
 	/**
 	 * Holds the from name
@@ -39,14 +37,12 @@ class Affiliate_WP_Emails {
 	 */
 	private $from_name;
 
-
 	/**
 	 * Holds the email content type
 	 *
 	 * @since 1.6
 	 */
 	private $content_type;
-
 
 	/**
 	 * Holds the email headers
@@ -55,14 +51,12 @@ class Affiliate_WP_Emails {
 	 */
 	private $headers;
 
-
 	/**
 	 * Whether to send email in HTML
 	 *
 	 * @since 1.6
 	 */
 	private $html = true;
-
 
 	/**
 	 * The email template to use
@@ -71,14 +65,12 @@ class Affiliate_WP_Emails {
 	 */
 	private $template;
 
-
 	/**
 	 * The header text for the email
 	 *
 	 * @since 1.6
 	 */
 	private $heading = '';
-
 
 	/**
 	 * Container for storing all tags
@@ -303,6 +295,8 @@ class Affiliate_WP_Emails {
 			return false;
 		}
 
+		$this->setup_email_tags();
+
 		/**
 		 * Hooks before email is sent
 		 *
@@ -370,36 +364,117 @@ class Affiliate_WP_Emails {
 	}
 
 	/**
-	 * Add an email tag
+	 * Search content for email tags and filter email tags through their hooks
 	 *
 	 * @since 1.6
-	 * @param string $tag Email tag to be replaced in email
-	 * @param string $description The description fo the tag
-	 * @param callable $func Hook to run when email tag is found
-	 * @return void
+	 * @param string $content Content to search for email tags
+	 * @param int $affiliate_id The affiliate ID
+	 * @return string $content Filtered content
 	 */
-	public function add_tag( $tag, $description, $func ) {
-		if( is_callable( $func ) ) {
-			$this->tags[$tag] = array(
-				'tag'         => $tag,
-				'description' => $description,
-				'func'        => $func
-			);
-		}
-	}
+	private function parse_tags( $content ) {
 
+		// Make sure there's at least one tag
+		if( empty( $this->tags ) || ! is_array( $this->tags ) ) {
+			return $content;
+		}
+
+		$new_content = preg_replace_callback( "/{([A-z0-9\-\_]+)}/s", array( $this, 'do_tag' ), $content );
+
+		return $new_content;
+	}
 
 	/**
-	 * Remove an email tag
+	 * Setup all registered email tags
 	 *
 	 * @since 1.6
-	 * @param string $tag Email tag to remove
 	 * @return void
 	 */
-	public function remove_tag( $tag ) {
-		unset( $this->tags[$tag] );
+	private function setup_email_tags() {
+
+		$tags = $this->get_tags();
+
+		foreach( $tags as $tag ) {
+			if ( isset( $tag['function'] ) && is_callable( $tag['function'] ) ) {
+				$this->tags[ $tag['tag'] ] = $tag;
+			}
+		}
+
 	}
 
+	/**
+	 * Retrieve all registered email tags
+	 *
+	 * @since 1.6
+	 * @return array
+	 */
+	public function get_tags() {
+
+		// Setup default tags array
+		$email_tags = array(
+			array(
+				'tag'         => 'name',
+				'description' => __( 'The full name of the affiliate', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_name'
+			),
+			array(
+				'tag'         => 'username',
+				'description' => __( 'The user name of the affiliate on the site', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_username'
+			),
+			array(
+				'tag'         => 'user_email',
+				'description' => __( 'The email address of the affiliate', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_user_email'
+			),
+			array(
+				'tag'         => 'website',
+				'description' => __( 'The website of the affiliate', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_website'
+			),
+			array(
+				'tag'         => 'promo_method',
+				'description' => __( 'The promo method used by the affiliate', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_promo_method'
+			),
+			array(
+				'tag'         => 'login_url',
+				'description' => __( 'The affiliate login URL to your website', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_login_url'
+			),
+			array(
+				'tag'         => 'amount',
+				'description' => __( 'The amount of a given referral', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_amount'
+			),
+			array(
+				'tag'         => 'sitename',
+				'description' => __( 'Your site name', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_sitename'
+			)
+		);
+
+		return apply_filters( 'affwp_email_tags', $email_tags, $this );
+
+	}
+
+	/**
+	 * Parse a specific tag.
+	 *
+	 * @since 1.6
+	 * @param $m Message
+	 */
+	private function do_tag( $m ) {
+
+		// Get tag
+		$tag = $m[1];
+
+		// Return tag if not set
+		if( ! $this->email_tag_exists( $tag ) ) {
+			return $m[0];
+		}
+
+		return call_user_func( $this->tags[$tag]['function'], $this->affiliate_id, $this->referral, $tag );
+	}
 
 	/**
 	 * Check if $tag is a registered email tag
@@ -412,53 +487,4 @@ class Affiliate_WP_Emails {
 		return array_key_exists( $tag, $this->tags );
 	}
 
-
-	/**
-	 * Returns a list of all email tags
-	 *
-	 * @since 1.6
-	 */
-	public function get_tags() {
-		return $this->tags;
-	}
-
-
-	/**
-	 * Search content for email tags and filter email tags through their hooks
-	 *
-	 * @since 1.6
-	 * @param string $content Content to search for email tags
-	 * @param int $affiliate_id The affiliate ID
-	 * @return string $content Filtered content
-	 */
-	public function parse_tags( $content ) {
-
-		// Make sure there's at least one tag
-		if( empty( $this->tags ) || ! is_array( $this->tags ) ) {
-			return $content;
-		}
-
-		$new_content = preg_replace_callback( "/{([A-z0-9\-\_]+)}/s", array( $this, 'do_tag' ), $content );
-
-		return $new_content;
-	}
-
-
-	/**
-	 * Do a specific tag. This function should not be used. Please use affiliate_wp_do_email_tags instead.
-	 *
-	 * @since 1.6
-	 * @param $m Message
-	 */
-	public function do_tag( $m ) {
-		// Get tag
-		$tag = $m[1];
-
-		// Return tag if not set
-		if( ! $this->email_tag_exists( $tag ) ) {
-			return $m[0];
-		}
-
-		return call_user_func( $this->tags[$tag]['func'], $this->affiliate_id, $this->referral, $tag );
-	}
 }
