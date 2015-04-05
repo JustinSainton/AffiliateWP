@@ -70,7 +70,7 @@ function affwp_get_emails_tags_list() {
 	$list = '';
 
 	// Get all tags
-	$email_tags = affwpget_email_tags();
+	$email_tags = affwp_get_email_tags();
 
 	// Check
 	if( count( $email_tags ) > 0 ) {
