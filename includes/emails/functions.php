@@ -92,7 +92,7 @@ function affwp_get_emails_tags_list() {
  * @param int $affiliate_id The affiliate ID
  * @return string $content The filtered content
  */
-function affwp_do_email_tags( $content, $affiliate_id ) {
+function affwp_do_email_tags( $content, $affiliate_id = 0 ) {
 	// Replace all tags
 	$content = Affiliate_WP()->emails->do_tags( $content, $affiliate_id );
 
@@ -179,7 +179,7 @@ add_action( 'affwp_add_email_tags', 'affwp_setup_email_tags' );
  * @param int $affiliate_id
  * @return string name
  */
-function affwp_email_tag_name( $affiliate_id ) {
+function affwp_email_tag_name( $affiliate_id = 0 ) {
 	return affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] );
 }
 
@@ -191,7 +191,7 @@ function affwp_email_tag_name( $affiliate_id ) {
  * @param int $affiliate_id
  * @return string username
  */
-function affwp_email_tag_username( $affiliate_id ) {
+function affwp_email_tag_username( $affiliate_id = 0 ) {
 	$user_info = get_userdata( affwp_get_affiliate_user_id( $affiliate_id ) );
 
 	return $user_info->user_login;
@@ -205,7 +205,7 @@ function affwp_email_tag_username( $affiliate_id ) {
  * @param int $affiliate_id
  * @return string email
  */
-function affwp_email_tag_user_email( $affiliate_id ) {
+function affwp_email_tag_user_email( $affiliate_id = 0 ) {
 	return affwp_get_affiliate_email( $affiliate_id );
 }
 
@@ -217,7 +217,7 @@ function affwp_email_tag_user_email( $affiliate_id ) {
  * @param int $affiliate_id
  * @return string website
  */
-function affwp_email_tag_website( $affiliate_id ) {
+function affwp_email_tag_website( $affiliate_id = 0 ) {
 	$user_info = get_userdata( affwp_get_affiliate_user_id( $affiliate_id ) );
 
 	return $user_info->user_url;
@@ -231,7 +231,7 @@ function affwp_email_tag_website( $affiliate_id ) {
  * @param int $affiliate_id
  * @return string promo_method
  */
-function affwp_email_tag_promo_method( $affiliate_id ) {
+function affwp_email_tag_promo_method( $affiliate_id = 0 ) {
 	return get_user_meta( affwp_get_affiliate_user_id( $affiliate_id ), 'affwp_promotion_method', true );
 }
 
