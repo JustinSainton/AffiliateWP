@@ -64,7 +64,7 @@ function affwp_email_tag_name( $affiliate_id = 0 ) {
  * @param int $affiliate_id
  * @return string username
  */
-function affwp_email_tag_username( $affiliate_id = 0 ) {
+function affwp_email_tag_user_name( $affiliate_id = 0 ) {
 	$user_info = get_userdata( affwp_get_affiliate_user_id( $affiliate_id ) );
 
 	return $user_info->user_login;
@@ -137,6 +137,6 @@ function affwp_email_tag_amount( $affiliate_id = 0, $referral ) {
  *
  * @return string sitename
  */
-function affwp_email_tag_sitename() {
+function affwp_email_tag_site_name() {
 	return wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 }

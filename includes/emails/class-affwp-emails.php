@@ -417,9 +417,9 @@ class Affiliate_WP_Emails {
 				'function'    => 'affwp_email_tag_name'
 			),
 			array(
-				'tag'         => 'username',
+				'tag'         => 'user_name',
 				'description' => __( 'The user name of the affiliate on the site', 'affiliate-wp' ),
-				'function'    => 'affwp_email_tag_username'
+				'function'    => 'affwp_email_tag_user_name'
 			),
 			array(
 				'tag'         => 'user_email',
@@ -447,9 +447,9 @@ class Affiliate_WP_Emails {
 				'function'    => 'affwp_email_tag_amount'
 			),
 			array(
-				'tag'         => 'sitename',
+				'tag'         => 'site_name',
 				'description' => __( 'Your site name', 'affiliate-wp' ),
-				'function'    => 'affwp_email_tag_sitename'
+				'function'    => 'affwp_email_tag_site_name'
 			)
 		);
 
