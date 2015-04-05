@@ -332,6 +332,11 @@ class Affiliate_WP_Settings {
 						'type' => 'text',
 						'std' => get_bloginfo( 'admin_email' )
 					),
+					'registration_notifications' => array(
+						'name' => __( 'Notify Admins', 'affiliate-wp' ),
+						'desc' => __( 'Notify site admins of new affiliate registrations?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'registration_subject' => array(
 						'name' => __( 'Registration Email Subject', 'affiliate-wp' ),
 						'desc' => __( 'Enter the subject line for the registration email sent to admins when new affiliates register.', 'affiliate-wp' ),
@@ -358,7 +363,7 @@ class Affiliate_WP_Settings {
 					),
 					'referral_subject' => array(
 						'name' => __( 'New Referral Email Subject', 'affiliate-wp' ),
-						'desc' => __( 'Enter the subject line for new referral emails.', 'affiliate-wp' ),
+						'desc' => __( 'Enter the subject line for new referral emails sent when affiliates earn referrals.', 'affiliate-wp' ),
 						'type' => 'text',
 						'std' => __( 'Referral Awarded!', 'affiliate-wp' )
 					),
@@ -376,11 +381,6 @@ class Affiliate_WP_Settings {
 					'allow_affiliate_registration' => array(
 						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
-						'type' => 'checkbox'
-					),
-					'registration_notifications' => array(
-						'name' => __( 'Notify Admins', 'affiliate-wp' ),
-						'desc' => __( 'Notify site admins of new affiliate registrations?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'require_approval' => array(
