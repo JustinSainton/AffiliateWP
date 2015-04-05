@@ -29,6 +29,10 @@ class Affiliate_WP_Upgrades {
 			$this->v13_upgrades();
 		}
 
+		if ( version_compare( $version, '1.6', '<' ) ) {
+			$this->v16_upgrades();
+		}
+
 		// If upgrades have occurred
 		if ( $this->upgraded ) {
 			update_option( 'affwp_version_upgraded_from', $version );
@@ -77,6 +81,20 @@ class Affiliate_WP_Upgrades {
 
 		// Clear rewrite rules
 		flush_rewrite_rules();
+
+		$this->upgraded = true;
+
+	}
+
+	/**
+	 * Perform database upgrades for version 1.6
+	 *
+	 * @access  public
+	 * @since   1.6
+	 */
+	private function v16_upgrades() {
+
+		@affiliate_wp()->affiliate_meta->create_table();
 
 		$this->upgraded = true;
 

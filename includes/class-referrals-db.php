@@ -68,7 +68,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	public function add( $data = array() ) {
 
 		$defaults = array(
-			'status' => 'pending'
+			'status' => 'pending',
+			'amount' => 0
 		);
 
 		$args = wp_parse_args( $data, $defaults );
@@ -80,6 +81,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		if( ! affiliate_wp()->affiliates->affiliate_exists( $args['affiliate_id'] ) ) {
 			return false;
 		}
+
+		$args['amount'] = affwp_sanitize_amount( $args['amount'] );
 
 		$add  = $this->insert( $args, 'referral' );
 
@@ -112,6 +115,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( ! $referral ) {
 			return false;
+		}
+
+		if( isset( $data['amount'] ) ) {
+			$data['amount'] = affwp_sanitize_amount( $data['amount'] );
 		}
 
 		$update = $this->update( $referral_id, $data, '', 'referral' );
@@ -241,7 +248,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['start'] ) ) {
 
-					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
+					if( false !== strpos( $args['date']['start'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 00:00:00';
+					}
+
+					$start = date( $format, strtotime( $args['date']['start'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -257,7 +270,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['end'] ) ) {
 
-					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+					if( false !== strpos( $args['date']['end'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 23:59:59';
+					}
+
+					$end = date( $format, strtotime( $args['date']['end'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -327,6 +346,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			}
 
 		}
+
+		if( ! empty( $args['orderby'] ) && 'amount' == $args['orderby'] ) {
+			$args['orderby'] = 'amount+0';
+		}
+
+		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
 
 		$cache_key = md5( 'affwp_referrals_' . serialize( $args ) );
 

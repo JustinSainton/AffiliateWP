@@ -27,6 +27,33 @@ function affwp_get_referral_status( $referral ) {
 	return affiliate_wp()->referrals->get_column( 'status', $referral_id );
 }
 
+/**
+ * Get the status label for a referral
+ *
+ * @since 1.6
+ * @return string $label The localized version of the referral status
+ */
+function affwp_get_referral_status_label( $referral ) {
+
+	$referral = affwp_get_referral( $referral );
+
+	if( empty( $referral ) ) {
+		return false;
+	}
+
+	$statuses = array(
+		'paid'     => __( 'Paid', 'affiliate-wp' ),
+		'unpaid'   => __( 'Unpaid', 'affiliate-wp' ),
+		'rejected' => __( 'Rejected', 'affiliate-wp' ),
+		'pending'  => __( 'Pending', 'affiliate-wp' ),
+	);
+
+	$label = array_key_exists( $referral->status, $statuses ) ? $statuses[ $referral->status ] : 'pending';
+
+	return apply_filters( 'affwp_referral_status_label', $label, $referral );
+
+}
+
 function affwp_set_referral_status( $referral, $new_status = '' ) {
 
 	if( is_object( $referral ) && isset( $referral->referral_id ) ) {

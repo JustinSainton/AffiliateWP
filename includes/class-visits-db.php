@@ -152,21 +152,23 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 				$where .= " AND";
 			}
 
-			if ( filter_var( $args['search'], FILTER_VALIDATE_IP ) ) { 
+			if ( filter_var( $args['search'], FILTER_VALIDATE_IP ) ) {
 
 				$where .= " `ip` LIKE '%%" . $args['search'] . "%%' ";
 
 			} else {
-				
+
 				$where .= " ( `referrer` LIKE '%%" . $args['search'] . "%%' OR `url` LIKE '%%" . $args['search'] . "%%' ) ";
 
 			}
 		}
 
+		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
+
 		$cache_key = md5( 'affwp_visits_' . serialize( $args ) );
 
 		$visits = wp_cache_get( $cache_key, 'visits' );
-		
+
 		if( $visits === false ) {
 			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
 			wp_cache_set( $cache_key, $visits, 'visits', 3600 );
@@ -185,7 +187,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		}
 
 		$visit_id = $this->insert( $data, 'visit' );
-		
+
 
 		affwp_increase_affiliate_visit_count( $data['affiliate_id'] );
 
@@ -238,7 +240,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		$cache_key   = md5( 'affwp_visits_count' . serialize( $args ) );
 
 		$count = wp_cache_get( $cache_key, 'visits' );
-		
+
 		if( $count === false ) {
 			$count = $wpdb->get_var( "SELECT COUNT(visit_id) FROM " . $this->table_name . "{$where};" );
 			wp_cache_set( $cache_key, $count, 'visits', 3600 );

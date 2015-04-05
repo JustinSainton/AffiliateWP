@@ -46,6 +46,7 @@ class Affiliate_WP_Affiliate_Export extends Affiliate_WP_Export {
 		$cols = array(
 			'affiliate_id'    => __( 'Affiliate ID', 'affiliate-wp' ),
 			'email'           => __( 'Email', 'affiliate-wp' ),
+			'username'        => __( 'Username', 'affiliate-wp' ),
 			'rate'            => __( 'Rate', 'affiliate-wp' ),
 			'rate_type'       => __( 'Rate Type', 'affiliate-wp' ),
 			'earnings'        => __( 'Earnings', 'affiliate-wp' ),
@@ -81,6 +82,7 @@ class Affiliate_WP_Affiliate_Export extends Affiliate_WP_Export {
 				$data[] = array(
 					'affiliate_id'    => $affiliate->affiliate_id,
 					'email'           => affwp_get_affiliate_email( $affiliate->affiliate_id ),
+					'username'        => affwp_get_affiliate_login( $affiliate->affiliate_id ),
 					'rate'            => affwp_get_affiliate_rate( $affiliate->affiliate_id ),
 					'rate_type'       => affwp_get_affiliate_rate_type( $affiliate->affiliate_id ),
 					'earnings'        => $affiliate->earnings,

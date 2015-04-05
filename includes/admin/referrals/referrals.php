@@ -238,7 +238,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		return array(
-			'name'   => array( 'name', false )
+			'amount'    => array( 'amount', false ),
+			'affiliate' => array( 'affiliate_id', false ),
+			'date'      => array( 'date', false ),
+			'status'    => array( 'status', false ),
 		);
 	}
 
@@ -301,7 +304,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Displays the referral status
 	 */
 	public function column_status( $referral ) {
-		return '<span class="affwp-status ' . $referral->status . '"><i></i>' . $referral->status . '</span>';
+		return '<span class="affwp-status ' . $referral->status . '"><i></i>' . affwp_get_referral_status_label( $referral ) . '</span>';
 	}
 
 	/**
@@ -547,6 +550,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$context   = isset( $_GET['context'] )      ? $_GET['context']         : ''; 
 		$from      = isset( $_GET['filter_from'] )  ? $_GET['filter_from']     : ''; 
 		$to        = isset( $_GET['filter_to'] )    ? $_GET['filter_to']       : ''; 
+		$order     = isset( $_GET['order'] )        ? $_GET['order']           : 'DESC';
+		$orderby   = isset( $_GET['orderby'] )      ? $_GET['orderby']         : 'referral_id';
 		$referral  = ''; 
 		$is_search = false;
 
@@ -586,7 +591,9 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'reference'    => $reference,
 			'context'      => $context,
 			'date'         => $date,
-			'search'       => $is_search
+			'search'       => $is_search,
+			'orderby'      => sanitize_text_field( $orderby ),
+			'order'        => sanitize_text_field( $order )
 		) );
 		return $referrals;
 	}
