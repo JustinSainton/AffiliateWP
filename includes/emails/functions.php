@@ -164,7 +164,7 @@ add_action( 'affwp_add_email_tags', 'affwp_setup_email_tags' );
  * @return string name
  */
 function affwp_email_tag_name( $affiliate_id = 0 ) {
-	return affiliate_wp()->affiliates->get_affiliate_name( $args['affiliate_id'] );
+	return affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
 }
 
 
