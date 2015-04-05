@@ -152,7 +152,7 @@ function affwp_notify_on_new_referral( $affiliate_id = 0, $referral ) {
 	}
 
 	// $args is setup for backwards compatibility with < 1.6
-	$args         = array( 'affiliate_id' => $affiliate_id, 'amount' => $referral->amount );
+	$args    = array( 'affiliate_id' => $affiliate_id, 'amount' => $referral->amount );
 	$subject = apply_filters( 'affwp_new_referral_subject', $subject, $args );
 	$message = apply_filters( 'affwp_new_referral_email', $message, $args );
 
