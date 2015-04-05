@@ -85,6 +85,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$args['amount'] = affwp_sanitize_amount( $args['amount'] );
 
+		if( ! empty( $args['products'] ) ) {
+			$args['products'] = maybe_serialize( $args['products'] );
+		}
+
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {
@@ -120,6 +124,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( isset( $data['amount'] ) ) {
 			$data['amount'] = affwp_sanitize_amount( $data['amount'] );
+		}
+
+		if( ! empty( $data['products'] ) ) {
+			$data['products'] = maybe_serialize( $data['products'] );
 		}
 
 		$update = $this->update( $referral_id, $data, '', 'referral' );
