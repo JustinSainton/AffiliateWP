@@ -128,7 +128,7 @@ function affwp_notify_on_new_referral( $affiliate_id = 0, $referral ) {
 		return;
 	}
 
-	if( 'active' != $status || 'pending' != $old_status ) {
+	if( empty( $referral ) ) {
 		return;
 	}
 
