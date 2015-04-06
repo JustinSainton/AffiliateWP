@@ -11,7 +11,13 @@ function affwp_get_referral( $referral ) {
 		return false;
 	}
 
-	return affiliate_wp()->referrals->get( $referral_id );
+	$referral = affiliate_wp()->referrals->get( $referral_id );
+
+	if( ! empty( $referral->products ) ) {
+		$referral->products = maybe_unserialize( $referral->products );
+	}
+
+	return $referral;
 }
 
 function affwp_get_referral_status( $referral ) {
