@@ -19,7 +19,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 			$user = get_userdata( $order->user_id );
 
-			if( $this->get_affiliate_email() == $user->user_email ) {
+			if ( $this->is_affiliate_email( $user->user_email ) ) {
 				return; // Customers cannot refer themselves
 			}
 

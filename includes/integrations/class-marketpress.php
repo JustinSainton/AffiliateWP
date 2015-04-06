@@ -42,7 +42,7 @@ class Affiliate_WP_MarketPress extends Affiliate_WP_Base {
 
 			}
 
-			if ( $this->get_affiliate_email() == $customer_email ) {
+			if ( $this->is_affiliate_email( $customer_email ) ) {
 
 				return; // Customers cannot refer themselves
 

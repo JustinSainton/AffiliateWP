@@ -30,7 +30,7 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			if( $this->get_affiliate_email() == $this->get_submitted_email() ) {
+			if ( $this->is_affiliate_email( $this->get_submitted_email() ) ) {
 				return; // Customers cannot refer themselves
 			}
 

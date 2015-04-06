@@ -247,7 +247,7 @@ abstract class Affiliate_WP_Base {
 				if ( $rate > 1 ) {
 
 					$rate = $rate / 100;
-				
+
 				}
 
 			}
