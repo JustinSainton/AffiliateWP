@@ -14,7 +14,8 @@ function affwp_get_referral( $referral ) {
 	$referral = affiliate_wp()->referrals->get( $referral_id );
 
 	if( ! empty( $referral->products ) ) {
-		$referral->products = maybe_unserialize( $referral->products );
+		// products is a multidimensional array. Double unserialize is not a typo
+		$referral->products = maybe_unserialize( maybe_unserialize( $referral->products ) );
 	}
 
 	return $referral;
