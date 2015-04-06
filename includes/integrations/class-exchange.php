@@ -103,8 +103,38 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				$amount += $this->calculate_referral_amount( $referral_product_price, $transaction_id, $product['product_id'] );
 			}
 
-			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description );
+			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description, $this->get_products( $transaction_id ) );
 		}
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $order_id = 0 ) {
+
+		$products  = array();
+		$items     = $this->transaction->products;
+		foreach( $items as $key => $product ) {
+
+			if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
+			$products[] = array(
+				'name'            => $product['product_name'],
+				'id'              => $product['product_id'],
+				'price'           => $product['product_subtotal'],
+				'referral_amount' => $this->calculate_referral_amount( $product['product_subtotal'], $order_id, $product['product_id'] )
+			);
+
+		}
+
+		return $products;
 
 	}
 

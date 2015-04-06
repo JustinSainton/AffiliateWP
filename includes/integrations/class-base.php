@@ -60,10 +60,11 @@ abstract class Affiliate_WP_Base {
 	 * @param   $amount The final referral commission amount
 	 * @param   $reference The reference column for the referral per the current context
 	 * @param   $description A plaintext description of the refferral
+	 * @param   $products An array of product details
 	 * @param   $data Any custom data that can be passed to and stored with the referral
 	 * @return  bool
 	 */
-	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
+	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $products = array(), $data = array() ) {
 
 		$this->affiliate_id = $this->get_affiliate_id();
 
@@ -87,6 +88,7 @@ abstract class Affiliate_WP_Base {
 			'description'  => $description,
 			'affiliate_id' => $this->affiliate_id,
 			'visit_id'     => $visit_id,
+			'products'     => ! empty( $products ) ? maybe_serialize( $products ) : '',
 			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
 			'context'      => $this->context
 		), $amount, $reference, $description, $this->affiliate_id, $visit_id, $data, $this->context );
@@ -262,7 +264,6 @@ abstract class Affiliate_WP_Base {
 
 	}
 
-
 	/**
 	 * Retrieves the rate and type for a specific product
 	 *
@@ -280,6 +281,19 @@ abstract class Affiliate_WP_Base {
 		}
 
 		return apply_filters( 'affwp_get_product_rate', (float) $rate, $product_id, $args, $this->affiliate_id, $this->context );
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $order_id = 0 ) {
+
+		return array();
 
 	}
 

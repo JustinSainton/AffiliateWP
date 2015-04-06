@@ -95,6 +95,7 @@ class Affiliate_WP_Upgrades {
 	private function v16_upgrades() {
 
 		@affiliate_wp()->affiliate_meta->create_table();
+		@affiliate_wp()->referrals->create_table();
 
 		$this->upgraded = true;
 

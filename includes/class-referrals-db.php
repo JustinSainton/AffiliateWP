@@ -19,7 +19,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			$this->table_name  = $wpdb->prefix . 'affiliate_wp_referrals';
 		}
 		$this->primary_key = 'referral_id';
-		$this->version     = '1.0';
+		$this->version     = '1.1';
 
 	}
 
@@ -41,6 +41,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'custom'      => '%s',
 			'context'     => '%s',
 			'reference'   => '%s',
+			'products'    => '%s',
 			'date'        => '%s',
 		);
 	}
@@ -84,6 +85,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$args['amount'] = affwp_sanitize_amount( $args['amount'] );
 
+		if( ! empty( $args['products'] ) ) {
+			$args['products'] = maybe_serialize( $args['products'] );
+		}
+
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {
@@ -119,6 +124,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( isset( $data['amount'] ) ) {
 			$data['amount'] = affwp_sanitize_amount( $data['amount'] );
+		}
+
+		if( ! empty( $data['products'] ) ) {
+			$data['products'] = maybe_serialize( $data['products'] );
 		}
 
 		$update = $this->update( $referral_id, $data, '', 'referral' );
@@ -651,6 +660,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		custom longtext NOT NULL,
 		context tinytext NOT NULL,
 		reference mediumtext NOT NULL,
+		products mediumtext NOT NULL,
 		date datetime NOT NULL,
 		PRIMARY KEY  (referral_id),
 		KEY affiliate_id (affiliate_id)
