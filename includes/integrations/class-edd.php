@@ -453,24 +453,31 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			return $amount;
 		}
 
-		$referral_amount = affiliate_wp()->referrals->get_column_by( 'amount', 'reference', $args['payment_id']  );
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $args['payment_id']  );
 
-		if( ! $referral_amount ) {
-			return $amount;
+		if( ! empty( $referral->products ) ) {
+			$products = maybe_unserialize( maybe_unserialize( $referral->products ) );
+			foreach( $products as $product ) {
+
+				if( (int) $product['id'] !== (int) $args['download_id'] ) {
+					continue;
+				}
+
+				if( 'flat' == $args['type'] ) {
+					return $args['rate'] - $product['referral_amount'];
+				}
+
+				$args['price'] -= $product['referral_amount'];
+
+				if ( $args['rate'] >= 1 ) {
+					$amount = $args['price'] * ( $args['rate'] / 100 ); // rate format = 10 for 10%
+				} else {
+					$amount = $args['price'] * $args['rate']; // rate format set as 0.10 for 10%
+				}
+
+			}
+
 		}
-
-		if( 'flat' == $args['type'] ) {
-			return $args['rate'] - $referral_amount;
-		}
-
-		$args['price'] -= $referral_amount;
-
-		if ( $args['rate'] >= 1 ) {
-			$amount = $args['price'] * ( $args['rate'] / 100 ); // rate format = 10 for 10%
-		} else {
-			$amount = $args['price'] * $args['rate']; // rate format set as 0.10 for 10%
-		}
-
 
 		return $amount;
 	}
