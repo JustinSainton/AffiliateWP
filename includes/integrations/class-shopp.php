@@ -30,7 +30,7 @@ class Affiliate_WP_Shopp extends Affiliate_WP_Base {
 
 			$customer_email = $this->order->email;
 
-			if( $this->get_affiliate_email() == $customer_email ) {
+			if ( $this->is_affiliate_email( $customer_email ) ) {
 				return; // Customers cannot refer themselves
 			}
 

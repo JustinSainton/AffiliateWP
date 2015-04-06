@@ -32,7 +32,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 		if( $this->was_referred() ) {
 
-			if( $this->get_affiliate_email() == $user->user_email ) {
+			if ( $this->is_affiliate_email( $user->user_email ) ) {
 				return; // Customers cannot refer themselves
 			}
 

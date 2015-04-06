@@ -52,7 +52,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 			$customer_email = edd_get_payment_user_email( $payment_id );
 
-			if ( $this->get_affiliate_email() == $customer_email ) {
+			if ( $this->is_affiliate_email( $customer_email ) ) {
 				return; // Customers cannot refer themselves
 			}
 

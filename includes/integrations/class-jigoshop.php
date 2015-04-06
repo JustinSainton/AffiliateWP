@@ -47,7 +47,7 @@ class Affiliate_WP_Jigoshop extends Affiliate_WP_Base {
 
 			$this->order = apply_filters( 'affwp_get_jigoshop_order', new jigoshop_order( $order_id ) ); // Fetch order
 
-			if( $this->get_affiliate_email() == $this->order->billing_email ) {
+			if ( $this->is_affiliate_email( $this->order->billing_email ) ) {
 				return; // Customers cannot refer themselves
 			}
 
