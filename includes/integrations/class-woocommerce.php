@@ -166,7 +166,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 			$products[] = array(
-				'name'            => $item['name'],
+				'name'            => $product['name'],
 				'id'              => $product['product_id'],
 				'price'           => $amount,
 				'referral_amount' => $this->calculate_referral_amount( $amount, $order_id, $product['product_id'] )
