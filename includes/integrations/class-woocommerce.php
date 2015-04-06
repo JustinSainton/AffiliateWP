@@ -125,6 +125,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				'description'  => $description,
 				'affiliate_id' => $this->affiliate_id,
 				'visit_id'     => $visit_id,
+				'products'     => $this->get_products(),
 				'context'      => $this->context
 			), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
 
@@ -138,6 +139,42 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			}
 
 		}
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $order_id = 0 ) {
+
+		$products  = array();
+		$items     = $this->order->get_items();
+		foreach( $items as $key => $product ) {
+
+				if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$amount = $product['line_total'] - $product['line_tax'];
+			} else {
+				$amount = $product['line_total'];
+			}
+
+			$products[] = array(
+				'name'            => $item['name'],
+				'id'              => $product['product_id'],
+				'price'           => $amount,
+				'referral_amount' => $this->calculate_referral_amount( $amount, $order_id, $product['product_id'] )
+			);
+
+		}
+
+		return $products;
 
 	}
 
