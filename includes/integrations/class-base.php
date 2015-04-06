@@ -198,6 +198,8 @@ abstract class Affiliate_WP_Base {
 	 */
 	public function is_affiliate_email( $email = '' ) {
 
+		global $wpdb;
+
 		$ret = false;
 
 		$affiliate = affwp_get_affiliate( $this->affiliate_id );
