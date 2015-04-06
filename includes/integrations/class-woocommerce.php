@@ -155,7 +155,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		$items     = $this->order->get_items();
 		foreach( $items as $key => $product ) {
 
-				if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+			if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 				continue; // Referrals are disabled on this product
 			}
 
