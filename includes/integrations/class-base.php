@@ -222,7 +222,7 @@ abstract class Affiliate_WP_Base {
 
 		}
 
-		return $ret;
+		return apply_filters( 'affwp_is_customer_email_affiliate_email', $ret, $email, $this->affiliate_id );
 	}
 
 	/**
