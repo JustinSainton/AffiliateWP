@@ -306,17 +306,81 @@ class Affiliate_WP_Settings {
 					)
 				)
 			),
+			/** Email Settings */
+			'emails' => apply_filters( 'affwp_settings_emails',
+				array(
+					'email_logo' => array(
+						'name' => __( 'Logo', 'affiliate-wp' ),
+						'desc' => __( 'Upload or choose a logo to be displayed at the top of emails.', 'affiliate-wp' ),
+						'type' => 'upload'
+					),
+					'email_template' => array(
+						'name' => __( 'Email Template', 'affiliate-wp' ),
+						'desc' => __( 'Choose a template to use for email messages.', 'affiliate-wp' ),
+						'type' => 'select',
+						'options' => affwp_get_email_templates()
+					),
+					'from_name' => array(
+						'name' => __( 'From Name', 'affiliate-wp' ),
+						'desc' => __( 'The name emails are said to come from. This should probably be your site name.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => get_bloginfo( 'name' )
+					),
+					'from_email' => array(
+						'name' => __( 'From Email', 'affiliate-wp' ),
+						'desc' => __( 'Email to send emails from. This will act as the "from" and "reply-to" address.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => get_bloginfo( 'admin_email' )
+					),
+					'registration_notifications' => array(
+						'name' => __( 'Notify Admins', 'affiliate-wp' ),
+						'desc' => __( 'Notify site admins of new affiliate registrations?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'registration_subject' => array(
+						'name' => __( 'Registration Email Subject', 'affiliate-wp' ),
+						'desc' => __( 'Enter the subject line for the registration email sent to admins when new affiliates register.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => __( 'New Affiliate Registration', 'affiliate-wp' )
+					),
+					'registration_email' => array(
+						'name' => __( 'Registration Email Content', 'affiliate-wp' ),
+						'desc' => __( 'Enter the email to send when a new affiliate registers. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
+						'type' => 'rich_editor',
+						'std' => sprintf( __( 'A new affiliate has registered on your site, %s', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Name: ', 'affiliate-wp' ) . "{name}\n\n{website}\n\n{promo_method}"
+					),
+					'accepted_subject' => array(
+						'name' => __( 'Application Accepted Email Subject', 'affiliate-wp' ),
+						'desc' => __( 'Enter the subject line for accepted application emails sent to affiliates when their account is approved.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => __( 'Affiliate Application Accepted', 'affiliate-wp' )
+					),
+					'accepted_email' => array(
+						'name' => __( 'Application Accepted Email Content', 'affiliate-wp' ),
+						'desc' => __( 'Enter the email to send when an application is accepted. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
+						'type' => 'rich_editor',
+						'std' => __( 'Congratulations', 'affiliate-wp' ) . " {name}!\n\n" . sprintf( __( 'Your affiliate application on %s has been accepted!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area at', 'affiliate-wp' ) . ' {login_url}'
+					),
+					'referral_subject' => array(
+						'name' => __( 'New Referral Email Subject', 'affiliate-wp' ),
+						'desc' => __( 'Enter the subject line for new referral emails sent when affiliates earn referrals.', 'affiliate-wp' ),
+						'type' => 'text',
+						'std' => __( 'Referral Awarded!', 'affiliate-wp' )
+					),
+					'referral_email' => array(
+						'name' => __( 'New Referral Email Content', 'affiliate-wp' ),
+						'desc' => __( 'Enter the email to send on new referrals. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
+						'type' => 'rich_editor',
+						'std' => __( 'Congratulations', 'affiliate-wp' ) . " {name}!\n\n" . __( 'You have been awarded a new referral of', 'affiliate-wp' ) . ' {amount} ' . sprintf( __( 'on %s!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area to view your earnings or disable these notifications:', 'affiliate-wp' ) . ' {login_url}'
+					)
+				)
+			),
 			/** Misc Settings */
 			'misc' => apply_filters( 'affwp_settings_misc',
 				array(
 					'allow_affiliate_registration' => array(
 						'name' => __( 'Allow affiliate registration', 'affiliate-wp' ),
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
-						'type' => 'checkbox'
-					),
-					'registration_notifications' => array(
-						'name' => __( 'Notify Admins', 'affiliate-wp' ),
-						'desc' => __( 'Notify site admins of new affiliate registrations?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'require_approval' => array(
@@ -546,7 +610,7 @@ class Affiliate_WP_Settings {
 			$value = isset( $args['std'] ) ? $args['std'] : '';
 
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
-		$html = '<textarea class="large-text" cols="50" rows="5" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']">' . esc_textarea( stripslashes( $value ) ) . '</textarea>';
+		$html = '<textarea class="large-text" cols="50" rows="5" id="affwp_settings_' . $args['id'] . '" name="affwp_settings[' . $args['id'] . ']">' . esc_textarea( stripslashes( $value ) ) . '</textarea>';
 		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
 
 		echo $html;
@@ -637,10 +701,32 @@ class Affiliate_WP_Settings {
 			$value = isset( $args['std'] ) ? $args['std'] : '';
 
 		ob_start();
-		wp_editor( stripslashes( $value ), 'affwp_settings[' . $args['id'] . ']', array( 'textarea_name' => 'affwp_settings[' . $args['id'] . ']' ) );
+		wp_editor( stripslashes( $value ), 'affwp_settings_' . $args['id'], array( 'textarea_name' => 'affwp_settings[' . $args['id'] . ']' ) );
 		$html = ob_get_clean();
 
 		$html .= '<br/><label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+
+		echo $html;
+	}
+
+	/**
+	 * Upload Callback
+	 *
+	 * Renders file upload fields.
+	 *
+	 * @since 1.6
+	 * @param array $args Arguements passed by the setting
+	 */
+	function upload_callback( $args ) {
+		if( isset( $this->options[ $args['id'] ] ) )
+			$value = $this->options[ $args['id'] ];
+		else
+			$value = isset( $args['std'] ) ? $args['std'] : '';
+
+		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
+		$html = '<input type="text" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
+		$html .= '<span>&nbsp;<input type="button" class="affwp_settings_upload_button button-secondary" value="' . __( 'Upload File', 'affiliate-wp' ) . '"/></span>';
+		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
 
 		echo $html;
 	}
