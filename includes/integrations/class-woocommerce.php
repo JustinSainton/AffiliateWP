@@ -66,7 +66,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				$this->affiliate_id = $affiliate_id;
 			}
 
-			if( affwp_get_affiliate_email( $this->affiliate_id ) == $this->order->billing_email ) {
+			if ( $this->is_affiliate_email( $this->order->billing_email ) ) {
 				return false; // Customers cannot refer themselves
 			}
 

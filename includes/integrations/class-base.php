@@ -192,6 +192,42 @@ abstract class Affiliate_WP_Base {
 	}
 
 	/**
+	 * Determine if the passed email belongs to the affiliate
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  bool
+	 */
+	public function is_affiliate_email( $email = '' ) {
+
+		global $wpdb;
+
+		$ret = false;
+
+		$affiliate = affwp_get_affiliate( $this->affiliate_id );
+
+		if ( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
+
+			if( $email == $affiliate->payment_email ) {
+				$ret = true;
+			}
+
+		}
+
+		if( ! empty( $affiliate->user_id ) ) {
+
+			$user_email = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d' LIMIT 1", $affiliate->user_id ) );
+
+			if( $email == $user_email ) {
+				$ret = true;
+			}
+
+		}
+
+		return apply_filters( 'affwp_is_customer_email_affiliate_email', $ret, $email, $this->affiliate_id );
+	}
+
+	/**
 	 * Retrieves the rate and type for a specific product
 	 *
 	 * @access  public
@@ -215,7 +251,7 @@ abstract class Affiliate_WP_Base {
 				if ( $rate > 1 ) {
 
 					$rate = $rate / 100;
-				
+
 				}
 
 			}

@@ -274,7 +274,8 @@ class Affiliate_WP_Emails {
 		 */
 		do_action( 'affwp_email_footer', $this );
 
-		$body	= ob_get_clean();
+		$body	 = ob_get_clean();
+		$message = str_replace( '{email}', $message, $body );
 
 		return apply_filters( 'affwp_email_message', $message, $this );
 	}
