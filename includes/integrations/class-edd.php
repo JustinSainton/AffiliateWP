@@ -68,8 +68,11 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			// get referral total
 			$referral_total = $this->get_referral_total( $payment_id, $this->affiliate_id );
 
+			// Referral description
+			$desc = $this->get_referral_description( $payment_id );
+
 			// insert a pending referral
-			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $this->get_referral_description( $payment_id ) );
+			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $desc, $this->get_products( $payment_id ) );
 
 		}
 
@@ -141,7 +144,8 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 							'reference'    => $payment_id,
 							'description'  => $this->get_referral_description( $payment_id ),
 							'affiliate_id' => $this->affiliate_id,
-							'context'      => $this->context
+							'context'      => $this->context,
+							'products'     => $this->get_products( $payment_id )
 						)
 					);
 				}
@@ -215,6 +219,42 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		}
 
 		return $referral_total;
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $payment_id = 0 ) {
+
+		$products  = array();
+		$downloads = edd_get_payment_meta_cart_details( $payment_id );
+		foreach( $downloads as $key => $item ) {
+
+			if( get_post_meta( $item['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$amount = $item['price'] - $item['tax'];
+			} else {
+				$amount = $item['price'];
+			}
+
+			$products[] = array(
+				'name'            =>  get_the_title( $item['id'] ),
+				'id'              => $item['id'],
+				'price'           => $amount,
+				'referral_amount' => $this->calculate_referral_amount( $amount, $payment_id, $item['id'] )
+			);
+
+		}
+
+		return $products;
 
 	}
 
