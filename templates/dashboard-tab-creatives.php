@@ -13,6 +13,8 @@
 	?>
 
 	<?php if( $creatives ) : ?>
+	
+		<?php do_action( 'affwp_before_creatives' ); ?>
 
 		<?php echo affiliate_wp()->creative->affiliate_creatives( $args ); ?>
 
@@ -27,6 +29,8 @@
 			) );
 			?>
 		</div>
+		
+		<?php do_action( 'affwp_after_creatives' ); ?>
 
 	<?php else : ?>
 		<p class="affwp-no-results"><?php _e( 'Sorry, there are currently no creatives available.', 'affiliate-wp' ); ?></p>

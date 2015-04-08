@@ -175,8 +175,6 @@ class Affiliate_WP_Register {
 
 			$user_id = wp_insert_user( $args );
 
-			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
-
 		} else {
 
 			$user_id = get_current_user_id();
@@ -204,6 +202,10 @@ class Affiliate_WP_Register {
 			'user_id'       => $user_id,
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
 		) );
+
+		if ( ! is_user_logged_in() ) {
+			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
+		}
 
 		do_action( 'affwp_register_user', $affiliate_id, $status, $args );
 	}
