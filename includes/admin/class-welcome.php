@@ -173,46 +173,53 @@ class Affiliate_WP_Welcome {
 			<?php $this->tabs(); ?>
 
 			<div class="changelog">
-				<h3><?php _e( 'New features', 'affiliate-wp' );?></h3>
 
 				<div class="feature-section">
 					
-					<h4><?php _e( 'Referrals History for Affiliates', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'The Affiliate Area now includes a <em>Referrals</em> tab that allows affiliates to see a complete history of their referrals.', 'affiliate-wp' );?></p>
-				
-					<h4><?php _e( 'Exclude Shipping Option', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'With version 1.5, you can now select whether AffiliateWP should exclude shipping costs from referral amount calculations.', 'affiliate-wp' );?></p>
+					<h2><?php _e( 'New integrations', 'affiliate-wp' );?></h2>
+					<p><?php _e( 'In order to make AffiliateWP more accessible and more valuable to users we\'ve added four new integrations:', 'affiliate-wp' );?></p>
 
-					<h4><?php _e( 'Referral Editing', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'Referral records can now be edited at anytime, allowing you to easily adjust amounts or descriptions after the referral is created.', 'affiliate-wp' );?></p>
-					
-					<h4><?php _e( 'MemberPress Integration', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'AffiliateWP now supports direct integration with the popular <a href="https://www.memberpress.com/">MemberPress plugin</a>.', 'affiliate-wp' );?></p>
+					<ul>
+						<li><a href="http://docs.affiliatewp.com/article/758-formidable-pro" target="_blank">Formidable Pro</a></li>
+						<li><a href="http://docs.affiliatewp.com/article/760-marketpress" target="_blank">MarketPress</a></li>
+						<li><a href="http://docs.affiliatewp.com/article/76-ninja-forms" target="_blank">Ninja Forms</a></li>
+						<li><a href="http://docs.affiliatewp.com/article/759-sprout-invoices" target="_blank">Sprout Invoices</a></li>
+					</ul>
 				
-					<h4><?php _e( 'Per-Product Rates in iThemes Exchange', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'iThemes Exchange now supports per-product referral rates. The rate can be set from the product edit screen.', 'affiliate-wp' );?></p>
+					<h2><?php _e( 'Configurable emails', 'affiliate-wp' );?></h2>
+					<p>
+					<?php _e( 'You can now configure all emails from within the WordPress admin. We\'ve also added new template files for complete control over how the email is shown.', 'affiliate-wp' );?></p>
+
+					<h2><?php _e( 'Fine-tuned control over how referral URLs appear to affiliates', 'affiliate-wp' );?></h2>
+					<p><?php _e( 'Your affiliates can already promote your website using a wide variety of <a href="http://docs.affiliatewp.com/article/50-affiliate-urls" target="_blank">Affiliate URLs</a>. Admins now have much more control over how these referral URLs appear to affiliates on the front-end of your website. You can set a <strong>Default Referral Format</strong> (ID or username) and choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your affiliates.', 'affiliate-wp' );?></p>
 
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Additional Updates', 'affiliate-wp' );?></h3>
+				<h2><?php _e( 'Additional Updates', 'affiliate-wp' );?></h2>
 
-				<div class="feature-section col three-col">
+				<div class="feature-section col four-col">
 					<div>
-						<h4><?php _e( 'Affiliate-Specific Rates', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'If an affiliate has a specific rate set on their account, that rate will always be used, even if a product with a product-specific rate is purchased.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Affiiate Export Improvements', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'The affiliate\'s username is now included in the exported affiliate .csv file.', 'affiliate-wp' );?></p>
 					</div>
 
 					<div>
-						<h4><?php _e( 'Better Cleanup', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'When an affiliate account is deleted, metadata associated with the account is also deleted, ensuring your database stays nice and pretty.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'New Affiliate Meta Class', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'We\'ve introduced a new metadata API for afiliate accounts that provides developers with a powerful tool for tracking affiliate-specific data.', 'affiliate-wp' );?></p>
+
+					</div>
+
+					<div>
+						<h4><?php _e( 'Creative Improvements', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'We\'ve made improvements to the way creatives are shown. The description is now shown at the top and the code is easier to copy.', 'affiliate-wp' );?></p>
 
 					</div>
 
 					<div class="last-feature">
-						<h4><?php _e( 'Improved Affiliate Deletion', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'When you delete an affiliate account, you now have the option to also delete the user account and all affiliate data.', 'affiliate-wp' );?></p>
+						<h4><?php _e( 'Affiliate Dashboard Improvements', 'affiliate-wp' );?></h4>
+						<p><?php _e( 'Pending affiliates can no longer access the affiliate dashboard until they have been approved.', 'affiliate-wp' );?></p>
 					</div>
 				</div>
 			</div>
