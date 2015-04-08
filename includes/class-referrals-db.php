@@ -356,11 +356,11 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		}
 
+		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
+
 		if( ! empty( $args['orderby'] ) && 'amount' == $args['orderby'] ) {
 			$args['orderby'] = 'amount+0';
 		}
-
-		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
 
 		$cache_key = md5( 'affwp_referrals_' . serialize( $args ) );
 
