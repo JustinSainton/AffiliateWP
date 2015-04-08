@@ -7,7 +7,7 @@
  * @package     AffiliateWP
  * @copyright   Copyright (c) 2012, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       2.1
+ * @since       1.2
  */
 
 class Affiliate_WP_Creatives {
@@ -15,7 +15,7 @@ class Affiliate_WP_Creatives {
 	/**
 	 * The [affiliate_creative] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creative( $args = array() ) {
@@ -24,6 +24,7 @@ class Affiliate_WP_Creatives {
 
 		$defaults = array(
 			'id'            => '',
+			'description'   => affiliate_wp()->creatives->get_column( 'description', $id ),
 			'link'          => affiliate_wp()->creatives->get_column( 'url', $id ),
 			'text'          => affiliate_wp()->creatives->get_column( 'text', $id ),
 			'image_id'      => '',
@@ -42,15 +43,18 @@ class Affiliate_WP_Creatives {
 		// get the image attributes from image_id
 		$attributes = ! empty( $args['image_id'] ) ? wp_get_attachment_image_src( $args['image_id'], 'full' ) : '';
 
+		// description for creative
+		$desc = ! empty( $args['description'] ) ? $args['description'] : '';
+
 		// load the HTML required for the creative
-		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'] );
+		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'], $desc );
 
 	}
 
 	/**
 	 * The [affiliate_creatives] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creatives( $args = array() ) {
@@ -84,18 +88,17 @@ class Affiliate_WP_Creatives {
 	/**
 	 * Returns the referral link to append to the end of a URL
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string Affiliate's referral link
-	 * @todo  Better handling of referral link once we introduce pretty affiliate URLs
 	 */
 	public function ref_link( $url = '' ) {
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $url );
+		return affwp_get_affiliate_referral_url( array( 'base_url' => $url ) );
 	}
 
 	/**
 	 * Shortcode HTML
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @param  $image the image URL. Either the URL from the image column in DB or external URL of image.
 	 * @return string
 	 */
@@ -105,6 +108,10 @@ class Affiliate_WP_Creatives {
 		ob_start();
 	?>
 		<div class="affwp-creative<?php echo esc_attr( $id_class ); ?>">
+
+			<?php if ( ! empty( $desc ) ) : ?>
+				<p class="affwp-creative-desc"><?php echo $desc; ?></p>
+			<?php endif; ?>
 
 			<?php if ( $preview != 'no' ) : ?>
 
@@ -156,12 +163,8 @@ class Affiliate_WP_Creatives {
 			
 			<?php 
 				$creative = '<a href="' . esc_url( $this->ref_link( $url ) ) .'" title="' . esc_attr( $text ) . '">' . $image_or_text . '</a>';
-				echo '<p>' . esc_html( $creative ) . '</p>'; 
+				echo '<pre><code>' . esc_html( $creative ) . '</code></pre>'; 
 			?>
-
-			<?php if( ! empty( $desc ) ) : ?>
-				<p class="affwp-creative-desc"><?php echo $desc; ?></p>
-			<?php endif; ?>
 			
 		</div>
 

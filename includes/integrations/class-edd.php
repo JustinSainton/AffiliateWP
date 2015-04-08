@@ -12,7 +12,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		$this->context = 'edd';
 
-		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 10, 2 );
+		add_action( 'edd_insert_payment', array( $this, 'add_pending_referral' ), 99999, 2 );
 
 		add_action( 'edd_complete_purchase', array( $this, 'track_discount_referral' ), 9 );
 		add_action( 'edd_complete_purchase', array( $this, 'mark_referral_complete' ) );
@@ -32,6 +32,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		// Integration with EDD commissions to adjust commission rates if a referral is present
 		add_filter( 'eddc_calc_commission_amount', array( $this, 'commission_rate' ), 10, 2 );
 		add_filter( 'affwp_settings_integrations', array( $this, 'commission_settings' ), 10 );
+		add_filter( 'affwp_settings_integrations', array( $this, 'renewal_settings' ), 10 );
 
 		// Per product referral rates
 		add_action( 'edd_meta_box_settings_fields', array( $this, 'download_settings' ), 100 );
@@ -51,15 +52,27 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 			$customer_email = edd_get_payment_user_email( $payment_id );
 
-			if ( $this->get_affiliate_email() == $customer_email ) {
+			if ( $this->is_affiliate_email( $customer_email ) ) {
 				return; // Customers cannot refer themselves
+			}
+
+			if( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
+
+				$was_renewal = get_post_meta( $payment_id, '_edd_sl_is_renewal', true );
+				if( $was_renewal ) {
+					return;
+				}
+
 			}
 
 			// get referral total
 			$referral_total = $this->get_referral_total( $payment_id, $this->affiliate_id );
 
+			// Referral description
+			$desc = $this->get_referral_description( $payment_id );
+
 			// insert a pending referral
-			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $this->get_referral_description( $payment_id ) );
+			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $desc, $this->get_products( $payment_id ) );
 
 		}
 
@@ -76,6 +89,15 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$user_info = edd_get_payment_meta_user_info( $payment_id );
 
 		if ( isset( $user_info['discount'] ) && $user_info['discount'] != 'none' ) {
+
+			if( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
+
+				$was_renewal = get_post_meta( $payment_id, '_edd_sl_is_renewal', true );
+				if( $was_renewal ) {
+					return;
+				}
+
+			}
 
 			$discounts = array_map( 'trim', explode( ',', $user_info['discount'] ) );
 
@@ -122,7 +144,8 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 							'reference'    => $payment_id,
 							'description'  => $this->get_referral_description( $payment_id ),
 							'affiliate_id' => $this->affiliate_id,
-							'context'      => $this->context
+							'context'      => $this->context,
+							'products'     => $this->get_products( $payment_id )
 						)
 					);
 				}
@@ -196,6 +219,42 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		}
 
 		return $referral_total;
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $payment_id = 0 ) {
+
+		$products  = array();
+		$downloads = edd_get_payment_meta_cart_details( $payment_id );
+		foreach( $downloads as $key => $item ) {
+
+			if( get_post_meta( $item['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$amount = $item['price'] - $item['tax'];
+			} else {
+				$amount = $item['price'];
+			}
+
+			$products[] = array(
+				'name'            =>  get_the_title( $item['id'] ),
+				'id'              => $item['id'],
+				'price'           => $amount,
+				'referral_amount' => $this->calculate_referral_amount( $amount, $payment_id, $item['id'] )
+			);
+
+		}
+
+		return $products;
 
 	}
 
@@ -394,24 +453,31 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			return $amount;
 		}
 
-		$referral_amount = affiliate_wp()->referrals->get_column_by( 'amount', 'reference', $args['payment_id']  );
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $args['payment_id']  );
 
-		if( ! $referral_amount ) {
-			return $amount;
+		if( ! empty( $referral->products ) ) {
+			$products = maybe_unserialize( maybe_unserialize( $referral->products ) );
+			foreach( $products as $product ) {
+
+				if( (int) $product['id'] !== (int) $args['download_id'] ) {
+					continue;
+				}
+
+				if( 'flat' == $args['type'] ) {
+					return $args['rate'] - $product['referral_amount'];
+				}
+
+				$args['price'] -= $product['referral_amount'];
+
+				if ( $args['rate'] >= 1 ) {
+					$amount = $args['price'] * ( $args['rate'] / 100 ); // rate format = 10 for 10%
+				} else {
+					$amount = $args['price'] * $args['rate']; // rate format set as 0.10 for 10%
+				}
+
+			}
+
 		}
-
-		if( 'flat' == $args['type'] ) {
-			return $args['rate'] - $referral_amount;
-		}
-
-		$args['price'] -= $referral_amount;
-
-		if ( $args['rate'] >= 1 ) {
-			$amount = $args['price'] * ( $args['rate'] / 100 ); // rate format = 10 for 10%
-		} else {
-			$amount = $args['price'] * $args['rate']; // rate format set as 0.10 for 10%
-		}
-
 
 		return $amount;
 	}
@@ -429,6 +495,27 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			$settings[ 'edd_adjust_commissions' ] = array(
 				'name' => __( 'Adjust EDD Commissions', 'affiliate-wp' ),
 				'desc' => __( 'Should AffiliateWP adjust the commission amounts recorded for purchases that include affiliate referrals? This will subtract the referral amount from the base amount used to calculate the commission total.', 'affiliate-wp' ),
+				'type' => 'checkbox'
+			);
+
+		}
+		
+		return $settings;
+	}
+
+	/**
+	 * Add a setting to toggle whether referrals adjust EDD commissions
+	 *
+	 * @access  public
+	 * @since   1.2
+	*/
+	public function renewal_settings( $settings ) {
+
+		if( function_exists( 'EDD_Software_Licensing' ) ) {
+
+			$settings[ 'edd_disable_on_renewals' ] = array(
+				'name' => __( 'Disable Renewal Referrals', 'affiliate-wp' ),
+				'desc' => __( 'Should AffiliateWP prevent referral commissions from being recorded on renewal purchases with EDD Software Licensing?', 'affiliate-wp' ),
 				'type' => 'checkbox'
 			);
 

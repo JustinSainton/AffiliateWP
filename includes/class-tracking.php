@@ -155,7 +155,7 @@ class Affiliate_WP_Tracking {
 
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie.js', array( 'jquery' ), '1.4.0' );
+		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie' . $suffix . '.js', array( 'jquery' ), '1.4.0' );
 		wp_enqueue_script( 'affwp-tracking', AFFILIATEWP_PLUGIN_URL . 'assets/js/tracking' . $suffix . '.js', array( 'jquery-cookie' ), AFFILIATEWP_VERSION );
 		wp_localize_script( 'jquery-cookie', 'affwp_scripts', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
@@ -295,19 +295,21 @@ class Affiliate_WP_Tracking {
 			}
 
 			// Store the visit in the DB
-			$referal_id = affiliate_wp()->referrals->add( array(
+			$referral_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
 				'amount'       => $amount,
-				'status'       => $status,
+				'status'       => 'pending',
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
 				'reference'    => sanitize_text_field( $_POST['reference'] ),
 				'visit_id'     => $this->get_visit_id()
 			) );
 
-			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referal_id ), '', 'visit' );
+			affwp_set_referral_status( $referral_id, $status );
 
-			echo $referal_id; exit;
+			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referral_id ), '', 'visit' );
+
+			echo $referral_id; exit;
 
 		} else {
 

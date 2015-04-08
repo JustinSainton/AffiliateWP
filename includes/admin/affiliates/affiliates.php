@@ -486,8 +486,8 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'offset'  => $this->per_page * ( $page - 1 ),
 			'status'  => $status,
 			'search'  => $search,
-			'orderby' => $orderby,
-			'order'   => $order
+			'orderby' => sanitize_text_field( $orderby ),
+			'order'   => sanitize_text_field( $order )
 		) );
 		return $affiliates;
 	}

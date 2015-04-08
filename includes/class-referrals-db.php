@@ -19,7 +19,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			$this->table_name  = $wpdb->prefix . 'affiliate_wp_referrals';
 		}
 		$this->primary_key = 'referral_id';
-		$this->version     = '1.0';
+		$this->version     = '1.1';
 
 	}
 
@@ -41,6 +41,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'custom'      => '%s',
 			'context'     => '%s',
 			'reference'   => '%s',
+			'products'    => '%s',
 			'date'        => '%s',
 		);
 	}
@@ -68,7 +69,8 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	public function add( $data = array() ) {
 
 		$defaults = array(
-			'status' => 'pending'
+			'status' => 'pending',
+			'amount' => 0
 		);
 
 		$args = wp_parse_args( $data, $defaults );
@@ -79,6 +81,12 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( ! affiliate_wp()->affiliates->affiliate_exists( $args['affiliate_id'] ) ) {
 			return false;
+		}
+
+		$args['amount'] = affwp_sanitize_amount( $args['amount'] );
+
+		if( ! empty( $args['products'] ) ) {
+			$args['products'] = maybe_serialize( $args['products'] );
 		}
 
 		$add  = $this->insert( $args, 'referral' );
@@ -112,6 +120,14 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( ! $referral ) {
 			return false;
+		}
+
+		if( isset( $data['amount'] ) ) {
+			$data['amount'] = affwp_sanitize_amount( $data['amount'] );
+		}
+
+		if( ! empty( $data['products'] ) ) {
+			$data['products'] = maybe_serialize( $data['products'] );
 		}
 
 		$update = $this->update( $referral_id, $data, '', 'referral' );
@@ -241,7 +257,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['start'] ) ) {
 
-					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
+					if( false !== strpos( $args['date']['start'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 00:00:00';
+					}
+
+					$start = date( $format, strtotime( $args['date']['start'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -257,7 +279,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['end'] ) ) {
 
-					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+					if( false !== strpos( $args['date']['end'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 23:59:59';
+					}
+
+					$end = date( $format, strtotime( $args['date']['end'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -329,6 +357,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		}
 
 		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
+
+		if( ! empty( $args['orderby'] ) && 'amount' == $args['orderby'] ) {
+			$args['orderby'] = 'amount+0';
+		}
 
 		$cache_key = md5( 'affwp_referrals_' . serialize( $args ) );
 
@@ -628,6 +660,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		custom longtext NOT NULL,
 		context tinytext NOT NULL,
 		reference mediumtext NOT NULL,
+		products mediumtext NOT NULL,
 		date datetime NOT NULL,
 		PRIMARY KEY  (referral_id),
 		KEY affiliate_id (affiliate_id)

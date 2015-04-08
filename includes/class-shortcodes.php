@@ -114,31 +114,23 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function conversion_script( $atts, $content = null ) {
 
-		shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				'amount'      => '',
 				'description' => '',
 				'reference'   => '',
-				'context'     => ''
+				'context'     => '',
+				'status'      => ''
 			),
 			$atts,
 			'affwp_conversion_script'
 		);
 
-		$defaults = array(
-			'amount'      => '',
-			'description' => '',
-			'context'     => '',
-			'reference'   => '',
-			'status'      => ''
-		);
-
-		$args = wp_parse_args( $atts, $defaults );
-
-		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie.js', array( 'jquery' ), '1.4.0' );
+		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie' . $suffix . '.js', array( 'jquery' ), '1.4.0' );
 		wp_localize_script( 'jquery-cookie', 'affwp_scripts', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
-		return affiliate_wp()->tracking->conversion_script( $args );
+		return affiliate_wp()->tracking->conversion_script( $atts );
 
 	}
 
@@ -150,25 +142,50 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function referral_url( $atts, $content = null ) {
 
-		if ( ! affwp_is_affiliate() ) {
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
 		}
 
-		shortcode_atts( array(
-			'url' => ''
+		$atts = shortcode_atts( array(
+			'url'    => '',
+			'format' => '',
+			'pretty' => ''
 		), $atts, 'affiliate_referral_url' );
 
-		if( ! empty( $content ) ) {
+		// get affiliate username
+		$username = affwp_get_affiliate_username();
 
-			$base = $content;
+		// format
+		$format = isset( $atts['format'] ) ? $atts['format'] : '';
+		$format = affwp_get_referral_format_value( $format );
 
+		// base URL
+		if ( ! empty( $content ) ) {
+			$base_url = $content;
 		} else {
-
-			$base = ! empty( $atts[ 'url' ] ) ? $atts[ 'url' ] : home_url( '/' );
-
+			$base_url = ! empty( $atts[ 'url' ] ) ? trailingslashit( esc_url( $atts[ 'url' ] ) ) : home_url( '/' );
 		}
 
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $base );
+		// pretty URLs
+		if ( isset( $atts['pretty'] ) ) {
+			if ( 'yes' == $atts['pretty'] ) {
+				$pretty = true;
+			} elseif ( 'no' == $atts['pretty'] ) {
+				$pretty = false;
+			}
+		} else {
+			$pretty = '';
+		}
+
+		$args = array(
+			'base_url' => $base_url,
+			'format'   => $format,
+			'pretty'   => $pretty
+		);
+
+		$content = affwp_get_affiliate_referral_url( $args );
+
+		return $content;
 	}
 
 	/**
@@ -179,7 +196,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_content( $atts, $content = null ) {
 
-		if ( ! affwp_is_affiliate() ) {
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
 		}
 
@@ -194,7 +211,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function non_affiliate_content( $atts, $content = null ) {
 
-		if ( affwp_is_affiliate() ) {
+		if ( affwp_is_affiliate() && affwp_is_active_affiliate() ) {
 			return;
 		}
 
@@ -209,21 +226,23 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_creative( $atts, $content = null ) {
 
-		shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				'id'         => '',                    // ID of the creative
 				'image_id'   => '',                    // ID of image from media library if not using creatives section
 				'image_link' => '',                    // External URL if image is hosted off-site
 				'link'       => '',                    // Where the banner links to
 				'preview'    => 'yes',                 // Display an image/text preview above HTML code
+				'number'     => 20,                    // Number to show
 				'text'       => get_bloginfo( 'name' ) // Text shown in alt/title tags
 			),
 			$atts,
 			'affiliate_creative'
 		);
 
-		if ( ! affwp_is_affiliate() )
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
+		}
 
 		$content = affiliate_wp()->creative->affiliate_creative( $atts );
 
@@ -239,7 +258,7 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_creatives( $atts, $content = null ) {
 
-		shortcode_atts(
+		$atts = shortcode_atts(
 			array(
 				'preview' => 'yes' // Display an image/text preview above HTML code
 			),
@@ -247,8 +266,9 @@ class Affiliate_WP_Shortcodes {
 			'affiliate_creatives'
 		);
 
-		if ( ! affwp_is_affiliate() )
+		if ( ! ( affwp_is_affiliate() && affwp_is_active_affiliate() ) ) {
 			return;
+		}
 
 		$content = affiliate_wp()->creative->affiliate_creatives( $atts );
 
