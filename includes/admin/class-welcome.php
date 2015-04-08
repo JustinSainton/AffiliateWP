@@ -196,7 +196,7 @@ class Affiliate_WP_Welcome {
 
 					<h2><?php _e( 'Additional Updates', 'affiliate-wp' );?></h2>
 	
-					<h4><?php _e( 'Affiiate Export Improvements', 'affiliate-wp' );?></h4>
+					<h4><?php _e( 'Affiliate Export Improvements', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'The affiliate\'s username is now included in the exported affiliate .csv file.', 'affiliate-wp' );?></p>
 					
 					<h4><?php _e( 'New Affiliate Meta Class', 'affiliate-wp' );?></h4>
