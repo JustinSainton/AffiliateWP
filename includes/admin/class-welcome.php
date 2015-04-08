@@ -203,7 +203,7 @@ class Affiliate_WP_Welcome {
 					<p><?php _e( 'We\'ve introduced a new metadata API for afiliate accounts that provides developers with a powerful tool for tracking affiliate-specific data.', 'affiliate-wp' );?></p>
 	
 					<h4><?php _e( 'Creative Improvements', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'We\'ve made improvements to the way creatives are shown. The description is now shown at the top of the creative and it\'s much easier for affiliates to copy the neccessary code.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'We\'ve made improvements to the way creatives are shown. The description is now shown at the top of the creative and it\'s much easier for affiliates to copy the necessary code.', 'affiliate-wp' );?></p>
 					
 					<h4><?php _e( 'Affiliate Dashboard Improvements', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'Pending affiliates can no longer access the affiliate dashboard until they have been approved.', 'affiliate-wp' );?></p>
