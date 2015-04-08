@@ -177,7 +177,7 @@ class Affiliate_WP_Welcome {
 				<div class="feature-section">
 					
 					<h2><?php _e( 'New integrations', 'affiliate-wp' );?></h2>
-					<p><?php _e( 'In order to make AffiliateWP more accessible and more valuable to users we\'ve added four new integrations:', 'affiliate-wp' );?></p>
+					<p><?php _e( 'To make AffiliateWP more accessible and more valuable to more users, we have added four new integrations:', 'affiliate-wp' );?></p>
 
 					<ul>
 						<li><a href="http://docs.affiliatewp.com/article/758-formidable-pro" target="_blank">Formidable Pro</a></li>
@@ -188,7 +188,8 @@ class Affiliate_WP_Welcome {
 				
 					<h2><?php _e( 'Configurable emails', 'affiliate-wp' );?></h2>
 					<p>
-					<?php _e( 'You can now configure all emails from within the WordPress admin. We\'ve also added new template files for complete control over how the email is shown.', 'affiliate-wp' );?></p>
+					<?php _e( 'With version 1.6, we have introduced a new tab in the Settings page that allows you to configure all emails that get sent out to affiliates when they register for an account or earn a new referral.', 'affiliate-wp' );?></p>
+					<?php _e( 'All emails are sent in beautiful HTML templates that can be easily edited at anytime. These template files can be copied to your theme\'s "affiliatewp/emails" folder to give you complete control over the appearance of the emails.', 'affiliate-wp' );?></p>
 
 					<h2><?php _e( 'Fine-tuned control over how referral URLs appear to affiliates', 'affiliate-wp' );?></h2>
 					<p><?php _e( 'Your affiliates can already promote your website using a wide variety of <a href="http://docs.affiliatewp.com/article/50-affiliate-urls" target="_blank">Affiliate URLs</a>. Admins now have much more control over how these referral URLs appear to affiliates on the front-end of your website. You can set a <strong>Default Referral Format</strong> (ID or username) and choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your affiliates.', 'affiliate-wp' );?></p>
