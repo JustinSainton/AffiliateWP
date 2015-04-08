@@ -189,41 +189,31 @@ class Affiliate_WP_Welcome {
 					<h2><?php _e( 'Configurable emails', 'affiliate-wp' );?></h2>
 					<p>
 					<?php _e( 'With version 1.6, we have introduced a new tab in the Settings page that allows you to configure all emails that get sent out to affiliates when they register for an account or earn a new referral.', 'affiliate-wp' );?></p>
-					<?php _e( 'All emails are sent in beautiful HTML templates that can be easily edited at anytime. These template files can be copied to your theme\'s "affiliatewp/emails" folder to give you complete control over the appearance of the emails.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'All emails are sent in beautiful HTML templates that can be easily edited at anytime. These template files can be copied to your theme\'s "affiliatewp/emails" folder to give you complete control over the appearance of the emails.', 'affiliate-wp' );?></p>
 
 					<h2><?php _e( 'Fine-tuned control over how referral URLs appear to affiliates', 'affiliate-wp' );?></h2>
 					<p><?php _e( 'Your affiliates can already promote your website using a wide variety of <a href="http://docs.affiliatewp.com/article/50-affiliate-urls" target="_blank">Affiliate URLs</a>. Admins now have much more control over how these referral URLs appear to affiliates on the front-end of your website. You can set a <strong>Default Referral Format</strong> (ID or username) and choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your affiliates.', 'affiliate-wp' );?></p>
 
+					<h2><?php _e( 'Additional Updates', 'affiliate-wp' );?></h2>
+	
+					<h4><?php _e( 'Affiiate Export Improvements', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'The affiliate\'s username is now included in the exported affiliate .csv file.', 'affiliate-wp' );?></p>
+					
+					<h4><?php _e( 'New Affiliate Meta Class', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'We\'ve introduced a new metadata API for afiliate accounts that provides developers with a powerful tool for tracking affiliate-specific data.', 'affiliate-wp' );?></p>
+	
+					<h4><?php _e( 'Creative Improvements', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'We\'ve made improvements to the way creatives are shown. The description is now shown at the top of the creative and it\'s much easier for affiliates to copy the neccessary code.', 'affiliate-wp' );?></p>
+					
+					<h4><?php _e( 'Affiliate Dashboard Improvements', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'Pending affiliates can no longer access the affiliate dashboard until they have been approved.', 'affiliate-wp' );?></p>
+						
 				</div>
 			</div>
 
-			<div class="changelog">
-				<h2><?php _e( 'Additional Updates', 'affiliate-wp' );?></h2>
-
-				<div class="feature-section col four-col">
-					<div>
-						<h4><?php _e( 'Affiiate Export Improvements', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The affiliate\'s username is now included in the exported affiliate .csv file.', 'affiliate-wp' );?></p>
-					</div>
-
-					<div>
-						<h4><?php _e( 'New Affiliate Meta Class', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'We\'ve introduced a new metadata API for afiliate accounts that provides developers with a powerful tool for tracking affiliate-specific data.', 'affiliate-wp' );?></p>
-
-					</div>
-
-					<div>
-						<h4><?php _e( 'Creative Improvements', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'We\'ve made improvements to the way creatives are shown. The description is now shown at the top and the code is easier to copy.', 'affiliate-wp' );?></p>
-
-					</div>
-
-					<div class="last-feature">
-						<h4><?php _e( 'Affiliate Dashboard Improvements', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'Pending affiliates can no longer access the affiliate dashboard until they have been approved.', 'affiliate-wp' );?></p>
-					</div>
-				</div>
-			</div>
+			
+				
+			
 
 			<div class="return-to-dashboard">
 				<a href="<?php echo esc_url( admin_url( 'admin.php?page=affiliate-wp-settings' ) ); ?>"><?php _e( 'Go to AffiliateWP Settings', 'affiliate-wp' ); ?></a>
