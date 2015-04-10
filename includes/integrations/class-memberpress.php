@@ -108,7 +108,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 		$subscription = $txn->subscription();
 
 		// Only continue if this is the first subscription payment
-		if( $subscription->txn_count > 1 ) {
+		if( is_object( $subscription ) && $subscription->txn_count > 1 ) {
 			return;
 		}
 
