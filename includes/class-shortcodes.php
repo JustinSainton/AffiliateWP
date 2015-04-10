@@ -233,7 +233,6 @@ class Affiliate_WP_Shortcodes {
 				'image_link' => '',                    // External URL if image is hosted off-site
 				'link'       => '',                    // Where the banner links to
 				'preview'    => 'yes',                 // Display an image/text preview above HTML code
-				'number'     => 20,                    // Number to show
 				'text'       => get_bloginfo( 'name' ) // Text shown in alt/title tags
 			),
 			$atts,
@@ -261,6 +260,7 @@ class Affiliate_WP_Shortcodes {
 		$atts = shortcode_atts(
 			array(
 				'preview' => 'yes' // Display an image/text preview above HTML code
+				'number'  => 20,   // Number to show
 			),
 			$atts,
 			'affiliate_creatives'
