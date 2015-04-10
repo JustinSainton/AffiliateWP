@@ -259,7 +259,7 @@ class Affiliate_WP_Shortcodes {
 
 		$atts = shortcode_atts(
 			array(
-				'preview' => 'yes' // Display an image/text preview above HTML code
+				'preview' => 'yes', // Display an image/text preview above HTML code
 				'number'  => 20,   // Number to show
 			),
 			$atts,
