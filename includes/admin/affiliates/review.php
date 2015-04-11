@@ -79,6 +79,9 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 
 				</tr>
 			<?php endif; ?>
+
+			<?php do_action( 'affwp_review_affiliate_end', $affiliate ); ?>
+			
 		</table>
 
 		<?php do_action( 'affwp_review_affiliate_bottom', $affiliate ); ?>
