@@ -172,7 +172,7 @@ function affwp_delete_referral( $referral ) {
 		return false;
 	}
 
-	if( 'paid' == $referral->status ) {
+	if( $referral && 'paid' == $referral->status ) {
 
 		// This referral has already been paid, so decrease the affiliate's earnings
 		affwp_decrease_affiliate_earnings( $referral->affiliate_id, $referral->amount );
