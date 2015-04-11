@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
 "POT-Creation-Date: 2015-04-09 10:01-0600\n"
-"PO-Revision-Date: 2015-04-11 18:57+0100\n"
+"PO-Revision-Date: 2015-04-12 00:04+0100\n"
 "Last-Translator: fxbenard | FxB <fx@fxbenard.com>\n"
 "Language-Team: AffiliateWP <support@affiliatewp.com>\n"
 "Language: fr_FR\n"
@@ -104,7 +104,7 @@ msgstr "Aucun utilisateur correspond"
 
 #: includes/class-login.php:66 includes/class-register.php:145
 msgid "Please enter a password"
-msgstr "Veuillez entrer un mot de passe"
+msgstr "Veuillez saisir un mot de passe"
 
 #: includes/class-login.php:73
 msgid "Incorrect username or password"
@@ -160,11 +160,11 @@ msgstr "Vous êtes déjà enregistré en tant qu'affilié"
 
 #: includes/class-register.php:133
 msgid "Please enter your name"
-msgstr "Veuillez entrer votre nom"
+msgstr "Veuillez saisir votre nom"
 
 #: includes/class-register.php:141
 msgid "Please enter a website URL"
-msgstr "Veuillez entrer une URL d'un site internet"
+msgstr "Veuillez saisir une URL de site Web"
 
 #: includes/class-visits-graph.php:126
 msgid "Converted Visits"
@@ -999,7 +999,7 @@ msgstr "Aucun ID Affilié spécifié pour la suppression"
 #: includes/admin/affiliates/affiliates.php:45
 #: includes/admin/creatives/creatives.php:41
 msgid "Add New"
-msgstr "Ajouter nouveau"
+msgstr "Ajouter"
 
 #: includes/admin/affiliates/affiliates.php:49
 #: includes/admin/referrals/referrals.php:60
@@ -1245,7 +1245,7 @@ msgid ""
 "to a user account, so if the user account for the affiliate does not yet "
 "exist, <a href=\"%s\" target=\"_blank\">create one</a>."
 msgstr ""
-"Utilisez cette page pour enregistrer un nouvel affilié. Chaque affilié est "
+"Utiliser cette page pour enregistrer un nouvel affilié. Chaque affilié est "
 "directement lié à un compte utilisateur, si le compte utilisateur pour "
 "l'affilié n'existe pas encore , <a href=\"%s\" target=\"_blank\">créez en "
 "un</a>."
@@ -1754,7 +1754,7 @@ msgstr "Nouveau parrainage"
 msgid ""
 "Use this screen to manually create a new referral record for an affiliate."
 msgstr ""
-"Utilisez cette page pour créer manuellement l'enregistrement d'un nouveau "
+"Utiliser cette page pour créer manuellement l'enregistrement d'un nouveau "
 "parrainage pour un affilié."
 
 #: includes/admin/referrals/new.php:25
@@ -1871,7 +1871,7 @@ msgid ""
 msgstr ""
 "Veuillez saisir votre clé de licence. Une clé de licence active est "
 "nécessaire pour bénéficier des mises à jour automatiques de l'extension et "
-"de <a href=\"%s\" target=\"_blank\">l'assistance</a>."
+"du <a href=\"%s\" target=\"_blank\">support</a>."
 
 #: includes/admin/settings/class-settings.php:189
 msgid "Pages"
@@ -1893,11 +1893,11 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:206
 msgid "Referral Settings"
-msgstr "Réglages du aarrainage"
+msgstr "Réglages du parrainage"
 
 #: includes/admin/settings/class-settings.php:211
 msgid "Referral Variable"
-msgstr "Variable Parrainage"
+msgstr "Variable de parrainage"
 
 #: includes/admin/settings/class-settings.php:212
 #, php-format
@@ -2264,7 +2264,7 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:402
 msgid "Use Fallback Referral Tracking Method?"
-msgstr "Utilisez la méthode Fallback pour le suivi de parrainage?"
+msgstr "Utilisez la méthode Fallback pour le suivi de parrainage ?"
 
 #: includes/admin/settings/class-settings.php:403
 msgid ""
@@ -2344,7 +2344,7 @@ msgstr "Télécharger fichier"
 
 #: includes/admin/settings/display-settings.php:73
 msgid "General"
-msgstr "Général"
+msgstr "Généraux"
 
 #: includes/admin/settings/display-settings.php:75
 msgid "Emails"
@@ -2386,7 +2386,7 @@ msgstr "Recompter Stats Affiliés"
 
 #: includes/admin/tools/tools.php:95
 msgid "Use this tool to recount affiliate statistics."
-msgstr "Utilisez cet outil pour recompter les statistiques d'affiliation."
+msgstr "Utiliser cet outil pour recompter les statistiques d'affiliation."
 
 #: includes/admin/tools/tools.php:99 includes/admin/tools/tools.php:232
 #: includes/admin/visits/visits.php:32
@@ -2434,8 +2434,8 @@ msgid ""
 "Use this tool migrate existing affiliate / referral data from Affiliates Pro "
 "to AffiliateWP."
 msgstr ""
-"Utilisez cet outil pour migrer les données affilié / parrainage existantes "
-"de Affiliates Pros vers AffiliateWP."
+"Utiliser cet outil pour migrer les données affilié / parrainage existantes "
+"de Affiliates Pro vers AffiliateWP."
 
 #: includes/admin/tools/tools.php:159
 msgid ""
@@ -2456,7 +2456,7 @@ msgid ""
 "Use this tool migrate existing affiliate accounts from WP Affiliate to "
 "AffiliateWP."
 msgstr ""
-"Utilisez cet outil pour migrer les comptes affiliés existants de WP "
+"Utiliser cet outil pour migrer les comptes affiliés existants de WP "
 "Affiliate vers AffiliateWP."
 
 #: includes/admin/tools/tools.php:180
@@ -2465,15 +2465,15 @@ msgstr "Migrer les données depuis WP Affiliate"
 
 #: includes/admin/tools/tools.php:204
 msgid "Export Affiliates"
-msgstr "Exporter affiliés"
+msgstr "Exportation des affiliés"
 
 #: includes/admin/tools/tools.php:206
 msgid "Export affiliates to a CSV file."
-msgstr "Exporter affiliés dans un fichier CSV"
+msgstr "Exporter les affiliés dans un fichier CSV"
 
 #: includes/admin/tools/tools.php:210 includes/admin/tools/tools.php:239
 msgid "All Statuses"
-msgstr "Tous les statuts"
+msgstr "Tous les états"
 
 #: includes/admin/tools/tools.php:219 includes/admin/tools/tools.php:251
 #: includes/admin/tools/tools.php:265
@@ -2482,20 +2482,20 @@ msgstr "Exporter"
 
 #: includes/admin/tools/tools.php:226
 msgid "Export Referrals"
-msgstr "Exporter Parrainages"
+msgstr "Exportation des parrainages"
 
 #: includes/admin/tools/tools.php:228
 msgid "Export referrals to a CSV file."
-msgstr "Exporter parrainages dans un fichier CSV"
+msgstr "Exporter les parrainages dans un fichier CSV"
 
 #: includes/admin/tools/tools.php:246
 msgid ""
 "To search for a affiliate, enter the affiliate's login name, first name, or "
 "last name. Leave blank to export referrals for all affiliates."
 msgstr ""
-"Pour rechercher un affilié, entrez le nom de connexion de l'affilié, le "
-"prénom, ou nom de famille. Laissez vide pour exporter les parrainages de "
-"tous les affiliés."
+"Pour rechercher un affilié, entrez son nom de connexion, son prénom, ou son "
+"nom de famille. Laissez vide pour exporter les parrainages de tous les "
+"affiliés."
 
 #: includes/admin/tools/tools.php:258
 msgid "Export Settings"
@@ -2506,8 +2506,8 @@ msgid ""
 "Export the AffiliateWP settings for this site as a .json file. This allows "
 "you to easily import the configuration into another site."
 msgstr ""
-"Exporter les réglages AffiliateWP pour ce site en tant que fichier .json. "
-"Cela vous permet d'importer facilement la configuration sur autre site."
+"Exporter les réglages d'AffiliateWP de ce site dans un fichier .json. Cela "
+"vous permet de les importer facilement sur autre site."
 
 #: includes/admin/tools/tools.php:272
 msgid "Import Settings"
@@ -2550,7 +2550,7 @@ msgstr "Veuillez mettre en ligne un fichier .json valide"
 
 #: includes/admin/tools/import/import.php:29
 msgid "Please upload a file to import"
-msgstr "Veuillez choisir un fichier à importer"
+msgstr "Veuillez mettre en ligne un fichier à importer"
 
 #: includes/admin/visits/contextual-help.php:39
 msgid "This screen provides access to your site's visit history."
