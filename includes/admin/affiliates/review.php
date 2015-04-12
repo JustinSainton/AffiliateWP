@@ -19,7 +19,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 			<tr class="form-row form-required">
 
 				<th scope="row">
-					<label for="affiliate_id"><?php _e( 'Name', 'affiliate-wp' ); ?></label>
+					<?php _e( 'Name', 'affiliate-wp' ); ?>
 				</th>
 
 				<td>
@@ -31,7 +31,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 			<tr class="form-row form-required">
 
 				<th scope="row">
-					<label for="affiliate_id"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
+					<?php _e( 'Username', 'affiliate-wp' ); ?>
 				</th>
 
 				<td>
@@ -43,7 +43,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 			<tr class="form-row form-required">
 
 				<th scope="row">
-					<label for="affiliate_id"><?php _e( 'Email Address', 'affiliate-wp' ); ?></label>
+					<?php _e( 'Email Address', 'affiliate-wp' ); ?>
 				</th>
 
 				<td>
@@ -56,7 +56,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 			<tr class="form-row form-required">
 
 				<th scope="row">
-					<label for="user_id"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
+					<?php _e( 'Website URL', 'affiliate-wp' ); ?>
 				</th>
 
 				<td>
@@ -70,7 +70,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 				<tr class="form-row form-required">
 
 					<th scope="row">
-						<label for="rate_type"><?php _e( 'Promotion Method', 'affiliate-wp' ); ?></label>
+						<?php _e( 'Promotion Method', 'affiliate-wp' ); ?>
 					</th>
 
 					<td>
@@ -81,7 +81,7 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 			<?php endif; ?>
 
 			<?php do_action( 'affwp_review_affiliate_end', $affiliate ); ?>
-			
+
 		</table>
 
 		<?php do_action( 'affwp_review_affiliate_bottom', $affiliate ); ?>
