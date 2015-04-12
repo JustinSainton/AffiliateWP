@@ -19,6 +19,7 @@ class Affiliate_WP_Settings {
 		add_action( 'admin_init', array( $this, 'deactivate_license' ) );
 		add_action( 'admin_init', array( $this, 'check_license' ) );
 
+		add_filter( 'affwp_settings_emails', array( $this, 'pending_application_settings' ) );
 	}
 
 	/**
@@ -361,18 +362,6 @@ class Affiliate_WP_Settings {
 						'type' => 'rich_editor',
 						'std' => __( 'Congratulations', 'affiliate-wp' ) . " {name}!\n\n" . sprintf( __( 'Your affiliate application on %s has been accepted!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area at', 'affiliate-wp' ) . ' {login_url}'
 					),
-					'pending_subject' => array(
-						'name' => __( 'Application Pending Email Subject', 'affiliate-wp' ),
-						'desc' => __( 'Enter the subject line for pending affiliate application emails.', 'affiliate-wp' ),
-						'type' => 'text',
-						'std' => __( 'Your Affiliate Application Is Being Reviewed', 'affiliate-wp' )
-					),
-					'pending_email' => array(
-						'name' => __( 'Application Pending Email Content', 'affiliate-wp' ),
-						'desc' => __( 'Enter the email to send when an application is pending. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
-						'type' => 'rich_editor',
-						'std' => __( 'Hi', 'affiliate-wp' ) . " {name}!\n\n" . __( 'Thanks for your recent affiliate registration on', 'affiliate-wp' ) . ' {site_name}.' . "\n\n" . __( 'We\'re currently reviewing your affiliate application and will be in touch soon!', 'affiliate-wp' ) . "\n\n"
-					),
 					'referral_subject' => array(
 						'name' => __( 'New Referral Email Subject', 'affiliate-wp' ),
 						'desc' => __( 'Enter the subject line for new referral emails sent when affiliates earn referrals.', 'affiliate-wp' ),
@@ -432,6 +421,36 @@ class Affiliate_WP_Settings {
 		return apply_filters( 'affwp_settings', $settings );
 	}
 
+	/**
+	 * Pending affiliate application settings
+	 *
+	 * @since 1.6.1
+	 * @param array $email_settings
+	 * @return array
+	 */
+	function pending_application_settings( $email_settings ) {
+		
+		if ( ! affiliate_wp()->settings->get( 'require_approval' ) ) {
+			return $email_settings;
+		}
+
+		$new_email_settings = array(
+			'pending_subject' => array(
+				'name' => __( 'Application Pending Email Subject', 'affiliate-wp' ),
+				'desc' => __( 'Enter the subject line for pending affiliate application emails.', 'affiliate-wp' ),
+				'type' => 'text',
+				'std' => __( 'Your Affiliate Application Is Being Reviewed', 'affiliate-wp' )
+			),
+			'pending_email' => array(
+				'name' => __( 'Application Pending Email Content', 'affiliate-wp' ),
+				'desc' => __( 'Enter the email to send when an application is pending. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
+				'type' => 'rich_editor',
+				'std' => __( 'Hi', 'affiliate-wp' ) . " {name}!\n\n" . __( 'Thanks for your recent affiliate registration on', 'affiliate-wp' ) . ' {site_name}.' . "\n\n" . __( 'We\'re currently reviewing your affiliate application and will be in touch soon!', 'affiliate-wp' ) . "\n\n"
+			)
+		);
+
+		return array_merge( $email_settings, $new_email_settings );
+	}
 
 	/**
 	 * Header Callback
