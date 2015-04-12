@@ -68,7 +68,6 @@ class Affiliate_WP_Register {
 			}
 
 			if ( ! validate_username( $data['affwp_user_login'] ) ) {
-
 				if ( is_multisite() ) {
 					$this->add_error( 'username_invalid', __( 'Invalid username. Only lowercase letters (a-z) and numbers are allowed', 'affiliate-wp' ) );
 				} else {
