@@ -2,380 +2,380 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
 "POT-Creation-Date: 2015-04-09 10:01-0600\n"
-"PO-Revision-Date: 2015-04-12 00:04+0100\n"
-"Last-Translator: fxbenard | FxB <fx@fxbenard.com>\n"
+"PO-Revision-Date: 2015-04-11 22:44+0200\n"
+"Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
 "Language-Team: AffiliateWP <support@affiliatewp.com>\n"
-"Language: fr_FR\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8beta1\n"
+"X-Generator: Poedit 1.7.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: templates\n"
 
 #: affiliate-wp.php:215 affiliate-wp.php:227
 msgid "Cheatin&#8217; huh?"
-msgstr "Tricherie&#8217; hein?"
+msgstr "Hile denemesi ?"
 
 #: includes/affiliate-functions.php:300
 msgid "Percentage (%)"
-msgstr "Pourcentage (%)"
+msgstr "Yüzde (%)"
 
 #: includes/affiliate-functions.php:301
 #, php-format
 msgid "Flat %s"
-msgstr "Fixe %s"
+msgstr "Düz %s"
 
 #: includes/class-creatives.php:148
 msgid "Copy and paste the following:"
-msgstr "Copiez et collez le texte suivant :"
+msgstr "Şunları kopyala ve yapıştır"
 
 #: includes/class-graph.php:332
 msgid "Today"
-msgstr "Aujourd'hui"
+msgstr "Bugün"
 
 #: includes/class-graph.php:333
 msgid "Yesterday"
-msgstr "Hier"
+msgstr "Dün"
 
 #: includes/class-graph.php:334
 msgid "This Week"
-msgstr "Cette semaine"
+msgstr "Bu Hafta"
 
 #: includes/class-graph.php:335
 msgid "Last Week"
-msgstr "La semaine dernière"
+msgstr "Geçen Hafta"
 
 #: includes/class-graph.php:336
 msgid "This Month"
-msgstr "Ce mois-ci"
+msgstr "Bu Ay"
 
 #: includes/class-graph.php:337
 msgid "Last Month"
-msgstr "Mois dernier"
+msgstr "Geçen Ay"
 
 #: includes/class-graph.php:338
 msgid "This Quarter"
-msgstr "Ce trimestre"
+msgstr "Bu 3 ay"
 
 #: includes/class-graph.php:339
 msgid "Last Quarter"
-msgstr "Trimestre dernier"
+msgstr "Geçen 3 Ay"
 
 #: includes/class-graph.php:340
 msgid "This Year"
-msgstr "Cette année"
+msgstr "Bu Yıl"
 
 #: includes/class-graph.php:341
 msgid "Last Year"
-msgstr "L'année dernière"
+msgstr "Geçen Yıl"
 
 #: includes/class-graph.php:342
 msgid "Custom"
-msgstr "Personnalisé"
+msgstr "Özel"
 
 #: includes/class-graph.php:380
 msgid "From"
-msgstr "Du"
+msgstr "Burdan"
 
 #: includes/class-graph.php:391
 msgid "To"
-msgstr "Au"
+msgstr "Buraya"
 
 #: includes/class-graph.php:404 includes/admin/referrals/referrals.php:439
 #: includes/admin/visits/visits.php:41
 msgid "Filter"
-msgstr "Filtrer"
+msgstr "Filitrele"
 
 #: includes/class-login.php:56 includes/class-register.php:71
 #: includes/class-register.php:137
 msgid "Invalid username"
-msgstr "Nom d'utilisateur invalide"
+msgstr "Geçersiz Kullanıcı Adı"
 
 #: includes/class-login.php:62
 msgid "No such user"
-msgstr "Aucun utilisateur correspond"
+msgstr "Böyle Bir Kullanıcı Yok"
 
 #: includes/class-login.php:66 includes/class-register.php:145
 msgid "Please enter a password"
-msgstr "Veuillez saisir un mot de passe"
+msgstr "Lütfen Bir Şifre Giriniz"
 
 #: includes/class-login.php:73
 msgid "Incorrect username or password"
-msgstr "Nom d'utilisateur ou mot de passe incorrect"
+msgstr "Geçersiz kullanıcı adı veya şifre"
 
 #: includes/class-referrals-graph.php:116
 msgid "Unpaid Referral Earnings"
-msgstr "Gains Parrainages non rémunérés"
+msgstr "Ödenmemiş Referans Kazancı"
 
 #: includes/class-referrals-graph.php:117
 msgid "Pending Referral Earnings"
-msgstr "Gains parrainages en attente"
+msgstr "Bekleyen Referans Kazancı"
 
 #: includes/class-referrals-graph.php:118
 msgid "Rejected Referral Earnings"
-msgstr "Gains parrainages rejetés"
+msgstr "Reddedilmiş Referans Kazancı"
 
 #: includes/class-referrals-graph.php:119
 msgid "Paid Referral Earnings"
-msgstr "Gains parrainages payés"
+msgstr "Ödenmiş Referans Kazancı"
 
 #: includes/class-register.php:67
 msgid "Username already taken"
-msgstr "Nom d'utilisateur déjà pris"
+msgstr "Kullanıcı adı zaten alınmış"
 
 #: includes/class-register.php:75
 msgid "Email address already taken"
-msgstr "Adresse e-mail dejà prise"
+msgstr "E-posta adresi zaten alınmış"
 
 #: includes/class-register.php:79
 msgid "Invalid email"
-msgstr "E-mail invalide"
+msgstr "Geçersiz e-posta"
 
 #: includes/class-register.php:83
 msgid "Invalid payment email"
-msgstr "E-mail de paiement invalide"
+msgstr "Geçersiz ödeme e-posta adresi"
 
 #: includes/class-register.php:87
 msgid "Passwords do not match"
-msgstr "Les mots de passe ne correspondent pas"
+msgstr "Şifre uyuşmuyor"
 
 #: includes/class-register.php:94
 msgid "Please agree to our terms of use"
-msgstr "Veuillez accepter les conditions d'utilisation"
+msgstr "Lütfen kullanma şartlarını kabul edin"
 
 #: includes/class-register.php:98
 msgid "Nice try honey bear, don't touch our honey"
-msgstr "Bien essayé, ne touche pas notre miel"
+msgstr "Güzel deneme , bu şekilde devam etmeyiniz"
 
 #: includes/class-register.php:102
 msgid "You are already registered as an affiliate"
-msgstr "Vous êtes déjà enregistré en tant qu'affilié"
+msgstr "Zaten satış ortağı olarak kayıt olmuşsunuz"
 
 #: includes/class-register.php:133
 msgid "Please enter your name"
-msgstr "Veuillez saisir votre nom"
+msgstr "Lütfen isminizi giriniz"
 
 #: includes/class-register.php:141
 msgid "Please enter a website URL"
-msgstr "Veuillez saisir une URL de site Web"
+msgstr "Lütfen bir website adresi giriniz"
 
 #: includes/class-visits-graph.php:126
 msgid "Converted Visits"
-msgstr "Visites converties"
+msgstr "Dönüşen Ziyaretler"
 
 #: includes/class-visits-graph.php:127
 msgid "Unconverted Visits"
-msgstr "Visites non converties"
+msgstr "Dönüşmeyen Ziyaretler"
 
 #: includes/creative-functions.php:31 includes/creative-functions.php:63
 msgid "Creative"
-msgstr "Publicités"
+msgstr "Reklam"
 
 #: includes/install.php:18 includes/admin/class-welcome.php:272
 #: includes/admin/settings/class-settings.php:194
 msgid "Affiliate Area"
-msgstr "Zone Affilié"
+msgstr "Satış Ortaklığı Alanı"
 
 #: includes/misc-functions.php:26
 msgid "US Dollars"
-msgstr "Dollars US"
+msgstr "Amerikan Doları"
 
 #: includes/misc-functions.php:27
 msgid "Euros"
-msgstr "Euros"
+msgstr "Euro"
 
 #: includes/misc-functions.php:28
 msgid "United Arab Emirates Dirham"
-msgstr "Dirham Émirats Arabes Unis"
+msgstr "Birleşik Arab Emirlikleri Dirhemi"
 
 #: includes/misc-functions.php:29
 msgid "Australian Dollars"
-msgstr "Dollars Australiens"
+msgstr "Avustralya Doları"
 
 #: includes/misc-functions.php:30
 msgid "Bangladeshi Taka"
-msgstr "Taka bangladais"
+msgstr "Bangladeş Takası"
 
 #: includes/misc-functions.php:31
 msgid "Brazilian Real"
-msgstr "Real brésilien"
+msgstr "Brezilya Reali"
 
 #: includes/misc-functions.php:32
 msgid "Bulgarian Lev"
-msgstr "Lev bulgare"
+msgstr "Bulgaristan Levası"
 
 #: includes/misc-functions.php:33
 msgid "Canadian Dollars"
-msgstr "Dollars canadiens"
+msgstr "Kanada Doları"
 
 #: includes/misc-functions.php:34
 msgid "Chilean Peso"
-msgstr "Peso chilien"
+msgstr "Şili Pezosu"
 
 #: includes/misc-functions.php:35
 msgid "Chinese Yuan"
-msgstr "Yuan chinois"
+msgstr "Çin Yeni"
 
 #: includes/misc-functions.php:36
 msgid "Colombian Peso"
-msgstr "Peso colombien"
+msgstr "Kolombiya Pezosu"
 
 #: includes/misc-functions.php:37
 msgid "Czech Koruna"
-msgstr "Couronne tchèque"
+msgstr "Çek Kronu"
 
 #: includes/misc-functions.php:38
 msgid "Danish Krone"
-msgstr "Couronne danoise"
+msgstr "Danimarka Kronu"
 
 #: includes/misc-functions.php:39
 msgid "Dominican Peso"
-msgstr "Peso dominicain"
+msgstr "Dominik Pezosu"
 
 #: includes/misc-functions.php:40
 msgid "Hong Kong Dollar"
-msgstr "Dollar de Hong Kong"
+msgstr "Hong Kong Doları"
 
 #: includes/misc-functions.php:41
 msgid "Croatia kuna"
-msgstr "Kuna Croate"
+msgstr "Hırvatistan Kunası"
 
 #: includes/misc-functions.php:42
 msgid "Hungarian Forint"
-msgstr "Forint Hongrois"
+msgstr "Macaristan Forinti"
 
 #: includes/misc-functions.php:43
 msgid "Icelandic krona"
-msgstr "Couronne islandaise"
+msgstr "İzlanda Kronu"
 
 #: includes/misc-functions.php:44
 msgid "Indonesia Rupiah"
-msgstr "Roupie indonésienne"
+msgstr "Endonezya Rupisi"
 
 #: includes/misc-functions.php:45
 msgid "Indian Rupee"
-msgstr "Roupie indienne"
+msgstr "Hindistan Rupisi"
 
 #: includes/misc-functions.php:46
 msgid "Nepali Rupee"
-msgstr "Roupie népalaise"
+msgstr "Nepal Rupisi"
 
 #: includes/misc-functions.php:47
 msgid "Israeli Shekel"
-msgstr "Shekel israélien"
+msgstr "İsrail Şikeli"
 
 #: includes/misc-functions.php:48
 msgid "Japanese Yen"
-msgstr "Yen Japonais"
+msgstr "Japon Yeni"
 
 #: includes/misc-functions.php:49
 msgid "Lao Kip"
-msgstr "Kip Laotien"
+msgstr "Laos Kipi"
 
 #: includes/misc-functions.php:50
 msgid "South Korean Won"
-msgstr "Won sud-coréen"
+msgstr "Güney Kore Wonu"
 
 #: includes/misc-functions.php:51
 msgid "Malaysian Ringgits"
-msgstr "Ringgit malaisien"
+msgstr "Malezya Ringiti"
 
 #: includes/misc-functions.php:52
 msgid "Mexican Peso"
-msgstr "Peso mexicain"
+msgstr "Meksika Pezosu"
 
 #: includes/misc-functions.php:53
 msgid "Nigerian Naira"
-msgstr "Naira nigérian"
+msgstr "Nijerya Nairası"
 
 #: includes/misc-functions.php:54
 msgid "Norwegian Krone"
-msgstr "Couronne norvégienne"
+msgstr "Norveç Kronu"
 
 #: includes/misc-functions.php:55
 msgid "New Zealand Dollar"
-msgstr "Dollar Néo-Zélandais"
+msgstr "Yeni Zelanda Doları"
 
 #: includes/misc-functions.php:56
 msgid "Paraguayan Guaraní"
-msgstr "Guaraní Paraguayen"
+msgstr "Paraguay Guarani"
 
 #: includes/misc-functions.php:57
 msgid "Philippine Pesos"
-msgstr "Pesos philippins"
+msgstr "Filipin Pezosu"
 
 #: includes/misc-functions.php:58
 msgid "Polish Zloty"
-msgstr "Zloty polonais"
+msgstr "Polanya Zlotisi"
 
 #: includes/misc-functions.php:59
 msgid "Pounds Sterling"
-msgstr "Livre sterling"
+msgstr "Pound Sterling"
 
 #: includes/misc-functions.php:60
 msgid "Romanian Leu"
-msgstr "Leu roumain"
+msgstr "Romanya Leyi"
 
 #: includes/misc-functions.php:61
 msgid "Russian Ruble"
-msgstr "Rouble russe"
+msgstr "Rusya Rublesi"
 
 #: includes/misc-functions.php:62
 msgid "Singapore Dollar"
-msgstr "Dollar de Singapour"
+msgstr "Singapur Doları"
 
 #: includes/misc-functions.php:63
 msgid "South African rand"
-msgstr "Rand sud-africain"
+msgstr "Güney Afrika Randı"
 
 #: includes/misc-functions.php:64
 msgid "Swedish Krona"
-msgstr "Couronne suédoise"
+msgstr "İsveç Kronu"
 
 #: includes/misc-functions.php:65
 msgid "Swiss Franc"
-msgstr "Franc suisse"
+msgstr "İsviçre Frangı"
 
 #: includes/misc-functions.php:66
 msgid "Taiwan New Dollars"
-msgstr "Nouveau dollar de Taiwan"
+msgstr "Tayvan Yeni Doları"
 
 #: includes/misc-functions.php:67
 msgid "Thai Baht"
-msgstr "Baht thaïlandais"
+msgstr "Tayland Bahtı"
 
 #: includes/misc-functions.php:68
 msgid "Turkish Lira"
-msgstr "Lire turque"
+msgstr "Türk Lirası"
 
 #: includes/misc-functions.php:69
 msgid "Vietnamese Dong"
-msgstr "Dong vietnamien"
+msgstr "Vietnam Dongu"
 
 #: includes/misc-functions.php:70
 msgid "Egyptian Pound"
-msgstr "Livre égyptienne"
+msgstr "Mısır Poundu"
 
 #: includes/referral-functions.php:52 includes/admin/referrals/edit.php:89
 #: includes/admin/referrals/new.php:91
 #: includes/admin/referrals/referrals.php:201
 #: includes/admin/tools/tools.php:240
 msgid "Paid"
-msgstr "Payé"
+msgstr "Ödenmiş"
 
 #: includes/referral-functions.php:53 includes/admin/referrals/edit.php:88
 #: includes/admin/referrals/new.php:90
 #: includes/admin/referrals/referrals.php:202
 #: includes/admin/tools/tools.php:241
 msgid "Unpaid"
-msgstr "Non-payé"
+msgstr "Ödenmemiş"
 
 #: includes/referral-functions.php:54
 #: includes/admin/affiliates/affiliates.php:195
@@ -383,7 +383,7 @@ msgstr "Non-payé"
 #: includes/admin/referrals/referrals.php:204
 #: includes/admin/tools/tools.php:213 includes/admin/tools/tools.php:243
 msgid "Rejected"
-msgstr "Rejeté"
+msgstr "Reddedilmiş"
 
 #: includes/referral-functions.php:55
 #: includes/admin/affiliates/affiliates.php:194
@@ -391,15 +391,15 @@ msgstr "Rejeté"
 #: includes/admin/referrals/referrals.php:203
 #: includes/admin/tools/tools.php:212 includes/admin/tools/tools.php:242
 msgid "Pending"
-msgstr "En attente"
+msgstr "Bekleyen"
 
 #: includes/scripts.php:62
 msgid ""
 "Are you sure you want to generate the payout file? All included referrals "
 "will be marked as Paid."
 msgstr ""
-"Etes-vous sûr de vouloir générer le fichier de paiement? Tous les "
-"parrainages qui y figurent seront marqués comme Payés."
+"Ödeme dosyası oluşturmak için emin misiniz ? İçerdiği tüm referanslar Ödendi "
+"olarak işaretlenecek"
 
 #: includes/admin/AFFWP_Plugin_Updater.php:164
 #: includes/admin/class-addon-updater.php:186
@@ -408,8 +408,8 @@ msgid ""
 "There is a new version of %1$s available. <a target=\"_blank\" class="
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
 msgstr ""
-"Il y a une nouvelle version de %1$s disponible. <a target=\"_blank\" class="
-"\"thickbox\" href=\"%2$s\">Voir les détails de la version %3$s </a>."
+"%1$s yeni versiyonu mevcut . <a target=\"_blank\" class=\"thickbox\" href="
+"\"%2$s\">%3$s versiyon detaylarını görüntüle</a>."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:171
 #: includes/admin/class-addon-updater.php:193
@@ -419,15 +419,14 @@ msgid ""
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
 "\">update now</a>."
 msgstr ""
-"Il y a une nouvelle version de %1$s disponible. <a target=\"_blank\" class="
-"\"thickbox\" href=\"%2$s\">Voir les détails de la version %3$s </a> ou <a "
-"href=\"%4$s\">mettre à jour maintenant.</a>."
+"%1$s yeni versiyonu mevcut.  <a target=\"_blank\" class=\"thickbox\" href="
+"\"%2$s\">%3$s versiyon detaylarını görüntüle</a> or <a href=\"%4$s\">Şimdi "
+"güncelle</a>."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:311
 #: includes/admin/class-addon-updater.php:280
 msgid "You do not have permission to install plugin updates"
-msgstr ""
-"Vous n'avez pas l'autorisation d'installer les mises à jour de l'extension"
+msgstr "Eklenti güncellemelerini yüklemek için yetkiniz yok"
 
 #: includes/admin/AFFWP_Plugin_Updater.php:311
 #: includes/admin/class-addon-updater.php:280
@@ -446,23 +445,23 @@ msgstr ""
 #: includes/admin/tools/import/import.php:23
 #: includes/admin/tools/import/import.php:29
 msgid "Error"
-msgstr "Erreur"
+msgstr "Hata"
 
 #: includes/admin/ajax-actions.php:32
 msgid "No users found"
-msgstr "Aucun utilisateur trouvé"
+msgstr "Kullanıcılar bulunamadı"
 
 #: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
 #: includes/admin/class-welcome.php:289
 #: includes/admin/affiliates/affiliates.php:44
 msgid "Affiliates"
-msgstr "Affiliés"
+msgstr "Satış Ortakları"
 
 #: includes/admin/class-menu.php:12 includes/admin/overview/overview.php:19
 #: includes/admin/referrals/contextual-help.php:37
 #: includes/admin/visits/contextual-help.php:37
 msgid "Overview"
-msgstr "Vue d'ensemble"
+msgstr "Genel Bakış"
 
 #: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:294
 #: includes/admin/overview/overview.php:169
@@ -471,7 +470,7 @@ msgstr "Vue d'ensemble"
 #: includes/admin/tools/export/class-export-affiliates.php:53
 #: templates/dashboard-tab-referrals.php:3 templates/dashboard.php:42
 msgid "Referrals"
-msgstr "Parrainages"
+msgstr "Referanslar"
 
 #: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
 #: includes/admin/affiliates/affiliates.php:216
@@ -482,161 +481,161 @@ msgstr "Parrainages"
 #: includes/admin/visits/visits.php:27 templates/dashboard-tab-stats.php:10
 #: templates/dashboard.php:45
 msgid "Visits"
-msgstr "Visites"
+msgstr "Ziyaretler"
 
 #: includes/admin/class-menu.php:16 includes/admin/creatives/creatives.php:40
 #: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:48
 msgid "Creatives"
-msgstr "Bannières"
+msgstr "Reklamlar"
 
 #: includes/admin/class-menu.php:17
 #: includes/admin/affiliates/affiliates.php:358
 msgid "Reports"
-msgstr "Rapports"
+msgstr "Raporlar"
 
 #: includes/admin/class-menu.php:18
 msgid "Tools"
-msgstr "Outils"
+msgstr "Araçlar"
 
 #: includes/admin/class-menu.php:19 templates/dashboard.php:51
 msgid "Settings"
-msgstr "Réglages"
+msgstr "Ayarlar"
 
 #: includes/admin/class-menu.php:20 includes/admin/tools/migration.php:15
 msgid "AffiliateWP Migration"
-msgstr "Migration AffiliateWP"
+msgstr "AffiliateWP Geçiş"
 
 #: includes/admin/class-notices.php:16
 #: includes/admin/settings/class-settings.php:155
 msgid "Settings updated."
-msgstr "Réglages mis à jour."
+msgstr "Ayarlar güncellendi"
 
 #: includes/admin/class-notices.php:25
 msgid "Affiliate added successfully"
-msgstr "Affilié ajouté avec succès"
+msgstr "Satış ortağı başarı ile eklendi"
 
 #: includes/admin/class-notices.php:31
 msgid "Affiliate wasn't added, please try again."
-msgstr "L'affilié n'a pas été ajouté, veuillez réessayer."
+msgstr "Satış ortağı eklenmedi , lütfen tekrar deneyiniz"
 
 #: includes/admin/class-notices.php:38
 msgid "Affiliate updated successfully"
-msgstr "Affilié mis à jour avec succès"
+msgstr "Satış ortağı başarı ile güncellendi"
 
 #: includes/admin/class-notices.php:40
 #, php-format
 msgid "<a href=\"%s\">Back to Affiliates</a>"
-msgstr "<a href=\"%s\">Retour aux Affiliés</a>"
+msgstr "<a href=\"%s\">Satış Ortaklarına Dön</a>"
 
 #: includes/admin/class-notices.php:46
 msgid "Affiliate update failed, please try again"
-msgstr "Echec de la mise à jour de l'affilié, veuillez réessayer"
+msgstr "Satış ortağı güncellemede sorun oluştu , lütfen tekrar deneyiniz"
 
 #: includes/admin/class-notices.php:53
 msgid "Affiliate account(s) deleted successfully"
-msgstr "Compte(s) affilié supprimé(s) avec succès"
+msgstr "Satış ortağı / ortakları başarı ile silindi"
 
 #: includes/admin/class-notices.php:59
 msgid "Affiliate deletion failed, please try again"
-msgstr "La suppression de l'affilié a échoué, veuillez réessayer"
+msgstr "Satış ortağı silmede problem oluştu , lütfen tekrar deneyiniz"
 
 #: includes/admin/class-notices.php:66
 msgid "Affiliate account activated"
-msgstr "Compte d'affiliation activé"
+msgstr "Satış ortağı hesabı aktifleştirildi"
 
 #: includes/admin/class-notices.php:72
 msgid "Affiliate account deactivated"
-msgstr "Compte d'affiliation désactivé"
+msgstr "Satış ortağı hesabı devre dışı bırakıldı"
 
 #: includes/admin/class-notices.php:78
 msgid "Affiliate request was accepted"
-msgstr "Demande d'affiliation acceptée"
+msgstr "Satış ortağı isteği kabul edildi"
 
 #: includes/admin/class-notices.php:84
 msgid "Affiliate request was rejected"
-msgstr "Demande d'affiliation a été rejetée"
+msgstr "Satış ortağı isteği reddedildi"
 
 #: includes/admin/class-notices.php:90
 msgid "Affiliate stats have been recounted!"
-msgstr "Les stats affiliation ont été recomptés !"
+msgstr "Satış ortağı istatistikleri yeniden sayıldı"
 
 #: includes/admin/class-notices.php:96
 msgid "Referral added successfully"
-msgstr "Parrainage ajouté avec succès"
+msgstr "Referans başarı ile eklendi"
 
 #: includes/admin/class-notices.php:102
 msgid "Referral updated successfully"
-msgstr "Parrainage mis à jour avec succès"
+msgstr "Referans başarı ile güncellendi"
 
 #: includes/admin/class-notices.php:108
 msgid "Referral update failed, please try again"
-msgstr "La mise à jour du parrainage a échoué, veuillez réessayer"
+msgstr "Referans güncellemede sorun oluştu , lütfen tekrar deneyiniz"
 
 #: includes/admin/class-notices.php:114
 msgid "Referral deleted successfully"
-msgstr "Parrainage supprimé avec succès"
+msgstr "Referans başarı ile silindi"
 
 #: includes/admin/class-notices.php:120
 msgid "Referral deletion failed, please try again"
-msgstr "Suppression parrainage a echoué, veuillez réessayer"
+msgstr "Referans silmede problem oluştu , lütfen tekrar deneyiniz"
 
 #: includes/admin/class-notices.php:127
 msgid "Creative updated successfully"
-msgstr "Bannières mises à jour avec succès"
+msgstr "Reklam başarı ile güncellendi"
 
 #: includes/admin/class-notices.php:129
 #, php-format
 msgid "<a href=\"%s\">Back to Creatives</a>"
-msgstr "<a href=\"%s\">Retour aux Bannières</a>"
+msgstr "<a href=\"%s\">Reklamlara Dön</a>"
 
 #: includes/admin/class-notices.php:135
 msgid "Creative added successfully"
-msgstr "Bannière ajoutée avec succès"
+msgstr "Reklam başarı ile eklendi"
 
 #: includes/admin/class-notices.php:141
 msgid "Creative deleted successfully"
-msgstr "Bannière supprimée avec succès"
+msgstr "Reklam başarı ile silindi"
 
 #: includes/admin/class-notices.php:147
 msgid "Creative activated"
-msgstr "Bannière activée"
+msgstr "Reklam aktifleştirildi"
 
 #: includes/admin/class-notices.php:153
 msgid "Creative deactivated"
-msgstr "Bannière désactivée"
+msgstr "Reklam devre dışı bırakıldı"
 
 #: includes/admin/class-notices.php:159
 msgid "Settings successfully imported"
-msgstr "Réglages importés avec succès"
+msgstr "Ayarlar başarı ile girildi"
 
 #: includes/admin/class-welcome.php:52 includes/admin/class-welcome.php:53
 msgid "What's new in AffiliateWP"
-msgstr "Quoi de neuf sur AffiliateWP"
+msgstr "AffiliateWP de yeni neler var ?"
 
 #: includes/admin/class-welcome.php:61 includes/admin/class-welcome.php:62
 msgid "Getting started with AffiliateWP"
-msgstr "Commencer avec AffiliateWP"
+msgstr "AffiliateWP ile başlangıç"
 
 #: includes/admin/class-welcome.php:70 includes/admin/class-welcome.php:71
 msgid "The people that build AffiliateWP"
-msgstr "Les personnes qui ont développé AffiliateWP"
+msgstr "AffiliateWP yi yapan kişiler"
 
 #: includes/admin/class-welcome.php:146
 msgid "What's New"
-msgstr "Quoi de neuf"
+msgstr "Yenilikler"
 
 #: includes/admin/class-welcome.php:149 includes/admin/plugins.php:50
 msgid "Getting Started"
-msgstr "Commencer"
+msgstr "Başlangıç"
 
 #: includes/admin/class-welcome.php:152
 msgid "Credits"
-msgstr "Crédits"
+msgstr "Krediler"
 
 #: includes/admin/class-welcome.php:169
 #, php-format
 msgid "Welcome to AffiliateWP v%s"
-msgstr "Bienvenue sur AffiliateWP v%s"
+msgstr "AffiliateWP v%s e Hoş Geldiniz"
 
 #: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:237
 #, php-format
@@ -644,30 +643,30 @@ msgid ""
 "Thank you for installing AffiliateWP v%s. The best affiliate marketing "
 "plugin for WordPress."
 msgstr ""
-"Merci d'avoir installé AffiliateWP v%s. La meilleure extension de marketing "
-"d'affiliation pour WordPress."
+" AffiliateWP v%s yüklediğiniz için teşekkürler.  Wordpress için en iyi satış "
+"ortaklığı eklentisi"
 
 #: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:238
 #: includes/admin/class-welcome.php:334
 #, php-format
 msgid "Version %s"
-msgstr "Version %s"
+msgstr "Versiyon %s"
 
 #: includes/admin/class-welcome.php:179
 msgid "New integrations"
-msgstr "Nouvelles intégrations"
+msgstr "Yeni Entegrasyonlar"
 
 #: includes/admin/class-welcome.php:180
 msgid ""
 "To make AffiliateWP more accessible and more valuable to more users, we have "
 "added four new integrations:"
 msgstr ""
-"Pour rendre AffiliateWP plus accessible et plus utile à plus d&#39;"
-"utilisateurs, nous avons ajouté quatre nouvelles intégrations :"
+"AffiliateWP yi daha fazla kullanıcı için ,  daha erişilebilir ve değerli "
+"yapmak için , 4 yeni entegrasyon ekledik :"
 
 #: includes/admin/class-welcome.php:189
 msgid "Configurable emails"
-msgstr "E-mails configurables"
+msgstr "Ayarlanabilir e-postalar"
 
 #: includes/admin/class-welcome.php:191
 msgid ""
@@ -675,10 +674,9 @@ msgid ""
 "allows you to configure all emails that get sent out to affiliates when they "
 "register for an account or earn a new referral."
 msgstr ""
-"Avec la version 1.6, nous avons introduit un nouvel onglet dans la page des "
-"réglages pour vous permettre de configurer tous les e-mails envoyés aux "
-"affiliés lorsqu'ils s'enregistrent ou qu'ils obtiennent un nouveau "
-"parrainage."
+"1.6 Versiyonu ile  , ayarlar kısmında ,  satış ortaklarına yeni bir hesap "
+"oluşturduklarında veya yeni bir referans kazandıklarında gönderilen e-"
+"postaların ayarlanabildiği yeni bir sekme eklendi"
 
 #: includes/admin/class-welcome.php:192
 msgid ""
@@ -687,14 +685,16 @@ msgid ""
 "emails\" folder to give you complete control over the appearance of the "
 "emails."
 msgstr ""
-"Tous les e-mails sont envoyés avec de beaux modèles HTML qui peuvent être "
-"facilement modifiés. Ces fichiers de modèle peuvent être copiés dans le "
-"dossier « affiliatewp/emails » de votre thème pour vous offrir un contrôle "
-"total sur le rendu des e-mails."
+"Tüm e-postalar herhangi bir zamanda kolayca düzenlenebilinecek , güzel HTML "
+"temaları ile gönderilir.  Bu tema dosyaları  , gönderilen postaların "
+"görünümü hakkında tam kontrol imkanı verecek şekilde ,  temanızın "
+"\"affiliatewp/emails\" klasörüne kopyalanabilir. "
 
 #: includes/admin/class-welcome.php:194
 msgid "Fine-tuned control over how referral URLs appear to affiliates"
-msgstr "Contrôle affiné de l'affichage des URLs de parrainage des affiliés"
+msgstr ""
+"Referans linklerinin satış ortaklarına nasıl görüneceği konusunda ince "
+"ayarlanmış tam kontrol"
 
 #: includes/admin/class-welcome.php:195
 msgid ""
@@ -706,45 +706,45 @@ msgid ""
 "choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your "
 "affiliates."
 msgstr ""
-"Vos affiliés peuvent déjà promouvoir votre site Web à l'aide d'une grande "
-"variété <a href=\\\"http://docs.affiliatewp.com/article/50-affiliate-urls\\"
-"\" target=\\\"_blank\\\">d'URL d'affiliation</a>. Les administrateurs ont "
-"maintenant beaucoup plus de contrôle sur l'affichage de ces URLs de "
-"parrainage sur votre site Web. Vous pouvez définir un <strong>Format de "
-"parrainage par défaut</strong> (ID ou identifiant) et choisir d'afficher de "
-"<strong>Jolies URLs d'affiliation</strong> pour vos affiliés."
+"Satış ortaklarınız zaten  sitenizi geniş çeşitlilikteki <a href=\"http://"
+"docs.affiliatewp.com/article/50-affiliate-urls\" target=\"_blank\">satış "
+"ortaklığı linkleri</a> ile tanıtabilir . Yönteciler artık websitesinde  "
+"referans linklerinin satış ortaklarına nasıl görüneceği konusunda daha fazla "
+"kontrole sahip .  <strong>Varsayılan referans formatı</strong> ( id veya "
+"kullanıcı adı ) olacak şekilde tanımlayabilir ve  satış ortaklarınıza "
+"<strong>güzel satış ortaklığı linkleri</strong> seçip seçmeme konusunda "
+"seçenek sunabilirsiniz"
 
 #: includes/admin/class-welcome.php:197
 msgid "Additional Updates"
-msgstr "Mises à jour supplémentaires"
+msgstr "Diğer Güncellemeler"
 
 #: includes/admin/class-welcome.php:199
 msgid "Affiliate Export Improvements"
-msgstr "Améliorations de l'exportation d'affiliation"
+msgstr "Satış Ortaklığı Çıktı Alma Gelişmeleri"
 
 #: includes/admin/class-welcome.php:200
 msgid ""
 "The affiliate's username is now included in the exported affiliate .csv file."
 msgstr ""
-"L'identifiant de l'affilié est maintenant inclus dans le fichier "
-"d'affiliation .csv exporté."
+"Satış ortağının kullanıcı adı artık çıktı alınan satış ortağı .csv "
+"dosyasının içinde yer alıyor"
 
 #: includes/admin/class-welcome.php:202
 msgid "New Affiliate Meta Class"
-msgstr "Nouvelle classe de méta affilié"
+msgstr "Yeni Satış Ortaklığı Meta Sınıfı"
 
 #: includes/admin/class-welcome.php:203
 msgid ""
 "We've introduced a new metadata API for afiliate accounts that provides "
 "developers with a powerful tool for tracking affiliate-specific data."
 msgstr ""
-"Nous avons introduit une nouvelle API de métadonnées pour les comptes "
-"d'affiliation qui fournit aux développeurs un outil puissant pour le suivi "
-"des données spécifiques à l'affilié."
+"Satış ortaklığı hesapları için , geliştiricilere satış ortaklığına özgü data "
+"takibi yapabilecek metadata API adında özellik tanıttık . "
 
 #: includes/admin/class-welcome.php:205
 msgid "Creative Improvements"
-msgstr "Amélioration des bannières"
+msgstr "Reklam Geliştirmeleri"
 
 #: includes/admin/class-welcome.php:206
 msgid ""
@@ -752,88 +752,87 @@ msgid ""
 "now shown at the top of the creative and it's much easier for affiliates to "
 "copy the necessary code."
 msgstr ""
-"Nous avons apporté des améliorations à la façon dont les bannières sont "
-"affichées. La description est désormais affichée en haut de la bannière et "
-"il est plus facile pour les affiliés de copier le code nécessaire."
+"Reklamların görüntülenmesi konusunda iyileştirmeler yaptık . Açıklamalar "
+"artık reklamın üzerinde gösteriliyor ve satış ortakları bu kodları daha "
+"rahat kopyalayabiliyor"
 
 #: includes/admin/class-welcome.php:208
 msgid "Affiliate Dashboard Improvements"
-msgstr "Améliorations du tableau de bord d'affiliation"
+msgstr "Satış Ortaklığı Panel Geliştirmeleri"
 
 #: includes/admin/class-welcome.php:209
 msgid ""
 "Pending affiliates can no longer access the affiliate dashboard until they "
 "have been approved."
 msgstr ""
-"Les affiliées en attente ne peuvent plus accéder au tableau de bord "
-"d'affiliation avant d'être approuvés."
+"Artık bekleyen satış ortakları onaylanana kadar satış ortaklığı panelini "
+"göremezler "
 
 #: includes/admin/class-welcome.php:219 includes/admin/class-welcome.php:306
 msgid "Go to AffiliateWP Settings"
-msgstr "Aller aux réglages d'AffiliateWP"
+msgstr "AffiliateWP Ayarlarına Git"
 
 #: includes/admin/class-welcome.php:236 includes/admin/class-welcome.php:332
 #, php-format
 msgid "Welcome to AffiliateWP %s"
-msgstr "Bienvenue sur AffiliateWP %s"
+msgstr "AffiliateWP %s e Hoş Geldiniz"
 
 #: includes/admin/class-welcome.php:242
 msgid ""
 "Use the tips below to get started using AffiliateWP. You will be up and "
 "running in no time!"
 msgstr ""
-"Utilisez les conseils ci-dessous pour vous lancer avec AffiliateWP. Vous "
-"serez opérationnel en un rien de temps !"
+"AffiliateWP kullanmaya başlamak için aşağıdaki adımları takip ediniz . Kısa "
+"sürede kullanmaya hazır olacaksınız"
 
 #: includes/admin/class-welcome.php:245
 msgid "Overview of Affiliates and Referrals"
-msgstr "Vue d'ensemble des Affiliés et Parrainages"
+msgstr "Satış Ortaklarına ve Referanslara Genel Bakış"
 
 #: includes/admin/class-welcome.php:250
 msgid "The Overview Page"
-msgstr "La page de vue d'ensemble"
+msgstr "Genel Bakış Sayfası"
 
 #: includes/admin/class-welcome.php:251
 msgid ""
 "The overview page gives you a quick summary of your recent affiliate "
 "activity, including recent registrations, referrals, and visits."
 msgstr ""
-"La page de vue d'ensemble donne un rapide résumé des activités récentes "
-"d'affiliation, incluant les dernières inscriptions, parrainages et visites."
+"Genel bakış sayfası size  en son kayıtlar , referanslar ve ziyaretleri "
+"içeren en son satış ortaklı aktivitelerini gösterir"
 
 #: includes/admin/class-welcome.php:252
 msgid "It also provides a quick summary of your affiliates' referral earnings."
-msgstr ""
-"Elle donne aussi un rapide résumé des gains de parrainages de vos affiliés."
+msgstr "Ayrıca satış ortaklığının referans kazançları ile ilgili de özet sunar"
 
 #: includes/admin/class-welcome.php:253
 msgid ""
 "If you allow affiliate registrations, you can also easily accept or reject "
 "affiliate's applications directly from the Overview page"
 msgstr ""
-"Si vous permettez l'enregistrement d'affilié, vous pouvez aussi accepter ou "
-"rejeter les demandes d'affiliation depuis la page de vue d'ensemble."
+"Eğer satış ortaklığı kaydına izin verirseniz , genel bakış sayfasından "
+"kolayca satış ortaklığı isteklerini kabul veya red edebilirsiniz"
 
 #: includes/admin/class-welcome.php:256
 msgid "Adding Affiliates"
-msgstr "Ajout d'affilié"
+msgstr "Satış Ortakları Eklemek"
 
 #: includes/admin/class-welcome.php:261
 msgid "Affiliates &rarr; Add New"
-msgstr "Affiliés &rarr; Ajouter nouveau"
+msgstr "Satış Ortakları &rarr; Yeni Ekle"
 
 #: includes/admin/class-welcome.php:262
 msgid ""
 "From the main Affiliates page, site admins can easily add new affiliates to "
 "AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
 msgstr ""
-"Depuis la page principale des affiliés, les admins du site peuvent "
-"facilement ajouter de nouveaux affiliés à AffiliateWP. Entrez simplement le "
-"nom d'utilisateur, paramétrez un taux, et cliquez sur Ajouter un affilié !"
+"Ana Satış Ortaklığı sayfasından, yöneticiler , AffiliateWP ye yeni satış "
+"ortakları ekleyebilir . Kolayca bir kullanıcı adı yaz , oranı belirle ve "
+"Satış Ortağı ekle !"
 
 #: includes/admin/class-welcome.php:264
 msgid "Affiliate Registration"
-msgstr "Inscription Affilié"
+msgstr "Satış Ortağı Kayıt"
 
 #: includes/admin/class-welcome.php:265
 msgid ""
@@ -842,14 +841,14 @@ msgid ""
 "agreeing to the terms of use. If they need to create an entirely new "
 "account, they have that option as well!"
 msgstr ""
-"Si activé, les affiliés peuvent s'enregistrer depuis la Zone Affilié. S'ils "
-"sont déjà en compte sur votre site, ils peuvent simplement s'enregistrer en "
-"acceptant les conditions d'utilisation. S'ils doivent créer entièrement un "
-"nouveau compte, ils ont aussi cette option !"
+"Aktif olduğunda , satış ortakları kendilerini Satış Ortaklığı panelinden "
+"kaydedebilir . Eğer sitenizde zaten hesapları varsa , kullanım şartlarını "
+"kabul ederek kendilerini kayıt edebilirler . Yine de farklı bir hesap "
+"oluşturmak isterlerse bu da mümkün. "
 
 #: includes/admin/class-welcome.php:267
 msgid "Moderate Registrations"
-msgstr "Gérer les Inscriptions"
+msgstr "Kayıtları Yönet"
 
 #: includes/admin/class-welcome.php:268
 msgid ""
@@ -857,39 +856,38 @@ msgid ""
 "approve each registration before the affiliate is permitted to begin "
 "tracking referrals."
 msgstr ""
-"Les inscriptions d'affiliés peuvent être modérées et nécessitent qu'un "
-"administrateur du site approuve chaque inscription avant que l'affilié soit "
-"autorisé à commencer à suivre des parrainages."
+"Satış ortaklığı kayıtları yönetilebilir ve satış ortağı referans takiplerine "
+"başlamadan önce yönetim tarafından her bir kayıt için onaya tabi tutabilir."
 
 #: includes/admin/class-welcome.php:269
 msgid ""
 "Each time an affiliate registers, site admins can log into the site and "
 "approve or reject the application."
 msgstr ""
-"Chaque fois qu'un affilié s'enregistre, les administrateurs du site peuvent "
-"se connecter et approuver ou rejeter les demandes."
+"Her satış ortağı kayıt olduğunda , site yöneticileri giriş yapabilir ve "
+"başvuruyu kabul ya da red edebilir"
 
 #: includes/admin/class-welcome.php:277
 msgid "A Dashboard For Your Affiliates"
-msgstr "Un tableau de bord pour vos affiliés"
+msgstr "Satış Ortaklarınız İçin Panel"
 
 #: includes/admin/class-welcome.php:278
 msgid ""
 "The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
 "em> short code, gives your affiliates access to their performance reports."
 msgstr ""
-"La Zone Affilié, affichée sur n'importe quelle page contenant le code court "
-"<em>[affiliate_area]</em>, donne aux affiliés accès à leurs rapports de "
-"performance."
+"Satış ortaklığı paneli her  <em>[affiliate_area]</em> kısa kodunu içeren "
+"sayfada görüntülenebilir , bu sayede satış ortaklarınıza performans "
+"raporlarına erişme hakkı tanır. "
 
 #: includes/admin/class-welcome.php:279
 msgid ""
 "Affiliates can easily see how much they have earned, how much is awaiting "
 "payment, and even how their referral URLs have done over time."
 msgstr ""
-"Les affiliés peuvent facilement voir combien ils ont gagné, la somme en "
-"attente de paiement, et même comment leurs parrainages ont évolué au fil du "
-"temps."
+"Satış ortakları kolayca ne kadar kazandıklarını , ne kadar ödemelerinin "
+"beklemede olduğunu hatta hangi referans linkinin ne kadar kazandırdığını "
+"görebilir"
 
 #: includes/admin/class-welcome.php:280
 msgid ""
@@ -897,13 +895,13 @@ msgid ""
 "clicked on from, and whether the link converted into a successful referral, "
 "is also available to affiliates."
 msgstr ""
-"Un journal des liens de parrainages cliqués et depuis où ils l'ont étés, et "
-"si le lien a été converti en une transaction positive, est aussi disponible "
-"pour le affiliés."
+"Satış ortakları için , referansların hangi linkleri tıkladığı , nerden "
+"tıkladıkları hatta bu tıklanan linklerin ne kadarının komisyona dönüştüğünü "
+"takip etmek mümkündür"
 
 #: includes/admin/class-welcome.php:285
 msgid "Quick Terminology"
-msgstr "Terminologie rapide"
+msgstr "Hızlıca Terimler"
 
 #: includes/admin/class-welcome.php:290
 msgid ""
@@ -911,35 +909,35 @@ msgid ""
 "your products and services through referral URLs. When they create a "
 "customer for you, they get paid back in the form of a commission."
 msgstr ""
-"Ce sont vos meilleurs amis. Il s'agit des utilisateurs qui promeuvent "
-"activement vos produits et services à travers les URLs de parrainages. Quand "
-"ils génèrent des clients, ils sont payés en retour sous forme de commission."
+"Bunlar senin en iyi arkadaşların .Bunlar o kullanıcılar ki aktif bir şekilde "
+"senin ürünlerini ve servislerini referans linkleri aracılığı ile "
+"tanıtırlar . Ne zaman bir müşteri bulurlarsa , komisyon bazında kazanç "
+"sağlarlar"
 
 #: includes/admin/class-welcome.php:295
 msgid ""
 "These are the commission records created anytime an affiliate successfully "
 "sends a potential customer to your site and that customer makes a purchase."
 msgstr ""
-"Ce sont les enregistrements des commissions créés à chaque fois qu'un "
-"affilié envoie un prospect vers votre site et que ce client réalise une "
-"commande."
+"Bunlar herhangi bir zamanda senin satış ortağının başarı ile sitene "
+"gönderdiği ve satın alma işlemi yapan bir müşteriden gelen komisyon kayıtları"
 
 #: includes/admin/class-welcome.php:300
 msgid ""
 "These are unique hits on the referral URLs shared out by your affiliates. "
 "Each time a potential customer clicks on a referral URL, a visit is recorded."
 msgstr ""
-"Ce sont les clics uniques sur les URLs de parrainages partagées par vos "
-"affiliés. Chaque fois qu'un prospect clique sur une URL de parrainage, une "
-"visite est enregistrée."
+"Bunlar satış ortakların tarafından paylaşılan referanslarına ait özgün "
+"ziyaretler . Ne zaman potansiyel bir müşteri linke tıklarsa , o ziyaret "
+"kayıt edilir. "
 
 #: includes/admin/class-welcome.php:310
 msgid "Need Help?"
-msgstr "Besoin d'aide ?"
+msgstr "Yardım mı Lazım ?"
 
 #: includes/admin/class-welcome.php:313
 msgid "Phenomenal Support"
-msgstr "Assistance phénoménale"
+msgstr "Olağanüstü Destek"
 
 #: includes/admin/class-welcome.php:314
 msgid ""
@@ -947,14 +945,13 @@ msgid ""
 "problem or have a question, visit our <a href=\"http://affiliatewp.com/"
 "support\">support</a> page to open a ticket."
 msgstr ""
-"Nous faisons de notre mieux pour fournir le meilleur support possible. Si "
-"vous rencontrez un problème ou avez une question, rendez-vous sur notre page "
-"<a href=\"http://affiliatewp.com/support\">de support</a> pour ouvrir un "
-"ticket."
+"Bizler mümkün olan en mükemmel şekilde destek yapmaya çalışıyoruz . Eğer bir "
+"problem yaşarsan ya da bir sorun varsa , <a href=\"http://affiliatewp.com/"
+"support\">destek</a> linki ile bizi ziyaret edin ve bir destek isteği açın"
 
 #: includes/admin/class-welcome.php:333
 msgid "Thank you for updating to the latest version!"
-msgstr "Merci pour avoir installé la dernière version !"
+msgstr "Son versiyona güncellediğiniz için teşekkürler !"
 
 #: includes/admin/class-welcome.php:338
 msgid ""
@@ -962,99 +959,99 @@ msgid ""
 "provide the #1 affiliate platform for WordPress. Here are just some of the "
 "faces that have helped build AffiliateWP:"
 msgstr ""
-"AffiliateWP est créé par des développeurs du monde entier qui ont pour "
-"objectif de fournir la meilleure plateforme d'affiliation pour WordPress. "
-"Voici certains des visages de ceux qui ont aidé à développer AffiliateWP:"
+"AffiliateWP dünya genelinde geliştiricilerin bir araya geldiği ve dünyanın "
+"en iyi Wordpress satış ortaklığı eklentisini yapmayı hedefler . AffiliateWP "
+"yi oluşturan yüzlerden bir kaçı şunlar :"
 
 #: includes/admin/class-welcome.php:365
 #, php-format
 msgid "View %s"
-msgstr "Voir %s"
+msgstr "Görüntüle %s"
 
 #: includes/admin/plugins.php:27
 msgid "General Settings"
-msgstr "Réglages généraux"
+msgstr "Genel Ayarlar"
 
 #: includes/admin/affiliates/actions.php:20
 #: includes/admin/affiliates/actions.php:104
 #: includes/admin/creatives/actions.php:80
 msgid "You do not have permission to manage affiliates"
-msgstr "Vous n'avez pas la permission pour gérer les affiliés"
+msgstr "Satış ortaklarını yönetmek için yetkiniz yok"
 
 #: includes/admin/affiliates/actions.php:49
 msgid "You do not have permission to delete affiliate accounts"
-msgstr "Vous n'avez pas la permission pour supprimer les comptes d'affiliation"
+msgstr "Satış ortağı hesaplarını silmek için yetkiniz yok"
 
 #: includes/admin/affiliates/actions.php:53
 #: includes/admin/creatives/actions.php:48
 #: includes/admin/referrals/actions.php:20
 #: includes/admin/referrals/actions.php:51
 msgid "Security check failed"
-msgstr "Échec du test de sécurité"
+msgstr "Güvenlik kontrolü hatası"
 
 #: includes/admin/affiliates/actions.php:57
 msgid "No affiliate IDs specified for deletion"
-msgstr "Aucun ID Affilié spécifié pour la suppression"
+msgstr "Silmek için herhangi bir satış ortağı numarası girilmemiş"
 
 #: includes/admin/affiliates/affiliates.php:45
 #: includes/admin/creatives/creatives.php:41
 msgid "Add New"
-msgstr "Ajouter"
+msgstr "Yeni Ekle"
 
 #: includes/admin/affiliates/affiliates.php:49
 #: includes/admin/referrals/referrals.php:60
 #: includes/admin/visits/visits.php:30
 msgid "Search"
-msgstr "Rechercher"
+msgstr "Ara"
 
 #: includes/admin/affiliates/affiliates.php:191
 #: includes/admin/creatives/creatives.php:138
 #: includes/admin/referrals/referrals.php:200
 msgid "All"
-msgstr "Tout"
+msgstr "Tümü"
 
 #: includes/admin/affiliates/affiliates.php:192
 #: includes/admin/creatives/creatives.php:139
 #: includes/admin/creatives/edit.php:99 includes/admin/creatives/new.php:89
 #: includes/admin/tools/tools.php:211
 msgid "Active"
-msgstr "Actif"
+msgstr "Aktif"
 
 #: includes/admin/affiliates/affiliates.php:193
 #: includes/admin/creatives/creatives.php:140
 #: includes/admin/creatives/edit.php:100 includes/admin/creatives/new.php:90
 msgid "Inactive"
-msgstr "Inactif"
+msgstr "Devre Dışı"
 
 #: includes/admin/affiliates/affiliates.php:211
 #: includes/admin/affiliates/review.php:22
 #: includes/admin/creatives/creatives.php:155
 #: includes/admin/creatives/edit.php:17 includes/admin/creatives/new.php:16
 msgid "Name"
-msgstr "Nom"
+msgstr "İsim"
 
 #: includes/admin/affiliates/affiliates.php:212
 #: includes/admin/settings/class-settings.php:221
 #: includes/admin/tools/export/class-export.php:69
 msgid "ID"
-msgstr "ID"
+msgstr "Numara"
 
 #: includes/admin/affiliates/affiliates.php:213
 #: includes/admin/affiliates/view.php:11
 #: includes/admin/overview/overview.php:168
 #: includes/admin/tools/export/class-export-affiliates.php:52
 msgid "Earnings"
-msgstr "Gains"
+msgstr "Kazançlar"
 
 #: includes/admin/affiliates/affiliates.php:214
 #: includes/admin/tools/export/class-export-affiliates.php:50
 msgid "Rate"
-msgstr "Taux"
+msgstr "Oran"
 
 #: includes/admin/affiliates/affiliates.php:215
 #: templates/dashboard-tab-stats.php:9
 msgid "Paid Referrals"
-msgstr "Parrainages payés"
+msgstr "Ödenmiş Referanslar"
 
 #: includes/admin/affiliates/affiliates.php:217
 #: includes/admin/creatives/creatives.php:158
@@ -1066,55 +1063,55 @@ msgstr "Parrainages payés"
 #: includes/admin/tools/export/class-export-referrals.php:67
 #: templates/dashboard-tab-referrals.php:21
 msgid "Status"
-msgstr "État"
+msgstr "Durum"
 
 #: includes/admin/affiliates/affiliates.php:218
 #: includes/admin/creatives/creatives.php:159
 #: includes/admin/overview/overview.php:118
 #: includes/admin/referrals/referrals.php:225
 msgid "Actions"
-msgstr "Actions"
+msgstr "İşlemler"
 
 #: includes/admin/affiliates/affiliates.php:281
 msgid "(user deleted)"
-msgstr "(utilisateur supprimé)"
+msgstr "(kullanıcı silindi)"
 
 #: includes/admin/affiliates/affiliates.php:359
 #: includes/admin/creatives/creatives.php:232
 #: includes/admin/referrals/referrals.php:374
 msgid "Edit"
-msgstr "Éditer"
+msgstr "Düzenle"
 
 #: includes/admin/affiliates/affiliates.php:362
 #: includes/admin/affiliates/affiliates.php:402
 #: includes/admin/creatives/creatives.php:235
 msgid "Deactivate"
-msgstr "Désactiver"
+msgstr "Devre Dışı Bırak"
 
 #: includes/admin/affiliates/affiliates.php:364
 #: includes/admin/overview/overview.php:133
 msgid "Review"
-msgstr "Avis"
+msgstr "İnceleme"
 
 #: includes/admin/affiliates/affiliates.php:365
 #: includes/admin/affiliates/affiliates.php:399
 #: includes/admin/referrals/referrals.php:362
 #: includes/admin/referrals/referrals.php:454
 msgid "Accept"
-msgstr "Accepter"
+msgstr "Kabul Et"
 
 #: includes/admin/affiliates/affiliates.php:366
 #: includes/admin/affiliates/affiliates.php:400
 #: includes/admin/referrals/referrals.php:368
 #: includes/admin/referrals/referrals.php:455
 msgid "Reject"
-msgstr "Rejeter"
+msgstr "Reddet"
 
 #: includes/admin/affiliates/affiliates.php:368
 #: includes/admin/affiliates/affiliates.php:401
 #: includes/admin/creatives/creatives.php:237
 msgid "Activate"
-msgstr "Activer"
+msgstr "Aktifleştir"
 
 #: includes/admin/affiliates/affiliates.php:371
 #: includes/admin/affiliates/affiliates.php:403
@@ -1122,121 +1119,121 @@ msgstr "Activer"
 #: includes/admin/referrals/referrals.php:375
 #: includes/admin/referrals/referrals.php:458
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "Sil"
 
 #: includes/admin/affiliates/affiliates.php:387
 msgid "No affiliates found."
-msgstr "Aucun affilié trouvé."
+msgstr "Satış ortağı bulunamadı"
 
 #: includes/admin/affiliates/delete.php:14
 #: includes/admin/affiliates/delete.php:49
 msgid "Delete Affiliates"
-msgstr "Supprimer les affiliés"
+msgstr "Satış Ortaklarını Sil"
 
 #: includes/admin/affiliates/delete.php:20
 msgid "You have specified these affiliates for deletion:"
-msgstr "Vous avez spécifié ces affiliés pour la suppression :"
+msgstr "Bu satış ortaklarının silinmesini ayarladınız :"
 
 #: includes/admin/affiliates/delete.php:26
 #, php-format
 msgctxt "Affiliate ID, affiliate name"
 msgid "ID #%d: %s"
-msgstr "ID #%d: %s"
+msgstr "Numara #%d: %s"
 
 #: includes/admin/affiliates/delete.php:33
 msgid ""
 "Deleting these affiliates will also delete their referral and visit data."
 msgstr ""
-"Supprimer ces affiliés va aussi supprimer leurs données de parrainages et de "
-"visites."
+"Bu satış ortaklarını silmek ayrıca onların referans ve ziyaret verilerini de "
+"silecektir"
 
 #: includes/admin/affiliates/delete.php:39
 msgid "Delete affiliate's user accounts as well?"
-msgstr "Supprimer également le compte utilisateur de l'affilié ?"
+msgstr "Satış ortağının kullanıcı hesabını da silinsin mi ?"
 
 #: includes/admin/affiliates/edit.php:10
 msgid "Edit Affiliate"
-msgstr "Éditer Affilié"
+msgstr "Satış Ortağını Düzenle"
 
 #: includes/admin/affiliates/edit.php:21 includes/admin/referrals/edit.php:18
 #: includes/admin/tools/export/class-export-affiliates.php:47
 #: includes/admin/tools/export/class-export-referrals.php:61
 msgid "Affiliate ID"
-msgstr "ID Affilié"
+msgstr "Satış Ortağı Numarası"
 
 #: includes/admin/affiliates/edit.php:26
 msgid "The affiliate's ID. This cannot be changed."
-msgstr "ID de l'affilié. Cela ne peut pas être changé."
+msgstr "Satış Ortağının Numaraı . Değiştirilemez"
 
 #: includes/admin/affiliates/edit.php:34
 msgid "User ID"
-msgstr "ID utilisateur"
+msgstr "Kullanıcı Numarası"
 
 #: includes/admin/affiliates/edit.php:39
 msgid "The affiliate's user ID. This cannot be changed."
-msgstr "ID utilisateur de l'affilié. Cela ne peut pas être changé."
+msgstr "Satış ortağının kullanıcı numarası . Bu değiştirilemez"
 
 #: includes/admin/affiliates/edit.php:47 includes/admin/affiliates/new.php:33
 #: includes/admin/settings/class-settings.php:232
 msgid "Referral Rate Type"
-msgstr "Type du taux de référence"
+msgstr "Referans Onay Tipi"
 
 #: includes/admin/affiliates/edit.php:52 includes/admin/affiliates/new.php:38
 msgid "Site Default"
-msgstr "Site par défaut"
+msgstr "Site Varsayılanı"
 
 #: includes/admin/affiliates/edit.php:57 includes/admin/affiliates/new.php:43
 msgid "The affiliate's referral rate type."
-msgstr "Le type du taux de parrainage de l'affilié. "
+msgstr "Satış ortağının referans oranı tipi"
 
 #: includes/admin/affiliates/edit.php:65 includes/admin/affiliates/new.php:51
 #: includes/admin/settings/class-settings.php:238
 #: includes/integrations/class-edd.php:545
 #: includes/integrations/extras/class-exchange-feature.php:46
 msgid "Referral Rate"
-msgstr "Taux de parrainage"
+msgstr "Referans Oranı"
 
 #: includes/admin/affiliates/edit.php:70 includes/admin/affiliates/new.php:56
 msgid ""
 "The affiliate's referral rate, such as 20 for 20%. If left blank, the site "
 "default will be used."
 msgstr ""
-"Taux de parrainage de l'affilié, tel que 20 pour 20%. Si laissé vide, les "
-"réglages par défaut seront utilisés."
+"Satış ortağının referans oranı , mesela %20 için 20 . Eğer boş "
+"bırakırsanız , site varsayılan değeri kullanılacaktır"
 
 #: includes/admin/affiliates/edit.php:78 templates/register.php:53
 msgid "Account Email"
-msgstr "Email du compte "
+msgstr "Hesap E-Posta"
 
 #: includes/admin/affiliates/edit.php:83
 msgid ""
 "The affiliate's account email. Updating this will change the email address "
 "shown on the user's profile page."
 msgstr ""
-"L'email du compte de l'affilié. Mettre à jour modifiera l'adresse mail "
-"affichée sur la page du profil de l'utilisateur."
+"Satış ortağının hesap e-postası . Bunun güncellenmesi , satış ortağının "
+"kullanıcı profil sayfasında farklı e-posta gösterilmesi demektir."
 
 #: includes/admin/affiliates/edit.php:91 includes/admin/affiliates/new.php:64
 #: templates/register.php:61
 msgid "Payment Email"
-msgstr "Email de paiement "
+msgstr "Ödeme İçin E-Posta"
 
 #: includes/admin/affiliates/edit.php:96 includes/admin/affiliates/new.php:69
 msgid ""
 "Affiliate's payment email for systems such as PayPal, Moneybookers, or "
 "others. Leave blank to use the affiliate's user email."
 msgstr ""
-"L'email de paiement d'affiliation pour les systèmes tels que PayPal, "
-"Moneybookers, ou autres. Laissez vide pour utiliser l'e-mail du compte "
-"utilisateur de l'affilié."
+"Satış ortağının Paypal , Moneybookers gibi sistemlerden ödeme alması için "
+"gerekli ödeme e-posta adresi . Satış ortağının kullanıcı e-postasını "
+"kullanmak için boş bırakınız"
 
 #: includes/admin/affiliates/edit.php:107
 msgid "Update Affiliate"
-msgstr "Mettre à jour l'affilié"
+msgstr "Satış Ortağını Güncelle"
 
 #: includes/admin/affiliates/new.php:3
 msgid "New Affiliate"
-msgstr "Nouvel Affilié"
+msgstr "Yeni Satış Ortağı"
 
 #: includes/admin/affiliates/new.php:9
 #, php-format
@@ -1245,34 +1242,32 @@ msgid ""
 "to a user account, so if the user account for the affiliate does not yet "
 "exist, <a href=\"%s\" target=\"_blank\">create one</a>."
 msgstr ""
-"Utiliser cette page pour enregistrer un nouvel affilié. Chaque affilié est "
-"directement lié à un compte utilisateur, si le compte utilisateur pour "
-"l'affilié n'existe pas encore , <a href=\"%s\" target=\"_blank\">créez en "
-"un</a>."
+"Bu ekranı bir satış ortağı oluşturmak için kullanın . Her bir satış ortağı "
+"bir kullanıcı hesabına bağlıdır , bu yüzden eğer satış ortağı için bir "
+"kullanıcı hesabı yoksa , <a href=\"%s\" target=\"_blank\">oluşturunuz</a>"
 
 #: includes/admin/affiliates/new.php:16
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Kullanıcı"
 
 #: includes/admin/affiliates/new.php:25
 msgid ""
 "Begin typing the name of the affiliate to perform a search for their "
 "associated user account."
 msgstr ""
-"Commencez à taper le nom de l'affilié pour effectuer une recherche de leur "
-"compte utilisateur associé."
+"Satış ortağının bağlı olduğu kullanıcı hesabını incelemek için ismini giriniz"
 
 #: includes/admin/affiliates/new.php:81
 msgid "Add Affiliate"
-msgstr "Ajouter un affilié"
+msgstr "Satış Ortağı Ekle"
 
 #: includes/admin/affiliates/review.php:11
 msgid "Review Affiliate"
-msgstr "Note Affilié"
+msgstr "Satış Ortağını İncele"
 
 #: includes/admin/affiliates/review.php:11
 msgid "Go Back"
-msgstr "Retour"
+msgstr "Geriye Dön"
 
 #: includes/admin/affiliates/review.php:34
 #: includes/admin/settings/class-settings.php:222
@@ -1280,115 +1275,115 @@ msgstr "Retour"
 #: templates/login.php:15 templates/login.php:16 templates/register.php:48
 #: templates/register.php:49
 msgid "Username"
-msgstr "Nom d'utilisateur"
+msgstr "Kullanıcı Adı"
 
 #: includes/admin/affiliates/review.php:46 templates/register.php:54
 msgid "Email Address"
-msgstr "Adresse email"
+msgstr "E-Posta Adresleri"
 
 #: includes/admin/affiliates/review.php:59 templates/register.php:66
 #: templates/register.php:67
 msgid "Website URL"
-msgstr "Adresse du site internet"
+msgstr "Website Linkiniz"
 
 #: includes/admin/affiliates/review.php:63
 msgid "Affiliate's Website URL"
-msgstr "URL du site internet de l'affilié"
+msgstr "Satış Ortağının Websitesi"
 
 #: includes/admin/affiliates/review.php:73
 msgid "Promotion Method"
-msgstr "Méthode de promotion"
+msgstr "Tanıtım Metodu"
 
 #: includes/admin/affiliates/review.php:86
 msgid "Accept Affiliate"
-msgstr "Accepter Affilié"
+msgstr "Satış Ortağını Kabul Et"
 
 #: includes/admin/affiliates/review.php:87
 msgid "Reject Affiliate"
-msgstr "Rejeter Affilié"
+msgstr "Satış Ortağını Reddet"
 
 #: includes/admin/affiliates/view.php:7
 #, php-format
 msgid "Affiliate: #%d %s"
-msgstr "Affilié: #%d %s"
+msgstr "Satış Ortağı : #%d %s"
 
 #: includes/admin/affiliates/view.php:18
 msgid "Total earnings"
-msgstr "Total des gains"
+msgstr "Toplam Kazanç"
 
 #: includes/admin/affiliates/view.php:19
 msgid "Total unpaid earnings"
-msgstr "Total gains non payés"
+msgstr "Toplam ödenmemiş kazançlar"
 
 #: includes/admin/affiliates/view.php:20
 msgid "Total paid referrals"
-msgstr "Total parrainages payés"
+msgstr "Toplam Ödenen Referanslar"
 
 #: includes/admin/affiliates/view.php:21
 msgid "Total unpaid referrals"
-msgstr "Total parrainages impayés"
+msgstr "Toplam ödenmemiş referanslar"
 
 #: includes/admin/affiliates/view.php:22
 msgid "Total pending referrals"
-msgstr "Total parrainages en attente"
+msgstr "Toplam Bekleyen Referanslar"
 
 #: includes/admin/affiliates/view.php:23
 msgid "Total rejected referrals"
-msgstr "Total parrainages rejetés"
+msgstr "Toplam Reddedilen Referanslar"
 
 #: includes/admin/affiliates/view.php:24
 msgid "Total visits"
-msgstr "Total visites"
+msgstr "Toplam Ziyaretler"
 
 #: includes/admin/creatives/actions.php:16
 msgid "You do not have permission to manage creatives"
-msgstr "Vous n'avez pas la permission de gérer les bannières"
+msgstr "Reklamları yönetmek için izniniz yok"
 
 #: includes/admin/creatives/actions.php:44
 msgid "You do not have permission to delete a creative"
-msgstr "Vous n'avez pas la permission de supprimer les bannières"
+msgstr "Bir reklamı silmek için izniniz yok"
 
 #: includes/admin/creatives/actions.php:52
 msgid "No creative IDs specified for deletion"
-msgstr "Aucun IDs de bannière n'a été spécifié pour la suppression"
+msgstr "Silmek için bir reklam numarası belirtilmemiş"
 
 #: includes/admin/creatives/creatives.php:156
 #: includes/admin/creatives/edit.php:43 includes/admin/creatives/new.php:42
 #: includes/admin/overview/overview.php:241
 #: templates/dashboard-tab-visits.php:18
 msgid "URL"
-msgstr "URL"
+msgstr "Adres"
 
 #: includes/admin/creatives/creatives.php:157
 msgid "Shortcode"
-msgstr "Code court"
+msgstr "Kısa Kod"
 
 #: includes/admin/creatives/creatives.php:255
 msgid "No creatives found."
-msgstr "Aucune bannière trouvée."
+msgstr "Reklam bulunamadı"
 
 #: includes/admin/creatives/delete.php:10
 #: includes/admin/creatives/delete.php:32
 msgid "Delete Creative"
-msgstr "Supprimer Bannière"
+msgstr "Reklamı Sil"
 
 #: includes/admin/creatives/delete.php:16
 msgid "Are you sure you want to delete this creative?"
-msgstr "Êtes-vous sûr de vouloir supprimer cette bannière?"
+msgstr "Bu reklamı silmek için emin misiniz ?"
 
 #: includes/admin/creatives/delete.php:21
 #, php-format
 msgctxt "Creative ID, creative name"
 msgid "Creative ID #%d: %s"
-msgstr "Bannière ID #%d: %s"
+msgstr "Reklam Numarası #%d: %s"
 
 #: includes/admin/creatives/edit.php:6
 msgid "Edit Creative"
-msgstr "Modifier Bannière"
+msgstr "Reklamı Düzenle"
 
 #: includes/admin/creatives/edit.php:22 includes/admin/creatives/new.php:21
 msgid "The name of this creative. For your identification only."
-msgstr "Le nom de cette bannière. Seulement pour votre identification."
+msgstr "Bu reklamın adı . Sadece sizin tanımlamanız için"
 
 #: includes/admin/creatives/edit.php:30 includes/admin/creatives/new.php:29
 #: includes/admin/overview/overview.php:207
@@ -1396,128 +1391,127 @@ msgstr "Le nom de cette bannière. Seulement pour votre identification."
 #: includes/admin/referrals/referrals.php:223
 #: templates/dashboard-tab-referrals.php:20
 msgid "Description"
-msgstr "Description"
+msgstr "Açıklama"
 
 #: includes/admin/creatives/edit.php:35 includes/admin/creatives/new.php:34
 msgid ""
 "An optional description for this creative. This is displayed below the "
 "creative for affiliates."
 msgstr ""
-"Une description optionnelle pour  cette bannière. C'est affiché dessous la "
-"bannière pour les affiliés."
+"Bu reklam için opsiyonel bir açıklama . Satış ortakları için reklamın "
+"altında görüntülenecek"
 
 #: includes/admin/creatives/edit.php:48 includes/admin/creatives/new.php:47
 msgid ""
 "Where the creative should link to. The affiliate's referral ID will be "
 "automatically appended."
 msgstr ""
-"Là où la bannière doit pointer. L'ID de parrainage de l'affilié sera "
-"automatiquement rajouté."
+"Reklamın nereye bağlanması gerektiği . Satış ortağının ID si otomatik olarak "
+"bağlanacak"
 
 #: includes/admin/creatives/edit.php:56 includes/admin/creatives/new.php:55
 msgid "Text"
-msgstr "Texte"
+msgstr "Yazı"
 
 #: includes/admin/creatives/edit.php:61 includes/admin/creatives/new.php:60
 msgid "Text for this creative."
-msgstr "Texte pour cette bannière."
+msgstr "Bu reklam için yazı"
 
 #: includes/admin/creatives/edit.php:69 includes/admin/creatives/new.php:68
 msgid "Image"
-msgstr "Image"
+msgstr "Resim"
 
 #: includes/admin/creatives/edit.php:75
 msgid ""
 "Select your image. You can also enter an image URL if your image is hosted "
 "elsewhere."
 msgstr ""
-"Sélectionner votre image. Vous pouvez aussi saisir une URL si votre image "
-"est hébergée ailleurs."
+"Resminizi seçiniz . Eğer resim başka yerde barındırılıyorsa link giriniz"
 
 #: includes/admin/creatives/edit.php:102 includes/admin/creatives/new.php:92
 msgid "Select the status of the creative."
-msgstr "Sélectionner l'état de la bannière."
+msgstr "Reklamın durumunu seçiniz"
 
 #: includes/admin/creatives/edit.php:113
 msgid "Update Creative"
-msgstr "Mettre à jour la bannière"
+msgstr "Reklamı Güncelle"
 
 #: includes/admin/creatives/new.php:3
 msgid "New Creative"
-msgstr "Nouvelle Bannière"
+msgstr "Yeni Reklam"
 
 #: includes/admin/creatives/new.php:9
 msgid ""
 "Use this screen to add a new creative, such as a text link or image banner."
 msgstr ""
-"Utiliser cette page pour ajouter de nouvelle bannière, comme un lien texte "
-"ou une image publicitaire."
+"Bu ekranı yeni bir reklam eklemek için kullanın , mesela bir yazı linki veya "
+"resim banner için"
 
 #: includes/admin/creatives/new.php:74
 msgid ""
 "Select an image if you would like an image banner. You can also enter an "
 "image URL if your image is hosted elsewhere."
 msgstr ""
-"Sélectionner une image si vous souhaitez une image publicitaire. Vous pouvez "
-"aussi entrer une URL si votre image est hébergée ailleurs."
+"Eğer bir resim banner kullanmak istiyorsanız bir resim seçiniz. Eğer "
+"resminiz başka bir yerde barındırılıyorsa link giriniz."
 
 #: includes/admin/creatives/new.php:104
 msgid "Add Creative"
-msgstr "Ajouter Bannière"
+msgstr "Reklam Ekle"
 
 #: includes/admin/overview/overview.php:26
 msgid "Totals"
-msgstr "Totaux"
+msgstr "Toplamlar"
 
 #: includes/admin/overview/overview.php:35
 #: includes/admin/reports/reports.php:86 includes/admin/tools/tools.php:103
 #: templates/dashboard-tab-stats.php:34
 msgid "Paid Earnings"
-msgstr "Gains payés"
+msgstr "Ödenmiş Kazançlar"
 
 #: includes/admin/overview/overview.php:36
 #: includes/admin/reports/reports.php:87
 msgid "Paid Earnings This Month"
-msgstr "Gains payés ce mois"
+msgstr "Bu Ay Ödenen Kazançlar"
 
 #: includes/admin/overview/overview.php:37
 #: includes/admin/reports/reports.php:88
 msgid "Paid Earnings Today"
-msgstr "Gain payés aujourd'hui"
+msgstr "Bu Gün Ödenen Kazançlar"
 
 #: includes/admin/overview/overview.php:61
 #: includes/admin/reports/reports.php:138 templates/dashboard-tab-stats.php:8
 msgid "Unpaid Referrals"
-msgstr "Parrainages non payés"
+msgstr "Ödenmemiş Referanslar"
 
 #: includes/admin/overview/overview.php:62
 #: includes/admin/reports/reports.php:139
 msgid "Unpaid Referrals This Month"
-msgstr "Parrainages non payés ce mois-ci"
+msgstr "Bu Ayki Ödenmemiş Referanslar"
 
 #: includes/admin/overview/overview.php:63
 #: includes/admin/reports/reports.php:140
 msgid "Unpaid Referrals Today"
-msgstr "Parrainages non payés aujourd'hui"
+msgstr "Bugünkü Ödenmemiş Referanslar"
 
 #: includes/admin/overview/overview.php:86
 #: includes/admin/reports/reports.php:112 templates/dashboard-tab-stats.php:33
 msgid "Unpaid Earnings"
-msgstr "Gains non payés"
+msgstr "Ödenmemiş Kazançlar"
 
 #: includes/admin/overview/overview.php:87
 #: includes/admin/reports/reports.php:113
 msgid "Unpaid Earnings This Month"
-msgstr "Gains non payés ce mois-ci"
+msgstr "Bu Ayki Ödenmemiş Kazançlar"
 
 #: includes/admin/overview/overview.php:88
 #: includes/admin/reports/reports.php:114
 msgid "Unpaid Earnings Today"
-msgstr "Gains non payés aujourd'hui"
+msgstr "Bugünkü Ödenmemiş Kazançlar"
 
 #: includes/admin/overview/overview.php:108
 msgid "Latest Affiliate Registrations"
-msgstr "Dernières Inscriptions Affiliés"
+msgstr "En Son Satış Ortaklığı Kayıtları"
 
 #: includes/admin/overview/overview.php:116
 #: includes/admin/overview/overview.php:167
@@ -1527,27 +1521,27 @@ msgstr "Dernières Inscriptions Affiliés"
 #: includes/admin/referrals/referrals.php:221
 #: includes/admin/visits/visits.php:155
 msgid "Affiliate"
-msgstr "Affilié"
+msgstr "Satış Ortağı"
 
 #: includes/admin/overview/overview.php:136
 msgid "View Report"
-msgstr "Afficher le rapport"
+msgstr "Raporu Göster"
 
 #: includes/admin/overview/overview.php:144
 msgid "No affiliate registrations yet"
-msgstr "Aucun affilié inscrit encore"
+msgstr "Henüz satış ortağı kaydı yok"
 
 #: includes/admin/overview/overview.php:159
 msgid "Most Valuable Affiliates"
-msgstr "Les meilleurs affiliés"
+msgstr "En Değerli Satış Ortakları"
 
 #: includes/admin/overview/overview.php:187
 msgid "No registered affiliates"
-msgstr "Aucun affilié enregistré"
+msgstr "Kayıtlı satış ortağı yok"
 
 #: includes/admin/overview/overview.php:197
 msgid "Recent Referrals"
-msgstr "Parrainages récents"
+msgstr "En Son Referanslar"
 
 #: includes/admin/overview/overview.php:206
 #: includes/admin/referrals/edit.php:31 includes/admin/referrals/new.php:33
@@ -1556,121 +1550,121 @@ msgstr "Parrainages récents"
 #: includes/admin/tools/export/class-export-referrals.php:63
 #: templates/dashboard-tab-referrals.php:19
 msgid "Amount"
-msgstr "Quantité"
+msgstr "Miktar"
 
 #: includes/admin/overview/overview.php:223
 msgid "No referrals recorded yet"
-msgstr "Aucun parrainage enregistré pour l'instant"
+msgstr "Henüz referans kaydı yok"
 
 #: includes/admin/overview/overview.php:232
 msgid "Recent Referral Visits"
-msgstr "Récentes visites de parrainages"
+msgstr "En Son Referans Ziyaretleri"
 
 #: includes/admin/overview/overview.php:242
 #: includes/admin/visits/visits.php:158 templates/dashboard-tab-visits.php:20
 msgid "Converted"
-msgstr "Converti"
+msgstr "Dönüşen"
 
 #: includes/admin/overview/overview.php:261
 msgid "No referral visits recorded yet"
-msgstr "Pas de visites de parrainage encore enregistrées"
+msgstr "Henüz herhangi bir referans ziyareti yok"
 
 #: includes/admin/referrals/actions.php:16
 #: includes/admin/referrals/actions.php:47
 msgid "You do not have permission to manage referrals"
-msgstr "Vous n'avez pas la permission pour modifier les parrainages"
+msgstr "Referansları yönetmek için yetkiniz yok"
 
 #: includes/admin/referrals/contextual-help.php:29
 #: includes/admin/visits/contextual-help.php:29
 msgid "For more information:"
-msgstr "Pour plus d'information:"
+msgstr "Daha fazla bilgi için : "
 
 #: includes/admin/referrals/contextual-help.php:30
 #: includes/admin/visits/contextual-help.php:30
 #, php-format
 msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
 msgstr ""
-"Consultez la <a href=\"%s\">documentation</a> sur le site web d'AffiliateWP."
+"AffiliateWP sayfasında <a href=\"%s\">dökümantasyon</a>linkini ziyaret ediniz"
 
 #: includes/admin/referrals/contextual-help.php:31
 #: includes/admin/visits/contextual-help.php:31
 #, php-format
 msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
-msgstr "<a href=\"%s\">Poster un problème</a> sur <a href=\"%s\">GitHub</a>."
+msgstr ""
+"<a href=\"%s\">GitHub</a> üzerinden <a href=\"%s\">Bir sorun bildir</a>"
 
 #: includes/admin/referrals/contextual-help.php:39
 msgid "This screen provides access to your site's referral history."
-msgstr "Cet écran donne accès à l'historique des parrainages de votre site."
+msgstr "Bu ekran sitenin referans geçmişine erişim hakkı verir"
 
 #: includes/admin/referrals/contextual-help.php:40
 msgid ""
 "<strong>Reference</strong>: this refers to the order number (or similar) "
 "that created this referral."
 msgstr ""
-"<strong>Référence</strong>: cela réfère au numéro de commande (ou similaire) "
-"qui a généré ce parrainage."
+"<strong>Referance</strong>: Bu referansın geldiği sipariş numarası ( veya "
+"benzerini) simgeler"
 
 #: includes/admin/referrals/contextual-help.php:41
 msgid "Referral statuses:"
-msgstr "Statuts de parrainage :"
+msgstr "Referans durumları"
 
 #: includes/admin/referrals/contextual-help.php:43
 msgid ""
 "<strong>Paid</strong> - this is a referral that has been paid to the "
 "affiliate"
-msgstr "<strong>Payé</strong> - c'est un parrainage qui a été payé à l'affilié"
+msgstr "<strong>Ödenmiş</strong> - bu satış ortağına ödenmiş bir referans"
 
 #: includes/admin/referrals/contextual-help.php:44
 msgid ""
 "<strong>Unpaid</strong> - this is a referral that has been accepted but not "
 "yet paid to the affiliate"
 msgstr ""
-"<strong>Non-Payé</strong> - c'est un parrainage qui a été accepté mais pas "
-"encore payé à l'affilié"
+"<strong>Ödenmemiş</strong> -Bu referansın kabul edildiğini ama satış "
+"ortağına henüz ödenmediği anlamına gelir"
 
 #: includes/admin/referrals/contextual-help.php:45
 msgid ""
 "<strong>Pending</strong> - this is a referral that is waiting to be accepted"
 msgstr ""
-"<strong>En attente</strong> - c'est un parrainage qui est en attente d'être "
-"accepté"
+"<strong>Bekleyen</strong> - Bu kabul edilmeyi bekleyen bir referans demektir"
 
 #: includes/admin/referrals/contextual-help.php:46
 msgid ""
 "<strong>Rejected</strong> - this is a referral that has been rejected and "
 "will not be paid to the affiliate"
 msgstr ""
-"<strong>Rejeté</strong> - c'est un parrainage qui a été rejeté et ne sera "
-"pas payé à l'affilié"
+"<strong>Reddedildi</strong> - Bu reddedilen ve satış ortağına ödeme "
+"yapılmayacak referans demektir"
 
 #: includes/admin/referrals/contextual-help.php:52
 msgid "Searching Referrals"
-msgstr "Recherche de parrainages"
+msgstr "Referansları Aramak"
 
 #: includes/admin/referrals/contextual-help.php:54
 msgid "Referrals can be searched in several different ways:"
-msgstr "Les parrainages peuvent être cherchés de plusieurs façons:"
+msgstr "Referanslar birden fazla yolla aranabilir :"
 
 #: includes/admin/referrals/contextual-help.php:56
 msgid "You can enter the referral's ID number"
-msgstr "Vous pouvez entrer le numéro d'identification du parrainage ( ID)"
+msgstr "Referansın numarasını girebilirsin"
 
 #: includes/admin/referrals/contextual-help.php:57
 msgid "You can enter the referral reference prefixed by 'ref:'"
-msgstr "Vous pouvez entrer la référence du parrainage préfixée par 'ref:'"
+msgstr "Referansa ait referansı 'ref:' ön eki ile girebilirsin"
 
 #: includes/admin/referrals/contextual-help.php:58
 msgid "You can enter the referral context prefixed by 'context:'"
-msgstr "Vous pouvez entrer le contexte de parrainage préfixé par 'context:'"
+msgstr "Referansa ait bağlamı 'context:' ön eki ile arayabilirsin"
 
 #: includes/admin/referrals/contextual-help.php:59
 #: includes/admin/visits/contextual-help.php:58
 msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
-msgstr "Vous pouvez entrer le numéro d'affilié préfixé par 'affilié:'"
+msgstr "Satış ortağına ait numarayı  'affiliate:' ön eki ile arayabilirsin"
 
 #: includes/admin/referrals/contextual-help.php:65
 msgid "Exporting Referrals"
-msgstr "Exporter Parrainages"
+msgstr "Referansları Dışa Aktarma"
 
 #: includes/admin/referrals/contextual-help.php:67
 msgid ""
@@ -1678,128 +1672,124 @@ msgid ""
 "for your own accounting needs and for you to payout your affiliates's "
 "earnings."
 msgstr ""
-"Les parrainages peuvent être exportés directement dans un fichier CSV afin "
-"de facilité votre comptabilité et vous permettre de payer les gains des "
-"affiliés."
+"Kendi hesaplama ihtiyaçlarınız için referanslar direkt CSV dosyası ile dışa "
+"aktarılabilir ve satış ortaklarının ödemesini yapabilirsiniz"
 
 #: includes/admin/referrals/contextual-help.php:68
 msgid ""
 "The CSV file generated is structured properly for PayPal's Mass Payment "
 "system so you can easily payout all of your affiliates at once via PayPal."
 msgstr ""
-"Le fichier CSV généré est proprement structuré pour le système de Paiement "
-"en Masse de Paypal de manière que vous puissiez payer tous vos affiliés à la "
-"fois avec Paypal."
+"Oluşturulan CSV dosyası PayPal'ın Mass Payment sistemi ile yapılandırılmış "
+"olduğundan kolayca PayPal üzerinden satış ortaklarınıza ödeme yapabilirsiniz"
 
 #: includes/admin/referrals/edit.php:6
 msgid "Edit Referral"
-msgstr "Modifier Parrainage"
+msgstr "Referansı Düzenle"
 
 #: includes/admin/referrals/edit.php:23
 msgid ""
 "The affiliate's ID this referral belongs to. This value cannot be changed."
 msgstr ""
-"L'ID de l'affilié auquel appartient ce parrainage. Cette valeur ne peut être "
-"modifiée."
+"Bu referansın ait olduğu satış ortağının numarası . Bu değer değiştirilemez"
 
 #: includes/admin/referrals/edit.php:36 includes/admin/referrals/new.php:38
 msgid "The amount of the referral, such as 15."
-msgstr "Le montant du parrainage, comme 15."
+msgstr "Referans sayısı , örneğin 15"
 
 #: includes/admin/referrals/edit.php:49 includes/admin/referrals/new.php:51
 msgid "Enter a description for this referral."
-msgstr "Entrez une description pour ce parainnage."
+msgstr "Bu referans için bir açıklama giriniz"
 
 #: includes/admin/referrals/edit.php:57 includes/admin/referrals/new.php:59
 #: includes/admin/referrals/referrals.php:222
 #: includes/admin/tools/export/class-export-referrals.php:65
 msgid "Reference"
-msgstr "Référence"
+msgstr "Referans"
 
 #: includes/admin/referrals/edit.php:62 includes/admin/referrals/new.php:64
 msgid ""
 "Enter a reference for this referral (optional). Usually this would be the "
 "transaction ID of the associated purchase."
 msgstr ""
-"Entrez une référence pour ce parainnage (facultatif). Habituellement, c'est "
-"le numéro de transaction de l'achat associé."
+"Opsiyonel olarak bu referans için bir referans bilgisi giriniz . Genellikle "
+"bu ilgili satın almanın ödeme numarasıdır"
 
 #: includes/admin/referrals/edit.php:70 includes/admin/referrals/new.php:72
 #: includes/admin/tools/export/class-export-referrals.php:66
 msgid "Context"
-msgstr "Contexte"
+msgstr "Bağlam"
 
 #: includes/admin/referrals/edit.php:75 includes/admin/referrals/new.php:77
 msgid ""
 "Enter a context for this referral (optional). Usually this is used to help "
 "identify the payment system that was used for the transaction."
 msgstr ""
-"Entrez un contexte pour ce parannaige (facultatif). Habituellement, cela est "
-"utilisé pour aider à identifier le système de paiement qui a été utilisé "
-"pour la transaction."
+"Bu referans için opsiyonel olarak bir bağlam giriniz . Genellikle bu ödeme "
+"için kullanılan ödeme sistemini tanımlamak için kullanılır. "
 
 #: includes/admin/referrals/edit.php:93 includes/admin/referrals/new.php:95
 msgid "Select the status of the referral."
-msgstr "Sélectionnez l'état du parainnage."
+msgstr "Referansın durumunu seçiniz"
 
 #: includes/admin/referrals/edit.php:106
 msgid "Update Referral"
-msgstr "Mettre à jour le parrainage"
+msgstr "Referansı Güncelle"
 
 #: includes/admin/referrals/new.php:3
 msgid "New Referral"
-msgstr "Nouveau parrainage"
+msgstr "Yeni Referans"
 
 #: includes/admin/referrals/new.php:9
 msgid ""
 "Use this screen to manually create a new referral record for an affiliate."
 msgstr ""
-"Utiliser cette page pour créer manuellement l'enregistrement d'un nouveau "
-"parrainage pour un affilié."
+"Bu ekranı manuel olarak bir satış ortağına yeni referans oluşturmak için "
+"kullanınız."
 
 #: includes/admin/referrals/new.php:25
 msgid ""
 "Enter the name of the affiliate or enter a partial name or email to perform "
 "a search."
 msgstr ""
-"Entrez le nom de l'affilié ou une partie du nom ou une adresse e-mail pour "
-"effectuer une recherche."
+"Satış ortağının adını giriniz veya isim ya da e-posta adresinin bir kısmını "
+"girerek arama yapınız"
 
 #: includes/admin/referrals/new.php:108
 msgid "Add Referral"
-msgstr "Ajouter un parainnage"
+msgstr "Referans Ekle"
 
 #: includes/admin/referrals/referrals.php:39
 msgid "Add New Referral"
-msgstr "Ajouter un nouveau parainnage"
+msgstr "Yeni Referans Ekle"
 
 #: includes/admin/referrals/referrals.php:40
 msgid "Generate Payout File"
-msgstr "Générer le fichier de paiement "
+msgstr "Ödeme Dosyası Oluştur"
 
 #: includes/admin/referrals/referrals.php:41
 msgid "Close"
-msgstr "Fermer"
+msgstr "Kapat"
 
 #: includes/admin/referrals/referrals.php:47
 #: includes/admin/referrals/referrals.php:434
 #: includes/admin/tools/tools.php:236 includes/admin/visits/visits.php:38
 msgid "From - mm/dd/yyyy"
-msgstr "De - jj/mm/aaaa"
+msgstr "Burdan ay/gün/yıl"
 
 #: includes/admin/referrals/referrals.php:48
 #: includes/admin/referrals/referrals.php:435
 #: includes/admin/tools/tools.php:237 includes/admin/visits/visits.php:39
 msgid "To - mm/dd/yyyy"
-msgstr "À - jj/mm/aaaa"
+msgstr "Buraya ay/gün/yıl"
 
 #: includes/admin/referrals/referrals.php:49
 msgid "Minimum amount"
-msgstr "Quantité minimale"
+msgstr "Minimum miktar"
 
 #: includes/admin/referrals/referrals.php:52
 msgid "Generate CSV File"
-msgstr "Générer le fichier CSV"
+msgstr "CSV Dosyası Oluştur"
 
 #: includes/admin/referrals/referrals.php:53
 #, php-format
@@ -1808,9 +1798,10 @@ msgid ""
 "referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s"
 "\">Tools &rarr; Export</a> page."
 msgstr ""
-"Cela marquera tous les parrainages non rémunérés compris dans ce délai comme "
-"impayés . Pour exporter les parrainages autres que <em>impayés</em>, allez "
-"dans le menu <a href=\"%s\">Outils &rarr; Exporter</a>."
+"Bu hamle , bu zaman aralığı için bütün ödenmemiş referansları ödenmiş olarak "
+"işaretler . Eğer <em>ödenmemiş</em> durumundan hariç diğer referansları dışa "
+"aktarmak isterseniz , <a href=\"%s\">Araçlar&rarr; Dışa Aktar</a> sayfasını "
+"ziyaret ediniz"
 
 #: includes/admin/referrals/referrals.php:224
 #: includes/admin/tools/export/class-export-referrals.php:68
@@ -1818,50 +1809,50 @@ msgstr ""
 #: includes/admin/visits/visits.php:159
 #: templates/dashboard-tab-referrals.php:22
 msgid "Date"
-msgstr "Date"
+msgstr "Tarih"
 
 #: includes/admin/referrals/referrals.php:350
 #: includes/admin/referrals/referrals.php:457
 msgid "Mark as Unpaid"
-msgstr "Marquer comme Impayé"
+msgstr "Ödenmedi Olarak İşaretle"
 
 #: includes/admin/referrals/referrals.php:356
 #: includes/admin/referrals/referrals.php:456
 msgid "Mark as Paid"
-msgstr "Marquer comme Payé"
+msgstr "Ödendi Olarak İşaretle"
 
 #: includes/admin/referrals/referrals.php:389
 msgid "No referrals found."
-msgstr "Aucun parrainage trouvé."
+msgstr "Referans bulunamadı"
 
 #: includes/admin/referrals/referrals.php:413
 msgid "Bulk Actions"
-msgstr "Actions globales"
+msgstr "Toplu İşlemler"
 
 #: includes/admin/referrals/referrals.php:425
 msgid "Apply"
-msgstr "Appliquer"
+msgstr "Uygula"
 
 #: includes/admin/reports/class-registrations-graph.php:68
 #: includes/admin/reports/reports.php:67
 msgid "Affiliate Registrations"
-msgstr "Inscriptions Affiliés"
+msgstr "Satış Ortağı Kayıtları"
 
 #: includes/admin/reports/reports.php:186
 msgid "Successful Conversions"
-msgstr "Conversions Réussies"
+msgstr "Başarılı Dönüşümler"
 
 #: includes/admin/reports/reports.php:187 templates/dashboard-tab-stats.php:11
 msgid "Conversion Rate"
-msgstr "Taux de conversion"
+msgstr "Dönüşüm Oranı"
 
 #: includes/admin/settings/class-settings.php:178
 msgid "License Settings"
-msgstr "Réglages de la licence"
+msgstr "Lisans Ayarları"
 
 #: includes/admin/settings/class-settings.php:183
 msgid "License Key"
-msgstr "Clé de licence"
+msgstr "Lisans Anahtarı"
 
 #: includes/admin/settings/class-settings.php:184
 #, php-format
@@ -1869,45 +1860,45 @@ msgid ""
 "Please enter your license key. An active license key is needed for automatic "
 "plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
 msgstr ""
-"Veuillez saisir votre clé de licence. Une clé de licence active est "
-"nécessaire pour bénéficier des mises à jour automatiques de l'extension et "
-"du <a href=\"%s\" target=\"_blank\">support</a>."
+"Lütfen lisans anahtarınızı giriniz . Bu lisans anahtarı otomatik eklenti "
+"güncellemeleri ve <a href=\"%s\" target=\"_blank\">destek</a> için gereklidir"
 
 #: includes/admin/settings/class-settings.php:189
 msgid "Pages"
-msgstr "Pages"
+msgstr "Sayfalar"
 
 #: includes/admin/settings/class-settings.php:195
 msgid "This is the page where affiliates will manage their affiliate account."
-msgstr "Ceci est la page où les affiliés vont gérer leur compte affilié."
+msgstr "Bu sayfa , satış ortaklarının satış ortaklığını yönetecekleri yerdir"
 
 #: includes/admin/settings/class-settings.php:200
 msgid "Terms of Use"
-msgstr "Conditions d'utilisation"
+msgstr "Kullanım Koşulları"
 
 #: includes/admin/settings/class-settings.php:201
 msgid "Select the page that shows the terms of use for Affiliate Registration"
 msgstr ""
-"Sélectionnez la page qui montre les conditions d'utilisation pour "
-"l'inscription d'affiliation"
+"Satış ortaklığı kaydı için kabul edilmesi gereken kuralları gösteren sayfayı "
+"seçiniz"
 
 #: includes/admin/settings/class-settings.php:206
 msgid "Referral Settings"
-msgstr "Réglages du parrainage"
+msgstr "Referans Ayarları"
 
 #: includes/admin/settings/class-settings.php:211
 msgid "Referral Variable"
-msgstr "Variable de parrainage"
+msgstr "Referans değişkeni"
 
 #: includes/admin/settings/class-settings.php:212
 #, php-format
 msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
 msgstr ""
-"L'URL variable pour les URLs de parrainage. Par exemple: <strong>%s</strong>."
+"Referans linkleri için satış ortaklığı linki değişkeni . Örneğin : <strong>"
+"%s</strong>"
 
 #: includes/admin/settings/class-settings.php:217
 msgid "Default Referral Format"
-msgstr "Format de parrainage par défaut"
+msgstr "Varsayılan Referans Formatı"
 
 #: includes/admin/settings/class-settings.php:218
 #, php-format
@@ -1915,12 +1906,13 @@ msgid ""
 "Show referral URLs to affiliates with either their affiliate ID or Username "
 "appended.<br/> For example: <strong>%s or %s</strong>."
 msgstr ""
-"Afficher des URLs de parrainage aux affiliés avec leur ID d'affilié ou leur "
-"identifiant.<br>Par exemple : <strong>%s ou %s</strong>."
+"Satış ortaklarına satış ortaklığı linklerinin numaralı ekli mi yoksa "
+"kullanıcı adı ekli mi olacağını gösterir .  <br/> Örneğin: <strong>%s veya "
+"%s</strong>."
 
 #: includes/admin/settings/class-settings.php:227
 msgid "Pretty Affiliate URLs"
-msgstr "Jolies URLs d'affiliation"
+msgstr "Güzel Satış Ortaklığı Linkleri"
 
 #: includes/admin/settings/class-settings.php:228
 #, php-format
@@ -1928,14 +1920,14 @@ msgid ""
 "Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
 "%s</strong>"
 msgstr ""
-"Afficher de jolies parrainages d'affiliation aux affiliés. Par exemple : "
-"<strong>%s ou %s</strong>"
+"Satış ortaklarının linklerinin görünümünü biraz daha güzel yapar . Örneğin: "
+"<strong>%s veya %s</strong>"
 
 #: includes/admin/settings/class-settings.php:233
 msgid "Should referrals be based on a percentage or flat rate amounts?"
 msgstr ""
-"Les parrainages doivent-ils être basés sur un pourcentage ou un montant "
-"fixe ?"
+"Referans komisyonları  belirli bir yüzde üzerine mi düz miktar üzerine mi "
+"tanımlanmalı ?"
 
 #: includes/admin/settings/class-settings.php:239
 msgid ""
@@ -1943,93 +1935,92 @@ msgid ""
 "flat amount otherwise. Rates can be set for each affiliate individually as "
 "well."
 msgstr ""
-"Le taux de parrainage par défaut. Un pourcentage si le type de parrainage "
-"choisi est en pourcentage, autrement une valeure fixe. Les taux peuvent être "
-"aussi bien définis individuellement pour chaque affilié."
+"Varsayılan referans oranı . Referans tipi yüzdelikli ise , bir oran , "
+"değilse düz miktar olarak kalacaktır . Her bir satış ortağı için ayrı ayrı "
+"da seçilebilir . "
 
 #: includes/admin/settings/class-settings.php:246
 msgid "Exclude Shipping"
-msgstr "Exclure la livraison"
+msgstr "Kargolama Hariç"
 
 #: includes/admin/settings/class-settings.php:247
 msgid "Should shipping costs be excluded from referral calculations?"
-msgstr ""
-"Les frais de livraison doivent-ils être exclus des calculs de parrainage ?"
+msgstr "Referans komisyonlarından kargolama masrafları düşülsün mü ?"
 
 #: includes/admin/settings/class-settings.php:251
 msgid "Exclude Tax"
-msgstr "Hors TVA"
+msgstr "Vergi Hariç"
 
 #: includes/admin/settings/class-settings.php:252
 msgid "Should taxes be excluded from referral calculations?"
-msgstr "La TVA doit-elle être exclues des calculs de parrainage ?"
+msgstr "Vergiler referans komisyonlarından hariç tutulsun mu ?"
 
 #: includes/admin/settings/class-settings.php:256
 msgid "Cookie Expiration"
-msgstr "Expiration des cookies"
+msgstr "Çerez Süresi"
 
 #: includes/admin/settings/class-settings.php:257
 msgid "How many days should the referral tracking cookie be valid for?"
-msgstr "Combien de jours le cookie de suivi de parrainage doit être valide?"
+msgstr "Referans takibi için çerezin kaç gün geçerli olacağını belirler"
 
 #: includes/admin/settings/class-settings.php:263
 msgid "Currency Settings"
-msgstr "Réglages des devises"
+msgstr "Para Birimleri Ayarı"
 
 #: includes/admin/settings/class-settings.php:264
 msgid "Configure the currency options"
-msgstr "Configurer les options de devise"
+msgstr "Para birimleri seçeneklerini ayarla"
 
 #: includes/admin/settings/class-settings.php:268
 #: includes/admin/tools/export/class-export-referrals-payout.php:42
 #: includes/admin/tools/export/class-export-referrals.php:64
 msgid "Currency"
-msgstr "Devise"
+msgstr "Para Birimi"
 
 #: includes/admin/settings/class-settings.php:269
 msgid ""
 "Choose your currency. Note that some payment gateways have currency "
 "restrictions."
 msgstr ""
-"Choisissez votre devise. Notez que certaines passerelles de paiement ont des "
-"restrictions de devise."
+"Para birimini seç . Unutmayın ki bazı ödeme işlemcileri bazı para "
+"birimlerine sınırlama getirmiştir."
 
 #: includes/admin/settings/class-settings.php:274
 msgid "Currency Position"
-msgstr "Position de la devise"
+msgstr "Para Birimi Pozisyonu"
 
 #: includes/admin/settings/class-settings.php:275
 msgid "Choose the location of the currency sign."
-msgstr "Choisissez l'emplacement du signe de la monnaie."
+msgstr "Para birimine ait simgenin pozisyonunu seçin"
 
 #: includes/admin/settings/class-settings.php:278
 msgid "Before - $10"
-msgstr "Avant - $10"
+msgstr "Önce - $10"
 
 #: includes/admin/settings/class-settings.php:279
 msgid "After - 10$"
-msgstr "Après - 10$"
+msgstr "Sonra - 10$"
 
 #: includes/admin/settings/class-settings.php:283
 msgid "Thousands Separator"
-msgstr "Séparateur des milliers"
+msgstr "Binliklerin Ayrımı"
 
 #: includes/admin/settings/class-settings.php:284
 msgid "The symbol (usually , or .) to separate thousands"
-msgstr "Le symbole (habituellement , ou .) pour séparer les milliers"
+msgstr "Binlikleri ayıran işaret ( genellikle , veya . olur )"
 
 #: includes/admin/settings/class-settings.php:290
 msgid "Decimal Separator"
-msgstr "Séparateur des dizaines"
+msgstr "Ondalık Kesim Ayrımı"
 
 #: includes/admin/settings/class-settings.php:291
 msgid "The symbol (usually , or .) to separate decimal points"
-msgstr "Le symbole (habituellement , ou .) pour séparer les décimales"
+msgstr "Ondalık kısmı ayıran işaret ( genellikle , veya . olur )"
 
 #: includes/admin/settings/class-settings.php:302
 #: includes/admin/settings/display-settings.php:74
 msgid "Integrations"
-msgstr "Intégrations"
+msgstr "Entegrasyonlar"
 
 #: includes/admin/settings/class-settings.php:303
 #, php-format
@@ -2039,11 +2030,10 @@ msgid ""
 "track and create referrals. Refer to the <a href=\"%s\" target=\"_blank"
 "\">documentation</a> for help using this."
 msgstr ""
-"Choisissez les intégrations à activer. Si vous en utilisez aucune, vous "
-"pouvez utiliser le code court <strong>[affiliate_conversion_script]</strong> "
-"pour suivre et créer des parrainages. Reportez-vous à la <a href=\"%s\" "
-"target=\"_blank\">documentation</a> pour obtenir de l'aide sur son "
-"utilisation."
+"Aktifleştirmek istediğiniz entegrasyonları seçiniz . Eğer bunlardan birisini "
+"kullanmıyorsanız , [affiliate_conversion_script] kısa kodu ile referans "
+"oluşturup takip edebilirsiniz . <a href=\"%s\" target=\"_blank\">dökümanlar</"
+"a> adresinden detaylı bilgi edinebilirsiniz"
 
 #: includes/admin/settings/class-settings.php:313
 msgid "Logo"
@@ -2051,233 +2041,229 @@ msgstr "Logo"
 
 #: includes/admin/settings/class-settings.php:314
 msgid "Upload or choose a logo to be displayed at the top of emails."
-msgstr "Télécharger ou choisir un logo à afficher en haut de l'e-mail."
+msgstr ""
+"E-Postaların üstünde görüntülenecek logo resmini seçiniz ya da yükleyiniz"
 
 #: includes/admin/settings/class-settings.php:318
 msgid "Email Template"
-msgstr "Modèle d'e-mail"
+msgstr "E-Posta Teması"
 
 #: includes/admin/settings/class-settings.php:319
 msgid "Choose a template to use for email messages."
-msgstr "Choisir un modèle à utiliser pour les e-mails."
+msgstr "E-Posta mesajlarınız için bir tema seçiniz"
 
 #: includes/admin/settings/class-settings.php:324
 msgid "From Name"
-msgstr "Nom de l'expéditeur"
+msgstr "Hangi İsimden"
 
 #: includes/admin/settings/class-settings.php:325
 msgid ""
 "The name emails are said to come from. This should probably be your site "
 "name."
-msgstr "Nom de l'expéditeur de l'e-mail. Sans doute le nom de votre site."
+msgstr "E-Postaların geldiği isim . Muhtemelen site adınız olmalı"
 
 #: includes/admin/settings/class-settings.php:330
 msgid "From Email"
-msgstr "E-mail de l'expéditeur"
+msgstr "Hangi E-Postadan"
 
 #: includes/admin/settings/class-settings.php:331
 msgid ""
 "Email to send emails from. This will act as the \"from\" and \"reply-to\" "
 "address."
 msgstr ""
-"Adresse e-mail de l'expéditeur. Utilisée pour l'adresse d'envoi et de "
-"réponse."
+"E-Postaların gönderildiği adres . Gönderen ya da yanıt tipindeki e-posta "
+"adresleri seçilebilir"
 
 #: includes/admin/settings/class-settings.php:336
 msgid "Notify Admins"
-msgstr "Avertir Admins"
+msgstr "Yöneticileri Bilgilendir"
 
 #: includes/admin/settings/class-settings.php:337
 msgid "Notify site admins of new affiliate registrations?"
-msgstr ""
-"Avertir les administrateurs du site lors de nouvelles inscriptions "
-"d'affiliés?"
+msgstr "Yeni satış ortaklığı kayıtlarında yönetim bilgilendirilsin mi ?"
 
 #: includes/admin/settings/class-settings.php:341
 msgid "Registration Email Subject"
-msgstr "Sujet de l'e-mail d'inscription"
+msgstr "Kayıt E-Posta Konusu"
 
 #: includes/admin/settings/class-settings.php:342
 msgid ""
 "Enter the subject line for the registration email sent to admins when new "
 "affiliates register."
 msgstr ""
-"Saisissez la ligne de sujet pour le-mail d'inscription envoyé aux "
-"administrateurs lors de l'enregistrement de nouveaux affiliés."
+"Yeni satış ortakları kaydolduğunda yönetime gönderilecek bildirim e-"
+"postasının konusu"
 
 #: includes/admin/settings/class-settings.php:344
 #: includes/emails/actions.php:41
 msgid "New Affiliate Registration"
-msgstr "Enregistrement d'un nouvel affilié"
+msgstr "Yeni Satış Ortağı Kaydı"
 
 #: includes/admin/settings/class-settings.php:347
 msgid "Registration Email Content"
-msgstr "Contenu de l'e-mail d'inscription"
+msgstr "Kayıt E-Posta İçeriği"
 
 #: includes/admin/settings/class-settings.php:348
 msgid ""
 "Enter the email to send when a new affiliate registers. HTML is accepted. "
 "Available template tags:"
 msgstr ""
-"Saisissez l'email à envoyer lorsqu'un nouvel affilié s'inscrit. L'HTML est "
-"accepté. Balises de modèle disponibles :"
+"Yeni satış ortağı kaydolduğunda gönderilecek e-postayı giriniz . HTML "
+"kodları kabul edilir . Mevcut tema etiketleri :"
 
 #: includes/admin/settings/class-settings.php:350
 #, php-format
 msgid "A new affiliate has registered on your site, %s"
-msgstr "Un nouvel affilié est enregistré sur votre site, %s"
+msgstr "Websitenize yeni bir satış ortağı kaydoldu, %s"
 
 #: includes/admin/settings/class-settings.php:350
 msgid "Name: "
-msgstr "Nom :"
+msgstr "İsim:"
 
 #: includes/admin/settings/class-settings.php:353
 msgid "Application Accepted Email Subject"
-msgstr "Sujet de l'e-mail d'acceptation de la demande"
+msgstr "Başvuru Kabul Edildi E-Posta Konusu"
 
 #: includes/admin/settings/class-settings.php:354
 msgid ""
 "Enter the subject line for accepted application emails sent to affiliates "
 "when their account is approved."
 msgstr ""
-"Saisissez la ligne de sujet pour l'e-mail d'acceptation de la demande envoyé "
-"aux affiliés lorsque leur compte est approuvé."
+"Satış ortaklarının başvuruları kabul edildiğinde alacakları e-postanın konusu"
 
 #: includes/admin/settings/class-settings.php:356
 #: includes/emails/actions.php:96
 msgid "Affiliate Application Accepted"
-msgstr "Demande d'affiliation acceptée"
+msgstr "Satış ortaklığı başvurusu kabul edildi"
 
 #: includes/admin/settings/class-settings.php:359
 msgid "Application Accepted Email Content"
-msgstr "Contenu de l'e-mail d'acceptation de la demande"
+msgstr "Başvuru Kabul Edildi E-Postasının İçeriği"
 
 #: includes/admin/settings/class-settings.php:360
 msgid ""
 "Enter the email to send when an application is accepted. HTML is accepted. "
 "Available template tags:"
 msgstr ""
-"Saisissez l'email à envoyer lorsqu'une demande est acceptée. L'HTML est "
-"accepté. Balises de modèle disponibles :"
+"Başvuru kabul edildiğinden gönderilecek e-posta içeriğini giriniz . HTML "
+"kabul edilir . Mevcut tema etiketleri :"
 
 #: includes/admin/settings/class-settings.php:362
 #: includes/admin/settings/class-settings.php:374
 msgid "Congratulations"
-msgstr "Félicitations"
+msgstr "Tebrikler"
 
 #: includes/admin/settings/class-settings.php:362
 #: includes/emails/actions.php:101
 #, php-format
 msgid "Your affiliate application on %s has been accepted!"
-msgstr "Votre demande d'affiliation sur %s a été acceptée !"
+msgstr "%s üzerindeki satış ortaklığı başvurunuz kabul edildi !"
 
 #: includes/admin/settings/class-settings.php:362
 msgid "Log into your affiliate area at"
-msgstr "Connectez-vous à votre espace d'affilié sur"
+msgstr "Satış ortaklığı paneline giriş yapınız"
 
 #: includes/admin/settings/class-settings.php:365
 msgid "New Referral Email Subject"
-msgstr "Sujet de l'e-mail pour les nouveaux parrainages"
+msgstr "Yeni Referans E-Posta Konusu"
 
 #: includes/admin/settings/class-settings.php:366
 msgid ""
 "Enter the subject line for new referral emails sent when affiliates earn "
 "referrals."
 msgstr ""
-"Saisissez l'objet des e-mails envoyés aux affiliés pour un nouveau "
-"parrainage."
+"Satış ortakları bir referans kazandığında gönderilen yeni referans "
+"kazandınız e-postasının konusu"
 
 #: includes/admin/settings/class-settings.php:368
 #: includes/emails/actions.php:144
 msgid "Referral Awarded!"
-msgstr "Parrainage récompensé!"
+msgstr "Satış Gerçekleşti !"
 
 #: includes/admin/settings/class-settings.php:371
 msgid "New Referral Email Content"
-msgstr "Nouveau contenu de l'e-mail de parrainage"
+msgstr "Yeni Referans E-Posta Konusu"
 
 #: includes/admin/settings/class-settings.php:372
 msgid ""
 "Enter the email to send on new referrals. HTML is accepted. Available "
 "template tags:"
 msgstr ""
-"Saisissez l'email à envoyer lors d'un nouveau parrainage. L'HTML est "
-"accepté. Balises de modèle disponibles :"
+"Yeni referans edinildiğinde gelen e-posta içeriği . HTML kabul edilir . "
+"Mevcut tema etiketleri :"
 
 #: includes/admin/settings/class-settings.php:374
 msgid "You have been awarded a new referral of"
-msgstr "Vous avez été recompensé d'un nouveau parrainage de"
+msgstr "Şu kişinin referansı tarafından komisyon kazandınız"
 
 #: includes/admin/settings/class-settings.php:374
 #, php-format
 msgid "on %s!"
-msgstr "sur %s !"
+msgstr "%s! üzerinde"
 
 #: includes/admin/settings/class-settings.php:374
 msgid ""
 "Log into your affiliate area to view your earnings or disable these "
 "notifications:"
 msgstr ""
-"Connectez-vous à votre espace d'affilié pour voir vos gains ou désactiver "
-"ces notifications :"
+"Satış ortaklığı panelinize giriş yaparak kazançlarınıza göz atın ya da bu "
+"bildirimleri kapatın :"
 
 #: includes/admin/settings/class-settings.php:382
 msgid "Allow affiliate registration"
-msgstr "Autoriser l'enregistrement d'affilié"
+msgstr "Satış ortaklığı kaydına izin ver"
 
 #: includes/admin/settings/class-settings.php:383
 msgid "Should affiliates be able to register accounts for themselves?"
-msgstr "Les affiliés peuvent-ils enregistrer des comptes pour eux-mêmes ?"
+msgstr "Satış ortakları kendilerine hesap oluşturmak zorunda olsunlar mı ?"
 
 #: includes/admin/settings/class-settings.php:387
 msgid "Require approval"
-msgstr "Requiert l'approbation"
+msgstr "Onay Gereksin"
 
 #: includes/admin/settings/class-settings.php:388
 msgid ""
 "Require that site admins approve affiliates before they can begin earning "
 "referrals?"
 msgstr ""
-"Requiert que les administrateurs du site approuvent les affiliés avant "
-"qu'ils puissent commencer à gagner des commissions?"
+"Satış ortakları referans kazanmaya başlamadan önce yönetici tarafından "
+"onaylansın mı ?"
 
 #: includes/admin/settings/class-settings.php:392
 msgid "Auto Register New Users"
-msgstr "Enregistrer automatiquement les nouveaux utilisateurs"
+msgstr "Yeni Kullanıcıları Otomatik Kaydet"
 
 #: includes/admin/settings/class-settings.php:393
 msgid "Automatically register new users as affiliates?"
-msgstr ""
-"Enregistrer automatiquement les nouveaux utilisateurs en tant qu'affiliés?"
+msgstr "Otomatik olarak yeni kullanıcılar satış ortağı yapılsın mı ?"
 
 #: includes/admin/settings/class-settings.php:397
 msgid "Reject Unpaid Referrals on Refund?"
-msgstr "Rejeter les parrainages impayés lors des remboursements ?"
+msgstr "Geri ödeme durumunda ödenmemiş referanslar reddedilsin mi ?"
 
 #: includes/admin/settings/class-settings.php:398
 msgid ""
 "Should unpaid referrals get automatically rejected when the originating "
 "purchase is refunded or revoked?"
 msgstr ""
-"Les parrainages non payés devraient-ils être automatiquement rejetés lorsque "
-"l'achat d'origine est remboursé ou annulé ?"
+"Satın alma geri iade edildiğinde veya iptal edildiğinde , ilgili ödenmemiş "
+"referanslar otomatik olarak reddedilsin mi ?"
 
 #: includes/admin/settings/class-settings.php:402
 msgid "Use Fallback Referral Tracking Method?"
-msgstr "Utilisez la méthode Fallback pour le suivi de parrainage ?"
+msgstr "Geriçekilme Referans Takip Metodu Kullanılsın mı ?"
 
 #: includes/admin/settings/class-settings.php:403
 msgid ""
 "The method used to track referral links can fail on sites that have jQuery "
 "errors. Check this if referrals are not getting tracked properly."
 msgstr ""
-"La méthode utilisée pour le suivi des liens de parrainage peut échouer sur "
-"les sites comportant des erreurs jQuery. Cochez cette case si les "
-"parrainages ne sont pas suivis correctement."
+"Bu metod , jquery hataları olan sitelerde referans linklerinin takibini "
+"yapar . Bunu sadece referanslarınız düzgün takip edilmiyorsa işaretleyin"
 
 #: includes/admin/settings/class-settings.php:407
 msgid "Ignore Zero Referrals?"
-msgstr "Ignorer Parrainages Zéro?"
+msgstr "Sıfır Referansları Atla ?"
 
 #: includes/admin/settings/class-settings.php:408
 msgid ""
@@ -2287,155 +2273,154 @@ msgid ""
 "Please note: if this setting is enabled and a visit results in a zero "
 "referral, then the visit would be considered not converted."
 msgstr ""
-"Cocher cette case si vous souhaitez qu'AffiliateWP ignore complètement les "
-"parrainages d'un montant total de zéro. Cela peut être utile pour des "
-"produits multi-prix qui commencent à zéro, ou si une remise a été utilisée, "
-"et a donné un total de zéro. Veuillez noter : si ce paramètre est activé et "
-"qu'une visite résulte à un parrainage à zéro, la visite serait considérée "
-"comme non convertie."
+"Bu seçeneği sadece AffiliateWP ile ödeme tutarı 0 olan satın almaları "
+"atlamak için kullanın . Bu , içerisinde 0 da olan birden fazla ödeme miktarı "
+"sunulan çok fiyatlı tekliflerde faydalı olabilir , ya da 0 miktar ödenmesine "
+"yol açan bir indirim kuponu kullanıldıysa . Lütfen dikkat : Eğer bu seçenek "
+"seçilirse ve ziyaret Sıfır Referans ile sonuçlanırsa , o zaman ziyaret de "
+"dönüşüm olmamış gibi algılanacaktır. "
 
 #: includes/admin/settings/class-settings.php:412
 msgid "Remove Data on Uninstall?"
-msgstr "Supprimer les données lors de la désinstallation ?"
+msgstr "Kaldırma durumunda veriler de silinsin mi ?"
 
 #: includes/admin/settings/class-settings.php:413
 msgid ""
 "Check this box if you would like AffiliateWP to completely remove all of its "
 "data when the plugin is deleted."
 msgstr ""
-"Cocher cette case si vous souhaitez que AffiliateWP supprime complètement "
-"toutes ses données lorsque l'extension est supprimée."
+"Bu kutucuğu eğer AffiliateWP eklentisi kaldırıldığında beraberinde bütün "
+"verilerin de silinmesini istiyorsanız işaretleyin"
 
 #: includes/admin/settings/class-settings.php:552
 msgid "Deactivate License"
-msgstr "Désactiver la licence"
+msgstr "Lisansı Devre Dışı Bırak"
 
 #: includes/admin/settings/class-settings.php:553
 msgid "Your license is valid!"
-msgstr "Votre licence est valide !"
+msgstr "Lisansınız geçerli !"
 
 #: includes/admin/settings/class-settings.php:556
 msgid "Renew Your License"
-msgstr "Renouveler votre licence"
+msgstr "Lisansınızı Yenileyin"
 
 #: includes/admin/settings/class-settings.php:557
 msgid ""
 "Your license has expired, renew today to continue getting updates and "
 "support!"
 msgstr ""
-"Votre licence a expiré, renouvelez aujourd'hui pour continuer à bénéficier "
-"des mises à jour et de l'assistance!"
+"Lisansınız sona erdi , bugün yenileyerek güncellemelerden ve destek "
+"biriminden faydalanın !"
 
 #: includes/admin/settings/class-settings.php:559
 msgid "Activate License"
-msgstr "Activer la licence"
+msgstr "Lisansı aktifleştir"
 
 #: includes/admin/settings/class-settings.php:653
 #, php-format
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
-msgstr ""
-"La fonction de rappel utilisée pour le paramètre <strong>%s</strong> est "
-"manquante."
+msgstr "Geri çağrı özelliği <strong>%s</strong> ayarları kayıp ise kullanılır"
 
 #: includes/admin/settings/class-settings.php:728
 msgid "Upload File"
-msgstr "Télécharger fichier"
+msgstr "Dosya Gönder"
 
 #: includes/admin/settings/display-settings.php:73
 msgid "General"
-msgstr "Généraux"
+msgstr "Genel"
 
 #: includes/admin/settings/display-settings.php:75
 msgid "Emails"
-msgstr "E-mails"
+msgstr "E-Postalar"
 
 #: includes/admin/settings/display-settings.php:76
 msgid "Misc"
-msgstr "Divers"
+msgstr "Çeşitli"
 
 #: includes/admin/tools/migration.php:17
 msgid ""
 "The upgrade process is running, please be patient. This could take several "
 "minutes to complete while affiliate records are upgraded in batches of 100."
 msgstr ""
-"Le processus de mise à jour est en cours, veuillez patienter. Cela peut "
-"prendre plusieurs minutes si les enregistrements d'affiliés sont mis à jour "
-"par lot de 100."
+"Yükseltme işlemi devam ediyor , lütfen sabırlı olunuz .  Bu işlem , satış "
+"ortaklığı kayıtları yüzer yüzer alınarak yükseltildiği için bir kaç dakika "
+"sürebilir"
 
 #: includes/admin/tools/migration.php:18
 #, php-format
 msgid "Step %d running"
-msgstr "Étape %d en cours"
+msgstr "Adım %d çalışıyor"
 
 #: includes/admin/tools/tools.php:75
 msgid "Export / Import"
-msgstr "Exporter/Importer"
+msgstr "Çıktı / Girdi"
 
 #: includes/admin/tools/tools.php:76
 msgid "Recount Stats"
-msgstr "Recompter Stats"
+msgstr "İstatistikleri Yeniden Say"
 
 #: includes/admin/tools/tools.php:77
 msgid "Migration Assistant"
-msgstr "Assistant de Migration"
+msgstr "Geçiş Asistanı"
 
 #: includes/admin/tools/tools.php:93
 msgid "Recount Affiliate Stats"
-msgstr "Recompter Stats Affiliés"
+msgstr "Satış Ortağı İstatistiklerini Yeniden Say"
 
 #: includes/admin/tools/tools.php:95
 msgid "Use this tool to recount affiliate statistics."
-msgstr "Utiliser cet outil pour recompter les statistiques d'affiliation."
+msgstr ""
+"Bu aracı satış ortaklığı istatistiklerini yeniden saymak için kullanınız"
 
 #: includes/admin/tools/tools.php:99 includes/admin/tools/tools.php:232
 #: includes/admin/visits/visits.php:32
 msgid "Affiliate name"
-msgstr "Nom Affilié"
+msgstr "Satış Ortağı Adı"
 
 #: includes/admin/tools/tools.php:108
 msgid ""
 "Enter the name of the affiliate or begin typing to perform a search based on "
 "the affiliate's name."
 msgstr ""
-"Entrez le nom de l'affilié ou commencez à taper pour effectuer une recherche "
-"basée sur le nom de l'affilié."
+"Satış ortağının adını girin veya satış ortağının adı ile alakalı kelimler "
+"ile arama başlatın"
 
 #: includes/admin/tools/tools.php:113
 msgid "Recount"
-msgstr "Recompter"
+msgstr "Yeniden Sayım"
 
 #: includes/admin/tools/tools.php:136
 msgid ""
 "These tools assist in migrating affiliate and referral data from existing "
 "platforms."
 msgstr ""
-"Ces outils aident à migrer les affiliés et les données de parrainage de "
-"plateformes existantes."
+"Bu araç diğer platformlardaki satış ortakları ve referansların geçişi için "
+"kullanılır."
 
 #: includes/admin/tools/tools.php:141
 msgid "User Accounts"
-msgstr "Comptes utilisateur"
+msgstr "Kullanıcı Hesapları"
 
 #: includes/admin/tools/tools.php:143
 msgid ""
 "Use this tool to create affiliate accounts for each of your existing "
 "WordPress user accounts."
 msgstr ""
-"Utiliser cet outil pour créer des comptes d'affiliés pour chacun des comptes "
-"utilisateurs WordPress existants."
+"Bu aracı Wordpress kullanıcı hesaplarının her birinden satış ortaklığı "
+"hesapları oluşturmak için kullanınız"
 
 #: includes/admin/tools/tools.php:149
 msgid "Create Affiliate Accounts"
-msgstr "Créer Comptes Affiliés"
+msgstr "Satış Ortaklığı Hesapları Oluştur"
 
 #: includes/admin/tools/tools.php:158
 msgid ""
 "Use this tool migrate existing affiliate / referral data from Affiliates Pro "
 "to AffiliateWP."
 msgstr ""
-"Utiliser cet outil pour migrer les données affilié / parrainage existantes "
-"de Affiliates Pro vers AffiliateWP."
+"Bu aracı Affiliates Pro daki mevcut satış ortakları ve referansları "
+"AffiliateWP ye geçirmek için kullanınız"
 
 #: includes/admin/tools/tools.php:159
 msgid ""
@@ -2443,208 +2428,207 @@ msgid ""
 "install. If you have already collected affiliate or referral data, do not "
 "use this tool."
 msgstr ""
-"<strong>NOTE:</strong> cet outil doit toujours être utilisé sur une nouvelle "
-"installation. Si vous avez déjà recueilli des données d'affiliés ou de "
-"parrainage, n'utilisez pas cet outil."
+"<strong>NOT:</strong>Bu araç sadece yeni yüklemelerden sonra kullanılmalı. "
+"Eğer zaten satış ortakları ve referans verileri topladıysanız , bu aracı "
+"kullanmayınız !"
 
 #: includes/admin/tools/tools.php:165
 msgid "Migrate Data from Affiliates Pro"
-msgstr "Migrer les données depuis Affiliates Pro"
+msgstr "Affiliates Pro dan Geçiş"
 
 #: includes/admin/tools/tools.php:174
 msgid ""
 "Use this tool migrate existing affiliate accounts from WP Affiliate to "
 "AffiliateWP."
 msgstr ""
-"Utiliser cet outil pour migrer les comptes affiliés existants de WP "
-"Affiliate vers AffiliateWP."
+"Bu aracı WP Affiliate te bulunan satış ortaklarını AffiliateWP ye geçirmek "
+"için kullanabilirsiniz"
 
 #: includes/admin/tools/tools.php:180
 msgid "Migrate Data from WP Affiliate"
-msgstr "Migrer les données depuis WP Affiliate"
+msgstr "WP Affiliate ten geçiş"
 
 #: includes/admin/tools/tools.php:204
 msgid "Export Affiliates"
-msgstr "Exportation des affiliés"
+msgstr "Satış Ortaklarını Dışa Aktar"
 
 #: includes/admin/tools/tools.php:206
 msgid "Export affiliates to a CSV file."
-msgstr "Exporter les affiliés dans un fichier CSV"
+msgstr "Satış ortaklarını bir CSV dosyasına kaydet"
 
 #: includes/admin/tools/tools.php:210 includes/admin/tools/tools.php:239
 msgid "All Statuses"
-msgstr "Tous les états"
+msgstr "Bütün Durumlar"
 
 #: includes/admin/tools/tools.php:219 includes/admin/tools/tools.php:251
 #: includes/admin/tools/tools.php:265
 msgid "Export"
-msgstr "Exporter"
+msgstr "Dışa Aktar"
 
 #: includes/admin/tools/tools.php:226
 msgid "Export Referrals"
-msgstr "Exportation des parrainages"
+msgstr "Referansları Dışa Aktar"
 
 #: includes/admin/tools/tools.php:228
 msgid "Export referrals to a CSV file."
-msgstr "Exporter les parrainages dans un fichier CSV"
+msgstr "Referansları bir CSV dosyası ile dışa aktar"
 
 #: includes/admin/tools/tools.php:246
 msgid ""
 "To search for a affiliate, enter the affiliate's login name, first name, or "
 "last name. Leave blank to export referrals for all affiliates."
 msgstr ""
-"Pour rechercher un affilié, entrez son nom de connexion, son prénom, ou son "
-"nom de famille. Laissez vide pour exporter les parrainages de tous les "
-"affiliés."
+"Bir satış ortağı aramak için , bu kişiye ait satış ortaklığı kullanıcı "
+"adını , ismini veya soy ismini giriniz . Bütün satış ortakları için dışa "
+"aktarmak istiyorsanız boş bırakın"
 
 #: includes/admin/tools/tools.php:258
 msgid "Export Settings"
-msgstr "Exportation des réglages"
+msgstr "Dışa Aktarma Ayarları"
 
 #: includes/admin/tools/tools.php:260
 msgid ""
 "Export the AffiliateWP settings for this site as a .json file. This allows "
 "you to easily import the configuration into another site."
 msgstr ""
-"Exporter les réglages d'AffiliateWP de ce site dans un fichier .json. Cela "
-"vous permet de les importer facilement sur autre site."
+"Bu site için AffiliateWP ayarlarını bir .json dosyası olarak dışa aktar . Bu "
+"sayede ayarları bir başka siteye kolayca aktarabilirsiniz"
 
 #: includes/admin/tools/tools.php:272
 msgid "Import Settings"
-msgstr "Importation des réglages"
+msgstr "İçe Aktarma Ayarları"
 
 #: includes/admin/tools/tools.php:274
 msgid ""
 "Import the AffiliateWP settings from a .json file. This file can be obtained "
 "by exporting the settings on another site using the form above."
 msgstr ""
-"Importer les réglages d'AffiliateWP à partir d'un fichier au format .json. "
-"Ce fichier peut être obtenu en exportant les réglages d'un autre site en "
-"utilisant le formulaire ci-dessus."
+"AffiliateWP ayarlarını bir .json dosyası ile içe aktar . Bu dosya , "
+"yukardaki adımların izlendiği bir başka siteden edinilebilir. "
 
 #: includes/admin/tools/tools.php:282
 msgid "Import"
-msgstr "Importer"
+msgstr "İçe Aktar"
 
 #: includes/admin/tools/export/class-export-affiliates.php:48
 #: includes/admin/tools/export/class-export-referrals-payout.php:40
 #: includes/admin/tools/export/class-export-referrals.php:62
 msgid "Email"
-msgstr "E-mail"
+msgstr "E-Posta"
 
 #: includes/admin/tools/export/class-export-affiliates.php:51
 msgid "Rate Type"
-msgstr "Type de taux"
+msgstr "Oran Tipi"
 
 #: includes/admin/tools/export/class-export-affiliates.php:56
 msgid "Date Registered"
-msgstr "Date enregistrée"
+msgstr "Kayıt Tarihi"
 
 #: includes/admin/tools/export/class-export.php:173
 msgid "You do not have permission to export data."
-msgstr "Vous n'avez pas les permissions pour exporter les données."
+msgstr "Verileri dışa aktarmak için izniniz yok"
 
 #: includes/admin/tools/import/import.php:23
 msgid "Please upload a valid .json file"
-msgstr "Veuillez mettre en ligne un fichier .json valide"
+msgstr "Lütfen geçerli bir .json dosyası gönderin"
 
 #: includes/admin/tools/import/import.php:29
 msgid "Please upload a file to import"
-msgstr "Veuillez mettre en ligne un fichier à importer"
+msgstr "Lütfen içe aktarmak için bir dosya gönderin"
 
 #: includes/admin/visits/contextual-help.php:39
 msgid "This screen provides access to your site's visit history."
-msgstr "Cet écran donne accès à l'historique des parainnages de votre site."
+msgstr "Bu ekran sitenizin ziyaretçi geçmişine göz atmak için erişim sunar"
 
 #: includes/admin/visits/contextual-help.php:40
 msgid ""
 "<strong>Landing Page</strong>: this is the page on your site that the "
 "visitor first landed on. It is the URL that the affiliate link pointed to."
 msgstr ""
-"<strong>Page d'arrivée</strong>: c'est la page de votre site que le visiteur "
-"a premièrement visité. C'est l'URL que pointait le lien de l'affilié."
+"<strong>Gelinen Sayfa</strong>: bu sayfa ziyaretçilerin sitenize ilke "
+"geldiği sayfadır. Bu link satış ortaklarının hedeflediği link ile aynıdır."
 
 #: includes/admin/visits/contextual-help.php:41
 msgid ""
 "<strong>Referring URL</strong>: this is the source URL of the affiliate "
 "link. It is the web page that the visitor found a link to your site on."
 msgstr ""
-"<strong>URL de référence</strong>: c'est l'URL source du lien de l'affilié. "
-"C'est la page web où le visiteur a trouvé un lien vers votre site."
+"<strong>Referans link</strong>: Bu link sitenize nereden ulaşıldığının "
+"kaynağıdır. Ziyaretçilerin sitenize ait link erişimi bulduğu websitesidir. "
 
 #: includes/admin/visits/contextual-help.php:42
 msgid ""
 "<strong>Affiliate</strong>: this the affiliate that the visit was attributed "
 "to."
 msgstr ""
-"<strong>Affilié</strong>: c'est l'affilié dont la visite a été attribué."
+"<strong>Satış ortağı </strong>: Ziyaret edilen linkin bağlı bulunduğu satış "
+"ortağı"
 
 #: includes/admin/visits/contextual-help.php:43
 msgid ""
 "<strong>Referral ID</strong>: this is the ID of the referral that was "
 "created from this visit, if any."
 msgstr ""
-"<strong>ID parrainage</strong>: c'est l'ID de parrainage qui a été créé à "
-"partir de cette visite, si ce fût le cas."
+"<strong>Referans numarası</strong>: Eğer varsa ziyaret sonrasında kayıt "
+"olunarak oluşturulan referansa ait numara"
 
 #: includes/admin/visits/contextual-help.php:44
 msgid "<strong>IP</strong>: this is the IP address of the visitor."
-msgstr "<strong>IP</strong>: c'est l'adresse IP du visiteur."
+msgstr "<strong>IP</strong>: Ziyaretçiye ait IP numarası"
 
 #: includes/admin/visits/contextual-help.php:45
 msgid ""
 "<strong>Converted</strong>: this is a Yes / No status for whether the visit "
 "turned into a successful converstion."
 msgstr ""
-"<strong>Converti</strong>: c'est un état Oui / Non si la visite a donné ou "
-"non une conversion positive."
+"<strong>Dönüşen</strong>: Ziyaretin başarılı bir şekilde dönüşüp "
+"dönüşmediğini gösteren Evet / Hayır durumu"
 
 #: includes/admin/visits/contextual-help.php:50
 msgid "Searching Visits"
-msgstr "Recherche de visites"
+msgstr "Ziyaretleri Arama"
 
 #: includes/admin/visits/contextual-help.php:52
 msgid "Visit records can be searched in several different ways:"
-msgstr ""
-"Les enregistrements de visites peuvent être cherchés de plusieurs manières."
+msgstr "Ziyaret kayıtları biden fazla yoldan aranabilir:"
 
 #: includes/admin/visits/contextual-help.php:54
 msgid "You can enter an IP address to find all visits from a specific IP"
 msgstr ""
-"Vous pouvez entrer une adresse IP pour trouver toutes les visites depuis une "
-"adresse IP spécifique."
+"Belirli bir IP üzerinden gelen ziyaretleri bulmak için IP adresi "
+"girebilirsiniz"
 
 #: includes/admin/visits/contextual-help.php:55
 msgid ""
 "You can enter a complete URL to find all visits that landed on or came from "
 "a specific URL"
 msgstr ""
-"Vous pouvez entrer une URL complète pour trouver toutes les visites qui lui "
-"ont été enregistrées ou alors qui viennent d'une URL spécifique."
+"Ziyaretin nerden geldiği veya nereye yapıldığına dair komple link araması "
+"yapılabilir"
 
 #: includes/admin/visits/contextual-help.php:56
 msgid ""
 "You can enter a partial URL to find all visits that landed on or came from a "
 "specific site"
 msgstr ""
-"Vous pouvez entrer une partie de l'URL pour trouver toutes les visites qui "
-"lui ont été enregistrées ou qui viennent d'un site spécifique."
+"Belirli bir siteden gelen veya gidilen linklerin belirli bir kısmı ile de "
+"arama yapılabilir"
 
 #: includes/admin/visits/contextual-help.php:57
 msgid "You can enter the referral's ID number prefixed by 'referral:'"
-msgstr "Vous pouvez entrer l'ID de parrainage préfixé par 'parrainage:'"
+msgstr "Referansa ait numarayı  'referral:' ön eki ile arayabilirsiniz"
 
 #: includes/admin/visits/visits.php:153
 msgid "Landing Page"
-msgstr "Page d'arrivée"
+msgstr "Gelinen Sayfa"
 
 #: includes/admin/visits/visits.php:154 templates/dashboard-tab-visits.php:19
 msgid "Referring URL"
-msgstr "URL de référence"
+msgstr "Kaynak Link"
 
 #: includes/admin/visits/visits.php:156
 msgid "Referral ID"
-msgstr "ID Parrainage"
+msgstr "Referans Numarası"
 
 #: includes/admin/visits/visits.php:157
 msgid "IP"
@@ -2652,50 +2636,50 @@ msgstr "IP"
 
 #: includes/admin/visits/visits.php:222 templates/dashboard-tab-visits.php:30
 msgid "Direct traffic"
-msgstr "Traffic direct"
+msgstr "Direkt Trafik"
 
 #: includes/admin/visits/visits.php:247
 msgid "No visits found."
-msgstr "Aucune visite trouvée."
+msgstr "Ziyaret bulunamadı"
 
 #: includes/emails/actions.php:46
 msgid "A new affiliate has registered on your site, "
-msgstr "Un nouvel affilié est enregistré sur votre site, "
+msgstr "Sitenize yeni bir satış ortağı kaydoldu,"
 
 #: includes/emails/actions.php:47
 #, php-format
 msgid "Name: %s"
-msgstr "Nom: %s"
+msgstr "İsim: %s"
 
 #: includes/emails/actions.php:50
 #, php-format
 msgid "Website URL: %s"
-msgstr "URL du site web : %s"
+msgstr "Website Linki : %s"
 
 #: includes/emails/actions.php:54
 #, php-format
 msgid "Promotion method: %s"
-msgstr "Méthode de promotion : %s"
+msgstr "Tanıtım metodu: %s"
 
 #: includes/emails/actions.php:58
 #, php-format
 msgid "Review pending applications: %s"
-msgstr "Passer en revue les demandes en attente : %s"
+msgstr "Bekleyen başvuruları incele: %s"
 
 #: includes/emails/actions.php:100 includes/emails/actions.php:149
 #, php-format
 msgid "Congratulations %s!"
-msgstr "Félicitations %s !"
+msgstr "Tebrikler %s!"
 
 #: includes/emails/actions.php:102
 #, php-format
 msgid "Log into your affiliate area at %s"
-msgstr "Connectez-vous à votre espace d'affilié sur %s"
+msgstr "Satış ortaklığı paneline şurdan giriş yap %s"
 
 #: includes/emails/actions.php:150
 #, php-format
 msgid "You have been awarded a new referral of %s on %s!"
-msgstr "Vous avez été recompensé d'un nouveau parrainage de %s sur %s !"
+msgstr "%s ait referans ile  %s! üzerinde komisyon kazandınız"
 
 #: includes/emails/actions.php:151
 #, php-format
@@ -2703,56 +2687,56 @@ msgid ""
 "log into your affiliate area to view your earnings or disable these "
 "notifications: %s"
 msgstr ""
-"connectez-vous à votre espace d'affilié pour voir vos gains ou désactiver "
-"ces notifications : %s"
+"Satış ortaklığı paneline giriş yaparak kazançlarını inceleyebilirsin ya da "
+"bildirimleri iptal edebilirsin %s"
 
 #: includes/emails/class-affwp-emails.php:198
 msgid "Default Template"
-msgstr "Modèle par défaut"
+msgstr "Varsayılan Tema"
 
 #: includes/emails/class-affwp-emails.php:199
 msgid "No template, plain text only"
-msgstr "Pas de modèle, uniquement du texte"
+msgstr "Tema olmasın , sadece düz yazı"
 
 #: includes/emails/class-affwp-emails.php:295
 msgid ""
 "You cannot send emails with AffWP_Emails until init/admin_init has been "
 "reached"
 msgstr ""
-"Vous ne pouvez pas envoyé d'e-mail avec EDD_Emails tant que init/admit_init "
-"a été atteint"
+" init/admin_init için erişim sağlanana kadar AffWP_Emails  ile e-posta "
+"gönderemezsin"
 
 #: includes/emails/class-affwp-emails.php:417
 msgid "The full name of the affiliate"
-msgstr "Le nom complet de l'affilié"
+msgstr "Satış ortağının tam adı"
 
 #: includes/emails/class-affwp-emails.php:422
 msgid "The user name of the affiliate on the site"
-msgstr "Le nom d'utilisateur de l'affilié sur le site"
+msgstr "Sitede satış ortağına ait kullanıcı adı"
 
 #: includes/emails/class-affwp-emails.php:427
 msgid "The email address of the affiliate"
-msgstr "L'adresse e-mail de l'affilié"
+msgstr "Satış ortağına ait e-posta adresi"
 
 #: includes/emails/class-affwp-emails.php:432
 msgid "The website of the affiliate"
-msgstr "Le site web de l'affilié"
+msgstr "Satış ortağının websitesi"
 
 #: includes/emails/class-affwp-emails.php:437
 msgid "The promo method used by the affiliate"
-msgstr "La méthode promotionnelle utilisée par l'affilié"
+msgstr "Satış ortağının kullandığı tanıtım metodu"
 
 #: includes/emails/class-affwp-emails.php:442
 msgid "The affiliate login URL to your website"
-msgstr "L'URL d'affiliation pour se connecter à votre site web"
+msgstr "Siteniz için satış ortağı giriş linki"
 
 #: includes/emails/class-affwp-emails.php:447
 msgid "The amount of a given referral"
-msgstr "Le montant d'un parrainage donné"
+msgstr "Verilen referansın miktarı"
 
 #: includes/emails/class-affwp-emails.php:452
 msgid "Your site name"
-msgstr "Nom de votre site web"
+msgstr "Site adınız"
 
 #: includes/integrations/class-edd.php:279
 #: includes/integrations/class-gravityforms.php:64
@@ -2762,13 +2746,13 @@ msgstr "Nom de votre site web"
 #: includes/integrations/class-woocommerce.php:137
 #, php-format
 msgid "Referral #%d for %s recorded for %s"
-msgstr "Parrainage #%d pour %s enregistré pour %s"
+msgstr "Referans #%d için %s şunun için kaydedildi %s"
 
 #: includes/integrations/class-edd.php:401
 #: includes/integrations/class-rcp.php:159
 #: includes/integrations/class-woocommerce.php:255
 msgid "Affiliate Discount?"
-msgstr "Réduction Affilié ?"
+msgstr "Satış Ortaklığı İndirim ?"
 
 #: includes/integrations/class-edd.php:410
 #: includes/integrations/class-rcp.php:168
@@ -2777,12 +2761,12 @@ msgid ""
 "If you would like to connect this discount to an affiliate, enter the name "
 "of the affiliate it belongs to."
 msgstr ""
-"Si vous souhaitez lier cette remise à un affilié, entrez le nom de l'affilié "
-"auquel elle appartient."
+"Eğer bu indirimi herhangi bir satış ortağına bağlamak istiyorsanız , bu "
+"satış ortağına ait ismi giriniz"
 
 #: includes/integrations/class-edd.php:496
 msgid "Adjust EDD Commissions"
-msgstr "Ajuster les commissions EDD"
+msgstr "EDD Komisyonunu Ayarlayınız"
 
 #: includes/integrations/class-edd.php:497
 msgid ""
@@ -2790,31 +2774,30 @@ msgid ""
 "include affiliate referrals? This will subtract the referral amount from the "
 "base amount used to calculate the commission total."
 msgstr ""
-"AffiliateWP doit-il ajuster les montants des commisions enregistrés pour les "
-"achats qui incluent les parrainages des affiliés ? Cela va soustraire le "
-"montant du parrainage du montant de base utilisé pou calculer le total de la "
-"commission."
+"AffiliateWP ,  satış ortağı referanslarının satın almalarını  da içeren "
+"komisyon miktarlarının kayıtlarını ayarlamalı mı ? Bu , toplam  komisyonun "
+"hesaplanmasında kullanılan temel miktardan referans miktarını düşecektir"
 
 #: includes/integrations/class-edd.php:517
 msgid "Disable Renewal Referrals"
-msgstr "Désactiver les renouvellements de parrainage"
+msgstr "Referans Yenilenmesini Devre Dışı Bırak"
 
 #: includes/integrations/class-edd.php:518
 msgid ""
 "Should AffiliateWP prevent referral commissions from being recorded on "
 "renewal purchases with EDD Software Licensing?"
 msgstr ""
-"AffiliateWP doit-il empêcher l'enregistrement des commissions de parrainage "
-"sur les renouvellement d'achats faits avec EDD Software Licensing ?"
+"AffiliateWP , EDD Yazılım Lisanslaması ile yapılan satın alma "
+"güncellemelerinden  referans komisyonlarının kayıtlarını hariç tutmalı mı ?"
 
 #: includes/integrations/class-edd.php:539
 msgid "Affiliate Rates:"
-msgstr "Taux affilié :"
+msgstr "Satış Ortaklığı Oranları : "
 
 #: includes/integrations/class-edd.php:552
 #, php-format
 msgid "Disable referrals on this %s"
-msgstr "Désactiver parrainages sur %s"
+msgstr "Burdan gelen referansları devre dışı bırak %s"
 
 #: includes/integrations/class-edd.php:556
 #: includes/integrations/class-woocommerce.php:370
@@ -2823,20 +2806,20 @@ msgid ""
 "These settings will be used to calculate affiliate earnings per-sale. Leave "
 "blank to use default affiliate rates."
 msgstr ""
-"Ces réglages seront utilisés pour calculer les gains par vente des affiliés. "
-"Laissez vide pour utiliser les taux d'affiliation par défaut."
+"Bu ayarlar satış başına satış ortaklığı kazançlarını hesaplamada "
+"kullanılacak . Varsayılan satış ortaklığı oranları için boş bırakınız"
 
 #: includes/integrations/class-exchange.php:234
 msgid "Affiliate coupon?"
-msgstr "Coupon Affilié ?"
+msgstr "Satış Ortaklığı Kuponu ?"
 
 #: includes/integrations/class-exchange.php:243
 msgid ""
 "If you would like to connect this coupon to an affiliate, enter the name of "
 "the affiliate it belongs to."
 msgstr ""
-"Si vous voulez lier ce coupon à un affilié, entrez le nom de l'affilié "
-"auquel il appartient."
+"Eğer bu kuponu bir satış ortağına bağlamak istiyorsanız , bu satış ortağına "
+"ait ismi giriniz"
 
 #: includes/integrations/class-formidablepro.php:71
 msgid " AffiliateWP"
@@ -2844,52 +2827,52 @@ msgstr " AffiliateWP"
 
 #: includes/integrations/class-formidablepro.php:76
 msgid "Referral description"
-msgstr "Description du parrainage"
+msgstr "Referans açıklaması"
 
 #: includes/integrations/class-formidablepro.php:80
 #: includes/integrations/class-formidablepro.php:106
 msgid "Select Field"
-msgstr "Sélectionner un champ"
+msgstr "Alan Seç"
 
 #: includes/integrations/class-formidablepro.php:102
 msgid "Purchase Amount"
-msgstr "Montant de l'achat"
+msgstr "Satın Alma Miktarı"
 
 #: includes/integrations/class-formidablepro.php:198
 #, php-format
 msgid "AffiliateWP: Referral #%d for %s recorded for %s"
-msgstr "AffiliateWP : parrainage °%d pour %s enregistré pour %s"
+msgstr "AffiliateWP: Referans #%d için %s için kaydedildi %s"
 
 #: includes/integrations/class-formidablepro.php:223
 #, php-format
 msgid "AffiliateWP: Referral #%d for %s for %s rejected"
-msgstr "AffiliateWP : parrainage °%d pour %s pour %s rejeté"
+msgstr "AffiliateWP: Referans #%d için %s için %s reddedildi"
 
 #: includes/integrations/class-gravityforms.php:76
 #: includes/integrations/class-sproutinvoices.php:76
 #, php-format
 msgid "Referral #%d for %s for %s rejected"
-msgstr "Parrainage #%d pour %s pour %s rejeté"
+msgstr "Referans #%d için %s için %s reddedildi"
 
 #: includes/integrations/class-woocommerce.php:368
 msgid "Affiliate Rate"
-msgstr "Taux Affilié"
+msgstr "Satış ortaklığı oranı"
 
 #: includes/integrations/class-woocommerce.php:374
 msgid "Disable referrals"
-msgstr "Désactiver parrainages"
+msgstr "Referansları Devre Dışı Bırak"
 
 #: includes/integrations/class-woocommerce.php:375
 msgid ""
 "This will prevent orders of this product from generating referral "
 "commissions for affiliates."
 msgstr ""
-"Cela empêchera les commandes de ce produit de générer des commissions de "
-"parrainage pour les affiliés."
+"Referansların satış ortaklarına komisyon oluşturmalarını engellemek için bu "
+"ürünün satışı engellenecek"
 
 #: includes/integrations/extras/class-exchange-feature.php:22
 msgid "Manage per-product affiliate rates."
-msgstr "Gérer les taux affilié par-produit."
+msgstr "Ürün başına satış ortaklığı oranlarını yönet"
 
 #: includes/integrations/extras/class-exchange-feature.php:23
 msgid "AffiliateWP"
@@ -2897,256 +2880,169 @@ msgstr "AffiliateWP"
 
 #: includes/integrations/extras/class-exchange-feature.php:54
 msgid "Disable referrals on this product"
-msgstr "Désactiver les parrainages sur ce produit"
+msgstr "Bu ürün için referansları devre dışı bırak"
 
 #: templates/dashboard-tab-creatives.php:36
 msgid "Sorry, there are currently no creatives available."
-msgstr "Désolé, il n'y a actuellement aucune bannière publicitaire."
+msgstr "Üzgünüz , şu anda mevcut reklam yok"
 
 #: templates/dashboard-tab-graphs.php:3
 msgid "Referral Graphs"
-msgstr "Graphiques Parrainages"
+msgstr "Referans Grafikleri"
 
 #: templates/dashboard-tab-referrals.php:41
 msgid "You have not made any referrals yet."
-msgstr "Vous n'avez pas encore fait de parrainage."
+msgstr "Henüz referansınız yok"
 
 #: templates/dashboard-tab-settings.php:3
 msgid "Profile Settings"
-msgstr "Réglages du profil"
+msgstr "Profil Ayarları"
 
 #: templates/dashboard-tab-settings.php:7
 msgid "Your payment email"
-msgstr "Votre email de paiement"
+msgstr "Ödeme İçin E-Posta Adresiniz"
 
 #: templates/dashboard-tab-settings.php:13
 msgid "Enable New Referral Notifications"
-msgstr "Activer les notifications de nouveau parrainage"
+msgstr "Yeni referans bildirimlerini aktifleştir"
 
 #: templates/dashboard-tab-settings.php:21
 msgid "Save Profile Settings"
-msgstr "Sauvegarder les réglages du profil"
+msgstr "Profil Ayarlarını Kaydet"
 
 #: templates/dashboard-tab-stats.php:3 templates/dashboard.php:36
 msgid "Statistics"
-msgstr "Statistiques"
+msgstr "İstatistikler"
 
 #: templates/dashboard-tab-stats.php:35
 msgid "Commission Rate"
-msgstr "Taux de commission"
+msgstr "Komisyon Oranı"
 
 #: templates/dashboard-tab-urls.php:3
 msgid "Referral URL Generator"
-msgstr "Générateur URL de parrainage"
+msgstr "Referans Link Oluşturucu"
 
 #: templates/dashboard-tab-urls.php:6
 #, php-format
 msgid "Your affiliate ID is: <strong>%s</strong>"
-msgstr "Votre ID d'affilié est : <strong>%s</strong>"
+msgstr "Satış Ortaklığı Numaranız : <strong>%s</strong>"
 
 #: templates/dashboard-tab-urls.php:8
 #, php-format
 msgid "Your affiliate username is: <strong>%s</strong>"
-msgstr "Votre identifiant d'affilié est : <strong>%s</strong>"
+msgstr "Satış ortaklığı kullanıcı adınız : <strong>%s</strong>"
 
 #: templates/dashboard-tab-urls.php:11
 #, php-format
 msgid "Your referral URL is: <strong>%s</strong>"
-msgstr "Votre URL de parrainage est : <strong>%s</strong>"
+msgstr "Referans Linkiniz : <strong>%s</strong>"
 
 #: templates/dashboard-tab-urls.php:12
 msgid ""
 "Enter any URL from this website in the form below to generate a referral "
 "link!"
 msgstr ""
-"Entrez n'importe quelle URL du site ci-dessous pour générer un lien de "
-"parrainage!"
+"Bu siteden herhangi bir link girerek aşağıdaki butondan referans linkinizi "
+"oluşturunuz"
 
 #: templates/dashboard-tab-urls.php:16
 msgid "Page URL"
-msgstr "URL de la page"
+msgstr "Sayfa Linki"
 
 #: templates/dashboard-tab-urls.php:21
 msgid "Referral URL"
-msgstr "URL de parrainage"
+msgstr "Referans Linki"
 
 #: templates/dashboard-tab-urls.php:23
 msgid "(now copy this referral link and share it anywhere)"
-msgstr ""
-"(copiez maintenant ce lien de parrainage et partagez le où vous le souhaitez)"
+msgstr "(şimdi bu referans linkini kopyala ve her yerde paylaş)"
 
 #: templates/dashboard-tab-urls.php:29
 msgid "Generate URL"
-msgstr "Générer l'URL"
+msgstr "Link Oluştur"
 
 #: templates/dashboard-tab-visits.php:3
 msgid "Referral URL Visits"
-msgstr "URL des visites de parrainages"
+msgstr "Referans Linki Ziyaretleri"
 
 #: templates/dashboard-tab-visits.php:41
 msgid "You have not received any visits yet."
-msgstr "Vous n'avez pas encore reçu de visites."
+msgstr "Henüz linkleriniz için ziyaret yok"
 
 #: templates/dashboard.php:7
 msgid "Your affiliate account is pending approval"
-msgstr "Votre compte affilié est en attente d'approbation"
+msgstr "Satış ortaklığı hesabınız onay bekliyor"
 
 #: templates/dashboard.php:11
 msgid "Your affiliate account is not active"
-msgstr "Votre compte affilié n'est pas actif"
+msgstr "Satış ortaklığı hesabınız aktif değil"
 
 #: templates/dashboard.php:15
 msgid "Your affiliate account request has been rejected"
-msgstr "Votre demande de compte d'affiliation a été rejetée"
+msgstr "Satış ortaklığı için hesap talebiniz reddedildi"
 
 #: templates/dashboard.php:25
 msgid "Your affiliate profile has been updated"
-msgstr "Votre profil d'affiliation a été mis à jour"
+msgstr "Satış ortaklığı profiliniz güncellendi"
 
 #: templates/dashboard.php:33
 msgid "Affiliate URLs"
-msgstr "URLs Affiliés"
+msgstr "Satış Ortaklığı Linkleri"
 
 #: templates/dashboard.php:39
 msgid "Graphs"
-msgstr "Graphiques"
+msgstr "Grafikler"
 
 #: templates/login.php:10
 msgid "Log into Your Account"
-msgstr "Connectez-vous à votre compte"
+msgstr "Hesabınıza Giriş Yapın"
 
 #: templates/login.php:20 templates/register.php:78
 msgid "Password"
-msgstr "Mot de passe"
+msgstr "Şifre"
 
 #: templates/login.php:26
 msgid "Remember Me"
-msgstr "Se souvenir de moi"
+msgstr "Beni Hatırla"
 
 #: templates/login.php:34
 msgid "Login"
-msgstr "Connexion"
+msgstr "Giriş"
 
 #: templates/login.php:38
 msgid "Lost Password?"
-msgstr "Mot de passe oublié&nbsp;?"
+msgstr "Şifrenizi mi Unuttunuz ?"
 
 #: templates/no-access.php:1
 msgid "The affiliate area is available only for registered affiliates."
-msgstr ""
-"L'espace d'affiliation est uniquement disponible pour les affiliés déjà "
-"inscrits."
+msgstr "Satış ortaklığı paneli sadece kayıtlı satış ortaklarına görünebilir"
 
 #: templates/register.php:36
 msgid "Register a New Affiliate Account"
-msgstr "Enregistrer un nouveau compte d'affiliation"
+msgstr "Yeni Satış Ortaklığı Hesabı Kaydet"
 
 #: templates/register.php:43 templates/register.php:44
 msgid "Your Name"
-msgstr "Votre nom"
+msgstr "İsminiz"
 
 #: templates/register.php:62
 msgid "Payment Email Address"
-msgstr "E-mail de Paiement "
+msgstr "Ödeme E-Posta Adresleri"
 
 #: templates/register.php:71
 msgid "How will you promote us?"
-msgstr "Comment allez-vous nous promouvoir?"
+msgstr "Bizi Nasıl Tanıtmayı Düşünüyorsunuz ?"
 
 #: templates/register.php:83
 msgid "Confirm Password"
-msgstr "Confirmez mot de passe"
+msgstr "Şifre Onayla"
 
 #: templates/register.php:96
 #, php-format
 msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
 msgstr ""
-"Acceptez nos <a href=\"%s\" target=\"_blank\">Conditions d'utilisation</a>"
+"<a href=\"%s\" target=\"_blank\">Kullanım Şartları</a>mızı kabul edin . "
 
 #: templates/register.php:108
 msgid "Register"
-msgstr "S'enregistrer"
-
-#~ msgid "New features"
-#~ msgstr "Nouvelles fonctionnalités"
-
-#~ msgid "Referrals History for Affiliates"
-#~ msgstr "Historique des parrainages pour les Affiliés"
-
-#~ msgid ""
-#~ "The Affiliate Area now includes a <em>Referrals</em> tab that allows "
-#~ "affiliates to see a complete history of their referrals."
-#~ msgstr ""
-#~ "La Zone Affilié inclut maintenant un onglet <em>Parrainages</em> qui "
-#~ "permet aux affiliés de voir un historique complet de leurs parrainages."
-
-#~ msgid "Exclude Shipping Option"
-#~ msgstr "Exclure l'option Livraison"
-
-#~ msgid ""
-#~ "With version 1.5, you can now select whether AffiliateWP should exclude "
-#~ "shipping costs from referral amount calculations."
-#~ msgstr ""
-#~ "Avec la version 1.5, vous pouvez maintenant sélectionner si AffiliateWP "
-#~ "doit exclure les frais de livraison des montants de calcul des "
-#~ "parrainages."
-
-#~ msgid ""
-#~ "Referral records can now be edited at anytime, allowing you to easily "
-#~ "adjust amounts or descriptions after the referral is created."
-#~ msgstr ""
-#~ "L'enregistrement des parrainages peut maintenant être édité à n'importe "
-#~ "quel moment, cela vous permet d'ajuster facilement les montants ou les "
-#~ "descriptions après que le parrainage soit crée."
-
-#~ msgid "MemberPress Integration"
-#~ msgstr "Intégration de MemberPress"
-
-#~ msgid ""
-#~ "AffiliateWP now supports direct integration with the popular <a href="
-#~ "\"https://www.memberpress.com/\">MemberPress plugin</a>."
-#~ msgstr ""
-#~ "AffiliateWP supporte dorénavant l'intégration directe avec le plugin "
-#~ "populaire <a href=\"https://www.memberpress.com/\">MemberPress</a>."
-
-#~ msgid "Per-Product Rates in iThemes Exchange"
-#~ msgstr "Taux Par-produit dans iThemes Exchange"
-
-#~ msgid ""
-#~ "iThemes Exchange now supports per-product referral rates. The rate can be "
-#~ "set from the product edit screen."
-#~ msgstr ""
-#~ "iThemes Exchange supporte maintenant le taux de parrainage par-produit. "
-#~ "Le taux peut être paramétré depuis la page d'édition du produit."
-
-#~ msgid "Affiliate-Specific Rates"
-#~ msgstr "Taux par affilié spécifique"
-
-#~ msgid ""
-#~ "If an affiliate has a specific rate set on their account, that rate will "
-#~ "always be used, even if a product with a product-specific rate is "
-#~ "purchased."
-#~ msgstr ""
-#~ "Si un affilié a un taux spécifique paramétré sur son compte, ce taux sera "
-#~ "toujours utilisé, même si un produit avec un taux par-produit spécifique "
-#~ "est acheté."
-
-#~ msgid "Better Cleanup"
-#~ msgstr "Meilleur Nettoyage"
-
-#~ msgid ""
-#~ "When an affiliate account is deleted, metadata associated with the "
-#~ "account is also deleted, ensuring your database stays nice and pretty."
-#~ msgstr ""
-#~ "Quand un compte affilié est supprimé, les metadonnées associées au compte "
-#~ "sont aussi supprimées, assurez-vous que la base de donnée reste propre."
-
-#~ msgid "Improved Affiliate Deletion"
-#~ msgstr "Amélioration de la suppression d'affilié"
-
-#~ msgid ""
-#~ "When you delete an affiliate account, you now have the option to also "
-#~ "delete the user account and all affiliate data."
-#~ msgstr ""
-#~ "Quand vous supprimez un compte affilié, vous avez maintenant le choix de "
-#~ "supprimer aussi le compte utilisateur et toutes ses données."
+msgstr "Kayıt"
