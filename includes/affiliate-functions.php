@@ -881,34 +881,53 @@ function affwp_update_profile_settings( $data = array() ) {
  */
 function affwp_get_affiliate_referral_url( $args = array() ) {
 
-	// base URL
+	$defaults = array(
+		'pretty' => '',
+		'format' => '',
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	// get affiliate ID if passed in
+	$affiliate_id = isset( $args['affiliate_id'] ) ? $args['affiliate_id'] : '';
+
+	// get format, username or id
+	$format = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format();
+
+	// pretty URLs
+	if ( ! empty( $args['pretty'] ) && 'yes' == $args['pretty'] ) {
+		// pretty URLS explicitly turned on
+		$pretty = true;
+	} elseif ( ( ! empty( $args['pretty'] ) && 'no' == $args['pretty'] ) || false === $args['pretty'] ) {
+		// pretty URLS explicitly turned off
+		$pretty = false;
+	} else {
+		// pretty URLs set from admin
+		$pretty = affwp_is_pretty_referral_urls();
+	} 
+
+	// get base URL
 	if ( isset( $args['base_url'] ) ) {
 		$base_url = trailingslashit( $args['base_url'] );
 	} else {
 		$base_url = affwp_get_affiliate_base_url();
 	}
 
-	$format = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format_value();
+	// the format value, either affiliate's ID or username
+	$format_value = affwp_get_referral_format_value( $format, $affiliate_id );
 
 	// set up URLs
-	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format;
-	$non_pretty_urls = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format, trailingslashit( $base_url ) );
+	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format_value;
+	$non_pretty_urls = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format_value, trailingslashit( $base_url ) );
 	
-	// set explicitly by shortcode to have the pretty parameter
-	if ( isset( $args['pretty'] ) && true === (bool) $args['pretty'] ) {
+	if ( $pretty ) {
 		$referral_url = $pretty_urls;
 	} else {
-		if ( isset( $args['pretty'] ) && false === (bool) $args['pretty'] ) {
-			$referral_url = $non_pretty_urls;
-		} elseif ( affwp_is_pretty_referral_urls() ) {
-			$referral_url = $pretty_urls;
-		} elseif ( ! affwp_is_pretty_referral_urls() ) {
-			$referral_url = $non_pretty_urls;
-		}
+		$referral_url = $non_pretty_urls;
 	}
 
 	return $referral_url;
-	
+
 }
 
 /**
