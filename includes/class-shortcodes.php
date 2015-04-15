@@ -152,12 +152,8 @@ class Affiliate_WP_Shortcodes {
 			'pretty' => ''
 		), $atts, 'affiliate_referral_url' );
 
-		// get affiliate username
-		$username = affwp_get_affiliate_username();
-
 		// format
 		$format = isset( $atts['format'] ) ? $atts['format'] : '';
-		$format = affwp_get_referral_format_value( $format );
 
 		// base URL
 		if ( ! empty( $content ) ) {
@@ -167,7 +163,7 @@ class Affiliate_WP_Shortcodes {
 		}
 
 		// pretty URLs
-		if ( isset( $atts['pretty'] ) ) {
+		if ( ! empty( $atts['pretty'] ) ) {
 			if ( 'yes' == $atts['pretty'] ) {
 				$pretty = true;
 			} elseif ( 'no' == $atts['pretty'] ) {
