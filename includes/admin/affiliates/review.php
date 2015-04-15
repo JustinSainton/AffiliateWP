@@ -86,8 +86,8 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 
 		<?php do_action( 'affwp_review_affiliate_bottom', $affiliate ); ?>
 
-		<a href="<?php echo add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate_id ) ); ?>" class="button button-primary"><?php _e( 'Accept Affiliate', 'affiliate-wp' ); ?></a>
-		<a href="<?php echo add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate_id ) ); ?>" class="button button-secondary"><?php _e( 'Reject Affiliate', 'affiliate-wp' ); ?></a>
+		<a href="<?php echo esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate_id ) ) ); ?>" class="button button-primary"><?php _e( 'Accept Affiliate', 'affiliate-wp' ); ?></a>
+		<a href="<?php echo esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate_id ) ) ); ?>" class="button button-secondary"><?php _e( 'Reject Affiliate', 'affiliate-wp' ); ?></a>
 	</form>
 
 </div>

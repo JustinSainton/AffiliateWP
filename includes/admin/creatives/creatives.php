@@ -38,7 +38,7 @@ function affwp_creatives_admin() {
 	?>
 	<div class="wrap">
 			<h2><?php _e( 'Creatives', 'affiliate-wp' ); ?>
-				<a href="<?php echo add_query_arg( array( 'affwp_notice' => false, 'action' => 'add_creative' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
+				<a href="<?php echo esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'add_creative' ) ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
 			</h2>
 			<?php do_action( 'affwp_affiliates_page_top' ); ?>
 			<form id="affwp-creatives-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp-creatives' ); ?>">
@@ -229,12 +229,12 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 */
 	function column_actions( $creative ) {
 
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_creative', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
+		$row_actions['edit'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_creative', 'creative_id' => $creative->creative_id ) ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
 		if ( strtolower( $creative->status ) == 'active' ) {
-			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'creative_deactivated', 'action' => 'deactivate', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+			$row_actions['deactivate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'creative_deactivated', 'action' => 'deactivate', 'creative_id' => $creative->creative_id ) ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		} else {
-			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'creative_activated', 'action' => 'activate', 'creative_id' => $creative->creative_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+			$row_actions['activate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'creative_activated', 'action' => 'activate', 'creative_id' => $creative->creative_id ) ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
 		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'creative_id' => $creative->creative_id, 'affwp_notice' => false ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';

@@ -36,7 +36,7 @@ function affwp_referrals_admin() {
 			<?php do_action( 'affwp_referrals_page_top' ); ?>
 			
 			<div id="affwp-referrals-export-wrap">
-				<a href="<?php echo add_query_arg( 'action', 'add_referral' ); ?>" class="button-secondary"><?php _e( 'Add New Referral', 'affiliate-wp' ); ?></a>
+				<a href="<?php echo esc_url( add_query_arg( 'action', 'add_referral' ) ); ?>" class="button-secondary"><?php _e( 'Add New Referral', 'affiliate-wp' ); ?></a>
 				<button class="button-primary affwp-referrals-export-toggle"><?php _e( 'Generate Payout File', 'affiliate-wp' ); ?></button>
 				<button class="button-primary affwp-referrals-export-toggle" style="display:none"><?php _e( 'Close', 'affiliate-wp' ); ?></button>
 				
@@ -197,11 +197,11 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$rejected_count = '&nbsp;<span class="count">(' . $this->rejected_count . ')</span>';
 
 		$views = array(
-			'all'      => sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( 'status', $base ), $current === 'all' || $current == '' ? ' class="current"' : '', __( 'All', 'affiliate-wp' ) . $total_count ),
-			'paid'     => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'paid', $base ), $current === 'paid' ? ' class="current"' : '', __( 'Paid', 'affiliate-wp' ) . $paid_count ),
-			'unpaid'   => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'unpaid', $base ), $current === 'unpaid' ? ' class="current"' : '', __( 'Unpaid', 'affiliate-wp' ) . $unpaid_count ),
-			'pending'  => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'pending', $base ), $current === 'pending' ? ' class="current"' : '', __( 'Pending', 'affiliate-wp' ) . $pending_count ),
-			'rejected' => sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'rejected', $base ), $current === 'rejected' ? ' class="current"' : '', __( 'Rejected', 'affiliate-wp' ) . $rejected_count ),
+			'all'      => sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( 'status', $base ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __( 'All', 'affiliate-wp' ) . $total_count ),
+			'paid'     => sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'paid', $base ) ), $current === 'paid' ? ' class="current"' : '', __( 'Paid', 'affiliate-wp' ) . $paid_count ),
+			'unpaid'   => sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'unpaid', $base ) ), $current === 'unpaid' ? ' class="current"' : '', __( 'Unpaid', 'affiliate-wp' ) . $unpaid_count ),
+			'pending'  => sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'pending', $base ) ), $current === 'pending' ? ' class="current"' : '', __( 'Pending', 'affiliate-wp' ) . $pending_count ),
+			'rejected' => sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'rejected', $base ) ), $current === 'rejected' ? ' class="current"' : '', __( 'Rejected', 'affiliate-wp' ) . $rejected_count ),
 		);
 
 		return $views;

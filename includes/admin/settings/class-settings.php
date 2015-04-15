@@ -209,13 +209,13 @@ class Affiliate_WP_Settings {
 					),
 					'referral_var' => array(
 						'name' => __( 'Referral Variable', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ) . '</p>',
+						'desc' => '<p class="description">' . sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ) ) . '</p>',
 						'type' => 'text',
 						'std' => 'ref'
 					),
 					'referral_format' => array(
 						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ), add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) . '</p>',
+						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ) . '</p>',
 						'type' => 'select',
 						'options' => array( 
 							'id'       => __( 'ID', 'affiliate-wp' ),
@@ -552,7 +552,7 @@ class Affiliate_WP_Settings {
 			$html .= '<input type="submit" class="button" name="affwp_deactivate_license" value="' . esc_attr__( 'Deactivate License', 'affiliate-wp' ) . '"/>';
 			$html .= '<span style="color:green;">&nbsp;' . __( 'Your license is valid!', 'affiliate-wp' ) . '</span>';
 		} elseif( 'expired' === $license_status && ! empty( $license_key ) ) {
-			$renewal_url = add_query_arg( array( 'edd_license_key' => $license_key, 'download_id' => 17 ), 'https://affiliatewp.com/checkout' );
+			$renewal_url = esc_url( add_query_arg( array( 'edd_license_key' => $license_key, 'download_id' => 17 ), 'https://affiliatewp.com/checkout' ) );
 			$html .= '<a href="' . esc_url( $renewal_url ) . '" class="button-primary">' . __( 'Renew Your License', 'affiliate-wp' ) . '</a>';
 			$html .= '<br/><span style="color:red;">&nbsp;' . __( 'Your license has expired, renew today to continue getting updates and support!', 'affiliate-wp' ) . '</span>';
 		} else {

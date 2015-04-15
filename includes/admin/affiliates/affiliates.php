@@ -42,7 +42,7 @@ function affwp_affiliates_admin() {
 ?>
 		<div class="wrap">
 			<h2><?php _e( 'Affiliates', 'affiliate-wp' ); ?>
-				<a href="<?php echo add_query_arg( array( 'affwp_notice' => false, 'action' => 'add_affiliate' ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
+				<a href="<?php echo esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'add_affiliate' ) ) ); ?>" class="add-new-h2"><?php _e( 'Add New', 'affiliate-wp' ); ?></a>
 			</h2>
 			<?php do_action( 'affwp_affiliates_page_top' ); ?>
 			<form id="affwp-affiliates-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
@@ -188,11 +188,11 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$rejected_count = '&nbsp;<span class="count">(' . $this->rejected_count  . ')</span>';
 
 		$views = array(
-			'all'		=> sprintf( '<a href="%s"%s>%s</a>', remove_query_arg( 'status', $base ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'affiliate-wp') . $total_count ),
-			'active'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'active', $base ), $current === 'active' ? ' class="current"' : '', __('Active', 'affiliate-wp') . $active_count ),
-			'inactive'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'inactive', $base ), $current === 'inactive' ? ' class="current"' : '', __('Inactive', 'affiliate-wp') . $inactive_count ),
-			'pending'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'pending', $base ), $current === 'pending' ? ' class="current"' : '', __('Pending', 'affiliate-wp') . $pending_count ),
-			'rejected'	=> sprintf( '<a href="%s"%s>%s</a>', add_query_arg( 'status', 'rejected', $base ), $current === 'rejected' ? ' class="current"' : '', __('Rejected', 'affiliate-wp') . $rejected_count ),
+			'all'		=> sprintf( '<a href="%s"%s>%s</a>', esc_url( remove_query_arg( 'status', $base ) ), $current === 'all' || $current == '' ? ' class="current"' : '', __('All', 'affiliate-wp') . $total_count ),
+			'active'	=> sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'active', $base ) ), $current === 'active' ? ' class="current"' : '', __('Active', 'affiliate-wp') . $active_count ),
+			'inactive'	=> sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'inactive', $base ) ), $current === 'inactive' ? ' class="current"' : '', __('Inactive', 'affiliate-wp') . $inactive_count ),
+			'pending'	=> sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'pending', $base ) ), $current === 'pending' ? ' class="current"' : '', __('Pending', 'affiliate-wp') . $pending_count ),
+			'rejected'	=> sprintf( '<a href="%s"%s>%s</a>', esc_url( add_query_arg( 'status', 'rejected', $base ) ), $current === 'rejected' ? ' class="current"' : '', __('Rejected', 'affiliate-wp') . $rejected_count ),
 		);
 
 		return $views;
@@ -355,17 +355,17 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	function column_actions( $affiliate ) {
 
-		$row_actions['reports'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) . '">' . __( 'Reports', 'affiliate-wp' ) . '</a>';
-		$row_actions['edit'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
+		$row_actions['reports'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'affiliate_id' => $affiliate->affiliate_id, 'action' => 'view_affiliate' ) ) ) . '">' . __( 'Reports', 'affiliate-wp' ) . '</a>';
+		$row_actions['edit'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
 		if ( strtolower( $affiliate->status ) == 'active' ) {
-			$row_actions['deactivate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_deactivated', 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+			$row_actions['deactivate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_deactivated', 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		} elseif( strtolower( $affiliate->status ) == 'pending' ) {
-			$row_actions['review'] = '<a href="' . add_query_arg( array( 'affwp_notice' => false, 'action' => 'review_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Review', 'affiliate-wp' ) . '</a>';
-			$row_actions['accept'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
-			$row_actions['reject'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+			$row_actions['review'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'review_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Review', 'affiliate-wp' ) . '</a>';
+			$row_actions['accept'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+			$row_actions['reject'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 		} else {
-			$row_actions['activate'] = '<a href="' . add_query_arg( array( 'affwp_notice' => 'affiliate_actived', 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+			$row_actions['activate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_actived', 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
 		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id, 'affwp_notice' => false ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
