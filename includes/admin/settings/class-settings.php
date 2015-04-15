@@ -360,7 +360,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Application Accepted Email Content', 'affiliate-wp' ),
 						'desc' => __( 'Enter the email to send when an application is accepted. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
 						'type' => 'rich_editor',
-						'std' => __( 'Congratulations', 'affiliate-wp' ) . " {name}!\n\n" . sprintf( __( 'Your affiliate application on %s has been accepted!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area at', 'affiliate-wp' ) . ' {login_url}'
+						'std' => __( 'Congratulations {name}!', 'affiliate-wp' ) . "\n\n" . sprintf( __( 'Your affiliate application on %s has been accepted!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area at', 'affiliate-wp' ) . ' {login_url}'
 					),
 					'referral_subject' => array(
 						'name' => __( 'New Referral Email Subject', 'affiliate-wp' ),
@@ -372,7 +372,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'New Referral Email Content', 'affiliate-wp' ),
 						'desc' => __( 'Enter the email to send on new referrals. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
 						'type' => 'rich_editor',
-						'std' => __( 'Congratulations', 'affiliate-wp' ) . " {name}!\n\n" . __( 'You have been awarded a new referral of', 'affiliate-wp' ) . ' {amount} ' . sprintf( __( 'on %s!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area to view your earnings or disable these notifications:', 'affiliate-wp' ) . ' {login_url}'
+						'std' => __( 'Congratulations {name}!', 'affiliate-wp' ) . "\n\n" . __( 'You have been awarded a new referral of', 'affiliate-wp' ) . ' {amount} ' . sprintf( __( 'on %s!', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Log into your affiliate area to view your earnings or disable these notifications:', 'affiliate-wp' ) . ' {login_url}'
 					)
 				)
 			),
@@ -445,7 +445,7 @@ class Affiliate_WP_Settings {
 				'name' => __( 'Application Pending Email Content', 'affiliate-wp' ),
 				'desc' => __( 'Enter the email to send when an application is pending. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
 				'type' => 'rich_editor',
-				'std' => __( 'Hi', 'affiliate-wp' ) . " {name}!\n\n" . __( 'Thanks for your recent affiliate registration on', 'affiliate-wp' ) . ' {site_name}.' . "\n\n" . __( 'We\'re currently reviewing your affiliate application and will be in touch soon!', 'affiliate-wp' ) . "\n\n"
+				'std' => __( 'Hi {name}!', 'affiliate-wp' ) . "\n\n" . __( 'Thanks for your recent affiliate registration on {site_name}.', 'affiliate-wp' ) . "\n\n" . __( 'We\'re currently reviewing your affiliate application and will be in touch soon!', 'affiliate-wp' ) . "\n\n"
 			),
 			'rejection_subject' => array(
 				'name' => __( 'Application Rejection Email Subject', 'affiliate-wp' ),
@@ -457,7 +457,7 @@ class Affiliate_WP_Settings {
 				'name' => __( 'Application Rejection Email Content', 'affiliate-wp' ),
 				'desc' => __( 'Enter the email to send when an application is rejected. HTML is accepted. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
 				'type' => 'rich_editor',
-				'std' => __( 'Hi', 'affiliate-wp' ) . " {name}\n\n" . __( 'We regret to inform you that your recent affiliate registration on', 'affiliate-wp' ) . ' {site_name} ' . __( 'was rejected.', 'affiliate-wp' ) . "\n\n"
+				'std' => __( 'Hi {name},', 'affiliate-wp' ) . "\n\n" . __( 'We regret to inform you that your recent affiliate registration on {site_name} was rejected.', 'affiliate-wp' ) . "\n\n"
 			)
 
 		);
