@@ -351,20 +351,24 @@ if ( ! function_exists( 'cal_days_in_month' ) ) {
  * @param string $format referral format passed in via [affiliate_referral_url] shortcode
  * @return string affiliate ID or username
  */
-function affwp_get_referral_format_value( $format = '' ) {
+function affwp_get_referral_format_value( $format = '', $affiliate_id = 0 ) {
 
-	// if the shortcode passes in a format we should use that, otherwise fallback to the value defined in the settings 
-	$format = $format ? $format : affwp_get_referral_format();
-	
+	// get affiliate's user ID
+	$user_id = affwp_get_affiliate_user_id( $affiliate_id );
+
+	if ( ! $format ) {
+		$format = affwp_get_referral_format();
+	}
+
 	switch ( $format ) {
 
 		case 'username':
-			$value = affwp_get_affiliate_username();
+			$value = affwp_get_affiliate_username( $affiliate_id );
 			break;
 
 		case 'id':
 		default:
-			$value = affwp_get_affiliate_id();
+			$value = affwp_get_affiliate_id( $user_id );
 			break;
 
 	}

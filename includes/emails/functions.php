@@ -140,3 +140,24 @@ function affwp_email_tag_amount( $affiliate_id = 0, $referral ) {
 function affwp_email_tag_site_name() {
 	return wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
 }
+
+/**
+ * Email template tag: referral URL
+ * Affiliate's referral URL
+ *
+ * @return string referral_url
+ */
+function affwp_email_tag_referral_url( $affiliate_id = 0 ) {
+	return affwp_get_affiliate_referral_url( array( 'affiliate_id' => $affiliate_id ) );
+}
+
+/**
+ * Email template tag: affiliate ID
+ * Affiliate's ID
+ *
+ * @return int affiliate ID
+ */
+function affwp_email_tag_affiliate_id( $affiliate_id = 0 ) {
+	return $affiliate_id;
+}
+
