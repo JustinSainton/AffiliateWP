@@ -451,6 +451,16 @@ class Affiliate_WP_Emails {
 				'tag'         => 'site_name',
 				'description' => __( 'Your site name', 'affiliate-wp' ),
 				'function'    => 'affwp_email_tag_site_name'
+			),
+			array(
+				'tag'         => 'referral_url',
+				'description' => __( 'The affiliate\'s referral URL', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_referral_url'
+			),
+			array(
+				'tag'         => 'affiliate_id',
+				'description' => __( 'The affiliate\'s ID', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_affiliate_id'
 			)
 		);
 
