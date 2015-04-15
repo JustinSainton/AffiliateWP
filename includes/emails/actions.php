@@ -174,7 +174,7 @@ function affwp_notify_on_rejected_affiliate_registration( $affiliate_id = 0, $st
 	$message      = affiliate_wp()->settings->get( 'rejection_email', '' );
 
 	if ( empty( $message ) ) {
-		$message  = sprintf( __( 'Hi %s', 'affiliate-wp' ), affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id ) ) . "\n\n";
+		$message  = sprintf( __( 'Hi %s,', 'affiliate-wp' ), affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id ) ) . "\n\n";
 		$message .= __( 'We regret to inform you that your recent affiliate registration on {site_name} was rejected.', 'affiliate-wp' ) . "\n\n";
 	}
 
