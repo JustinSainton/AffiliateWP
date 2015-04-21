@@ -207,10 +207,6 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 	*/
 	public function update_discount_affiliate( $discount_id = 0, $args ) {
 
-		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
-			return;
-		}
-
 		if( empty( $_POST['user_id'] ) ) {
 			$user = get_user_by( 'login', $_POST['user_name'] );
 			if( $user ) {
@@ -220,9 +216,19 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			$user_id = absint( $_POST['user_id'] );
 		}
 
+		if ( empty( $_POST['user_name'] ) ) {
+			delete_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_id );
+			return;
+		}
+
+		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
+			return;
+		}
+
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_id, $affiliate_id );
+		
 	}
 	
 }
