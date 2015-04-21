@@ -422,7 +422,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	 * @since   1.1
 	*/
 	public function store_discount_affiliate( $details, $discount_id = 0 ) {
-
+		
+		if ( empty( $_POST['user_name'] ) ) {		
+			delete_post_meta( $discount_id, 'affwp_discount_affiliate' );
+			return;
+		}
+		
 		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
 		}
