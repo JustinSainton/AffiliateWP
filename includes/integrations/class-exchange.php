@@ -253,7 +253,12 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	 * @since   1.3
 	*/
 	public function store_coupon_affiliate( $coupon_id = 0, $data = array() ) {
-
+		
+		if ( empty( $_POST['user_name'] ) ) {		
+			delete_post_meta( $coupon_id, 'affwp_coupon_affiliate' );
+			return;
+		}
+		
 		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
 		}
