@@ -98,6 +98,8 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 
 			</tr>
 
+			<?php do_action( 'affwp_edit_affiliate_end', $affiliate ); ?>
+
 		</table>
 
 		<?php do_action( 'affwp_edit_affiliate_bottom', $affiliate ); ?>

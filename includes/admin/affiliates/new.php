@@ -71,6 +71,8 @@
 
 			</tr>
 
+			<?php do_action( 'affwp_new_affiliate_end' ); ?>
+
 		</table>
 
 		<?php do_action( 'affwp_new_affiliate_bottom' ); ?>
