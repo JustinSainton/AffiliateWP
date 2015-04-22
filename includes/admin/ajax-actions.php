@@ -13,6 +13,8 @@ function affwp_search_users() {
 
 	$search_query = htmlentities2( trim( $_POST['user_name'] ) );
 
+	do_action( 'affwp_pre_search_users', $search_query );
+
 	$found_users = get_users( array(
 			'number' => 9999,
 			'search' => $search_query . '*'
