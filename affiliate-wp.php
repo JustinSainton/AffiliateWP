@@ -323,6 +323,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/visit-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/creative-functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/plugin-compatibility.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
 	}
 
