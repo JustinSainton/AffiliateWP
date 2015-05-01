@@ -178,7 +178,7 @@ final class Affiliate_WP {
 			self::$instance->setup_constants();
 			self::$instance->includes();
 
-			add_action( 'plugins_loaded', array( self::$instance, 'setup_objects' ) );
+			add_action( 'plugins_loaded', array( self::$instance, 'setup_objects' ), -1 );
 			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 		}
 		return self::$instance;
