@@ -178,23 +178,7 @@ final class Affiliate_WP {
 			self::$instance->setup_constants();
 			self::$instance->includes();
 
-			// Setup objects
-			self::$instance->affiliates     = new Affiliate_WP_DB_Affiliates;
-			self::$instance->affiliate_meta = new Affiliate_WP_Affiliate_Meta_DB;
-			self::$instance->referrals      = new Affiliate_WP_Referrals_DB;
-			self::$instance->visits         = new Affiliate_WP_Visits_DB;
-			self::$instance->settings       = new Affiliate_WP_Settings;
-			self::$instance->tracking       = new Affiliate_WP_Tracking;
-			self::$instance->templates      = new Affiliate_WP_Templates;
-			self::$instance->login          = new Affiliate_WP_Login;
-			self::$instance->register       = new Affiliate_WP_Register;
-			self::$instance->integrations   = new Affiliate_WP_Integrations;
-			self::$instance->emails         = new Affiliate_WP_Emails;
-			self::$instance->creatives      = new Affiliate_WP_Creatives_DB;
-			self::$instance->creative       = new Affiliate_WP_Creatives;
-
-			self::$instance->updater();
-			
+			add_action( 'plugins_loaded', array( self::$instance, 'setup_objects' ) );
 			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
 		}
 		return self::$instance;
@@ -325,6 +309,32 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/install.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/plugin-compatibility.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/scripts.php';
+	}
+
+	/**
+	 * Setup all objects
+	 *
+	 * @access private
+	 * @since 1.6.2
+	 * @return void
+	 */
+	public function setup_objects() {
+
+		self::$instance->affiliates     = new Affiliate_WP_DB_Affiliates;
+		self::$instance->affiliate_meta = new Affiliate_WP_Affiliate_Meta_DB;
+		self::$instance->referrals      = new Affiliate_WP_Referrals_DB;
+		self::$instance->visits         = new Affiliate_WP_Visits_DB;
+		self::$instance->settings       = new Affiliate_WP_Settings;
+		self::$instance->tracking       = new Affiliate_WP_Tracking;
+		self::$instance->templates      = new Affiliate_WP_Templates;
+		self::$instance->login          = new Affiliate_WP_Login;
+		self::$instance->register       = new Affiliate_WP_Register;
+		self::$instance->integrations   = new Affiliate_WP_Integrations;
+		self::$instance->emails         = new Affiliate_WP_Emails;
+		self::$instance->creatives      = new Affiliate_WP_Creatives_DB;
+		self::$instance->creative       = new Affiliate_WP_Creatives;
+
+		self::$instance->updater();
 	}
 
 	/**
