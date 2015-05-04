@@ -779,7 +779,7 @@ function affwp_add_affiliate( $data = array() ) {
 			$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
 			affwp_set_affiliate_status( $affiliate_id, $status );
 
-			return true;
+			return $affiliate_id;
 		}
 
 	}
