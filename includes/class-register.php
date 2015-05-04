@@ -201,7 +201,7 @@ class Affiliate_WP_Register {
 			wp_update_user( array( 'ID' => $user_id, 'user_url' => $website_url ) );
 		}
 
-		$affiliate_id       = affiliate_wp()->affiliates->add( array(
+		$affiliate_id = affwp_add_affiliate( array( 
 			'status'        => $status,
 			'user_id'       => $user_id,
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
