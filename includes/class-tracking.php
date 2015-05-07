@@ -290,6 +290,11 @@ class Affiliate_WP_Tracking {
 
 			$status = ! empty( $_POST['status'] ) ? $_POST['status'] : 'unpaid';
 			$amount = sanitize_text_field( urldecode( $_POST['amount'] ) );
+			
+			if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+				die( '-5' ); // Ignore a zero amount referral
+			}
+
 			if( $amount > 0 ) {
 				$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
 			}
