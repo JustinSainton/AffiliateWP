@@ -40,7 +40,7 @@ class Affiliate_WP_Tracking {
 		}
 
 		add_action( 'init', array( $this, 'rewrites' ) );
-		add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ) );
+		add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ), 9999 );
 		add_action( 'redirect_canonical', array( $this, 'prevent_canonical_redirect' ), 0, 2 );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
