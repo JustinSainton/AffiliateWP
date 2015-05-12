@@ -243,7 +243,7 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		if ( did_action( 'process_registration' ) ) {
+		if ( did_action( 'affwp_affiliate_register' ) ) {
 			return;
 		}
 
