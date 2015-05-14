@@ -946,7 +946,7 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 	} else {
 		$referral_url = $non_pretty_urls;
 	}
-	
+
 	return $referral_url;
 
 }
