@@ -20,7 +20,7 @@ class Affiliate_WP_Affiliate_Meta_DB extends Affiliate_WP_DB {
 		$this->primary_key = 'meta_id';
 		$this->version     = '1.0';
 
-		add_action( 'init', array( $this, 'register_table' ) );
+		add_action( 'plugins_loaded', array( $this, 'register_table' ), 11 );
 
 	}
 
