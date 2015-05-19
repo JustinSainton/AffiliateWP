@@ -107,7 +107,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 		$checked = rgar( $form, 'gform_allow_referrals' );
 
 		$field = '<input type="checkbox" id="gform_allow_referrals" name="gform_allow_referrals" value="1" ' . checked( 1, $checked, false ) . ' />';
-	 	$field .= '<label for="gform_allow_referrals">' . __( 'Allow referrals to be created for this form', 'affiliate-wp' ) . '</label>';
+	 	$field .= ' <label for="gform_allow_referrals">' . __( 'Allow referrals to be created for this form', 'affiliate-wp' ) . '</label>';
 	
 		$settings['Form Options']['gform_allow_referrals'] = '
 		    <tr>
