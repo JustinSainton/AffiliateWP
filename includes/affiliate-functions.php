@@ -908,18 +908,39 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 
 	// get base URL
 	if ( isset( $args['base_url'] ) ) {
-		$base_url = trailingslashit( $args['base_url'] );
+		$base_url = $args['base_url'];
 	} else {
 		$base_url = affwp_get_affiliate_base_url();
 	}
 
+	// add trailing slash only if no query string exists
+	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) ) {
+		$base_url = trailingslashit( $args['base_url'] );
+	} 
+
 	// the format value, either affiliate's ID or username
 	$format_value = affwp_get_referral_format_value( $format, $affiliate_id );
 
+	// if query exists in base URL, strip it and store in variable so we can append to the end of the URL
+	if ( array_key_exists( 'query', parse_url( $base_url ) ) ) {
+		
+		$url_parts       = parse_url( $base_url );
+		$url_scheme      = isset( $url_parts['scheme'] ) ? $url_parts['scheme'] : 'http';
+		$url_host        = isset( $url_parts['host'] ) ? $url_parts['host'] : '';
+		$constructed_url = $url_scheme . '://' . $url_host . $url_parts['path'];
+		$base_url        = $constructed_url;
+
+		// build query string
+		$query_string =  '?' . $url_parts['query'];
+
+	} else {
+		$query_string = '';
+	}
+
 	// set up URLs
-	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $format_value;
-	$non_pretty_urls = add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format_value, trailingslashit( $base_url ) );
-	
+	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . trailingslashit( $format_value ) . $query_string;
+	$non_pretty_urls = esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format_value, $base_url . $query_string ) );
+
 	if ( $pretty ) {
 		$referral_url = $pretty_urls;
 	} else {
@@ -938,14 +959,10 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
  */
 function affwp_get_affiliate_base_url() {
 
-	if( isset( $_GET['url'] ) ) {
-
-		$base_url = trailingslashit( urldecode( $_GET['url'] ) );
-
+	if ( isset( $_GET['url'] ) && ! empty( $_GET['url'] ) ) {
+		$base_url = urldecode( $_GET['url'] );
 	} else {
-		
 		$base_url = home_url( '/' );
-
 	}
 
 	return apply_filters( 'affwp_affiliate_referral_url_base', $base_url );
