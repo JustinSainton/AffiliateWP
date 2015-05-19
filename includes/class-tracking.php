@@ -295,9 +295,7 @@ class Affiliate_WP_Tracking {
 				die( '-5' ); // Ignore a zero amount referral
 			}
 
-			if( $amount > 0 ) {
-				$amount = affwp_calc_referral_amount( $amount, $affiliate_id );
-			}
+			$amount = $amount > 0 ? affwp_calc_referral_amount( $amount, $affiliate_id ) : 0;
 
 			// Store the visit in the DB
 			$referral_id = affiliate_wp()->referrals->add( array(
