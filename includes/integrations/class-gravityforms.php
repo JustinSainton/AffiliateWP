@@ -12,11 +12,13 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
+		add_filter( 'gform_form_settings', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'gform_pre_form_settings_save', array( $this, 'save_settings' ) );
 	}
-
+	
 	public function add_pending_referral( $entry, $form ) {
 
-		if( $this->was_referred() ) {
+		if( $this->was_referred() && rgar( $form, 'gform_allow_referrals' ) ) {
 
 			// Do some craziness to determine the price (this should be easy but is not)
 
@@ -92,6 +94,43 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 		$url = admin_url( 'admin.php?page=gf_entries&view=entry&id=' . $entry['form_id'] . '&lid=' . $reference );
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
+	}
+
+	/**
+	 * Register the form-specific settings
+	 *
+	 * @since  1.7
+	 * @return void
+	 */
+	public function add_settings( $settings, $form ) {
+
+		$checked = rgar( $form, 'gform_allow_referrals' );
+
+		$field = '<input type="checkbox" id="gform_allow_referrals" name="gform_allow_referrals" value="1" ' . checked( 1, $checked, false ) . ' />';
+	 	$field .= '<label for="gform_allow_referrals">' . __( 'Allow referrals to be created for this form', 'affiliate-wp' ) . '</label>';
+	
+		$settings['Form Options']['gform_allow_referrals'] = '
+		    <tr>
+		        <th>' . __( 'Allow referrals', 'affiliate-wp' ) . '</th>
+		        <td>' . $field . '</td>
+
+		    </tr>';
+		
+		return $settings;
+		
+	}
+	
+	/**
+	 * Save form settings
+	 *
+	 * @since 1.7
+	 */
+	public function save_settings( $form ) {
+
+	    $form['gform_allow_referrals'] = rgpost( 'gform_allow_referrals' );
+
+	    return $form;
+
 	}
 
 }
