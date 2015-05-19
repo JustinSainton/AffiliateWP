@@ -226,7 +226,10 @@ function affwp_notify_on_new_referral( $affiliate_id = 0, $referral ) {
 	$subject = apply_filters( 'affwp_new_referral_subject', $subject, $args );
 	$message = apply_filters( 'affwp_new_referral_email', $message, $args );
 
-	$emails->send( $email, $subject, $message );
+	if ( apply_filters( 'affwp_notify_on_new_referral', true, $referral ) ) {
+		$emails->send( $email, $subject, $message );
+	}
+	
 
 }
 add_action( 'affwp_referral_accepted', 'affwp_notify_on_new_referral', 10, 2 );
