@@ -60,10 +60,9 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	public function add_pending_referral( $txn ) {
 
 		// Pending referrals are only created for one-time purchases
-
 		if ( $this->was_referred() && empty( $txn->subscription_id ) ) {
 
-			$referral = affiliate_wp()->referrals->get_by( 'reference', $txn->trans_num, $this->context );
+			$referral = affiliate_wp()->referrals->get_by( 'reference', $txn->id, $this->context );
 
 			if ( ! empty( $referral ) ) {
 				return;
@@ -76,10 +75,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			}
 
 			// get referral total
-			$referral_total = $this->calculate_referral_amount( $txn->amount, $txn->trans_num, $txn->product_id );
+			$referral_total = $this->calculate_referral_amount( $txn->amount, $txn->id, $txn->product_id );
 
 			// insert a pending referral
-			$this->insert_pending_referral( $referral_total, $txn->trans_num, get_the_title( $txn->product_id ) );
+			$this->insert_pending_referral( $referral_total, $txn->id, get_the_title( $txn->product_id ) );
 
 		}
 	}
@@ -93,12 +92,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	public function mark_referral_complete( $txn ) {
 
 		// Completes a referral for a one-time purchase
-
 		if( ! empty( $txn->subscription_id ) ) {
 			return;
 		}
-
-		$this->complete_referral( $txn->trans_num );
+		$this->complete_referral( $txn->id );
 	}
 
 	/**
