@@ -76,7 +76,7 @@ abstract class Affiliate_WP_Base {
 			return false; // Referral already created for this reference
 		}
 
-		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+		if( empty( $amount ) && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
 
