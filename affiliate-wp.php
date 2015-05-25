@@ -314,7 +314,7 @@ final class Affiliate_WP {
 	/**
 	 * Setup all objects
 	 *
-	 * @access private
+	 * @access public
 	 * @since 1.6.2
 	 * @return void
 	 */
