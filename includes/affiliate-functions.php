@@ -185,16 +185,24 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
  * Retrieves the referral rate for an affiliate
  *
  * @since 1.0
+ * @param $affiliate_id int The ID of the affiliate we are getting a rate for
+ * @param $formatted bool Whether to return a formatted rate with %/currency
+ * @param $custom_rate string A custom rate that overrides site/affiliate settings
  * @return float
  */
-function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
+function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $custom_rate = '' ) {
 
 	// default rate
+
 	$rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
 
 	$affiliate_rate = affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
 
-	if ( ! empty( $affiliate_rate ) ) {
+	if( ! empty( $custom_rate ) ) {
+
+		$rate = $custom_rate;
+
+	} elseif ( ! empty( $affiliate_rate ) ) {
 
 		$rate = $affiliate_rate;
 
