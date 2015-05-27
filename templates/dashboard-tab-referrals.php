@@ -34,7 +34,7 @@
 						<td class="referral-description"><?php echo $referral->description; ?></td>
 						<td class="referral-status <?php echo $referral->status; ?>"><?php echo affwp_get_referral_status_label( $referral ); ?></td>
 						<td class="referral-date"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $referral->date ) ); ?></td>
-						<?php do_action( 'affwp_referrals_dashboard_td', $referral->referral_id ); ?>
+						<?php do_action( 'affwp_referrals_dashboard_td', $referral ); ?>
 					</tr>
 				<?php endforeach; ?>
 
