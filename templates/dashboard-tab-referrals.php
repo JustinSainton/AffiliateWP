@@ -12,7 +12,7 @@
 		'status'       => array( 'paid', 'unpaid', 'rejected' )
 	) );
 	?>
-	<?php do_action( 'affwp_referrals_dashboard_before_referrals_table', affwp_get_affiliate_id() ); ?>
+	<?php do_action( 'affwp_referrals_dashboard_before_table', affwp_get_affiliate_id() ); ?>
 
 	<table id="affwp-affiliate-dashboard-referrals" class="affwp-table">
 		<thead>
@@ -47,7 +47,7 @@
 			<?php endif; ?>
 		</tbody>
 	</table>
-	<?php do_action( 'wcpr_after_referrals_table', affwp_get_affiliate_id() ); ?>
+	<?php do_action( 'affwp_referrals_dashboard_after_table', affwp_get_affiliate_id() ); ?>
 
 	<div class="affwp-pagination">
 		<?php
