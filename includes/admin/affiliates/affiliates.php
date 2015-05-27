@@ -403,7 +403,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'delete'     => __( 'Delete', 'affiliate-wp' )
 		);
 
-		return $actions;
+		return apply_filters( 'affwp_affilates_bulk_actions', $actions );
 	}
 
 	/**
