@@ -21,7 +21,7 @@
 				<th class="referral-description"><?php _e( 'Description', 'affiliate-wp' ); ?></th>
 				<th class="referral-status"><?php _e( 'Status', 'affiliate-wp' ); ?></th>
 				<th class="referral-date"><?php _e( 'Date', 'affiliate-wp' ); ?></th>
-				<?php do_action( 'affwp_referrals_dashboard_th', affwp_get_affiliate_id()); ?>
+				<?php do_action( 'affwp_referrals_dashboard_th'); ?>
 			</tr>
 		</thead>
 
