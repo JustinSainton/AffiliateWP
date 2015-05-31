@@ -48,7 +48,7 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input class="regular-text" type="text" name="user_login" id="user_login" value="<?php echo esc_attr( $user_info->data->user_login ); ?>" disabled="1" />
+					<input class="regular-text" type="text" name="user_login" id="user_login" value="<?php echo esc_attr( $user_info->user_login ); ?>" disabled="1" />
 					<p class="description"><?php _e( 'The affiliate\'s username. This cannot be changed.', 'affiliate-wp' ); ?></p>
 				</td>
 
