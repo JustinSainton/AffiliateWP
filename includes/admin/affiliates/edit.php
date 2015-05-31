@@ -35,7 +35,7 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input class="small-text" type="text" name="user_id" id="user_id" value="<?php echo esc_attr( $affiliate->user_id ); ?>" <?php if( ! empty( $affiliate->user_id ) ) { echo 'disabled="1"'; } ?> />
+					<input class="small-text" type="text" name="user_id" id="user_id" value="<?php echo esc_attr( $affiliate->user_id ); ?>" disabled="1" />
 					<p class="description"><?php _e( 'The affiliate\'s user ID. This cannot be changed.', 'affiliate-wp' ); ?></p>
 				</td>
 
