@@ -128,7 +128,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			if( $existing ) {
 
 				// Update the previously created referral
-				affiliate_wp()->referrals->update( $existing->referral_id, array(
+				affiliate_wp()->referrals->update_referral( $existing->referral_id, array(
 					'amount'       => $amount,
 					'reference'    => $order_id,
 					'description'  => $description,
