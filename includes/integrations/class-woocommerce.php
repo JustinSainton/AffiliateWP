@@ -70,8 +70,14 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				return false; // Customers cannot refer themselves
 			}
 
-			if( affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context ) ) {
+			// Check for an existing referral
+			$existing = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
+
+			// If an existing referral exists and it is not pending, exit. If it is pending, we update it below
+			if( $existing && 'pending' != $existing->status ) {
+			
 				return false; // Referral already created for this reference
+
 			}
 
 			$cart_shipping = $this->order->get_total_shipping();
@@ -119,24 +125,42 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			$description = $this->get_referral_description();
 			$visit_id    = affiliate_wp()->tracking->get_visit_id();
 
-			$referral_id = affiliate_wp()->referrals->add( apply_filters( 'affwp_insert_pending_referral', array(
-				'amount'       => $amount,
-				'reference'    => $order_id,
-				'description'  => $description,
-				'affiliate_id' => $this->affiliate_id,
-				'visit_id'     => $visit_id,
-				'products'     => $this->get_products(),
-				'context'      => $this->context
-			), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
+			if( $existing ) {
 
-			if( $referral_id ) {
+				// Update the previously created referral
+				affiliate_wp()->referrals->update( $existing->referral_id, array(
+					'amount'       => $amount,
+					'reference'    => $order_id,
+					'description'  => $description,
+					'affiliate_id' => $this->affiliate_id,
+					'visit_id'     => $visit_id,
+					'products'     => $this->get_products(),
+					'context'      => $this->context
+				) );
 
-				$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
-				$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
+			} else {
 
-				$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+				// Create a new referral
+				$referral_id = affiliate_wp()->referrals->add( apply_filters( 'affwp_insert_pending_referral', array(
+					'amount'       => $amount,
+					'reference'    => $order_id,
+					'description'  => $description,
+					'affiliate_id' => $this->affiliate_id,
+					'visit_id'     => $visit_id,
+					'products'     => $this->get_products(),
+					'context'      => $this->context
+				), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
 
+				if( $referral_id ) {
+
+					$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
+					$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
+
+					$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
+				}
 			}
+
 
 		}
 
