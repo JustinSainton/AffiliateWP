@@ -12,42 +12,11 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 		$this->context = 'memberpress';
 
-		add_action( 'mepr-track-signup', array( $this, 'set_referred_flag_on_signup' ), 10, 4 );
 		add_action( 'mepr-txn-status-pending', array( $this, 'add_pending_referral' ), 10 );
 		add_action( 'mepr-txn-status-complete', array( $this, 'mark_referral_complete' ), 10 );
-		add_action( 'mepr-txn-status-complete', array( $this, 'mark_subscription_referral_complete' ), 10 );
 		add_action( 'mepr-txn-status-refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
 	
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
-
-	}
-
-	/**
-	 * Set a flag during a recurring signup so that we can identify this when the payment is processed
-	 *
-	 * @access  public
-	 * @since   1.5
-	*/
-	public function set_referred_flag_on_signup( $product_price, $user, $product_id, $txn_id ) {
-
-		if( $this->was_referred() ) {
-
-			if ( $this->is_affiliate_email( $user->user_email ) ) {
-				return; // Customers cannot refer themselves
-			}
-
-			$prd = new MeprProduct( $product_id );
-			if( $prd->is_one_time_payment() ) {
-				return;
-			}
-
-			// Calculate the referral total
-			$referral_total = $this->calculate_referral_amount( $product_price, $user->ID, $product_id );
-
-			// Store a pending referral
-			$this->insert_pending_referral( $referral_total, $user->ID, get_the_title( $product_id ) );
-
-		}
 
 	}
 
@@ -60,7 +29,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	public function add_pending_referral( $txn ) {
 
 		// Pending referrals are only created for one-time purchases
-		if ( $this->was_referred() && empty( $txn->subscription_id ) ) {
+		if ( $this->was_referred() ) {
 
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $txn->id, $this->context );
 
@@ -78,7 +47,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			$referral_total = $this->calculate_referral_amount( $txn->amount, $txn->id, $txn->product_id );
 
 			// insert a pending referral
-			$this->insert_pending_referral( $referral_total, $txn->id, get_the_title( $txn->product_id ) );
+			$this->insert_pending_referral( $referral_total, $txn->id, get_the_title( $txn->product_id ), array(), $txn->subscription_id );
 
 		}
 	}
@@ -92,41 +61,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	public function mark_referral_complete( $txn ) {
 
 		// Completes a referral for a one-time purchase
-		if( ! empty( $txn->subscription_id ) ) {
-			return;
-		}
 		$this->complete_referral( $txn->id );
-	}
-
-	/**
-	 * Mark a referral from a subscription as Unpaid when the payment is completed
-	 *
-	 * @access  public
-	 * @since   1.5
-	*/
-	public function mark_subscription_referral_complete( $txn ) {
-
-		// Completes a referral for a subscription payment
-
-		if( empty( $txn->subscription_id ) ) {
-			return;
-		}
-
-		$subscription = $txn->subscription();
-
-		// Only continue if this is the first subscription payment
-		if( is_object( $subscription ) && $subscription->txn_count > 1 ) {
-			return;
-		}
-
-		$referral = affiliate_wp()->referrals->get_by( 'reference', $txn->user_id, $this->context );
-
-		if( ! $referral ) {
-			return false; // Referral already created for this reference
-		}
-
-		affiliate_wp()->referrals->update_referral( $referral->referral_id, array( 'reference' => $txn->subscription_id, 'status' => 'unpaid' ) );
-
 	}
 
 	/**
@@ -141,15 +76,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			return;
 		}
 
-		if( empty( $txn->subscription_id ) ) {
-
-			$this->reject_referral( $txn->trans_num );
-	
-		} else {
-
-			$this->reject_referral( $txn->subscription_id );
-		
-		}
+		$this->reject_referral( $txn->id );
 	
 	}
 
@@ -167,17 +94,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 		}
 
-		if( ! empty( $referral->custom ) ) {
-
-			$search = $referral->custom;
-
-		} else {
-
-			$search = $reference;
-
-		}
-
-		$url = admin_url( 'admin.php?page=memberpress-trans&search=' . $search );
+		$url = admin_url( 'admin.php?page=memberpress-trans&search=' . $reference );
 		
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
