@@ -68,6 +68,7 @@ class Affiliate_WP_Tracking {
 		var AFFWP = AFFWP || {};
 		AFFWP.referral_var = '<?php echo $this->get_referral_var(); ?>';
 		AFFWP.expiration = <?php echo $this->get_expiration_time(); ?>;
+		AFFWP.credit_last_referrer = <?php echo ( ! empty( affiliate_wp()->settings->get( 'referral_credit_last' ) ) ) ? affiliate_wp()->settings->get( 'referral_credit_last' ) : 0 ?>;
 		</script>
 <?php
 	}

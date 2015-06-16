@@ -2,7 +2,9 @@ jQuery(document).ready( function($) {
 
     var cookie = $.cookie( 'affwp_ref' );
 
-    if( cookie ) {
+    var credit_last = AFFWP.credit_last_referrer;
+
+    if( '1' != credit_last && cookie ) {
         return;
     }
 
@@ -34,6 +36,10 @@ jQuery(document).ready( function($) {
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 if( '1' == response.data.success ) {
+                    if( '1' == credit_last && cookie ) {
+                        $.removeCookie( 'affwp_ref' );
+                    }
+
                     affwp_track_visit( response.data.affiliate_id );
                 }
             }
@@ -48,6 +54,9 @@ jQuery(document).ready( function($) {
 
         // If a referral var is present and a referral cookie is not already set
         if( ref && ! cookie ) {
+            affwp_track_visit( ref );
+        } else if( '1' == credit_last && cookie ) {
+            $.removeCookie( 'affwp_ref' );
             affwp_track_visit( ref );
         }
 
