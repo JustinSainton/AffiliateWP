@@ -403,7 +403,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'delete'     => __( 'Delete', 'affiliate-wp' )
 		);
 
-		return $actions;
+		return apply_filters( 'affwp_affilates_bulk_actions', $actions );
 	}
 
 	/**
@@ -532,10 +532,10 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 				$total_items = $this->inactive_count;
 				break;
 			case 'pending':
-				$total_items = $this->inactive_count;
+				$total_items = $this->pending_count;
 				break;
 			case 'rejected':
-				$total_items = $this->inactive_count;
+				$total_items = $this->rejected_count;
 				break;
 			case 'any':
 				$total_items = $this->total_count;

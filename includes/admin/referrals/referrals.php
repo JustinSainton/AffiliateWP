@@ -188,7 +188,10 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return array $views All the views available
 	 */
 	public function get_views() {
+
+		$affiliate_id   = isset( $_GET['affiliate_id'] ) ? absint( $_GET['affiliate_id'] ) : '';
 		$base           = admin_url( 'admin.php?page=affiliate-wp-referrals' );
+		$base           = $affiliate_id ? add_query_arg( 'affiliate_id', $affiliate_id, $base ) : $base;
 		$current        = isset( $_GET['status'] ) ? $_GET['status'] : '';
 		$total_count    = '&nbsp;<span class="count">(' . $this->total_count    . ')</span>';
 		$paid_count     = '&nbsp;<span class="count">(' . $this->paid_count . ')</span>';
@@ -344,7 +347,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public function column_actions( $referral ) {
 		
 		$action_links   = array();
-		
+
 		if( 'paid' == $referral->status ) {
 			
 			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_unpaid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Unpaid', 'affiliate-wp' ) . '</a>';
