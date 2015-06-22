@@ -20,6 +20,7 @@ class Affiliate_WP_Settings {
 		add_action( 'admin_init', array( $this, 'check_license' ) );
 
 		add_filter( 'affwp_settings_emails', array( $this, 'email_approval_settings' ) );
+		add_filter( 'affwp_settings_sanitize', array( $this, 'sanitize_referral_variable' ), 10, 2 );
 	}
 
 	/**
@@ -158,6 +159,30 @@ class Affiliate_WP_Settings {
 
 		return array_merge( $saved, $input );
 
+	}
+
+	/**
+	 * Sanitize the referral variable on save
+	 *
+	 * @since 1.7
+	 * @return string
+	*/
+	public function sanitize_referral_variable( $value = '', $key = '' ) {
+
+		if( 'referral_var' === $key ) {
+
+			if( empty( $value ) ) {
+
+				$value = 'ref';
+
+			} else {
+
+				$value = sanitize_text_field( $value );
+			}
+
+		}
+
+		return $value;
 	}
 
 	/**
