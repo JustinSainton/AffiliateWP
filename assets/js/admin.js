@@ -174,4 +174,15 @@ jQuery(document).ready(function($) {
 		// Finally, open the modal
 		file_frame.open();
 	});
+
+	// Confirm referral deletion
+	$('body').on('click', '.affiliates_page_affiliate-wp-referrals .delete', function(e) {
+
+		if( confirm( affwp_vars.confirm_delete_referral) ) {
+			return true;
+		}
+
+		return false;
+
+	});
 });
