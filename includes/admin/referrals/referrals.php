@@ -375,7 +375,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		}
 		
 		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'edit_referral', 'referral_id' => $referral->referral_id ) ) ) . '" class="edit">' . __( 'Edit', 'affiliate-wp' ) . '</a></span>';
-		$action_links[] = '<span class="trash"><a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'referral_id' => $referral->referral_id ) ) ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
+		$action_links[] = '<span class="trash"><a href="' . wp_nonce_url( add_query_arg( array( 'affwp_action' => 'process_delete_referral', 'referral_id' => $referral->referral_id ) ), 'affwp_delete_referral_nonce' ) . '" class="delete">' . __( 'Delete', 'affiliate-wp' ) . '</a></span>';
 		
 		$action_links   = array_unique( apply_filters( 'affwp_referral_action_links', $action_links, $referral ) );
 
