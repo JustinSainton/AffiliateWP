@@ -224,12 +224,13 @@ class Affiliate_WP_Shortcodes {
 
 		$atts = shortcode_atts(
 			array(
-				'id'         => '',                    // ID of the creative
-				'image_id'   => '',                    // ID of image from media library if not using creatives section
-				'image_link' => '',                    // External URL if image is hosted off-site
-				'link'       => '',                    // Where the banner links to
-				'preview'    => 'yes',                 // Display an image/text preview above HTML code
-				'text'       => get_bloginfo( 'name' ) // Text shown in alt/title tags
+				'id'          => '',    // ID of the creative
+				'image_id'    => '',    // ID of image from media library if not using creatives section
+				'image_link'  => '',    // External URL if image is hosted off-site
+				'link'        => '',    // Where the banner links to
+				'preview'     => 'yes', // Display an image/text preview above HTML code
+				'text'        => '',    // Text shown in alt/title tags
+				'description' => ''     // Description for creative
 			),
 			$atts,
 			'affiliate_creative'
