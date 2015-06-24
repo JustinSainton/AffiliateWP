@@ -63,9 +63,9 @@ function affwp_process_update_referral( $data ) {
 add_action( 'affwp_process_update_referral', 'affwp_process_update_referral' );
 
 /**
- * Process the update referral request
+ * Process the delete referral request
  *
- * @since 1.2
+ * @since 1.7
  * @return void
  */
 function affwp_process_delete_referral( $data ) {
