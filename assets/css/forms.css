@@ -45,6 +45,10 @@ table.affwp-table th {
 	box-sizing: border-box;
 }
 
+.affwp-form input {
+	border: 1px solid rgba(51, 51, 51, 0.1);
+}
+
 .affwp-form input[type="text"].required,
 .affwp-form input[type="password"].required,
 .affwp-form input[type="email"].required,
