@@ -209,4 +209,5 @@ p.affwp-error {
 
 .affwp-creative:last-of-type {
 	border-bottom: none;
+	padding-bottom: 0;
 }
