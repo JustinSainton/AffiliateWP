@@ -20,6 +20,10 @@ table.affwp-table th {
 	font-weight: bold;
 }
 
+.affwp-form {
+	margin-bottom: 20px;
+}
+
 .affwp-form fieldset {
 	border: none;
 }
