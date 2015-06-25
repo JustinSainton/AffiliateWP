@@ -18,7 +18,7 @@
 
 		<?php echo affiliate_wp()->creative->affiliate_creatives( $args ); ?>
 
-		<div class="affwp-pagination">
+		<p class="affwp-pagination">
 			<?php
 			echo paginate_links( array(
 				'current'      => $page,
@@ -28,7 +28,7 @@
 				)
 			) );
 			?>
-		</div>
+		</p>
 		
 		<?php do_action( 'affwp_after_creatives' ); ?>
 

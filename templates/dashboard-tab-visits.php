@@ -45,7 +45,7 @@
 		</tbody>
 	</table>
 
-	<div class="affwp-pagination">
+	<p class="affwp-pagination">
 		<?php
 		echo paginate_links( array(
 			'current'      => $page,
@@ -56,6 +56,6 @@
 			)
 		) );
 		?>
-	</div>
+	</p>
 
 </div>
