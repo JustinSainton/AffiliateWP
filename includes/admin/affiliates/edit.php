@@ -4,6 +4,7 @@ $user_info = get_userdata( $affiliate->user_id );
 $rate_type = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
 $rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
 $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
+$reason    = affwp_get_affiliate_meta( $affiliate->affiliate_id, '_rejection_reason', true );
 ?>
 <div class="wrap">
 
@@ -110,6 +111,20 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</td>
 
 			</tr>
+
+			<?php if( 'rejected' == $affiliate->status && ! empty( $reason ) ) : ?>
+				<tr class="form-row">
+
+					<th scope="row">
+						<label><?php _e( 'Rejection Reason', 'affiliate-wp' ); ?></label>
+					</th>
+
+					<td>
+						<div class="description"><?php echo wpautop( $reason ); ?></div>
+					</td>
+
+				</tr>
+			<?php endif; ?>
 
 			<?php do_action( 'affwp_edit_affiliate_end', $affiliate ); ?>
 
