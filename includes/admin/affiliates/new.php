@@ -30,6 +30,23 @@
 			<tr class="form-row">
 
 				<th scope="row">
+					<label for="status"><?php _e( 'Affiliate Status', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<select name="status" id="status">
+						<option value="active"><?php _e( 'Active', 'affiliate-wp' ); ?></option>
+						<option value="inactive"><?php _e( 'Inactive', 'affiliate-wp' ); ?></option>
+						<option value="pending"><?php _e( 'Pending', 'affiliate-wp' ); ?></option>
+					</select>
+					<p class="description"><?php _e( 'The status assigned to the affiliate\'s account.', 'affiliate-wp' ); ?></p>
+				</td>
+
+			</tr>
+
+			<tr class="form-row">
+
+				<th scope="row">
 					<label for="rate_type"><?php _e( 'Referral Rate Type', 'affiliate-wp' ); ?></label>
 				</th>
 
