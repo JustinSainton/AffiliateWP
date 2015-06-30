@@ -213,7 +213,7 @@ function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $custo
 	if ( 'percentage' == $type ) {
 
 		// Sanitize the rate and ensure it's in the proper format
-		if ( $rate > 1 ) {
+		if ( $rate > 0 ) {
 			$rate = $rate / 100;
 		}
 
