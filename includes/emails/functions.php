@@ -108,6 +108,21 @@ function affwp_email_tag_promo_method( $affiliate_id = 0 ) {
 	return get_user_meta( affwp_get_affiliate_user_id( $affiliate_id ), 'affwp_promotion_method', true );
 }
 
+/**
+ * Email template tag: affwp_email_tag_rejection_reason
+ * The affiliate rejection reason
+ *
+ * @param int $affiliate_id
+ * @return string rejection_reason
+ */
+function affwp_email_tag_rejection_reason( $affiliate_id = 0 ) {
+	$reason = affwp_get_affiliate_meta( $affiliate_id, '_rejection_reason', true );
+	if( empty( $reason ) ) {
+		$reason = __( 'No reason provided', 'affiliate-wp' );
+	}
+	return $reason;
+}
+
 
 /**
  * Email template tag: login_url
