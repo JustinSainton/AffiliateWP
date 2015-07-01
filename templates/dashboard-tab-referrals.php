@@ -5,13 +5,17 @@
 	<?php
 	$per_page  = 30;
 	$page      = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-	$referrals = affiliate_wp()->referrals->get_referrals( array(
-		'number'       => $per_page,
-		'offset'       => $per_page * ( $page - 1 ),
-		'affiliate_id' => affwp_get_affiliate_id(),
-		'status'       => array( 'paid', 'unpaid', 'rejected' )
-	) );
+	$pages     = absint( ceil( affwp_count_referrals( affwp_get_affiliate_id() ) / $per_page ) );
+	$referrals = affiliate_wp()->referrals->get_referrals(
+		array(
+			'number'       => $per_page,
+			'offset'       => $per_page * ( $page - 1 ),
+			'affiliate_id' => affwp_get_affiliate_id(),
+			'status'       => array( 'paid', 'unpaid', 'rejected' ),
+		)
+	);
 	?>
+
 	<?php do_action( 'affwp_referrals_dashboard_before_table', affwp_get_affiliate_id() ); ?>
 
 	<table id="affwp-affiliate-dashboard-referrals" class="affwp-table">
@@ -47,19 +51,26 @@
 			<?php endif; ?>
 		</tbody>
 	</table>
+
 	<?php do_action( 'affwp_referrals_dashboard_after_table', affwp_get_affiliate_id() ); ?>
 
-	<p class="affwp-pagination">
-		<?php
-		echo paginate_links( array(
-			'current'      => $page,
-			'total'        => ceil( affwp_count_referrals( affwp_get_affiliate_id() ) / $per_page ),
-			'add_fragment' => '#affwp-affiliate-dashboard-referrals',
-			'add_args'     => array(
-			'tab'          => 'referrals'
-			)
-		) );
-		?>
-	</p>
+	<?php if ( $pages > 1 ) : ?>
+
+		<p class="affwp-pagination">
+			<?php
+			echo paginate_links(
+				array(
+					'current'      => $page,
+					'total'        => $pages,
+					'add_fragment' => '#affwp-affiliate-dashboard-referrals',
+					'add_args'     => array(
+						'tab' => 'referrals',
+					),
+				)
+			);
+			?>
+		</p>
+
+	<?php endif; ?>
 
 </div>
