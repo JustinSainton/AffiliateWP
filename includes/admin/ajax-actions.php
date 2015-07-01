@@ -27,7 +27,7 @@ function affwp_search_users() {
 						'number' => 9999,
 					)
 				);
-				$args = array( 'exclude' => array_map( 'absint', wp_list_pluck( $affiliates, 'affiliate_id' ) ) );
+				$args = array( 'exclude' => array_map( 'absint', wp_list_pluck( $affiliates, 'user_id' ) ) );
 				break;
 			case 'any':
 				$affiliates = affiliate_wp()->affiliates->get_affiliates(
@@ -35,7 +35,7 @@ function affwp_search_users() {
 						'number' => 9999,
 					)
 				);
-				$args = array( 'include' => array_map( 'absint', wp_list_pluck( $affiliates, 'affiliate_id' ) ) );
+				$args = array( 'include' => array_map( 'absint', wp_list_pluck( $affiliates, 'user_id' ) ) );
 				break;
 			default:
 				$affiliates = affiliate_wp()->affiliates->get_affiliates(
@@ -44,7 +44,7 @@ function affwp_search_users() {
 						'status' => $status,
 					)
 				);
-				$args = array( 'include' => array_map( 'absint', wp_list_pluck( $affiliates, 'affiliate_id' ) ) );
+				$args = array( 'include' => array_map( 'absint', wp_list_pluck( $affiliates, 'user_id' ) ) );
 		}
 	}
 
