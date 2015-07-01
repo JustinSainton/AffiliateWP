@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
 	var user_search_delay;
 
 	// ajax user search
-	$('body').on( 'input', '.affwp-user-search', function() {
+	$('body').on( 'input change', '.affwp-user-search', function() {
 		clearTimeout( user_search_delay );
 
 		$('.affwp-ajax').hide();
