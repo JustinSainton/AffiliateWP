@@ -18,7 +18,7 @@
 
 				<td>
 					<span class="affwp-ajax-search-wrap">
-						<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
+						<input type="text" name="user_name" id="user_name" class="affwp-user-search" data-affwp-status="false" autocomplete="off" />
 						<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 					</span>
 					<div id="affwp_user_search_results"></div>

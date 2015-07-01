@@ -76,35 +76,47 @@ jQuery(document).ready(function($) {
 		$('.affwp-datepicker').datepicker();
 	}
 
+	var user_search_delay;
+
 	// ajax user search
-	$('.affwp-user-search').keyup(function() {
-		var user_search = $(this).val();
-		$('.affwp-ajax').show();
-		data = {
-			action: 'affwp_search_users',
-			user_name: user_search
-		};
+	$('body').on( 'input', '.affwp-user-search', function() {
+		clearTimeout( user_search_delay );
 
-		$.ajax({
-			type: "POST",
-			data: data,
-			dataType: "json",
-			url: ajaxurl,
-			success: function (search_response) {
+		$('.affwp-ajax').hide();
 
-				$('.affwp-ajax').hide();
+		var user_search = $(this).val(), status = $(this).data('affwp-status');
 
-				$('#affwp_user_search_results').html('');
+		// delay search 500ms between keypress for performance
+		user_search_delay = setTimeout( function() {
+			$('.affwp-ajax').show();
 
-				$(search_response.results).appendTo('#affwp_user_search_results');
+			data = {
+				action: 'affwp_search_users',
+				search: user_search,
+				status: status
+			};
 
-				if( $('.affwp-woo-coupon-field').length ) {
-					var height = $('.affwp-woo-coupon-field #affwp_user_search_results' ).height();
-					$('.affwp-woo-coupon-field #affwp_user_search_results').css('top', '-' + height + 'px' );
+			$.ajax({
+				type: "POST",
+				data: data,
+				dataType: "json",
+				url: ajaxurl,
+				success: function (search_response) {
+					$('.affwp-ajax').hide();
+
+					$('#affwp_user_search_results').html('');
+
+					$(search_response.results).appendTo('#affwp_user_search_results');
+
+					if( $('.affwp-woo-coupon-field').length ) {
+						var height = $('.affwp-woo-coupon-field #affwp_user_search_results' ).height();
+						$('.affwp-woo-coupon-field #affwp_user_search_results').css('top', '-' + height + 'px' );
+					}
 				}
-			}
-		});
+			});
+		}, 500);
 	});
+
 	$('body').on('click.rcpSelectUser', '#affwp_user_search_results a', function(e) {
 		e.preventDefault();
 		var login = $(this).data('login'), id = $(this).data('id');
