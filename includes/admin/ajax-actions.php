@@ -21,7 +21,7 @@ function affwp_search_users() {
 		$status = mb_strtolower( htmlentities2( trim( $_POST['status'] ) ) );
 
 		switch ( $status ) {
-			case 'false':
+			case 'none':
 				$affiliates = affiliate_wp()->affiliates->get_affiliates(
 					array(
 						'number' => 9999,
