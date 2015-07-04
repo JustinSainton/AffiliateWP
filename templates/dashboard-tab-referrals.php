@@ -49,7 +49,7 @@
 	</table>
 	<?php do_action( 'affwp_referrals_dashboard_after_table', affwp_get_affiliate_id() ); ?>
 
-	<div class="affwp-pagination">
+	<p class="affwp-pagination">
 		<?php
 		echo paginate_links( array(
 			'current'      => $page,
@@ -60,6 +60,6 @@
 			)
 		) );
 		?>
-	</div>
+	</p>
 
 </div>

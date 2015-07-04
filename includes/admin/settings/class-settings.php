@@ -143,14 +143,15 @@ class Affiliate_WP_Settings {
 
 			// Get the setting type (checkbox, select, etc)
 			$type = isset( $settings[ $tab ][ $key ][ 'type' ] ) ? $settings[ $tab ][ $key ][ 'type' ] : false;
+			$input[ $key ] = $value;
 
 			if ( $type ) {
 				// Field type specific filter
-				$input[$key] = apply_filters( 'affwp_settings_sanitize_' . $type, $value, $key );
+				$input[ $key ] = apply_filters( 'affwp_settings_sanitize_' . $type, $input[ $key ], $key );
 			}
 
 			// General filter
-			$input[ $key ] = apply_filters( 'affwp_settings_sanitize', $value, $key );
+			$input[ $key ] = apply_filters( 'affwp_settings_sanitize', $input[ $key ], $key );
 		}
 
 		add_settings_error( 'affwp-notices', '', __( 'Settings updated.', 'affiliate-wp' ), 'updated' );

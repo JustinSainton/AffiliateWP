@@ -20,6 +20,10 @@ table.affwp-table th {
 	font-weight: bold;
 }
 
+.affwp-form {
+	margin-bottom: 20px;
+}
+
 .affwp-form fieldset {
 	border: none;
 }
@@ -39,6 +43,11 @@ table.affwp-table th {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+.affwp-form input {
+	border: 1px solid #eaeaea;
+	border: 1px solid rgba( 51, 51, 51, 0.1 );
 }
 
 .affwp-form input[type="text"].required,
@@ -94,7 +103,7 @@ p.affwp-error {
 }
 
 #affwp-affiliate-dashboard #affwp-affiliate-dashboard-tabs {
-	margin: 0;
+	margin: 0 0 20px 0;
 	padding: 0;
 	border: none;
 }
@@ -146,7 +155,7 @@ p.affwp-error {
 .visit-converted i {
 	display: inline-block;
 	position: relative;
-	top:2px;
+	top: 2px;
 	left: 2px;
 }
 
@@ -189,4 +198,16 @@ p.affwp-error {
 
 .affwp-table {
 	word-wrap: break-word;
+}
+
+.affwp-creative {
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #eaeaea;
+	border-bottom: 1px solid rgba( 51, 51, 51, 0.1 );
+}
+
+.affwp-creative:last-of-type {
+	border-bottom: none;
+	padding-bottom: 0;
 }
