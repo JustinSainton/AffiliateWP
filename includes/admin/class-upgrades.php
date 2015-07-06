@@ -129,6 +129,24 @@ class Affiliate_WP_Upgrades {
 			}
 		}
 
+		$settings = get_option( 'affwp_settings' );
+
+		if (
+			! empty( $settings['referral_rate_type'] )
+			&&
+			'percentage' === $settings['referral_rate_type']
+			&&
+			! empty( $settings['referral_rate'] )
+			&&
+			$settings['referral_rate'] > 0
+			&&
+			$settings['referral_rate'] <= 1
+		) {
+			$settings['referral_rate'] = floatval( $settings['referral_rate'] ) * 100;
+
+			update_option( 'affwp_settings', $settings );
+		}
+
 		$this->upgraded = true;
 
 	}
