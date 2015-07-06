@@ -33,6 +33,10 @@ class Affiliate_WP_Upgrades {
 			$this->v16_upgrades();
 		}
 
+		if ( version_compare( $version, '1.7', '<' ) ) {
+			$this->v17_upgrades();
+		}
+
 		// If upgrades have occurred
 		if ( $this->upgraded ) {
 			update_option( 'affwp_version_upgraded_from', $version );
@@ -40,9 +44,9 @@ class Affiliate_WP_Upgrades {
 		}
 
 	}
-	
+
 	/**
-	 * Perform database upgrades for version 1.1 
+	 * Perform database upgrades for version 1.1
 	 *
 	 * @access  public
 	 * @since   1.1
@@ -101,6 +105,34 @@ class Affiliate_WP_Upgrades {
 
 	}
 
+	/**
+	 * Perform database upgrades for version 1.7
+	 *
+	 * @access  public
+	 * @since   1.7
+	 */
+	private function v17_upgrades() {
+
+		global $wpdb;
+
+		$results = $wpdb->get_results( "SELECT affiliate_id, rate FROM {$wpdb->prefix}affiliate_wp_affiliates WHERE rate_type = 'percentage' AND rate > 0 AND rate <= 1" );
+
+		if ( $results ) {
+			foreach ( $results as $result ) {
+				$wpdb->update(
+					"{$wpdb->prefix}affiliate_wp_affiliates",
+					array( 'rate' => floatval( $result->rate ) * 100 ),
+					array( 'affiliate_id' => $result->affiliate_id ),
+					array( '%d' ),
+					array( '%d' )
+				);
+			}
+		}
+
+		$this->upgraded = true;
+
+	}
 
 }
+
 new Affiliate_WP_Upgrades;
