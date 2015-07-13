@@ -52,14 +52,6 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		if (
-			affwp_is_recaptcha_enabled()
-			&&
-			( empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) || ! $this->recaptcha_response_is_valid( $data['g-recaptcha-response'], $data['g-recaptcha-remoteip'] ) )
-		) {
-			$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
-		}
-
 		do_action( 'affwp_pre_process_register_form' );
 
 		if ( ! is_user_logged_in() ) {
@@ -104,6 +96,14 @@ class Affiliate_WP_Register {
 		$terms_of_use = affiliate_wp()->settings->get( 'terms_of_use' );
 		if ( ! empty( $terms_of_use ) && empty( $_POST['affwp_tos'] ) ) {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
+		}
+
+		if (
+			affwp_is_recaptcha_enabled()
+			&&
+			( empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) || ! $this->recaptcha_response_is_valid( $data['g-recaptcha-response'], $data['g-recaptcha-remoteip'] ) )
+		) {
+			$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
 		}
 
 		if ( ! empty( $_POST['affwp_honeypot'] ) ) {
