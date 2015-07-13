@@ -102,7 +102,7 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 			<div class="g-recaptcha" data-sitekey="<?php echo esc_attr( affiliate_wp()->settings->get( 'recaptcha_site_key' ) ); ?>"></div>
 
 			<p>
-				<input type="hidden" name="affwp_recaptcha_remoteip" value=<?php echo esc_attr( $_SERVER['REMOTE_ADDR'] ); ?> />
+				<input type="hidden" name="g-recaptcha-remoteip" value=<?php echo esc_attr( $_SERVER['REMOTE_ADDR'] ); ?> />
 			</p>
 		<?php endif; ?>
 

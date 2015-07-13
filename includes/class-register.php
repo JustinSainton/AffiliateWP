@@ -52,14 +52,14 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		if ( affwp_is_recaptcha_enabled() && isset( $data['affwp_recaptcha_remoteip'] ) && isset( $data['g-recaptcha-response'] ) ) {
+		if ( affwp_is_recaptcha_enabled() && isset( $data['g-recaptcha-response'] ) && isset( $data['g-recaptcha-remoteip'] ) ) {
 			$response = wp_safe_remote_post(
 				'https://www.google.com/recaptcha/api/siteverify',
 				array(
 					'body' => array(
 						'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
 						'response' => $data['g-recaptcha-response'],
-						'remoteip' => $data['affwp_recaptcha_remoteip']
+						'remoteip' => $data['g-recaptcha-remoteip']
 					)
 				)
 			);
