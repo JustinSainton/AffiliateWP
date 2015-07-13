@@ -416,10 +416,11 @@ function affwp_is_pretty_referral_urls() {
  */
 function affwp_is_recaptcha_enabled() {
 
-	$enabled     = affiliate_wp()->settings->get( 'enable_recaptcha', 0 );
-	$site_key    = affiliate_wp()->settings->get( 'recaptcha_site_key', '' );
-	$secret_key  = affiliate_wp()->settings->get( 'recaptcha_secret_key', '' );
+	$checkbox   = affiliate_wp()->settings->get( 'recaptcha_enabled', 0 );
+	$site_key   = affiliate_wp()->settings->get( 'recaptcha_site_key', '' );
+	$secret_key = affiliate_wp()->settings->get( 'recaptcha_secret_key', '' );
+	$enabled    = ( ! empty( $checkbox ) && ! empty( $site_key ) && ! empty( $secret_key ) );
 
-	return ( ! empty( $enabled ) && ! empty( $site_key ) && ! empty( $secret_key ) );
+	return (bool) apply_filters( 'affwp_recaptcha_enabled', $enabled );
 
 }
