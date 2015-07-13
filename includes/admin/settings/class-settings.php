@@ -138,7 +138,7 @@ class Affiliate_WP_Settings {
 				}
 			}
 		}
-		
+
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
 
@@ -249,7 +249,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ) . '</p>',
 						'type' => 'select',
-						'options' => array( 
+						'options' => array(
 							'id'       => __( 'ID', 'affiliate-wp' ),
 							'username' => __( 'Username', 'affiliate-wp' ),
 						),
@@ -415,6 +415,21 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'enable_recaptcha' => array(
+						'name' => __( 'Enable reCAPTCHA', 'affiliate-wp' ),
+						'desc' => __( 'Would you like to prevent bots from registering affiliate accounts using Google reCAPTCHA?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'recaptcha_site_key' => array(
+						'name' => __( 'reCAPTCHA Site Key', 'affiliate-wp' ),
+						'desc' => __( 'This is used to identify your site to Google reCAPTCHA.', 'affiliate-wp' ),
+						'type' => 'text'
+					),
+					'recaptcha_secret_key' => array(
+						'name' => __( 'reCAPTCHA Secret Key', 'affiliate-wp' ),
+						'desc' => __( 'This is used for communication between your site and Google reCAPTCHA. Be sure to keep it a secret.', 'affiliate-wp' ),
+						'type' => 'text'
+					),
 					'require_approval' => array(
 						'name' => __( 'Require approval', 'affiliate-wp' ),
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
@@ -460,7 +475,7 @@ class Affiliate_WP_Settings {
 	 * @return array
 	 */
 	function email_approval_settings( $email_settings ) {
-		
+
 		if ( ! affiliate_wp()->settings->get( 'require_approval' ) ) {
 			return $email_settings;
 		}

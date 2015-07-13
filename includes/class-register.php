@@ -40,7 +40,7 @@ class Affiliate_WP_Register {
 		return apply_filters( 'affwp_register_form', ob_get_clean() );
 
 	}
-	
+
 	/**
 	 * Process registration form submission
 	 *
@@ -50,6 +50,25 @@ class Affiliate_WP_Register {
 
 		if ( ! isset( $_POST['affwp_register_nonce'] ) || ! wp_verify_nonce( $_POST['affwp_register_nonce'], 'affwp-register-nonce' ) ) {
 			return;
+		}
+
+		if ( affwp_is_recaptcha_enabled() && isset( $data['affwp_recaptcha_remoteip'] ) && isset( $data['g-recaptcha-response'] ) ) {
+			$response = wp_safe_remote_post(
+				'https://www.google.com/recaptcha/api/siteverify',
+				array(
+					'body' => array(
+						'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
+						'response' => $data['g-recaptcha-response'],
+						'remoteip' => $data['affwp_recaptcha_remoteip']
+					)
+				)
+			);
+
+			$response = json_decode( wp_remote_retrieve_body( $response ) );
+
+			if ( empty( $response->success ) || true !== $response->success ) {
+				$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
+			}
 		}
 
 		do_action( 'affwp_pre_process_register_form' );
@@ -112,13 +131,12 @@ class Affiliate_WP_Register {
 		if ( empty( $this->errors ) ) {
 			$this->register_user();
 
-
 			$redirect = apply_filters( 'affwp_register_redirect', $data['affwp_redirect'] );
 
 			if ( $redirect ) {
 				wp_redirect( $redirect ); exit;
 			}
-			
+
 		}
 
 	}
@@ -189,7 +207,7 @@ class Affiliate_WP_Register {
 
 		// promotion method
 		$promotion_method = isset( $_POST['affwp_promotion_method'] ) ? sanitize_text_field( $_POST['affwp_promotion_method'] ) : '';
-		
+
 		if ( $promotion_method ) {
 			update_user_meta( $user_id, 'affwp_promotion_method', $promotion_method );
 		}
@@ -201,7 +219,7 @@ class Affiliate_WP_Register {
 			wp_update_user( array( 'ID' => $user_id, 'user_url' => $website_url ) );
 		}
 
-		$affiliate_id = affwp_add_affiliate( array( 
+		$affiliate_id = affwp_add_affiliate( array(
 			'status'        => $status,
 			'user_id'       => $user_id,
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
