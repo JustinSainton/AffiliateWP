@@ -3,8 +3,8 @@ jQuery(document).ready( function($) {
 	$( '#affwp-generate-ref-url' ).submit( function() {
 
 		var url                 = $( this ).find( '#affwp-url' ).val(),
-		    refVar              = $( this ).find( '.affwp-referral-var' ).val(),
-		    affId               = $( this ).find( '.affwp-affiliate-id' ).val(),
+		    refVar              = $( this ).find( 'input[type="hidden"].affwp-referral-var' ).val(),
+		    affId               = $( this ).find( 'input[type="hidden"].affwp-affiliate-id' ).val(),
 		    prettyAffiliateUrls = affwp_vars.pretty_affiliate_urls,
 		    add                 = '';
 
