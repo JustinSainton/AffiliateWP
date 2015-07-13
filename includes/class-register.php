@@ -52,23 +52,12 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		if ( affwp_is_recaptcha_enabled() && isset( $data['g-recaptcha-response'] ) && isset( $data['g-recaptcha-remoteip'] ) ) {
-			$response = wp_safe_remote_post(
-				'https://www.google.com/recaptcha/api/siteverify',
-				array(
-					'body' => array(
-						'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
-						'response' => $data['g-recaptcha-response'],
-						'remoteip' => $data['g-recaptcha-remoteip']
-					)
-				)
-			);
-
-			$response = json_decode( wp_remote_retrieve_body( $response ) );
-
-			if ( empty( $response->success ) || true !== $response->success ) {
-				$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
-			}
+		if (
+			affwp_is_recaptcha_enabled()
+			&&
+			( empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) || ! $this->recaptcha_response_is_valid( $data['g-recaptcha-response'], $data['g-recaptcha-remoteip'] ) )
+		) {
+			$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
 		}
 
 		do_action( 'affwp_pre_process_register_form' );
@@ -139,6 +128,37 @@ class Affiliate_WP_Register {
 
 		}
 
+	}
+
+	/**
+	 * Verify reCAPTCHA response is valid using a POST request to the Google API
+	 *
+	 * @access private
+	 * @since  1.7
+	 * @param  string $response
+	 * @param  string $remote_ip
+	 * @return boolean
+	 */
+	private function recaptcha_response_is_valid( $response, $remote_ip ) {
+		if ( ! affwp_is_recaptcha_enabled() || empty( $response ) || empty( $remote_ip ) ) {
+			return false;
+		}
+
+		$verify = wp_safe_remote_post(
+			'https://www.google.com/recaptcha/api/siteverify',
+			array(
+				'body' => array(
+					'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
+					'response' => $response,
+					'remoteip' => $remote_ip
+				)
+			)
+		);
+
+		$verify = wp_remote_retrieve_body( $verify );
+		$verify = function_exists( 'wp_json_encode' ) ? wp_json_encode( $verify ) : json_encode( $verify );
+
+		return ( ! empty( $verify->success ) && true === $verify->success );
 	}
 
 	/**
