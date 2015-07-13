@@ -155,8 +155,7 @@ class Affiliate_WP_Register {
 			)
 		);
 
-		$verify = wp_remote_retrieve_body( $verify );
-		$verify = function_exists( 'wp_json_encode' ) ? wp_json_encode( $verify ) : json_encode( $verify );
+		$verify = json_decode( wp_remote_retrieve_body( $verify ) );
 
 		return ( ! empty( $verify->success ) && true === $verify->success );
 	}
