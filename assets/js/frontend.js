@@ -2,12 +2,12 @@ jQuery(document).ready( function($) {
 
 	$( '#affwp-generate-ref-url' ).submit( function() {
 
-		var url                 = $( '#affwp-url' ).val(),
-		    refVar              = $( '#affwp-referral-var' ).val(),
-		    affId               = $( '#affwp-affiliate-id' ).val(),
+		var url                 = $( this ).find( '#affwp-url' ).val(),
+		    refVar              = $( this ).find( '.affwp-referral-var' ).val(),
+		    affId               = $( this ).find( '.affwp-affiliate-id' ).val(),
 		    prettyAffiliateUrls = affwp_vars.pretty_affiliate_urls,
-		    add                 = ''
-		
+		    add                 = '';
+
 		if ( prettyAffiliateUrls ) {
 			// pretty affiliate URLs
 
@@ -74,10 +74,10 @@ jQuery(document).ready( function($) {
 		// clean URL to remove any instances of multiple slashes
 		url = url.replace(/([^:])(\/\/+)/g, '$1/');
 
-		$( '.affwp-referral-url-wrap' ).slideDown();
-		$( '#affwp-referral-url' ).val( url ).focus();
+		$( this ).find( '.affwp-referral-url-wrap' ).slideDown();
+		$( this ).find( '#affwp-referral-url' ).val( url ).focus();
 
 		return false;
 	});
-	
+
 });
