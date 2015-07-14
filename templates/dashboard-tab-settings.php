@@ -14,7 +14,7 @@
 		</div>
 
 		<?php do_action( 'affwp_affiliate_dashboard_before_submit', affwp_get_affiliate_id(), affwp_get_affiliate_user_id( affwp_get_affiliate_id() ) ); ?>
-		
+
 		<div class="affwp-save-profile-wrap">
 			<input type="hidden" name="affwp_action" value="update_profile_settings" />
 			<input type="hidden" id="affwp-affiliate-id" name="affiliate_id" value="<?php echo esc_attr( affwp_get_affiliate_id() ); ?>" />
