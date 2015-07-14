@@ -98,11 +98,7 @@ class Affiliate_WP_Register {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
 		}
 
-		if (
-			affwp_is_recaptcha_enabled()
-			&&
-			( empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) || ! $this->recaptcha_response_is_valid( $data['g-recaptcha-response'], $data['g-recaptcha-remoteip'] ) )
-		) {
+		if ( affwp_is_recaptcha_enabled() && ! $this->recaptcha_response_is_valid( $data ) ) {
 			$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
 		}
 
@@ -135,12 +131,11 @@ class Affiliate_WP_Register {
 	 *
 	 * @access private
 	 * @since  1.7
-	 * @param  string $response
-	 * @param  string $remote_ip
+	 * @param  array   $data
 	 * @return boolean
 	 */
-	private function recaptcha_response_is_valid( $response, $remote_ip ) {
-		if ( ! affwp_is_recaptcha_enabled() || empty( $response ) || empty( $remote_ip ) ) {
+	private function recaptcha_response_is_valid( $data ) {
+		if ( ! affwp_is_recaptcha_enabled() || empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) ) {
 			return false;
 		}
 
@@ -149,8 +144,8 @@ class Affiliate_WP_Register {
 			array(
 				'body' => array(
 					'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
-					'response' => $response,
-					'remoteip' => $remote_ip
+					'response' => $data['g-recaptcha-response'],
+					'remoteip' => $data['g-recaptcha-remoteip']
 				)
 			)
 		);
