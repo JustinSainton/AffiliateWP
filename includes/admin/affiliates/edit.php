@@ -2,8 +2,10 @@
 $affiliate    = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
 $user_info    = get_userdata( $affiliate->user_id );
 $rate_type    = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
-$rate         = isset( $affiliate->rate ) ? $affiliate->rate : '';
+$rate         = isset( $affiliate->rate ) ? $affiliate->rate : null;
+$rate         = ( ! is_null( $rate ) && '' !== $rate && floatval( $rate ) >= 0 ) ? floatval( $rate ) : null;
 $rate_default = affiliate_wp()->settings->get( 'referral_rate', 20 );
+$rate_default = ( ! is_null( $rate_default ) && '' !== $rate_default && floatval( $rate_default ) >= 0 ) ? floatval( $rate_default ) : 20;
 $email        = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
 ?>
 <div class="wrap">
