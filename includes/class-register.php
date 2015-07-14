@@ -40,7 +40,7 @@ class Affiliate_WP_Register {
 		return apply_filters( 'affwp_register_form', ob_get_clean() );
 
 	}
-	
+
 	/**
 	 * Process registration form submission
 	 *
@@ -118,7 +118,7 @@ class Affiliate_WP_Register {
 			if ( $redirect ) {
 				wp_redirect( $redirect ); exit;
 			}
-			
+
 		}
 
 	}
@@ -189,7 +189,7 @@ class Affiliate_WP_Register {
 
 		// promotion method
 		$promotion_method = isset( $_POST['affwp_promotion_method'] ) ? sanitize_text_field( $_POST['affwp_promotion_method'] ) : '';
-		
+
 		if ( $promotion_method ) {
 			update_user_meta( $user_id, 'affwp_promotion_method', $promotion_method );
 		}
@@ -201,7 +201,7 @@ class Affiliate_WP_Register {
 			wp_update_user( array( 'ID' => $user_id, 'user_url' => $website_url ) );
 		}
 
-		$affiliate_id = affwp_add_affiliate( array( 
+		$affiliate_id = affwp_add_affiliate( array(
 			'status'        => $status,
 			'user_id'       => $user_id,
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
@@ -247,7 +247,25 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		affwp_add_affiliate( array( 'user_id' => $user_id ) );
+		$affiliate_id = affwp_add_affiliate( array( 'user_id' => $user_id ) );
+
+		if ( ! $affiliate_id ) {
+			return;
+		}
+
+		$status = affwp_get_affiliate_status( $affiliate_id );
+		$user   = (array) get_userdata( $user_id );
+		$args   = (array) $user['data'];
+
+		/**
+		 * Fires after a new user has been auto-registered as an affiliate
+		 *
+		 * @since  1.7
+		 * @param  int    $affiliate_id
+		 * @param  string $status
+		 * @param  array  $args
+		 */
+		do_action( 'affwp_auto_register_user', $affiliate_id, $status, $args );
 
 	}
 
