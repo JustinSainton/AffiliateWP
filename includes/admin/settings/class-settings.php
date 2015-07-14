@@ -29,7 +29,10 @@ class Affiliate_WP_Settings {
 	 * @return mixed
 	*/
 	public function get( $key, $default = false ) {
-		return isset( $this->options[ $key ] ) ? $this->options[ $key ] : $default; // Allow 0 values
+		$value = isset( $this->options[ $key ] ) ? $this->options[ $key ] : null;
+		$value = ( ! is_null( $value ) && '' !== $value ) ? $value : $default; // Allow 0 values
+
+		return $value;
 	}
 
 	/**
