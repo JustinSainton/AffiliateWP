@@ -69,6 +69,7 @@ function affwp_notify_on_registration( $affiliate_id = 0, $status = '', $args = 
 
 }
 add_action( 'affwp_register_user', 'affwp_notify_on_registration', 10, 3 );
+add_action( 'affwp_auto_register_user', 'affwp_notify_on_registration', 10, 3 );
 
 
 /**
@@ -147,6 +148,7 @@ function affwp_notify_on_pending_affiliate_registration( $affiliate_id = 0, $sta
 
 }
 add_action( 'affwp_register_user', 'affwp_notify_on_pending_affiliate_registration', 10, 3 );
+add_action( 'affwp_auto_register_user', 'affwp_notify_on_pending_affiliate_registration', 10, 3 );
 
 /**
  * Send email on rejected affiliate registration
@@ -229,7 +231,7 @@ function affwp_notify_on_new_referral( $affiliate_id = 0, $referral ) {
 	if ( apply_filters( 'affwp_notify_on_new_referral', true, $referral ) ) {
 		$emails->send( $email, $subject, $message );
 	}
-	
+
 
 }
 add_action( 'affwp_referral_accepted', 'affwp_notify_on_new_referral', 10, 2 );
