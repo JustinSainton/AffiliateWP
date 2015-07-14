@@ -363,7 +363,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		foreach ( $downloads as $key => $item ) {
 
-			if ( get_post_meta( $item['id'], "_affwp_{$this->context}_referrals_disabled", true ) ) {
+			if ( get_post_meta( $item['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 				continue; // Referrals are disabled on this product
 			}
 
