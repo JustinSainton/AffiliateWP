@@ -506,6 +506,7 @@ class Affiliate_WP_Emails {
 	/**
 	 * Check if all emails should be disabled
 	 *
+	 * @since  1.7
 	 * @return bool
 	 */
 	public function is_email_disabled() {
