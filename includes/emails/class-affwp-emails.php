@@ -13,7 +13,7 @@
 
 
 // Exit if accessed directly
-if( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -101,7 +101,7 @@ class Affiliate_WP_Emails {
 	 */
 	public function __construct() {
 
-		if( 'none' === $this->get_template() ) {
+		if ( 'none' === $this->get_template() ) {
 			$this->html = false;
 		}
 
@@ -130,7 +130,7 @@ class Affiliate_WP_Emails {
 	public function get_from_name() {
 		global $affwp_options;
 
-		if( ! $this->from_name ) {
+		if ( ! $this->from_name ) {
 			$this->from_name = affiliate_wp()->settings->get( 'from_name', get_bloginfo( 'name' ) );
 		}
 
@@ -145,7 +145,7 @@ class Affiliate_WP_Emails {
 	 * @return string The email from address
 	 */
 	public function get_from_address() {
-		if( ! $this->from_address ) {
+		if ( ! $this->from_address ) {
 			$this->from_address = affiliate_wp()->settings->get( 'from_email', get_option( 'admin_email' ) );
 		}
 
@@ -160,9 +160,9 @@ class Affiliate_WP_Emails {
 	 * @return string The email content type
 	 */
 	public function get_content_type() {
-		if( ! $this->content_type && $this->html ) {
+		if ( ! $this->content_type && $this->html ) {
 			$this->content_type = apply_filters( 'affwp_email_default_content_type', 'text/html', $this );
-		} elseif( ! $this->html ) {
+		} elseif ( ! $this->html ) {
 			$this->content_type = 'text/plain';
 		}
 
@@ -177,7 +177,7 @@ class Affiliate_WP_Emails {
 	 * @return string The email headers
 	 */
 	public function get_headers() {
-		if( ! $this->headers ) {
+		if ( ! $this->headers ) {
 			$this->headers  = "From: {$this->get_from_name()} <{$this->get_from_address()}>\r\n";
 			$this->headers .= "Reply-To: {$this->get_from_address()}\r\n";
 			$this->headers .= "Content-Type: {$this->get_content_type()}; charset=utf-8\r\n";
@@ -210,7 +210,7 @@ class Affiliate_WP_Emails {
 	 * @return string|null
 	 */
 	public function get_template() {
-		if( ! $this->template ) {
+		if ( ! $this->template ) {
 			$this->template = affiliate_wp()->settings->get( 'email_template', 'default' );
 		}
 
@@ -238,7 +238,7 @@ class Affiliate_WP_Emails {
 	 */
 	public function build_email( $message ) {
 
-		if( false === $this->html ) {
+		if ( false === $this->html ) {
 			return apply_filters( 'affwp_email_message', wp_strip_all_tags( $message ), $this );
 		}
 
@@ -291,7 +291,7 @@ class Affiliate_WP_Emails {
 	 */
 	public function send( $to, $subject, $message, $attachments = '' ) {
 
-		if( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
+		if ( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
 			_doing_it_wrong( __FUNCTION__, __( 'You cannot send emails with AffWP_Emails until init/admin_init has been reached', 'affiliate-wp' ), null );
 			return false;
 		}
@@ -362,7 +362,7 @@ class Affiliate_WP_Emails {
 	 * @since 1.6
 	 */
 	public function text_to_html( $message ) {
-		if( 'text/html' === $this->content_type || true === $this->html ) {
+		if ( 'text/html' === $this->content_type || true === $this->html ) {
 			$message = wpautop( $message );
 		}
 
@@ -380,7 +380,7 @@ class Affiliate_WP_Emails {
 	private function parse_tags( $content ) {
 
 		// Make sure there's at least one tag
-		if( empty( $this->tags ) || ! is_array( $this->tags ) ) {
+		if ( empty( $this->tags ) || ! is_array( $this->tags ) ) {
 			return $content;
 		}
 
@@ -485,7 +485,7 @@ class Affiliate_WP_Emails {
 		$tag = $m[1];
 
 		// Return tag if not set
-		if( ! $this->email_tag_exists( $tag ) ) {
+		if ( ! $this->email_tag_exists( $tag ) ) {
 			return $m[0];
 		}
 
