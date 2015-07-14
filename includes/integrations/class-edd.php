@@ -339,7 +339,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function reference_link( $reference = 0, $referral ) {
 
-		if( empty( $referral->context ) || 'edd' != $referral->context ) {
+		if ( empty( $referral->context ) || 'edd' != $referral->context ) {
 
 			return $reference;
 
