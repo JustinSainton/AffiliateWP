@@ -63,12 +63,12 @@ function affwp_get_affiliate_username( $affiliate_id = 0 ) {
 
 	if ( $affiliate ) {
 		$user_info = get_userdata( $affiliate->user_id );
-		
+
 		if ( $user_info ) {
 			$username  = esc_html( $user_info->user_login );
 			return esc_html( $username );
 		}
-		
+
 	}
 
 	return false;
@@ -192,34 +192,22 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
  */
 function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $custom_rate = '' ) {
 
-	// default rate
-
-	$rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
-
+	// Get rates, with special consideration for 0 values, and never allowing negative rates
+	$default_rate   = affiliate_wp()->settings->get( 'referral_rate', 20 );
+	$default_rate   = ( ! is_null( $default_rate ) && '' !== $default_rate && floatval( $default_rate ) >= 0 ) ? floatval( $default_rate ) : 20;
 	$affiliate_rate = affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
+	$affiliate_rate = ( ! is_null( $affiliate_rate ) && '' !== $affiliate_rate && floatval( $affiliate_rate ) >= 0 ) ? floatval( $affiliate_rate ) : null;
+	$custom_rate    = ( ! is_null( $custom_rate ) && '' !== $custom_rate && floatval( $custom_rate ) >= 0 ) ? floatval( $custom_rate ) : null;
 
-	if( ! empty( $custom_rate ) ) {
-
-		$rate = $custom_rate;
-
-	} elseif ( ! empty( $affiliate_rate ) ) {
-
-		$rate = $affiliate_rate;
-
-	}
+	// Determine the rate with fallback support
+	$rate = ! is_null( $custom_rate ) ? $custom_rate : ( ! is_null( $affiliate_rate ) ? $affiliate_rate : $default_rate );
 
 	$type = affwp_get_affiliate_rate_type( $affiliate_id );
 
-	if ( 'percentage' == $type ) {
+	// Sanitize the rate and ensure it's in the proper format
+	$rate = ( 'percentage' === $type && $rate > 0 ) ? $rate / 100 : $rate;
 
-		// Sanitize the rate and ensure it's in the proper format
-		if ( $rate > 0 ) {
-			$rate = $rate / 100;
-		}
-
-	}
-
-	$rate = apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id, $type );
+	$rate = (float) apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id, $type );
 
 	// If rate should be formatted, format it based on the type
 	if ( $formatted ) {
@@ -400,7 +388,7 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 	}
 
 	if( $delete_data ) {
-	
+
 		$user_id   = affwp_get_affiliate_user_id( $affiliate_id );
 		$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
 		$visits    = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
@@ -815,7 +803,7 @@ function affwp_update_affiliate( $data = array() ) {
 
 	$args['account_email'] = ! empty( $data['account_email' ] ) && is_email( $data['account_email' ] ) ? sanitize_text_field( $data['account_email'] ) : '';
 	$args['payment_email'] = ! empty( $data['payment_email' ] ) && is_email( $data['payment_email' ] ) ? sanitize_text_field( $data['payment_email'] ) : '';
-	$args['rate']          = ! empty( $data['rate' ] )      ? sanitize_text_field( $data['rate'] )      : 0;
+	$args['rate']          = ( isset( $data['rate' ] ) && '' !== $data['rate' ] )                      ? sanitize_text_field( $data['rate'] )          : '';
 	$args['rate_type']     = ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '';
 	$args['user_id']       = $user_id;
 
@@ -825,7 +813,7 @@ function affwp_update_affiliate( $data = array() ) {
 		if( wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) ) ) {
 
 			return true;
-		
+
 		}
 
 	}
@@ -912,7 +900,7 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 	} else {
 		// pretty URLs set from admin
 		$pretty = affwp_is_pretty_referral_urls();
-	} 
+	}
 
 	// get base URL
 	if ( isset( $args['base_url'] ) ) {
@@ -924,14 +912,14 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 	// add trailing slash only if no query string exists
 	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) ) {
 		$base_url = trailingslashit( $args['base_url'] );
-	} 
+	}
 
 	// the format value, either affiliate's ID or username
 	$format_value = affwp_get_referral_format_value( $format, $affiliate_id );
 
 	// if query exists in base URL, strip it and store in variable so we can append to the end of the URL
 	if ( array_key_exists( 'query', parse_url( $base_url ) ) ) {
-		
+
 		$url_parts       = parse_url( $base_url );
 		$url_scheme      = isset( $url_parts['scheme'] ) ? $url_parts['scheme'] : 'http';
 		$url_host        = isset( $url_parts['host'] ) ? $url_parts['host'] : '';

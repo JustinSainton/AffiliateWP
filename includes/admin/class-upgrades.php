@@ -130,20 +130,18 @@ class Affiliate_WP_Upgrades {
 			}
 		}
 
-		$settings = get_option( 'affwp_settings' );
+		$settings  = get_option( 'affwp_settings' );
+		$rate_type = ! empty( $settings['referral_rate_type'] ) ? $settings['referral_rate_type'] : null;
+		$rate      = isset( $settings['referral_rate'] ) ? $settings['referral_rate'] : 20;
 
-		if (
-			! empty( $settings['referral_rate_type'] )
-			&&
-			'percentage' === $settings['referral_rate_type']
-			&&
-			! empty( $settings['referral_rate'] )
-			&&
-			$settings['referral_rate'] > 0
-			&&
-			$settings['referral_rate'] <= 1
-		) {
-			$settings['referral_rate'] = floatval( $settings['referral_rate'] ) * 100;
+		if ( 'percentage' === $rate_type ) {
+			if ( $rate > 0 && $rate <= 1 ) {
+				$settings['referral_rate'] = floatval( $rate ) * 100;
+			} elseif ( '' === $rate || '0' === $rate || '0.00' === $rate ) {
+				$settings['referral_rate'] = 0;
+			} else {
+				$settings['referral_rate'] = floatval( $rate );
+			}
 
 			update_option( 'affwp_settings', $settings );
 		}

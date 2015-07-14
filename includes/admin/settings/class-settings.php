@@ -29,8 +29,7 @@ class Affiliate_WP_Settings {
 	 * @return mixed
 	*/
 	public function get( $key, $default = false ) {
-		$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
-		return $value;
+		return isset( $this->options[ $key ] ) ? $this->options[ $key ] : $default; // Allow 0 values
 	}
 
 	/**
@@ -137,7 +136,7 @@ class Affiliate_WP_Settings {
 				}
 			}
 		}
-		
+
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
 
@@ -219,7 +218,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ) . '</p>',
 						'type' => 'select',
-						'options' => array( 
+						'options' => array(
 							'id'       => __( 'ID', 'affiliate-wp' ),
 							'username' => __( 'Username', 'affiliate-wp' ),
 						),
@@ -430,7 +429,7 @@ class Affiliate_WP_Settings {
 	 * @return array
 	 */
 	function email_approval_settings( $email_settings ) {
-		
+
 		if ( ! affiliate_wp()->settings->get( 'require_approval' ) ) {
 			return $email_settings;
 		}
@@ -621,17 +620,21 @@ class Affiliate_WP_Settings {
 	 */
 	function number_callback( $args ) {
 
-		if ( isset( $this->options[ $args['id'] ] ) )
-			$value = $this->options[ $args['id'] ];
-		else
-			$value = isset( $args['std'] ) ? $args['std'] : '';
+		// Get value, with special consideration for 0 values, and never allowing negative values
+		$value = isset( $this->options[ $args['id'] ] ) ? $this->options[ $args['id'] ] : null;
+		$value = ( ! is_null( $value ) && '' !== $value && floatval( $value ) >= 0 ) ? floatval( $value ) : null;
 
-		$max  = isset( $args['max'] ) ? $args['max'] : 999999;
-		$min  = isset( $args['min'] ) ? $args['min'] : 0;
+		// Saving the field empty will revert to std value, if it exists
+		$std   = ( isset( $args['std'] ) && ! is_null( $args['std'] ) && '' !== $args['std'] && floatval( $args['std'] ) >= 0 ) ? $args['std'] : null;
+		$value = ! is_null( $value ) ? $value : ( ! is_null( $std ) ? $std : null );
+
+		// Other attributes and their defaults
+		$max  = isset( $args['max'] )  ? $args['max']  : 999999;
+		$min  = isset( $args['min'] )  ? $args['min']  : 0;
 		$step = isset( $args['step'] ) ? $args['step'] : 1;
-
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
-		$html = '<input type="number" step="' . esc_attr( $step ) . '" max="' . esc_attr( $max ) . '" min="' . esc_attr( $min ) . '" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
+
+		$html  = '<input type="number" step="' . esc_attr( $step ) . '" max="' . esc_attr( $max ) . '" min="' . esc_attr( $min ) . '" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" placeholder="' . esc_attr( $std ) . '" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
 		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
 
 		echo $html;
