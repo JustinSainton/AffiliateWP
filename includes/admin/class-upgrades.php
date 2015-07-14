@@ -33,6 +33,10 @@ class Affiliate_WP_Upgrades {
 			$this->v16_upgrades();
 		}
 
+		if ( version_compare( $version, '1.7', '<' ) ) {
+			$this->v17_upgrades();
+		}
+
 		// If upgrades have occurred
 		if ( $this->upgraded ) {
 			update_option( 'affwp_version_upgraded_from', $version );
@@ -40,9 +44,9 @@ class Affiliate_WP_Upgrades {
 		}
 
 	}
-	
+
 	/**
-	 * Perform database upgrades for version 1.1 
+	 * Perform database upgrades for version 1.1
 	 *
 	 * @access  public
 	 * @since   1.1
@@ -101,6 +105,61 @@ class Affiliate_WP_Upgrades {
 
 	}
 
+	/**
+	 * Perform database upgrades for version 1.7
+	 *
+	 * @access  public
+	 * @since   1.7
+	 */
+	private function v17_upgrades() {
+
+		$integrations = affiliate_wp()->settings->get( 'integrations', array() );
+
+		if ( array_key_exists( 'gravityforms', $integrations ) ) {
+
+			global $wpdb;
+
+			$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->prefix}rg_form" );
+
+			if ( $forms ) {
+
+				foreach ( $forms as $form ) {
+
+					$meta = $wpdb->get_var(
+						$wpdb->prepare(
+							"SELECT display_meta FROM {$wpdb->prefix}rg_form_meta WHERE form_id = %d",
+							$form->id
+						)
+					);
+
+					$meta = json_decode( $meta );
+
+					if ( isset( $meta->gform_allow_referrals ) ) {
+						continue;
+					}
+
+					$meta->gform_allow_referrals = 1;
+
+					$meta = json_encode( $meta );
+
+					$wpdb->query(
+						$wpdb->prepare(
+							"UPDATE {$wpdb->prefix}rg_form_meta SET display_meta = %s WHERE form_id = %d",
+							$meta,
+							$form->id
+						)
+					);
+
+				}
+
+			}
+
+		}
+
+		$this->upgraded = true;
+
+	}
 
 }
+
 new Affiliate_WP_Upgrades;
