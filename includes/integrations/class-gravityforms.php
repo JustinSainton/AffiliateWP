@@ -12,11 +12,13 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
+		add_filter( 'gform_form_settings', array( $this, 'add_settings' ), 10, 2 );
+		add_filter( 'gform_pre_form_settings_save', array( $this, 'save_settings' ) );
 	}
 
 	public function add_pending_referral( $entry, $form ) {
 
-		if( $this->was_referred() ) {
+		if( $this->was_referred() && rgar( $form, 'gform_allow_referrals' ) ) {
 
 			// Do some craziness to determine the price (this should be easy but is not)
 
@@ -24,7 +26,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 			$entry     = GFFormsModel::get_lead( $entry['id'] );
 			$products  = GFCommon::get_product_fields( $form, $entry );
 			$total     = 0;
-			foreach ( $products['products'] as $key => $product ) {	
+			foreach ( $products['products'] as $key => $product ) {
 
 				$desc .= $product['name'];
 				if( $key + 1 < count( $products ) ) {
@@ -49,13 +51,13 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 			$referral_total = $this->calculate_referral_amount( $total, $entry['id'] );
 
 			$this->insert_pending_referral( $referral_total, $entry['id'], $desc );
-		
+
 		}
 
 	}
 
 	public function mark_referral_complete( $entry, $action ) {
-		
+
 		$this->complete_referral( $entry['id'] );
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $entry['id'], $this->context );
@@ -67,7 +69,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	}
 
 	public function revoke_referral_on_refund( $entry, $action ) {
-		
+
 		$this->reject_referral( $entry['id'] );
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $entry['id'], $this->context );
@@ -76,7 +78,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 		$note     = sprintf( __( 'Referral #%d for %s for %s rejected', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
 
 		GFFormsModel::add_note( $entry["id"], 0, 'AffiliateWP', $note );
-	
+
 	}
 
 	public function reference_link( $reference = 0, $referral ) {
@@ -94,5 +96,42 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
 	}
 
+	/**
+	 * Register the form-specific settings
+	 *
+	 * @since  1.7
+	 * @return void
+	 */
+	public function add_settings( $settings, $form ) {
+
+		$checked = rgar( $form, 'gform_allow_referrals' );
+
+		$field  = '<input type="checkbox" id="gform_allow_referrals" name="gform_allow_referrals" value="1" ' . checked( 1, $checked, false ) . ' />';
+		$field .= ' <label for="gform_allow_referrals">' . __( 'Enable affiliate referral creation for this form', 'affiliate-wp' ) . '</label>';
+
+		$settings['Form Options']['gform_allow_referrals'] = '
+			<tr>
+				<th>' . __( 'Allow referrals', 'affiliate-wp' ) . '</th>
+				<td>' . $field . '</td>
+			</tr>';
+
+		return $settings;
+
+	}
+
+	/**
+	 * Save form settings
+	 *
+	 * @since 1.7
+	 */
+	public function save_settings( $form ) {
+
+		$form['gform_allow_referrals'] = rgpost( 'gform_allow_referrals' );
+
+		return $form;
+
+	}
+
 }
+
 new Affiliate_WP_Gravity_Forms;

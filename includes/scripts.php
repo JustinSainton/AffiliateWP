@@ -55,11 +55,12 @@ function affwp_admin_scripts() {
 
 	wp_enqueue_script( 'affwp-admin', AFFILIATEWP_PLUGIN_URL . 'assets/js/admin' . $suffix . '.js', array( 'jquery' ), AFFILIATEWP_VERSION );
 	wp_localize_script( 'affwp-admin', 'affwp_vars', array(
-		'post_id'       => isset( $post->ID ) ? $post->ID : null,
-		'affwp_version' => AFFILIATEWP_VERSION,
-		'currency_sign' => affwp_currency_filter(''),
-		'currency_pos'  => affiliate_wp()->settings->get( 'currency_position', 'before' ),
-		'confirm'       => __( 'Are you sure you want to generate the payout file? All included referrals will be marked as Paid.', 'affiliate-wp' ),
+		'post_id'                 => isset( $post->ID ) ? $post->ID : null,
+		'affwp_version'           => AFFILIATEWP_VERSION,
+		'currency_sign'           => affwp_currency_filter(''),
+		'currency_pos'            => affiliate_wp()->settings->get( 'currency_position', 'before' ),
+		'confirm'                 => __( 'Are you sure you want to generate the payout file? All included referrals will be marked as Paid.', 'affiliate-wp' ),
+		'confirm_delete_referral' => __( 'Are you sure you want to delete this referral?', 'affiliate-wp' ),
 	));
 
 	// only enqueue for creatives page

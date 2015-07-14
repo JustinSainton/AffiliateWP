@@ -407,7 +407,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 							<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 						</span>
 						<div id="affwp_user_search_results"></div>
-						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'edd' ); ?></p>
+						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></p>
 					</td>
 				</tr>
 			</tbody>

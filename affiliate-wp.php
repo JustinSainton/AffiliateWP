@@ -346,7 +346,7 @@ final class Affiliate_WP {
 	 */
 	private function updater() {
 
-		if( ! is_admin() ) {
+		if( ! is_admin() || ! class_exists( 'AFFWP_Plugin_Updater' ) ) {
 			return;
 		}
 

@@ -406,7 +406,15 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 
 	}
 
-	return affiliate_wp()->affiliates->delete( $affiliate_id );
+	$deleted = affiliate_wp()->affiliates->delete( $affiliate_id );
+
+	if( $deleted ) {
+
+		do_action( 'affwp_affiliate_deleted', $affiliate_id, $delete_data );
+
+	}
+
+	return $deleted;
 
 }
 
