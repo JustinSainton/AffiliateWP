@@ -138,7 +138,7 @@ class Affiliate_WP_Settings {
 				}
 			}
 		}
-		
+
 		// Loop through each setting being saved and pass it through a sanitization filter
 		foreach ( $input as $key => $value ) {
 
@@ -249,7 +249,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ) . '</p>',
 						'type' => 'select',
-						'options' => array( 
+						'options' => array(
 							'id'       => __( 'ID', 'affiliate-wp' ),
 							'username' => __( 'Username', 'affiliate-wp' ),
 						),
@@ -341,6 +341,11 @@ class Affiliate_WP_Settings {
 			/** Email Settings */
 			'emails' => apply_filters( 'affwp_settings_emails',
 				array(
+					'disable_all_emails' => array(
+						'name' => __( 'Disable All Emails', 'affiliate-wp' ),
+						'desc' => __( 'Should all email notifications be disabled?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'email_logo' => array(
 						'name' => __( 'Logo', 'affiliate-wp' ),
 						'desc' => __( 'Upload or choose a logo to be displayed at the top of emails.', 'affiliate-wp' ),
@@ -460,7 +465,7 @@ class Affiliate_WP_Settings {
 	 * @return array
 	 */
 	function email_approval_settings( $email_settings ) {
-		
+
 		if ( ! affiliate_wp()->settings->get( 'require_approval' ) ) {
 			return $email_settings;
 		}

@@ -243,7 +243,7 @@ class Affiliate_WP_Emails {
 		}
 
 		$message = $this->text_to_html( $message );
-		
+
 		ob_start();
 
 		affiliate_wp()->templates->get_template_part( 'emails/header', $this->get_template(), true );
@@ -293,6 +293,11 @@ class Affiliate_WP_Emails {
 
 		if( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
 			_doing_it_wrong( __FUNCTION__, __( 'You cannot send emails with AffWP_Emails until init/admin_init has been reached', 'affiliate-wp' ), null );
+			return false;
+		}
+
+		// Don't send anything if emails have been disabled
+		if ( $this->is_email_disabled() ) {
 			return false;
 		}
 
@@ -496,6 +501,18 @@ class Affiliate_WP_Emails {
 	 */
 	public function email_tag_exists( $tag ) {
 		return array_key_exists( $tag, $this->tags );
+	}
+
+	/**
+	 * Check if all emails should be disabled
+	 *
+	 * @return bool
+	 */
+	public function is_email_disabled() {
+		$disabled = affiliate_wp()->settings->get( 'disable_all_emails', false );
+		$disabled = (bool) apply_filters( 'affwp_disable_all_emails', $disabled );
+
+		return $disabled;
 	}
 
 }
