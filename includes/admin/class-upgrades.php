@@ -115,12 +115,13 @@ class Affiliate_WP_Upgrades {
 
 		global $wpdb;
 
-		$results = $wpdb->get_results( "SELECT affiliate_id, rate FROM {$wpdb->prefix}affiliate_wp_affiliates WHERE rate_type = 'percentage' AND rate > 0 AND rate <= 1" );
+		$prefix  = ( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) ? null : $wpdb->prefix;
+		$results = $wpdb->get_results( "SELECT affiliate_id, rate FROM {$prefix}affiliate_wp_affiliates WHERE rate_type = 'percentage' AND rate > 0 AND rate <= 1" );
 
 		if ( $results ) {
 			foreach ( $results as $result ) {
 				$wpdb->update(
-					"{$wpdb->prefix}affiliate_wp_affiliates",
+					"{$prefix}affiliate_wp_affiliates",
 					array( 'rate' => floatval( $result->rate ) * 100 ),
 					array( 'affiliate_id' => $result->affiliate_id ),
 					array( '%d' ),
