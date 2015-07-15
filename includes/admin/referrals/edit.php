@@ -45,7 +45,7 @@ $referral = affwp_get_referral( absint( $_GET['referral_id'] ) );
 				</th>
 
 				<td>
-					<input type="text" name="description" id="description" value="<?php echo esc_attr( $referral->description ); ?>" />
+					<textarea name="description" id="description" rows="5" cols="60"><?php echo esc_html( $referral->description ); ?></textarea>
 					<p class="description"><?php _e( 'Enter a description for this referral.', 'affiliate-wp' ); ?></p>
 				</td>
 
