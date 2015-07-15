@@ -69,10 +69,12 @@ class Affiliate_WP_Settings {
 
 				$name = isset( $option['name'] ) ? $option['name'] : '';
 
+				$callback = ! empty( $option['callback'] ) ? $option['callback'] : array( $this, $option['type'] . '_callback' );
+
 				add_settings_field(
 					'affwp_settings[' . $key . ']',
 					$name,
-					is_callable( array( $this, $option[ 'type' ] . '_callback' ) ) ? array( $this, $option[ 'type' ] . '_callback' ) : array( $this, 'missing_callback' ),
+					is_callable( $callback ) ? $callback : array( $this, 'missing_callback' ),
 					'affwp_settings_' . $tab,
 					'affwp_settings_' . $tab,
 					array(
