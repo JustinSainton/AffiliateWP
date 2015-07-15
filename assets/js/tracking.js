@@ -2,7 +2,7 @@ jQuery(document).ready( function($) {
 
     var cookie = $.cookie( 'affwp_ref' );
 
-    var credit_last = AFFWP.credit_last_referrer;
+    var credit_last = AFFWP.referral_credit_last;
 
     if( '1' != credit_last && cookie ) {
         return;
