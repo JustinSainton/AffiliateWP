@@ -12,26 +12,32 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class Affiliate_WP_Migrate_Users extends Affiliate_WP_Migrate_Base {
 
 	/**
+	 * Migrate users belonging to these roles
+	 *
+	 * @var array
+	 */
+	public $roles = array();
+
+	/**
 	 * Process the migration routine
 	 *
-	 * @since 1.3
+	 * @since  1.3
+	 * @param  int    $step
+	 * @param  string $part
+	 * @param  array  $roles (added in 1.7)
 	 * @return void
 	 */
 	public function process( $step = 1, $part = '' ) {
 
-		switch( $part ) {
+		if ( 'affiliates' !== $part || ! $this->roles ) {
+			return;
+		}
 
-			case 'affiliates' :
+		$inserted = $this->do_users( $step );
 
-				$affiliates = $this->do_users( $step );
+		if ( $inserted ) {
 
-				if( $affiliates ) {
-
-					$this->step_forward( $step, 'affiliates' );
-
-				}
-
-				break;
+			$this->step_forward( $step, 'affiliates' );
 
 		}
 
@@ -42,64 +48,107 @@ class Affiliate_WP_Migrate_Users extends Affiliate_WP_Migrate_Base {
 	/**
 	 * Move forward one step
 	 *
-	 * @since 1.3
+	 * @since  1.3
+	 * @param  int    $step
+	 * @param  string $part
 	 * @return void
 	 */
 	public function step_forward( $step = 1, $part = '' ) {
 
 		$step++;
-		$redirect  = add_query_arg( array(
-			'page' => 'affiliate-wp-migrate',
-			'type' => 'users',
-			'part' => $part,
-			'step' => $step
-		), admin_url( 'index.php' ) );
-		wp_redirect( $redirect ); exit;
+
+		$redirect = add_query_arg(
+			array(
+				'page' => 'affiliate-wp-migrate',
+				'type' => 'users',
+				'part' => $part,
+				'step' => $step
+			),
+			admin_url( 'index.php' )
+		);
+
+		wp_safe_redirect( $redirect );
+
+		exit;
 
 	}
 
 	/**
 	 * Import one batch of users
 	 *
-	 * @since 1.3
-	 * @return void
+	 * @since  1.3
+	 * @param  int     $step
+	 * @return boolean
 	 */
 	public function do_users( $step = 1 ) {
 
-		global $wpdb;
-		$offset = ($step - 1) * 100;
-		$users  = $wpdb->get_results( "SELECT * FROM $wpdb->users ORDER BY ID LIMIT $offset, 100;" );
+		if ( ! $this->roles ) {
+			return false;
+		}
 
-		if( $users ) {
-			foreach( $users as $user ) {
+		$users = new WP_User_Query(
+			array(
+				'number'     => 100,
+				'offset'     => ( $step - 1 ) * 100,
+				'orderby'    => 'ID',
+				'order'      => 'ASC',
+				'meta_query' => array(
+					array(
+						'key'     => 'wp_capabilities',
+						'value'   => sprintf( '"(%s)"', implode( '|', $this->roles ) ),
+						'compare' => 'REGEXP'
+					)
+				)
+			)
+		);
 
-				// try to get an existing affiliate based on the user_id
-				$existing_affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user->ID );
+		if ( empty( $users->results ) ) {
+			return false;
+		}
 
-				if( ! $existing_affiliate ) {
+		$inserted = array();
 
-					$args = array(
-						'status'          => 'active',
-						'user_id'         => $user->ID,
-						'payment_email'	  => $user->user_email,
-						'date_registered' => $user->user_registered,
-					);
+		foreach ( $users->results as $user ) {
 
-					//insert a new affiliate - we need to always insert to make sure the affiliate_ids will match
-					$id = affiliate_wp()->affiliates->insert( $args, 'affiliate' );
+			$affiliate_exists = affiliate_wp()->affiliates->get_by( 'user_id', $user->ID );
 
-				}
-
+			if ( $affiliate_exists ) {
+				continue;
 			}
 
-			return true;
+			$args = array(
+				'status'          => 'active',
+				'user_id'         => $user->ID,
+				'payment_email'	  => $user->user_email,
+				'date_registered' => $user->user_registered
+			);
 
-		} else {
-
-			// No users found, so all done
-			return false;
+			$inserted[] = affiliate_wp()->affiliates->insert( $args, 'affiliate' );
 
 		}
 
+		if ( ! $inserted ) {
+			return false;
+		}
+
+		return true;
+
 	}
+
+	public function finish() {
+
+		$redirect = add_query_arg(
+			array(
+				'page'         => 'affiliate-wp-affiliates',
+				'affwp_notice' => 'affiliate_added',
+			),
+			admin_url( 'admin.php' )
+		);
+
+		wp_safe_redirect( $redirect );
+
+		exit;
+
+	}
+
 }

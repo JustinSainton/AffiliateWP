@@ -7,9 +7,11 @@
  * @return void
  */
 function affwp_migrate_admin() {
-	$step   = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
-	$type   = isset( $_GET['type'] ) ? $_GET['type'] : false;
-	$part   = isset( $_GET['part'] ) ? $_GET['part'] : false;
+	$step  = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
+	$type  = isset( $_GET['type'] ) ? $_GET['type'] : false;
+	$part  = isset( $_GET['part'] ) ? $_GET['part'] : false;
+	$roles = isset( $_GET['roles'] ) ? $_GET['roles'] : array();
+	$roles = is_array( $roles ) ? implode( ',', $roles ) : '';
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'AffiliateWP Migration', 'affiliate-wp' ); ?></h2>
@@ -18,7 +20,7 @@ function affwp_migrate_admin() {
 			<p><strong><?php printf( __( 'Step %d running', 'affiliate-wp' ), $step ); ?>
 		</div>
 		<script type="text/javascript">
-			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $step ); ?>&type=<?php echo $type; ?>&part=<?php echo $part; ?>";
+			document.location.href = "index.php?affwp_action=migrate&step=<?php echo absint( $step ); ?>&type=<?php echo $type; ?>&part=<?php echo $part; ?><?php if ( 'users' === $type ) : ?>&roles=<?php echo $roles; ?><?php endif; ?>";
 		</script>
 	</div>
 <?php
