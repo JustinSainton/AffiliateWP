@@ -4,6 +4,10 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 	public function init() {
 
+		if ( ! class_exists( 'GFFormsModel' ) || ! class_exists( 'GFCommon' ) ) {
+			return;
+		}
+
 		$this->context = 'gravityforms';
 
 		add_filter( 'gform_entry_created', array( $this, 'add_pending_referral' ), 10, 2 );
@@ -24,7 +28,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 			$entry     = GFFormsModel::get_lead( $entry['id'] );
 			$products  = GFCommon::get_product_fields( $form, $entry );
 			$total     = 0;
-			foreach ( $products['products'] as $key => $product ) {	
+			foreach ( $products['products'] as $key => $product ) {
 
 				$desc .= $product['name'];
 				if( $key + 1 < count( $products ) ) {
@@ -49,13 +53,13 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 			$referral_total = $this->calculate_referral_amount( $total, $entry['id'] );
 
 			$this->insert_pending_referral( $referral_total, $entry['id'], $desc );
-		
+
 		}
 
 	}
 
 	public function mark_referral_complete( $entry, $action ) {
-		
+
 		$this->complete_referral( $entry['id'] );
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $entry['id'], $this->context );
@@ -67,7 +71,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	}
 
 	public function revoke_referral_on_refund( $entry, $action ) {
-		
+
 		$this->reject_referral( $entry['id'] );
 
 		$referral = affiliate_wp()->referrals->get_by( 'reference', $entry['id'], $this->context );
@@ -76,7 +80,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 		$note     = sprintf( __( 'Referral #%d for %s for %s rejected', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
 
 		GFFormsModel::add_note( $entry["id"], 0, 'AffiliateWP', $note );
-	
+
 	}
 
 	public function reference_link( $reference = 0, $referral ) {
