@@ -35,7 +35,7 @@
 				<?php foreach ( $referrals as $referral ) : ?>
 					<tr>
 						<td class="referral-amount"><?php echo affwp_currency_filter( affwp_format_amount( $referral->amount ) ); ?></td>
-						<td class="referral-description"><?php echo nl2br( $referral->description ); ?></td>
+						<td class="referral-description"><?php echo wp_kses_post( nl2br( $referral->description ) ); ?></td>
 						<td class="referral-status <?php echo $referral->status; ?>"><?php echo affwp_get_referral_status_label( $referral ); ?></td>
 						<td class="referral-date"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $referral->date ) ); ?></td>
 						<?php do_action( 'affwp_referrals_dashboard_td', $referral ); ?>
