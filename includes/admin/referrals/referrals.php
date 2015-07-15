@@ -268,6 +268,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 
 			case 'description' :
 				$value = wp_trim_words( $referral->description, 10 );
+				$value = (string) apply_filters( 'affwp_referral_description_column', $value, $referral->description );
 				break;
 
 			default:
