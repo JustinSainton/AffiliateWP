@@ -31,7 +31,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	 * @access public
 	 * @uses GFFormsModel::get_lead()
 	 * @uses GFCommon::get_product_fields()
-	 * @uses GFCommon::to_number
+	 * @uses GFCommon::to_number()
 	 *
 	 * @param array $entry
 	 * @param array $form
