@@ -159,7 +159,7 @@ jQuery(document).ready(function($) {
 		file_frame.on( 'select', function() {
 			var attachment = file_frame.state().get('selection').first().toJSON();
 			formfield.val(attachment.url);
-		
+
 			var img = $('<img />');
 			img.attr('src', attachment.url);
 			// replace previous image with new one if selected
@@ -167,7 +167,7 @@ jQuery(document).ready(function($) {
 
 			// show preview div when image exists
 			if ( $('#preview_image img') ) {
-				$('#preview_image').show();	
+				$('#preview_image').show();
 			}
 		});
 
@@ -185,4 +185,26 @@ jQuery(document).ready(function($) {
 		return false;
 
 	});
+
+	$('body').on('submit', '#affiliate-wp-migrate-user-accounts input:checkbox', function(e) {
+
+	});
+
+	function maybe_activate_migrate_users_button() {
+		var checked = $('#affiliate-wp-migrate-user-accounts input:checkbox:checked' ).length,
+		    $button = $('#affiliate-wp-migrate-user-accounts input[type=submit]');
+
+		if ( checked > 0 ) {
+			$button.prop( 'disabled', false );
+		} else {
+			$button.prop( 'disabled', true );
+		}
+	}
+
+	maybe_activate_migrate_users_button();
+
+	$('body').on('change', '#affiliate-wp-migrate-user-accounts input:checkbox', function() {
+		maybe_activate_migrate_users_button();
+	});
+
 });
