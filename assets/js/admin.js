@@ -186,10 +186,6 @@ jQuery(document).ready(function($) {
 
 	});
 
-	$('body').on('submit', '#affiliate-wp-migrate-user-accounts input:checkbox', function(e) {
-
-	});
-
 	function maybe_activate_migrate_users_button() {
 		var checked = $('#affiliate-wp-migrate-user-accounts input:checkbox:checked' ).length,
 		    $button = $('#affiliate-wp-migrate-user-accounts input[type=submit]');
