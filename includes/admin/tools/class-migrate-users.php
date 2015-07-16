@@ -24,7 +24,6 @@ class Affiliate_WP_Migrate_Users extends Affiliate_WP_Migrate_Base {
 	 * @since  1.3
 	 * @param  int    $step
 	 * @param  string $part
-	 * @param  array  $roles (added in 1.7)
 	 * @return void
 	 */
 	public function process( $step = 1, $part = '' ) {
@@ -135,6 +134,12 @@ class Affiliate_WP_Migrate_Users extends Affiliate_WP_Migrate_Base {
 
 	}
 
+	/**
+	 * Done creating affiliate accounts for users
+	 *
+	 * @since  1.7
+	 * @return void
+	 */
 	public function finish() {
 
 		$redirect = add_query_arg(
