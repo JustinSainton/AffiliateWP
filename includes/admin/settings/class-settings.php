@@ -215,11 +215,6 @@ class Affiliate_WP_Settings {
 						'type' => 'text',
 						'std' => 'ref'
 					),
-					'referral_credit_last' => array(
-						'name' => __( 'Credit Last Referrer', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Make the last referrer get credited instead of the first referrer whenever visitor makes a purchase.', 'affiliate-wp' ) . '</p>',
-						'type' => 'checkbox'
-					),
 					'referral_format' => array(
 						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ) . '</p>',
@@ -233,6 +228,11 @@ class Affiliate_WP_Settings {
 					'referral_pretty_urls' => array(
 						'name' => __( 'Pretty Affiliate URLs', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . sprintf( __( 'Show pretty affiliate referrals to affiliates. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ) . '</p>',
+						'type' => 'checkbox'
+					),
+					'referral_credit_last' => array(
+						'name' => __( 'Credit Last Referrer', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Credit the last affiliate who referred the customer.', 'affiliate-wp' ) . '</p>',
 						'type' => 'checkbox'
 					),
 					'referral_rate_type' => array(
