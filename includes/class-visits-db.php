@@ -42,8 +42,10 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	 *
 	 * @access  public
 	 * @since   1.0
+	 * @param   array $args
+	 * @param   bool  $count  Return only the total number of results found (optional)
 	*/
-	public function get_visits( $args = array() ) {
+	public function get_visits( $args = array(), $count = false ) {
 		global $wpdb;
 
 		$defaults = array(
@@ -165,17 +167,44 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
 
-		$cache_key = md5( 'affwp_visits_' . serialize( $args ) );
+		$cache_key = ( true === $count ) ? md5( 'affwp_visits_count' . serialize( $args ) ) : md5( 'affwp_visits_' . serialize( $args ) );
 
-		$visits = wp_cache_get( $cache_key, 'visits' );
+		$results = wp_cache_get( $cache_key, 'visits' );
 
-		if( $visits === false ) {
-			$visits = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
-			wp_cache_set( $cache_key, $visits, 'visits', 3600 );
+		if ( false === $results ) {
+
+			if ( true === $count ) {
+
+				$results = absint( $wpdb->get_var( "SELECT COUNT({$this->primary_key}) FROM {$this->table_name} {$where};" ) );
+
+			} else {
+
+				$results = $wpdb->get_results(
+					$wpdb->prepare(
+						"SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d, %d;",
+						absint( $args['offset'] ),
+						absint( $args['number'] )
+					)
+				);
+
+			}
+
+			wp_cache_set( $cache_key, $results, 'visits', 3600 );
+
 		}
 
-		return $visits;
+		return $results;
 
+	}
+
+	/**
+	 * Return the number of results found for a given query
+	 *
+	 * @param  array  $args
+	 * @return int
+	 */
+	public function count( $args = array() ) {
+		return $this->get_visits( $args, true );
 	}
 
 	public function add( $data = array() ) {
@@ -193,63 +222,6 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 
 		return $visit_id;
 	}
-
-	/**
-	 * Count the total number of visits in the database
-	 *
-	 * @access  public
-	 * @since   1.0
-	*/
-	public function count( $args = array() ) {
-		global $wpdb;
-
-		$where = '';
-
-		// visits for specific affiliate
-		if( ! empty( $args['affiliate_id'] ) ) {
-
-			if( is_array( $args['affiliate_id'] ) ) {
-				$affiliate_ids = implode( ',', $args['affiliate_id'] );
-			} else {
-				$affiliate_ids = intval( $args['affiliate_id'] );
-			}
-
-			$where .= " WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
-
-		}
-
-		// visits for specific referral
-		if( ! empty( $args['referral_id'] ) ) {
-
-			if( is_array( $args['referral_id'] ) ) {
-				$referral_ids = implode( ',', $args['referral_id'] );
-			} else {
-				$referral_ids = intval( $args['referral_id'] );
-			}
-
-			if( empty( $where ) ) {
-				$where .= " WHERE";
-			} else {
-				$where .= " AND";
-			}
-
-			$where .= " `referral_id` IN( {$referral_ids} )";
-
-		}
-
-		$cache_key   = md5( 'affwp_visits_count' . serialize( $args ) );
-
-		$count = wp_cache_get( $cache_key, 'visits' );
-
-		if( $count === false ) {
-			$count = $wpdb->get_var( "SELECT COUNT(visit_id) FROM " . $this->table_name . "{$where};" );
-			wp_cache_set( $cache_key, $count, 'visits', 3600 );
-		}
-
-		return $count;
-
-	}
-
 
 	public function create_table() {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

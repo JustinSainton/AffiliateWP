@@ -79,15 +79,15 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of creatives found
 	 *
-	 * Total number of creatives
-	 * @var string
-	 * @since 1.2
+	 * @var int
+	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of creatives
+	 * Number of active creatives found
 	 *
 	 * @var string
 	 * @since 1.2
@@ -95,7 +95,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	public $active_count;
 
 	/**
-	 * Inactive number of creatives
+	 * Number of inactive creatives found
 	 *
 	 * @var string
 	 * @since 1.2
@@ -314,7 +314,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * @return array $creatives_data Array of all the data for the Creatives
 	 */
 	public function creatives_data() {
-		
+
 		$page = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
 		$status  = isset( $_GET['status'] ) ? $_GET['status'] : '';
 
@@ -326,7 +326,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 		) );
 
 		return $creatives;
-	
+
 	}
 
 	/**

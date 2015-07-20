@@ -28,7 +28,7 @@ function affwp_affiliates_admin() {
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
 	} else if ( isset( $_GET['action'] ) && 'review_affiliate' == $_GET['action'] ) {
-		
+
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
 	} else if( isset( $_GET['action'] ) && 'delete' == $_GET['action'] ) {
@@ -84,15 +84,15 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of affiliates found
 	 *
-	 * Total number of affiliates
-	 * @var string
+	 * @var int
 	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of affiliates
+	 * Number of active affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -100,7 +100,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $active_count;
 
 	/**
-	 * Inactive number of affiliates
+	 *  Number of inactive affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -108,7 +108,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $inactive_count;
 
 	/**
-	 * Pending number of affiliates
+	 * Number of pending affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -116,7 +116,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $pending_count;
 
 	/**
-	 * Rejected number of affiliates
+	 * Number of rejected affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -274,7 +274,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
 		$row_actions  = array();
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
-		
+
 		if( $name ) {
 			$name = sprintf( '<a href="%s">%s</a>', get_edit_user_link( $affiliate->user_id ), $name );
 		} else {
