@@ -297,7 +297,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return string Displays a checkbox
 	 */
 	function column_cb( $affiliate ) {
-		return '<input type="checkbox" name="affiliate_id[]" value="' . $affiliate->affiliate_id . '" />';
+		return '<input type="checkbox" name="affiliate_id[]" value="' . absint( $affiliate->affiliate_id ) . '" />';
 	}
 
 	/**
