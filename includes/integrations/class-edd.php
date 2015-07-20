@@ -71,6 +71,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			// Referral description
 			$desc = $this->get_referral_description( $payment_id );
 
+			if( empty( $desc ) ) {
+				return;
+			}
+
 			// insert a pending referral
 			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $desc, $this->get_products( $payment_id ) );
 
@@ -138,11 +142,17 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 						return false; // Ignore a zero amount referral
 					}
 
+					$desc = $this->get_referral_description( $payment_id );
+
+					if( empty( $desc ) ) {
+						return false;
+					}
+
 					$referral_id = affiliate_wp()->referrals->add(
 						array(
 							'amount'       => $referral_total,
 							'reference'    => $payment_id,
-							'description'  => $this->get_referral_description( $payment_id ),
+							'description'  => $desc,
 							'affiliate_id' => $this->affiliate_id,
 							'context'      => $this->context,
 							'products'     => $this->get_products( $payment_id )
