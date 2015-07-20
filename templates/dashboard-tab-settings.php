@@ -17,7 +17,7 @@
 
 		<div class="affwp-save-profile-wrap">
 			<input type="hidden" name="affwp_action" value="update_profile_settings" />
-			<input type="hidden" id="affwp-affiliate-id" name="affiliate_id" value="<?php echo esc_attr( affwp_get_affiliate_id() ); ?>" />
+			<input type="hidden" name="affiliate_id" value="<?php echo esc_attr( affwp_get_affiliate_id() ); ?>" />
 			<input type="submit" class="button" value="<?php esc_attr_e( 'Save Profile Settings', 'affiliate-wp' ); ?>" />
 		</div>
 	</form>

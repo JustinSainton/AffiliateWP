@@ -71,6 +71,10 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			// Referral description
 			$desc = $this->get_referral_description( $payment_id );
 
+			if( empty( $desc ) ) {
+				return;
+			}
+
 			// insert a pending referral
 			$referral_id = $this->insert_pending_referral( $referral_total, $payment_id, $desc, $this->get_products( $payment_id ) );
 
@@ -133,16 +137,22 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				} else {
 					// new referral
-					
+
 					if ( 0 == $referral_total && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 						return false; // Ignore a zero amount referral
 					}
 
-					$referral_id = affiliate_wp()->referrals->add( 
+					$desc = $this->get_referral_description( $payment_id );
+
+					if( empty( $desc ) ) {
+						return false;
+					}
+
+					$referral_id = affiliate_wp()->referrals->add(
 						array(
 							'amount'       => $referral_total,
 							'reference'    => $payment_id,
-							'description'  => $this->get_referral_description( $payment_id ),
+							'description'  => $desc,
 							'affiliate_id' => $this->affiliate_id,
 							'context'      => $this->context,
 							'products'     => $this->get_products( $payment_id )
@@ -165,7 +175,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$downloads = apply_filters( 'affwp_get_edd_cart_details', edd_get_payment_meta_cart_details( $payment_id ) );
 
 		if ( is_array( $downloads ) ) {
-			
+
 			// Calculate the referral amount based on product prices
 			$referral_total = 0.00;
 
@@ -182,7 +192,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				}
 
 				if( class_exists( 'EDD_Simple_Shipping' ) ) {
-					
+
 					if( isset( $download['fees'] ) ) {
 
 						foreach( $download['fees'] as $fee_id => $fee ) {
@@ -192,7 +202,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 								if( ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
 									$amount += $fee['amount'];
-									
+
 								}
 
 							}
@@ -200,7 +210,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 						}
 
 					}
-					
+
 				}
 
 				$referral_total += $this->calculate_referral_amount( $amount, $payment_id, $download['id'] );
@@ -277,7 +287,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate_id );
 
 		edd_insert_payment_note( $payment_id, sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name ) );
-		
+
 	}
 
 	/**
@@ -339,7 +349,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function reference_link( $reference = 0, $referral ) {
 
-		if( empty( $referral->context ) || 'edd' != $referral->context ) {
+		if ( empty( $referral->context ) || 'edd' != $referral->context ) {
 
 			return $reference;
 
@@ -358,24 +368,19 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	*/
 	public function get_referral_description( $payment_id = 0 ) {
 
-		$description = '';
+		$description = array();
 		$downloads   = edd_get_payment_meta_downloads( $payment_id );
-		foreach( $downloads as $key => $item ) {
 
-			if( get_post_meta( $item['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+		foreach ( $downloads as $key => $item ) {
+
+			if ( get_post_meta( $item['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 				continue; // Referrals are disabled on this product
 			}
 
-			$description .= get_the_title( $item['id'] );
-
-			if( $key + 1 < count( $downloads ) ) {
-				$description .= ', ';
-			}
-
+			$description[] = get_the_title( $item['id'] );
 		}
 
-		return $description;
-
+		return implode( ', ', $description );
 	}
 
 	/**
@@ -422,12 +427,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 	 * @since   1.1
 	*/
 	public function store_discount_affiliate( $details, $discount_id = 0 ) {
-		
-		if ( empty( $_POST['user_name'] ) ) {		
+
+		if ( empty( $_POST['user_name'] ) ) {
 			delete_post_meta( $discount_id, 'affwp_discount_affiliate' );
 			return;
 		}
-		
+
 		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
 		}
@@ -504,7 +509,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			);
 
 		}
-		
+
 		return $settings;
 	}
 
@@ -525,7 +530,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			);
 
 		}
-		
+
 		return $settings;
 	}
 
