@@ -15,30 +15,31 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 function affwp_affiliates_admin() {
 
-	$action1 = isset( $_GET['action'] )  ? $_GET['action']  : null;
-	$action2 = isset( $_GET['action2'] ) ? $_GET['action2'] : null;
+	$action = null;
 
-	if ( 'view_affiliate' === $action1 ) {
+	if ( isset( $_GET['action'] ) && '-1' !== $_GET['action'] ) {
+		$action = $_GET['action'];
+	} elseif ( isset( $_GET['action2'] ) && '-1' !== $_GET['action2'] ) {
+		$action = $_GET['action2'];
+	}
+
+	if ( 'view_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/view.php';
 
-	} elseif ( 'add_affiliate' === $action1 ) {
+	} elseif ( 'add_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/new.php';
 
-	} elseif ( 'edit_affiliate' === $action1 ) {
+	} elseif ( 'edit_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
-	} elseif ( 'review_affiliate' === $action1 ) {
+	} elseif ( 'review_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
-	} elseif (
-		( '-1' === $action2 && 'delete' === $action1 )
-		||
-		( '-1' === $action1 && 'delete' === $action2 )
-	) {
+	} elseif ( 'delete' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
 
