@@ -101,7 +101,7 @@ class Affiliate_WP_Recount {
 			return;
 		}
 
-		$earnings = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id ), true );
+		$earnings = affiliate_wp()->visits->count( array( 'affiliate_id' => $affiliate_id ) );
 		affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $earnings ), '', 'affiliate' );
 
 	}
