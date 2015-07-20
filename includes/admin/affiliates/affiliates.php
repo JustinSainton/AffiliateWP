@@ -28,10 +28,14 @@ function affwp_affiliates_admin() {
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
 	} else if ( isset( $_GET['action'] ) && 'review_affiliate' == $_GET['action'] ) {
-		
+
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
 	} else if( isset( $_GET['action'] ) && 'delete' == $_GET['action'] ) {
+
+		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
+
+	} else if( isset( $_GET['action2'] ) && 'delete' == $_GET['action2'] ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
 
@@ -274,7 +278,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
 		$row_actions  = array();
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
-		
+
 		if( $name ) {
 			$name = sprintf( '<a href="%s">%s</a>', get_edit_user_link( $affiliate->user_id ), $name );
 		} else {
