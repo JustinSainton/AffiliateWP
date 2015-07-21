@@ -13,6 +13,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/screen-options.php';
 include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/visits/contextual-help.php';
 
 function affwp_visits_admin() {
@@ -71,9 +72,9 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 class AffWP_Visits_Table extends WP_List_Table {
 
 	/**
-	 * Number of results to show per page
+	 * Default number of items to show per page
 	 *
-	 * @var string
+	 * @var int
 	 * @since 1.0
 	 */
 	public $per_page = 30;
@@ -320,9 +321,11 @@ class AffWP_Visits_Table extends WP_List_Table {
 			$search       = '';
 		}
 
+		$per_page = $this->get_items_per_page( 'affwp_edit_visits_per_page', $this->per_page );
+
 		$visits = affiliate_wp()->visits->get_visits( array(
-			'number'          => $this->per_page,
-			'offset'          => $this->per_page * ( $page - 1 ),
+			'number'          => $per_page,
+			'offset'          => $per_page * ( $page - 1 ),
 			'affiliate_id'    => $affiliate_id,
 			'referral_id'     => $referral_id,
 			'referral_status' => $status,
@@ -348,7 +351,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function prepare_items() {
-		$per_page = $this->per_page;
+		$per_page = $this->get_items_per_page( 'affwp_edit_visits_per_page', $this->per_page );
 
 		$columns = $this->get_columns();
 
