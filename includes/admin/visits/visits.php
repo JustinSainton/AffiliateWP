@@ -20,10 +20,12 @@ function affwp_visits_admin() {
 
 	$visits_table = new AffWP_Visits_Table();
 	$visits_table->prepare_items();
-	$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
-	$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
+	$from   = ! empty( $_REQUEST['filter_from'] )   ? $_REQUEST['filter_from']   : '';
+	$to     = ! empty( $_REQUEST['filter_to'] )     ? $_REQUEST['filter_to']     : '';
+	$status = ! empty( $_REQUEST['filter_status'] ) ? $_REQUEST['filter_status'] : '';
 	?>
 	<div class="wrap">
+
 		<h2><?php _e( 'Visits', 'affiliate-wp' ); ?></h2>
 		<?php do_action( 'affwp_affiliates_page_top' ); ?>
 		<form id="affwp-visits-filter" method="get" action="<?php echo admin_url( 'admin.php?page=affiliate-wp' ); ?>">
@@ -35,9 +37,15 @@ function affwp_visits_admin() {
 			<div id="affwp_user_search_results"></div>
 			<input type="hidden" name="user_id" id="user_id" value=""/>
 			<input type="hidden" name="page" value="affiliate-wp-visits" />
-			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo $from; ?>"/>
-			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo $to; ?>"/>&nbsp;
+			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_from" placeholder="<?php esc_attr_e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo esc_attr( $from ); ?>"/>
+			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_to" placeholder="<?php esc_attr_e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo esc_attr( $to ); ?>"/>
 
+			<label class="screen-reader-text" for="filter_status"><?php _e( 'Filter by status', 'affiliate-wp' ); ?></label>
+			<select id="filter_status" name="filter_status" class="postform" style="margin-top:-1px;">
+				<option value=""<?php selected( '', $status ) ?>><?php _e( 'All', 'affiliate-wp' ); ?></option>
+				<option value="converted"<?php selected( 'converted', $status ) ?>><?php _e( 'Converted', 'affiliate-wp' ); ?></option>
+				<option value="unconverted"<?php selected( 'unconverted', $status ) ?>><?php _e( 'Unconverted', 'affiliate-wp' ); ?></option>
+			</select>
 			<input type="submit" class="button" value="<?php _e( 'Filter', 'affiliate-wp' ); ?>"/>
 			<?php $visits_table->views() ?>
 			<?php $visits_table->display() ?>
@@ -277,7 +285,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return array $visits_data Array of all the data for the Affiliates
 	 */
 	public function visits_data() {
-		
+
 		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )          : 1;
 		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )        : false;
 		$referral_id  = isset( $_GET['referral'] )  ? absint( $_GET['referral'] )       : false;
@@ -286,8 +294,9 @@ class AffWP_Visits_Table extends WP_List_Table {
 		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']                  : 'date';
 		$search       = isset( $_GET['s'] )         ? sanitize_text_field( $_GET['s'] ) : '';
 
-		$from = ! empty( $_REQUEST['filter_from'] ) ? $_REQUEST['filter_from'] : '';
-		$to   = ! empty( $_REQUEST['filter_to'] )   ? $_REQUEST['filter_to']   : '';
+		$from   = ! empty( $_REQUEST['filter_from'] )   ? $_REQUEST['filter_from']   : '';
+		$to     = ! empty( $_REQUEST['filter_to'] )     ? $_REQUEST['filter_to']     : '';
+		$status = ! empty( $_REQUEST['filter_status'] ) ? $_REQUEST['filter_status'] : '';
 
 		$date = array();
 		if( ! empty( $from ) ) {
@@ -312,14 +321,15 @@ class AffWP_Visits_Table extends WP_List_Table {
 		}
 
 		$visits = affiliate_wp()->visits->get_visits( array(
-			'number'       => $this->per_page,
-			'offset'       => $this->per_page * ( $page - 1 ),
-			'affiliate_id' => $affiliate_id,
-			'referral_id'  => $referral_id,
-			'date'         => $date,
-			'orderby'      => $orderby,
-			'order'        => $order,
-			'search'       => $search
+			'number'          => $this->per_page,
+			'offset'          => $this->per_page * ( $page - 1 ),
+			'affiliate_id'    => $affiliate_id,
+			'referral_id'     => $referral_id,
+			'referral_status' => $status,
+			'date'            => $date,
+			'orderby'         => $orderby,
+			'order'           => $order,
+			'search'          => $search
 		) );
 		return $visits;
 	}
