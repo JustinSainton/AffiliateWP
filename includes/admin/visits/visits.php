@@ -37,8 +37,9 @@ function affwp_visits_admin() {
 			<div id="affwp_user_search_results"></div>
 			<input type="hidden" name="user_id" id="user_id" value=""/>
 			<input type="hidden" name="page" value="affiliate-wp-visits" />
-			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_from" placeholder="<?php _e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo esc_attr( $from ); ?>"/>
-			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_to" placeholder="<?php _e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo esc_attr( $to ); ?>"/>
+			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_from" placeholder="<?php esc_attr_e( 'From - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo esc_attr( $from ); ?>"/>
+			<input type="text" class="affwp-datepicker" autocomplete="off" name="filter_to" placeholder="<?php esc_attr_e( 'To - mm/dd/yyyy', 'affiliate-wp' ); ?>" value="<?php echo esc_attr( $to ); ?>"/>
+
 			<label class="screen-reader-text" for="filter_status"><?php _e( 'Filter by status', 'affiliate-wp' ); ?></label>
 			<select id="filter_status" name="filter_status" class="postform" style="margin-top:-1px;">
 				<option value=""<?php selected( '', $status ) ?>><?php _e( 'All', 'affiliate-wp' ); ?></option>
