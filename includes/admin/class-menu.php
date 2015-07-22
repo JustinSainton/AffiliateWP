@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_Admin_Menu {
-	
+
 
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_menus' ) );
@@ -21,4 +21,5 @@ class Affiliate_WP_Admin_Menu {
 	}
 
 }
+
 $affiliatewp_menu = new Affiliate_WP_Admin_Menu;

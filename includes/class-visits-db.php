@@ -49,12 +49,13 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		global $wpdb;
 
 		$defaults = array(
-			'number'       => 20,
-			'offset'       => 0,
-			'affiliate_id' => 0,
-			'referral_id'  => 0,
-			'order'        => 'DESC',
-			'orderby'      => 'visit_id'
+			'number'          => 20,
+			'offset'          => 0,
+			'affiliate_id'    => 0,
+			'referral_id'     => 0,
+			'referral_status' => '',
+			'order'           => 'DESC',
+			'orderby'         => 'visit_id'
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -88,6 +89,17 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			}
 
 			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
+
+		}
+
+		// visits for specific referral status
+		if ( ! empty( $args['referral_status'] ) ) {
+
+			if ( 'converted' === $args['referral_status'] ) {
+				$where .= "WHERE `referral_id` > 0";
+			} elseif ( 'unconverted' === $args['referral_status'] ) {
+				$where .= "WHERE `referral_id` = 0";
+			}
 
 		}
 
