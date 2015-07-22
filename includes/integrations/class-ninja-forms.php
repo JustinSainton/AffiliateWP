@@ -9,6 +9,7 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	 * @since   1.6
 	*/
 	public function init() {
+
 		$this->context = 'ninja-forms';
 
 		add_action( 'nf_save_sub', array( $this, 'add_referral' ) );
@@ -16,6 +17,8 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 		add_action( 'delete_post', array( $this, 'revoke_referral_on_delete' ) );
 		add_action( 'wp_trash_post', array( $this, 'revoke_referral_on_delete' ) );
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+		add_filter( 'ninja_forms_form_settings_restrictions', array( $this, 'add_restriction_setting' ) );
+
 	}
 
 	/**
@@ -28,19 +31,22 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 
 		global $ninja_forms_processing;
 
-		if( $this->was_referred() ) {
-
-			if ( $this->is_affiliate_email( $this->get_submitted_email() ) ) {
-				return; // Customers cannot refer themselves
-			}
-
-			$description    = $ninja_forms_processing->get_form_setting( 'form_title' );
-			$total          = $this->get_total();
-			$referral_total = $this->calculate_referral_amount( $total, $sub_id, $ninja_forms_processing->get_form_ID() );
-
-			$this->insert_pending_referral( $referral_total, $sub_id, $description );
-			$this->complete_referral( $sub_id );
+		if (
+			! $ninja_forms_processing->get_form_setting( 'affwp_allow_referrals' )
+			||
+			! $this->was_referred()
+			||
+			$this->is_affiliate_email( $this->get_submitted_email() ) // Customers cannot refer themselves
+		) {
+			return;
 		}
+
+		$description    = $ninja_forms_processing->get_form_setting( 'form_title' );
+		$total          = $this->get_total();
+		$referral_total = $this->calculate_referral_amount( $total, $sub_id, $ninja_forms_processing->get_form_ID() );
+
+		$this->insert_pending_referral( $referral_total, $sub_id, $description );
+		$this->complete_referral( $sub_id );
 
 	}
 
@@ -106,6 +112,25 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	}
 
 	/**
+	 * Add custom form restriction setting
+	 *
+	 * @param array $section
+	 */
+	public function add_restriction_setting( $restrictions ) {
+
+		$restrictions['settings'][] = array(
+			'name'          => 'affwp_allow_referrals',
+			'type'          => 'checkbox',
+			'label'         => __( 'Allow Referrals', 'affiliate-wp' ),
+			'desc'          => __( 'Enable affiliate referral creation for this form?', 'affiliate-wp' ),
+			'default_value' => 1,
+		);
+
+		return $restrictions;
+
+	}
+
+	/**
 	 * Get the email submitted in the form
 	 *
 	 * @access  private
@@ -160,7 +185,7 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 			} else {
 				$purchase_total = 0.00;
 			}
-			
+
 		}
 
 		return affwp_sanitize_amount( $purchase_total );
@@ -168,4 +193,5 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	}
 
 }
+
 new Affiliate_WP_Ninja_Forms;
