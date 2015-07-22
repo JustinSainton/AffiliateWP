@@ -32,13 +32,16 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 
 		global $ninja_forms_processing;
 
-		if (
-			! $ninja_forms_processing->get_form_setting( 'affwp_allow_referrals' )
-			||
-			! $this->was_referred()
-			||
-			$this->is_affiliate_email( $this->get_submitted_email() ) // Customers cannot refer themselves
-		) {
+		if ( ! $ninja_forms_processing->get_form_setting( 'affwp_allow_referrals' ) ) {
+			return;
+		}
+
+		if ( ! $this->was_referred() ) {
+			return;
+		}
+
+		// Customers cannot refer themselves
+		if ( $this->is_affiliate_email( $this->get_submitted_email() ) ) {
 			return;
 		}
 
