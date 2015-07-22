@@ -5,9 +5,9 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Get thigns started
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 */
 	public function init() {
 
 		$this->context = 'ninja-forms';
@@ -24,9 +24,10 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Record referral on submission
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 * @param   int $sub_id
+	 */
 	public function add_referral( $sub_id ) {
 
 		global $ninja_forms_processing;
@@ -53,9 +54,10 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Restore a rejected referral when untrashing a submission
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 * @param   int $sub_id
+	 */
 	public function restore_referral( $sub_id = 0 ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
@@ -77,9 +79,10 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Revoke a referral when a submission is deleted or trashed
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 * @param   int $sub_id
+	 */
 	public function revoke_referral_on_delete( $sub_id = 0 ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
@@ -97,9 +100,12 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Build the reference URL
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 * @param   int    $reference
+	 * @param   object $referral
+	 * @return  string
+	 */
 	public function reference_link( $reference = 0, $referral ) {
 
 		if( empty( $referral->context ) || 'ninja-forms' != $referral->context ) {
@@ -109,12 +115,16 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 		$url = admin_url( 'post.php?action=edit&post=' . $reference );
 
 		return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
+
 	}
 
 	/**
 	 * Add custom form restriction setting
 	 *
-	 * @param array $section
+	 * @access  public
+	 * @since   1.7
+	 * @param   array $restrictions
+	 * @return  array
 	 */
 	public function add_restriction_setting( $restrictions ) {
 
@@ -133,9 +143,9 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Get the email submitted in the form
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 */
 	public function get_submitted_email() {
 
 		global $ninja_forms_processing;
@@ -154,9 +164,9 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 	/**
 	 * Get the purchase total
 	 *
-	 * @access  private
+	 * @access  public
 	 * @since   1.6
-	*/
+	 */
 	public function get_total() {
 
 		global $ninja_forms_processing;
