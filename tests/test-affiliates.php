@@ -135,12 +135,10 @@ class Affiliate_Tests extends WP_UnitTestCase {
 	}
 
 	function test_get_affiliate_email() {
-		
-		$this->assertEquals( 'admin@example.org', affwp_get_affiliate_email( $this->_affiliate_id ) );
-		
+
 		$args = array(
 			'affiliate_id'  => $this->_affiliate_id,
-			'payment_email' => 'affiliate@test.com'
+			'account_email' => 'affiliate@test.com'
 		);
 
 		affwp_update_affiliate( $args );
@@ -148,34 +146,46 @@ class Affiliate_Tests extends WP_UnitTestCase {
 		$this->assertEquals( 'affiliate@test.com', affwp_get_affiliate_email( $this->_affiliate_id ) );
 	}
 
+	function test_get_affiliate_payment_email() {
+
+		$args = array(
+			'affiliate_id'  => $this->_affiliate_id,
+			'payment_email' => 'affiliate-payment@test.com'
+		);
+
+		affwp_update_affiliate( $args );
+
+		$this->assertEquals( 'affiliate-payment@test.com', affwp_get_affiliate_payment_email( $this->_affiliate_id ) );
+	}
+
 	function test_get_affiliate_earnings() {
-		
+
 		$this->assertEquals( 0, affwp_get_affiliate_earnings( $this->_affiliate_id ) );
-	
+
 	}
 
 	function test_get_affiliate_unpaid_earnings() {
-		
+
 		$this->assertEquals( 0, affwp_get_affiliate_unpaid_earnings( $this->_affiliate_id ) );
 		$this->assertEquals( '&#36;0', affwp_get_affiliate_unpaid_earnings( $this->_affiliate_id, true ) );
-	
+
 	}
 
 	function test_adjust_affiliate_earnings() {
-		
+
 		$this->assertEquals( 10, affwp_increase_affiliate_earnings( $this->_affiliate_id, '10' ) );
 		$this->assertFalse( affwp_increase_affiliate_earnings( 0, '10' ) );
-	
+
 		$this->assertEquals( 8, affwp_decrease_affiliate_earnings( $this->_affiliate_id, 2 ) );
 		$this->assertFalse( affwp_decrease_affiliate_earnings( 0, '10' ) );
-		
+
 		$this->assertEquals( '12.2', affwp_increase_affiliate_earnings( $this->_affiliate_id, '4.2' ) );
 	}
 
 	function test_get_affiliate_referral_count() {
-		
+
 		$this->assertEquals( 0, affwp_get_affiliate_referral_count( $this->_affiliate_id ) );
-	
+
 	}
 
 	function test_adjust_affiliate_referral_count() {
@@ -187,9 +197,9 @@ class Affiliate_Tests extends WP_UnitTestCase {
 	}
 
 	function test_get_affiliate_visit_count() {
-		
+
 		$this->assertEquals( 0, affwp_get_affiliate_visit_count( $this->_affiliate_id ) );
-	
+
 	}
 
 	function test_adjust_affiliate_visit_count() {
