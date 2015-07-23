@@ -361,34 +361,29 @@ function affwp_get_affiliate_payment_email( $affiliate, $default = false ) {
 }
 
 /**
- * Retrieves the affiliate's user_login
+ * Retrieves the affiliate's user login (username)
  *
- * @since 1.6
- * @return string
+ * @since  1.6
+ * @param  object|int $affiliate
+ * @param  mixed      $default (optional)
+ * @return mixed
  */
-function affwp_get_affiliate_login( $affiliate ) {
+function affwp_get_affiliate_login( $affiliate, $default = false ) {
 
-	global $wpdb;
+	$affiliate = is_numeric( $affiliate ) ? affwp_get_affiliate( $affiliate ) : $affiliate;
 
-	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
-		$affiliate_id = $affiliate->affiliate_id;
-	} elseif ( is_numeric( $affiliate ) ) {
-		$affiliate_id = absint( $affiliate );
-	} else {
-		return false;
+	if ( empty( $affiliate->affiliate_id ) ) {
+		return $default;
 	}
 
-	$affiliate = affwp_get_affiliate( $affiliate_id );
-	$user_id   = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
-	$login     = $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+	$user_id = affwp_get_affiliate_user_id( $affiliate );
+	$user    = get_userdata( $user_id );
 
-	if ( $login ) {
-
-		return $login;
-
+	if ( empty( $user->user_login ) ) {
+		return $default;
 	}
 
-	return false;
+	return $user->user_login;
 
 }
 
