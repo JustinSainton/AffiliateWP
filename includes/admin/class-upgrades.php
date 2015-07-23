@@ -134,11 +134,11 @@ class Affiliate_WP_Upgrades {
 
 					$meta = json_decode( $meta );
 
-					if ( isset( $meta->gform_allow_referrals ) ) {
+					if ( isset( $meta->affwp_allow_referrals ) ) {
 						continue;
 					}
 
-					$meta->gform_allow_referrals = 1;
+					$meta->affwp_allow_referrals = 1;
 
 					$meta = json_encode( $meta );
 
