@@ -136,7 +136,7 @@ class Affiliate_WP_Ninja_Forms extends Affiliate_WP_Base {
 			'type'          => 'checkbox',
 			'label'         => __( 'Allow Referrals', 'affiliate-wp' ),
 			'desc'          => __( 'Enable affiliate referral creation for this form?', 'affiliate-wp' ),
-			'default_value' => 1,
+			'default_value' => 0,
 		);
 
 		return $restrictions;
