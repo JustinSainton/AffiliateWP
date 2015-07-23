@@ -1,7 +1,7 @@
 <?php
 $affiliate_id  = affwp_get_affiliate_id();
 $user_email    = affwp_get_affiliate_email( $affiliate_id );
-$payment_email = affwp_get_affiliate_payment_email( $affiliate_id, $user_email );
+$payment_email = affwp_get_affiliate_payment_email( $affiliate_id, $user_email ); // Fallback to user_email
 ?>
 
 <div id="affwp-affiliate-dashboard-profile" class="affwp-tab-content">
