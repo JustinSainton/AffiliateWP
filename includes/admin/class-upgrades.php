@@ -172,14 +172,14 @@ class Affiliate_WP_Upgrades {
 
 		global $wpdb;
 
-		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->prefix}nf_objects WHERE type = 'form';" );
+		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->base_prefix}nf_objects WHERE type = 'form';" );
 
 		if ( ! $forms ) {
 			return;
 		}
 
 		// There could be forms that already have this meta saved in the DB, we will ignore those
-		$_forms = $wpdb->get_results( "SELECT object_id FROM {$wpdb->prefix}nf_objectmeta WHERE meta_key = 'affwp_allow_referrals';" );
+		$_forms = $wpdb->get_results( "SELECT object_id FROM {$wpdb->base_prefix}nf_objectmeta WHERE meta_key = 'affwp_allow_referrals';" );
 
 		$forms  = wp_list_pluck( $forms, 'id' );
 		$_forms = wp_list_pluck( $_forms, 'object_id' );
@@ -193,7 +193,7 @@ class Affiliate_WP_Upgrades {
 
 			$wpdb->query(
 				$wpdb->prepare(
-					"INSERT INTO {$wpdb->prefix}nf_objectmeta (object_id,meta_key,meta_value) VALUES (%d,'affwp_allow_referrals','1');",
+					"INSERT INTO {$wpdb->base_prefix}nf_objectmeta (object_id,meta_key,meta_value) VALUES (%d,'affwp_allow_referrals','1');",
 					$form_id
 				)
 			);
