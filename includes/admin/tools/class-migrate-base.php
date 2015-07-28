@@ -1,7 +1,7 @@
 <?php
 
 class Affiliate_WP_Migrate_Base {
-	
+
 	public function __construct() { }
 
 	public function process( $step = 1, $part = '' ) {
@@ -15,18 +15,35 @@ class Affiliate_WP_Migrate_Base {
 		$part = isset( $_GET['part'] ) ? $_GET['part'] : 'affiliates';
 
 		$step++;
-		$redirect  = add_query_arg( array(
-			'page' => 'affiliate-wp-migrate',
-			'type' => 'affiliates-pro',
-			'part' => $part,
-			'step' => $step
-		), admin_url( 'index.php' ) );
-		wp_redirect( $redirect ); exit;
+
+		$redirect = add_query_arg(
+			array(
+				'page' => 'affiliate-wp-migrate',
+				'type' => 'affiliates-pro',
+				'part' => $part,
+				'step' => $step
+			),
+			admin_url( 'index.php' )
+		);
+
+		wp_safe_redirect( $redirect );
+
+		exit;
 
 	}
 
 	public function finish() {
-		wp_redirect( admin_url( 'admin.php?page=affiliate-wp' ) ); exit;
+
+		$redirect = add_query_arg(
+			array(
+				'page' => 'affiliate-wp'
+			),
+			admin_url( 'admin.php' )
+		);
+
+		wp_safe_redirect( $redirect );
+
+		exit;
 	}
 
 }

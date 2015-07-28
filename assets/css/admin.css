@@ -66,6 +66,9 @@ table.affwp_table td a {
 #affwp-dashboard-widgets-wrap .postbox h3 {
 	cursor: default;
 }
+#affwp-dashboard-widgets-wrap .muted {
+	color: #999;
+}
 
 /* Affiliate Overview */
 #affwp-dashboard-widgets-wrap .postbox {
