@@ -407,3 +407,20 @@ function affwp_is_pretty_referral_urls() {
 	return (bool) false;
 
 }
+
+/**
+ * Checks whether reCAPTCHA is enabled since it requires three options
+ *
+ * @since  1.7
+ * @return boolean
+ */
+function affwp_is_recaptcha_enabled() {
+
+	$checkbox   = affiliate_wp()->settings->get( 'recaptcha_enabled', 0 );
+	$site_key   = affiliate_wp()->settings->get( 'recaptcha_site_key', '' );
+	$secret_key = affiliate_wp()->settings->get( 'recaptcha_secret_key', '' );
+	$enabled    = ( ! empty( $checkbox ) && ! empty( $site_key ) && ! empty( $secret_key ) );
+
+	return (bool) apply_filters( 'affwp_recaptcha_enabled', $enabled );
+
+}
