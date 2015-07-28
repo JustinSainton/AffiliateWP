@@ -422,6 +422,21 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'recaptcha_enabled' => array(
+						'name' => __( 'Enable reCAPTCHA', 'affiliate-wp' ),
+						'desc' => __( 'Would you like to prevent bots from registering affiliate accounts using Google reCAPTCHA?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'recaptcha_site_key' => array(
+						'name' => __( 'reCAPTCHA Site Key', 'affiliate-wp' ),
+						'desc' => __( 'This is used to identify your site to Google reCAPTCHA.', 'affiliate-wp' ),
+						'type' => 'text'
+					),
+					'recaptcha_secret_key' => array(
+						'name' => __( 'reCAPTCHA Secret Key', 'affiliate-wp' ),
+						'desc' => __( 'This is used for communication between your site and Google reCAPTCHA. Be sure to keep it a secret.', 'affiliate-wp' ),
+						'type' => 'text'
+					),
 					'require_approval' => array(
 						'name' => __( 'Require approval', 'affiliate-wp' ),
 						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
