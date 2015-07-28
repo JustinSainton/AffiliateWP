@@ -432,6 +432,21 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Automatically register new users as affiliates?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'recaptcha_enabled' => array(
+						'name' => __( 'Enable reCAPTCHA', 'affiliate-wp' ),
+						'desc' => __( 'Would you like to prevent bots from registering affiliate accounts using Google reCAPTCHA?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'recaptcha_site_key' => array(
+						'name' => __( 'reCAPTCHA Site Key', 'affiliate-wp' ),
+						'desc' => __( 'This is used to identify your site to Google reCAPTCHA.', 'affiliate-wp' ),
+						'type' => 'text'
+					),
+					'recaptcha_secret_key' => array(
+						'name' => __( 'reCAPTCHA Secret Key', 'affiliate-wp' ),
+						'desc' => __( 'This is used for communication between your site and Google reCAPTCHA. Be sure to keep it a secret.', 'affiliate-wp' ),
+						'type' => 'text'
+					),
 					'revoke_on_refund' => array(
 						'name' => __( 'Reject Unpaid Referrals on Refund?', 'affiliate-wp' ),
 						'desc' => __( 'Should unpaid referrals get automatically rejected when the originating purchase is refunded or revoked?', 'affiliate-wp' ),

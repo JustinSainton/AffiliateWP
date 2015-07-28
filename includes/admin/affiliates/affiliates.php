@@ -13,6 +13,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/screen-options.php';
+
 function affwp_affiliates_admin() {
 
 	$action = null;
@@ -84,7 +86,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 class AffWP_Affiliates_Table extends WP_List_Table {
 
 	/**
-	 * Number of results to show per page
+	 * Default number of items to show per page
 	 *
 	 * @var string
 	 * @since 1.0
@@ -489,9 +491,11 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$order   = isset( $_GET['order'] )    ? $_GET['order']           : 'DESC';
 		$orderby = isset( $_GET['orderby'] )  ? $_GET['orderby']         : 'affiliate_id';
 
+		$per_page = $this->get_items_per_page( 'affwp_edit_affiliates_per_page', $this->per_page );
+
 		$affiliates   = affiliate_wp()->affiliates->get_affiliates( array(
-			'number'  => $this->per_page,
-			'offset'  => $this->per_page * ( $page - 1 ),
+			'number'  => $per_page,
+			'offset'  => $per_page * ( $page - 1 ),
 			'status'  => $status,
 			'search'  => $search,
 			'orderby' => sanitize_text_field( $orderby ),
@@ -514,7 +518,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function prepare_items() {
-		$per_page = $this->per_page;
+		$per_page = $this->get_items_per_page( 'affwp_edit_affiliates_per_page', $this->per_page );
 
 		$columns = $this->get_columns();
 
