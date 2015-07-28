@@ -422,6 +422,16 @@ class Affiliate_WP_Settings {
 						'desc' => __( 'Should affiliates be able to register accounts for themselves?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
+					'require_approval' => array(
+						'name' => __( 'Require approval', 'affiliate-wp' ),
+						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
+					'auto_register' => array(
+						'name' => __( 'Auto Register New Users', 'affiliate-wp' ),
+						'desc' => __( 'Automatically register new users as affiliates?', 'affiliate-wp' ),
+						'type' => 'checkbox'
+					),
 					'recaptcha_enabled' => array(
 						'name' => __( 'Enable reCAPTCHA', 'affiliate-wp' ),
 						'desc' => __( 'Would you like to prevent bots from registering affiliate accounts using Google reCAPTCHA?', 'affiliate-wp' ),
@@ -436,16 +446,6 @@ class Affiliate_WP_Settings {
 						'name' => __( 'reCAPTCHA Secret Key', 'affiliate-wp' ),
 						'desc' => __( 'This is used for communication between your site and Google reCAPTCHA. Be sure to keep it a secret.', 'affiliate-wp' ),
 						'type' => 'text'
-					),
-					'require_approval' => array(
-						'name' => __( 'Require approval', 'affiliate-wp' ),
-						'desc' => __( 'Require that site admins approve affiliates before they can begin earning referrals?', 'affiliate-wp' ),
-						'type' => 'checkbox'
-					),
-					'auto_register' => array(
-						'name' => __( 'Auto Register New Users', 'affiliate-wp' ),
-						'desc' => __( 'Automatically register new users as affiliates?', 'affiliate-wp' ),
-						'type' => 'checkbox'
 					),
 					'revoke_on_refund' => array(
 						'name' => __( 'Reject Unpaid Referrals on Refund?', 'affiliate-wp' ),
