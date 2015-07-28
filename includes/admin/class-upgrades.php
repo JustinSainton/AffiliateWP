@@ -156,7 +156,49 @@ class Affiliate_WP_Upgrades {
 
 		}
 
+		$this->v17_upgrade_nforms();
+
 		$this->upgraded = true;
+
+	}
+
+	/**
+	 * Perform database upgrades for Ninja Forms in version 1.7
+	 *
+	 * @access  private
+	 * @since   1.7
+	 */
+	private function v17_upgrade_nforms() {
+
+		global $wpdb;
+
+		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->base_prefix}nf_objects WHERE type = 'form';" );
+
+		if ( ! $forms ) {
+			return;
+		}
+
+		// There could be forms that already have this meta saved in the DB, we will ignore those
+		$_forms = $wpdb->get_results( "SELECT object_id FROM {$wpdb->base_prefix}nf_objectmeta WHERE meta_key = 'affwp_allow_referrals';" );
+
+		$forms  = wp_list_pluck( $forms, 'id' );
+		$_forms = wp_list_pluck( $_forms, 'object_id' );
+		$forms  = array_diff( $forms, $_forms );
+
+		if ( ! $forms ) {
+			return;
+		}
+
+		foreach ( $forms as $form_id ) {
+
+			$wpdb->query(
+				$wpdb->prepare(
+					"INSERT INTO {$wpdb->base_prefix}nf_objectmeta (object_id,meta_key,meta_value) VALUES (%d,'affwp_allow_referrals','1');",
+					$form_id
+				)
+			);
+
+		}
 
 	}
 
