@@ -181,6 +181,17 @@ abstract class Affiliate_WP_Base {
 	}
 
 	/**
+	 * Retrieves the email address of the referring affiliate
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @return  string
+	 */
+	public function get_affiliate_email() {
+		return affwp_get_affiliate_email( $this->get_affiliate_id() );
+	}
+
+	/**
 	 * Determine if the passed email belongs to the affiliate
 	 *
 	 * Checks a given email address against the referring affiliate's
