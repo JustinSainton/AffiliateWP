@@ -40,49 +40,49 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	 */
 	public function add_pending_referral( $entry, $form ) {
 
-		if( $this->was_referred() && rgar( $form, 'gform_allow_referrals' ) ) {
+		if ( ! $this->was_referred() || ! rgar( $form, 'affwp_allow_referrals' ) ) {
+			return;
+		}
 
-			// Do some craziness to determine the price (this should be easy but is not)
+		// Do some craziness to determine the price (this should be easy but is not)
 
-			$desc      = '';
-			$entry     = GFFormsModel::get_lead( $entry['id'] );
-			$products  = GFCommon::get_product_fields( $form, $entry );
-			$total     = 0;
+		$desc      = '';
+		$entry     = GFFormsModel::get_lead( $entry['id'] );
+		$products  = GFCommon::get_product_fields( $form, $entry );
+		$total     = 0;
 
-			foreach ( $products['products'] as $key => $product ) {
+		foreach ( $products['products'] as $key => $product ) {
 
-				$desc .= $product['name'];
+			$desc .= $product['name'];
 
-				if ( $key + 1 < count( $products ) ) {
-					$description .= ', ';
+			if ( $key + 1 < count( $products ) ) {
+				$description .= ', ';
+			}
+
+			$price = GFCommon::to_number( $product['price'] );
+
+			if ( is_array( rgar( $product,'options' ) ) ) {
+
+				$count = sizeof( $product['options'] );
+				$index = 1;
+
+				foreach ( $product['options'] as $option ) {
+					$price += GFCommon::to_number( $option['price'] );
 				}
-
-				$price = GFCommon::to_number( $product['price'] );
-
-				if ( is_array( rgar( $product,'options' ) ) ) {
-
-					$count = sizeof( $product['options'] );
-					$index = 1;
-
-					foreach ( $product['options'] as $option ) {
-						$price += GFCommon::to_number( $option['price'] );
-					}
-
-				}
-
-				$subtotal = floatval( $product['quantity'] ) * $price;
-
-				$total += $subtotal;
 
 			}
 
-			$total += floatval( $products['shipping']['price'] );
+			$subtotal = floatval( $product['quantity'] ) * $price;
 
-			$referral_total = $this->calculate_referral_amount( $total, $entry['id'] );
-
-			$this->insert_pending_referral( $referral_total, $entry['id'], $desc );
+			$total += $subtotal;
 
 		}
+
+		$total += floatval( $products['shipping']['price'] );
+
+		$referral_total = $this->calculate_referral_amount( $total, $entry['id'] );
+
+		$this->insert_pending_referral( $referral_total, $entry['id'], $desc );
 
 	}
 
@@ -162,12 +162,12 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	 */
 	public function add_settings( $settings, $form ) {
 
-		$checked = rgar( $form, 'gform_allow_referrals' );
+		$checked = rgar( $form, 'affwp_allow_referrals' );
 
-		$field  = '<input type="checkbox" id="gform_allow_referrals" name="gform_allow_referrals" value="1" ' . checked( 1, $checked, false ) . ' />';
-		$field .= ' <label for="gform_allow_referrals">' . __( 'Enable affiliate referral creation for this form', 'affiliate-wp' ) . '</label>';
+		$field  = '<input type="checkbox" id="affwp_allow_referrals" name="affwp_allow_referrals" value="0" ' . checked( 1, $checked, false ) . ' />';
+		$field .= ' <label for="affwp_allow_referrals">' . __( 'Enable affiliate referral creation for this form', 'affiliate-wp' ) . '</label>';
 
-		$settings['Form Options']['gform_allow_referrals'] = '
+		$settings['Form Options']['affwp_allow_referrals'] = '
 			<tr>
 				<th>' . __( 'Allow referrals', 'affiliate-wp' ) . '</th>
 				<td>' . $field . '</td>
@@ -184,7 +184,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	 */
 	public function save_settings( $form ) {
 
-		$form['gform_allow_referrals'] = rgpost( 'gform_allow_referrals' );
+		$form['affwp_allow_referrals'] = rgpost( 'affwp_allow_referrals' );
 
 		return $form;
 

@@ -17,23 +17,31 @@ include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/screen-options.php';
 
 function affwp_affiliates_admin() {
 
-	if ( isset( $_GET['action'] ) && 'view_affiliate' == $_GET['action'] ) {
+	$action = null;
+
+	if ( isset( $_GET['action2'] ) && '-1' !== $_GET['action2'] ) {
+		$action = $_GET['action2'];
+	} elseif ( isset( $_GET['action'] ) && '-1' !== $_GET['action'] ) {
+		$action = $_GET['action'];
+	}
+
+	if ( 'view_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/view.php';
 
-	} else if ( isset( $_GET['action'] ) && 'add_affiliate' == $_GET['action'] ) {
+	} elseif ( 'add_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/new.php';
 
-	} else if ( isset( $_GET['action'] ) && 'edit_affiliate' == $_GET['action'] ) {
+	} elseif ( 'edit_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
-	} else if ( isset( $_GET['action'] ) && 'review_affiliate' == $_GET['action'] ) {
+	} elseif ( 'review_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
-	} else if( isset( $_GET['action'] ) && 'delete' == $_GET['action'] ) {
+	} elseif ( 'delete' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
 
@@ -295,7 +303,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return string Displays a checkbox
 	 */
 	function column_cb( $affiliate ) {
-		return '<input type="checkbox" name="affiliate_id[]" value="' . $affiliate->affiliate_id . '" />';
+		return '<input type="checkbox" name="affiliate_id[]" value="' . absint( $affiliate->affiliate_id ) . '" />';
 	}
 
 	/**
