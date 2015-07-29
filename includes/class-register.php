@@ -98,6 +98,10 @@ class Affiliate_WP_Register {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
 		}
 
+		if ( affwp_is_recaptcha_enabled() && ! $this->recaptcha_response_is_valid( $data ) ) {
+			$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
+		}
+
 		if ( ! empty( $_POST['affwp_honeypot'] ) ) {
 			$this->add_error( 'spam', __( 'Nice try honey bear, don\'t touch our honey', 'affiliate-wp' ) );
 		}
@@ -112,7 +116,6 @@ class Affiliate_WP_Register {
 		if ( empty( $this->errors ) ) {
 			$this->register_user();
 
-
 			$redirect = apply_filters( 'affwp_register_redirect', $data['affwp_redirect'] );
 
 			if ( $redirect ) {
@@ -121,6 +124,35 @@ class Affiliate_WP_Register {
 
 		}
 
+	}
+
+	/**
+	 * Verify reCAPTCHA response is valid using a POST request to the Google API
+	 *
+	 * @access private
+	 * @since  1.7
+	 * @param  array   $data
+	 * @return boolean
+	 */
+	private function recaptcha_response_is_valid( $data ) {
+		if ( ! affwp_is_recaptcha_enabled() || empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) ) {
+			return false;
+		}
+
+		$verify = wp_safe_remote_post(
+			'https://www.google.com/recaptcha/api/siteverify',
+			array(
+				'body' => array(
+					'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
+					'response' => $data['g-recaptcha-response'],
+					'remoteip' => $data['g-recaptcha-remoteip']
+				)
+			)
+		);
+
+		$verify = json_decode( wp_remote_retrieve_body( $verify ) );
+
+		return ( ! empty( $verify->success ) && true === $verify->success );
 	}
 
 	/**
