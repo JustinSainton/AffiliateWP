@@ -37,6 +37,9 @@ class Affiliate_WP_Settings {
 	 */
 	public function get( $key, $default = false ) {
 
+		// Only allow non-empty values, otherwise fallback to the default
+		$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
+
 		/**
 		 * Allow certain settings to accept 0 as a valid value without
 		 * falling back to the default.
@@ -46,14 +49,11 @@ class Affiliate_WP_Settings {
 		 */
 		$zero_values_allowed = (array) apply_filters( 'affwp_settings_zero_values_allowed', array( 'referral_rate' ) );
 
+		// Allow 0 values for specified keys only
 		if ( in_array( $key, $zero_values_allowed ) ) {
 
 			$value = isset( $this->options[ $key ] ) ? $this->options[ $key ] : null;
-			$value = ( ! is_null( $value ) && '' !== $value ) ? $value : $default; // Allow 0 values
-
-		} else {
-
-			$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
+			$value = ( ! is_null( $value ) && '' !== $value ) ? $value : $default;
 
 		}
 
