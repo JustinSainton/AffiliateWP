@@ -26,14 +26,39 @@ class Affiliate_WP_Settings {
 	/**
 	 * Get the value of a specific setting
 	 *
-	 * @since 1.0
+	 * Note: By default, zero values are not allowed. If you have a custom
+	 * setting that needs to allow 0 as a valid value, but sure to add its
+	 * key to the filtered array seen in this method.
+	 *
+	 * @since  1.0
+	 * @param  string  $key
+	 * @param  mixed   $default (optional)
 	 * @return mixed
-	*/
+	 */
 	public function get( $key, $default = false ) {
-		$value = isset( $this->options[ $key ] ) ? $this->options[ $key ] : null;
-		$value = ( ! is_null( $value ) && '' !== $value ) ? $value : $default; // Allow 0 values
+
+		/**
+		 * Allow certain settings to accept 0 as a valid value without
+		 * falling back to the default.
+		 *
+		 * @since  1.7
+		 * @return array
+		 */
+		$zero_values_allowed = (array) apply_filters( 'affwp_settings_zero_values_allowed', array( 'referral_rate' ) );
+
+		if ( in_array( $key, $zero_values_allowed ) ) {
+
+			$value = isset( $this->options[ $key ] ) ? $this->options[ $key ] : null;
+			$value = ( ! is_null( $value ) && '' !== $value ) ? $value : $default; // Allow 0 values
+
+		} else {
+
+			$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
+
+		}
 
 		return $value;
+
 	}
 
 	/**
