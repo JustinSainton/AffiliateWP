@@ -178,13 +178,19 @@ class Affiliate_WP_Upgrades {
 	 */
 	private function v17_upgrade_gforms() {
 
-		$integrations = affiliate_wp()->settings->get( 'integrations', array() );
+		$settings = get_option( 'affwp_settings' );
 
-		if ( ! array_key_exists( 'gravityforms', $integrations ) ) {
+		if ( empty( $settings['integrations'] ) || ! array_key_exists( 'gravityforms', $settings['integrations'] ) ) {
 			return;
 		}
 
 		global $wpdb;
+
+		$tables = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}rg_form%';" );
+
+		if ( ! $tables ) {
+			return;
+		}
 
 		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->prefix}rg_form" );
 
@@ -231,13 +237,19 @@ class Affiliate_WP_Upgrades {
 	 */
 	private function v17_upgrade_nforms() {
 
-		$integrations = affiliate_wp()->settings->get( 'integrations', array() );
+		$settings = get_option( 'affwp_settings' );
 
-		if ( ! array_key_exists( 'ninja-forms', $integrations ) ) {
+		if ( empty( $settings['integrations'] ) || ! array_key_exists( 'ninja-forms', $settings['integrations'] ) ) {
 			return;
 		}
 
 		global $wpdb;
+
+		$tables = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}nf_object%';" );
+
+		if ( ! $tables ) {
+			return;
+		}
 
 		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->base_prefix}nf_objects WHERE type = 'form';" );
 
