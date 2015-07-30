@@ -186,7 +186,7 @@ class Affiliate_WP_Upgrades {
 
 		global $wpdb;
 
-		$tables = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}rg_form%';" );
+		$tables = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->prefix}rg_form%';" );
 
 		if ( ! $tables ) {
 			return;
