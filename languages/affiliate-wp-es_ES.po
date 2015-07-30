@@ -1,423 +1,30 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
-"POT-Creation-Date: 2015-04-09 10:01-0600\n"
-"PO-Revision-Date: 2015-04-09 10:01-0600\n"
-"Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-20 10:40-0600\n"
+"PO-Revision-Date: 2015-07-28 10:31+1200\n"
+"Last-Translator: Andrew Munro, Sumobi <andrew@sumobi.com>\n"
 "Language-Team: Enrique Chavez <noone@tmeister.net>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
-"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Loco-Source-Locale: es_ES\n"
+"X-Generator: Poedit 1.8.3\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Loco-Target-Locale: en_GB\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: affiliate-wp.php:215 affiliate-wp.php:227
 msgid "Cheatin&#8217; huh?"
 msgstr "¿Haciendo trampa?"
-
-#: includes/affiliate-functions.php:300
-msgid "Percentage (%)"
-msgstr "Porcentaje (%)"
-
-#: includes/affiliate-functions.php:301
-#, php-format
-msgid "Flat %s"
-msgstr "Plano %s"
-
-#: includes/class-creatives.php:148
-msgid "Copy and paste the following:"
-msgstr ""
-
-#: includes/class-graph.php:332
-msgid "Today"
-msgstr "Hoy"
-
-#: includes/class-graph.php:333
-msgid "Yesterday"
-msgstr "Ayer"
-
-#: includes/class-graph.php:334
-msgid "This Week"
-msgstr "Esta semana"
-
-#: includes/class-graph.php:335
-msgid "Last Week"
-msgstr "La semana pasada"
-
-#: includes/class-graph.php:336
-msgid "This Month"
-msgstr "Este mes"
-
-#: includes/class-graph.php:337
-msgid "Last Month"
-msgstr "Mes pasado"
-
-#: includes/class-graph.php:338
-msgid "This Quarter"
-msgstr "Este cuatrimestre"
-
-#: includes/class-graph.php:339
-msgid "Last Quarter"
-msgstr "Cuatrimestre pasado"
-
-#: includes/class-graph.php:340
-msgid "This Year"
-msgstr "Este año"
-
-#: includes/class-graph.php:341
-msgid "Last Year"
-msgstr "Año pasado"
-
-#: includes/class-graph.php:342
-msgid "Custom"
-msgstr "Personalizada"
-
-#: includes/class-graph.php:380
-msgid "From"
-msgstr "De"
-
-#: includes/class-graph.php:391
-msgid "To"
-msgstr "Para"
-
-#: includes/class-graph.php:404 includes/admin/referrals/referrals.php:439
-#: includes/admin/visits/visits.php:41
-msgid "Filter"
-msgstr "Filtro"
-
-#: includes/class-login.php:56 includes/class-register.php:71
-#: includes/class-register.php:137
-msgid "Invalid username"
-msgstr "Nombre de usuario invalido"
-
-#: includes/class-login.php:62
-msgid "No such user"
-msgstr ""
-
-#: includes/class-login.php:66 includes/class-register.php:145
-msgid "Please enter a password"
-msgstr "Por favor ingrese una contraseña"
-
-#: includes/class-login.php:73
-#, fuzzy
-msgid "Incorrect username or password"
-msgstr "Contraseña incorrecta"
-
-#: includes/class-referrals-graph.php:116
-msgid "Unpaid Referral Earnings"
-msgstr "Ganancias de referidos sin pagar"
-
-#: includes/class-referrals-graph.php:117
-msgid "Pending Referral Earnings"
-msgstr "Ganancias de referidos pendientes"
-
-#: includes/class-referrals-graph.php:118
-msgid "Rejected Referral Earnings"
-msgstr "Ganancias de referidos rechazadas"
-
-#: includes/class-referrals-graph.php:119
-msgid "Paid Referral Earnings"
-msgstr "Ganancias de referidos pagadas"
-
-#: includes/class-register.php:67
-msgid "Username already taken"
-msgstr "El nombre de usuario ya esta tomado"
-
-#: includes/class-register.php:75
-msgid "Email address already taken"
-msgstr "La dirección de correo electrónico ya esta tomada"
-
-#: includes/class-register.php:79
-msgid "Invalid email"
-msgstr "Correo electrónico invalido"
-
-#: includes/class-register.php:83
-msgid "Invalid payment email"
-msgstr "Correo electrónico de pago invalido"
-
-#: includes/class-register.php:87
-msgid "Passwords do not match"
-msgstr "Las contraseñas no coinciden"
-
-#: includes/class-register.php:94
-msgid "Please agree to our terms of use"
-msgstr "Por favor acepte nuestros términos de uso"
-
-#: includes/class-register.php:98
-msgid "Nice try honey bear, don't touch our honey"
-msgstr "Buen intento osito, por favor no toques nuestra miel"
-
-#: includes/class-register.php:102
-msgid "You are already registered as an affiliate"
-msgstr "Usted ya esta registrado como afiliado"
-
-#: includes/class-register.php:133
-msgid "Please enter your name"
-msgstr "Por favor ingrese su nombre"
-
-#: includes/class-register.php:141
-#, fuzzy
-msgid "Please enter a website URL"
-msgstr "Por favor ingrese una contraseña"
-
-#: includes/class-visits-graph.php:126
-msgid "Converted Visits"
-msgstr "Visitas convertidas"
-
-#: includes/class-visits-graph.php:127
-msgid "Unconverted Visits"
-msgstr "Visitas sin convertir"
-
-#: includes/creative-functions.php:31 includes/creative-functions.php:63
-#, fuzzy
-msgid "Creative"
-msgstr "Inactivo"
-
-#: includes/install.php:18 includes/admin/class-welcome.php:272
-#: includes/admin/settings/class-settings.php:194
-msgid "Affiliate Area"
-msgstr "Area de afiliados"
-
-#: includes/misc-functions.php:26
-#, fuzzy
-msgid "US Dollars"
-msgstr "Dólares Americanos (&#36;)"
-
-#: includes/misc-functions.php:27
-msgid "Euros"
-msgstr ""
-
-#: includes/misc-functions.php:28
-msgid "United Arab Emirates Dirham"
-msgstr ""
-
-#: includes/misc-functions.php:29
-#, fuzzy
-msgid "Australian Dollars"
-msgstr "Dólares Australianos (&#36;)"
-
-#: includes/misc-functions.php:30
-msgid "Bangladeshi Taka"
-msgstr ""
-
-#: includes/misc-functions.php:31
-#, fuzzy
-msgid "Brazilian Real"
-msgstr "Real Brasileño (R&#36;)"
-
-#: includes/misc-functions.php:32
-msgid "Bulgarian Lev"
-msgstr ""
-
-#: includes/misc-functions.php:33
-#, fuzzy
-msgid "Canadian Dollars"
-msgstr "Dólares Canadienses (&#36;)"
-
-#: includes/misc-functions.php:34
-#, fuzzy
-msgid "Chilean Peso"
-msgstr "Pesos Filipinos"
-
-#: includes/misc-functions.php:35
-msgid "Chinese Yuan"
-msgstr ""
-
-#: includes/misc-functions.php:36
-msgid "Colombian Peso"
-msgstr ""
-
-#: includes/misc-functions.php:37
-msgid "Czech Koruna"
-msgstr "Corona Checa"
-
-#: includes/misc-functions.php:38
-msgid "Danish Krone"
-msgstr "Corona Danesa"
-
-#: includes/misc-functions.php:39
-msgid "Dominican Peso"
-msgstr ""
-
-#: includes/misc-functions.php:40
-#, fuzzy
-msgid "Hong Kong Dollar"
-msgstr "Dólar de Hong Kong (&#36;)"
-
-#: includes/misc-functions.php:41
-msgid "Croatia kuna"
-msgstr ""
-
-#: includes/misc-functions.php:42
-msgid "Hungarian Forint"
-msgstr "Florín Húngaro"
-
-#: includes/misc-functions.php:43
-msgid "Icelandic krona"
-msgstr ""
-
-#: includes/misc-functions.php:44
-msgid "Indonesia Rupiah"
-msgstr ""
-
-#: includes/misc-functions.php:45
-#, fuzzy
-msgid "Indian Rupee"
-msgstr "Rupia India (&#8377;)"
-
-#: includes/misc-functions.php:46
-msgid "Nepali Rupee"
-msgstr ""
-
-#: includes/misc-functions.php:47
-#, fuzzy
-msgid "Israeli Shekel"
-msgstr "Shekel Israelí (&#8362;)"
-
-#: includes/misc-functions.php:48
-#, fuzzy
-msgid "Japanese Yen"
-msgstr "Yen Japonés (&yen;)"
-
-#: includes/misc-functions.php:49
-msgid "Lao Kip"
-msgstr ""
-
-#: includes/misc-functions.php:50
-msgid "South Korean Won"
-msgstr ""
-
-#: includes/misc-functions.php:51
-msgid "Malaysian Ringgits"
-msgstr "Ringgits de Malasia"
-
-#: includes/misc-functions.php:52
-#, fuzzy
-msgid "Mexican Peso"
-msgstr "Peso Mexicano (&#36;)"
-
-#: includes/misc-functions.php:53
-msgid "Nigerian Naira"
-msgstr ""
-
-#: includes/misc-functions.php:54
-msgid "Norwegian Krone"
-msgstr "Corona Noruega"
-
-#: includes/misc-functions.php:55
-#, fuzzy
-msgid "New Zealand Dollar"
-msgstr "Dólar de Nueva Zelanda (&#36;)"
-
-#: includes/misc-functions.php:56
-msgid "Paraguayan Guaraní"
-msgstr ""
-
-#: includes/misc-functions.php:57
-msgid "Philippine Pesos"
-msgstr "Pesos Filipinos"
-
-#: includes/misc-functions.php:58
-msgid "Polish Zloty"
-msgstr "Zloty Polaco"
-
-#: includes/misc-functions.php:59
-#, fuzzy
-msgid "Pounds Sterling"
-msgstr "Libras esterlinas (&pound;)"
-
-#: includes/misc-functions.php:60
-msgid "Romanian Leu"
-msgstr ""
-
-#: includes/misc-functions.php:61
-#, fuzzy
-msgid "Russian Ruble"
-msgstr "Rublos Rusos"
-
-#: includes/misc-functions.php:62
-#, fuzzy
-msgid "Singapore Dollar"
-msgstr "Dólar de Singapur (&#36;)"
-
-#: includes/misc-functions.php:63
-msgid "South African rand"
-msgstr ""
-
-#: includes/misc-functions.php:64
-msgid "Swedish Krona"
-msgstr "Corono Sueca"
-
-#: includes/misc-functions.php:65
-msgid "Swiss Franc"
-msgstr "Franco Suizo"
-
-#: includes/misc-functions.php:66
-msgid "Taiwan New Dollars"
-msgstr "Nuevo Dólar Taiwanés"
-
-#: includes/misc-functions.php:67
-#, fuzzy
-msgid "Thai Baht"
-msgstr "Baht Tailandés (&#3647;)"
-
-#: includes/misc-functions.php:68
-#, fuzzy
-msgid "Turkish Lira"
-msgstr "Lira Turca (&#8378;)"
-
-#: includes/misc-functions.php:69
-msgid "Vietnamese Dong"
-msgstr ""
-
-#: includes/misc-functions.php:70
-msgid "Egyptian Pound"
-msgstr ""
-
-#: includes/referral-functions.php:52 includes/admin/referrals/edit.php:89
-#: includes/admin/referrals/new.php:91
-#: includes/admin/referrals/referrals.php:201
-#: includes/admin/tools/tools.php:240
-msgid "Paid"
-msgstr "Pagado"
-
-#: includes/referral-functions.php:53 includes/admin/referrals/edit.php:88
-#: includes/admin/referrals/new.php:90
-#: includes/admin/referrals/referrals.php:202
-#: includes/admin/tools/tools.php:241
-msgid "Unpaid"
-msgstr "Sin pagar"
-
-#: includes/referral-functions.php:54
-#: includes/admin/affiliates/affiliates.php:195
-#: includes/admin/referrals/edit.php:91 includes/admin/referrals/new.php:93
-#: includes/admin/referrals/referrals.php:204
-#: includes/admin/tools/tools.php:213 includes/admin/tools/tools.php:243
-msgid "Rejected"
-msgstr "Rechazado"
-
-#: includes/referral-functions.php:55
-#: includes/admin/affiliates/affiliates.php:194
-#: includes/admin/referrals/edit.php:90 includes/admin/referrals/new.php:92
-#: includes/admin/referrals/referrals.php:203
-#: includes/admin/tools/tools.php:212 includes/admin/tools/tools.php:242
-msgid "Pending"
-msgstr "Pendiente"
-
-#: includes/scripts.php:62
-msgid ""
-"Are you sure you want to generate the payout file? All included referrals "
-"will be marked as Paid."
-msgstr ""
-"¿Esta usted seguro que quiere generar el archivo de pagos? Todos los "
-"afiliados incluidos serán marcados como Pagados."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:164
 #: includes/admin/class-addon-updater.php:186
@@ -426,6 +33,8 @@ msgid ""
 "There is a new version of %1$s available. <a target=\"_blank\" class="
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
 msgstr ""
+"Hay una nueva version de %1$s disponible. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">Ver detalles de la version %3$s </a>."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:171
 #: includes/admin/class-addon-updater.php:193
@@ -435,6 +44,8 @@ msgid ""
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
 "\">update now</a>."
 msgstr ""
+"Hay una nueva version de %1$s disponible. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">Ver detalles de la version %3$s </a>."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:311
 #: includes/admin/class-addon-updater.php:280
@@ -443,12 +54,12 @@ msgid "You do not have permission to install plugin updates"
 msgstr "No tiene permisos para exportar información."
 
 #: includes/admin/AFFWP_Plugin_Updater.php:311
-#: includes/admin/class-addon-updater.php:280
 #: includes/admin/affiliates/actions.php:20
 #: includes/admin/affiliates/actions.php:49
 #: includes/admin/affiliates/actions.php:53
 #: includes/admin/affiliates/actions.php:57
 #: includes/admin/affiliates/actions.php:104
+#: includes/admin/class-addon-updater.php:280
 #: includes/admin/creatives/actions.php:16
 #: includes/admin/creatives/actions.php:44
 #: includes/admin/creatives/actions.php:48
@@ -461,15 +72,420 @@ msgstr "No tiene permisos para exportar información."
 msgid "Error"
 msgstr "Error"
 
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/creatives/actions.php:80
+#, fuzzy
+msgid "You do not have permission to manage affiliates"
+msgstr "No tiene permisos para exportar información."
+
+#: includes/admin/affiliates/actions.php:49
+#, fuzzy
+msgid "You do not have permission to delete affiliate accounts"
+msgstr "No tiene permisos para exportar información."
+
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/referrals/actions.php:20
+#: includes/admin/referrals/actions.php:51
+msgid "Security check failed"
+msgstr "La revisión de seguridad falló"
+
+#: includes/admin/affiliates/actions.php:57
+msgid "No affiliate IDs specified for deletion"
+msgstr "Ningún ID de afiliado selecionado para eliminación\n"
+
+#: includes/admin/affiliates/affiliates.php:44 includes/admin/class-menu.php:11
+#: includes/admin/class-menu.php:13 includes/admin/class-welcome.php:289
+msgid "Affiliates"
+msgstr "Afiliados"
+
+#: includes/admin/affiliates/affiliates.php:45
+#: includes/admin/creatives/creatives.php:41
+msgid "Add New"
+msgstr "Agregar Nuevo"
+
+#: includes/admin/affiliates/affiliates.php:49
+#: includes/admin/referrals/referrals.php:60
+#: includes/admin/visits/visits.php:30
+msgid "Search"
+msgstr "Buscar"
+
+#: includes/admin/affiliates/affiliates.php:191
+#: includes/admin/creatives/creatives.php:138
+#: includes/admin/referrals/referrals.php:200
+msgid "All"
+msgstr "Todos"
+
+#: includes/admin/affiliates/affiliates.php:192
+#: includes/admin/creatives/creatives.php:139
+#: includes/admin/creatives/edit.php:99 includes/admin/creatives/new.php:89
+#: includes/admin/tools/tools.php:211
+msgid "Active"
+msgstr "Activo"
+
+#: includes/admin/affiliates/affiliates.php:193
+#: includes/admin/creatives/creatives.php:140
+#: includes/admin/creatives/edit.php:100 includes/admin/creatives/new.php:90
+msgid "Inactive"
+msgstr "Inactivo"
+
+#: includes/admin/affiliates/affiliates.php:194
+#: includes/admin/referrals/edit.php:90 includes/admin/referrals/new.php:92
+#: includes/admin/referrals/referrals.php:203
+#: includes/admin/tools/tools.php:212 includes/admin/tools/tools.php:242
+#: includes/referral-functions.php:55
+msgid "Pending"
+msgstr "Pendiente"
+
+#: includes/admin/affiliates/affiliates.php:195
+#: includes/admin/referrals/edit.php:91 includes/admin/referrals/new.php:93
+#: includes/admin/referrals/referrals.php:204
+#: includes/admin/tools/tools.php:213 includes/admin/tools/tools.php:243
+#: includes/referral-functions.php:54
+msgid "Rejected"
+msgstr "Rechazado"
+
+#: includes/admin/affiliates/affiliates.php:211
+#: includes/admin/affiliates/review.php:22
+#: includes/admin/creatives/creatives.php:155
+#: includes/admin/creatives/edit.php:17 includes/admin/creatives/new.php:16
+msgid "Name"
+msgstr "Nombre"
+
+#: includes/admin/affiliates/affiliates.php:212
+#: includes/admin/settings/class-settings.php:222
+#: includes/admin/tools/export/class-export.php:69
+msgid "ID"
+msgstr "ID"
+
+#: includes/admin/affiliates/affiliates.php:213
+#: includes/admin/affiliates/view.php:11
+#: includes/admin/overview/overview.php:168
+#: includes/admin/tools/export/class-export-affiliates.php:52
+msgid "Earnings"
+msgstr "Ingresos"
+
+#: includes/admin/affiliates/affiliates.php:214
+#: includes/admin/tools/export/class-export-affiliates.php:50
+msgid "Rate"
+msgstr "Tarifa"
+
+#: includes/admin/affiliates/affiliates.php:215
+#: templates/dashboard-tab-stats.php:9
+msgid "Paid Referrals"
+msgstr "Referencias pagadas"
+
+#: includes/admin/affiliates/affiliates.php:216
+#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
+#: includes/admin/overview/overview.php:170
+#: includes/admin/reports/reports.php:66 includes/admin/reports/reports.php:185
+#: includes/admin/tools/export/class-export-affiliates.php:54
+#: includes/admin/tools/tools.php:105 includes/admin/visits/visits.php:27
+#: templates/dashboard-tab-stats.php:10 templates/dashboard.php:45
+msgid "Visits"
+msgstr "Visitas"
+
+#: includes/admin/affiliates/affiliates.php:217
+#: includes/admin/creatives/creatives.php:158
+#: includes/admin/creatives/edit.php:94 includes/admin/creatives/new.php:84
+#: includes/admin/overview/overview.php:117
+#: includes/admin/referrals/edit.php:83 includes/admin/referrals/new.php:85
+#: includes/admin/referrals/referrals.php:226
+#: includes/admin/tools/export/class-export-affiliates.php:55
+#: includes/admin/tools/export/class-export-referrals.php:67
+#: templates/dashboard-tab-referrals.php:21
+msgid "Status"
+msgstr "Estado"
+
+#: includes/admin/affiliates/affiliates.php:218
+#: includes/admin/creatives/creatives.php:159
+#: includes/admin/overview/overview.php:118
+#: includes/admin/referrals/referrals.php:225
+msgid "Actions"
+msgstr "Acciones"
+
+#: includes/admin/affiliates/affiliates.php:281
+msgid "(user deleted)"
+msgstr "(usuario eliminado)"
+
+#: includes/admin/affiliates/affiliates.php:358
+#: includes/admin/class-menu.php:17
+msgid "Reports"
+msgstr "Reportes"
+
+#: includes/admin/affiliates/affiliates.php:359
+#: includes/admin/creatives/creatives.php:232
+#: includes/admin/referrals/referrals.php:374
+msgid "Edit"
+msgstr "Editar"
+
+#: includes/admin/affiliates/affiliates.php:362
+#: includes/admin/affiliates/affiliates.php:402
+#: includes/admin/creatives/creatives.php:235
+msgid "Deactivate"
+msgstr "Desactivar"
+
+#: includes/admin/affiliates/affiliates.php:364
+#: includes/admin/overview/overview.php:133
+#, fuzzy
+msgid "Review"
+msgstr "Resumen"
+
+#: includes/admin/affiliates/affiliates.php:365
+#: includes/admin/affiliates/affiliates.php:399
+#: includes/admin/referrals/referrals.php:362
+#: includes/admin/referrals/referrals.php:454
+msgid "Accept"
+msgstr "Aceptar"
+
+#: includes/admin/affiliates/affiliates.php:366
+#: includes/admin/affiliates/affiliates.php:400
+#: includes/admin/referrals/referrals.php:368
+#: includes/admin/referrals/referrals.php:455
+msgid "Reject"
+msgstr "Rechazar"
+
+#: includes/admin/affiliates/affiliates.php:368
+#: includes/admin/affiliates/affiliates.php:401
+#: includes/admin/creatives/creatives.php:237
+msgid "Activate"
+msgstr "Activar"
+
+#: includes/admin/affiliates/affiliates.php:371
+#: includes/admin/affiliates/affiliates.php:403
+#: includes/admin/creatives/creatives.php:240
+#: includes/admin/referrals/referrals.php:375
+#: includes/admin/referrals/referrals.php:458
+msgid "Delete"
+msgstr "Eliminar"
+
+#: includes/admin/affiliates/affiliates.php:387
+msgid "No affiliates found."
+msgstr "No se encontraron afiliados"
+
+#: includes/admin/affiliates/delete.php:14
+#: includes/admin/affiliates/delete.php:49
+#, fuzzy
+msgid "Delete Affiliates"
+msgstr "Afiliados"
+
+#: includes/admin/affiliates/delete.php:20
+msgid "You have specified these affiliates for deletion:"
+msgstr "Ha seleccionado estos afiliados para su eliminación"
+
+#: includes/admin/affiliates/delete.php:26
+#, php-format
+msgctxt "Affiliate ID, affiliate name"
+msgid "ID #%d: %s"
+msgstr ""
+
+#: includes/admin/affiliates/delete.php:33
+msgid ""
+"Deleting these affiliates will also delete their referral and visit data."
+msgstr ""
+"El eliminar estos afiliados también eliminara sus datos de visita y "
+"referidos."
+
+#: includes/admin/affiliates/delete.php:39
+msgid "Delete affiliate's user accounts as well?"
+msgstr "Borrar también las cuentas de usuario de los afiliados? "
+
+#: includes/admin/affiliates/edit.php:10
+msgid "Edit Affiliate"
+msgstr "Editar Afiliado"
+
+#: includes/admin/affiliates/edit.php:21 includes/admin/referrals/edit.php:18
+#: includes/admin/tools/export/class-export-affiliates.php:47
+#: includes/admin/tools/export/class-export-referrals.php:61
+msgid "Affiliate ID"
+msgstr "ID del Afiliado"
+
+#: includes/admin/affiliates/edit.php:26
+msgid "The affiliate's ID. This cannot be changed."
+msgstr "El ID del afiliado, Este no puede ser cambiado."
+
+#: includes/admin/affiliates/edit.php:34
+msgid "User ID"
+msgstr "ID del Usuario"
+
+#: includes/admin/affiliates/edit.php:39
+msgid "The affiliate's user ID. This cannot be changed."
+msgstr "El ID de usuario del afiliado, este no puede ser cambiado."
+
+#: includes/admin/affiliates/edit.php:47 includes/admin/affiliates/new.php:33
+#: includes/admin/settings/class-settings.php:233
+msgid "Referral Rate Type"
+msgstr "Tipo de tasa para referidos"
+
+#: includes/admin/affiliates/edit.php:52 includes/admin/affiliates/new.php:38
+msgid "Site Default"
+msgstr "Predeterminados del sitio"
+
+#: includes/admin/affiliates/edit.php:57 includes/admin/affiliates/new.php:43
+msgid "The affiliate's referral rate type."
+msgstr "El tipo de tasa de referido del afiliado."
+
+#: includes/admin/affiliates/edit.php:65 includes/admin/affiliates/new.php:51
+#: includes/admin/settings/class-settings.php:239
+#: includes/integrations/class-edd.php:545
+#: includes/integrations/extras/class-exchange-feature.php:46
+msgid "Referral Rate"
+msgstr "Tasa de referido"
+
+#: includes/admin/affiliates/edit.php:70 includes/admin/affiliates/new.php:56
+#, fuzzy
+msgid ""
+"The affiliate's referral rate, such as 20 for 20%. If left blank, the site "
+"default will be used."
+msgstr ""
+"Tasa de referido, por ejemplo 20 para el 20%. Si lo deja en blanco se usara "
+"la tasa predeterminada del sitio."
+
+#: includes/admin/affiliates/edit.php:78 templates/register.php:53
+msgid "Account Email"
+msgstr "Correo Electrónico"
+
+#: includes/admin/affiliates/edit.php:83
+msgid ""
+"The affiliate's account email. Updating this will change the email address "
+"shown on the user's profile page."
+msgstr ""
+"Correo electrónico del afiliado. Actualizarlo cambiara el correo electrónico "
+"mostrado en la pagina de perfil del usuario."
+
+#: includes/admin/affiliates/edit.php:91 includes/admin/affiliates/new.php:64
+#: templates/register.php:61
+msgid "Payment Email"
+msgstr "Correo electrónico de pago"
+
+#: includes/admin/affiliates/edit.php:96 includes/admin/affiliates/new.php:69
+msgid ""
+"Affiliate's payment email for systems such as PayPal, Moneybookers, or "
+"others. Leave blank to use the affiliate's user email."
+msgstr ""
+"El correo electrónico de pago del afiliado tal como PayPal, Monerbookers u "
+"otros. Deje en blanco para usar el correo electrónico del dado de alta en la "
+"cuanta del afiliado."
+
+#: includes/admin/affiliates/edit.php:107
+#, fuzzy
+msgid "Update Affiliate"
+msgstr "Editar Afiliado"
+
+#: includes/admin/affiliates/new.php:3
+msgid "New Affiliate"
+msgstr "Nuevo Afiliado"
+
+#: includes/admin/affiliates/new.php:9
+#, php-format
+msgid ""
+"Use this screen to register a new affiliate. Each affiliate is tied directly "
+"to a user account, so if the user account for the affiliate does not yet "
+"exist, <a href=\"%s\" target=\"_blank\">create one</a>."
+msgstr ""
+"Use esta pantalla para registrar nuevos afiliados. Cada afiliado esta ligado "
+"directamente con una cuenta de usuario, así que, si la cuenta de usuario "
+"para un afiliado no existe aun <a href=\"%s\" target=\"_blank\">cree una</a>."
+
+#: includes/admin/affiliates/new.php:16
+msgid "User"
+msgstr "Usuario"
+
+#: includes/admin/affiliates/new.php:25
+msgid ""
+"Begin typing the name of the affiliate to perform a search for their "
+"associated user account."
+msgstr ""
+"Comience a escribir el nombre de un afiliado para realizar una búsqueda de "
+"la cuenta de usuario asociada."
+
+#: includes/admin/affiliates/new.php:81
+msgid "Add Affiliate"
+msgstr "Agregar Afiliado"
+
+#: includes/admin/affiliates/review.php:11
+#, fuzzy
+msgid "Review Affiliate"
+msgstr "Nuevo Afiliado"
+
+#: includes/admin/affiliates/review.php:11
+msgid "Go Back"
+msgstr "Atrás "
+
+#: includes/admin/affiliates/review.php:34
+#: includes/admin/settings/class-settings.php:223
+#: includes/admin/tools/export/class-export-affiliates.php:49
+#: templates/login.php:15 templates/login.php:16 templates/register.php:48
+#: templates/register.php:49
+msgid "Username"
+msgstr "Nombre de Usuario"
+
+#: includes/admin/affiliates/review.php:46 templates/register.php:54
+msgid "Email Address"
+msgstr "Correo Electrónico"
+
+#: includes/admin/affiliates/review.php:59 templates/register.php:66
+#: templates/register.php:67
+#, fuzzy
+msgid "Website URL"
+msgstr "Generar URL"
+
+#: includes/admin/affiliates/review.php:63
+#, fuzzy
+msgid "Affiliate's Website URL"
+msgstr "Afiliados"
+
+#: includes/admin/affiliates/review.php:73
+msgid "Promotion Method"
+msgstr "Método de promoción "
+
+#: includes/admin/affiliates/review.php:89
+#, fuzzy
+msgid "Accept Affiliate"
+msgstr "Nuevo Afiliado"
+
+#: includes/admin/affiliates/review.php:90
+#, fuzzy
+msgid "Reject Affiliate"
+msgstr "Nuevo Afiliado"
+
+#: includes/admin/affiliates/view.php:7
+#, php-format
+msgid "Affiliate: #%d %s"
+msgstr "Afiliado: #%d %s"
+
+#: includes/admin/affiliates/view.php:18
+msgid "Total earnings"
+msgstr "Ingresos totales"
+
+#: includes/admin/affiliates/view.php:19
+msgid "Total unpaid earnings"
+msgstr "Total de ingresos sin pagar"
+
+#: includes/admin/affiliates/view.php:20
+msgid "Total paid referrals"
+msgstr "Total de referidos pagados"
+
+#: includes/admin/affiliates/view.php:21
+msgid "Total unpaid referrals"
+msgstr "Total de referidos no pagados"
+
+#: includes/admin/affiliates/view.php:22
+msgid "Total pending referrals"
+msgstr "Total de referidos pendientes"
+
+#: includes/admin/affiliates/view.php:23
+msgid "Total rejected referrals"
+msgstr "Total de referidos rechazados"
+
+#: includes/admin/affiliates/view.php:24
+msgid "Total visits"
+msgstr "Visitas totales"
+
 #: includes/admin/ajax-actions.php:32
 msgid "No users found"
 msgstr "No se encontraron usuarios"
-
-#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
-#: includes/admin/class-welcome.php:289
-#: includes/admin/affiliates/affiliates.php:44
-msgid "Affiliates"
-msgstr "Afiliados"
 
 #: includes/admin/class-menu.php:12 includes/admin/overview/overview.php:19
 #: includes/admin/referrals/contextual-help.php:37
@@ -480,32 +496,17 @@ msgstr "Resumen"
 #: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:294
 #: includes/admin/overview/overview.php:169
 #: includes/admin/referrals/referrals.php:34
-#: includes/admin/reports/reports.php:65 includes/admin/tools/tools.php:104
+#: includes/admin/reports/reports.php:65
 #: includes/admin/tools/export/class-export-affiliates.php:53
-#: templates/dashboard-tab-referrals.php:3 templates/dashboard.php:42
+#: includes/admin/tools/tools.php:104 templates/dashboard-tab-referrals.php:3
+#: templates/dashboard.php:42
 msgid "Referrals"
 msgstr "Referidos"
-
-#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
-#: includes/admin/affiliates/affiliates.php:216
-#: includes/admin/overview/overview.php:170
-#: includes/admin/reports/reports.php:66
-#: includes/admin/reports/reports.php:185 includes/admin/tools/tools.php:105
-#: includes/admin/tools/export/class-export-affiliates.php:54
-#: includes/admin/visits/visits.php:27 templates/dashboard-tab-stats.php:10
-#: templates/dashboard.php:45
-msgid "Visits"
-msgstr "Visitas"
 
 #: includes/admin/class-menu.php:16 includes/admin/creatives/creatives.php:40
 #: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:48
 msgid "Creatives"
-msgstr ""
-
-#: includes/admin/class-menu.php:17
-#: includes/admin/affiliates/affiliates.php:358
-msgid "Reports"
-msgstr "Reportes"
+msgstr "Creativos"
 
 #: includes/admin/class-menu.php:18
 msgid "Tools"
@@ -520,7 +521,7 @@ msgid "AffiliateWP Migration"
 msgstr "Migración de AffiliateWP"
 
 #: includes/admin/class-notices.php:16
-#: includes/admin/settings/class-settings.php:155
+#: includes/admin/settings/class-settings.php:156
 msgid "Settings updated."
 msgstr "Configuración actualizada."
 
@@ -600,7 +601,7 @@ msgid "Creative updated successfully"
 msgstr "Afiliado actualizado correctamente"
 
 #: includes/admin/class-notices.php:129
-#, fuzzy, php-format
+#, php-format
 msgid "<a href=\"%s\">Back to Creatives</a>"
 msgstr "<a href=\"%s\">Regresar a Afiliados</a>"
 
@@ -682,10 +683,13 @@ msgid ""
 "To make AffiliateWP more accessible and more valuable to more users, we have "
 "added four new integrations:"
 msgstr ""
+"Para hacer \n"
+"AffiliateWP mas accesible y valioso para mas usuarios, hemos agregado cuatro "
+"nuevas integraciones:"
 
 #: includes/admin/class-welcome.php:189
 msgid "Configurable emails"
-msgstr ""
+msgstr "Correos electrónicos configurables"
 
 #: includes/admin/class-welcome.php:191
 msgid ""
@@ -693,6 +697,10 @@ msgid ""
 "allows you to configure all emails that get sent out to affiliates when they "
 "register for an account or earn a new referral."
 msgstr ""
+"Hemos incluido una nueva pestaña en la version 1.6, en la pagina de "
+"Configuracion la cual permitira la configuracion de todos los correos "
+"electronicos enviados a los afiliados al abrir una cuenta u obtener un nuevo "
+"referido."
 
 #: includes/admin/class-welcome.php:192
 msgid ""
@@ -701,10 +709,15 @@ msgid ""
 "emails\" folder to give you complete control over the appearance of the "
 "emails."
 msgstr ""
+"Todos los correos electrónicos son enviados en hermosas plantillas HTML que "
+"pueden ser editadas fácilmente en cualquier momento. Estas plantillas pueden "
+"ser copiadas a la carpeta del tema \"afiliadowp/correos electrónicos\" para "
+"darle un control total sobre la apariencia de los correos electrónicos."
 
 #: includes/admin/class-welcome.php:194
 msgid "Fine-tuned control over how referral URLs appear to affiliates"
 msgstr ""
+"Control preciso soble como los afiliados ven los enlaces de los referidos"
 
 #: includes/admin/class-welcome.php:195
 msgid ""
@@ -716,6 +729,15 @@ msgid ""
 "choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your "
 "affiliates."
 msgstr ""
+"Sus afiliados ya pueden promover una gran variedad de \n"
+"<a href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" target="
+"\"_blank\"> Enlaces de afiliados \n"
+"</a>. Los administradores tienen mucho más control sobre la apariencia que "
+"tendrán estos enlaces para los afiliados en el front-end de su sitio web. "
+"Puede configurar un \n"
+"<strong>un formato por defecto para referidos</strong> \n"
+" (ID or nombre de usuario) y elegir si se mostrarán o no \n"
+"<strong>los Enlaces Estéticos de Afiliados</strong> a sus afiliados."
 
 #: includes/admin/class-welcome.php:197
 msgid "Additional Updates"
@@ -723,7 +745,7 @@ msgstr "Actualizaciones adicionales"
 
 #: includes/admin/class-welcome.php:199
 msgid "Affiliate Export Improvements"
-msgstr ""
+msgstr "Mejoras en la exportación de Afiliados"
 
 #: includes/admin/class-welcome.php:200
 #, fuzzy
@@ -742,10 +764,13 @@ msgid ""
 "We've introduced a new metadata API for afiliate accounts that provides "
 "developers with a powerful tool for tracking affiliate-specific data."
 msgstr ""
+"Hemos incluido un nuevo metadato API para las cuentas de afiliados la cual "
+"le brinda a los desarrolladores una herramienta poderosa para rastrear datos "
+"específicos de los afiliados."
 
 #: includes/admin/class-welcome.php:205
 msgid "Creative Improvements"
-msgstr ""
+msgstr "Mejoras de los creativos"
 
 #: includes/admin/class-welcome.php:206
 msgid ""
@@ -753,16 +778,21 @@ msgid ""
 "now shown at the top of the creative and it's much easier for affiliates to "
 "copy the necessary code."
 msgstr ""
+"Hemos mejorado su apariencia. La descripción se ha colocado sobre el "
+"creativo y copiar el código necesario es ahora mucho mas fácil para los "
+"afiliados. "
 
 #: includes/admin/class-welcome.php:208
 msgid "Affiliate Dashboard Improvements"
-msgstr ""
+msgstr "Mejoras en el panel de Afiliados"
 
 #: includes/admin/class-welcome.php:209
 msgid ""
 "Pending affiliates can no longer access the affiliate dashboard until they "
 "have been approved."
 msgstr ""
+"Los afiliados pendientes ya no podrán acceder al panel de afiliados hasta "
+"que hayan sido aprobados. "
 
 #: includes/admin/class-welcome.php:219 includes/admin/class-welcome.php:306
 msgid "Go to AffiliateWP Settings"
@@ -865,6 +895,11 @@ msgstr ""
 "Cada vez que un afiliado se registre el administrador puede ingresar al "
 "sitio para aprobar o rechazar la solicitud."
 
+#: includes/admin/class-welcome.php:272
+#: includes/admin/settings/class-settings.php:195 includes/install.php:18
+msgid "Affiliate Area"
+msgstr "Area de afiliados"
+
 #: includes/admin/class-welcome.php:277
 msgid "A Dashboard For Your Affiliates"
 msgstr "Un panel de información para sus afiliados"
@@ -965,381 +1000,6 @@ msgstr ""
 msgid "View %s"
 msgstr "Vista %s"
 
-#: includes/admin/plugins.php:27
-msgid "General Settings"
-msgstr "Configuraciones Generales"
-
-#: includes/admin/affiliates/actions.php:20
-#: includes/admin/affiliates/actions.php:104
-#: includes/admin/creatives/actions.php:80
-#, fuzzy
-msgid "You do not have permission to manage affiliates"
-msgstr "No tiene permisos para exportar información."
-
-#: includes/admin/affiliates/actions.php:49
-#, fuzzy
-msgid "You do not have permission to delete affiliate accounts"
-msgstr "No tiene permisos para exportar información."
-
-#: includes/admin/affiliates/actions.php:53
-#: includes/admin/creatives/actions.php:48
-#: includes/admin/referrals/actions.php:20
-#: includes/admin/referrals/actions.php:51
-msgid "Security check failed"
-msgstr ""
-
-#: includes/admin/affiliates/actions.php:57
-msgid "No affiliate IDs specified for deletion"
-msgstr ""
-
-#: includes/admin/affiliates/affiliates.php:45
-#: includes/admin/creatives/creatives.php:41
-msgid "Add New"
-msgstr "Agregar Nuevo"
-
-#: includes/admin/affiliates/affiliates.php:49
-#: includes/admin/referrals/referrals.php:60
-#: includes/admin/visits/visits.php:30
-msgid "Search"
-msgstr "Buscar"
-
-#: includes/admin/affiliates/affiliates.php:191
-#: includes/admin/creatives/creatives.php:138
-#: includes/admin/referrals/referrals.php:200
-msgid "All"
-msgstr "Todos"
-
-#: includes/admin/affiliates/affiliates.php:192
-#: includes/admin/creatives/creatives.php:139
-#: includes/admin/creatives/edit.php:99 includes/admin/creatives/new.php:89
-#: includes/admin/tools/tools.php:211
-msgid "Active"
-msgstr "Activo"
-
-#: includes/admin/affiliates/affiliates.php:193
-#: includes/admin/creatives/creatives.php:140
-#: includes/admin/creatives/edit.php:100 includes/admin/creatives/new.php:90
-msgid "Inactive"
-msgstr "Inactivo"
-
-#: includes/admin/affiliates/affiliates.php:211
-#: includes/admin/affiliates/review.php:22
-#: includes/admin/creatives/creatives.php:155
-#: includes/admin/creatives/edit.php:17 includes/admin/creatives/new.php:16
-msgid "Name"
-msgstr "Nombre"
-
-#: includes/admin/affiliates/affiliates.php:212
-#: includes/admin/settings/class-settings.php:221
-#: includes/admin/tools/export/class-export.php:69
-msgid "ID"
-msgstr "ID"
-
-#: includes/admin/affiliates/affiliates.php:213
-#: includes/admin/affiliates/view.php:11
-#: includes/admin/overview/overview.php:168
-#: includes/admin/tools/export/class-export-affiliates.php:52
-msgid "Earnings"
-msgstr "Ingresos"
-
-#: includes/admin/affiliates/affiliates.php:214
-#: includes/admin/tools/export/class-export-affiliates.php:50
-msgid "Rate"
-msgstr "Tarifa"
-
-#: includes/admin/affiliates/affiliates.php:215
-#: templates/dashboard-tab-stats.php:9
-msgid "Paid Referrals"
-msgstr "Referencias pagadas"
-
-#: includes/admin/affiliates/affiliates.php:217
-#: includes/admin/creatives/creatives.php:158
-#: includes/admin/creatives/edit.php:94 includes/admin/creatives/new.php:84
-#: includes/admin/overview/overview.php:117
-#: includes/admin/referrals/edit.php:83 includes/admin/referrals/new.php:85
-#: includes/admin/referrals/referrals.php:226
-#: includes/admin/tools/export/class-export-affiliates.php:55
-#: includes/admin/tools/export/class-export-referrals.php:67
-#: templates/dashboard-tab-referrals.php:21
-msgid "Status"
-msgstr "Estado"
-
-#: includes/admin/affiliates/affiliates.php:218
-#: includes/admin/creatives/creatives.php:159
-#: includes/admin/overview/overview.php:118
-#: includes/admin/referrals/referrals.php:225
-msgid "Actions"
-msgstr "Acciones"
-
-#: includes/admin/affiliates/affiliates.php:281
-msgid "(user deleted)"
-msgstr ""
-
-#: includes/admin/affiliates/affiliates.php:359
-#: includes/admin/creatives/creatives.php:232
-#: includes/admin/referrals/referrals.php:374
-msgid "Edit"
-msgstr "Editar"
-
-#: includes/admin/affiliates/affiliates.php:362
-#: includes/admin/affiliates/affiliates.php:402
-#: includes/admin/creatives/creatives.php:235
-msgid "Deactivate"
-msgstr "Desactivar"
-
-#: includes/admin/affiliates/affiliates.php:364
-#: includes/admin/overview/overview.php:133
-#, fuzzy
-msgid "Review"
-msgstr "Resumen"
-
-#: includes/admin/affiliates/affiliates.php:365
-#: includes/admin/affiliates/affiliates.php:399
-#: includes/admin/referrals/referrals.php:362
-#: includes/admin/referrals/referrals.php:454
-msgid "Accept"
-msgstr "Aceptar"
-
-#: includes/admin/affiliates/affiliates.php:366
-#: includes/admin/affiliates/affiliates.php:400
-#: includes/admin/referrals/referrals.php:368
-#: includes/admin/referrals/referrals.php:455
-msgid "Reject"
-msgstr "Rechazar"
-
-#: includes/admin/affiliates/affiliates.php:368
-#: includes/admin/affiliates/affiliates.php:401
-#: includes/admin/creatives/creatives.php:237
-msgid "Activate"
-msgstr "Activar"
-
-#: includes/admin/affiliates/affiliates.php:371
-#: includes/admin/affiliates/affiliates.php:403
-#: includes/admin/creatives/creatives.php:240
-#: includes/admin/referrals/referrals.php:375
-#: includes/admin/referrals/referrals.php:458
-msgid "Delete"
-msgstr "Eliminar"
-
-#: includes/admin/affiliates/affiliates.php:387
-msgid "No affiliates found."
-msgstr "No se encontraron afiliados"
-
-#: includes/admin/affiliates/delete.php:14
-#: includes/admin/affiliates/delete.php:49
-#, fuzzy
-msgid "Delete Affiliates"
-msgstr "Afiliados"
-
-#: includes/admin/affiliates/delete.php:20
-msgid "You have specified these affiliates for deletion:"
-msgstr ""
-
-#: includes/admin/affiliates/delete.php:26
-#, php-format
-msgctxt "Affiliate ID, affiliate name"
-msgid "ID #%d: %s"
-msgstr ""
-
-#: includes/admin/affiliates/delete.php:33
-msgid ""
-"Deleting these affiliates will also delete their referral and visit data."
-msgstr ""
-
-#: includes/admin/affiliates/delete.php:39
-msgid "Delete affiliate's user accounts as well?"
-msgstr ""
-
-#: includes/admin/affiliates/edit.php:10
-msgid "Edit Affiliate"
-msgstr "Editar Afiliado"
-
-#: includes/admin/affiliates/edit.php:21 includes/admin/referrals/edit.php:18
-#: includes/admin/tools/export/class-export-affiliates.php:47
-#: includes/admin/tools/export/class-export-referrals.php:61
-msgid "Affiliate ID"
-msgstr "ID del Afiliado"
-
-#: includes/admin/affiliates/edit.php:26
-msgid "The affiliate's ID. This cannot be changed."
-msgstr "El ID del afiliado, Este no puede ser cambiado."
-
-#: includes/admin/affiliates/edit.php:34
-msgid "User ID"
-msgstr "ID del Usuario"
-
-#: includes/admin/affiliates/edit.php:39
-msgid "The affiliate's user ID. This cannot be changed."
-msgstr "El ID de usuario del afiliado, este no puede ser cambiado."
-
-#: includes/admin/affiliates/edit.php:47 includes/admin/affiliates/new.php:33
-#: includes/admin/settings/class-settings.php:232
-msgid "Referral Rate Type"
-msgstr "Tipo de tasa para referidos"
-
-#: includes/admin/affiliates/edit.php:52 includes/admin/affiliates/new.php:38
-msgid "Site Default"
-msgstr "Predeterminados del sitio"
-
-#: includes/admin/affiliates/edit.php:57 includes/admin/affiliates/new.php:43
-msgid "The affiliate's referral rate type."
-msgstr "El tipo de tasa de referido del afiliado."
-
-#: includes/admin/affiliates/edit.php:65 includes/admin/affiliates/new.php:51
-#: includes/admin/settings/class-settings.php:238
-#: includes/integrations/class-edd.php:545
-#: includes/integrations/extras/class-exchange-feature.php:46
-msgid "Referral Rate"
-msgstr "Tasa de referido"
-
-#: includes/admin/affiliates/edit.php:70 includes/admin/affiliates/new.php:56
-#, fuzzy
-msgid ""
-"The affiliate's referral rate, such as 20 for 20%. If left blank, the site "
-"default will be used."
-msgstr ""
-"Tasa de referido, por ejemplo 20 para el 20%. Si lo deja en blanco se usara "
-"la tasa predeterminada del sitio."
-
-#: includes/admin/affiliates/edit.php:78 templates/register.php:53
-msgid "Account Email"
-msgstr "Correo Electrónico"
-
-#: includes/admin/affiliates/edit.php:83
-msgid ""
-"The affiliate's account email. Updating this will change the email address "
-"shown on the user's profile page."
-msgstr ""
-
-#: includes/admin/affiliates/edit.php:91 includes/admin/affiliates/new.php:64
-#: templates/register.php:61
-msgid "Payment Email"
-msgstr "Correo electrónico de pago"
-
-#: includes/admin/affiliates/edit.php:96 includes/admin/affiliates/new.php:69
-msgid ""
-"Affiliate's payment email for systems such as PayPal, Moneybookers, or "
-"others. Leave blank to use the affiliate's user email."
-msgstr ""
-"El correo electrónico de pago del afiliado tal como PayPal, Monerbookers u "
-"otros. Deje en blanco para usar el correo electrónico del dado de alta en la "
-"cuanta del afiliado."
-
-#: includes/admin/affiliates/edit.php:107
-#, fuzzy
-msgid "Update Affiliate"
-msgstr "Editar Afiliado"
-
-#: includes/admin/affiliates/new.php:3
-msgid "New Affiliate"
-msgstr "Nuevo Afiliado"
-
-#: includes/admin/affiliates/new.php:9
-#, php-format
-msgid ""
-"Use this screen to register a new affiliate. Each affiliate is tied directly "
-"to a user account, so if the user account for the affiliate does not yet "
-"exist, <a href=\"%s\" target=\"_blank\">create one</a>."
-msgstr ""
-"Use esta pantalla para registrar nuevos afiliados. Cada afiliado esta ligado "
-"directamente con una cuenta de usuario, así que, si la cuenta de usuario "
-"para un afiliado no existe aun <a href=\"%s\" target=\"_blank\">cree una</a>."
-
-#: includes/admin/affiliates/new.php:16
-msgid "User"
-msgstr "Usuario"
-
-#: includes/admin/affiliates/new.php:25
-msgid ""
-"Begin typing the name of the affiliate to perform a search for their "
-"associated user account."
-msgstr ""
-"Comience a escribir el nombre de un afiliado para realizar una búsqueda de "
-"la cuenta de usuario asociada."
-
-#: includes/admin/affiliates/new.php:81
-msgid "Add Affiliate"
-msgstr "Agregar Afiliado"
-
-#: includes/admin/affiliates/review.php:11
-#, fuzzy
-msgid "Review Affiliate"
-msgstr "Nuevo Afiliado"
-
-#: includes/admin/affiliates/review.php:11
-msgid "Go Back"
-msgstr ""
-
-#: includes/admin/affiliates/review.php:34
-#: includes/admin/settings/class-settings.php:222
-#: includes/admin/tools/export/class-export-affiliates.php:49
-#: templates/login.php:15 templates/login.php:16 templates/register.php:48
-#: templates/register.php:49
-msgid "Username"
-msgstr "Nombre de Usuario"
-
-#: includes/admin/affiliates/review.php:46 templates/register.php:54
-msgid "Email Address"
-msgstr "Correo Electrónico"
-
-#: includes/admin/affiliates/review.php:59 templates/register.php:66
-#: templates/register.php:67
-#, fuzzy
-msgid "Website URL"
-msgstr "Generar URL"
-
-#: includes/admin/affiliates/review.php:63
-#, fuzzy
-msgid "Affiliate's Website URL"
-msgstr "Afiliados"
-
-#: includes/admin/affiliates/review.php:73
-msgid "Promotion Method"
-msgstr ""
-
-#: includes/admin/affiliates/review.php:86
-#, fuzzy
-msgid "Accept Affiliate"
-msgstr "Nuevo Afiliado"
-
-#: includes/admin/affiliates/review.php:87
-#, fuzzy
-msgid "Reject Affiliate"
-msgstr "Nuevo Afiliado"
-
-#: includes/admin/affiliates/view.php:7
-#, php-format
-msgid "Affiliate: #%d %s"
-msgstr "Afiliado: #%d %s"
-
-#: includes/admin/affiliates/view.php:18
-msgid "Total earnings"
-msgstr "Ingresos totales"
-
-#: includes/admin/affiliates/view.php:19
-msgid "Total unpaid earnings"
-msgstr "Total de ingresos sin pagar"
-
-#: includes/admin/affiliates/view.php:20
-msgid "Total paid referrals"
-msgstr "Total de referidos pagados"
-
-#: includes/admin/affiliates/view.php:21
-msgid "Total unpaid referrals"
-msgstr "Total de referidos no pagados"
-
-#: includes/admin/affiliates/view.php:22
-msgid "Total pending referrals"
-msgstr "Total de referidos pendientes"
-
-#: includes/admin/affiliates/view.php:23
-msgid "Total rejected referrals"
-msgstr "Total de referidos rechazados"
-
-#: includes/admin/affiliates/view.php:24
-msgid "Total visits"
-msgstr "Visitas totales"
-
 #: includes/admin/creatives/actions.php:16
 #, fuzzy
 msgid "You do not have permission to manage creatives"
@@ -1352,7 +1012,7 @@ msgstr "No tiene permisos para exportar información."
 
 #: includes/admin/creatives/actions.php:52
 msgid "No creative IDs specified for deletion"
-msgstr ""
+msgstr "Ningún ID de creativos especificado para su eliminación."
 
 #: includes/admin/creatives/creatives.php:156
 #: includes/admin/creatives/edit.php:43 includes/admin/creatives/new.php:42
@@ -1363,7 +1023,7 @@ msgstr "URL"
 
 #: includes/admin/creatives/creatives.php:157
 msgid "Shortcode"
-msgstr ""
+msgstr "Códigos cortos"
 
 #: includes/admin/creatives/creatives.php:255
 #, fuzzy
@@ -1373,25 +1033,27 @@ msgstr "No se encontraron referidos."
 #: includes/admin/creatives/delete.php:10
 #: includes/admin/creatives/delete.php:32
 msgid "Delete Creative"
-msgstr ""
+msgstr "Eliminar creativo"
 
 #: includes/admin/creatives/delete.php:16
 msgid "Are you sure you want to delete this creative?"
-msgstr ""
+msgstr "Está seguro de que quiere borrar este creativo?"
 
 #: includes/admin/creatives/delete.php:21
 #, php-format
 msgctxt "Creative ID, creative name"
 msgid "Creative ID #%d: %s"
 msgstr ""
+"ID de Creativo \n"
+"#%d: %s"
 
 #: includes/admin/creatives/edit.php:6
 msgid "Edit Creative"
-msgstr ""
+msgstr "Editar Creativo"
 
 #: includes/admin/creatives/edit.php:22 includes/admin/creatives/new.php:21
 msgid "The name of this creative. For your identification only."
-msgstr ""
+msgstr "Nombre de creativo. Solamente para su identificación."
 
 #: includes/admin/creatives/edit.php:30 includes/admin/creatives/new.php:29
 #: includes/admin/overview/overview.php:207
@@ -1406,30 +1068,36 @@ msgid ""
 "An optional description for this creative. This is displayed below the "
 "creative for affiliates."
 msgstr ""
+"Descripcion opcional para este creativo. Será mostrado abajo de los "
+"creativos para afiliados."
 
 #: includes/admin/creatives/edit.php:48 includes/admin/creatives/new.php:47
 msgid ""
 "Where the creative should link to. The affiliate's referral ID will be "
 "automatically appended."
 msgstr ""
+"Hacia donde el creativo deberá estar enlazado. El ID del referido del "
+"afiliado sera anexado automáticamente.\n"
 
 #: includes/admin/creatives/edit.php:56 includes/admin/creatives/new.php:55
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #: includes/admin/creatives/edit.php:61 includes/admin/creatives/new.php:60
 msgid "Text for this creative."
-msgstr ""
+msgstr "Texto para este creativo"
 
 #: includes/admin/creatives/edit.php:69 includes/admin/creatives/new.php:68
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #: includes/admin/creatives/edit.php:75
 msgid ""
 "Select your image. You can also enter an image URL if your image is hosted "
 "elsewhere."
 msgstr ""
+"Seleccione su imagen. También puede incluir un enlace si su imagen esta en "
+"otro servidor. "
 
 #: includes/admin/creatives/edit.php:102 includes/admin/creatives/new.php:92
 #, fuzzy
@@ -1438,7 +1106,7 @@ msgstr "Seleccione el estado del referido."
 
 #: includes/admin/creatives/edit.php:113
 msgid "Update Creative"
-msgstr ""
+msgstr "Actualizar Creativo"
 
 #: includes/admin/creatives/new.php:3
 #, fuzzy
@@ -1449,16 +1117,21 @@ msgstr "Nuevas características"
 msgid ""
 "Use this screen to add a new creative, such as a text link or image banner."
 msgstr ""
+"Use esta pantalla para añadir un creativo nuevo, tales como un enlace de "
+"texto o una imagen \n"
+"banderola."
 
 #: includes/admin/creatives/new.php:74
 msgid ""
 "Select an image if you would like an image banner. You can also enter an "
 "image URL if your image is hosted elsewhere."
 msgstr ""
+"Seleccione una imagen si desea una imagen banderola. Tambien puede incluir "
+"un enlace si su imagen está en otro servidor."
 
 #: includes/admin/creatives/new.php:104
 msgid "Add Creative"
-msgstr ""
+msgstr "Añadir Creativo"
 
 #: includes/admin/overview/overview.php:26
 msgid "Totals"
@@ -1517,8 +1190,7 @@ msgstr "Ultimos registros de afiliados"
 #: includes/admin/overview/overview.php:116
 #: includes/admin/overview/overview.php:167
 #: includes/admin/overview/overview.php:205
-#: includes/admin/overview/overview.php:240
-#: includes/admin/referrals/new.php:16
+#: includes/admin/overview/overview.php:240 includes/admin/referrals/new.php:16
 #: includes/admin/referrals/referrals.php:221
 #: includes/admin/visits/visits.php:155
 msgid "Affiliate"
@@ -1569,6 +1241,10 @@ msgstr "Convertido"
 #: includes/admin/overview/overview.php:261
 msgid "No referral visits recorded yet"
 msgstr "Aun no hay visitas de referidos guardadas"
+
+#: includes/admin/plugins.php:27
+msgid "General Settings"
+msgstr "Configuraciones Generales"
 
 #: includes/admin/referrals/actions.php:16
 #: includes/admin/referrals/actions.php:47
@@ -1736,6 +1412,18 @@ msgstr ""
 "para ayudar a identificar el pago en el sistema que ha sido usado para esta "
 "transacción."
 
+#: includes/admin/referrals/edit.php:88 includes/admin/referrals/new.php:90
+#: includes/admin/referrals/referrals.php:202
+#: includes/admin/tools/tools.php:241 includes/referral-functions.php:53
+msgid "Unpaid"
+msgstr "Sin pagar"
+
+#: includes/admin/referrals/edit.php:89 includes/admin/referrals/new.php:91
+#: includes/admin/referrals/referrals.php:201
+#: includes/admin/tools/tools.php:240 includes/referral-functions.php:52
+msgid "Paid"
+msgstr "Pagado"
+
 #: includes/admin/referrals/edit.php:93 includes/admin/referrals/new.php:95
 msgid "Select the status of the referral."
 msgstr "Seleccione el estado del referido."
@@ -1841,6 +1529,11 @@ msgstr "Acciones en masa"
 msgid "Apply"
 msgstr "Aplicar"
 
+#: includes/admin/referrals/referrals.php:439
+#: includes/admin/visits/visits.php:41 includes/class-graph.php:404
+msgid "Filter"
+msgstr "Filtro"
+
 #: includes/admin/reports/class-registrations-graph.php:68
 #: includes/admin/reports/reports.php:67
 msgid "Affiliate Registrations"
@@ -1854,15 +1547,15 @@ msgstr "Conversiones exitosas"
 msgid "Conversion Rate"
 msgstr "Tasa de conversiones"
 
-#: includes/admin/settings/class-settings.php:178
+#: includes/admin/settings/class-settings.php:179
 msgid "License Settings"
 msgstr "Configuración de licencia"
 
-#: includes/admin/settings/class-settings.php:183
+#: includes/admin/settings/class-settings.php:184
 msgid "License Key"
 msgstr "Clave de la licencia"
 
-#: includes/admin/settings/class-settings.php:184
+#: includes/admin/settings/class-settings.php:185
 #, php-format
 msgid ""
 "Please enter your license key. An active license key is needed for automatic "
@@ -1872,58 +1565,62 @@ msgstr ""
 "necesaria para actualizaciones automáticas y <a href=\"%s\" target=\"_blank"
 "\">soporte</a>."
 
-#: includes/admin/settings/class-settings.php:189
+#: includes/admin/settings/class-settings.php:190
 msgid "Pages"
 msgstr "Páginas"
 
-#: includes/admin/settings/class-settings.php:195
+#: includes/admin/settings/class-settings.php:196
 msgid "This is the page where affiliates will manage their affiliate account."
 msgstr "Esta es la página donde los afiliados manejaran su cuenta de afiliado."
 
-#: includes/admin/settings/class-settings.php:200
+#: includes/admin/settings/class-settings.php:201
 msgid "Terms of Use"
 msgstr "Términos de uso."
 
-#: includes/admin/settings/class-settings.php:201
+#: includes/admin/settings/class-settings.php:202
 msgid "Select the page that shows the terms of use for Affiliate Registration"
 msgstr ""
 "Seleccione la página que mostrara los términos de uso para el registro de "
 "afiliados."
 
-#: includes/admin/settings/class-settings.php:206
+#: includes/admin/settings/class-settings.php:207
 msgid "Referral Settings"
 msgstr "Configuración de referidos"
 
-#: includes/admin/settings/class-settings.php:211
+#: includes/admin/settings/class-settings.php:212
 msgid "Referral Variable"
 msgstr "Variable de referidos"
 
-#: includes/admin/settings/class-settings.php:212
+#: includes/admin/settings/class-settings.php:213
 #, php-format
 msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
 msgstr ""
 "La variable de URL para las URLs de los referidos. Por ejemplo: <strong>%s</"
 "strong>."
 
-#: includes/admin/settings/class-settings.php:217
+#: includes/admin/settings/class-settings.php:218
 #, fuzzy
 msgid "Default Referral Format"
 msgstr "Tasa de referido"
 
-#: includes/admin/settings/class-settings.php:218
+#: includes/admin/settings/class-settings.php:219
 #, php-format
 msgid ""
 "Show referral URLs to affiliates with either their affiliate ID or Username "
 "appended.<br/> For example: <strong>%s or %s</strong>."
 msgstr ""
+"Mostrar los enlaces de los referidos a afiliados tanto con su ID de afiliado "
+"como con su nombre de usuario anexado.</br> Por ejemplo: \n"
+"<strong>%s o %s</strong>.\n"
+"\n"
 
-#: includes/admin/settings/class-settings.php:227
+#: includes/admin/settings/class-settings.php:228
 #, fuzzy
 msgid "Pretty Affiliate URLs"
 msgstr "Nuevo Afiliado"
 
-#: includes/admin/settings/class-settings.php:228
-#, fuzzy, php-format
+#: includes/admin/settings/class-settings.php:229
+#, php-format
 msgid ""
 "Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
 "%s</strong>"
@@ -1931,12 +1628,12 @@ msgstr ""
 "La variable de URL para las URLs de los referidos. Por ejemplo: <strong>%s</"
 "strong>."
 
-#: includes/admin/settings/class-settings.php:233
+#: includes/admin/settings/class-settings.php:234
 msgid "Should referrals be based on a percentage or flat rate amounts?"
 msgstr ""
 "¿Los referidos se deben basar en un porcentaje o en un monto con tasa fija?"
 
-#: includes/admin/settings/class-settings.php:239
+#: includes/admin/settings/class-settings.php:240
 msgid ""
 "Default referral rate. A percentage if Referral Rate Type is Percentage, a "
 "flat amount otherwise. Rates can be set for each affiliate individually as "
@@ -1946,45 +1643,45 @@ msgstr ""
 "porcentaje, de otra manera un monto fijo. También las tasas pueden ser "
 "configuradas individualmente para cada afiliado."
 
-#: includes/admin/settings/class-settings.php:246
-msgid "Exclude Shipping"
-msgstr ""
-
 #: includes/admin/settings/class-settings.php:247
-msgid "Should shipping costs be excluded from referral calculations?"
-msgstr ""
+msgid "Exclude Shipping"
+msgstr "Excluir envío\n"
 
-#: includes/admin/settings/class-settings.php:251
-msgid "Exclude Tax"
-msgstr ""
+#: includes/admin/settings/class-settings.php:248
+msgid "Should shipping costs be excluded from referral calculations?"
+msgstr "Los costos de envío deberán excluirse de los cálculos de referidos? "
 
 #: includes/admin/settings/class-settings.php:252
-msgid "Should taxes be excluded from referral calculations?"
-msgstr ""
+msgid "Exclude Tax"
+msgstr "Excluir Impuestos"
 
-#: includes/admin/settings/class-settings.php:256
+#: includes/admin/settings/class-settings.php:253
+msgid "Should taxes be excluded from referral calculations?"
+msgstr "Los impuestos deberán excluirse de los cálculos de referidos? "
+
+#: includes/admin/settings/class-settings.php:257
 msgid "Cookie Expiration"
 msgstr "Expiración de la Cookie"
 
-#: includes/admin/settings/class-settings.php:257
+#: includes/admin/settings/class-settings.php:258
 msgid "How many days should the referral tracking cookie be valid for?"
 msgstr "¿Por cuantos días la cookie del referido deberá ser valida?"
 
-#: includes/admin/settings/class-settings.php:263
+#: includes/admin/settings/class-settings.php:264
 msgid "Currency Settings"
 msgstr "Configuración de moneda"
 
-#: includes/admin/settings/class-settings.php:264
+#: includes/admin/settings/class-settings.php:265
 msgid "Configure the currency options"
 msgstr "Configure las opciones de moneda"
 
-#: includes/admin/settings/class-settings.php:268
+#: includes/admin/settings/class-settings.php:269
 #: includes/admin/tools/export/class-export-referrals-payout.php:42
 #: includes/admin/tools/export/class-export-referrals.php:64
 msgid "Currency"
 msgstr "Moneda"
 
-#: includes/admin/settings/class-settings.php:269
+#: includes/admin/settings/class-settings.php:270
 msgid ""
 "Choose your currency. Note that some payment gateways have currency "
 "restrictions."
@@ -1992,44 +1689,44 @@ msgstr ""
 "Seleccione su moneda. Tenga en cuenta que algunas pasarelas de pago tienen "
 "restricciones de moneda."
 
-#: includes/admin/settings/class-settings.php:274
+#: includes/admin/settings/class-settings.php:275
 msgid "Currency Position"
 msgstr "Posición del simbolo de moneda"
 
-#: includes/admin/settings/class-settings.php:275
+#: includes/admin/settings/class-settings.php:276
 msgid "Choose the location of the currency sign."
 msgstr "Seleccione la posición del símbolo de la moneda."
 
-#: includes/admin/settings/class-settings.php:278
+#: includes/admin/settings/class-settings.php:279
 msgid "Before - $10"
 msgstr "Antes - $10"
 
-#: includes/admin/settings/class-settings.php:279
+#: includes/admin/settings/class-settings.php:280
 msgid "After - 10$"
 msgstr "Después - 10$"
 
-#: includes/admin/settings/class-settings.php:283
+#: includes/admin/settings/class-settings.php:284
 msgid "Thousands Separator"
 msgstr "Separador de miles"
 
-#: includes/admin/settings/class-settings.php:284
+#: includes/admin/settings/class-settings.php:285
 msgid "The symbol (usually , or .) to separate thousands"
 msgstr "El símbolo (usualmente , ó .) para separar los miles"
 
-#: includes/admin/settings/class-settings.php:290
+#: includes/admin/settings/class-settings.php:291
 msgid "Decimal Separator"
 msgstr "Separador decimal"
 
-#: includes/admin/settings/class-settings.php:291
+#: includes/admin/settings/class-settings.php:292
 msgid "The symbol (usually , or .) to separate decimal points"
 msgstr "El símbolo (usualmente , ó .) para separar los decimales."
 
-#: includes/admin/settings/class-settings.php:302
+#: includes/admin/settings/class-settings.php:303
 #: includes/admin/settings/display-settings.php:74
 msgid "Integrations"
 msgstr "Integraciones"
 
-#: includes/admin/settings/class-settings.php:303
+#: includes/admin/settings/class-settings.php:304
 #, php-format
 msgid ""
 "Choose the integrations to enable. If you are not using any of these, you "
@@ -2043,176 +1740,191 @@ msgstr ""
 "referidos. Por favor vea la <a href=\"%s\" target=\"_blank\">documentación</"
 "a> para obtener ayuda con este tema."
 
-#: includes/admin/settings/class-settings.php:313
-msgid "Logo"
-msgstr ""
-
 #: includes/admin/settings/class-settings.php:314
+msgid "Logo"
+msgstr "Logotipo"
+
+#: includes/admin/settings/class-settings.php:315
 msgid "Upload or choose a logo to be displayed at the top of emails."
 msgstr ""
-
-#: includes/admin/settings/class-settings.php:318
-msgid "Email Template"
-msgstr ""
+"Cargue o elija un logotipo para ser mostrado en la parte superior de los "
+"correos electrónicos."
 
 #: includes/admin/settings/class-settings.php:319
-msgid "Choose a template to use for email messages."
-msgstr ""
+msgid "Email Template"
+msgstr "Plantilla de correo electrónico."
 
-#: includes/admin/settings/class-settings.php:324
+#: includes/admin/settings/class-settings.php:320
+msgid "Choose a template to use for email messages."
+msgstr "Elija una plantilla para sus correos electrónicos."
+
+#: includes/admin/settings/class-settings.php:325
 #, fuzzy
 msgid "From Name"
 msgstr "Su Nombre"
 
-#: includes/admin/settings/class-settings.php:325
+#: includes/admin/settings/class-settings.php:326
 msgid ""
 "The name emails are said to come from. This should probably be your site "
 "name."
 msgstr ""
+"De quien vienen los correos electrónicos enviados. Probablemente el nombre "
+"de su sitio web."
 
-#: includes/admin/settings/class-settings.php:330
+#: includes/admin/settings/class-settings.php:331
 #, fuzzy
 msgid "From Email"
 msgstr "Correo Electronico"
 
-#: includes/admin/settings/class-settings.php:331
+#: includes/admin/settings/class-settings.php:332
 msgid ""
 "Email to send emails from. This will act as the \"from\" and \"reply-to\" "
 "address."
 msgstr ""
+"Quien envía el correo electrónico. Será el  correo electrónico de \"de\" y "
+"\"responder a\"."
 
-#: includes/admin/settings/class-settings.php:336
+#: includes/admin/settings/class-settings.php:337
 msgid "Notify Admins"
 msgstr "Notificar a los administradores."
 
-#: includes/admin/settings/class-settings.php:337
+#: includes/admin/settings/class-settings.php:338
 msgid "Notify site admins of new affiliate registrations?"
 msgstr "¿Notificar a los administrares de nuevos registros de afiliados?"
 
-#: includes/admin/settings/class-settings.php:341
-msgid "Registration Email Subject"
-msgstr ""
-
 #: includes/admin/settings/class-settings.php:342
+msgid "Registration Email Subject"
+msgstr "Asunto del correo electrónico."
+
+#: includes/admin/settings/class-settings.php:343
 msgid ""
 "Enter the subject line for the registration email sent to admins when new "
 "affiliates register."
 msgstr ""
+"Ingrese el asunto para correo electrónico enviado al administrados cuando se "
+"registra un nuevo afiliado."
 
-#: includes/admin/settings/class-settings.php:344
+#: includes/admin/settings/class-settings.php:345
 #: includes/emails/actions.php:41
 msgid "New Affiliate Registration"
 msgstr "Registro de nuevo afiliado"
 
-#: includes/admin/settings/class-settings.php:347
-msgid "Registration Email Content"
-msgstr ""
-
 #: includes/admin/settings/class-settings.php:348
+msgid "Registration Email Content"
+msgstr "Contenido del correo electrónico de registro."
+
+#: includes/admin/settings/class-settings.php:349
 msgid ""
 "Enter the email to send when a new affiliate registers. HTML is accepted. "
 "Available template tags:"
 msgstr ""
+"Ingrese el mensaje a enviar cuando se registre un nuevo afiliado. Puede usar "
+"HTML. Etiquetas para plantillas disponibles:"
 
-#: includes/admin/settings/class-settings.php:350
+#: includes/admin/settings/class-settings.php:351
 #, php-format
 msgid "A new affiliate has registered on your site, %s"
 msgstr ""
+"Un nuevo afiliado se ha registrado en su sitio web, \n"
+"%s"
 
-#: includes/admin/settings/class-settings.php:350
+#: includes/admin/settings/class-settings.php:351
 msgid "Name: "
 msgstr "Nombre:"
 
-#: includes/admin/settings/class-settings.php:353
+#: includes/admin/settings/class-settings.php:354
 #, fuzzy
 msgid "Application Accepted Email Subject"
 msgstr "Solicitud de afiliación aceptada"
 
-#: includes/admin/settings/class-settings.php:354
+#: includes/admin/settings/class-settings.php:355
 msgid ""
 "Enter the subject line for accepted application emails sent to affiliates "
 "when their account is approved."
 msgstr ""
+"Ingrese el asunto para los correos electrónicos enviados a los afiliados "
+"cuando su cuenta es aprobada."
 
-#: includes/admin/settings/class-settings.php:356
+#: includes/admin/settings/class-settings.php:357
 #: includes/emails/actions.php:96
 msgid "Affiliate Application Accepted"
 msgstr "Solicitud de afiliación aceptada"
 
-#: includes/admin/settings/class-settings.php:359
+#: includes/admin/settings/class-settings.php:360
 #, fuzzy
 msgid "Application Accepted Email Content"
 msgstr "Solicitud de afiliación aceptada"
 
-#: includes/admin/settings/class-settings.php:360
+#: includes/admin/settings/class-settings.php:361
 msgid ""
 "Enter the email to send when an application is accepted. HTML is accepted. "
 "Available template tags:"
 msgstr ""
+"Ingrese el mensaje a enviar cuando una aplicación es aceptada. Puede usar "
+"HTML. Etiquetas para plantillas disponibles:"
 
-#: includes/admin/settings/class-settings.php:362
-#: includes/admin/settings/class-settings.php:374
-#, fuzzy
-msgid "Congratulations"
-msgstr ""
-"Felicidades %s!\n"
-"\n"
+#: includes/admin/settings/class-settings.php:363
+#: includes/admin/settings/class-settings.php:375
+msgid "Congratulations {name}!"
+msgstr "¡Felicitaciones {nombre}!"
 
-#: includes/admin/settings/class-settings.php:362
+#: includes/admin/settings/class-settings.php:363
 #: includes/emails/actions.php:101
-#, fuzzy, php-format
+#, php-format
 msgid "Your affiliate application on %s has been accepted!"
 msgstr ""
 "Su solicitud de afiliación en %s ha sido aceptada!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:362
+#: includes/admin/settings/class-settings.php:363
 #, fuzzy
 msgid "Log into your affiliate area at"
 msgstr ""
 "Ingrese a su area de afiliado en %s\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:365
+#: includes/admin/settings/class-settings.php:366
 #, fuzzy
 msgid "New Referral Email Subject"
 msgstr "Nuevo Referido"
 
-#: includes/admin/settings/class-settings.php:366
+#: includes/admin/settings/class-settings.php:367
 msgid ""
 "Enter the subject line for new referral emails sent when affiliates earn "
 "referrals."
-msgstr ""
+msgstr "Ingrese el mensaje a enviar cuando los afiliados ganen referidos."
 
-#: includes/admin/settings/class-settings.php:368
-#: includes/emails/actions.php:144
+#: includes/admin/settings/class-settings.php:369
+#: includes/emails/actions.php:214
 msgid "Referral Awarded!"
 msgstr "¡Se le ha otorgado un referido!"
 
-#: includes/admin/settings/class-settings.php:371
+#: includes/admin/settings/class-settings.php:372
 #, fuzzy
 msgid "New Referral Email Content"
 msgstr "Nuevo Referido"
 
-#: includes/admin/settings/class-settings.php:372
+#: includes/admin/settings/class-settings.php:373
 msgid ""
 "Enter the email to send on new referrals. HTML is accepted. Available "
 "template tags:"
 msgstr ""
+"Ingrese el mensaje a enviar a los nuevos referidos. Puede usar HTML. "
+"Etiquetas para plantillas disponibles:"
 
-#: includes/admin/settings/class-settings.php:374
+#: includes/admin/settings/class-settings.php:375
 #, fuzzy
 msgid "You have been awarded a new referral of"
 msgstr ""
 "Usted ha obtenido un nuevo referido de %s en %s!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:374
-#, fuzzy, php-format
+#: includes/admin/settings/class-settings.php:375
+#, php-format
 msgid "on %s!"
 msgstr "Versión %s"
 
-#: includes/admin/settings/class-settings.php:374
+#: includes/admin/settings/class-settings.php:375
 #, fuzzy
 msgid ""
 "Log into your affiliate area to view your earnings or disable these "
@@ -2222,19 +1934,19 @@ msgstr ""
 "notificaciones: %s\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:382
+#: includes/admin/settings/class-settings.php:383
 msgid "Allow affiliate registration"
 msgstr "Permitir registro de afiliados"
 
-#: includes/admin/settings/class-settings.php:383
+#: includes/admin/settings/class-settings.php:384
 msgid "Should affiliates be able to register accounts for themselves?"
 msgstr "¿Los afiliados pueden crear cuantas por si mismos?"
 
-#: includes/admin/settings/class-settings.php:387
+#: includes/admin/settings/class-settings.php:388
 msgid "Require approval"
 msgstr "Requerir aprobación"
 
-#: includes/admin/settings/class-settings.php:388
+#: includes/admin/settings/class-settings.php:389
 msgid ""
 "Require that site admins approve affiliates before they can begin earning "
 "referrals?"
@@ -2242,19 +1954,19 @@ msgstr ""
 "¿Requiere que los administradores aprueben los afiliados antes de que puedan "
 "comenzar a ganar referidos?"
 
-#: includes/admin/settings/class-settings.php:392
+#: includes/admin/settings/class-settings.php:393
 msgid "Auto Register New Users"
 msgstr "Registrar nuevos usuarios automaticamente"
 
-#: includes/admin/settings/class-settings.php:393
+#: includes/admin/settings/class-settings.php:394
 msgid "Automatically register new users as affiliates?"
 msgstr "¿Registrar a los nuevos usuarios como afiliados de forma automática?"
 
-#: includes/admin/settings/class-settings.php:397
+#: includes/admin/settings/class-settings.php:398
 msgid "Reject Unpaid Referrals on Refund?"
 msgstr "¿Rechazar referidos sin pagar cuando hay un reembolso?"
 
-#: includes/admin/settings/class-settings.php:398
+#: includes/admin/settings/class-settings.php:399
 msgid ""
 "Should unpaid referrals get automatically rejected when the originating "
 "purchase is refunded or revoked?"
@@ -2262,11 +1974,11 @@ msgstr ""
 "¿Los referidos sin pagar deben ser automáticamente rechazados cuando la "
 "compra original es reembolsada o anulada? "
 
-#: includes/admin/settings/class-settings.php:402
+#: includes/admin/settings/class-settings.php:403
 msgid "Use Fallback Referral Tracking Method?"
 msgstr "¿Usar el metodo alternativo de rastreo de referidos?"
 
-#: includes/admin/settings/class-settings.php:403
+#: includes/admin/settings/class-settings.php:404
 msgid ""
 "The method used to track referral links can fail on sites that have jQuery "
 "errors. Check this if referrals are not getting tracked properly."
@@ -2275,11 +1987,11 @@ msgstr ""
 "que tienen errores de jQuery. Verifique esto si los referidos no están "
 "siendo registrados de forma adecuada."
 
-#: includes/admin/settings/class-settings.php:407
+#: includes/admin/settings/class-settings.php:408
 msgid "Ignore Zero Referrals?"
 msgstr "¿Ignorar referidos en cero?"
 
-#: includes/admin/settings/class-settings.php:408
+#: includes/admin/settings/class-settings.php:409
 msgid ""
 "Check this box if you would like AffiliateWP to completely ignore referrals "
 "for a zero total amount. This can be useful for multi-price products that "
@@ -2294,11 +2006,11 @@ msgstr ""
 "habilitada y una visita resulta en cero entonces la visita será considerada "
 "como no convertida."
 
-#: includes/admin/settings/class-settings.php:412
+#: includes/admin/settings/class-settings.php:413
 msgid "Remove Data on Uninstall?"
 msgstr "¿Eliminar la información al desinstalar?"
 
-#: includes/admin/settings/class-settings.php:413
+#: includes/admin/settings/class-settings.php:414
 msgid ""
 "Check this box if you would like AffiliateWP to completely remove all of its "
 "data when the plugin is deleted."
@@ -2306,19 +2018,99 @@ msgstr ""
 "Seleccione esta casilla si desea que AffiliateWP elimine completamente la "
 "información recabada cuando el plugin sea eliminado."
 
-#: includes/admin/settings/class-settings.php:552
+#: includes/admin/settings/class-settings.php:439
+msgid "Application Pending Email Subject"
+msgstr "Asunto del Correo Electrónico para  Aplicacion Pendiente"
+
+#: includes/admin/settings/class-settings.php:440
+msgid "Enter the subject line for pending affiliate application emails."
+msgstr ""
+"Ingrese el asunto de los correos electrónicos para aplicaciones pendientes"
+
+#: includes/admin/settings/class-settings.php:442
+#: includes/emails/actions.php:137
+msgid "Your Affiliate Application Is Being Reviewed"
+msgstr "Su aplicacion para afiliado está siendo revisada."
+
+#: includes/admin/settings/class-settings.php:445
+msgid "Application Pending Email Content"
+msgstr "Mensaje Correo Electronico para Aplicaciones Pendientes"
+
+#: includes/admin/settings/class-settings.php:446
+msgid ""
+"Enter the email to send when an application is pending. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+"Ingrese el mensaje a enviar cuando una aplicación esta pendiente. Puede usar "
+"HTML. Etiquetas para plantillas disponibles:"
+
+#: includes/admin/settings/class-settings.php:448
+msgid "Hi {name}!"
+msgstr "¡Hola {nombre}!"
+
+#: includes/admin/settings/class-settings.php:448
+#: includes/emails/actions.php:142
+msgid "Thanks for your recent affiliate registration on {site_name}."
+msgstr "Gracias por registrarse como afiliado en {nombre_sitio_web}"
+
+#: includes/admin/settings/class-settings.php:448
+#: includes/emails/actions.php:143
+msgid ""
+"We're currently reviewing your affiliate application and will be in touch "
+"soon!"
+msgstr "Actualmente estamos revisando su aplicación, pronto le contactaremos. "
+
+#: includes/admin/settings/class-settings.php:451
+msgid "Application Rejection Email Subject"
+msgstr "Asunto Del Mensaje Para Aplicación Rechazada "
+
+#: includes/admin/settings/class-settings.php:452
+msgid "Enter the subject line for rejected affiliate application emails."
+msgstr "Ingrese el asunto de los mensajes para las aplicaciones rechazadas. "
+
+#: includes/admin/settings/class-settings.php:454
+#: includes/emails/actions.php:173
+msgid "Your Affiliate Application Has Been Rejected"
+msgstr "Su Aplicación Para Afiliado Ha Sido Rechazada."
+
+#: includes/admin/settings/class-settings.php:457
+msgid "Application Rejection Email Content"
+msgstr "Contenido Del Mensaje Para Aplicaciones Rechazadas"
+
+#: includes/admin/settings/class-settings.php:458
+msgid ""
+"Enter the email to send when an application is rejected. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+"Ingrese el mensaje a enviar cuando una aplicación en rechazada. Puede usar "
+"HTML. Etiquetas para plantillas disponibles:"
+
+#: includes/admin/settings/class-settings.php:460
+msgid "Hi {name},"
+msgstr "Hola {nombre},"
+
+#: includes/admin/settings/class-settings.php:460
+#: includes/emails/actions.php:178
+msgid ""
+"We regret to inform you that your recent affiliate registration on "
+"{site_name} was rejected."
+msgstr ""
+"Lamentamos informarle que su registro como afiliado en {nombre_sitio_web} "
+"fue rechazada."
+
+#: includes/admin/settings/class-settings.php:596
 msgid "Deactivate License"
 msgstr "Desactivar Licencia"
 
-#: includes/admin/settings/class-settings.php:553
+#: includes/admin/settings/class-settings.php:597
 msgid "Your license is valid!"
 msgstr "Su licencia es valida!"
 
-#: includes/admin/settings/class-settings.php:556
+#: includes/admin/settings/class-settings.php:600
 msgid "Renew Your License"
 msgstr "Renovar su licencia"
 
-#: includes/admin/settings/class-settings.php:557
+#: includes/admin/settings/class-settings.php:601
 msgid ""
 "Your license has expired, renew today to continue getting updates and "
 "support!"
@@ -2326,11 +2118,11 @@ msgstr ""
 "Su licencia ha expirado, renuevela ahora para continuar recibiendo "
 "actualizaciones y soporte!"
 
-#: includes/admin/settings/class-settings.php:559
+#: includes/admin/settings/class-settings.php:603
 msgid "Activate License"
 msgstr "Activar Licencia"
 
-#: includes/admin/settings/class-settings.php:653
+#: includes/admin/settings/class-settings.php:697
 #, php-format
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
@@ -2338,9 +2130,9 @@ msgstr ""
 "La función de \"callback\" usada para la configuración <strong>%s</strong> "
 "no se encuentra."
 
-#: includes/admin/settings/class-settings.php:728
+#: includes/admin/settings/class-settings.php:772
 msgid "Upload File"
-msgstr ""
+msgstr "Subir Archivo"
 
 #: includes/admin/settings/display-settings.php:73
 msgid "General"
@@ -2354,6 +2146,34 @@ msgstr "Correo Electronico"
 #: includes/admin/settings/display-settings.php:76
 msgid "Misc"
 msgstr "Varios"
+
+#: includes/admin/tools/export/class-export-affiliates.php:48
+#: includes/admin/tools/export/class-export-referrals-payout.php:40
+#: includes/admin/tools/export/class-export-referrals.php:62
+msgid "Email"
+msgstr "Correo Electronico"
+
+#: includes/admin/tools/export/class-export-affiliates.php:51
+#, fuzzy
+msgid "Rate Type"
+msgstr "Tipo de tasa para referidos"
+
+#: includes/admin/tools/export/class-export-affiliates.php:56
+#, fuzzy
+msgid "Date Registered"
+msgstr "Registrar"
+
+#: includes/admin/tools/export/class-export.php:173
+msgid "You do not have permission to export data."
+msgstr "No tiene permisos para exportar información."
+
+#: includes/admin/tools/import/import.php:23
+msgid "Please upload a valid .json file"
+msgstr "Por favor suba un archivo .json valido"
+
+#: includes/admin/tools/import/import.php:29
+msgid "Please upload a file to import"
+msgstr "Por favor suba un archivo para importar"
 
 #: includes/admin/tools/migration.php:17
 msgid ""
@@ -2533,34 +2353,6 @@ msgstr ""
 msgid "Import"
 msgstr "Importar"
 
-#: includes/admin/tools/export/class-export-affiliates.php:48
-#: includes/admin/tools/export/class-export-referrals-payout.php:40
-#: includes/admin/tools/export/class-export-referrals.php:62
-msgid "Email"
-msgstr "Correo Electronico"
-
-#: includes/admin/tools/export/class-export-affiliates.php:51
-#, fuzzy
-msgid "Rate Type"
-msgstr "Tipo de tasa para referidos"
-
-#: includes/admin/tools/export/class-export-affiliates.php:56
-#, fuzzy
-msgid "Date Registered"
-msgstr "Registrar"
-
-#: includes/admin/tools/export/class-export.php:173
-msgid "You do not have permission to export data."
-msgstr "No tiene permisos para exportar información."
-
-#: includes/admin/tools/import/import.php:23
-msgid "Please upload a valid .json file"
-msgstr "Por favor suba un archivo .json valido"
-
-#: includes/admin/tools/import/import.php:29
-msgid "Please upload a file to import"
-msgstr "Por favor suba un archivo para importar"
-
 #: includes/admin/visits/contextual-help.php:39
 #, fuzzy
 msgid "This screen provides access to your site's visit history."
@@ -2571,18 +2363,25 @@ msgid ""
 "<strong>Landing Page</strong>: this is the page on your site that the "
 "visitor first landed on. It is the URL that the affiliate link pointed to."
 msgstr ""
+"<strong>Pagina de Aterrizaje</strong>: esta es la pagina donde el visitante "
+"es dirigido. Este es el enlace hacia donde el enlace de afiliados es "
+"dirigido."
 
 #: includes/admin/visits/contextual-help.php:41
 msgid ""
 "<strong>Referring URL</strong>: this is the source URL of the affiliate "
 "link. It is the web page that the visitor found a link to your site on."
 msgstr ""
+"<strong>Enlace de referido</strong>: Esta es la ruta del enlace de afiliado. "
+"Esta es la pagina web donde el visitante encontró un enlace al su sitio."
 
 #: includes/admin/visits/contextual-help.php:42
 msgid ""
 "<strong>Affiliate</strong>: this the affiliate that the visit was attributed "
 "to."
 msgstr ""
+"<strong>Affiliado</strong>: Este es el afiliado a quien se le atribuye la "
+"visita."
 
 #: includes/admin/visits/contextual-help.php:43
 #, fuzzy
@@ -2604,6 +2403,8 @@ msgid ""
 "<strong>Converted</strong>: this is a Yes / No status for whether the visit "
 "turned into a successful converstion."
 msgstr ""
+"<strong>Convertido</strong>: Es un estado Si / No que indica si la visita "
+"tuvo un conversión exitosa."
 
 #: includes/admin/visits/contextual-help.php:50
 #, fuzzy
@@ -2618,18 +2419,24 @@ msgstr "Los referidos pueden ser buscados por diferentes métodos:"
 #: includes/admin/visits/contextual-help.php:54
 msgid "You can enter an IP address to find all visits from a specific IP"
 msgstr ""
+"Puede ingresar una dirección IP para encontrar todas las visitas de un IP "
+"especifico."
 
 #: includes/admin/visits/contextual-help.php:55
 msgid ""
 "You can enter a complete URL to find all visits that landed on or came from "
 "a specific URL"
 msgstr ""
+"Puede ingresar un enlace completo para encontrar todas las visitas que "
+"visitaron o vinieron de un enlace especifico."
 
 #: includes/admin/visits/contextual-help.php:56
 msgid ""
 "You can enter a partial URL to find all visits that landed on or came from a "
 "specific site"
 msgstr ""
+"Puede ingresar un enlace parcial para encontrar todas las visitas que "
+"visitaron o vinieron de un enlace especifico."
 
 #: includes/admin/visits/contextual-help.php:57
 #, fuzzy
@@ -2660,54 +2467,221 @@ msgstr "Trafico directo"
 msgid "No visits found."
 msgstr "No se encontraron visitas."
 
+#: includes/affiliate-functions.php:300
+msgid "Percentage (%)"
+msgstr "Porcentaje (%)"
+
+#: includes/affiliate-functions.php:301
+#, php-format
+msgid "Flat %s"
+msgstr "Plano %s"
+
+#: includes/class-creatives.php:148
+msgid "Copy and paste the following:"
+msgstr "Copiar y pegar lo siguiente:"
+
+#: includes/class-graph.php:332
+msgid "Today"
+msgstr "Hoy"
+
+#: includes/class-graph.php:333
+msgid "Yesterday"
+msgstr "Ayer"
+
+#: includes/class-graph.php:334
+msgid "This Week"
+msgstr "Esta semana"
+
+#: includes/class-graph.php:335
+msgid "Last Week"
+msgstr "La semana pasada"
+
+#: includes/class-graph.php:336
+msgid "This Month"
+msgstr "Este mes"
+
+#: includes/class-graph.php:337
+msgid "Last Month"
+msgstr "Mes pasado"
+
+#: includes/class-graph.php:338
+msgid "This Quarter"
+msgstr "Este cuatrimestre"
+
+#: includes/class-graph.php:339
+msgid "Last Quarter"
+msgstr "Cuatrimestre pasado"
+
+#: includes/class-graph.php:340
+msgid "This Year"
+msgstr "Este año"
+
+#: includes/class-graph.php:341
+msgid "Last Year"
+msgstr "Año pasado"
+
+#: includes/class-graph.php:342
+msgid "Custom"
+msgstr "Personalizada"
+
+#: includes/class-graph.php:380
+msgid "From"
+msgstr "De"
+
+#: includes/class-graph.php:391
+msgid "To"
+msgstr "Para"
+
+#: includes/class-login.php:56 includes/class-register.php:74
+#: includes/class-register.php:141
+msgid "Invalid username"
+msgstr "Nombre de usuario invalido"
+
+#: includes/class-login.php:62
+msgid "No such user"
+msgstr "No existe tal usuario"
+
+#: includes/class-login.php:66 includes/class-register.php:149
+msgid "Please enter a password"
+msgstr "Por favor ingrese una contraseña"
+
+#: includes/class-login.php:73
+#, fuzzy
+msgid "Incorrect username or password"
+msgstr "Contraseña incorrecta"
+
+#: includes/class-referrals-graph.php:116
+msgid "Unpaid Referral Earnings"
+msgstr "Ganancias de referidos sin pagar"
+
+#: includes/class-referrals-graph.php:117
+msgid "Pending Referral Earnings"
+msgstr "Ganancias de referidos pendientes"
+
+#: includes/class-referrals-graph.php:118
+msgid "Rejected Referral Earnings"
+msgstr "Ganancias de referidos rechazadas"
+
+#: includes/class-referrals-graph.php:119
+msgid "Paid Referral Earnings"
+msgstr "Ganancias de referidos pagadas"
+
+#: includes/class-register.php:67
+msgid "Username already taken"
+msgstr "El nombre de usuario ya esta tomado"
+
+#: includes/class-register.php:72
+msgid "Invalid username. Only lowercase letters (a-z) and numbers are allowed"
+msgstr "Usuario invalido. Sólo se permiten minúsculas (a-z) y números."
+
+#: includes/class-register.php:79
+msgid "Email address already taken"
+msgstr "La dirección de correo electrónico ya esta tomada"
+
+#: includes/class-register.php:83
+msgid "Invalid email"
+msgstr "Correo electrónico invalido"
+
+#: includes/class-register.php:87
+msgid "Invalid payment email"
+msgstr "Correo electrónico de pago invalido"
+
+#: includes/class-register.php:91
+msgid "Passwords do not match"
+msgstr "Las contraseñas no coinciden"
+
+#: includes/class-register.php:98
+msgid "Please agree to our terms of use"
+msgstr "Por favor acepte nuestros términos de uso"
+
+#: includes/class-register.php:102
+msgid "Nice try honey bear, don't touch our honey"
+msgstr "Buen intento osito, por favor no toques nuestra miel"
+
+#: includes/class-register.php:106
+msgid "You are already registered as an affiliate"
+msgstr "Usted ya esta registrado como afiliado"
+
+#: includes/class-register.php:137
+msgid "Please enter your name"
+msgstr "Por favor ingrese su nombre"
+
+#: includes/class-register.php:145
+#, fuzzy
+msgid "Please enter a website URL"
+msgstr "Por favor ingrese una contraseña"
+
+#: includes/class-visits-graph.php:126
+msgid "Converted Visits"
+msgstr "Visitas convertidas"
+
+#: includes/class-visits-graph.php:127
+msgid "Unconverted Visits"
+msgstr "Visitas sin convertir"
+
+#: includes/creative-functions.php:31 includes/creative-functions.php:63
+#, fuzzy
+msgid "Creative"
+msgstr "Inactivo"
+
 #: includes/emails/actions.php:46
 #, fuzzy
 msgid "A new affiliate has registered on your site, "
 msgstr "Aun no hay registros de afiliados"
 
 #: includes/emails/actions.php:47
-#, fuzzy, php-format
+#, php-format
 msgid "Name: %s"
 msgstr "Nombre:"
 
 #: includes/emails/actions.php:50
 #, php-format
 msgid "Website URL: %s"
-msgstr ""
+msgstr "Enlace del sitio web: %s"
 
 #: includes/emails/actions.php:54
 #, php-format
 msgid "Promotion method: %s"
-msgstr ""
+msgstr "Método de promoción: %s "
 
 #: includes/emails/actions.php:58
 #, php-format
 msgid "Review pending applications: %s"
-msgstr ""
+msgstr "Revisar aplicaciones pendientes: %s"
 
-#: includes/emails/actions.php:100 includes/emails/actions.php:149
-#, fuzzy, php-format
+#: includes/emails/actions.php:100 includes/emails/actions.php:219
+#, php-format
 msgid "Congratulations %s!"
 msgstr ""
 "Felicidades %s!\n"
 "\n"
 
 #: includes/emails/actions.php:102
-#, fuzzy, php-format
+#, php-format
 msgid "Log into your affiliate area at %s"
 msgstr ""
 "Ingrese a su area de afiliado en %s\n"
 "\n"
 
-#: includes/emails/actions.php:150
-#, fuzzy, php-format
+#: includes/emails/actions.php:141
+#, php-format
+msgid "Hi %s!"
+msgstr "¡Hola: %s!"
+
+#: includes/emails/actions.php:177
+#, php-format
+msgid "Hi %s,"
+msgstr "Hola %s,"
+
+#: includes/emails/actions.php:220
+#, php-format
 msgid "You have been awarded a new referral of %s on %s!"
 msgstr ""
 "Usted ha obtenido un nuevo referido de %s en %s!\n"
 "\n"
 
-#: includes/emails/actions.php:151
-#, fuzzy, php-format
+#: includes/emails/actions.php:221
+#, php-format
 msgid ""
 "log into your affiliate area to view your earnings or disable these "
 "notifications: %s"
@@ -2718,29 +2692,32 @@ msgstr ""
 
 #: includes/emails/class-affwp-emails.php:198
 msgid "Default Template"
-msgstr ""
+msgstr "Plantilla Por Defecto"
 
 #: includes/emails/class-affwp-emails.php:199
 msgid "No template, plain text only"
-msgstr ""
+msgstr "No hay plantilla, solo texto simple "
 
 #: includes/emails/class-affwp-emails.php:295
 msgid ""
 "You cannot send emails with AffWP_Emails until init/admin_init has been "
 "reached"
 msgstr ""
+"No puede enviar correos electrónicos con \n"
+"AffWP_Emails hasta que \n"
+"init/admin_init haya sido alcanzado"
 
 #: includes/emails/class-affwp-emails.php:417
 msgid "The full name of the affiliate"
-msgstr ""
+msgstr "Nombre completo del afiliado"
 
 #: includes/emails/class-affwp-emails.php:422
 msgid "The user name of the affiliate on the site"
-msgstr ""
+msgstr "El nombre del usuario en la sitio web"
 
 #: includes/emails/class-affwp-emails.php:427
 msgid "The email address of the affiliate"
-msgstr ""
+msgstr "Correo electrónico del afiliado"
 
 #: includes/emails/class-affwp-emails.php:432
 #, fuzzy
@@ -2749,11 +2726,11 @@ msgstr "No hay afiliados registrados"
 
 #: includes/emails/class-affwp-emails.php:437
 msgid "The promo method used by the affiliate"
-msgstr ""
+msgstr "El método de promoción usado por el afiliado"
 
 #: includes/emails/class-affwp-emails.php:442
 msgid "The affiliate login URL to your website"
-msgstr ""
+msgstr "El enlace de afiliado a su sitio web"
 
 #: includes/emails/class-affwp-emails.php:447
 #, fuzzy
@@ -2764,6 +2741,14 @@ msgstr "El monto del referido, por ejemplo 15."
 #, fuzzy
 msgid "Your site name"
 msgstr "Su Nombre"
+
+#: includes/emails/class-affwp-emails.php:457
+msgid "The affiliate's referral URL"
+msgstr "El enlace del referido por el afiliado"
+
+#: includes/emails/class-affwp-emails.php:462
+msgid "The affiliate's ID"
+msgstr "ID del afiliado "
 
 #: includes/integrations/class-edd.php:279
 #: includes/integrations/class-gravityforms.php:64
@@ -2793,7 +2778,7 @@ msgstr ""
 
 #: includes/integrations/class-edd.php:496
 msgid "Adjust EDD Commissions"
-msgstr ""
+msgstr "Ajustar Comisiones EDD"
 
 #: includes/integrations/class-edd.php:497
 msgid ""
@@ -2801,6 +2786,9 @@ msgid ""
 "include affiliate referrals? This will subtract the referral amount from the "
 "base amount used to calculate the commission total."
 msgstr ""
+"Los montos de comisión deberían ser grabados por AffiliateWP para compras "
+"que incluyen los referidos de los afiliados? Esto restará la cantidad de "
+"referidos del monto base usado para calcular la comisión total."
 
 #: includes/integrations/class-edd.php:517
 #, fuzzy
@@ -2812,6 +2800,9 @@ msgid ""
 "Should AffiliateWP prevent referral commissions from being recorded on "
 "renewal purchases with EDD Software Licensing?"
 msgstr ""
+"Deberia evitarse el registro de las comisiones de referidos por \n"
+"AffiliateWP en compras renovadas con \n"
+"EDD Software Licensing?"
 
 #: includes/integrations/class-edd.php:539
 #, fuzzy
@@ -2821,7 +2812,7 @@ msgstr "Nombre del Afiliado"
 #: includes/integrations/class-edd.php:552
 #, php-format
 msgid "Disable referrals on this %s"
-msgstr ""
+msgstr "Desabilitar referidos en este %s"
 
 #: includes/integrations/class-edd.php:556
 #: includes/integrations/class-woocommerce.php:370
@@ -2830,6 +2821,8 @@ msgid ""
 "These settings will be used to calculate affiliate earnings per-sale. Leave "
 "blank to use default affiliate rates."
 msgstr ""
+"Estos ajustes serán usados para calcular las ganancias de los afiliados por "
+"venta. Deje en blanco para usar las tarifas de afiliado por defecto."
 
 #: includes/integrations/class-exchange.php:234
 #, fuzzy
@@ -2858,25 +2851,25 @@ msgstr "Configuración de referidos"
 #: includes/integrations/class-formidablepro.php:80
 #: includes/integrations/class-formidablepro.php:106
 msgid "Select Field"
-msgstr ""
+msgstr "Seleccione el campo"
 
 #: includes/integrations/class-formidablepro.php:102
 msgid "Purchase Amount"
-msgstr ""
+msgstr "Monto de compra"
 
 #: includes/integrations/class-formidablepro.php:198
-#, fuzzy, php-format
+#, php-format
 msgid "AffiliateWP: Referral #%d for %s recorded for %s"
 msgstr "Referido #%d para %s guardado para %s"
 
 #: includes/integrations/class-formidablepro.php:223
-#, fuzzy, php-format
+#, php-format
 msgid "AffiliateWP: Referral #%d for %s for %s rejected"
 msgstr "Referido #%d para %s guardado para %s"
 
 #: includes/integrations/class-gravityforms.php:76
 #: includes/integrations/class-sproutinvoices.php:76
-#, fuzzy, php-format
+#, php-format
 msgid "Referral #%d for %s for %s rejected"
 msgstr "Referido #%d para %s guardado para %s"
 
@@ -2895,10 +2888,12 @@ msgid ""
 "This will prevent orders of this product from generating referral "
 "commissions for affiliates."
 msgstr ""
+"Evitará que las ordenes de este producto generen comisiones de referido para "
+"los referidos."
 
 #: includes/integrations/extras/class-exchange-feature.php:22
 msgid "Manage per-product affiliate rates."
-msgstr ""
+msgstr "Manejar tarifas de afiliados por producto."
 
 #: includes/integrations/extras/class-exchange-feature.php:23
 #, fuzzy
@@ -2907,11 +2902,217 @@ msgstr "Afiliado"
 
 #: includes/integrations/extras/class-exchange-feature.php:54
 msgid "Disable referrals on this product"
+msgstr "Desabilitar referidos para este producto"
+
+#: includes/misc-functions.php:26
+#, fuzzy
+msgid "US Dollars"
+msgstr "Dólares Americanos (&#36;)"
+
+#: includes/misc-functions.php:27
+msgid "Euros"
+msgstr "Euros"
+
+#: includes/misc-functions.php:28
+msgid "United Arab Emirates Dirham"
+msgstr "Dírham de los Emiratos Árabes Unidos"
+
+#: includes/misc-functions.php:29
+#, fuzzy
+msgid "Australian Dollars"
+msgstr "Dólares Australianos (&#36;)"
+
+#: includes/misc-functions.php:30
+msgid "Bangladeshi Taka"
+msgstr "Taka Bangladesí"
+
+#: includes/misc-functions.php:31
+#, fuzzy
+msgid "Brazilian Real"
+msgstr "Real Brasileño (R&#36;)"
+
+#: includes/misc-functions.php:32
+msgid "Bulgarian Lev"
 msgstr ""
+" Lev de \n"
+"Bulgaria"
+
+#: includes/misc-functions.php:33
+#, fuzzy
+msgid "Canadian Dollars"
+msgstr "Dólares Canadienses (&#36;)"
+
+#: includes/misc-functions.php:34
+#, fuzzy
+msgid "Chilean Peso"
+msgstr "Pesos Filipinos"
+
+#: includes/misc-functions.php:35
+msgid "Chinese Yuan"
+msgstr "Yuan Chino"
+
+#: includes/misc-functions.php:36
+msgid "Colombian Peso"
+msgstr "Peso Colombiano"
+
+#: includes/misc-functions.php:37
+msgid "Czech Koruna"
+msgstr "Corona Checa"
+
+#: includes/misc-functions.php:38
+msgid "Danish Krone"
+msgstr "Corona Danesa"
+
+#: includes/misc-functions.php:39
+msgid "Dominican Peso"
+msgstr "Peso Dominicano"
+
+#: includes/misc-functions.php:40
+#, fuzzy
+msgid "Hong Kong Dollar"
+msgstr "Dólar de Hong Kong (&#36;)"
+
+#: includes/misc-functions.php:41
+msgid "Croatia kuna"
+msgstr "Kuna Croata "
+
+#: includes/misc-functions.php:42
+msgid "Hungarian Forint"
+msgstr "Florín Húngaro"
+
+#: includes/misc-functions.php:43
+msgid "Icelandic krona"
+msgstr "Corona Islandesa"
+
+#: includes/misc-functions.php:44
+msgid "Indonesia Rupiah"
+msgstr "Rupia Indonesia"
+
+#: includes/misc-functions.php:45
+#, fuzzy
+msgid "Indian Rupee"
+msgstr "Rupia India (&#8377;)"
+
+#: includes/misc-functions.php:46
+msgid "Nepali Rupee"
+msgstr "Rupia Nepalí"
+
+#: includes/misc-functions.php:47
+#, fuzzy
+msgid "Israeli Shekel"
+msgstr "Shekel Israelí (&#8362;)"
+
+#: includes/misc-functions.php:48
+#, fuzzy
+msgid "Japanese Yen"
+msgstr "Yen Japonés (&yen;)"
+
+#: includes/misc-functions.php:49
+msgid "Lao Kip"
+msgstr "Kip Laosiano"
+
+#: includes/misc-functions.php:50
+msgid "South Korean Won"
+msgstr "Won Surcoreano"
+
+#: includes/misc-functions.php:51
+msgid "Malaysian Ringgits"
+msgstr "Ringgits de Malasia"
+
+#: includes/misc-functions.php:52
+#, fuzzy
+msgid "Mexican Peso"
+msgstr "Peso Mexicano (&#36;)"
+
+#: includes/misc-functions.php:53
+msgid "Nigerian Naira"
+msgstr "Naira Nigeriana"
+
+#: includes/misc-functions.php:54
+msgid "Norwegian Krone"
+msgstr "Corona Noruega"
+
+#: includes/misc-functions.php:55
+#, fuzzy
+msgid "New Zealand Dollar"
+msgstr "Dólar de Nueva Zelanda (&#36;)"
+
+#: includes/misc-functions.php:56
+msgid "Paraguayan Guaraní"
+msgstr "Guaraní Paraguayo"
+
+#: includes/misc-functions.php:57
+msgid "Philippine Pesos"
+msgstr "Pesos Filipinos"
+
+#: includes/misc-functions.php:58
+msgid "Polish Zloty"
+msgstr "Zloty Polaco"
+
+#: includes/misc-functions.php:59
+#, fuzzy
+msgid "Pounds Sterling"
+msgstr "Libras esterlinas (&pound;)"
+
+#: includes/misc-functions.php:60
+msgid "Romanian Leu"
+msgstr "Leu Rumano\n"
+
+#: includes/misc-functions.php:61
+#, fuzzy
+msgid "Russian Ruble"
+msgstr "Rublos Rusos"
+
+#: includes/misc-functions.php:62
+#, fuzzy
+msgid "Singapore Dollar"
+msgstr "Dólar de Singapur (&#36;)"
+
+#: includes/misc-functions.php:63
+msgid "South African rand"
+msgstr "Rand Sudafricano"
+
+#: includes/misc-functions.php:64
+msgid "Swedish Krona"
+msgstr "Corono Sueca"
+
+#: includes/misc-functions.php:65
+msgid "Swiss Franc"
+msgstr "Franco Suizo"
+
+#: includes/misc-functions.php:66
+msgid "Taiwan New Dollars"
+msgstr "Nuevo Dólar Taiwanés"
+
+#: includes/misc-functions.php:67
+#, fuzzy
+msgid "Thai Baht"
+msgstr "Baht Tailandés (&#3647;)"
+
+#: includes/misc-functions.php:68
+#, fuzzy
+msgid "Turkish Lira"
+msgstr "Lira Turca (&#8378;)"
+
+#: includes/misc-functions.php:69
+msgid "Vietnamese Dong"
+msgstr "Đồng Vietnamita"
+
+#: includes/misc-functions.php:70
+msgid "Egyptian Pound"
+msgstr "Libra Egipcia"
+
+#: includes/scripts.php:62
+msgid ""
+"Are you sure you want to generate the payout file? All included referrals "
+"will be marked as Paid."
+msgstr ""
+"¿Esta usted seguro que quiere generar el archivo de pagos? Todos los "
+"afiliados incluidos serán marcados como Pagados."
 
 #: templates/dashboard-tab-creatives.php:36
 msgid "Sorry, there are currently no creatives available."
-msgstr ""
+msgstr "Lo sentimos, no hay creativos disponibles."
 
 #: templates/dashboard-tab-graphs.php:3
 #, fuzzy
@@ -2953,12 +3154,12 @@ msgid "Referral URL Generator"
 msgstr "Generador de URL de referencia"
 
 #: templates/dashboard-tab-urls.php:6
-#, fuzzy, php-format
+#, php-format
 msgid "Your affiliate ID is: <strong>%s</strong>"
 msgstr "Su ID de afiliado es: <strong>%d</strong>"
 
 #: templates/dashboard-tab-urls.php:8
-#, fuzzy, php-format
+#, php-format
 msgid "Your affiliate username is: <strong>%s</strong>"
 msgstr "Su ID de afiliado es: <strong>%d</strong>"
 
@@ -3022,7 +3223,7 @@ msgstr "Afiliados"
 
 #: templates/dashboard.php:39
 msgid "Graphs"
-msgstr ""
+msgstr "Gráficos"
 
 #: templates/login.php:10
 msgid "Log into Your Account"
@@ -3063,7 +3264,7 @@ msgstr "Correo Electrónico de pago"
 
 #: templates/register.php:71
 msgid "How will you promote us?"
-msgstr ""
+msgstr "Cómo nos va a promover?"
 
 #: templates/register.php:83
 msgid "Confirm Password"
@@ -3077,131 +3278,3 @@ msgstr "Acepte nuestros <a href=\"%s\" target=\"_blank\">Términos de Uso</a>"
 #: templates/register.php:108
 msgid "Register"
 msgstr "Registrar"
-
-#~ msgid "Euros (&euro;)"
-#~ msgstr "Euros (&euro;)"
-
-#~ msgid "Korean Won (&#8361;)"
-#~ msgstr "Won Coreano (&#8361;)"
-
-#~ msgid "Iranian Rial (&#65020;)"
-#~ msgstr "Rial Iraní (&#65020;)"
-
-#~ msgid "Coupon Code Tracking"
-#~ msgstr "Rastreo de código de cupón"
-
-#~ msgid ""
-#~ "Affiliate coupon tracking has been one of the most requested features, "
-#~ "and one we are thrilled to introduce with version 1.1."
-#~ msgstr ""
-#~ "El rastreo de cupones de afiliados ha sido una de las características mas "
-#~ "solicitadas y estamos encantados de introducirla en la version 1.1"
-
-#~ msgid ""
-#~ "This allows you to connect a coupon code to a specific affiliate so the "
-#~ "affiliate is credited a referral anytime the coupon is redeemed."
-#~ msgstr ""
-#~ "Esto le permite conectar un código de cupón a un afiliado especifico así "
-#~ "que el afiliado sera acreditado con un referido cuando el cupón sea "
-#~ "canjeado"
-
-#~ msgid ""
-#~ "For version 1.1, we have included coupon code tracking support for Easy "
-#~ "Digital Downloads, WooCommerce, and Restrict Content Pro. More "
-#~ "integrations will get added soon."
-#~ msgstr ""
-#~ "Para la versión 1.1 hemos incluido soporte para el rastreo de códigos de "
-#~ "cupones para Easy Digital Downloads, WooCommerce y  Restrict Content Pro. "
-#~ "Muy pronto mas integraciones serán agregadas."
-
-#~ msgid "Minimum Earnings for Affiliate Payout"
-#~ msgstr "Ganancias mínimas para el pago a afiliados."
-
-#~ msgid ""
-#~ "With the minimum amount option, you can set the minimum amount that "
-#~ "affiliates need to have earned before their referrals are included in the "
-#~ "payout."
-#~ msgstr ""
-#~ "Con la opción de monto mínimo, usted puede configurar el monto mínimo que "
-#~ "un afiliado necesita ganar antes de que sus referidos sean incluidos en "
-#~ "el pago"
-
-#~ msgid ""
-#~ "This is great for sites that want to keep the affiliate system locked "
-#~ "down to serious affiliates."
-#~ msgstr ""
-#~ "Esto es grandioso para sitios que quieren mantener el sistema de "
-#~ "afiliados restringido para afiliados serios."
-
-#~ msgid "Affiliate Registration Graph"
-#~ msgstr "Grafica de registro de afiliados"
-
-#~ msgid ""
-#~ "A new section has been added to the Reports page that lets you see "
-#~ "affiliate registrations over time."
-#~ msgstr ""
-#~ "Una nueva sección ha sido agregada a la pagina de reportes que le dejara "
-#~ "ver el registro de afiliados a través del tiempo."
-
-#~ msgid "Auto Register Users as Affiliates"
-#~ msgstr "Registrar usuarios como afiliados automaticamente"
-
-#~ msgid ""
-#~ "We have introduced a new option to automatically register new WordPress "
-#~ "users as affiliates when their user accounts are created."
-#~ msgstr ""
-#~ "Hemos introducido una nueva opción para registrar a los nuevos usuarios "
-#~ "de WordPress como afiliados cuando la cuenta de usuario es creada."
-
-#~ msgid ""
-#~ "The Overview page now has a new widget that shows your top 5 most "
-#~ "valuable affiliates, based on earnings."
-#~ msgstr ""
-#~ "La pagina de resumen ahora tienen un nuevo widget que muestra los 5 "
-#~ "usuarios mas importantes, basado en las ganancias."
-
-#~ msgid "Shortcode to Affiliate-only Content"
-#~ msgstr "Shortcode de contenido para afiliados únicamente"
-
-#~ msgid ""
-#~ "We have added a new shortcode that lets you show specific content to "
-#~ "logged-in affiliates only."
-#~ msgstr ""
-#~ "Hemos agregado un nuevo shortcode que le permite mostrar contenido "
-#~ "especifico para afiliados identificados únicamente."
-
-#~ msgid "Custom Cookie Expiration Option"
-#~ msgstr "Opción de expiración de Cookie personalizada"
-
-#~ msgid ""
-#~ "The expiration time for the affiliate tracking cookies can now be set "
-#~ "from the Settings page."
-#~ msgstr ""
-#~ "El tiempo de expiración para las cookies de rastreo de afiliados ahora "
-#~ "puede ser cambiado en la pagina de configuraciones."
-
-#~ msgid "More Actions"
-#~ msgstr "Mas Acciones"
-
-#~ msgid ""
-#~ "Numerous new action and filter hooks have been added to make AffiliateWP "
-#~ "even more developer friendly."
-#~ msgstr ""
-#~ "Numerosas acciones y filtros han sido agregados para hacer a AffiliateWP "
-#~ "aun mas amistoso con el desarrollador."
-
-#~ msgid ""
-#~ "The affiliate's referral rate. If left blank, the site default will be "
-#~ "used."
-#~ msgstr ""
-#~ "La tasa de referido del afiliado. si lo deja en blanco se usara la tasa "
-#~ "predeterminada del sitio."
-
-#~ msgid "Affiliates Pro"
-#~ msgstr "Affiliates Pro"
-
-#~ msgid "Payment Email (if different)"
-#~ msgstr "Correo Electrónico de pago (si es diferente)"
-
-#~ msgid "Referrals Over Time"
-#~ msgstr "Referidos a lo largo del tiempo"
