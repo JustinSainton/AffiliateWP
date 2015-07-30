@@ -143,7 +143,7 @@ class Affiliate_WP_Upgrades {
 			return;
 		}
 
-		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->prefix}rg_form" );
+		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->prefix}rg_form;" );
 
 		if ( ! $forms ) {
 			return;
@@ -153,7 +153,7 @@ class Affiliate_WP_Upgrades {
 
 			$meta = $wpdb->get_var(
 				$wpdb->prepare(
-					"SELECT display_meta FROM {$wpdb->prefix}rg_form_meta WHERE form_id = %d",
+					"SELECT display_meta FROM {$wpdb->prefix}rg_form_meta WHERE form_id = %d;",
 					$form->id
 				)
 			);
@@ -170,7 +170,7 @@ class Affiliate_WP_Upgrades {
 
 			$wpdb->query(
 				$wpdb->prepare(
-					"UPDATE {$wpdb->prefix}rg_form_meta SET display_meta = %s WHERE form_id = %d",
+					"UPDATE {$wpdb->prefix}rg_form_meta SET display_meta = %s WHERE form_id = %d;",
 					$meta,
 					$form->id
 				)
