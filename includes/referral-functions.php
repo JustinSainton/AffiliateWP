@@ -234,9 +234,24 @@ function affwp_count_referrals( $affiliate_id = 0, $status = array(), $date = ar
 }
 
 /**
- * Sanitize any value into an absolute rounded number
+ * Sanitize values to an absolute number, rounded to the required decimal place
  *
  * Allows zero values, but ignores truly empty values.
+ *
+ * The correct type will be used automatically, dending on its value:
+ *
+ * - Whole numbers (including numbers with a 0 value decimal) will be return as ints
+ * - Decimal numbers will be returned as floats
+ * - Decimal numbers ending with 0 will be returned as strings
+ *
+ * 1     => (int) 1
+ * 1.0   => (int) 1
+ * 0.00  => (int) 0
+ * 1.01  => (float) 1.01
+ * 1.019 => (float) 1.02
+ * 1.1   => (string) 1.10
+ * 1.10  => (string) 1.10
+ * 1.199 => (string) 1.20
  *
  * @param  mixed  $val
  * @param  int    $precision  Number of required decimal places (optional)
