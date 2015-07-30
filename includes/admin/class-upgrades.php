@@ -170,7 +170,19 @@ class Affiliate_WP_Upgrades {
 	 */
 	private function v17_upgrade_nforms() {
 
+		$settings = get_option( 'affwp_settings' );
+
+		if ( empty( $settings['integrations'] ) || ! array_key_exists( 'ninja-forms', $settings['integrations'] ) ) {
+			return;
+		}
+
 		global $wpdb;
+
+		$tables = $wpdb->get_var( "SHOW TABLES LIKE '{$wpdb->base_prefix}nf_object%';" );
+
+		if ( ! $tables ) {
+			return;
+		}
 
 		$forms = $wpdb->get_results( "SELECT id FROM {$wpdb->base_prefix}nf_objects WHERE type = 'form';" );
 
