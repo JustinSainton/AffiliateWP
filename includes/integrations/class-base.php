@@ -240,21 +240,9 @@ abstract class Affiliate_WP_Base {
 
 		$this->affiliate_id = $this->get_affiliate_id();
 
-		if( ! empty( $product_id ) ) {
+		if ( ! empty( $product_id ) ) {
 
 			$rate = $this->get_product_rate( $product_id, $args = array( 'reference' => $reference ) );
-			$type = affwp_get_affiliate_rate_type( $this->affiliate_id );
-
-			if ( 'percentage' == $type ) {
-
-				// Sanitize the rate and ensure it's in the proper format
-				if ( $rate > 1 ) {
-
-					$rate = $rate / 100;
-
-				}
-
-			}
 
 		}
 

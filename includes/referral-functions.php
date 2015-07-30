@@ -193,26 +193,29 @@ function affwp_delete_referral( $referral ) {
 	return false;
 }
 
+/**
+ * Calculate the referral amount
+ *
+ * @param  string  $amount
+ * @param  int     $affiliate_id
+ * @param  int     $reference
+ * @param  string  $rate
+ * @param  int     $product_id
+ * @return float
+ */
 function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0, $rate = '', $product_id = 0 ) {
 
-	// If the affiliate has a custom rate set, use it. If no rate is specified, use the fallback
 	$rate = affwp_get_affiliate_rate( $affiliate_id, false, $rate );
+	$type = affwp_get_affiliate_rate_type( $affiliate_id );
 
-	if( 'percentage' == affwp_get_affiliate_rate_type( $affiliate_id ) ) {
+	$referral_amount = ( 'percentage' === $type ) ? round( $amount * $rate, 2 ) : $rate;
 
-		$referral_amount = round( $amount * $rate, 2 );
-
-	} else {
-
-		$referral_amount = $rate;
-
-	}
-
-	if( $referral_amount < 0 ) {
+	if ( $referral_amount < 0 ) {
 		$referral_amount = 0;
 	}
 
-	return apply_filters( 'affwp_calc_referral_amount', $referral_amount, $affiliate_id, $amount, $reference, $product_id );
+	return (string) apply_filters( 'affwp_calc_referral_amount', $referral_amount, $affiliate_id, $amount, $reference, $product_id );
+
 }
 
 function affwp_count_referrals( $affiliate_id = 0, $status = array(), $date = array() ) {
@@ -227,5 +230,46 @@ function affwp_count_referrals( $affiliate_id = 0, $status = array(), $date = ar
 	}
 
 	return affiliate_wp()->referrals->count( $args );
+
+}
+
+/**
+ * Sanitize any value into an absolute rounded number
+ *
+ * Allows zero values, but ignores truly empty values.
+ *
+ * @param  mixed  $val
+ * @param  int    $precision  Number of required decimal places (optional)
+ * @return mixed              Returns an int, float or string on success, null when empty
+ */
+function affwp_abs_number_round( $val, $precision = 2 ) {
+
+	if ( is_null( $val ) || '' === $val ) {
+
+		return;
+
+	}
+
+	// Value cannot be negative
+	$val = abs( $val );
+
+	// Decimal precision must be a absolute integer
+	$precision = absint( $precision );
+
+	// Enforce the number of decimal places required (precision)
+	$val = sprintf( ( round( $val, $precision ) == intval( $val ) ) ? '%d' : "%.{$precision}f", $val );
+
+	// Convert number to the proper type (int, float, or string) depending on its value
+	if ( false !== strpos( $val, '.' ) ) {
+
+		$val = ( '0' !== substr( $val, -1 ) ) ? floatval( $val ) : (string) $val;
+
+	} else {
+
+		$val = absint( $val );
+
+	}
+
+	return $val;
 
 }

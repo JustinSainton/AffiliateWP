@@ -3,9 +3,9 @@ $affiliate    = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
 $user_info    = get_userdata( $affiliate->user_id );
 $rate_type    = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
 $rate         = isset( $affiliate->rate ) ? $affiliate->rate : null;
-$rate         = ( ! is_null( $rate ) && '' !== $rate && floatval( $rate ) >= 0 ) ? floatval( $rate ) : null;
-$rate_default = affiliate_wp()->settings->get( 'referral_rate', 20 );
-$rate_default = ( ! is_null( $rate_default ) && '' !== $rate_default && floatval( $rate_default ) >= 0 ) ? floatval( $rate_default ) : 20;
+$rate         = affwp_abs_number_round( $affiliate->rate );
+$default_rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
+$default_rate = affwp_abs_number_round( $default_rate );
 $email        = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
 ?>
 <div class="wrap">
@@ -82,7 +82,7 @@ $email        = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email
 				</th>
 
 				<td>
-					<input class="small-text" type="number" name="rate" id="rate" step="0.01" min="0" max="999999" placeholder="<?php echo esc_attr( $rate_default ); ?>" value="<?php echo esc_attr( $rate ); ?>"/>
+					<input class="small-text" type="number" name="rate" id="rate" step="0.01" min="0" max="999999" placeholder="<?php echo esc_attr( $default_rate ); ?>" value="<?php echo esc_attr( $rate ); ?>"/>
 					<p class="description"><?php _e( 'The affiliate\'s referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
 				</td>
 

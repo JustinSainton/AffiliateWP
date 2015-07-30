@@ -45,7 +45,7 @@ class Affiliate_WP_Settings {
 		 * falling back to the default.
 		 *
 		 * @since  1.7
-		 * @return array
+		 * @param  array
 		 */
 		$zero_values_allowed = (array) apply_filters( 'affwp_settings_zero_values_allowed', array( 'referral_rate' ) );
 
@@ -707,6 +707,7 @@ class Affiliate_WP_Settings {
 		// Saving the field empty will revert to std value, if it exists
 		$std   = ( isset( $args['std'] ) && ! is_null( $args['std'] ) && '' !== $args['std'] && floatval( $args['std'] ) >= 0 ) ? $args['std'] : null;
 		$value = ! is_null( $value ) ? $value : ( ! is_null( $std ) ? $std : null );
+		$value = affwp_abs_number_round( $value );
 
 		// Other attributes and their defaults
 		$max  = isset( $args['max'] )  ? $args['max']  : 999999;

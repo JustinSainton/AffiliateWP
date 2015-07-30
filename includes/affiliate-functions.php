@@ -184,57 +184,68 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
 /**
  * Retrieves the referral rate for an affiliate
  *
- * @since 1.0
- * @param $affiliate_id int The ID of the affiliate we are getting a rate for
- * @param $formatted bool Whether to return a formatted rate with %/currency
- * @param $custom_rate string A custom rate that overrides site/affiliate settings
- * @return float
+ * @since  1.0
+ * @param  int     $affiliate_id  The ID of the affiliate we are getting a rate for
+ * @param  bool    $formatted     Whether to return a formatted rate with %/currency
+ * @param  string  $product_rate  A custom product rate that overrides site/affiliate settings
+ * @return string
  */
-function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $custom_rate = '' ) {
+function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $product_rate = '' ) {
 
-	// Get rates, with special consideration for 0 values, and never allowing negative rates
-	$default_rate   = affiliate_wp()->settings->get( 'referral_rate', 20 );
-	$default_rate   = ( ! is_null( $default_rate ) && '' !== $default_rate && floatval( $default_rate ) >= 0 ) ? floatval( $default_rate ) : 20;
+	// Global referral rate setting, fallback to 20
+	$default_rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
+	$default_rate = affwp_abs_number_round( $default_rate );
+
+	// Get product-specific referral rate, fallback to global rate
+	$product_rate = affwp_abs_number_round( $product_rate );
+	$product_rate = ( null !== $product_rate ) ? $product_rate : $default_rate;
+
+	// Get affiliate-specific referral rate
 	$affiliate_rate = affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
-	$affiliate_rate = ( ! is_null( $affiliate_rate ) && '' !== $affiliate_rate && floatval( $affiliate_rate ) >= 0 ) ? floatval( $affiliate_rate ) : null;
-	$custom_rate    = ( ! is_null( $custom_rate ) && '' !== $custom_rate && floatval( $custom_rate ) >= 0 ) ? floatval( $custom_rate ) : null;
 
-	// Determine the rate with fallback support
-	$rate = ! is_null( $custom_rate ) ? $custom_rate : ( ! is_null( $affiliate_rate ) ? $affiliate_rate : $default_rate );
+	// Get rate in order of priority: Affiliate -> Product -> Global
+	$rate = affwp_abs_number_round( $affiliate_rate );
+	$rate = ( null !== $rate ) ? $rate : $product_rate;
 
+	// Get the referral rate type
 	$type = affwp_get_affiliate_rate_type( $affiliate_id );
 
-	// Sanitize the rate and ensure it's in the proper format
-	$rate = ( 'percentage' === $type && $rate > 0 ) ? $rate / 100 : $rate;
+	// Format percentage rates
+	$rate = ( 'percentage' === $type ) ? $rate / 100 : $rate;
 
-	$rate = (float) apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id, $type );
+	/**
+	 * Filter the affiliate rate
+	 *
+	 * @param  string  $rate
+	 * @param  int     $affiliate_id
+	 * @param  string  $type
+	 */
+	$rate = (string) apply_filters( 'affwp_get_affiliate_rate', $rate, $affiliate_id, $type );
 
-	// If rate should be formatted, format it based on the type
-	if ( $formatted ) {
+	// Return rate now if formatting is not required
+	if ( ! $formatted ) {
+		return $rate;
+	}
 
-		switch( $type ) {
+	// Format the rate based on the type
+	switch ( $type ) {
 
-			case 'percentage' :
+		case 'percentage' :
 
-				$rate = $rate * 100 . '%';
+			$rate = affwp_abs_number_round( $rate * 100 ) . '%';
 
-				break;
+			break;
 
-			case 'flat' :
+		case 'flat' :
 
-				$rate = affwp_currency_filter( $rate );
+			$rate = affwp_currency_filter( $rate );
 
-				break;
-
-			default :
-
-				break;
-
-		}
+			break;
 
 	}
 
 	return $rate;
+
 }
 
 /**
