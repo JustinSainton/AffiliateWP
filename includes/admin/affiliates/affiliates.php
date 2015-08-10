@@ -94,15 +94,15 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of affiliates found
 	 *
-	 * Total number of affiliates
-	 * @var string
+	 * @var int
 	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of affiliates
+	 * Number of active affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -110,7 +110,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $active_count;
 
 	/**
-	 * Inactive number of affiliates
+	 *  Number of inactive affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -118,7 +118,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $inactive_count;
 
 	/**
-	 * Pending number of affiliates
+	 * Number of pending affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -126,7 +126,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $pending_count;
 
 	/**
-	 * Rejected number of affiliates
+	 * Number of rejected affiliates found
 	 *
 	 * @var string
 	 * @since 1.0

@@ -59,8 +59,10 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 	 *
 	 * @access  public
 	 * @since   1.0
-	*/
-	public function get_affiliates( $args = array() ) {
+	 * @param   array $args
+	 * @param   bool  $count  Return only the total number of results found (optional)
+	 */
+	public function get_affiliates( $args = array(), $count = false ) {
 		global $wpdb;
 
 		$defaults = array(
@@ -191,29 +193,63 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		}
 
 		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
-		
-		if( 'earnings' == $args['orderby'] ) {
+
+		if ( 'earnings' === $args['orderby'] ) {
 			$args['orderby'] = 'earnings+0';
 		}
 
-		$cache_key = md5( 'affwp_affiliates_' . serialize( $args ) );
+		$cache_key = ( true === $count ) ? md5( 'affwp_affiliates_count' . serialize( $args ) ) : md5( 'affwp_affiliates_' . serialize( $args ) );
 
-		$affiliates = wp_cache_get( $cache_key, 'affiliates' );
+		$results = wp_cache_get( $cache_key, 'affiliates' );
 
+		if ( false === $results ) {
 
-		if( false === $affiliates ) {
+			if ( true === $count ) {
 
-			if( 'display_name' == $args['orderby'] ) {
-				$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} a INNER JOIN {$wpdb->users} u ON a.user_id = u.ID {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+				$results = absint( $wpdb->get_var( "SELECT COUNT({$this->primary_key}) FROM {$this->table_name} {$where};" ) );
+
 			} else {
-				$affiliates = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
+
+				if ( 'display_name' === $args['orderby'] ) {
+
+					$results = $wpdb->get_results(
+						$wpdb->prepare(
+							"SELECT * FROM {$this->table_name} a INNER JOIN {$wpdb->users} u ON a.user_id = u.ID {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d, %d;",
+							absint( $args['offset'] ),
+							absint( $args['number'] )
+						)
+					);
+
+				} else {
+
+					$results = $wpdb->get_results(
+						$wpdb->prepare(
+							"SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d, %d;",
+							absint( $args['offset'] ),
+							absint( $args['number'] )
+						)
+					);
+
+				}
+
 			}
 
-			wp_cache_set( $cache_key, $affiliates, 'affiliates', 3600 );
+			wp_cache_set( $cache_key, $results, 'affiliates', 3600 );
+
 		}
 
-		return $affiliates;
+		return $results;
 
+	}
+
+	/**
+	 * Return the number of results found for a given query
+	 *
+	 * @param  array  $args
+	 * @return int
+	 */
+	public function count( $args = array() ) {
+		return $this->get_affiliates( $args, true );
 	}
 
 	/**
@@ -288,80 +324,6 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 		}
 
 		return false;
-
-	}
-
-	/**
-	 * Count the total number of affiliates in the database
-	 *
-	 * @access  public
-	 * @since   1.0
-	*/
-	public function count( $args = array() ) {
-		global $wpdb;
-
-		$where = '';
-
-		if ( ! empty( $args['status'] ) ) {
-
-			if( is_array( $args['status'] ) ) {
-				$where .= " WHERE `status` IN('" . implode( "','", $args['status'] ) . "') ";
-			} else {
-				$where .= " WHERE `status` = '" . $args['status'] . "' ";
-			}
-
-		}
-
-		if ( ! empty( $args['search'] ) ) {
-
-			if ( is_numeric( $args['search'] ) ) {
-
-				$affiliate_ids = esc_sql( $args['search'] );
-				$search = "`affiliate_id` IN( {$affiliate_ids} )";
-
-			} elseif( is_string( $args['search'] ) ) {
-
-				// Searching by an affiliate's name or email
-				if( is_email( $args['search'] ) ) {
-
-					$user    = get_user_by( 'email', $args['search'] );
-					$user_id = $user ? $user->ID : 0;
-					$search  = "`user_id` = '" . $user_id . "' ";
-
-				} else {
-
-					$args['search'] = esc_sql( $args['search'] );
-					$users = $wpdb->get_col( "SELECT ID FROM {$wpdb->users} WHERE display_name LIKE '%{$args['search']}%'" );
-					$users = ! empty( $users ) ? implode( ',', $users ) : 0;
-					$search = "`user_id` IN( {$users} )";
-
-				}
-
-			}
-
-			if ( ! empty( $search ) ) {
-
-				if( ! empty( $where ) ) {
-					$search = "AND " . $search;
-				} else {
-					$search = "WHERE " . $search;
-				}
-
-				$where .= $search;
-			}
-
-		}
-
-		$cache_key = md5( 'affwp_affiliates_count' . serialize( $args ) );
-
-		$count = wp_cache_get( $cache_key, 'affiliates' );
-
-		if( false === $count ) {
-			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM {$this->table_name} {$where};" );
-			wp_cache_set( $cache_key, $count, 'affiliates', 3600 );
-		}
-
-		return $count;
 
 	}
 

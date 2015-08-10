@@ -81,15 +81,15 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of creatives found
 	 *
-	 * Total number of creatives
-	 * @var string
-	 * @since 1.2
+	 * @var int
+	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of creatives
+	 * Number of active creatives found
 	 *
 	 * @var string
 	 * @since 1.2
@@ -97,7 +97,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	public $active_count;
 
 	/**
-	 * Inactive number of creatives
+	 * Number of inactive creatives found
 	 *
 	 * @var string
 	 * @since 1.2

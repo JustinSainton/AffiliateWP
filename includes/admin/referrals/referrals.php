@@ -95,15 +95,15 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of referrals found
 	 *
-	 * Total number of referrals
 	 * @var int
 	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Number of paid referrals
+	 * Number of paid referrals found
 	 *
 	 * @var int
 	 * @since 1.0
@@ -111,7 +111,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public $paid_count;
 
 	/**
-	 * Number of unpaid referrals
+	 * Number of unpaid referrals found
 	 *
 	 * @var int
 	 * @since 1.0
@@ -119,7 +119,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public $unpaid_count;
 
 	/**
-	 * Number of pending referrals
+	 * Number of pending referrals found
 	 *
 	 * @var int
 	 * @since 1.0
@@ -127,7 +127,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	public $pending_count;
 
 	/**
-	 * Number of rejected referrals
+	 * Number of rejected referrals found
 	 *
 	 * @var int
 	 * @since 1.0
