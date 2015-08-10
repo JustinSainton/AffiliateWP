@@ -345,15 +345,14 @@ function affwp_get_affiliate_email( $affiliate, $default = false ) {
  *
  * @since  1.7
  * @param  object|int $affiliate
- * @param  mixed      $default (optional)
  * @return mixed
  */
-function affwp_get_affiliate_payment_email( $affiliate, $default = false ) {
+function affwp_get_affiliate_payment_email( $affiliate ) {
 
 	$affiliate = is_numeric( $affiliate ) ? affwp_get_affiliate( $affiliate ) : $affiliate;
 
 	if ( empty( $affiliate->payment_email ) || ! is_email( $affiliate->payment_email ) ) {
-		return $default;
+		return affwp_get_affiliate_email( $affiliate );
 	}
 
 	return $affiliate->payment_email;
