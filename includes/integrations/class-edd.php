@@ -563,7 +563,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			</label>
 		</p>
 
-		<p><?php _e( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use the site default referral rate.', 'affiliate-wp' ); ?></p>
 <?php
 	}
 
