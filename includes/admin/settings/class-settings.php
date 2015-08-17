@@ -21,6 +21,8 @@ class Affiliate_WP_Settings {
 
 		add_filter( 'affwp_settings_emails', array( $this, 'email_approval_settings' ) );
 		add_filter( 'affwp_settings_sanitize', array( $this, 'sanitize_referral_variable' ), 10, 2 );
+		add_filter( 'affwp_settings_sanitize_text', array( $this, 'sanitize_text_fields' ), 10, 2 );
+		add_filter( 'affwp_settings_sanitize_checkbox', array( $this, 'sanitize_cb_fields' ), 10, 2 );
 	}
 
 	/**
@@ -87,7 +89,7 @@ class Affiliate_WP_Settings {
 						'min'     => isset( $option['min'] ) ? $option['min'] : null,
 						'step'    => isset( $option['step'] ) ? $option['step'] : null,
 						'options' => isset( $option['options'] ) ? $option['options'] : '',
-						'std'     => isset( $option['std'] ) ? $option['std'] : ''
+						'std'     => isset( $option['std'] ) ? $option['std'] : '',
 					)
 				);
 			}
@@ -201,6 +203,26 @@ class Affiliate_WP_Settings {
 	}
 
 	/**
+	 * Sanitize text fields
+	 *
+	 * @since 1.7
+	 * @return string
+	*/
+	public function sanitize_text_fields( $value = '', $key = '' ) {
+		return sanitize_text_field( $value );
+	}
+
+	/**
+	 * Sanitize checkbox fields
+	 *
+	 * @since 1.7
+	 * @return int
+	*/
+	public function sanitize_cb_fields( $value = '', $key = '' ) {
+		return absint( $value );
+	}
+
+	/**
 	 * Retrieve the array of plugin settings
 	 *
 	 * @since 1.0
@@ -224,7 +246,8 @@ class Affiliate_WP_Settings {
 					'license_key' => array(
 						'name' => __( 'License Key', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'http://affiliatewp.com/support/' ) . '</p>',
-						'type' => 'license'
+						'type' => 'license',
+						'sanitize_callback' => 'sanitize_text_field'
 					),
 
 					'pages' => array(
@@ -236,13 +259,15 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Affiliate Area', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
-						'options' => affwp_get_pages()
+						'options' => affwp_get_pages(),
+						'sanitize_callback' => 'absint'
 					),
 					'terms_of_use' => array(
 						'name' => __( 'Terms of Use', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ) . '</p>',
 						'type' => 'select',
-						'options' => affwp_get_pages()
+						'options' => affwp_get_pages(),
+						'sanitize_callback' => 'absint'
 					),
 					'referrals' => array(
 						'name' => '<strong>' . __( 'Referral Settings', 'affiliate-wp' ) . '</strong>',
