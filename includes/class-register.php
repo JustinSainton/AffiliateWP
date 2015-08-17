@@ -58,7 +58,10 @@ class Affiliate_WP_Register {
 
 			// Loop through required fields and show error message
 			foreach ( $this->required_fields() as $field_name => $value ) {
-				if ( empty( $_POST[ $field_name ] ) ) {
+
+				$field = sanitize_text_field( $_POST[ $field_name ] );
+
+				if ( empty( $field ) ) {
 					$this->add_error( $value['error_id'], $value['error_message'] );
 				}
 			}
