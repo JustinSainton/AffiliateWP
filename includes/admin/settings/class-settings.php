@@ -145,10 +145,18 @@ class Affiliate_WP_Settings {
 		foreach ( $input as $key => $value ) {
 
 			// Get the setting type (checkbox, select, etc)
-			$type = isset( $settings[ $tab ][ $key ][ 'type' ] ) ? $settings[ $tab ][ $key ][ 'type' ] : false;
-			$input[ $key ] = $value;
+			$type              = isset( $settings[ $tab ][ $key ][ 'type' ] ) ? $settings[ $tab ][ $key ][ 'type' ] : false;
+			$sanitize_callback = isset( $settings[ $tab ][ $key ][ 'sanitize_callback' ] ) ? $settings[ $tab ][ $key ][ 'sanitize_callback' ] : false;
+			$input[ $key ]     = $value;
 
 			if ( $type ) {
+
+				if( $sanitize_callback && is_callable( $sanitize_callback ) ) {
+
+					add_filter( 'affwp_settings_sanitize_' . $type, $sanitize_callback, 10, 2 );
+
+				}
+
 				// Field type specific filter
 				$input[ $key ] = apply_filters( 'affwp_settings_sanitize_' . $type, $input[ $key ], $key );
 			}
