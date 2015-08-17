@@ -29,7 +29,8 @@ function affiliate_wp_install() {
 
 	}
 
-	add_option( 'affwp_js_works', 'unchecked' );
+	// 3 equals unchecked
+	update_option( 'affwp_js_works', 3 );
 	update_option( 'affwp_is_installed', '1' );
 	update_option( 'affwp_version', AFFILIATEWP_VERSION );
 	

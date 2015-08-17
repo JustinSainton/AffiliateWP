@@ -531,11 +531,9 @@ class Affiliate_WP_Tracking {
 	 */
 	public function use_fallback_method() {
 
-		$js_works     = (int) get_option( 'affwp_js_works' );
-
 		$use_fallback = affiliate_wp()->settings->get( 'tracking_fallback', false );
-
-		$use_fallback = $use_fallback || 2 === $js_works;
+		$js_works     = (int) get_option( 'affwp_js_works' );
+		$use_fallback = $use_fallback || 1 !== $js_works;
 
 		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );
 	}
@@ -543,7 +541,7 @@ class Affiliate_WP_Tracking {
 	/**
 	 * Set whether JS works or not. This is called via ajax.
 	 *
-	 * @since 1.4
+	 * @since 1.7
 	 */
 	public function check_js() {
 
