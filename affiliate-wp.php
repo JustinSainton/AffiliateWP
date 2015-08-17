@@ -175,6 +175,15 @@ final class Affiliate_WP {
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Affiliate_WP ) ) {
 			self::$instance = new Affiliate_WP;
+
+			if( version_compare( PHP_VERSION, '5.3', '<' ) ) {
+
+				add_action( 'admin_notices', array( 'Affiliate_WP', 'below_php_version_notice' ) );
+
+				return self::$instance;
+
+			}
+
 			self::$instance->setup_constants();
 			self::$instance->includes();
 
@@ -209,6 +218,17 @@ final class Affiliate_WP {
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliate-wp' ), '1.0' );
+	}
+
+	/**
+	 * Show a warning to sites running PHP < 5.3
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @return void
+	 */
+	public function below_php_version_notice() {
+		echo '<div class="error"><p>' . __( 'Your version of PHP is below the minimum version of PHP required by AffiliateWP. Please contact your host and request that your version be upgraded to 5.3 or later.', 'affiliate-wp' ) . '</p></div>';
 	}
 
 	/**
