@@ -443,6 +443,11 @@ class Affiliate_WP_Emails {
 				'function'    => 'affwp_email_tag_promo_method'
 			),
 			array(
+				'tag'         => 'rejection_reason',
+				'description' => __( 'The reason an affiliate area was rejected', 'affiliate-wp' ),
+				'function'    => 'affwp_email_tag_rejection_reason'
+			),
+			array(
 				'tag'         => 'login_url',
 				'description' => __( 'The affiliate login URL to your website', 'affiliate-wp' ),
 				'function'    => 'affwp_email_tag_login_url'
