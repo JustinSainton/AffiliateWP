@@ -23,6 +23,8 @@ class Affiliate_WP_Settings {
 		add_filter( 'affwp_settings_sanitize', array( $this, 'sanitize_referral_variable' ), 10, 2 );
 		add_filter( 'affwp_settings_sanitize_text', array( $this, 'sanitize_text_fields' ), 10, 2 );
 		add_filter( 'affwp_settings_sanitize_checkbox', array( $this, 'sanitize_cb_fields' ), 10, 2 );
+		add_filter( 'affwp_settings_sanitize_number', array( $this, 'sanitize_number_fields' ), 10, 2 );
+		add_filter( 'affwp_settings_sanitize_rich_editor', array( $this, 'sanitize_rich_editor_fields' ), 10, 2 );
 	}
 
 	/**
@@ -223,6 +225,27 @@ class Affiliate_WP_Settings {
 	}
 
 	/**
+	 * Sanitize number fields
+	 *
+	 * @since 1.7
+	 * @return int
+	*/
+	public function sanitize_number_fields( $value = '', $key = '' ) {
+		return intval( $value );
+	}
+
+
+	/**
+	 * Sanitize rich editor fields
+	 *
+	 * @since 1.7
+	 * @return int
+	*/
+	public function sanitize_rich_editor_fields( $value = '', $key = '' ) {
+		return wp_kses_post( $value );
+	}
+
+	/**
 	 * Retrieve the array of plugin settings
 	 *
 	 * @since 1.0
@@ -249,7 +272,6 @@ class Affiliate_WP_Settings {
 						'type' => 'license',
 						'sanitize_callback' => 'sanitize_text_field'
 					),
-
 					'pages' => array(
 						'name' => '<strong>' . __( 'Pages', 'affiliate-wp' ) . '</strong>',
 						'desc' => '',
