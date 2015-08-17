@@ -403,7 +403,7 @@ class Affiliate_WP_Settings {
 						'name' => __( 'Application Rejected Email Content', 'affiliate-wp' ),
 						'desc' => __( 'Enter the email to send when an application is rejected. HTML is rejected. Available template tags:', 'affiliate-wp' ) . '<br />' . affwp_get_emails_tags_list(),
 						'type' => 'rich_editor',
-						'std' => __( 'Hello {name}!', 'affiliate-wp' ) . "\n\n" . sprintf( __( 'We regret to inform you that your affiliate application on %s has been rejected.', 'affiliate-wp' ), home_url() ) . "\n\n" . __( 'Reason given %s', 'affiliate-wp' ) . ' {rejection_reason}'
+						'std' => __( 'Hello {name}!', 'affiliate-wp' ) . "\n\n" . sprintf( __( 'We regret to inform you that your affiliate application on %s has been rejected.', 'affiliate-wp' ), home_url() ) . "\n\n" . sprintf( __( 'Reason given %s', 'affiliate-wp' ), '{rejection_reason}' )
 					),
 					'referral_subject' => array(
 						'name' => __( 'New Referral Email Subject', 'affiliate-wp' ),
