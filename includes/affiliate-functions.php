@@ -63,12 +63,12 @@ function affwp_get_affiliate_username( $affiliate_id = 0 ) {
 
 	if ( $affiliate ) {
 		$user_info = get_userdata( $affiliate->user_id );
-		
+
 		if ( $user_info ) {
 			$username  = esc_html( $user_info->user_login );
 			return esc_html( $username );
 		}
-		
+
 	}
 
 	return false;
@@ -400,7 +400,7 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 	}
 
 	if( $delete_data ) {
-	
+
 		$user_id   = affwp_get_affiliate_user_id( $affiliate_id );
 		$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
 		$visits    = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
@@ -825,7 +825,7 @@ function affwp_update_affiliate( $data = array() ) {
 		if( wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) ) ) {
 
 			return true;
-		
+
 		}
 
 	}
@@ -912,7 +912,7 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 	} else {
 		// pretty URLs set from admin
 		$pretty = affwp_is_pretty_referral_urls();
-	} 
+	}
 
 	// get base URL
 	if ( isset( $args['base_url'] ) ) {
@@ -921,17 +921,17 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 		$base_url = affwp_get_affiliate_base_url();
 	}
 
-	// add trailing slash only if no query string exists
-	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) ) {
+	// add trailing slash only if no query string exists and there's no fragment identifier
+	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) && ! array_key_exists( 'fragment', parse_url( $base_url ) ) ) {
 		$base_url = trailingslashit( $args['base_url'] );
-	} 
+	}
 
 	// the format value, either affiliate's ID or username
 	$format_value = affwp_get_referral_format_value( $format, $affiliate_id );
 
 	// if query exists in base URL, strip it and store in variable so we can append to the end of the URL
 	if ( array_key_exists( 'query', parse_url( $base_url ) ) ) {
-		
+
 		$url_parts       = parse_url( $base_url );
 		$url_scheme      = isset( $url_parts['scheme'] ) ? $url_parts['scheme'] : 'http';
 		$url_host        = isset( $url_parts['host'] ) ? $url_parts['host'] : '';
