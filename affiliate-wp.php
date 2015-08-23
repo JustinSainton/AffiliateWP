@@ -298,12 +298,9 @@ final class Affiliate_WP {
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/plugins.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate.php';
 
-		} else {
-
-			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
-
 		}
 
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/class-affwp-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/actions.php';
