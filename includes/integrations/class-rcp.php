@@ -24,6 +24,11 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 		add_action( 'rcp_add_discount', array( $this, 'store_discount_affiliate' ), 10, 2 );
 		add_action( 'rcp_edit_discount', array( $this, 'update_discount_affiliate' ), 10, 2 );
 
+		add_action( 'rcp_add_subscription_form', array( $this, 'subscription_new' ) );
+		add_action( 'rcp_edit_subscription_form', array( $this, 'subscription_edit' ) );
+		add_action( 'rcp_add_subscription', array( $this, 'store_subscription_rate' ), 10, 2 );
+		add_action( 'rcp_edit_subscription_level', array( $this, 'store_subscription_rate' ), 10, 2 );
+
 	}
 
 	/**
@@ -50,7 +55,11 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 
 				$affiliate_discount = true;
 
-				$amount = affwp_calc_referral_amount( $price, $affiliate_id );
+				$this->affiliate_id = $affiliate_id;
+
+				$key    = rcp_get_subscription_key( $user_id );
+
+				$amount = $this->calculate_referral_amount( $price, $key, absint( $_POST['rcp_level'] ) );
 				
 				if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 					return false; // Ignore a zero amount referral
@@ -60,7 +69,7 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 					'amount'       => $amount,
 					'reference'    => rcp_get_subscription_key( $user_id ),
 					'description'  => rcp_get_subscription( $user_id ),
-					'affiliate_id' => $affiliate_id,
+					'affiliate_id' => $this->affiliate_id,
 					'context'      => $this->context
 				) );
 
@@ -77,10 +86,31 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			}
 
 			$key   = rcp_get_subscription_key( $user_id );
-			$total = $this->calculate_referral_amount( $price, $key );
+			$total = $this->calculate_referral_amount( $price, $key, absint( $_POST['rcp_level'] )  );
 
 			$this->insert_pending_referral( $total, $key, rcp_get_subscription( $user_id ) );
 		}
+
+	}
+
+	/**
+	 * Retrieves the rate and type for a specific product
+	 *
+	 * @access  public
+	 * @since   1.7
+	 * @return  float
+	*/
+	public function get_product_rate( $level_id = 0, $args = array() ) {
+
+		$rate = get_option( 'affwp_rcp_level_rate_' . $level_id, true );
+
+		if( empty( $rate ) ) {
+
+			$rate = affwp_get_affiliate_rate( $this->affiliate_id );
+
+		}
+
+		return apply_filters( 'affwp_get_product_rate', (float) $rate, $level_id, $args, $this->affiliate_id, $this->context );
 
 	}
 
@@ -228,6 +258,68 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_id, $affiliate_id );
+		
+	}
+
+	/**
+	 * Display Affiliate Rate field on add subscription screen
+	 *
+	 * @access  public
+	 * @since   1.7
+	*/
+	public function subscription_new() {
+?>
+		<tr class="form-field">
+			<th scope="row" valign="top">
+				<label for="rcp-affiliate-rate"><?php _e( 'Affiliate Rate', 'affiliate-wp' ); ?></label>
+			</th>
+			<td>
+				<input name="affwp_rcp_level_rate" id="rcp-affiliate-rate" style="width:40px" type="number" min="0"/>
+				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'rcp' ); ?></p>
+			</td>
+		</tr>
+<?php
+	}
+
+	/**
+	 * Display Affiliate Rate field on subscription edit screen
+	 *
+	 * @access  public
+	 * @since   1.7
+	*/
+	public function subscription_edit( $level ) {
+
+		$rate = get_option( 'affwp_rcp_level_rate_' . $level->id );
+?>
+		<tr class="form-field">
+			<th scope="row" valign="top">
+				<label for="rcp-affiliate-rate"><?php _e( 'Affiliate Rate', 'affiliate-wp' ); ?></label>
+			</th>
+			<td>
+				<input name="affwp_rcp_level_rate" id="rcp-affiliate-rate" style="width:40px" type="number" min="0" value="<?php echo esc_attr( $rate ); ?>"/>
+				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'rcp' ); ?></p>
+			</td>
+		</tr>
+<?php
+	}
+
+	/**
+	 * Store the rate for the subscription level
+	 *
+	 * @access  public
+	 * @since   1.7
+	*/
+	public function store_subscription_rate( $level_id = 0, $args ) {
+
+		if( ! empty( $_POST['affwp_rcp_level_rate'] ) ) {
+
+			update_option( 'affwp_rcp_level_rate_' . $level_id, sanitize_text_field( $_POST['affwp_rcp_level_rate'] ) );
+
+		} else {
+
+			delete_option( 'affwp_rcp_level_rate_' . $level_id );
+
+		}
 		
 	}
 	
