@@ -26,16 +26,9 @@ class Affiliate_WP_EasyCart extends Affiliate_WP_Base {
 	 * @access  public
 	 * @since   1.6
 	*/
-	public function add_pending_referral(  $order_id, $cart, $order_totals, $user, $payment_type ){
+	public function add_pending_referral( $order_id, $cart, $order_totals, $user, $payment_type ){
 
-		// Check if an affiliate coupon was used
-		$affiliate_id = $this->get_coupon_affiliate_id();
-
-		if( $this->was_referred() || $affiliate_id ) {
-
-			if( false !== $affiliate_id ) {
-				$this->affiliate_id = $affiliate_id;
-			}
+		if( $this->was_referred() ) {
 
 			if( affwp_get_affiliate_email( $this->affiliate_id ) == $user->email ) {
 				return false; // Customers cannot refer themselves
@@ -69,7 +62,7 @@ class Affiliate_WP_EasyCart extends Affiliate_WP_Base {
 
 				}
 
-				if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				if( $cart_tax > 0 && ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
 					$tax            = $cart_tax / count( $items );
 					$product_total += $tax;
@@ -125,10 +118,6 @@ class Affiliate_WP_EasyCart extends Affiliate_WP_Base {
 	public function revoke_referral_on_refund( $order_id = 0 ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
-			return;
-		}
-
-		if( 'shop_order' != get_post_type( $order_id ) ) {
 			return;
 		}
 
