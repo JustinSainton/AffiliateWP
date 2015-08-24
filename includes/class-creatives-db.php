@@ -57,14 +57,18 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 	 *
 	 * @access  public
 	 * @since   1.2
-	*/
-	public function get_creatives( $args = array() ) {
+	 * @param   array $args
+	 * @param   bool  $count  Return only the total number of results found (optional)
+	 */
+	public function get_creatives( $args = array(), $count = false ) {
 		global $wpdb;
 
 		$defaults = array(
-			'number' => 20,
-			'offset' => 0,
-			'status' => '',
+			'number'  => 20,
+			'offset'  => 0,
+			'status'  => '',
+			'orderby' => $this->primary_key,
+			'order'   => 'ASC',
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -84,17 +88,46 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 			}
 		}
 
-		$cache_key = md5( 'affwp_creatives_' . serialize( $args ) );
+		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
 
-		$creatives = wp_cache_get( $cache_key, 'creatives' );
-		
-		if ( $creatives === false ) {
-			$creatives = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY creative_id DESC LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
-			wp_cache_set( $cache_key, $creatives, 'creatives', 3600 );
+		$cache_key = ( true === $count ) ? md5( 'affwp_creatives_count' . serialize( $args ) ) : md5( 'affwp_creatives_' . serialize( $args ) );
+
+		$results = wp_cache_get( $cache_key, 'creatives' );
+
+		if ( false === $results ) {
+
+			if ( true === $count ) {
+
+				$results = absint( $wpdb->get_var( "SELECT COUNT({$this->primary_key}) FROM {$this->table_name} {$where};" ) );
+
+			} else {
+
+				$results = $wpdb->get_results(
+					$wpdb->prepare(
+						"SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d, %d;",
+						absint( $args['offset'] ),
+						absint( $args['number'] )
+					)
+				);
+
+			}
+
+			wp_cache_set( $cache_key, $results, 'creatives', 3600 );
+
 		}
 
-		return $creatives;
+		return $results;
 
+	}
+
+	/**
+	 * Return the number of results found for a given query
+	 *
+	 * @param  array  $args
+	 * @return int
+	 */
+	public function count( $args = array() ) {
+		return $this->get_creatives( $args, true );
 	}
 
 	/**
@@ -125,39 +158,6 @@ class Affiliate_WP_Creatives_DB extends Affiliate_WP_DB {
 
 		return false;
 
-	}
-
-	/**
-	 * Count the total number of creatives in the database
-	 *
-	 * @access  public
-	 * @since   1.2
-	*/
-	public function count( $args = array() ) {
-		global $wpdb;
-
-		$where = '';
-
-		if ( ! empty( $args['status'] ) ) {
-
-			if( is_array( $args['status'] ) ) {
-				$where .= " WHERE `status` IN('" . implode( "','", $args['status'] ) . "') ";
-			} else {
-				$where .= " WHERE `status` = '" . $args['status'] . "' ";
-			}
-
-		}
-
-		$cache_key = md5( 'affwp_creatives_count' . serialize( $args ) );
-
-		$count = wp_cache_get( $cache_key, 'creatives' );
-
-		if ( false === $count ) {
-			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM {$this->table_name} {$where};" );
-			wp_cache_set( $cache_key, $count, 'creatives', 3600 );
-		}
-
-		return $count;
 	}
 
 	public function create_table() {

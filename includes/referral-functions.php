@@ -11,7 +11,14 @@ function affwp_get_referral( $referral ) {
 		return false;
 	}
 
-	return affiliate_wp()->referrals->get( $referral_id );
+	$referral = affiliate_wp()->referrals->get( $referral_id );
+
+	if( ! empty( $referral->products ) ) {
+		// products is a multidimensional array. Double unserialize is not a typo
+		$referral->products = maybe_unserialize( maybe_unserialize( $referral->products ) );
+	}
+
+	return $referral;
 }
 
 function affwp_get_referral_status( $referral ) {
@@ -25,6 +32,33 @@ function affwp_get_referral_status( $referral ) {
 	}
 
 	return affiliate_wp()->referrals->get_column( 'status', $referral_id );
+}
+
+/**
+ * Get the status label for a referral
+ *
+ * @since 1.6
+ * @return string $label The localized version of the referral status
+ */
+function affwp_get_referral_status_label( $referral ) {
+
+	$referral = affwp_get_referral( $referral );
+
+	if( empty( $referral ) ) {
+		return false;
+	}
+
+	$statuses = array(
+		'paid'     => __( 'Paid', 'affiliate-wp' ),
+		'unpaid'   => __( 'Unpaid', 'affiliate-wp' ),
+		'rejected' => __( 'Rejected', 'affiliate-wp' ),
+		'pending'  => __( 'Pending', 'affiliate-wp' ),
+	);
+
+	$label = array_key_exists( $referral->status, $statuses ) ? $statuses[ $referral->status ] : 'pending';
+
+	return apply_filters( 'affwp_referral_status_label', $label, $referral );
+
 }
 
 function affwp_set_referral_status( $referral, $new_status = '' ) {
@@ -138,7 +172,7 @@ function affwp_delete_referral( $referral ) {
 		return false;
 	}
 
-	if( 'paid' == $referral->status ) {
+	if( $referral && 'paid' == $referral->status ) {
 
 		// This referral has already been paid, so decrease the affiliate's earnings
 		affwp_decrease_affiliate_earnings( $referral->affiliate_id, $referral->amount );
@@ -161,14 +195,8 @@ function affwp_delete_referral( $referral ) {
 
 function affwp_calc_referral_amount( $amount = '', $affiliate_id = 0, $reference = 0, $rate = '', $product_id = 0 ) {
 
-	$has_custom = affwp_affiliate_has_custom_rate( $affiliate_id );
-
-	if( $has_custom || empty( $rate ) ) {
-
-		// If the affiliate has a custom rate set, use it. If no rate is specified, use the fallback
-		$rate = affwp_get_affiliate_rate( $affiliate_id );
-
-	}
+	// If the affiliate has a custom rate set, use it. If no rate is specified, use the fallback
+	$rate = affwp_get_affiliate_rate( $affiliate_id, false, $rate );
 
 	if( 'percentage' == affwp_get_affiliate_rate_type( $affiliate_id ) ) {
 

@@ -1,7 +1,7 @@
 <div class="wrap">
 
 	<h2><?php _e( 'New Affiliate', 'affiliate-wp' ); ?></h2>
-	
+
 	<form method="post" id="affwp_add_affiliate">
 
 		<?php do_action( 'affwp_new_affiliate_top' ); ?>
@@ -18,7 +18,7 @@
 
 				<td>
 					<span class="affwp-ajax-search-wrap">
-						<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
+						<input type="text" name="user_name" id="user_name" class="affwp-user-search" data-affwp-status="none" autocomplete="off" />
 						<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 					</span>
 					<div id="affwp_user_search_results"></div>
@@ -70,6 +70,8 @@
 				</td>
 
 			</tr>
+
+			<?php do_action( 'affwp_new_affiliate_end' ); ?>
 
 		</table>
 

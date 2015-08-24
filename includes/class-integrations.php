@@ -15,13 +15,14 @@ class Affiliate_WP_Integrations {
 			'formidablepro'  => 'Formidable Pro',
 			'gravityforms'   => 'Gravity Forms',
 			'exchange'       => 'iThemes Exchange',
+			'jigoshop'       => 'Jigoshop',
 			'marketpress'    => 'MarketPress',
 			'membermouse'    => 'MemberMouse',
 			'memberpress'    => 'MemberPress',
-			'jigoshop'       => 'Jigoshop',
-			'rcp'            => 'Restrict Content Pro',
+			'ninja-forms'    => 'Ninja Forms',
 			'pmp'            => 'Paid Memberships Pro',
-			'shopp'          => 'Shopp',
+			'rcp'            => 'Restrict Content Pro',
+			'shopp'	         => 'Shopp',
 			'sproutinvoices' => 'Sprout Invoices',
 			'woocommerce'    => 'WooCommerce',
 			'wpeasycart'     => 'WP EasyCart',
@@ -41,6 +42,8 @@ class Affiliate_WP_Integrations {
 
 		$enabled = apply_filters( 'affwp_enabled_integrations', $this->get_enabled_integrations() );
 
+		do_action( 'affwp_integrations_load' );
+
 		foreach( $enabled as $filename => $integration ) {
 
 			if( file_exists( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php' ) ) {
@@ -48,6 +51,8 @@ class Affiliate_WP_Integrations {
 			}
 
 		}
+
+		do_action( 'affwp_integrations_loaded' );
 
 	}
 

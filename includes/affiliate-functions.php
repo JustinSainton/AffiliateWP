@@ -40,6 +40,62 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 
 }
 
+
+/**
+ * Retrieves the username of the specified affiliate
+ *
+ * If no affiliate ID is given, it will check the currently logged in affiliate
+ *
+ * @since 1.6
+ * @return string username if affiliate exists, boolean false otherwise
+ */
+function affwp_get_affiliate_username( $affiliate_id = 0 ) {
+
+	if ( ! is_user_logged_in() && empty( $affiliate_id ) ) {
+		return false;
+	}
+
+	if ( empty( $affiliate_id ) ) {
+		$affiliate_id = affwp_get_affiliate_id();
+	}
+
+	$affiliate = affwp_get_affiliate( $affiliate_id );
+
+	if ( $affiliate ) {
+		$user_info = get_userdata( $affiliate->user_id );
+
+		if ( $user_info ) {
+			$username  = esc_html( $user_info->user_login );
+			return esc_html( $username );
+		}
+
+	}
+
+	return false;
+
+}
+
+/**
+ * Determines whether or not the affiliate is active
+ *
+ * If no affiliate ID is given, it will check the currently logged in affiliate
+ *
+ * @since 1.6
+ * @return int
+ */
+function affwp_is_active_affiliate( $affiliate_id = 0 ) {
+
+	if ( empty( $affiliate_id ) ) {
+		$affiliate_id = affwp_get_affiliate_id();
+	}
+
+	if ( 'active' == affwp_get_affiliate_status( $affiliate_id ) ) {
+		return true;
+	}
+
+	return false;
+}
+
 /**
  * Retrieves an affiliate's user ID
  *
@@ -129,16 +185,24 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
  * Retrieves the referral rate for an affiliate
  *
  * @since 1.0
+ * @param $affiliate_id int The ID of the affiliate we are getting a rate for
+ * @param $formatted bool Whether to return a formatted rate with %/currency
+ * @param $custom_rate string A custom rate that overrides site/affiliate settings
  * @return float
  */
-function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false ) {
+function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $custom_rate = '' ) {
 
 	// default rate
+
 	$rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
 
 	$affiliate_rate = affiliate_wp()->affiliates->get_column( 'rate', $affiliate_id );
 
-	if ( ! empty( $affiliate_rate ) ) {
+	if( ! empty( $custom_rate ) ) {
+
+		$rate = $custom_rate;
+
+	} elseif ( ! empty( $affiliate_rate ) ) {
 
 		$rate = $affiliate_rate;
 
@@ -252,69 +316,73 @@ function affwp_get_affiliate_rate_types() {
 /**
  * Retrieves the affiliate's email address
  *
- * @since 1.0
- * @return string
+ * @since  1.0
+ * @param  object|int $affiliate
+ * @param  mixed      $default (optional)
+ * @return mixed
  */
-function affwp_get_affiliate_email( $affiliate ) {
+function affwp_get_affiliate_email( $affiliate, $default = false ) {
 
-	global $wpdb;
+	$affiliate = is_numeric( $affiliate ) ? affwp_get_affiliate( $affiliate ) : $affiliate;
 
-	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
-		$affiliate_id = $affiliate->affiliate_id;
-	} elseif ( is_numeric( $affiliate ) ) {
-		$affiliate_id = absint( $affiliate );
-	} else {
-		return false;
+	if ( empty( $affiliate->affiliate_id ) ) {
+		return $default;
 	}
 
-	$affiliate   = affwp_get_affiliate( $affiliate_id );
+	$user_id = affwp_get_affiliate_user_id( $affiliate );
+	$user    = get_userdata( $user_id );
 
-	if ( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
-		$email   = $affiliate->payment_email;
-	} else {
-		$user_id = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
-		$email   = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+	if ( empty( $user->user_email ) || ! is_email( $user->user_email ) ) {
+		return $default;
 	}
 
-	if ( $email ) {
-
-		return $email;
-
-	}
-
-	return false;
+	return $user->user_email;
 
 }
 
 /**
- * Retrieves the affiliate's user_login
+ * Retrieves the affiliate's payment email address
  *
- * @since 1.6
- * @return string
+ * @since  1.7
+ * @param  object|int $affiliate
+ * @return mixed
  */
-function affwp_get_affiliate_login( $affiliate ) {
+function affwp_get_affiliate_payment_email( $affiliate ) {
 
-	global $wpdb;
+	$affiliate = is_numeric( $affiliate ) ? affwp_get_affiliate( $affiliate ) : $affiliate;
 
-	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
-		$affiliate_id = $affiliate->affiliate_id;
-	} elseif ( is_numeric( $affiliate ) ) {
-		$affiliate_id = absint( $affiliate );
-	} else {
-		return false;
+	if ( empty( $affiliate->payment_email ) || ! is_email( $affiliate->payment_email ) ) {
+		return affwp_get_affiliate_email( $affiliate );
 	}
 
-	$affiliate = affwp_get_affiliate( $affiliate_id );
-	$user_id   = affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
-	$login     = $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM $wpdb->users WHERE ID = '%d'", $user_id ) );
+	return $affiliate->payment_email;
 
-	if ( $login ) {
+}
 
-		return $login;
+/**
+ * Retrieves the affiliate's user login (username)
+ *
+ * @since  1.6
+ * @param  object|int $affiliate
+ * @param  mixed      $default (optional)
+ * @return mixed
+ */
+function affwp_get_affiliate_login( $affiliate, $default = false ) {
 
+	$affiliate = is_numeric( $affiliate ) ? affwp_get_affiliate( $affiliate ) : $affiliate;
+
+	if ( empty( $affiliate->affiliate_id ) ) {
+		return $default;
 	}
 
-	return false;
+	$user_id = affwp_get_affiliate_user_id( $affiliate );
+	$user    = get_userdata( $user_id );
+
+	if ( empty( $user->user_login ) ) {
+		return $default;
+	}
+
+	return $user->user_login;
 
 }
 
@@ -336,7 +404,7 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 	}
 
 	if( $delete_data ) {
-	
+
 		$user_id   = affwp_get_affiliate_user_id( $affiliate_id );
 		$referrals = affiliate_wp()->referrals->get_referrals( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
 		$visits    = affiliate_wp()->visits->get_visits( array( 'affiliate_id' => $affiliate_id, 'number' => -1 ) );
@@ -354,7 +422,15 @@ function affwp_delete_affiliate( $affiliate, $delete_data = false ) {
 
 	}
 
-	return affiliate_wp()->affiliates->delete( $affiliate_id );
+	$deleted = affiliate_wp()->affiliates->delete( $affiliate_id );
+
+	if( $deleted ) {
+
+		do_action( 'affwp_affiliate_deleted', $affiliate_id, $delete_data );
+
+	}
+
+	return $deleted;
 
 }
 
@@ -723,7 +799,7 @@ function affwp_add_affiliate( $data = array() ) {
 			$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
 			affwp_set_affiliate_status( $affiliate_id, $status );
 
-			return true;
+			return $affiliate_id;
 		}
 
 	}
@@ -761,7 +837,7 @@ function affwp_update_affiliate( $data = array() ) {
 		if( wp_update_user( array( 'ID' => $user_id, 'user_email' => $args['account_email'] ) ) ) {
 
 			return true;
-		
+
 		}
 
 	}
@@ -813,4 +889,102 @@ function affwp_update_profile_settings( $data = array() ) {
 	if ( ! empty( $_POST['affwp_action'] ) ) {
 		wp_redirect( add_query_arg( 'affwp_notice', 'profile-updated' ) ); exit;
 	}
+}
+
+/**
+ * Builds an affiliate's referral URL
+ * Used by creatives, referral URL generator and [affiliate_referral_url] shortcode
+ *
+ * @since  1.6
+ * @return string
+ * @param  $args array of arguments. $base_url, $format, $pretty
+ */
+function affwp_get_affiliate_referral_url( $args = array() ) {
+
+	$defaults = array(
+		'pretty' => '',
+		'format' => '',
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	// get affiliate ID if passed in
+	$affiliate_id = isset( $args['affiliate_id'] ) ? $args['affiliate_id'] : '';
+
+	// get format, username or id
+	$format = isset( $args['format'] ) ? $args['format'] : affwp_get_referral_format();
+
+	// pretty URLs
+	if ( ! empty( $args['pretty'] ) && 'yes' == $args['pretty'] ) {
+		// pretty URLS explicitly turned on
+		$pretty = true;
+	} elseif ( ( ! empty( $args['pretty'] ) && 'no' == $args['pretty'] ) || false === $args['pretty'] ) {
+		// pretty URLS explicitly turned off
+		$pretty = false;
+	} else {
+		// pretty URLs set from admin
+		$pretty = affwp_is_pretty_referral_urls();
+	}
+
+	// get base URL
+	if ( isset( $args['base_url'] ) ) {
+		$base_url = $args['base_url'];
+	} else {
+		$base_url = affwp_get_affiliate_base_url();
+	}
+
+	// add trailing slash only if no query string exists
+	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) ) {
+		$base_url = trailingslashit( $args['base_url'] );
+	}
+
+	// the format value, either affiliate's ID or username
+	$format_value = affwp_get_referral_format_value( $format, $affiliate_id );
+
+	// if query exists in base URL, strip it and store in variable so we can append to the end of the URL
+	if ( array_key_exists( 'query', parse_url( $base_url ) ) ) {
+
+		$url_parts       = parse_url( $base_url );
+		$url_scheme      = isset( $url_parts['scheme'] ) ? $url_parts['scheme'] : 'http';
+		$url_host        = isset( $url_parts['host'] ) ? $url_parts['host'] : '';
+		$constructed_url = $url_scheme . '://' . $url_host . $url_parts['path'];
+		$base_url        = $constructed_url;
+
+		// build query string
+		$query_string =  '?' . $url_parts['query'];
+
+	} else {
+		$query_string = '';
+	}
+
+	// set up URLs
+	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . trailingslashit( $format_value ) . $query_string;
+	$non_pretty_urls = esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format_value, $base_url . $query_string ) );
+
+	if ( $pretty ) {
+		$referral_url = $pretty_urls;
+	} else {
+		$referral_url = $non_pretty_urls;
+	}
+
+	return $referral_url;
+
+}
+
+/**
+ * Gets the base URL that is then displayed in the Page URL input field of the affiliate area
+ *
+ * @since 1.6
+ * @return string
+ */
+function affwp_get_affiliate_base_url() {
+
+	if ( isset( $_GET['url'] ) && ! empty( $_GET['url'] ) ) {
+		$base_url = urldecode( $_GET['url'] );
+	} else {
+		$base_url = home_url( '/' );
+	}
+
+	return apply_filters( 'affwp_affiliate_referral_url_base', $base_url );
+
 }

@@ -27,7 +27,9 @@ abstract class Affiliate_WP_Base {
 	public function __construct() {
 
 		$this->affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
+
 		$this->init();
+
 	}
 
 	/**
@@ -60,10 +62,11 @@ abstract class Affiliate_WP_Base {
 	 * @param   $amount The final referral commission amount
 	 * @param   $reference The reference column for the referral per the current context
 	 * @param   $description A plaintext description of the refferral
+	 * @param   $products An array of product details
 	 * @param   $data Any custom data that can be passed to and stored with the referral
 	 * @return  bool
 	 */
-	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $data = array() ) {
+	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $products = array(), $data = array() ) {
 
 		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
 			return false; // Allow extensions to prevent referrals from being created
@@ -73,7 +76,7 @@ abstract class Affiliate_WP_Base {
 			return false; // Referral already created for this reference
 		}
 
-		if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+		if( empty( $amount ) && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
 
@@ -85,6 +88,7 @@ abstract class Affiliate_WP_Base {
 			'description'  => $description,
 			'affiliate_id' => $this->affiliate_id,
 			'visit_id'     => $visit_id,
+			'products'     => ! empty( $products ) ? maybe_serialize( $products ) : '',
 			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
 			'context'      => $this->context
 		), $amount, $reference, $description, $this->affiliate_id, $visit_id, $data, $this->context );
@@ -166,6 +170,17 @@ abstract class Affiliate_WP_Base {
 	}
 
 	/**
+	 * Retrieves the ID of the referring affiliate
+	 *
+	 * @access  public
+	 * @since   1.0
+	 * @return  int
+	 */
+	public function get_affiliate_id() {
+		return absint( apply_filters( 'affwp_get_referring_affiliate_id', $this->affiliate_id ) );
+	}
+
+	/**
 	 * Retrieves the email address of the referring affiliate
 	 *
 	 * @access  public
@@ -173,7 +188,34 @@ abstract class Affiliate_WP_Base {
 	 * @return  string
 	 */
 	public function get_affiliate_email() {
-		return affwp_get_affiliate_email( $this->affiliate_id );
+		return affwp_get_affiliate_email( $this->get_affiliate_id() );
+	}
+
+	/**
+	 * Determine if the passed email belongs to the affiliate
+	 *
+	 * Checks a given email address against the referring affiliate's
+	 * user email and payment email addresses to prevent customers from
+	 * referring themselves.
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @param   string $email
+	 * @return  bool
+	 */
+	public function is_affiliate_email( $email ) {
+
+		$is_affiliate_email = false;
+
+		// Get affiliate emails
+		$user_email    = affwp_get_affiliate_email( $this->affiliate_id );
+		$payment_email = affwp_get_affiliate_payment_email( $this->affiliate_id );
+
+		// True if the email is valid and matches affiliate user email or payment email, otherwise false
+		$is_affiliate_email = ( is_email( $email ) && ( $user_email === $email || $payment_email === $email ) );
+
+		return (bool) apply_filters( 'affwp_is_customer_email_affiliate_email', $is_affiliate_email, $email, $this->affiliate_id );
+
 	}
 
 	/**
@@ -198,7 +240,7 @@ abstract class Affiliate_WP_Base {
 				if ( $rate > 1 ) {
 
 					$rate = $rate / 100;
-				
+
 				}
 
 			}
@@ -210,7 +252,6 @@ abstract class Affiliate_WP_Base {
 		return $amount;
 
 	}
-
 
 	/**
 	 * Retrieves the rate and type for a specific product
@@ -229,6 +270,19 @@ abstract class Affiliate_WP_Base {
 		}
 
 		return apply_filters( 'affwp_get_product_rate', (float) $rate, $product_id, $args, $this->affiliate_id, $this->context );
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $order_id = 0 ) {
+
+		return array();
 
 	}
 

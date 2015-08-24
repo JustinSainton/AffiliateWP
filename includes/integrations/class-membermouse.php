@@ -23,7 +23,7 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 				return;
 			}
 
-			if( $this->get_affiliate_email() == $member_data['email'] ) {
+			if ( $this->is_affiliate_email( $member_data['email'] ) ) {
 				return; // Customers cannot refer themselves
 			}
 

@@ -46,7 +46,7 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			$user_id       = affwp_get_affiliate_user_id( $affiliate_id );
 			$discount_aff  = get_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_obj->id, true );
 
-			if( $discount_aff ) {
+			if( $discount_aff && affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
 
 				$affiliate_discount = true;
 
@@ -72,7 +72,7 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 
 			$user = get_userdata( $user_id );
 
-			if( $this->get_affiliate_email() == $user->user_email ) {
+			if ( $this->is_affiliate_email( $user->user_email ) ) {
 				return; // Customers cannot refer themselves
 			}
 
@@ -161,11 +161,11 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 					<td>
 						<span class="affwp-ajax-search-wrap">
 							<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-							<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" style="width: 300px;" />
+							<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" style="width: 300px;" />
 							<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 						</span>
 						<div id="affwp_user_search_results"></div>
-						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'edd' ); ?></p>
+						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></p>
 					</td>
 				</tr>
 			</tbody>
@@ -207,10 +207,6 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 	*/
 	public function update_discount_affiliate( $discount_id = 0, $args ) {
 
-		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
-			return;
-		}
-
 		if( empty( $_POST['user_id'] ) ) {
 			$user = get_user_by( 'login', $_POST['user_name'] );
 			if( $user ) {
@@ -220,9 +216,19 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			$user_id = absint( $_POST['user_id'] );
 		}
 
+		if ( empty( $_POST['user_name'] ) ) {
+			delete_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_id );
+			return;
+		}
+
+		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
+			return;
+		}
+
 		$affiliate_id = affwp_get_affiliate_id( $user_id );
 
 		update_user_meta( $user_id, 'affwp_discount_rcp_' . $discount_id, $affiliate_id );
+		
 	}
 	
 }

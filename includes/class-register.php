@@ -40,7 +40,7 @@ class Affiliate_WP_Register {
 		return apply_filters( 'affwp_register_form', ob_get_clean() );
 
 	}
-	
+
 	/**
 	 * Process registration form submission
 	 *
@@ -58,7 +58,10 @@ class Affiliate_WP_Register {
 
 			// Loop through required fields and show error message
 			foreach ( $this->required_fields() as $field_name => $value ) {
-				if ( empty( $_POST[ $field_name ] ) ) {
+
+				$field = sanitize_text_field( $_POST[ $field_name ] );
+
+				if ( empty( $field ) ) {
 					$this->add_error( $value['error_id'], $value['error_message'] );
 				}
 			}
@@ -68,7 +71,11 @@ class Affiliate_WP_Register {
 			}
 
 			if ( ! validate_username( $data['affwp_user_login'] ) ) {
-				$this->add_error( 'username_invalid', __( 'Invalid username', 'affiliate-wp' ) );
+				if ( is_multisite() ) {
+					$this->add_error( 'username_invalid', __( 'Invalid username. Only lowercase letters (a-z) and numbers are allowed', 'affiliate-wp' ) );
+				} else {
+					$this->add_error( 'username_invalid', __( 'Invalid username', 'affiliate-wp' ) );
+				}
 			}
 
 			if ( email_exists( $data['affwp_user_email'] ) ) {
@@ -94,6 +101,10 @@ class Affiliate_WP_Register {
 			$this->add_error( 'empty_tos', __( 'Please agree to our terms of use', 'affiliate-wp' ) );
 		}
 
+		if ( affwp_is_recaptcha_enabled() && ! $this->recaptcha_response_is_valid( $data ) ) {
+			$this->add_error( 'recaptcha_required', __( 'Please verify that you are not a robot', 'affiliate-wp' ) );
+		}
+
 		if ( ! empty( $_POST['affwp_honeypot'] ) ) {
 			$this->add_error( 'spam', __( 'Nice try honey bear, don\'t touch our honey', 'affiliate-wp' ) );
 		}
@@ -108,15 +119,43 @@ class Affiliate_WP_Register {
 		if ( empty( $this->errors ) ) {
 			$this->register_user();
 
-
 			$redirect = apply_filters( 'affwp_register_redirect', $data['affwp_redirect'] );
 
 			if ( $redirect ) {
 				wp_redirect( $redirect ); exit;
 			}
-			
+
 		}
 
+	}
+
+	/**
+	 * Verify reCAPTCHA response is valid using a POST request to the Google API
+	 *
+	 * @access private
+	 * @since  1.7
+	 * @param  array   $data
+	 * @return boolean
+	 */
+	private function recaptcha_response_is_valid( $data ) {
+		if ( ! affwp_is_recaptcha_enabled() || empty( $data['g-recaptcha-response'] ) || empty( $data['g-recaptcha-remoteip'] ) ) {
+			return false;
+		}
+
+		$verify = wp_safe_remote_post(
+			'https://www.google.com/recaptcha/api/siteverify',
+			array(
+				'body' => array(
+					'secret'   => affiliate_wp()->settings->get( 'recaptcha_secret_key' ),
+					'response' => $data['g-recaptcha-response'],
+					'remoteip' => $data['g-recaptcha-remoteip']
+				)
+			)
+		);
+
+		$verify = json_decode( wp_remote_retrieve_body( $verify ) );
+
+		return ( ! empty( $verify->success ) && true === $verify->success );
 	}
 
 	/**
@@ -175,8 +214,6 @@ class Affiliate_WP_Register {
 
 			$user_id = wp_insert_user( $args );
 
-			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
-
 		} else {
 
 			$user_id = get_current_user_id();
@@ -187,7 +224,7 @@ class Affiliate_WP_Register {
 
 		// promotion method
 		$promotion_method = isset( $_POST['affwp_promotion_method'] ) ? sanitize_text_field( $_POST['affwp_promotion_method'] ) : '';
-		
+
 		if ( $promotion_method ) {
 			update_user_meta( $user_id, 'affwp_promotion_method', $promotion_method );
 		}
@@ -199,11 +236,15 @@ class Affiliate_WP_Register {
 			wp_update_user( array( 'ID' => $user_id, 'user_url' => $website_url ) );
 		}
 
-		$affiliate_id       = affiliate_wp()->affiliates->add( array(
+		$affiliate_id = affwp_add_affiliate( array(
 			'status'        => $status,
 			'user_id'       => $user_id,
 			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
 		) );
+
+		if ( ! is_user_logged_in() ) {
+			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
+		}
 
 		do_action( 'affwp_register_user', $affiliate_id, $status, $args );
 	}
@@ -237,11 +278,29 @@ class Affiliate_WP_Register {
 			return;
 		}
 
-		if ( did_action( 'process_registration' ) ) {
+		if ( did_action( 'affwp_affiliate_register' ) ) {
 			return;
 		}
 
-		affwp_add_affiliate( array( 'user_id' => $user_id ) );
+		$affiliate_id = affwp_add_affiliate( array( 'user_id' => $user_id ) );
+
+		if ( ! $affiliate_id ) {
+			return;
+		}
+
+		$status = affwp_get_affiliate_status( $affiliate_id );
+		$user   = (array) get_userdata( $user_id );
+		$args   = (array) $user['data'];
+
+		/**
+		 * Fires after a new user has been auto-registered as an affiliate
+		 *
+		 * @since  1.7
+		 * @param  int    $affiliate_id
+		 * @param  string $status
+		 * @param  array  $args
+		 */
+		do_action( 'affwp_auto_register_user', $affiliate_id, $status, $args );
 
 	}
 

@@ -63,6 +63,37 @@ function affwp_process_update_referral( $data ) {
 add_action( 'affwp_process_update_referral', 'affwp_process_update_referral' );
 
 /**
+ * Process the delete referral request
+ *
+ * @since 1.7
+ * @return void
+ */
+function affwp_process_delete_referral( $data ) {
+
+	if ( ! is_admin() ) {
+		return false;
+	}
+
+	if ( ! current_user_can( 'manage_referrals' ) ) {
+		wp_die( __( 'You do not have permission to manage referrals', 'affiliate-wp' ), array( 'response' => 403 ) );
+	}
+
+	if ( ! wp_verify_nonce( $data['_wpnonce'], 'affwp_delete_referral_nonce' ) ) {
+		wp_die( __( 'Security check failed', 'affiliate-wp' ), array( 'response' => 403 ) );
+	}
+
+	if ( affwp_delete_referral( $data['referral_id'] ) ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_deleted' ) );
+		exit;
+	} else {
+		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-referrals&affwp_notice=referral_delete_failed' ) );
+		exit;
+	}
+
+}
+add_action( 'affwp_process_delete_referral', 'affwp_process_delete_referral' );
+
+/**
  * Process the referral payout file generation
  *
  * @since 1.0

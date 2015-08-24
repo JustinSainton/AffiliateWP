@@ -69,7 +69,7 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 
 			<p>
 				<label for="affwp-promotion-method"><?php _e( 'How will you promote us?', 'affiliate-wp' ); ?></label>
-				<textarea id="affwp-promotion-method" class="required" name="affwp_promotion_method" rows="5" cols="30"><?php if( ! empty( $method ) ) { echo esc_textarea( $method ); } ?></textarea>
+				<textarea id="affwp-promotion-method" name="affwp_promotion_method" rows="5" cols="30"><?php if( ! empty( $method ) ) { echo esc_textarea( $method ); } ?></textarea>
 			</p>
 
 		<?php if ( ! is_user_logged_in() ) : ?>
@@ -95,6 +95,14 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 					<input id="affwp-tos" class="required" type="checkbox" name="affwp_tos" />
 					<?php printf( __( 'Agree to our <a href="%s" target="_blank">Terms of Use</a>', 'affiliate-wp' ), esc_url( get_permalink( affiliate_wp()->settings->get( 'terms_of_use' ) ) ) ); ?>
 				</label>
+			</p>
+		<?php endif; ?>
+
+		<?php if ( affwp_is_recaptcha_enabled() ) : ?>
+			<div class="g-recaptcha" data-sitekey="<?php echo esc_attr( affiliate_wp()->settings->get( 'recaptcha_site_key' ) ); ?>"></div>
+
+			<p>
+				<input type="hidden" name="g-recaptcha-remoteip" value=<?php echo esc_attr( affiliate_wp()->tracking->get_ip() ); ?> />
 			</p>
 		<?php endif; ?>
 

@@ -72,6 +72,7 @@ function affwp_get_settings_tabs() {
 	$tabs                 = array();
 	$tabs['general']      = __( 'General', 'affiliate-wp' );
 	$tabs['integrations'] = __( 'Integrations', 'affiliate-wp' );
+	$tabs['emails']       = __( 'Emails', 'affiliate-wp' );
 	$tabs['misc']         = __( 'Misc', 'affiliate-wp' );
 
 	return apply_filters( 'affwp_settings_tabs', $tabs );

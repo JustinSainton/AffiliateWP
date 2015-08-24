@@ -19,7 +19,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			$this->table_name  = $wpdb->prefix . 'affiliate_wp_referrals';
 		}
 		$this->primary_key = 'referral_id';
-		$this->version     = '1.0';
+		$this->version     = '1.1';
 
 	}
 
@@ -41,6 +41,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'custom'      => '%s',
 			'context'     => '%s',
 			'reference'   => '%s',
+			'products'    => '%s',
 			'date'        => '%s',
 		);
 	}
@@ -84,6 +85,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		$args['amount'] = affwp_sanitize_amount( $args['amount'] );
 
+		if( ! empty( $args['products'] ) ) {
+			$args['products'] = maybe_serialize( $args['products'] );
+		}
+
 		$add  = $this->insert( $args, 'referral' );
 
 		if( $add ) {
@@ -119,6 +124,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( isset( $data['amount'] ) ) {
 			$data['amount'] = affwp_sanitize_amount( $data['amount'] );
+		}
+
+		if( ! empty( $data['products'] ) ) {
+			$data['products'] = maybe_serialize( $data['products'] );
 		}
 
 		$update = $this->update( $referral_id, $data, '', 'referral' );
@@ -174,8 +183,10 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	 *
 	 * @access  public
 	 * @since   1.0
+	 * @param   array $args
+	 * @param   bool  $count  Return only the total number of results found (optional)
 	*/
-	public function get_referrals( $args = array() ) {
+	public function get_referrals( $args = array(), $count = false ) {
 
 		global $wpdb;
 
@@ -248,7 +259,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['start'] ) ) {
 
-					$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
+					if( false !== strpos( $args['date']['start'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 00:00:00';
+					}
+
+					$start = date( $format, strtotime( $args['date']['start'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -264,7 +281,13 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 				if( ! empty( $args['date']['end'] ) ) {
 
-					$end = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
+					if( false !== strpos( $args['date']['end'], ':' ) ) {
+						$format = 'Y-m-d H:i:s';
+					} else {
+						$format = 'Y-m-d 23:59:59';
+					}
+
+					$end = date( $format, strtotime( $args['date']['end'] ) );
 
 					if( ! empty( $where ) ) {
 
@@ -335,21 +358,50 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		}
 
-		if( ! empty( $args['orderby'] ) && 'amount' == $args['orderby'] ) {
+		$args['orderby'] = ! array_key_exists( $args['orderby'], $this->get_columns() ) ? $this->primary_key : $args['orderby'];
+
+		if ( 'amount' === $args['orderby'] ) {
 			$args['orderby'] = 'amount+0';
 		}
 
-		$cache_key = md5( 'affwp_referrals_' . serialize( $args ) );
+		$cache_key = ( true === $count ) ? md5( 'affwp_referrals_count' . serialize( $args ) ) : md5( 'affwp_referrals_' . serialize( $args ) );
 
-		$referrals = wp_cache_get( $cache_key, 'referrals' );
+		$results = wp_cache_get( $cache_key, 'referrals' );
 
-		if( $referrals === false ) {
-			$referrals = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM  $this->table_name $where ORDER BY {$args['orderby']} {$args['order']} LIMIT %d,%d;", absint( $args['offset'] ), absint( $args['number'] ) ) );
-			wp_cache_set( $cache_key, $referrals, 'referrals', 3600 );
+		if ( false === $results ) {
+
+			if ( true === $count ) {
+
+				$results = absint( $wpdb->get_var( "SELECT COUNT({$this->primary_key}) FROM {$this->table_name} {$where};" ) );
+
+			} else {
+
+				$results = $wpdb->get_results(
+					$wpdb->prepare(
+						"SELECT * FROM {$this->table_name} {$where} ORDER BY {$args['orderby']} {$args['order']} LIMIT %d, %d;",
+						absint( $args['offset'] ),
+						absint( $args['number'] )
+					)
+				);
+
+			}
+
+			wp_cache_set( $cache_key, $results, 'referrals', 3600 );
+
 		}
 
-		return $referrals;
+		return $results;
 
+	}
+
+	/**
+	 * Return the number of results found for a given query
+	 *
+	 * @param  array  $args
+	 * @return int
+	 */
+	public function count( $args = array() ) {
+		return $this->get_referrals( $args, true );
 	}
 
 	/**
@@ -458,13 +510,14 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 	*/
 	public function unpaid_count( $date = '', $affiliate_id = 0 ) {
 
-		$args                 = array();
-		$args['status']       = 'unpaid';
-		$args['affiliate_id'] = $affiliate_id;
+		$args = array(
+			'affiliate_id' => absint( $affiliate_id ),
+			'status'       => 'unpaid',
+		);
 
-		if( ! empty( $date ) ) {
+		if ( ! empty( $date ) ) {
 
-			switch( $date ) {
+			switch ( $date ) {
 
 				case 'month' :
 
@@ -472,6 +525,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 						'start' => date( 'Y-m-01 00:00:00', current_time( 'timestamp' ) ),
 						'end'   => date( 'Y-m-' . cal_days_in_month( CAL_GREGORIAN, date( 'n' ), date( 'Y' ) ) . ' 00:00:00', current_time( 'timestamp' ) ),
 					);
+
 					break;
 
 			}
@@ -480,109 +534,6 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		}
 
 		return $this->count( $args );
-	}
-
-	/**
-	 * Count the total number of referrals in the database
-	 *
-	 * @access  public
-	 * @since   1.0
-	*/
-	public function count( $args = array() ) {
-
-		global $wpdb;
-
-		$where = '';
-
-		// referrals for specific affiliates
-		if( ! empty( $args['affiliate_id'] ) ) {
-
-			if( is_array( $args['affiliate_id'] ) ) {
-				$affiliate_ids = implode( ',', $args['affiliate_id'] );
-			} else {
-				$affiliate_ids = intval( $args['affiliate_id'] );
-			}
-
-			$where .= " WHERE `affiliate_id` IN( {$affiliate_ids} ) ";
-
-		}
-
-		if( ! empty( $args['status'] ) ) {
-
-			if( empty( $where ) ) {
-				$where .= " WHERE";
-			} else {
-				$where .= " AND";
-			}
-
-			if( is_array( $args['status'] ) ) {
-				$where .= " `status` IN('" . implode( "','", $args['status'] ) . "') ";
-			} else {
-				$where .= " `status` = '" . $args['status'] . "' ";
-			}
-		}
-
-		if( ! empty( $args['date'] ) ) {
-
-			if( is_array( $args['date'] ) ) {
-
-				$start = date( 'Y-m-d H:i:s', strtotime( $args['date']['start'] ) );
-				$end   = date( 'Y-m-d H:i:s', strtotime( $args['date']['end'] ) );
-
-				if( empty( $where ) ) {
-
-					$where .= " WHERE `date` >= '{$start}' AND `date` <= '{$end}'";
-
-				} else {
-
-					$where .= " AND `date` >= '{$start}' AND `date` <= '{$end}'";
-
-				}
-
-			} else {
-
-				$year  = date( 'Y', strtotime( $args['date'] ) );
-				$month = date( 'm', strtotime( $args['date'] ) );
-				$day   = date( 'd', strtotime( $args['date'] ) );
-
-				if( empty( $where ) ) {
-					$where .= " WHERE";
-				} else {
-					$where .= " AND";
-				}
-
-				$where .= " $year = YEAR ( date ) AND $month = MONTH ( date ) AND $day = DAY ( date )";
-			}
-
-		}
-
-		if( ! empty( $args['context'] ) ) {
-
-			if( empty( $where ) ) {
-				$where .= " WHERE";
-			} else {
-				$where .= " AND";
-			}
-
-			if( is_array( $args['context'] ) ) {
-				$where .= " `context` IN(" . implode( ',', $args['context'] ) . ") ";
-			} else {
-				$where .= " `context` = '" . $args['context'] . "' ";
-			}
-
-		}
-
-		$cache_key = md5( 'affwp_referrals_count' . serialize( $args ) );
-
-		$count = wp_cache_get( $cache_key, 'referrals' );
-
-		if( $count === false ) {
-			$count = $wpdb->get_var( "SELECT COUNT($this->primary_key) FROM " . $this->table_name . "{$where};" );
-			wp_cache_set( $cache_key, $count, 'referrals', 3600 );
-		}
-
-		return absint( $count );
-
 	}
 
 	/**
@@ -637,6 +588,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		custom longtext NOT NULL,
 		context tinytext NOT NULL,
 		reference mediumtext NOT NULL,
+		products mediumtext NOT NULL,
 		date datetime NOT NULL,
 		PRIMARY KEY  (referral_id),
 		KEY affiliate_id (affiliate_id)

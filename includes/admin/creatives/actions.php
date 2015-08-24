@@ -77,7 +77,7 @@ function affwp_process_update_creative( $data ) {
 	}
 
 	if ( ! current_user_can( 'manage_creatives' ) ) {
-		wp_die( __( 'You do not have permission to manage affiliates', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
+		wp_die( __( 'You do not have permission to manage creatives', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 	}
 
 	if ( affwp_update_creative( $data ) ) {

@@ -30,7 +30,7 @@ function affwp_add_creative( $data = array() ) {
 	$args = array(
 		'name'        => ! empty( $data['name'] ) ? sanitize_text_field( $data['name'] ) : __( 'Creative', 'affiliate-wp' ),
 		'description' => ! empty( $data['description'] ) ? sanitize_text_field( $data['description'] ) : '',
-		'url'         => ! empty( $data['url'] ) ? esc_url( $data['url'] ) : get_site_url(),
+		'url'         => ! empty( $data['url'] ) ? esc_url_raw( $data['url'] ) : get_site_url(),
 		'text'        => ! empty( $data['text'] ) ? sanitize_text_field( $data['text'] ) : get_bloginfo( 'name' ),
 		'image'       => ! empty( $data['image'] ) ? esc_url( $data['image'] ) : '',
 		'status'      => ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : '',	
@@ -62,7 +62,7 @@ function affwp_update_creative( $data = array() ) {
 
 	$args['name']         = ! empty( $data['name'] ) ? sanitize_text_field( $data['name'] ) : __( 'Creative', 'affiliate-wp' );
 	$args['description']  = ! empty( $data['description'] ) ? sanitize_text_field( $data['description'] ) : '';
-	$args['url']          = ! empty( $data['url'] ) ? sanitize_text_field( $data['url'] ) : get_site_url();
+	$args['url']          = ! empty( $data['url'] ) ? esc_url_raw( $data['url'] ) : get_site_url();
 	$args['text']         = ! empty( $data['text'] ) ? sanitize_text_field( $data['text'] ) : get_bloginfo( 'name' );
 	$args['image']        = ! empty( $data['image'] ) ? sanitize_text_field( $data['image'] ) : '';
 	$args['status']       = ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : '';

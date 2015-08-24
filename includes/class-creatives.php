@@ -7,7 +7,7 @@
  * @package     AffiliateWP
  * @copyright   Copyright (c) 2012, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       2.1
+ * @since       1.2
  */
 
 class Affiliate_WP_Creatives {
@@ -15,46 +15,63 @@ class Affiliate_WP_Creatives {
 	/**
 	 * The [affiliate_creative] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creative( $args = array() ) {
-		
-		$id = isset( $args['id'] ) ? $args['id'] : '';
 
-		$defaults = array(
-			'id'            => '',
-			'description'   => affiliate_wp()->creatives->get_column( 'description', $id ),
-			'link'          => affiliate_wp()->creatives->get_column( 'url', $id ),
-			'text'          => affiliate_wp()->creatives->get_column( 'text', $id ),
-			'image_id'      => '',
-			'image_link'	=> affiliate_wp()->creatives->get_column( 'image', $id ),
-			'preview'       => 'yes'
-		);
+		// creative's ID
+		$id = isset( $args['id'] ) ? (int) $args['id'] : '';
 
-		$args = wp_parse_args( $args, $defaults );
+		if ( ! $id ) {
+			return;
+		}
 
-		// if no link is specified, use the current site URL
-		$link = ! empty( $args['link'] ) ? $args['link'] : get_site_url();
+		// creative's link/URL
+		if ( ! empty( $args['link'] ) ) {
+			// set link to shortcode parameter
+			$link = $args['link'];
+		} elseif ( affiliate_wp()->creatives->get_column( 'url', $id ) ) {
+			// set link to creative's link from creatives section
+			$link = affiliate_wp()->creatives->get_column( 'url', $id );
+		} else {
+			// set link to the site URL
+			$link = get_site_url();
+		}
 
-		// if no text is specified, use the site name
-		$text = ! empty( $args['text'] ) ? $args['text'] : get_bloginfo( 'name' );
+		// creative's image link
+		$image_link = ! empty( $args['image_link'] ) ? $args['image_link'] : affiliate_wp()->creatives->get_column( 'image', $id );	
+
+		// creative's text (shown in alt/title tags)
+		if ( ! empty( $args['text'] ) ) {
+			// set text to shortcode parameter if used
+			$text = $args['text'];
+		} elseif ( affiliate_wp()->creatives->get_column( 'text', $id ) ) {
+			// set text to creative's text from the creatives section
+			$text = affiliate_wp()->creatives->get_column( 'text', $id );
+		} else {
+			// set text to name of blog
+			$text = get_bloginfo( 'name' );
+		}
+
+		// creative's description
+		$description = ! empty( $args['description'] ) ? $args['description'] : affiliate_wp()->creatives->get_column( 'description', $id );
+
+		// creative's preview parameter
+		$preview = ! empty( $args['preview'] ) ? $args['preview'] : 'yes';
 
 		// get the image attributes from image_id
 		$attributes = ! empty( $args['image_id'] ) ? wp_get_attachment_image_src( $args['image_id'], 'full' ) : '';
 
-		// description for creative
-		$desc = ! empty( $args['description'] ) ? $args['description'] : '';
-
 		// load the HTML required for the creative
-		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'], $desc );
+		return $this->html( $id, $link, $image_link, $attributes, $preview, $text, $description );
 
 	}
 
 	/**
 	 * The [affiliate_creatives] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creatives( $args = array() ) {
@@ -88,18 +105,17 @@ class Affiliate_WP_Creatives {
 	/**
 	 * Returns the referral link to append to the end of a URL
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string Affiliate's referral link
-	 * @todo  Better handling of referral link once we introduce pretty affiliate URLs
 	 */
 	public function ref_link( $url = '' ) {
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $url );
+		return affwp_get_affiliate_referral_url( array( 'base_url' => $url ) );
 	}
 
 	/**
 	 * Shortcode HTML
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @param  $image the image URL. Either the URL from the image column in DB or external URL of image.
 	 * @return string
 	 */

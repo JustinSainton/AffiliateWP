@@ -6,10 +6,19 @@ function affiliate_wp_install() {
 	$roles = new Affiliate_WP_Capabilities;
 	$roles->add_caps();
 
-	affiliate_wp()->affiliates->create_table();
-	affiliate_wp()->referrals->create_table();
-	affiliate_wp()->visits->create_table();
-	affiliate_wp()->creatives->create_table();
+	$affiliate_wp_install                 = new stdClass();
+	$affiliate_wp_install->affiliates     = new Affiliate_WP_DB_Affiliates;
+	$affiliate_wp_install->affiliate_meta = new Affiliate_WP_Affiliate_Meta_DB;
+	$affiliate_wp_install->referrals      = new Affiliate_WP_Referrals_DB;
+	$affiliate_wp_install->visits         = new Affiliate_WP_Visits_DB;
+	$affiliate_wp_install->creatives      = new Affiliate_WP_Creatives_DB;
+	$affiliate_wp_install->settings       = new Affiliate_WP_Settings;
+
+	$affiliate_wp_install->affiliates->create_table();
+	$affiliate_wp_install->affiliate_meta->create_table();
+	$affiliate_wp_install->referrals->create_table();
+	$affiliate_wp_install->visits->create_table();
+	$affiliate_wp_install->creatives->create_table();
 
 	if ( ! get_option( 'affwp_is_installed' ) ) {
 		$affiliate_area = wp_insert_post(
@@ -23,7 +32,7 @@ function affiliate_wp_install() {
 			)
 		);
 
-		$options = affiliate_wp()->settings->get_all();
+		$options = $affiliate_wp_install->settings->get_all();
 		$options['affiliates_page'] = $affiliate_area;
 		update_option( 'affwp_settings', $options );
 

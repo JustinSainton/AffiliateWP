@@ -1,0 +1,3298 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateWP v1.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-04-13 17:17:43+0000\n"
+"Last-Translator: keymaster <post@arctic-fritid.no>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Norwegian (Bokmål)\n"
+"X-Poedit-Country: NORWAY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#. translators: plugin header field 'Name'
+#: affiliate-wp.php:0
+#: includes/integrations/extras/class-exchange-feature.php:23
+#@ affiliate-wp
+msgid "AffiliateWP"
+msgstr "AffiliateWP"
+
+#. translators: plugin header field 'PluginURI'
+#. translators: plugin header field 'AuthorURI'
+#: affiliate-wp.php:0
+#@ affiliate-wp
+msgid "http://affiliatewp.com"
+msgstr "http://affiliatewp.com"
+
+#. translators: plugin header field 'Description'
+#: affiliate-wp.php:0
+#@ affiliate-wp
+msgid "Affiliate Plugin for WordPress"
+msgstr "Affiliate Plugin for WordPress"
+
+#. translators: plugin header field 'Author'
+#: affiliate-wp.php:0
+#@ affiliate-wp
+msgid "Pippin Williamson and Andrew Munro"
+msgstr "Pippin Williamson og Andrew Munro"
+
+#. translators: plugin header field 'Version'
+#: affiliate-wp.php:0
+#@ affiliate-wp
+msgid "1.6"
+msgstr "1.6"
+
+#: affiliate-wp.php:215
+#: affiliate-wp.php:227
+#@ affiliate-wp
+msgid "Cheatin&#8217; huh?"
+msgstr "Jukser&#8217; huh?"
+
+#: includes/admin/AFFWP_Plugin_Updater.php:164
+#: includes/admin/class-addon-updater.php:186
+#, php-format
+#@ default
+#@ affiliate-wp
+msgid "There is a new version of %1$s available. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr "Det er en ny versjon av %1$s tilgjenegelig. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">Vis detaljer for versjon %3$s</a>."
+
+#: includes/admin/AFFWP_Plugin_Updater.php:171
+#: includes/admin/class-addon-updater.php:193
+#, php-format
+#@ default
+#@ affiliate-wp
+msgid "There is a new version of %1$s available. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s\">update now</a>."
+msgstr "Det er en ny versjon av %1$s tilgjenegelig. <a target=\"_blank\" class=\"thickbox\" href=\"%2$s\">Vis detaljer for versjon %3$s</a> eller <a href=\"%4$s\">oppdater nå</a>."
+
+#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/class-addon-updater.php:280
+#@ default
+#@ affiliate-wp
+msgid "You do not have permission to install plugin updates"
+msgstr "Du har ikke tillatelse til å installere plugin oppdateringer"
+
+#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:49
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/affiliates/actions.php:57
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/class-addon-updater.php:280
+#: includes/admin/creatives/actions.php:16
+#: includes/admin/creatives/actions.php:44
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/creatives/actions.php:52
+#: includes/admin/creatives/actions.php:80
+#: includes/admin/referrals/actions.php:16
+#: includes/admin/tools/export/class-export.php:173
+#: includes/admin/tools/import/import.php:23
+#: includes/admin/tools/import/import.php:29
+#@ affiliate-wp
+msgid "Error"
+msgstr "Feil"
+
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/creatives/actions.php:80
+#@ affiliate-wp
+msgid "You do not have permission to manage affiliates"
+msgstr "Du har ikke tillatelse til å administrere affiliater"
+
+#: includes/admin/affiliates/actions.php:49
+#@ affiliate-wp
+msgid "You do not have permission to delete affiliate accounts"
+msgstr "Du har ikke tillatelse til å slette affiliate kontoer"
+
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/referrals/actions.php:20
+#: includes/admin/referrals/actions.php:51
+#@ affiliate-wp
+msgid "Security check failed"
+msgstr "Sikkerhetskontrollen mislyktes"
+
+#: includes/admin/affiliates/actions.php:57
+#@ affiliate-wp
+msgid "No affiliate IDs specified for deletion"
+msgstr "Ingen affiliate ID er spesifisert for sletting"
+
+#: includes/admin/affiliates/affiliates.php:44
+#: includes/admin/class-menu.php:11
+#: includes/admin/class-menu.php:13
+#: includes/admin/class-welcome.php:289
+#@ affiliate-wp
+msgid "Affiliates"
+msgstr "Affiliater"
+
+#: includes/admin/affiliates/affiliates.php:45
+#: includes/admin/creatives/creatives.php:41
+#@ affiliate-wp
+msgid "Add New"
+msgstr "Legg til"
+
+#: includes/admin/affiliates/affiliates.php:49
+#: includes/admin/referrals/referrals.php:60
+#: includes/admin/visits/visits.php:30
+#@ affiliate-wp
+msgid "Search"
+msgstr "Søk"
+
+#: includes/admin/affiliates/affiliates.php:191
+#: includes/admin/creatives/creatives.php:138
+#: includes/admin/referrals/referrals.php:200
+#@ affiliate-wp
+msgid "All"
+msgstr "Alle"
+
+#: includes/admin/affiliates/affiliates.php:192
+#: includes/admin/creatives/creatives.php:139
+#: includes/admin/creatives/edit.php:99
+#: includes/admin/creatives/new.php:89
+#: includes/admin/tools/tools.php:211
+#@ affiliate-wp
+msgid "Active"
+msgstr "Aktive"
+
+#: includes/admin/affiliates/affiliates.php:193
+#: includes/admin/creatives/creatives.php:140
+#: includes/admin/creatives/edit.php:100
+#: includes/admin/creatives/new.php:90
+#@ affiliate-wp
+msgid "Inactive"
+msgstr "Inaktive"
+
+#: includes/admin/affiliates/affiliates.php:194
+#: includes/admin/referrals/edit.php:90
+#: includes/admin/referrals/new.php:92
+#: includes/admin/referrals/referrals.php:203
+#: includes/admin/tools/tools.php:212
+#: includes/admin/tools/tools.php:242
+#: includes/referral-functions.php:55
+#@ affiliate-wp
+msgid "Pending"
+msgstr "Ventende"
+
+#: includes/admin/affiliates/affiliates.php:195
+#: includes/admin/referrals/edit.php:91
+#: includes/admin/referrals/new.php:93
+#: includes/admin/referrals/referrals.php:204
+#: includes/admin/tools/tools.php:213
+#: includes/admin/tools/tools.php:243
+#: includes/referral-functions.php:54
+#@ affiliate-wp
+msgid "Rejected"
+msgstr "Avvist"
+
+#: includes/admin/affiliates/affiliates.php:211
+#: includes/admin/affiliates/review.php:22
+#: includes/admin/creatives/creatives.php:155
+#: includes/admin/creatives/edit.php:17
+#: includes/admin/creatives/new.php:16
+#@ affiliate-wp
+msgid "Name"
+msgstr "Navn:"
+
+#: includes/admin/affiliates/affiliates.php:212
+#: includes/admin/settings/class-settings.php:221
+#: includes/admin/tools/export/class-export.php:69
+#@ affiliate-wp
+msgid "ID"
+msgstr "ID"
+
+#: includes/admin/affiliates/affiliates.php:213
+#: includes/admin/affiliates/view.php:11
+#: includes/admin/overview/overview.php:168
+#: includes/admin/tools/export/class-export-affiliates.php:52
+#@ affiliate-wp
+msgid "Earnings"
+msgstr "Inntekter"
+
+#: includes/admin/affiliates/affiliates.php:214
+#: includes/admin/tools/export/class-export-affiliates.php:50
+#@ affiliate-wp
+msgid "Rate"
+msgstr "Sats"
+
+#: includes/admin/affiliates/affiliates.php:215
+#: templates/dashboard-tab-stats.php:9
+#@ affiliate-wp
+msgid "Paid Referrals"
+msgstr "Bekreftede salg"
+
+#: includes/admin/affiliates/affiliates.php:216
+#: includes/admin/class-menu.php:15
+#: includes/admin/class-welcome.php:299
+#: includes/admin/overview/overview.php:170
+#: includes/admin/reports/reports.php:66
+#: includes/admin/reports/reports.php:185
+#: includes/admin/tools/export/class-export-affiliates.php:54
+#: includes/admin/tools/tools.php:105
+#: includes/admin/visits/visits.php:27
+#: templates/dashboard-tab-stats.php:10
+#: templates/dashboard.php:45
+#@ affiliate-wp
+msgid "Visits"
+msgstr "Besøkende"
+
+#: includes/admin/affiliates/affiliates.php:217
+#: includes/admin/creatives/creatives.php:158
+#: includes/admin/creatives/edit.php:94
+#: includes/admin/creatives/new.php:84
+#: includes/admin/overview/overview.php:117
+#: includes/admin/referrals/edit.php:83
+#: includes/admin/referrals/new.php:85
+#: includes/admin/referrals/referrals.php:226
+#: includes/admin/tools/export/class-export-affiliates.php:55
+#: includes/admin/tools/export/class-export-referrals.php:67
+#: templates/dashboard-tab-referrals.php:21
+#@ affiliate-wp
+msgid "Status"
+msgstr "Status"
+
+#: includes/admin/affiliates/affiliates.php:218
+#: includes/admin/creatives/creatives.php:159
+#: includes/admin/overview/overview.php:118
+#: includes/admin/referrals/referrals.php:225
+#@ affiliate-wp
+msgid "Actions"
+msgstr "Handlinger"
+
+#: includes/admin/affiliates/affiliates.php:281
+#@ affiliate-wp
+msgid "(user deleted)"
+msgstr "(bruker slettet)"
+
+#: includes/admin/affiliates/affiliates.php:358
+#: includes/admin/class-menu.php:17
+#@ affiliate-wp
+msgid "Reports"
+msgstr "Rapporter"
+
+#: includes/admin/affiliates/affiliates.php:359
+#: includes/admin/creatives/creatives.php:232
+#: includes/admin/referrals/referrals.php:374
+#@ affiliate-wp
+msgid "Edit"
+msgstr "Rediger"
+
+#: includes/admin/affiliates/affiliates.php:362
+#: includes/admin/affiliates/affiliates.php:402
+#: includes/admin/creatives/creatives.php:235
+#@ affiliate-wp
+msgid "Deactivate"
+msgstr "Deaktiver"
+
+#: includes/admin/affiliates/affiliates.php:364
+#: includes/admin/overview/overview.php:133
+#@ affiliate-wp
+msgid "Review"
+msgstr "Gjennomgang"
+
+#: includes/admin/affiliates/affiliates.php:365
+#: includes/admin/affiliates/affiliates.php:399
+#: includes/admin/referrals/referrals.php:362
+#: includes/admin/referrals/referrals.php:454
+#@ affiliate-wp
+msgid "Accept"
+msgstr "Godkjenn"
+
+#: includes/admin/affiliates/affiliates.php:366
+#: includes/admin/affiliates/affiliates.php:400
+#: includes/admin/referrals/referrals.php:368
+#: includes/admin/referrals/referrals.php:455
+#@ affiliate-wp
+msgid "Reject"
+msgstr "Avvis"
+
+#: includes/admin/affiliates/affiliates.php:368
+#: includes/admin/affiliates/affiliates.php:401
+#: includes/admin/creatives/creatives.php:237
+#@ affiliate-wp
+msgid "Activate"
+msgstr "Aktiver"
+
+#: includes/admin/affiliates/affiliates.php:371
+#: includes/admin/affiliates/affiliates.php:403
+#: includes/admin/creatives/creatives.php:240
+#: includes/admin/referrals/referrals.php:375
+#: includes/admin/referrals/referrals.php:458
+#@ affiliate-wp
+msgid "Delete"
+msgstr "Slett"
+
+#: includes/admin/affiliates/affiliates.php:387
+#@ affiliate-wp
+msgid "No affiliates found."
+msgstr "Ingen affiliater funnet."
+
+#: includes/admin/affiliates/delete.php:14
+#: includes/admin/affiliates/delete.php:49
+#@ affiliate-wp
+msgid "Delete Affiliates"
+msgstr "Slett affiliatene"
+
+#: includes/admin/affiliates/delete.php:20
+#@ affiliate-wp
+msgid "You have specified these affiliates for deletion:"
+msgstr "Du har oppgitt disse affiliatene for sletting:"
+
+#: includes/admin/affiliates/delete.php:26
+#, php-format
+#@ affiliate-wp
+msgctxt "Affiliate ID, affiliate name"
+msgid "ID #%d: %s"
+msgstr "ID #%d: %s"
+
+#: includes/admin/affiliates/delete.php:33
+#@ affiliate-wp
+msgid "Deleting these affiliates will also delete their referral and visit data."
+msgstr "Å slette disse affiliatene vil også slette tilhørende henvisninger og besøks informasjon."
+
+#: includes/admin/affiliates/delete.php:39
+#@ affiliate-wp
+msgid "Delete affiliate's user accounts as well?"
+msgstr "Slett affiliatene's brukerkontoer i tillegg?"
+
+#: includes/admin/affiliates/edit.php:10
+#@ affiliate-wp
+msgid "Edit Affiliate"
+msgstr "Rediger affiliaten"
+
+#: includes/admin/affiliates/edit.php:21
+#: includes/admin/referrals/edit.php:18
+#: includes/admin/tools/export/class-export-affiliates.php:47
+#: includes/admin/tools/export/class-export-referrals.php:61
+#@ affiliate-wp
+msgid "Affiliate ID"
+msgstr "Affiliate ID"
+
+#: includes/admin/affiliates/edit.php:26
+#@ affiliate-wp
+msgid "The affiliate's ID. This cannot be changed."
+msgstr "Affiliaten's ID. Denne kan ikke endres."
+
+#: includes/admin/affiliates/edit.php:34
+#@ affiliate-wp
+msgid "User ID"
+msgstr "Bruker ID"
+
+#: includes/admin/affiliates/edit.php:39
+#@ affiliate-wp
+msgid "The affiliate's user ID. This cannot be changed."
+msgstr "Affiliaten's bruker ID. Denne kan ikke endres."
+
+#: includes/admin/affiliates/edit.php:47
+#: includes/admin/affiliates/new.php:33
+#: includes/admin/settings/class-settings.php:232
+#@ affiliate-wp
+msgid "Referral Rate Type"
+msgstr "Provisjonstype"
+
+#: includes/admin/affiliates/edit.php:52
+#: includes/admin/affiliates/new.php:38
+#@ affiliate-wp
+msgid "Site Default"
+msgstr "Nettstedets standard"
+
+#: includes/admin/affiliates/edit.php:57
+#: includes/admin/affiliates/new.php:43
+#@ affiliate-wp
+msgid "The affiliate's referral rate type."
+msgstr "Affiliaten's provisjonstype."
+
+#: includes/admin/affiliates/edit.php:65
+#: includes/admin/affiliates/new.php:51
+#: includes/admin/settings/class-settings.php:238
+#: includes/integrations/class-edd.php:545
+#: includes/integrations/extras/class-exchange-feature.php:46
+#@ affiliate-wp
+msgid "Referral Rate"
+msgstr "Provisjons sats"
+
+#: includes/admin/affiliates/edit.php:70
+#: includes/admin/affiliates/new.php:56
+#@ affiliate-wp
+msgid "The affiliate's referral rate, such as 20 for 20%. If left blank, the site default will be used."
+msgstr "Affiliaten's provisjons sats, f.eks. 20 for 20%. Hvis intet oppgitt, nettstedets standard sats vil bli brukt."
+
+#: includes/admin/affiliates/edit.php:78
+#: templates/register.php:53
+#@ affiliate-wp
+msgid "Account Email"
+msgstr "E-postadresse"
+
+#: includes/admin/affiliates/edit.php:83
+#@ affiliate-wp
+msgid "The affiliate's account email. Updating this will change the email address shown on the user's profile page."
+msgstr "Affiliaten's brukerkonto e-post. En endring av denne vil også endre e-postadressen som vises på brukerens profilside."
+
+#: includes/admin/affiliates/edit.php:91
+#: includes/admin/affiliates/new.php:64
+#: templates/register.php:68
+#@ affiliate-wp
+msgid "Payment Email"
+msgstr "E-post for utbetalinger:"
+
+#: includes/admin/affiliates/edit.php:96
+#: includes/admin/affiliates/new.php:69
+#@ affiliate-wp
+msgid "Affiliate's payment email for systems such as PayPal, Moneybookers, or others. Leave blank to use the affiliate's user email."
+msgstr "Affiliaten's e-post for utbetalinger, brukes mot betalingsløsninger som PayPal, Moneybookers etc. La stå tomt for å bruke affiliaten's standard e-post."
+
+#: includes/admin/affiliates/edit.php:107
+#@ affiliate-wp
+msgid "Update Affiliate"
+msgstr "Oppdater affiliaten"
+
+#: includes/admin/affiliates/new.php:3
+#@ affiliate-wp
+msgid "New Affiliate"
+msgstr "Ny affiliate"
+
+#: includes/admin/affiliates/new.php:9
+#, php-format
+#@ affiliate-wp
+msgid "Use this screen to register a new affiliate. Each affiliate is tied directly to a user account, so if the user account for the affiliate does not yet exist, <a href=\"%s\" target=\"_blank\">create one</a>."
+msgstr "Bruk dette skjemaet til å registrere en ny affiliate. Enhver affiliate er knyttet direkte til en brukerkonto, så hvis brukerkontoen for denne affiliaten ennå ikke eksisterer, så må du <a href=\"%s\" target=\"_blank\">opprette denne</a>."
+
+#: includes/admin/affiliates/new.php:16
+#@ affiliate-wp
+msgid "User"
+msgstr "Bruker"
+
+#: includes/admin/affiliates/new.php:25
+#@ affiliate-wp
+msgid "Begin typing the name of the affiliate to perform a search for their associated user account."
+msgstr "Start med å skrive inn navnet for denne affiliaten for å utføre et søk etter en tilhørende brukerkonto."
+
+#: includes/admin/affiliates/new.php:81
+#@ affiliate-wp
+msgid "Add Affiliate"
+msgstr "Legg til affiliaten"
+
+#: includes/admin/affiliates/review.php:11
+#@ affiliate-wp
+msgid "Review Affiliate"
+msgstr "Gjennomgå affiliaten"
+
+#: includes/admin/affiliates/review.php:11
+#@ affiliate-wp
+msgid "Go Back"
+msgstr "Gå tilbake"
+
+#: includes/admin/affiliates/review.php:34
+#: includes/admin/settings/class-settings.php:222
+#: includes/admin/tools/export/class-export-affiliates.php:49
+#: templates/login.php:15
+#: templates/login.php:16
+#: templates/register.php:48
+#: templates/register.php:49
+#@ affiliate-wp
+msgid "Username"
+msgstr "Brukernavn:"
+
+#: includes/admin/affiliates/review.php:46
+#: templates/register.php:54
+#@ affiliate-wp
+msgid "Email Address"
+msgstr "E-postadresse:"
+
+#: includes/admin/affiliates/review.php:59
+#: templates/register.php:73
+#: templates/register.php:74
+#@ affiliate-wp
+msgid "Website URL"
+msgstr "Nettsteds URL:"
+
+#: includes/admin/affiliates/review.php:63
+#@ affiliate-wp
+msgid "Affiliate's Website URL"
+msgstr "Affiliaten's nettsteds URL"
+
+#: includes/admin/affiliates/review.php:73
+#@ affiliate-wp
+msgid "Promotion Method"
+msgstr "Markedsføringsmetode"
+
+#: includes/admin/affiliates/review.php:86
+#@ affiliate-wp
+msgid "Accept Affiliate"
+msgstr "Godkjenn affiliate"
+
+#: includes/admin/affiliates/review.php:87
+#@ affiliate-wp
+msgid "Reject Affiliate"
+msgstr "Avvis affiliate"
+
+#: includes/admin/affiliates/view.php:7
+#, php-format
+#@ affiliate-wp
+msgid "Affiliate: #%d %s"
+msgstr "Affiliate: #%d %s"
+
+#: includes/admin/affiliates/view.php:18
+#@ affiliate-wp
+msgid "Total earnings"
+msgstr "Inntekter totalt"
+
+#: includes/admin/affiliates/view.php:19
+#@ affiliate-wp
+msgid "Total unpaid earnings"
+msgstr "Ubetalte inntekter totalt"
+
+#: includes/admin/affiliates/view.php:20
+#@ affiliate-wp
+msgid "Total paid referrals"
+msgstr "Totalt antall betalte salg"
+
+#: includes/admin/affiliates/view.php:21
+#@ affiliate-wp
+msgid "Total unpaid referrals"
+msgstr "Totalt antall ubetalte salg"
+
+#: includes/admin/affiliates/view.php:22
+#@ affiliate-wp
+msgid "Total pending referrals"
+msgstr "Totalt antall ventende salg"
+
+#: includes/admin/affiliates/view.php:23
+#@ affiliate-wp
+msgid "Total rejected referrals"
+msgstr "Totalt antall avviste salg"
+
+#: includes/admin/affiliates/view.php:24
+#@ affiliate-wp
+msgid "Total visits"
+msgstr "Totalt antall besøk"
+
+#: includes/admin/ajax-actions.php:32
+#@ affiliate-wp
+msgid "No users found"
+msgstr "Ingen brukere funnet"
+
+#: includes/admin/class-menu.php:12
+#: includes/admin/overview/overview.php:19
+#: includes/admin/referrals/contextual-help.php:37
+#: includes/admin/visits/contextual-help.php:37
+#@ affiliate-wp
+msgid "Overview"
+msgstr "Oversikt"
+
+#: includes/admin/class-menu.php:14
+#: includes/admin/class-welcome.php:294
+#: includes/admin/overview/overview.php:169
+#: includes/admin/referrals/referrals.php:34
+#: includes/admin/reports/reports.php:65
+#: includes/admin/tools/export/class-export-affiliates.php:53
+#: includes/admin/tools/tools.php:104
+#: templates/dashboard-tab-referrals.php:3
+#: templates/dashboard.php:42
+#@ affiliate-wp
+msgid "Referrals"
+msgstr "Salg"
+
+#: includes/admin/class-menu.php:16
+#: includes/admin/creatives/creatives.php:40
+#: templates/dashboard-tab-creatives.php:3
+#: templates/dashboard.php:48
+#@ affiliate-wp
+msgid "Creatives"
+msgstr "Annonsemateriell"
+
+#: includes/admin/class-menu.php:18
+#@ affiliate-wp
+msgid "Tools"
+msgstr "Verktøy"
+
+#: includes/admin/class-menu.php:19
+#: templates/dashboard.php:51
+#@ affiliate-wp
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: includes/admin/class-menu.php:20
+#: includes/admin/tools/migration.php:15
+#@ affiliate-wp
+msgid "AffiliateWP Migration"
+msgstr "AffiliateWP migrering"
+
+#: includes/admin/class-notices.php:16
+#: includes/admin/settings/class-settings.php:155
+#@ affiliate-wp
+msgid "Settings updated."
+msgstr "Innstillinger ble oppdatert."
+
+#: includes/admin/class-notices.php:25
+#@ affiliate-wp
+msgid "Affiliate added successfully"
+msgstr "Affiliaten ble opprettet"
+
+#: includes/admin/class-notices.php:31
+#@ affiliate-wp
+msgid "Affiliate wasn't added, please try again."
+msgstr "Affiliaten ble ikke opprettet, vennligst prøv igjen."
+
+#: includes/admin/class-notices.php:38
+#@ affiliate-wp
+msgid "Affiliate updated successfully"
+msgstr "Affiliaten ble oppdatert"
+
+#: includes/admin/class-notices.php:40
+#, php-format
+#@ affiliate-wp
+msgid "<a href=\"%s\">Back to Affiliates</a>"
+msgstr "<a href=\"%s\">Tilbake til affliater</a>"
+
+#: includes/admin/class-notices.php:46
+#@ affiliate-wp
+msgid "Affiliate update failed, please try again"
+msgstr "Oppdateringen feilet, vennligst prøv igjen."
+
+#: includes/admin/class-notices.php:53
+#@ affiliate-wp
+msgid "Affiliate account(s) deleted successfully"
+msgstr "Affiliate konto(ene) ble slettet"
+
+#: includes/admin/class-notices.php:59
+#@ affiliate-wp
+msgid "Affiliate deletion failed, please try again"
+msgstr "Slettingen feilet, vennligst prøv igjen."
+
+#: includes/admin/class-notices.php:66
+#@ affiliate-wp
+msgid "Affiliate account activated"
+msgstr "Affiliate kontoen ble aktivert."
+
+#: includes/admin/class-notices.php:72
+#@ affiliate-wp
+msgid "Affiliate account deactivated"
+msgstr "Affiliate kontoen ble deaktivert."
+
+#: includes/admin/class-notices.php:78
+#@ affiliate-wp
+msgid "Affiliate request was accepted"
+msgstr "Affiliate forespørselen ble akseptert."
+
+#: includes/admin/class-notices.php:84
+#@ affiliate-wp
+msgid "Affiliate request was rejected"
+msgstr "Affiliate forespørselen ble avvist."
+
+#: includes/admin/class-notices.php:90
+#@ affiliate-wp
+msgid "Affiliate stats have been recounted!"
+msgstr "Affiliate statistikken ble rekalkulert!"
+
+#: includes/admin/class-notices.php:96
+#@ affiliate-wp
+msgid "Referral added successfully"
+msgstr "Henvisningen ble opprettet"
+
+#: includes/admin/class-notices.php:102
+#@ affiliate-wp
+msgid "Referral updated successfully"
+msgstr "Salget ble oppdatert"
+
+#: includes/admin/class-notices.php:108
+#@ affiliate-wp
+msgid "Referral update failed, please try again"
+msgstr "Oppdateringen feilet, vennligst prøv igjen."
+
+#: includes/admin/class-notices.php:114
+#@ affiliate-wp
+msgid "Referral deleted successfully"
+msgstr "Salgsdata ble slettet"
+
+#: includes/admin/class-notices.php:120
+#@ affiliate-wp
+msgid "Referral deletion failed, please try again"
+msgstr "Slettingen feilet, vennligst prøv igjen."
+
+#: includes/admin/class-notices.php:127
+#@ affiliate-wp
+msgid "Creative updated successfully"
+msgstr "Annonsematerialet ble oppdatert"
+
+#: includes/admin/class-notices.php:129
+#, php-format
+#@ affiliate-wp
+msgid "<a href=\"%s\">Back to Creatives</a>"
+msgstr "<a href=\"%s\">Tilbake til annonsemateriell</a>"
+
+#: includes/admin/class-notices.php:135
+#@ affiliate-wp
+msgid "Creative added successfully"
+msgstr "Annonsematerialet ble opprettet"
+
+#: includes/admin/class-notices.php:141
+#@ affiliate-wp
+msgid "Creative deleted successfully"
+msgstr "Annonsematerialet ble slettet"
+
+#: includes/admin/class-notices.php:147
+#@ affiliate-wp
+msgid "Creative activated"
+msgstr "Annonsematerialet ble aktivert"
+
+#: includes/admin/class-notices.php:153
+#@ affiliate-wp
+msgid "Creative deactivated"
+msgstr "Annonsematerialet ble deaktivert"
+
+#: includes/admin/class-notices.php:159
+#@ affiliate-wp
+msgid "Settings successfully imported"
+msgstr "Innstillingene ble importert"
+
+#: includes/admin/class-welcome.php:52
+#: includes/admin/class-welcome.php:53
+#@ affiliate-wp
+msgid "What's new in AffiliateWP"
+msgstr "Hva er nytt i AffiliateWP"
+
+#: includes/admin/class-welcome.php:61
+#: includes/admin/class-welcome.php:62
+#@ affiliate-wp
+msgid "Getting started with AffiliateWP"
+msgstr "Komme i gang med AffiliateWP"
+
+#: includes/admin/class-welcome.php:70
+#: includes/admin/class-welcome.php:71
+#@ affiliate-wp
+msgid "The people that build AffiliateWP"
+msgstr "Personene bak AffiliateWP"
+
+#: includes/admin/class-welcome.php:146
+#@ affiliate-wp
+msgid "What's New"
+msgstr "Hva er nytt"
+
+#: includes/admin/class-welcome.php:149
+#: includes/admin/plugins.php:50
+#@ affiliate-wp
+msgid "Getting Started"
+msgstr "Komme i gang"
+
+#: includes/admin/class-welcome.php:152
+#@ affiliate-wp
+msgid "Credits"
+msgstr "Krediter"
+
+#: includes/admin/class-welcome.php:169
+#, php-format
+#@ affiliate-wp
+msgid "Welcome to AffiliateWP v%s"
+msgstr "Velkommen til AffiliateWP v%s"
+
+#: includes/admin/class-welcome.php:170
+#: includes/admin/class-welcome.php:237
+#, php-format
+#@ affiliate-wp
+msgid "Thank you for installing AffiliateWP v%s. The best affiliate marketing plugin for WordPress."
+msgstr "Takk for at du installerer AffiliateWP v%s. Den beste affiliate markedsføring plugin for WordPress."
+
+#: includes/admin/class-welcome.php:171
+#: includes/admin/class-welcome.php:238
+#: includes/admin/class-welcome.php:334
+#, php-format
+#@ affiliate-wp
+msgid "Version %s"
+msgstr "Versjon %s"
+
+#: includes/admin/class-welcome.php:179
+#@ affiliate-wp
+msgid "New integrations"
+msgstr "Nye integreringer"
+
+#: includes/admin/class-welcome.php:180
+#@ affiliate-wp
+msgid "To make AffiliateWP more accessible and more valuable to more users, we have added four new integrations:"
+msgstr "For å gjøre AffiliateWP mer tilgjengelig og mer verdifull for flere brukere, har vi lagt til fire nye integrasjoner:"
+
+#: includes/admin/class-welcome.php:189
+#@ affiliate-wp
+msgid "Configurable emails"
+msgstr "Konfigurerbare e-post"
+
+#: includes/admin/class-welcome.php:191
+#@ affiliate-wp
+msgid "With version 1.6, we have introduced a new tab in the Settings page that allows you to configure all emails that get sent out to affiliates when they register for an account or earn a new referral."
+msgstr "Med versjon 1.6, har vi innført en ny fane i Innstillinger-siden som lar deg konfigurere alle e-poster som blir sendt ut til affiliater når de registrerer seg for en konto eller tjener provisjon."
+
+#: includes/admin/class-welcome.php:192
+#@ affiliate-wp
+msgid "All emails are sent in beautiful HTML templates that can be easily edited at anytime. These template files can be copied to your theme's \"affiliatewp/emails\" folder to give you complete control over the appearance of the emails."
+msgstr "Alle e-poster blir sendt i vakre HTML-maler som enkelt kan redigeres når som helst. Disse malfiler kan kopieres til ditt temaets \"affiliatewp/emails\" mappen for å gi deg full kontroll over utseendet på e-postene."
+
+#: includes/admin/class-welcome.php:194
+#@ affiliate-wp
+msgid "Fine-tuned control over how referral URLs appear to affiliates"
+msgstr "Finjustert kontroll over hvordan henvisningslenkene / URL-er vises til affiliatene"
+
+#: includes/admin/class-welcome.php:195
+#@ affiliate-wp
+msgid "Your affiliates can already promote your website using a wide variety of <a href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" target=\"_blank\">Affiliate URLs</a>. Admins now have much more control over how these referral URLs appear to affiliates on the front-end of your website. You can set a <strong>Default Referral Format</strong> (ID or username) and choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your affiliates."
+msgstr "Dine affiliater kan allerede fremme ditt nettsted ved hjelp av et bredt utvalg av <a href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" target=\"_blank\">Henvisningslenker / URLs</a>. Administratorer har nå mye bedre kontroll over hvordan disse henvisninglenkene vises til affiliatene på forsiden av nettstedet. Du kan sette en <strong>Standard henvisnings ID</strong> (ID eller brukernavn), og velge om du vil vise <strong>SEO vennlige lenker</strong> til dine affiliater."
+
+#: includes/admin/class-welcome.php:197
+#@ affiliate-wp
+msgid "Additional Updates"
+msgstr "Ytterligere oppdateringer"
+
+#: includes/admin/class-welcome.php:199
+#@ affiliate-wp
+msgid "Affiliate Export Improvements"
+msgstr "Forbedringer av affiliate eksport"
+
+#: includes/admin/class-welcome.php:200
+#@ affiliate-wp
+msgid "The affiliate's username is now included in the exported affiliate .csv file."
+msgstr "Affiliate brukernavn er nå inkludert i den eksporterte affiliate .csv fil."
+
+#: includes/admin/class-welcome.php:202
+#@ affiliate-wp
+msgid "New Affiliate Meta Class"
+msgstr "Ny affiliate meta klasse"
+
+#: includes/admin/class-welcome.php:203
+#@ affiliate-wp
+msgid "We've introduced a new metadata API for afiliate accounts that provides developers with a powerful tool for tracking affiliate-specific data."
+msgstr "Vi har introdusert en ny metadata API for affiliate kontoer som gir utviklere et kraftig verktøy for å spore affiliate-spesifikke data."
+
+#: includes/admin/class-welcome.php:205
+#@ affiliate-wp
+msgid "Creative Improvements"
+msgstr "Forbedringer av annonsemateriell"
+
+#: includes/admin/class-welcome.php:206
+#@ affiliate-wp
+msgid "We've made improvements to the way creatives are shown. The description is now shown at the top of the creative and it's much easier for affiliates to copy the necessary code."
+msgstr "Vi har gjort forbedringer i måten annonsematerialet vises. Beskrivelsen vises nå på toppen av annonsematerialet og det er nå mye enklere for affiliatene å kopiere den nødvendige koden."
+
+#: includes/admin/class-welcome.php:208
+#@ affiliate-wp
+msgid "Affiliate Dashboard Improvements"
+msgstr "Affiliate kontrollpanel forbedringer"
+
+#: includes/admin/class-welcome.php:209
+#@ affiliate-wp
+msgid "Pending affiliates can no longer access the affiliate dashboard until they have been approved."
+msgstr "Ventende affiliater kan ikke lenger få tilgang til affiliate kontrollpanelet før de er godkjent."
+
+#: includes/admin/class-welcome.php:219
+#: includes/admin/class-welcome.php:306
+#@ affiliate-wp
+msgid "Go to AffiliateWP Settings"
+msgstr "Gå til AffiliateWP innstillinger"
+
+#: includes/admin/class-welcome.php:236
+#: includes/admin/class-welcome.php:332
+#, php-format
+#@ affiliate-wp
+msgid "Welcome to AffiliateWP %s"
+msgstr "Velkommen til AffiliateWP %s"
+
+#: includes/admin/class-welcome.php:242
+#@ affiliate-wp
+msgid "Use the tips below to get started using AffiliateWP. You will be up and running in no time!"
+msgstr "Bruk tipsene nedenfor for å komme i gang med AffiliateWP. Du vil være oppe og gå på et blunk!"
+
+#: includes/admin/class-welcome.php:245
+#@ affiliate-wp
+msgid "Overview of Affiliates and Referrals"
+msgstr "Oversikt over affiliater og salg / henvisninger"
+
+#: includes/admin/class-welcome.php:250
+#@ affiliate-wp
+msgid "The Overview Page"
+msgstr "Oversikt siden"
+
+#: includes/admin/class-welcome.php:251
+#@ affiliate-wp
+msgid "The overview page gives you a quick summary of your recent affiliate activity, including recent registrations, referrals, and visits."
+msgstr "Oversikt siden gir deg en rask oppsummering av dine siste affiliate aktiviteter, inkludert nylige registreringer, henvisninger / salg, og besøk."
+
+#: includes/admin/class-welcome.php:252
+#@ affiliate-wp
+msgid "It also provides a quick summary of your affiliates' referral earnings."
+msgstr "Den gir også en rask oppsummering av dine affiliaters henvisninger / salg og inntjening."
+
+#: includes/admin/class-welcome.php:253
+#@ affiliate-wp
+msgid "If you allow affiliate registrations, you can also easily accept or reject affiliate's applications directly from the Overview page"
+msgstr "Hvis du tillater affiliate registreringer, kan du også enkelt akseptere eller avvise affiliatenes søknader direkte fra oversikt siden"
+
+#: includes/admin/class-welcome.php:256
+#@ affiliate-wp
+msgid "Adding Affiliates"
+msgstr "Legge til affiliater"
+
+#: includes/admin/class-welcome.php:261
+#@ affiliate-wp
+msgid "Affiliates &rarr; Add New"
+msgstr "Affiliates &rarr; Legg til"
+
+#: includes/admin/class-welcome.php:262
+#@ affiliate-wp
+msgid "From the main Affiliates page, site admins can easily add new affiliates to AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
+msgstr "Fra affiliate siden, kan administratorer enkelt legge til nye affiliater. Bare skriv inn brukernavn, oppgi en provisjons sats, og klikk på Legg til affiliate!"
+
+#: includes/admin/class-welcome.php:264
+#@ affiliate-wp
+msgid "Affiliate Registration"
+msgstr "Affiliate registrering"
+
+#: includes/admin/class-welcome.php:265
+#@ affiliate-wp
+msgid "When enabled, affiliates can register themselves via the Affiliate Area. If they already have a user account on your site, they can register by simply agreeing to the terms of use. If they need to create an entirely new account, they have that option as well!"
+msgstr "Hvis denne er aktivert, så kan brukere registrere seg som affiliate via affiliate området. Hvis de allerede har en brukerkonto på nettstedet ditt, kan de enkelt registrere seg ved godta vilkårene for bruk. Hvis de trenger å opprette en helt ny konto, så har de den muligheten også!"
+
+#: includes/admin/class-welcome.php:267
+#@ affiliate-wp
+msgid "Moderate Registrations"
+msgstr "Moderer registreringer"
+
+#: includes/admin/class-welcome.php:268
+#@ affiliate-wp
+msgid "Affiliate registrations can be moderated and require that a site admin approve each registration before the affiliate is permitted to begin tracking referrals."
+msgstr "Affiliate registreringer kan bli moderert og krever at en administrator godkjenner hver enkelt registrering før affiliaten får tillatelse til å spore henvisninger og / eller salg."
+
+#: includes/admin/class-welcome.php:269
+#@ affiliate-wp
+msgid "Each time an affiliate registers, site admins can log into the site and approve or reject the application."
+msgstr "Hver gang en affiliate registreres, så kan administratorer logge inn på nettstedet og godkjenne eller avslå søknaden."
+
+#: includes/admin/class-welcome.php:272
+#: includes/admin/settings/class-settings.php:194
+#: includes/install.php:18
+#@ affiliate-wp
+msgid "Affiliate Area"
+msgstr "Affiliate område"
+
+#: includes/admin/class-welcome.php:277
+#@ affiliate-wp
+msgid "A Dashboard For Your Affiliates"
+msgstr "Et kontrollpanel for dine affiliater"
+
+#: includes/admin/class-welcome.php:278
+#@ affiliate-wp
+msgid "The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> short code, gives your affiliates access to their performance reports."
+msgstr "Affiliate området, vises på alle sider som inneholder <em>[affiliate_area]</em> shortcode, og gir affiliatene tilgang til sine resultatrapporter."
+
+#: includes/admin/class-welcome.php:279
+#@ affiliate-wp
+msgid "Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referral URLs have done over time."
+msgstr "Affiliater kan enkelt se hvor mye de har tjent, hvor mye som avventer betaling, og også hvordan deres henvisningslenker har gjort det over tid."
+
+#: includes/admin/class-welcome.php:280
+#@ affiliate-wp
+msgid "A log of the referral links that have been clicked and where they were clicked on from, and whether the link converted into a successful referral, is also available to affiliates."
+msgstr "En logg over henvisningslenker som har blitt klikket, og fra hvor de ble klikket på, og hvorvidt henvisningene konverteres til et vellykket salg, er også tilgjengelig for partnere."
+
+#: includes/admin/class-welcome.php:285
+#@ affiliate-wp
+msgid "Quick Terminology"
+msgstr "Hurtig terminologi"
+
+#: includes/admin/class-welcome.php:290
+#@ affiliate-wp
+msgid "These are your best friends. They are the users that are actively promoting your products and services through referral URLs. When they create a customer for you, they get paid back in the form of a commission."
+msgstr "Dette er dine beste venner. De er affiliatene som aktivt fremmer dine produkter og tjenester gjennom sine henvisningslenker. Når de genererer en kunde for deg, da får de betalt tilbake i form av den provisjon som angitt av deg."
+
+#: includes/admin/class-welcome.php:295
+#@ affiliate-wp
+msgid "These are the commission records created anytime an affiliate successfully sends a potential customer to your site and that customer makes a purchase."
+msgstr "Dette er provisjonsdata som opprettes når en affiliate sender en potensiell kunde til nettstedet ditt, og når denne kunden utfører et kjøp."
+
+#: includes/admin/class-welcome.php:300
+#@ affiliate-wp
+msgid "These are unique hits on the referral URLs shared out by your affiliates. Each time a potential customer clicks on a referral URL, a visit is recorded."
+msgstr "Dette er unike treff på henvisningslenkene som markedsført av dine affiliater. Hver gang en potensiell kunde klikker på en henvisningslenke, så registreres det som et besøk."
+
+#: includes/admin/class-welcome.php:310
+#@ affiliate-wp
+msgid "Need Help?"
+msgstr "Trenger du hjelp?"
+
+#: includes/admin/class-welcome.php:313
+#@ affiliate-wp
+msgid "Phenomenal Support"
+msgstr "Fenomenal support"
+
+#: includes/admin/class-welcome.php:314
+#@ affiliate-wp
+msgid "We do our best to provide the best support we can. If you encounter a problem or have a question, visit our <a href=\"http://affiliatewp.com/support\">support</a> page to open a ticket."
+msgstr "Vi gjør vårt beste for å gi deg den aller beste support. Hvis du støter på et problem eller har spørsmål, så kan du besøke vår avdeling for <a href=\"http://affiliatewp.com/support\">support</a>, for å sende oss en forespørsel."
+
+#: includes/admin/class-welcome.php:333
+#@ affiliate-wp
+msgid "Thank you for updating to the latest version!"
+msgstr "Takk for at du oppdaterer til den nyeste versjonen!"
+
+#: includes/admin/class-welcome.php:338
+#@ affiliate-wp
+msgid "AffiliateWP is created by developers from around the world that aim to provide the #1 affiliate platform for WordPress. Here are just some of the faces that have helped build AffiliateWP:"
+msgstr "AffiliateWP er skapt av utviklere fra hele verden som tar sikte på å tilby en førsteklasses affiliate plattform for WordPress. Her er bare noen av ansiktene som har bidratt til å utvikle AffiliateWP:"
+
+#: includes/admin/class-welcome.php:365
+#, php-format
+#@ affiliate-wp
+msgid "View %s"
+msgstr "Vis %s"
+
+#: includes/admin/creatives/actions.php:16
+#@ affiliate-wp
+msgid "You do not have permission to manage creatives"
+msgstr "Du har ikke tillatelse til å administrere annonsematerialet"
+
+#: includes/admin/creatives/actions.php:44
+#@ affiliate-wp
+msgid "You do not have permission to delete a creative"
+msgstr "Du har ikke tillatelse til å slette annonsemateriale"
+
+#: includes/admin/creatives/actions.php:52
+#@ affiliate-wp
+msgid "No creative IDs specified for deletion"
+msgstr "Inget annonsemateriale er spesifisert for sletting"
+
+#: includes/admin/creatives/creatives.php:156
+#: includes/admin/creatives/edit.php:43
+#: includes/admin/creatives/new.php:42
+#: includes/admin/overview/overview.php:241
+#: templates/dashboard-tab-visits.php:18
+#@ affiliate-wp
+msgid "URL"
+msgstr "Lenke / URL"
+
+#: includes/admin/creatives/creatives.php:157
+#@ affiliate-wp
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/admin/creatives/creatives.php:255
+#@ affiliate-wp
+msgid "No creatives found."
+msgstr "Inget annonsemateriale funnet."
+
+#: includes/admin/creatives/delete.php:10
+#: includes/admin/creatives/delete.php:32
+#@ affiliate-wp
+msgid "Delete Creative"
+msgstr "Slett annonsematerialet"
+
+#: includes/admin/creatives/delete.php:16
+#@ affiliate-wp
+msgid "Are you sure you want to delete this creative?"
+msgstr "Er du sikker på at du vil slette dette annonsematerialet?"
+
+#: includes/admin/creatives/delete.php:21
+#, php-format
+#@ affiliate-wp
+msgctxt "Creative ID, creative name"
+msgid "Creative ID #%d: %s"
+msgstr "Annonsemateriell ID #%d: %s"
+
+#: includes/admin/creatives/edit.php:6
+#@ affiliate-wp
+msgid "Edit Creative"
+msgstr "Rediger annonsematerialet"
+
+#: includes/admin/creatives/edit.php:22
+#: includes/admin/creatives/new.php:21
+#@ affiliate-wp
+msgid "The name of this creative. For your identification only."
+msgstr "Et navn på dette annonsematerialet. Kun for egen identifikasjon."
+
+#: includes/admin/creatives/edit.php:30
+#: includes/admin/creatives/new.php:29
+#: includes/admin/overview/overview.php:207
+#: includes/admin/referrals/edit.php:44
+#: includes/admin/referrals/new.php:46
+#: includes/admin/referrals/referrals.php:223
+#: templates/dashboard-tab-referrals.php:20
+#@ affiliate-wp
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: includes/admin/creatives/edit.php:35
+#: includes/admin/creatives/new.php:34
+#@ affiliate-wp
+msgid "An optional description for this creative. This is displayed below the creative for affiliates."
+msgstr "En valgfri beskrivelse for dette annonsematerialet. Denne vil vises under Annonsemateriell i affiliate området."
+
+#: includes/admin/creatives/edit.php:48
+#: includes/admin/creatives/new.php:47
+#@ affiliate-wp
+msgid "Where the creative should link to. The affiliate's referral ID will be automatically appended."
+msgstr "Destinasjonen for dette banneret / tekst lenken. Den tilknyttede affiliate ID blir tilføyd automatisk."
+
+#: includes/admin/creatives/edit.php:56
+#: includes/admin/creatives/new.php:55
+#@ affiliate-wp
+msgid "Text"
+msgstr "Tekst"
+
+#: includes/admin/creatives/edit.php:61
+#: includes/admin/creatives/new.php:60
+#@ affiliate-wp
+msgid "Text for this creative."
+msgstr "Tekst for banneret / tekst lenken."
+
+#: includes/admin/creatives/edit.php:69
+#: includes/admin/creatives/new.php:68
+#@ affiliate-wp
+msgid "Image"
+msgstr "Bilde (banner)"
+
+#: includes/admin/creatives/edit.php:75
+#@ affiliate-wp
+msgid "Select your image. You can also enter an image URL if your image is hosted elsewhere."
+msgstr "Velg ett bilde eller banner. Du kan også legge inn en bilde lenke / URL hvis bildet er lagret på et annet nettsted."
+
+#: includes/admin/creatives/edit.php:102
+#: includes/admin/creatives/new.php:92
+#@ affiliate-wp
+msgid "Select the status of the creative."
+msgstr "Velg status for dette annonsematerialet."
+
+#: includes/admin/creatives/edit.php:113
+#@ affiliate-wp
+msgid "Update Creative"
+msgstr "Oppdater annonsematerialet"
+
+#: includes/admin/creatives/new.php:3
+#@ affiliate-wp
+msgid "New Creative"
+msgstr "Nytt annonsemateriell"
+
+#: includes/admin/creatives/new.php:9
+#@ affiliate-wp
+msgid "Use this screen to add a new creative, such as a text link or image banner."
+msgstr "Bruk dette skjemaet for å legge til nytt annonsemateriale, f.eks. en tekst link eller et banner."
+
+#: includes/admin/creatives/new.php:74
+#@ affiliate-wp
+msgid "Select an image if you would like an image banner. You can also enter an image URL if your image is hosted elsewhere."
+msgstr "Velg ett bilde hvis du ønsker et bilde banner. Du kan også legge inn en bilde lenke / URL hvis bildet er lagret på et annet nettsted."
+
+#: includes/admin/creatives/new.php:104
+#@ affiliate-wp
+msgid "Add Creative"
+msgstr "Legg til annonsemateriell"
+
+#: includes/admin/overview/overview.php:26
+#@ affiliate-wp
+msgid "Totals"
+msgstr "Totaler"
+
+#: includes/admin/overview/overview.php:35
+#: includes/admin/reports/reports.php:86
+#: includes/admin/tools/tools.php:103
+#: templates/dashboard-tab-stats.php:34
+#@ affiliate-wp
+msgid "Paid Earnings"
+msgstr "Betalte inntekter"
+
+#: includes/admin/overview/overview.php:36
+#: includes/admin/reports/reports.php:87
+#@ affiliate-wp
+msgid "Paid Earnings This Month"
+msgstr "Betalte inntekter denne måned"
+
+#: includes/admin/overview/overview.php:37
+#: includes/admin/reports/reports.php:88
+#@ affiliate-wp
+msgid "Paid Earnings Today"
+msgstr "Betalte inntekter i dag"
+
+#: includes/admin/overview/overview.php:61
+#: includes/admin/reports/reports.php:138
+#: templates/dashboard-tab-stats.php:8
+#@ affiliate-wp
+msgid "Unpaid Referrals"
+msgstr "Ubekreftede salg"
+
+#: includes/admin/overview/overview.php:62
+#: includes/admin/reports/reports.php:139
+#@ affiliate-wp
+msgid "Unpaid Referrals This Month"
+msgstr "Ubekreftede salg denne måned"
+
+#: includes/admin/overview/overview.php:63
+#: includes/admin/reports/reports.php:140
+#@ affiliate-wp
+msgid "Unpaid Referrals Today"
+msgstr "Ubekreftede salg i dag"
+
+#: includes/admin/overview/overview.php:86
+#: includes/admin/reports/reports.php:112
+#: templates/dashboard-tab-stats.php:33
+#@ affiliate-wp
+msgid "Unpaid Earnings"
+msgstr "Ubetalte inntekter"
+
+#: includes/admin/overview/overview.php:87
+#: includes/admin/reports/reports.php:113
+#@ affiliate-wp
+msgid "Unpaid Earnings This Month"
+msgstr "Ubetalte inntekter denne måned"
+
+#: includes/admin/overview/overview.php:88
+#: includes/admin/reports/reports.php:114
+#@ affiliate-wp
+msgid "Unpaid Earnings Today"
+msgstr "Ubetalte inntekter i dag"
+
+#: includes/admin/overview/overview.php:108
+#@ affiliate-wp
+msgid "Latest Affiliate Registrations"
+msgstr "Nylige affliate registreringer"
+
+#: includes/admin/overview/overview.php:116
+#: includes/admin/overview/overview.php:167
+#: includes/admin/overview/overview.php:205
+#: includes/admin/overview/overview.php:240
+#: includes/admin/referrals/new.php:16
+#: includes/admin/referrals/referrals.php:221
+#: includes/admin/visits/visits.php:155
+#@ affiliate-wp
+msgid "Affiliate"
+msgstr "Affiliate"
+
+#: includes/admin/overview/overview.php:136
+#@ affiliate-wp
+msgid "View Report"
+msgstr "Vis rapporter"
+
+#: includes/admin/overview/overview.php:144
+#@ affiliate-wp
+msgid "No affiliate registrations yet"
+msgstr "Ingen affiliate registreringer ennå"
+
+#: includes/admin/overview/overview.php:159
+#@ affiliate-wp
+msgid "Most Valuable Affiliates"
+msgstr "Våre beste affiliater"
+
+#: includes/admin/overview/overview.php:187
+#@ affiliate-wp
+msgid "No registered affiliates"
+msgstr "Ingen registrerte affiliater"
+
+#: includes/admin/overview/overview.php:197
+#@ affiliate-wp
+msgid "Recent Referrals"
+msgstr "Nylige salg"
+
+#: includes/admin/overview/overview.php:206
+#: includes/admin/referrals/edit.php:31
+#: includes/admin/referrals/new.php:33
+#: includes/admin/referrals/referrals.php:220
+#: includes/admin/tools/export/class-export-referrals-payout.php:41
+#: includes/admin/tools/export/class-export-referrals.php:63
+#: templates/dashboard-tab-referrals.php:19
+#@ affiliate-wp
+msgid "Amount"
+msgstr "Beløp (provisjon)"
+
+#: includes/admin/overview/overview.php:223
+#@ affiliate-wp
+msgid "No referrals recorded yet"
+msgstr "Ingen salg er registrert ennå"
+
+#: includes/admin/overview/overview.php:232
+#@ affiliate-wp
+msgid "Recent Referral Visits"
+msgstr "Nylige besøk"
+
+#: includes/admin/overview/overview.php:242
+#: includes/admin/visits/visits.php:158
+#: templates/dashboard-tab-visits.php:20
+#@ affiliate-wp
+msgid "Converted"
+msgstr "Konvertert"
+
+#: includes/admin/overview/overview.php:261
+#@ affiliate-wp
+msgid "No referral visits recorded yet"
+msgstr "Ingen besøkende registrert ennå"
+
+#: includes/admin/plugins.php:27
+#@ affiliate-wp
+msgid "General Settings"
+msgstr "Generelle innstillinger"
+
+#: includes/admin/referrals/actions.php:16
+#: includes/admin/referrals/actions.php:47
+#@ affiliate-wp
+msgid "You do not have permission to manage referrals"
+msgstr "Du har ikke tillatelse til å administrere henvisninger eller salg"
+
+#: includes/admin/referrals/contextual-help.php:29
+#: includes/admin/visits/contextual-help.php:29
+#@ affiliate-wp
+msgid "For more information:"
+msgstr "For mer informasjon:"
+
+#: includes/admin/referrals/contextual-help.php:30
+#: includes/admin/visits/contextual-help.php:30
+#, php-format
+#@ affiliate-wp
+msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
+msgstr "Gå til <a href=\"%s\">dokumentasjonen</a> på AffiliateWP`s hjemmeside."
+
+#: includes/admin/referrals/contextual-help.php:31
+#: includes/admin/visits/contextual-help.php:31
+#, php-format
+#@ affiliate-wp
+msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
+msgstr "<a href=\"%s\">Publiser et problem</a> på <a href=\"%s\">GitHub</a>."
+
+#: includes/admin/referrals/contextual-help.php:39
+#@ affiliate-wp
+msgid "This screen provides access to your site's referral history."
+msgstr "Denne siden gir deg tilgang til nettstedets henvisnings og salgshistorie."
+
+#: includes/admin/referrals/contextual-help.php:40
+#@ affiliate-wp
+msgid "<strong>Reference</strong>: this refers to the order number (or similar) that created this referral."
+msgstr "<strong>Referanse</strong>: dette refererer til ordrenummeret (eller lignende) som genererte dette salget."
+
+#: includes/admin/referrals/contextual-help.php:41
+#@ affiliate-wp
+msgid "Referral statuses:"
+msgstr "Henvisningsstatuser:"
+
+#: includes/admin/referrals/contextual-help.php:43
+#@ affiliate-wp
+msgid "<strong>Paid</strong> - this is a referral that has been paid to the affiliate"
+msgstr "<strong>Betalt</strong> - dette er et bekreftet salg hvorav provisjon er utbetalt til affiliaten."
+
+#: includes/admin/referrals/contextual-help.php:44
+#@ affiliate-wp
+msgid "<strong>Unpaid</strong> - this is a referral that has been accepted but not yet paid to the affiliate"
+msgstr "<strong>Ubetalt</strong> - dette er et bekreftet salg som ennå ikke er utbetalt til affiliaten."
+
+#: includes/admin/referrals/contextual-help.php:45
+#@ affiliate-wp
+msgid "<strong>Pending</strong> - this is a referral that is waiting to be accepted"
+msgstr "<strong>Ventende</strong> - dette er et salg som venter på å bli bekreftet."
+
+#: includes/admin/referrals/contextual-help.php:46
+#@ affiliate-wp
+msgid "<strong>Rejected</strong> - this is a referral that has been rejected and will not be paid to the affiliate"
+msgstr "<strong>Avvist</strong> - dette er et avvist salg hvorav provisjon ikke vil bli utbetalt til affiliaten."
+
+#: includes/admin/referrals/contextual-help.php:52
+#@ affiliate-wp
+msgid "Searching Referrals"
+msgstr "Søke i henvisninger / salg"
+
+#: includes/admin/referrals/contextual-help.php:54
+#@ affiliate-wp
+msgid "Referrals can be searched in several different ways:"
+msgstr "Henvisninger og salg kan søkes på flere forskjellige måter:"
+
+#: includes/admin/referrals/contextual-help.php:56
+#@ affiliate-wp
+msgid "You can enter the referral's ID number"
+msgstr "Du kan skrive inn henvisningens / salgets ID nummer"
+
+#: includes/admin/referrals/contextual-help.php:57
+#@ affiliate-wp
+msgid "You can enter the referral reference prefixed by 'ref:'"
+msgstr "Du kan skrive inn henvisningens / salgets referanse prefikset med 'ref:'"
+
+#: includes/admin/referrals/contextual-help.php:58
+#@ affiliate-wp
+msgid "You can enter the referral context prefixed by 'context:'"
+msgstr "Du kan skrive inn henvisningens / salgets kontekst prefikset med 'context:'"
+
+#: includes/admin/referrals/contextual-help.php:59
+#: includes/admin/visits/contextual-help.php:58
+#@ affiliate-wp
+msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
+msgstr "Du kan skrive inn affiliatens ID nummer prefikset med 'affiliate:'"
+
+#: includes/admin/referrals/contextual-help.php:65
+#@ affiliate-wp
+msgid "Exporting Referrals"
+msgstr "Eksportere henvisninger / salg"
+
+#: includes/admin/referrals/contextual-help.php:67
+#@ affiliate-wp
+msgid "Referrals can be exported directly to a CSV file in order to make it easier for your own accounting needs and for you to payout your affiliates's earnings."
+msgstr "Henvisninger og salg kan eksporteres direkte til en CSV fil for å gjøre det enklere for dine egne regnskaps behov og for deg å utbetale dine affiliaters inntekter."
+
+#: includes/admin/referrals/contextual-help.php:68
+#@ affiliate-wp
+msgid "The CSV file generated is structured properly for PayPal's Mass Payment system so you can easily payout all of your affiliates at once via PayPal."
+msgstr "CSV filen som genereres er strukturert riktig for PayPal flerbetalings system slik at du enkelt kan betale alle dine affiliater på en gang."
+
+#: includes/admin/referrals/edit.php:6
+#@ affiliate-wp
+msgid "Edit Referral"
+msgstr "Rediger salget"
+
+#: includes/admin/referrals/edit.php:23
+#@ affiliate-wp
+msgid "The affiliate's ID this referral belongs to. This value cannot be changed."
+msgstr "Den Affiliate ID som dette salget tilhører. Denne verdien kan ikke endres."
+
+#: includes/admin/referrals/edit.php:36
+#: includes/admin/referrals/new.php:38
+#@ affiliate-wp
+msgid "The amount of the referral, such as 15."
+msgstr "Provisjon i henhold til dette salget, f.eks. 20."
+
+#: includes/admin/referrals/edit.php:49
+#: includes/admin/referrals/new.php:51
+#@ affiliate-wp
+msgid "Enter a description for this referral."
+msgstr "Skriv inn en beskrivelse for dette salget, f.eks. navnet på produktet."
+
+#: includes/admin/referrals/edit.php:57
+#: includes/admin/referrals/new.php:59
+#: includes/admin/referrals/referrals.php:222
+#: includes/admin/tools/export/class-export-referrals.php:65
+#@ affiliate-wp
+msgid "Reference"
+msgstr "Referanse"
+
+#: includes/admin/referrals/edit.php:62
+#: includes/admin/referrals/new.php:64
+#@ affiliate-wp
+msgid "Enter a reference for this referral (optional). Usually this would be the transaction ID of the associated purchase."
+msgstr "Skriv inn en referanse for dette salget (valgfritt). Vanligvis ville dette være transaksjons ID for det tilhørende kjøpet."
+
+#: includes/admin/referrals/edit.php:70
+#: includes/admin/referrals/new.php:72
+#: includes/admin/tools/export/class-export-referrals.php:66
+#@ affiliate-wp
+msgid "Context"
+msgstr "Kontekst"
+
+#: includes/admin/referrals/edit.php:75
+#: includes/admin/referrals/new.php:77
+#@ affiliate-wp
+msgid "Enter a context for this referral (optional). Usually this is used to help identify the payment system that was used for the transaction."
+msgstr "Skriv inn en kontekst for dette salget (valgfritt). Vanligvis brukes den til å identifisere betalingsplattformen som ble brukt for den gjeldende transaksjonen."
+
+#: includes/admin/referrals/edit.php:88
+#: includes/admin/referrals/new.php:90
+#: includes/admin/referrals/referrals.php:202
+#: includes/admin/tools/tools.php:241
+#: includes/referral-functions.php:53
+#@ affiliate-wp
+msgid "Unpaid"
+msgstr "Ubetalt"
+
+#: includes/admin/referrals/edit.php:89
+#: includes/admin/referrals/new.php:91
+#: includes/admin/referrals/referrals.php:201
+#: includes/admin/tools/tools.php:240
+#: includes/referral-functions.php:52
+#@ affiliate-wp
+msgid "Paid"
+msgstr "Betalt"
+
+#: includes/admin/referrals/edit.php:93
+#: includes/admin/referrals/new.php:95
+#@ affiliate-wp
+msgid "Select the status of the referral."
+msgstr "Velg status for dette salget."
+
+#: includes/admin/referrals/edit.php:106
+#@ affiliate-wp
+msgid "Update Referral"
+msgstr "Oppdater salget"
+
+#: includes/admin/referrals/new.php:3
+#@ affiliate-wp
+msgid "New Referral"
+msgstr "Nytt salg"
+
+#: includes/admin/referrals/new.php:9
+#@ affiliate-wp
+msgid "Use this screen to manually create a new referral record for an affiliate."
+msgstr "Bruk dette skjemaet for å manuelt opprette et nytt salg for en affiliate."
+
+#: includes/admin/referrals/new.php:25
+#@ affiliate-wp
+msgid "Enter the name of the affiliate or enter a partial name or email to perform a search."
+msgstr "Skriv inn navnet på affiliaten eller deler av et navn eller e-postadresse for å utføre et automatisk søk."
+
+#: includes/admin/referrals/new.php:108
+#@ affiliate-wp
+msgid "Add Referral"
+msgstr "Legg til salg"
+
+#: includes/admin/referrals/referrals.php:39
+#@ affiliate-wp
+msgid "Add New Referral"
+msgstr "Legg til et nytt salg"
+
+#: includes/admin/referrals/referrals.php:40
+#@ affiliate-wp
+msgid "Generate Payout File"
+msgstr "Generer utbetalingsfil"
+
+#: includes/admin/referrals/referrals.php:41
+#@ affiliate-wp
+msgid "Close"
+msgstr "Lukk"
+
+#: includes/admin/referrals/referrals.php:47
+#: includes/admin/referrals/referrals.php:434
+#: includes/admin/tools/tools.php:236
+#: includes/admin/visits/visits.php:38
+#@ affiliate-wp
+msgid "From - mm/dd/yyyy"
+msgstr "Fra - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:48
+#: includes/admin/referrals/referrals.php:435
+#: includes/admin/tools/tools.php:237
+#: includes/admin/visits/visits.php:39
+#@ affiliate-wp
+msgid "To - mm/dd/yyyy"
+msgstr "Til - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:49
+#@ affiliate-wp
+msgid "Minimum amount"
+msgstr "Minstebeløp"
+
+#: includes/admin/referrals/referrals.php:52
+#@ affiliate-wp
+msgid "Generate CSV File"
+msgstr "Generer CSV fil"
+
+#: includes/admin/referrals/referrals.php:53
+#, php-format
+#@ affiliate-wp
+msgid "This will mark all unpaid referrals in this timeframe as paid. To export referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s\">Tools &rarr; Export</a> page."
+msgstr "Dette vil markere alle ubetalte henvisninger / salg i dette tidsrommet som betalt. Å eksportere henvisninger med en annen status enn <em>ubetalt</em>, gå til <a href=\"%s\"> Verktøy &rarr; Eksport</a> siden."
+
+#: includes/admin/referrals/referrals.php:224
+#: includes/admin/tools/export/class-export-referrals.php:68
+#: includes/admin/tools/export/class-export.php:70
+#: includes/admin/visits/visits.php:159
+#: templates/dashboard-tab-referrals.php:22
+#@ affiliate-wp
+msgid "Date"
+msgstr "Dato"
+
+#: includes/admin/referrals/referrals.php:350
+#: includes/admin/referrals/referrals.php:457
+#@ affiliate-wp
+msgid "Mark as Unpaid"
+msgstr "Marker som ubetalt"
+
+#: includes/admin/referrals/referrals.php:356
+#: includes/admin/referrals/referrals.php:456
+#@ affiliate-wp
+msgid "Mark as Paid"
+msgstr "Marker som betalt"
+
+#: includes/admin/referrals/referrals.php:389
+#@ affiliate-wp
+msgid "No referrals found."
+msgstr "Ingen salg funnet."
+
+#: includes/admin/referrals/referrals.php:413
+#@ affiliate-wp
+msgid "Bulk Actions"
+msgstr "Massehandlinger"
+
+#: includes/admin/referrals/referrals.php:425
+#@ affiliate-wp
+msgid "Apply"
+msgstr "Søke"
+
+#: includes/admin/referrals/referrals.php:439
+#: includes/admin/visits/visits.php:41
+#: includes/class-graph.php:404
+#@ affiliate-wp
+msgid "Filter"
+msgstr "Filtrer"
+
+#: includes/admin/reports/class-registrations-graph.php:68
+#: includes/admin/reports/reports.php:67
+#@ affiliate-wp
+msgid "Affiliate Registrations"
+msgstr "Affiliate registreringer"
+
+#: includes/admin/reports/reports.php:186
+#@ affiliate-wp
+msgid "Successful Conversions"
+msgstr "Konverteringer"
+
+#: includes/admin/reports/reports.php:187
+#: templates/dashboard-tab-stats.php:11
+#@ affiliate-wp
+msgid "Conversion Rate"
+msgstr "Konverteringsfrekvens"
+
+#: includes/admin/settings/class-settings.php:178
+#@ affiliate-wp
+msgid "License Settings"
+msgstr "Lisens innstillinger"
+
+#: includes/admin/settings/class-settings.php:183
+#@ affiliate-wp
+msgid "License Key"
+msgstr "Lisensnøkkel"
+
+#: includes/admin/settings/class-settings.php:184
+#, php-format
+#@ affiliate-wp
+msgid "Please enter your license key. An active license key is needed for automatic plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
+msgstr "Skriv inn din lisensnøkkel. En aktiv lisensnøkkel er nødvendig for automatiske plugin oppdateringer og <a href=\"%s\" target=\"_blank\">support</a>."
+
+#: includes/admin/settings/class-settings.php:189
+#@ affiliate-wp
+msgid "Pages"
+msgstr "Sider"
+
+#: includes/admin/settings/class-settings.php:195
+#@ affiliate-wp
+msgid "This is the page where affiliates will manage their affiliate account."
+msgstr "Velg siden som inneholder <em>[affiliate_area]</em> shortcode, her skal affiliatene kunne administrere deres affiliate konto."
+
+#: includes/admin/settings/class-settings.php:200
+#@ affiliate-wp
+msgid "Terms of Use"
+msgstr "Vilkår og betingelser"
+
+#: includes/admin/settings/class-settings.php:201
+#@ affiliate-wp
+msgid "Select the page that shows the terms of use for Affiliate Registration"
+msgstr "Velg siden som inneholder vilkårene for deltakelse og bruk av affiliate programmet."
+
+#: includes/admin/settings/class-settings.php:206
+#@ affiliate-wp
+msgid "Referral Settings"
+msgstr "Henvisnings innstillinger"
+
+#: includes/admin/settings/class-settings.php:211
+#@ affiliate-wp
+msgid "Referral Variable"
+msgstr "Henvisnings variabel"
+
+#: includes/admin/settings/class-settings.php:212
+#, php-format
+#@ affiliate-wp
+msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
+msgstr "En lenke / URL variabel for henvisningslenker / URLs. F.eks: <strong>%s</strong>."
+
+#: includes/admin/settings/class-settings.php:217
+#@ affiliate-wp
+msgid "Default Referral Format"
+msgstr "Standard henvisnings ID"
+
+#: includes/admin/settings/class-settings.php:218
+#, php-format
+#@ affiliate-wp
+msgid "Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>."
+msgstr "Vis henvisningslenker / URLs til dine affiliater med enten deres affiliate ID eller brukernavn tilføyd. <br/>F.eks.: <strong>%s</strong> eller <strong>%s</strong>."
+
+#: includes/admin/settings/class-settings.php:227
+#@ affiliate-wp
+msgid "Pretty Affiliate URLs"
+msgstr "SEO vennlige URLs"
+
+#: includes/admin/settings/class-settings.php:228
+#, php-format
+#@ affiliate-wp
+msgid "Show pretty affiliate referrals to affiliates. For example: <strong>%s or %s</strong>"
+msgstr "Vis SEO vennlige henvisningslenker / URLs til dine affiliater. F.eks.: <strong>%s</strong> eller <strong>%s</strong>."
+
+#: includes/admin/settings/class-settings.php:233
+#@ affiliate-wp
+msgid "Should referrals be based on a percentage or flat rate amounts?"
+msgstr "Skal provisjoner være basert på en prosentandel eller et flatt beløp?"
+
+#: includes/admin/settings/class-settings.php:239
+#@ affiliate-wp
+msgid "Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well."
+msgstr "Standard provisjons sats. En prosentandel hvis Provisjonstype er Prosentvis, et flatt beløp ellers. Satsene kan også settes individuelt for hver affiliate."
+
+#: includes/admin/settings/class-settings.php:246
+#@ affiliate-wp
+msgid "Exclude Shipping"
+msgstr "Ekskluder fraktkostnader"
+
+#: includes/admin/settings/class-settings.php:247
+#@ affiliate-wp
+msgid "Should shipping costs be excluded from referral calculations?"
+msgstr "Skal fraktkostnadene være ekskludert fra provisjonsberegninger?"
+
+#: includes/admin/settings/class-settings.php:251
+#@ affiliate-wp
+msgid "Exclude Tax"
+msgstr "Ekskluder merverdiavgift"
+
+#: includes/admin/settings/class-settings.php:252
+#@ affiliate-wp
+msgid "Should taxes be excluded from referral calculations?"
+msgstr "Skal merverdiavgiften være ekskludert fra provisjonsberegninger?"
+
+#: includes/admin/settings/class-settings.php:256
+#@ affiliate-wp
+msgid "Cookie Expiration"
+msgstr "Varighet på informasjonskapsel (cookie)"
+
+#: includes/admin/settings/class-settings.php:257
+#@ affiliate-wp
+msgid "How many days should the referral tracking cookie be valid for?"
+msgstr "Hvor mange dager skal henvisningens informasjonskapsel (tracking cookie) være gyldig?"
+
+#: includes/admin/settings/class-settings.php:263
+#@ affiliate-wp
+msgid "Currency Settings"
+msgstr "Valuta Innstillinger"
+
+#: includes/admin/settings/class-settings.php:264
+#@ affiliate-wp
+msgid "Configure the currency options"
+msgstr "Konfigurer valuta alternativer"
+
+#: includes/admin/settings/class-settings.php:268
+#: includes/admin/tools/export/class-export-referrals-payout.php:42
+#: includes/admin/tools/export/class-export-referrals.php:64
+#@ affiliate-wp
+msgid "Currency"
+msgstr "Valuta"
+
+#: includes/admin/settings/class-settings.php:269
+#@ affiliate-wp
+msgid "Choose your currency. Note that some payment gateways have currency restrictions."
+msgstr "Velg din valuta. Merk at noen betalingsløsninger har valutarestriksjoner."
+
+#: includes/admin/settings/class-settings.php:274
+#@ affiliate-wp
+msgid "Currency Position"
+msgstr "Valutasymbolet"
+
+#: includes/admin/settings/class-settings.php:275
+#@ affiliate-wp
+msgid "Choose the location of the currency sign."
+msgstr "Velg plasseringen av valutasymbolet."
+
+#: includes/admin/settings/class-settings.php:278
+#@ affiliate-wp
+msgid "Before - $10"
+msgstr "Før - Kr 10.00"
+
+#: includes/admin/settings/class-settings.php:279
+#@ affiliate-wp
+msgid "After - 10$"
+msgstr "Etter - 10.00 Kr"
+
+#: includes/admin/settings/class-settings.php:283
+#@ affiliate-wp
+msgid "Thousands Separator"
+msgstr "Tusentall separator"
+
+#: includes/admin/settings/class-settings.php:284
+#@ affiliate-wp
+msgid "The symbol (usually , or .) to separate thousands"
+msgstr "Symbolet (vanligvis , eller .) for å skille tusener."
+
+#: includes/admin/settings/class-settings.php:290
+#@ affiliate-wp
+msgid "Decimal Separator"
+msgstr "Desimalseparator"
+
+#: includes/admin/settings/class-settings.php:291
+#@ affiliate-wp
+msgid "The symbol (usually , or .) to separate decimal points"
+msgstr "Symbolet (vanligvis , eller .) for å skille desimaler."
+
+#: includes/admin/settings/class-settings.php:302
+#: includes/admin/settings/display-settings.php:74
+#@ affiliate-wp
+msgid "Integrations"
+msgstr "Integrasjoner"
+
+#: includes/admin/settings/class-settings.php:303
+#, php-format
+#@ affiliate-wp
+msgid "Choose the integrations to enable. If you are not using any of these, you may use the <strong>[affiliate_conversion_script]</strong> short code to track and create referrals. Refer to the <a href=\"%s\" target=\"_blank\">documentation</a> for help using this."
+msgstr "Velg integrasjoner som skal aktiveres. Hvis du ikke bruker noen av disse, så kan du bruke <strong>[affiliate_conversion_script]</strong> shortcode for å spore og opprette henvisninger og salg. Slå opp i <a href=\"%s\" target=\"_blank\">dokumentasjonen</a> for hjelp med dette."
+
+#: includes/admin/settings/class-settings.php:313
+#@ affiliate-wp
+msgid "Logo"
+msgstr "Logo"
+
+#: includes/admin/settings/class-settings.php:314
+#@ affiliate-wp
+msgid "Upload or choose a logo to be displayed at the top of emails."
+msgstr "Last opp eller velg en logo som skal vises i hodet på e-post varslene."
+
+#: includes/admin/settings/class-settings.php:318
+#@ affiliate-wp
+msgid "Email Template"
+msgstr "E-post mal"
+
+#: includes/admin/settings/class-settings.php:319
+#@ affiliate-wp
+msgid "Choose a template to use for email messages."
+msgstr "Velg en mal som skal brukes for e-postvarsler."
+
+#: includes/admin/settings/class-settings.php:324
+#@ affiliate-wp
+msgid "From Name"
+msgstr "Fra navn"
+
+#: includes/admin/settings/class-settings.php:325
+#@ affiliate-wp
+msgid "The name emails are said to come from. This should probably be your site name."
+msgstr "Navnet på avsender. Dette bør sannsynligvis være navnet på ditt nettsted."
+
+#: includes/admin/settings/class-settings.php:330
+#@ affiliate-wp
+msgid "From Email"
+msgstr "Fra e-post"
+
+#: includes/admin/settings/class-settings.php:331
+#@ affiliate-wp
+msgid "Email to send emails from. This will act as the \"from\" and \"reply-to\" address."
+msgstr "Avsender e-postadresse. Denne vil fungere som \"fra\" og \"svar-til\" adresse."
+
+#: includes/admin/settings/class-settings.php:336
+#@ affiliate-wp
+msgid "Notify Admins"
+msgstr "Varsle administrator"
+
+#: includes/admin/settings/class-settings.php:337
+#@ affiliate-wp
+msgid "Notify site admins of new affiliate registrations?"
+msgstr "Varsle administrator ved nye affiliate registreringer?"
+
+#: includes/admin/settings/class-settings.php:341
+#@ affiliate-wp
+msgid "Registration Email Subject"
+msgstr "Emne for registrerings mail"
+
+#: includes/admin/settings/class-settings.php:342
+#@ affiliate-wp
+msgid "Enter the subject line for the registration email sent to admins when new affiliates register."
+msgstr "Skrive inn et emne for registrerings mailen som sendt til administratoren når nye affiliater registreres."
+
+#: includes/admin/settings/class-settings.php:344
+#: includes/emails/actions.php:41
+#@ affiliate-wp
+msgid "New Affiliate Registration"
+msgstr "Ny affiliate registrering"
+
+#: includes/admin/settings/class-settings.php:347
+#@ affiliate-wp
+msgid "Registration Email Content"
+msgstr "Melding registrerings mail"
+
+#: includes/admin/settings/class-settings.php:348
+#@ affiliate-wp
+msgid "Enter the email to send when a new affiliate registers. HTML is accepted. Available template tags:"
+msgstr "Skriv inn meldingen som skal sendes når en ny affiliate registreres. HTML er akseptert. Tilgjengelige malkoder / tags:"
+
+#: includes/admin/settings/class-settings.php:350
+#, php-format
+#@ affiliate-wp
+msgid "A new affiliate has registered on your site, %s"
+msgstr "En ny affiliate har registrert seg på nettstedet ditt, %s"
+
+#: includes/admin/settings/class-settings.php:350
+#@ affiliate-wp
+msgid "Name: "
+msgstr "Name: "
+
+#: includes/admin/settings/class-settings.php:353
+#@ affiliate-wp
+msgid "Application Accepted Email Subject"
+msgstr "Emne søknad akseptert mail"
+
+#: includes/admin/settings/class-settings.php:354
+#@ affiliate-wp
+msgid "Enter the subject line for accepted application emails sent to affiliates when their account is approved."
+msgstr "Skrive inn et emne for søknad akseptert mailen som sendt til affiliaten når dets konto er godkjent."
+
+#: includes/admin/settings/class-settings.php:356
+#: includes/emails/actions.php:96
+#@ affiliate-wp
+msgid "Affiliate Application Accepted"
+msgstr "Affiliate søknaden er godkjent"
+
+#: includes/admin/settings/class-settings.php:359
+#@ affiliate-wp
+msgid "Application Accepted Email Content"
+msgstr "Melding søknad akseptert mail"
+
+#: includes/admin/settings/class-settings.php:360
+#@ affiliate-wp
+msgid "Enter the email to send when an application is accepted. HTML is accepted. Available template tags:"
+msgstr "Skriv inn meldingen som skal sendes når en søknad er akseptert. HTML er akseptert. Tilgjengelige malkoder / tags:"
+
+#: includes/admin/settings/class-settings.php:362
+#: includes/admin/settings/class-settings.php:374
+#@ affiliate-wp
+msgid "Congratulations"
+msgstr "Gratulere"
+
+#: includes/admin/settings/class-settings.php:362
+#: includes/emails/actions.php:101
+#, php-format
+#@ affiliate-wp
+msgid "Your affiliate application on %s has been accepted!"
+msgstr "Din affiliate søknad hos %s har blitt godkjent!"
+
+#: includes/admin/settings/class-settings.php:362
+#@ affiliate-wp
+msgid "Log into your affiliate area at"
+msgstr "Logg inn på din konto hos"
+
+#: includes/admin/settings/class-settings.php:365
+#@ affiliate-wp
+msgid "New Referral Email Subject"
+msgstr "Emne nytt salg mail"
+
+#: includes/admin/settings/class-settings.php:366
+#@ affiliate-wp
+msgid "Enter the subject line for new referral emails sent when affiliates earn referrals."
+msgstr "Skrive inn et emne for nytt salg mailen som sendt til affiliaten når nye henvisninger eller salg er godkjent."
+
+#: includes/admin/settings/class-settings.php:368
+#: includes/emails/actions.php:144
+#@ affiliate-wp
+msgid "Referral Awarded!"
+msgstr "Ny henvisning er tildelt!"
+
+#: includes/admin/settings/class-settings.php:371
+#@ affiliate-wp
+msgid "New Referral Email Content"
+msgstr "Melding nytt salg mail"
+
+#: includes/admin/settings/class-settings.php:372
+#@ affiliate-wp
+msgid "Enter the email to send on new referrals. HTML is accepted. Available template tags:"
+msgstr "Skriv inn meldingen som skal sendes ved godkjente henvisninger eller salg. HTML er akseptert. Tilgjengelige malkoder / tags:"
+
+#: includes/admin/settings/class-settings.php:374
+#@ affiliate-wp
+msgid "You have been awarded a new referral of"
+msgstr "Du har blitt tildelt en ny henvisning / salg pålydende"
+
+#: includes/admin/settings/class-settings.php:374
+#, php-format
+#@ affiliate-wp
+msgid "on %s!"
+msgstr "på %s!"
+
+#: includes/admin/settings/class-settings.php:374
+#@ affiliate-wp
+msgid "Log into your affiliate area to view your earnings or disable these notifications:"
+msgstr "Logg inn på din konto for å vise dine inntekter eller deaktivere disse e-post varslene:"
+
+#: includes/admin/settings/class-settings.php:382
+#@ affiliate-wp
+msgid "Allow affiliate registration"
+msgstr "Tillat affiliate registrering"
+
+#: includes/admin/settings/class-settings.php:383
+#@ affiliate-wp
+msgid "Should affiliates be able to register accounts for themselves?"
+msgstr "Skal brukere selv kunne registrere seg som affiliate?"
+
+#: includes/admin/settings/class-settings.php:387
+#@ affiliate-wp
+msgid "Require approval"
+msgstr "Krever godkjenning"
+
+#: includes/admin/settings/class-settings.php:388
+#@ affiliate-wp
+msgid "Require that site admins approve affiliates before they can begin earning referrals?"
+msgstr "Nettstedets administrator må godkjenne affiliatene før de kan begynne å motta provisjon."
+
+#: includes/admin/settings/class-settings.php:392
+#@ affiliate-wp
+msgid "Auto Register New Users"
+msgstr "Registrer nye brukere automatisk"
+
+#: includes/admin/settings/class-settings.php:393
+#@ affiliate-wp
+msgid "Automatically register new users as affiliates?"
+msgstr "Registrere nye brukere som affiliater automatisk?"
+
+#: includes/admin/settings/class-settings.php:397
+#@ affiliate-wp
+msgid "Reject Unpaid Referrals on Refund?"
+msgstr "Avvis ubekreftede salg ved refusjon?"
+
+#: includes/admin/settings/class-settings.php:398
+#@ affiliate-wp
+msgid "Should unpaid referrals get automatically rejected when the originating purchase is refunded or revoked?"
+msgstr "Skal ubekreftede salg / provisjoner automatisk bli avvist når det opprinnelige kjøpet blir refundert eller kansellert?"
+
+#: includes/admin/settings/class-settings.php:402
+#@ affiliate-wp
+msgid "Use Fallback Referral Tracking Method?"
+msgstr "Bruk reserve sporingsmetode?"
+
+#: includes/admin/settings/class-settings.php:403
+#@ affiliate-wp
+msgid "The method used to track referral links can fail on sites that have jQuery errors. Check this if referrals are not getting tracked properly."
+msgstr "Metoden som brukes til å spore henvisningslenker kan feile på nettsteder med jQuery feil. Kryss av i boksen hvis du opplever at henvisninger ikke spores riktig."
+
+#: includes/admin/settings/class-settings.php:407
+#@ affiliate-wp
+msgid "Ignore Zero Referrals?"
+msgstr "Ignorere null-verdi salg?"
+
+#: includes/admin/settings/class-settings.php:408
+#@ affiliate-wp
+msgid "Check this box if you would like AffiliateWP to completely ignore referrals for a zero total amount. This can be useful for multi-price products that start at zero, or if a discount was used, which resulted in a zero amount. Please note: if this setting is enabled and a visit results in a zero referral, then the visit would be considered not converted."
+msgstr "Kryss av i denne boksen hvis du ønsker å fullstendig ignorere salg / provisjon når det totale beløpet er null. Dette kan være nyttig for multi-pris produkter som starter med en null-pris, eller hvis en rabatt ble brukt, noe som resulterte i ett null-beløp. <strong>Merk:</strong> Hvis denne innstillingen er aktivert, og et besøk resulterer i et null-verdi salg, da vil ikke besøket bli betraktet som konvertert."
+
+#: includes/admin/settings/class-settings.php:412
+#@ affiliate-wp
+msgid "Remove Data on Uninstall?"
+msgstr "Fjern data når plugin slettes?"
+
+#: includes/admin/settings/class-settings.php:413
+#@ affiliate-wp
+msgid "Check this box if you would like AffiliateWP to completely remove all of its data when the plugin is deleted."
+msgstr "Kryss av i denne boksen hvis du ønsker å fjerne ALLE data når AffiliateWP blir slettet."
+
+#: includes/admin/settings/class-settings.php:552
+#@ affiliate-wp
+msgid "Deactivate License"
+msgstr "Deaktiver lisensen"
+
+#: includes/admin/settings/class-settings.php:553
+#@ affiliate-wp
+msgid "Your license is valid!"
+msgstr "Din lisens er gyldig!"
+
+#: includes/admin/settings/class-settings.php:556
+#@ affiliate-wp
+msgid "Renew Your License"
+msgstr "Forny lisensen din"
+
+#: includes/admin/settings/class-settings.php:557
+#@ affiliate-wp
+msgid "Your license has expired, renew today to continue getting updates and support!"
+msgstr "Lisensen er utløpt, forny denne i dag for å fortsette å få oppdateringer og support!"
+
+#: includes/admin/settings/class-settings.php:559
+#@ affiliate-wp
+msgid "Activate License"
+msgstr "Akriver lisensen"
+
+#: includes/admin/settings/class-settings.php:653
+#, php-format
+#@ affiliate-wp
+msgid "The callback function used for the <strong>%s</strong> setting is missing."
+msgstr "Tilbakekallingsfunksjonen som brukes til <strong>%s</strong> innstillingen mangler."
+
+#: includes/admin/settings/class-settings.php:728
+#@ affiliate-wp
+msgid "Upload File"
+msgstr "Last opp"
+
+#: includes/admin/settings/display-settings.php:73
+#@ affiliate-wp
+msgid "General"
+msgstr "Generelle"
+
+#: includes/admin/settings/display-settings.php:75
+#@ affiliate-wp
+msgid "Emails"
+msgstr "E-poster"
+
+#: includes/admin/settings/display-settings.php:76
+#@ affiliate-wp
+msgid "Misc"
+msgstr "Diverse"
+
+#: includes/admin/tools/export/class-export-affiliates.php:48
+#: includes/admin/tools/export/class-export-referrals-payout.php:40
+#: includes/admin/tools/export/class-export-referrals.php:62
+#@ affiliate-wp
+msgid "Email"
+msgstr "E-post"
+
+#: includes/admin/tools/export/class-export-affiliates.php:51
+#@ affiliate-wp
+msgid "Rate Type"
+msgstr "Provisjonstype"
+
+#: includes/admin/tools/export/class-export-affiliates.php:56
+#@ affiliate-wp
+msgid "Date Registered"
+msgstr "Registreringsdato"
+
+#: includes/admin/tools/export/class-export.php:173
+#@ affiliate-wp
+msgid "You do not have permission to export data."
+msgstr "Du har ikke tillatelse til å eksportere data."
+
+#: includes/admin/tools/import/import.php:23
+#@ affiliate-wp
+msgid "Please upload a valid .json file"
+msgstr "Vennligst last opp en gyldig .json fil"
+
+#: includes/admin/tools/import/import.php:29
+#@ affiliate-wp
+msgid "Please upload a file to import"
+msgstr "Vennligst last opp filen som skal importeres"
+
+#: includes/admin/tools/migration.php:17
+#@ affiliate-wp
+msgid "The upgrade process is running, please be patient. This could take several minutes to complete while affiliate records are upgraded in batches of 100."
+msgstr "Oppgraderingsprosessen er i gang, vær tålmodig. Dette kan ta flere minutter å fullføre, mens affiliate dataene er oppgradert i grupper på 100."
+
+#: includes/admin/tools/migration.php:18
+#, php-format
+#@ affiliate-wp
+msgid "Step %d running"
+msgstr "Trinn %d kjører"
+
+#: includes/admin/tools/tools.php:75
+#@ affiliate-wp
+msgid "Export / Import"
+msgstr "Eksport / Import"
+
+#: includes/admin/tools/tools.php:76
+#@ affiliate-wp
+msgid "Recount Stats"
+msgstr "Rekalkuler statistikker"
+
+#: includes/admin/tools/tools.php:77
+#@ affiliate-wp
+msgid "Migration Assistant"
+msgstr "Migreringsassistent"
+
+#: includes/admin/tools/tools.php:93
+#@ affiliate-wp
+msgid "Recount Affiliate Stats"
+msgstr "Rekalkuler affiliate statistikker"
+
+#: includes/admin/tools/tools.php:95
+#@ affiliate-wp
+msgid "Use this tool to recount affiliate statistics."
+msgstr "Bruk dette verktøyet for å rekalkulere affiliate statistikkene."
+
+#: includes/admin/tools/tools.php:99
+#: includes/admin/tools/tools.php:232
+#: includes/admin/visits/visits.php:32
+#@ affiliate-wp
+msgid "Affiliate name"
+msgstr "Navn på affiliate"
+
+#: includes/admin/tools/tools.php:108
+#@ affiliate-wp
+msgid "Enter the name of the affiliate or begin typing to perform a search based on the affiliate's name."
+msgstr "Skriv inn navnet på affiliaten eller start å skrive for å utføre et automatisk søk basert på affiliatens navn."
+
+#: includes/admin/tools/tools.php:113
+#@ affiliate-wp
+msgid "Recount"
+msgstr "Rekalkuler"
+
+#: includes/admin/tools/tools.php:136
+#@ affiliate-wp
+msgid "These tools assist in migrating affiliate and referral data from existing platforms."
+msgstr "Disse verktøyene bistår med migreringen av affiliate og henvisninger / salgsdata fra eksisterende plattformer."
+
+#: includes/admin/tools/tools.php:141
+#@ affiliate-wp
+msgid "User Accounts"
+msgstr "Brukerkontoer"
+
+#: includes/admin/tools/tools.php:143
+#@ affiliate-wp
+msgid "Use this tool to create affiliate accounts for each of your existing WordPress user accounts."
+msgstr "Bruk dette verktøyet for å opprette affiliate kontoer for hver av nettstedets eksisterende brukerkontoer."
+
+#: includes/admin/tools/tools.php:149
+#@ affiliate-wp
+msgid "Create Affiliate Accounts"
+msgstr "Opprett affiliate kontoer"
+
+#: includes/admin/tools/tools.php:158
+#@ affiliate-wp
+msgid "Use this tool migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP."
+msgstr "Bruk dette verktøyet for å migrere eksisterende affiliater og henvisninger / salgsdata fra Affiliates Pro til AffiliateWP."
+
+#: includes/admin/tools/tools.php:159
+#@ affiliate-wp
+msgid "<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool."
+msgstr "<strong>MERK:</strong> dette verktøyet må kun brukes på nye installasjoner. Hvis du allerede har samlet affiliater eller henvisninger / salgsdata, da må du ikke bruke dette verktøyet."
+
+#: includes/admin/tools/tools.php:165
+#@ affiliate-wp
+msgid "Migrate Data from Affiliates Pro"
+msgstr "Migrer data fra Affiliates Pro"
+
+#: includes/admin/tools/tools.php:174
+#@ affiliate-wp
+msgid "Use this tool migrate existing affiliate accounts from WP Affiliate to AffiliateWP."
+msgstr "Bruk dette verktøyet for å migrere eksisterende affiliate kontoer fra WP Affiliate til AffiliateWP."
+
+#: includes/admin/tools/tools.php:180
+#@ affiliate-wp
+msgid "Migrate Data from WP Affiliate"
+msgstr "Migrer data fra WP Affiliate"
+
+#: includes/admin/tools/tools.php:204
+#@ affiliate-wp
+msgid "Export Affiliates"
+msgstr "Eksporter affiliater"
+
+#: includes/admin/tools/tools.php:206
+#@ affiliate-wp
+msgid "Export affiliates to a CSV file."
+msgstr "Eksporter affiliater til en CSV fil."
+
+#: includes/admin/tools/tools.php:210
+#: includes/admin/tools/tools.php:239
+#@ affiliate-wp
+msgid "All Statuses"
+msgstr "Alle statuser"
+
+#: includes/admin/tools/tools.php:219
+#: includes/admin/tools/tools.php:251
+#: includes/admin/tools/tools.php:265
+#@ affiliate-wp
+msgid "Export"
+msgstr "Eksport"
+
+#: includes/admin/tools/tools.php:226
+#@ affiliate-wp
+msgid "Export Referrals"
+msgstr "Eksporter henvisninger / salg"
+
+#: includes/admin/tools/tools.php:228
+#@ affiliate-wp
+msgid "Export referrals to a CSV file."
+msgstr "Eksporter henvisninger / salg til en CSV fil."
+
+#: includes/admin/tools/tools.php:246
+#@ affiliate-wp
+msgid "To search for a affiliate, enter the affiliate's login name, first name, or last name. Leave blank to export referrals for all affiliates."
+msgstr "For å søke etter en affiliate, skriv inn affiliatens påloggingsnavn (brukernavn), fornavn eller etternavn. La stå tomt for å eksportere henvisninger / salgsdata for alle affiliatene."
+
+#: includes/admin/tools/tools.php:258
+#@ affiliate-wp
+msgid "Export Settings"
+msgstr "Eksport innstillinger"
+
+#: includes/admin/tools/tools.php:260
+#@ affiliate-wp
+msgid "Export the AffiliateWP settings for this site as a .json file. This allows you to easily import the configuration into another site."
+msgstr "Eksporter AffiliateWP innstillingene for dette nettstedet som en .json fil. Dette gjør det enkelt å importere konfigurasjonen til et annet nettsted."
+
+#: includes/admin/tools/tools.php:272
+#@ affiliate-wp
+msgid "Import Settings"
+msgstr "Import innstillinger"
+
+#: includes/admin/tools/tools.php:274
+#@ affiliate-wp
+msgid "Import the AffiliateWP settings from a .json file. This file can be obtained by exporting the settings on another site using the form above."
+msgstr "Importer AffiliateWP innstillinger fra en .json fil. Denne filen opprettes når du eksporterer innstillingene fra et annet nettsted ved hjelp av skjemaet ovenfor."
+
+#: includes/admin/tools/tools.php:282
+#@ affiliate-wp
+msgid "Import"
+msgstr "Import"
+
+#: includes/admin/visits/contextual-help.php:39
+#@ affiliate-wp
+msgid "This screen provides access to your site's visit history."
+msgstr "Denne siden gir deg tilgang til nettstedets besøkslogg."
+
+#: includes/admin/visits/contextual-help.php:40
+#@ affiliate-wp
+msgid "<strong>Landing Page</strong>: this is the page on your site that the visitor first landed on. It is the URL that the affiliate link pointed to."
+msgstr "<strong>Destinasjonsside</strong>: dette er den siden på nettstedet ditt som den besøkende først landet på. Det er nettadressen som henvisningslenken pekte på."
+
+#: includes/admin/visits/contextual-help.php:41
+#@ affiliate-wp
+msgid "<strong>Referring URL</strong>: this is the source URL of the affiliate link. It is the web page that the visitor found a link to your site on."
+msgstr "<strong>Henvisende URL</strong>: dette er kildelenken / URL-en hvorfra fra affiliate lenken er klikket. Nettstedet hvor den besøkende fant en link til nettstedet ditt."
+
+#: includes/admin/visits/contextual-help.php:42
+#@ affiliate-wp
+msgid "<strong>Affiliate</strong>: this the affiliate that the visit was attributed to."
+msgstr "<strong>Affiliate</strong>: dette er affiliaten hvorpå besøket ble tilskrevet."
+
+#: includes/admin/visits/contextual-help.php:43
+#@ affiliate-wp
+msgid "<strong>Referral ID</strong>: this is the ID of the referral that was created from this visit, if any."
+msgstr "<strong>Bruker ID</strong>: dette er ID-en på brukeren som ble opprettet fra dette besøket / salget, hvis noen."
+
+#: includes/admin/visits/contextual-help.php:44
+#@ affiliate-wp
+msgid "<strong>IP</strong>: this is the IP address of the visitor."
+msgstr "<strong>IP</strong>: dette er IP-adressen til den besøkende."
+
+#: includes/admin/visits/contextual-help.php:45
+#@ affiliate-wp
+msgid "<strong>Converted</strong>: this is a Yes / No status for whether the visit turned into a successful converstion."
+msgstr "<strong>Konvertert</strong>: dette er en Ja / Nei status for hvorvidt besøket ble konvertert til et salg eller ikke."
+
+#: includes/admin/visits/contextual-help.php:50
+#@ affiliate-wp
+msgid "Searching Visits"
+msgstr "Søk i besøkende"
+
+#: includes/admin/visits/contextual-help.php:52
+#@ affiliate-wp
+msgid "Visit records can be searched in several different ways:"
+msgstr "Besøksdata kan søkes på flere forskjellige måter:"
+
+#: includes/admin/visits/contextual-help.php:54
+#@ affiliate-wp
+msgid "You can enter an IP address to find all visits from a specific IP"
+msgstr "Du kan skrive inn en IP-adresse for å finne alle besøk fra en bestemt IP"
+
+#: includes/admin/visits/contextual-help.php:55
+#@ affiliate-wp
+msgid "You can enter a complete URL to find all visits that landed on or came from a specific URL"
+msgstr "Du kan skrive inn en komplett nettstedsadresse / URL for å finne alle besøk som landet på eller kom fra en bestemt nettadresse."
+
+#: includes/admin/visits/contextual-help.php:56
+#@ affiliate-wp
+msgid "You can enter a partial URL to find all visits that landed on or came from a specific site"
+msgstr "Du kan skrive inn en delvis nettstedsadresse / URL for å finne alle besøk som landet på eller kom fra et bestemt nettsted."
+
+#: includes/admin/visits/contextual-help.php:57
+#@ affiliate-wp
+msgid "You can enter the referral's ID number prefixed by 'referral:'"
+msgstr "Du kan skrive inn henvisningens / salgets ID nummer prefikset med 'referral:'"
+
+#: includes/admin/visits/visits.php:153
+#@ affiliate-wp
+msgid "Landing Page"
+msgstr "Destinasjonsside"
+
+#: includes/admin/visits/visits.php:154
+#: templates/dashboard-tab-visits.php:19
+#@ affiliate-wp
+msgid "Referring URL"
+msgstr "Henvisende URL"
+
+#: includes/admin/visits/visits.php:156
+#@ affiliate-wp
+msgid "Referral ID"
+msgstr "Bruker ID"
+
+#: includes/admin/visits/visits.php:157
+#@ affiliate-wp
+msgid "IP"
+msgstr "IP"
+
+#: includes/admin/visits/visits.php:222
+#: templates/dashboard-tab-visits.php:30
+#@ affiliate-wp
+msgid "Direct traffic"
+msgstr "Direkte trafikk"
+
+#: includes/admin/visits/visits.php:247
+#@ affiliate-wp
+msgid "No visits found."
+msgstr "Ingen besøk funnet."
+
+#: includes/affiliate-functions.php:300
+#@ affiliate-wp
+msgid "Percentage (%)"
+msgstr "Prosentvis (%)"
+
+#: includes/affiliate-functions.php:301
+#, php-format
+#@ affiliate-wp
+msgid "Flat %s"
+msgstr "Flatt beløp %s"
+
+#: includes/class-creatives.php:148
+#@ affiliate-wp
+msgid "Copy and paste the following:"
+msgstr "Kopier og lim inn følgende:"
+
+#: includes/class-graph.php:332
+#@ affiliate-wp
+msgid "Today"
+msgstr "I dag"
+
+#: includes/class-graph.php:333
+#@ affiliate-wp
+msgid "Yesterday"
+msgstr "I går"
+
+#: includes/class-graph.php:334
+#@ affiliate-wp
+msgid "This Week"
+msgstr "Denne uken"
+
+#: includes/class-graph.php:335
+#@ affiliate-wp
+msgid "Last Week"
+msgstr "Forrige uke"
+
+#: includes/class-graph.php:336
+#@ affiliate-wp
+msgid "This Month"
+msgstr "Denne måned"
+
+#: includes/class-graph.php:337
+#@ affiliate-wp
+msgid "Last Month"
+msgstr "Forrige måned"
+
+#: includes/class-graph.php:338
+#@ affiliate-wp
+msgid "This Quarter"
+msgstr "Dette kvartalet"
+
+#: includes/class-graph.php:339
+#@ affiliate-wp
+msgid "Last Quarter"
+msgstr "Forrige kvartal"
+
+#: includes/class-graph.php:340
+#@ affiliate-wp
+msgid "This Year"
+msgstr "Dette året"
+
+#: includes/class-graph.php:341
+#@ affiliate-wp
+msgid "Last Year"
+msgstr "Forrige år"
+
+#: includes/class-graph.php:342
+#@ affiliate-wp
+msgid "Custom"
+msgstr "Egendefinert"
+
+#: includes/class-graph.php:380
+#@ affiliate-wp
+msgid "From"
+msgstr "Fra"
+
+#: includes/class-graph.php:391
+#@ affiliate-wp
+msgid "To"
+msgstr "Til"
+
+#: includes/class-login.php:56
+#: includes/class-register.php:71
+#: includes/class-register.php:137
+#@ affiliate-wp
+msgid "Invalid username"
+msgstr "Ugyldig brukernavn"
+
+#: includes/class-login.php:62
+#@ affiliate-wp
+msgid "No such user"
+msgstr "Ukjent bruker"
+
+#: includes/class-login.php:66
+#: includes/class-register.php:145
+#@ affiliate-wp
+msgid "Please enter a password"
+msgstr "Vennligst skriv inn et passord"
+
+#: includes/class-login.php:73
+#@ affiliate-wp
+msgid "Incorrect username or password"
+msgstr "Feil brukernavn eller passord"
+
+#: includes/class-referrals-graph.php:116
+#@ affiliate-wp
+msgid "Unpaid Referral Earnings"
+msgstr "Ubetalte inntekter"
+
+#: includes/class-referrals-graph.php:117
+#@ affiliate-wp
+msgid "Pending Referral Earnings"
+msgstr "Ventende inntekter"
+
+#: includes/class-referrals-graph.php:118
+#@ affiliate-wp
+msgid "Rejected Referral Earnings"
+msgstr "Avviste inntekter"
+
+#: includes/class-referrals-graph.php:119
+#@ affiliate-wp
+msgid "Paid Referral Earnings"
+msgstr "Betalte inntekter"
+
+#: includes/class-register.php:67
+#@ affiliate-wp
+msgid "Username already taken"
+msgstr "Dette brukernavnet er allerede brukt"
+
+#: includes/class-register.php:75
+#@ affiliate-wp
+msgid "Email address already taken"
+msgstr "Denne e-postadressen er allerede brukt"
+
+#: includes/class-register.php:79
+#@ affiliate-wp
+msgid "Invalid email"
+msgstr "Ugyldig e-postadresse"
+
+#: includes/class-register.php:83
+#@ affiliate-wp
+msgid "Invalid payment email"
+msgstr "Ugyldig e-post for utbetalinger"
+
+#: includes/class-register.php:87
+#@ affiliate-wp
+msgid "Passwords do not match"
+msgstr "Passordene stemmer ikke overens"
+
+#: includes/class-register.php:94
+#@ affiliate-wp
+msgid "Please agree to our terms of use"
+msgstr "Vennligst les gjennom og aksepter våre vilkår og betingelser"
+
+#: includes/class-register.php:98
+#@ affiliate-wp
+msgid "Nice try honey bear, don't touch our honey"
+msgstr "Godt forsøk honningbjørn, ikke rør honningen vår"
+
+#: includes/class-register.php:102
+#@ affiliate-wp
+msgid "You are already registered as an affiliate"
+msgstr "Du er allerede registrert som affiliate"
+
+#: includes/class-register.php:133
+#@ affiliate-wp
+msgid "Please enter your name"
+msgstr "Vennligst skriv inn ditt navn"
+
+#: includes/class-register.php:141
+#@ affiliate-wp
+msgid "Please enter a website URL"
+msgstr "Vennligst skriv inn en nettsteds URL, f.eks. http://www.ditt-domene.no"
+
+#: includes/class-visits-graph.php:126
+#@ affiliate-wp
+msgid "Converted Visits"
+msgstr "Konverterte besøk"
+
+#: includes/class-visits-graph.php:127
+#@ affiliate-wp
+msgid "Unconverted Visits"
+msgstr "Ukonverterte besøk"
+
+#: includes/creative-functions.php:31
+#: includes/creative-functions.php:63
+#@ affiliate-wp
+msgid "Creative"
+msgstr "Annonsemateriell"
+
+#: includes/emails/actions.php:46
+#@ affiliate-wp
+msgid "A new affiliate has registered on your site, "
+msgstr "En ny affiliate har registrert seg på nettstedet, "
+
+#: includes/emails/actions.php:47
+#, php-format
+#@ affiliate-wp
+msgid "Name: %s"
+msgstr "Navn: %s"
+
+#: includes/emails/actions.php:50
+#, php-format
+#@ affiliate-wp
+msgid "Website URL: %s"
+msgstr "Nettsteds URL: %s"
+
+#: includes/emails/actions.php:54
+#, php-format
+#@ affiliate-wp
+msgid "Promotion method: %s"
+msgstr "Markedsføringsmetode: %s"
+
+#: includes/emails/actions.php:58
+#, php-format
+#@ affiliate-wp
+msgid "Review pending applications: %s"
+msgstr "Gjennomgå ventende søknader: %s"
+
+#: includes/emails/actions.php:100
+#: includes/emails/actions.php:149
+#, php-format
+#@ affiliate-wp
+msgid "Congratulations %s!"
+msgstr "Gratulere %s!"
+
+#: includes/emails/actions.php:102
+#, php-format
+#@ affiliate-wp
+msgid "Log into your affiliate area at %s"
+msgstr "Logg inn på din konto hos %s"
+
+#: includes/emails/actions.php:150
+#, php-format
+#@ affiliate-wp
+msgid "You have been awarded a new referral of %s on %s!"
+msgstr "Du har blitt tildelt en ny henvisning / salg pålydende %s hos %s!"
+
+#: includes/emails/actions.php:151
+#, php-format
+#@ affiliate-wp
+msgid "log into your affiliate area to view your earnings or disable these notifications: %s"
+msgstr "logg inn på din konto for å vise dine inntekter eller deaktivere disse e-post varslene: %s"
+
+#: includes/emails/class-affwp-emails.php:198
+#@ affiliate-wp
+msgid "Default Template"
+msgstr "Standardmal"
+
+#: includes/emails/class-affwp-emails.php:199
+#@ affiliate-wp
+msgid "No template, plain text only"
+msgstr "Ingen mal, kun ren tekst"
+
+#: includes/emails/class-affwp-emails.php:295
+#@ affiliate-wp
+msgid "You cannot send emails with AffWP_Emails until init/admin_init has been reached"
+msgstr "Du kan ikke sende e-post med AffWP_Emails før init/admin_init er nådd"
+
+#: includes/emails/class-affwp-emails.php:417
+#@ affiliate-wp
+msgid "The full name of the affiliate"
+msgstr "Affiliatens fulle navn."
+
+#: includes/emails/class-affwp-emails.php:422
+#@ affiliate-wp
+msgid "The user name of the affiliate on the site"
+msgstr "Affiliatens brukernavn."
+
+#: includes/emails/class-affwp-emails.php:427
+#@ affiliate-wp
+msgid "The email address of the affiliate"
+msgstr "Affiliatens e-postadresse."
+
+#: includes/emails/class-affwp-emails.php:432
+#@ affiliate-wp
+msgid "The website of the affiliate"
+msgstr "Affiliatens nettsted."
+
+#: includes/emails/class-affwp-emails.php:437
+#@ affiliate-wp
+msgid "The promo method used by the affiliate"
+msgstr "Affiliatens markedsføringsmetode."
+
+#: includes/emails/class-affwp-emails.php:442
+#@ affiliate-wp
+msgid "The affiliate login URL to your website"
+msgstr "Lenke for pålogging til affiliate området."
+
+#: includes/emails/class-affwp-emails.php:447
+#@ affiliate-wp
+msgid "The amount of a given referral"
+msgstr "Provisjon av et gitt salg."
+
+#: includes/emails/class-affwp-emails.php:452
+#@ affiliate-wp
+msgid "Your site name"
+msgstr "Navnet på ditt nettsted"
+
+#: includes/integrations/class-edd.php:279
+#: includes/integrations/class-gravityforms.php:64
+#: includes/integrations/class-jigoshop.php:85
+#: includes/integrations/class-shopp.php:75
+#: includes/integrations/class-sproutinvoices.php:53
+#: includes/integrations/class-woocommerce.php:137
+#, php-format
+#@ affiliate-wp
+msgid "Referral #%d for %s recorded for %s"
+msgstr "Henvisning / Salg #%d for %s logget for %s"
+
+#: includes/integrations/class-edd.php:401
+#: includes/integrations/class-rcp.php:159
+#: includes/integrations/class-woocommerce.php:255
+#@ affiliate-wp
+msgid "Affiliate Discount?"
+msgstr "Affiliate rabatt?"
+
+#: includes/integrations/class-edd.php:410
+#: includes/integrations/class-rcp.php:168
+#: includes/integrations/class-woocommerce.php:263
+#@ edd
+#@ affiliate-wp
+msgid "If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to."
+msgstr "Hvis du ønsker å koble denne rabatten til en affiliate, skriv navnet på den affiliate det tilhører."
+
+#: includes/integrations/class-edd.php:496
+#@ affiliate-wp
+msgid "Adjust EDD Commissions"
+msgstr "Juster EDD Provisjoner"
+
+#: includes/integrations/class-edd.php:497
+#@ affiliate-wp
+msgid "Should AffiliateWP adjust the commission amounts recorded for purchases that include affiliate referrals? This will subtract the referral amount from the base amount used to calculate the commission total."
+msgstr "Skal AffiliateWP justere provisjonsbeløpet for kjøp som inkluderer affiliate henvisninger? Dette vil belaste provisjonen av grunnbeløpet som er brukt til å beregne total provisjon."
+
+#: includes/integrations/class-edd.php:517
+#@ affiliate-wp
+msgid "Disable Renewal Referrals"
+msgstr "Deaktiver henvisninger / salg ved fornyelse"
+
+#: includes/integrations/class-edd.php:518
+#@ affiliate-wp
+msgid "Should AffiliateWP prevent referral commissions from being recorded on renewal purchases with EDD Software Licensing?"
+msgstr "Skal AffiliateWP hindre salgs provisjoner fra å bli registrert på fornyelses kjøp med EDD Software Licensing?"
+
+#: includes/integrations/class-edd.php:539
+#@ affiliate-wp
+msgid "Affiliate Rates:"
+msgstr "Affiliate satser:"
+
+#: includes/integrations/class-edd.php:552
+#, php-format
+#@ affiliate-wp
+msgid "Disable referrals on this %s"
+msgstr "Deaktiver henvisninger / salg på dette %s"
+
+#: includes/integrations/class-edd.php:556
+#: includes/integrations/class-woocommerce.php:370
+#: includes/integrations/extras/class-exchange-feature.php:42
+#@ affiliate-wp
+msgid "These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates."
+msgstr "Disse innstillingene vil bli brukt til å beregne affiliateinntekter pr. salg. La stå tomt for å bruke standard satsene."
+
+#: includes/integrations/class-exchange.php:234
+#@ affiliate-wp
+msgid "Affiliate coupon?"
+msgstr "Affiliate rabattkode?"
+
+#: includes/integrations/class-exchange.php:243
+#@ edd
+msgid "If you would like to connect this coupon to an affiliate, enter the name of the affiliate it belongs to."
+msgstr "Hvis du ønsker å koble denne rabattkoden til en affiliate, skriv navnet på den affiliate det tilhører."
+
+#: includes/integrations/class-formidablepro.php:71
+#@ affiliate-wp
+msgid " AffiliateWP"
+msgstr " AffiliateWP"
+
+#: includes/integrations/class-formidablepro.php:76
+#@ affiliate-wp
+msgid "Referral description"
+msgstr "Beskrivelse av henvisning / salg"
+
+#: includes/integrations/class-formidablepro.php:80
+#: includes/integrations/class-formidablepro.php:106
+#@ affiliate-wp
+msgid "Select Field"
+msgstr "Velg felt"
+
+#: includes/integrations/class-formidablepro.php:102
+#@ affiliate-wp
+msgid "Purchase Amount"
+msgstr "Kjøpesum"
+
+#: includes/integrations/class-formidablepro.php:198
+#, php-format
+#@ affiliate-wp
+msgid "AffiliateWP: Referral #%d for %s recorded for %s"
+msgstr "AffiliateWP: Henvisning / Salg #%d for %s logget for %s"
+
+#: includes/integrations/class-formidablepro.php:223
+#, php-format
+#@ affiliate-wp
+msgid "AffiliateWP: Referral #%d for %s for %s rejected"
+msgstr "AffiliateWP: Henvisning / Salg #%d for %s for %s avvist"
+
+#: includes/integrations/class-gravityforms.php:76
+#: includes/integrations/class-sproutinvoices.php:76
+#, php-format
+#@ affiliate-wp
+msgid "Referral #%d for %s for %s rejected"
+msgstr "Henvisning / Salg #%d for %s for %s avvist"
+
+#: includes/integrations/class-woocommerce.php:368
+#@ affiliate-wp
+msgid "Affiliate Rate"
+msgstr "Affiliate sats"
+
+#: includes/integrations/class-woocommerce.php:374
+#@ affiliate-wp
+msgid "Disable referrals"
+msgstr "Deaktiver henvisninger / salg"
+
+#: includes/integrations/class-woocommerce.php:375
+#@ affiliate-wp
+msgid "This will prevent orders of this product from generating referral commissions for affiliates."
+msgstr "Dette vil forhindre at bestillinger / kjøp av dette produktet genererer provisjon til affiliatene."
+
+#: includes/integrations/extras/class-exchange-feature.php:22
+#@ affiliate-wp
+msgid "Manage per-product affiliate rates."
+msgstr "Administrer affiliate satser pr. produkt."
+
+#: includes/integrations/extras/class-exchange-feature.php:54
+#@ affiliate-wp
+msgid "Disable referrals on this product"
+msgstr "Deaktiver provisjoner på dette produktet"
+
+#: includes/misc-functions.php:26
+#@ affiliate-wp
+msgid "US Dollars"
+msgstr "US Dollars"
+
+#: includes/misc-functions.php:27
+#@ affiliate-wp
+msgid "Euros"
+msgstr "Euros"
+
+#: includes/misc-functions.php:28
+#@ affiliate-wp
+msgid "United Arab Emirates Dirham"
+msgstr "United Arab Emirates Dirham"
+
+#: includes/misc-functions.php:29
+#@ affiliate-wp
+msgid "Australian Dollars"
+msgstr "Australian Dollars"
+
+#: includes/misc-functions.php:30
+#@ affiliate-wp
+msgid "Bangladeshi Taka"
+msgstr "Bangladeshi Taka"
+
+#: includes/misc-functions.php:31
+#@ affiliate-wp
+msgid "Brazilian Real"
+msgstr "Brazilian Real"
+
+#: includes/misc-functions.php:32
+#@ affiliate-wp
+msgid "Bulgarian Lev"
+msgstr "Bulgarian Lev"
+
+#: includes/misc-functions.php:33
+#@ affiliate-wp
+msgid "Canadian Dollars"
+msgstr "Canadian Dollars"
+
+#: includes/misc-functions.php:34
+#@ affiliate-wp
+msgid "Chilean Peso"
+msgstr "Chilean Peso"
+
+#: includes/misc-functions.php:35
+#@ affiliate-wp
+msgid "Chinese Yuan"
+msgstr "Chinese Yuan"
+
+#: includes/misc-functions.php:36
+#@ affiliate-wp
+msgid "Colombian Peso"
+msgstr "Colombian Peso"
+
+#: includes/misc-functions.php:37
+#@ affiliate-wp
+msgid "Czech Koruna"
+msgstr "Czech Koruna"
+
+#: includes/misc-functions.php:38
+#@ affiliate-wp
+msgid "Danish Krone"
+msgstr "Danske kroner"
+
+#: includes/misc-functions.php:39
+#@ affiliate-wp
+msgid "Dominican Peso"
+msgstr "Dominican Peso"
+
+#: includes/misc-functions.php:40
+#@ affiliate-wp
+msgid "Hong Kong Dollar"
+msgstr "Hong Kong Dollar"
+
+#: includes/misc-functions.php:41
+#@ affiliate-wp
+msgid "Croatia kuna"
+msgstr "Croatia kuna"
+
+#: includes/misc-functions.php:42
+#@ affiliate-wp
+msgid "Hungarian Forint"
+msgstr "Hungarian Forint"
+
+#: includes/misc-functions.php:43
+#@ affiliate-wp
+msgid "Icelandic krona"
+msgstr "Islandske kroner"
+
+#: includes/misc-functions.php:44
+#@ affiliate-wp
+msgid "Indonesia Rupiah"
+msgstr "Indonesia Rupiah"
+
+#: includes/misc-functions.php:45
+#@ affiliate-wp
+msgid "Indian Rupee"
+msgstr "Indian Rupee"
+
+#: includes/misc-functions.php:46
+#@ affiliate-wp
+msgid "Nepali Rupee"
+msgstr "Nepali Rupee"
+
+#: includes/misc-functions.php:47
+#@ affiliate-wp
+msgid "Israeli Shekel"
+msgstr "Israeli Shekel"
+
+#: includes/misc-functions.php:48
+#@ affiliate-wp
+msgid "Japanese Yen"
+msgstr "Japanese Yen"
+
+#: includes/misc-functions.php:49
+#@ affiliate-wp
+msgid "Lao Kip"
+msgstr "Lao Kip"
+
+#: includes/misc-functions.php:50
+#@ affiliate-wp
+msgid "South Korean Won"
+msgstr "South Korean Won"
+
+#: includes/misc-functions.php:51
+#@ affiliate-wp
+msgid "Malaysian Ringgits"
+msgstr "Malaysian Ringgits"
+
+#: includes/misc-functions.php:52
+#@ affiliate-wp
+msgid "Mexican Peso"
+msgstr "Mexican Peso"
+
+#: includes/misc-functions.php:53
+#@ affiliate-wp
+msgid "Nigerian Naira"
+msgstr "Nigerian Naira"
+
+#: includes/misc-functions.php:54
+#@ affiliate-wp
+msgid "Norwegian Krone"
+msgstr "Norske kroner"
+
+#: includes/misc-functions.php:55
+#@ affiliate-wp
+msgid "New Zealand Dollar"
+msgstr "New Zealand Dollar"
+
+#: includes/misc-functions.php:56
+#@ affiliate-wp
+msgid "Paraguayan Guaraní"
+msgstr "Paraguayan Guaraní"
+
+#: includes/misc-functions.php:57
+#@ affiliate-wp
+msgid "Philippine Pesos"
+msgstr "Philippine Pesos"
+
+#: includes/misc-functions.php:58
+#@ affiliate-wp
+msgid "Polish Zloty"
+msgstr "Polish Zloty"
+
+#: includes/misc-functions.php:59
+#@ affiliate-wp
+msgid "Pounds Sterling"
+msgstr "Pounds Sterling"
+
+#: includes/misc-functions.php:60
+#@ affiliate-wp
+msgid "Romanian Leu"
+msgstr "Romanian Leu"
+
+#: includes/misc-functions.php:61
+#@ affiliate-wp
+msgid "Russian Ruble"
+msgstr "Russian Ruble"
+
+#: includes/misc-functions.php:62
+#@ affiliate-wp
+msgid "Singapore Dollar"
+msgstr "Singapore Dollar"
+
+#: includes/misc-functions.php:63
+#@ affiliate-wp
+msgid "South African rand"
+msgstr "South African rand"
+
+#: includes/misc-functions.php:64
+#@ affiliate-wp
+msgid "Swedish Krona"
+msgstr "Svenske kroner"
+
+#: includes/misc-functions.php:65
+#@ affiliate-wp
+msgid "Swiss Franc"
+msgstr "Swiss Franc"
+
+#: includes/misc-functions.php:66
+#@ affiliate-wp
+msgid "Taiwan New Dollars"
+msgstr "Taiwan New Dollars"
+
+#: includes/misc-functions.php:67
+#@ affiliate-wp
+msgid "Thai Baht"
+msgstr "Thai Baht"
+
+#: includes/misc-functions.php:68
+#@ affiliate-wp
+msgid "Turkish Lira"
+msgstr "Turkish Lira"
+
+#: includes/misc-functions.php:69
+#@ affiliate-wp
+msgid "Vietnamese Dong"
+msgstr "Vietnamese Dong"
+
+#: includes/misc-functions.php:70
+#@ affiliate-wp
+msgid "Egyptian Pound"
+msgstr "Egyptian Pound"
+
+#: includes/scripts.php:62
+#@ affiliate-wp
+msgid "Are you sure you want to generate the payout file? All included referrals will be marked as Paid."
+msgstr "Er du sikker på at du vil generere en utbetalings fil? Alle inkluderte henvisninger / salg vil bli markert som betalt."
+
+#: templates/dashboard-tab-creatives.php:36
+#@ affiliate-wp
+msgid "Sorry, there are currently no creatives available."
+msgstr "Beklager, det er for øyeblikket ingen annonsemateriell tilgjengelig."
+
+#: templates/dashboard-tab-graphs.php:3
+#@ affiliate-wp
+msgid "Referral Graphs"
+msgstr "Statistiske grafer"
+
+#: templates/dashboard-tab-referrals.php:41
+#@ affiliate-wp
+msgid "You have not made any referrals yet."
+msgstr "Du har ikke gjort noen henvisninger ennå."
+
+#: templates/dashboard-tab-settings.php:3
+#@ affiliate-wp
+msgid "Profile Settings"
+msgstr "Profil innstillinger"
+
+#: templates/dashboard-tab-settings.php:7
+#@ affiliate-wp
+msgid "Your payment email"
+msgstr "E-post for utbetalinger (PayPal):"
+
+#: templates/dashboard-tab-settings.php:13
+#@ affiliate-wp
+msgid "Enable New Referral Notifications"
+msgstr "Aktiver e-post varsel ved godkjent henvisning eller salg."
+
+#: templates/dashboard-tab-settings.php:21
+#@ affiliate-wp
+msgid "Save Profile Settings"
+msgstr "Lagre profil innstillinger"
+
+#: templates/dashboard-tab-stats.php:3
+#: templates/dashboard.php:36
+#@ affiliate-wp
+msgid "Statistics"
+msgstr "Statistikk"
+
+#: templates/dashboard-tab-stats.php:35
+#@ affiliate-wp
+msgid "Commission Rate"
+msgstr "Provisjon"
+
+#: templates/dashboard-tab-urls.php:3
+#@ affiliate-wp
+msgid "Referral URL Generator"
+msgstr "Lenke / URL Generator"
+
+#: templates/dashboard-tab-urls.php:6
+#, php-format
+#@ affiliate-wp
+msgid "Your affiliate ID is: <strong>%s</strong>"
+msgstr "Din affiliate ID er: <strong>%s</strong>"
+
+#: templates/dashboard-tab-urls.php:8
+#, php-format
+#@ affiliate-wp
+msgid "Your affiliate username is: <strong>%s</strong>"
+msgstr "Ditt affiliate brukernavn er: <strong>%s</strong>"
+
+#: templates/dashboard-tab-urls.php:11
+#, php-format
+#@ affiliate-wp
+msgid "Your referral URL is: <strong>%s</strong>"
+msgstr "Din henvisningslenke / URL er: <strong>%s</strong>"
+
+#: templates/dashboard-tab-urls.php:12
+#@ affiliate-wp
+msgid "Enter any URL from this website in the form below to generate a referral link!"
+msgstr "Skriv inn en URL fra denne nettsiden i skjemaet under for å generere en spesifikk henvisningslenke / URL!"
+
+#: templates/dashboard-tab-urls.php:16
+#@ affiliate-wp
+msgid "Page URL"
+msgstr "Nettstedets URL:"
+
+#: templates/dashboard-tab-urls.php:21
+#@ affiliate-wp
+msgid "Referral URL"
+msgstr "Henvisnings URL:"
+
+#: templates/dashboard-tab-urls.php:23
+#@ affiliate-wp
+msgid "(now copy this referral link and share it anywhere)"
+msgstr "(kopier denne henvisningslenken og bruk den i din markedsføring)"
+
+#: templates/dashboard-tab-urls.php:29
+#@ affiliate-wp
+msgid "Generate URL"
+msgstr "Generer URL"
+
+#: templates/dashboard-tab-visits.php:3
+#@ affiliate-wp
+msgid "Referral URL Visits"
+msgstr "Henvisningslenker / URLs"
+
+#: templates/dashboard-tab-visits.php:41
+#@ affiliate-wp
+msgid "You have not received any visits yet."
+msgstr "Du har ikke mottatt noen besøk ennå."
+
+#: templates/dashboard.php:7
+#@ affiliate-wp
+msgid "Your affiliate account is pending approval"
+msgstr "Din affiliate konto venter på godkjenning"
+
+#: templates/dashboard.php:11
+#@ affiliate-wp
+msgid "Your affiliate account is not active"
+msgstr "Din affiliate konto er ikke aktiv"
+
+#: templates/dashboard.php:15
+#@ affiliate-wp
+msgid "Your affiliate account request has been rejected"
+msgstr "Din affiliate konto forespørsel har blitt avvist"
+
+#: templates/dashboard.php:25
+#@ affiliate-wp
+msgid "Your affiliate profile has been updated"
+msgstr "Din affiliate profil har blitt oppdatert"
+
+#: templates/dashboard.php:33
+#@ affiliate-wp
+msgid "Affiliate URLs"
+msgstr "Affiliate URLs"
+
+#: templates/dashboard.php:39
+#@ affiliate-wp
+msgid "Graphs"
+msgstr "Grafer"
+
+#: templates/login.php:10
+#@ affiliate-wp
+msgid "Log into Your Account"
+msgstr "Logg inn på din konto"
+
+#: templates/login.php:20
+#: templates/register.php:85
+#@ affiliate-wp
+msgid "Password"
+msgstr "Passord"
+
+#: templates/login.php:26
+#@ affiliate-wp
+msgid "Remember Me"
+msgstr "Husk meg"
+
+#: templates/login.php:34
+#@ affiliate-wp
+msgid "Login"
+msgstr "Logg inn"
+
+#: templates/login.php:38
+#@ affiliate-wp
+msgid "Lost Password?"
+msgstr "Mistet passordet?"
+
+#: templates/no-access.php:1
+#@ affiliate-wp
+msgid "The affiliate area is available only for registered affiliates."
+msgstr "Affiliate området er kun tilgjengelig for registrerte brukere."
+
+#: templates/register.php:36
+#@ affiliate-wp
+msgid "Register a New Affiliate Account"
+msgstr "Registrere en ny affiliate konto"
+
+#: templates/register.php:43
+#: templates/register.php:44
+#@ affiliate-wp
+msgid "Your Name"
+msgstr "Ditt navn"
+
+#: templates/register.php:69
+#@ affiliate-wp
+msgid "Payment Email Address"
+msgstr "E-postadresse for utbetalinger"
+
+#: templates/register.php:78
+#@ affiliate-wp
+msgid "How will you promote us?"
+msgstr "Hvordan vil du markedsføre oss?"
+
+#: templates/register.php:90
+#@ affiliate-wp
+msgid "Confirm Password"
+msgstr "Bekreft passordet"
+
+#: templates/register.php:103
+#, php-format
+#@ affiliate-wp
+msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
+msgstr "Jeg har lest og akseptert <a href=\"%s\" target=\"_blank\">vilkår og betingelser</a>"
+
+#: templates/register.php:115
+#@ affiliate-wp
+msgid "Register"
+msgstr "Send søknad"
+
+#: templates/register.php:60
+#@ affiliate-wp
+msgid "Join Arctic-Fritid.no`s affiliate program now and earn commission when products are purchased with your site as a starting point. It`s free to join our affiliate program and you only need to advertise the products that you want."
+msgstr "Bli med i Arctic-Fritid.no`s affiliate program nå, og få provisjon når produkter kjøpes med webområdet ditt som utgangspunkt. Det er gratis å delta i vårt affiliate program, og du trenger bare å annonsere for de produktene som du selv ønsker."
+
+#: templates/register.php:64
+#@ affiliate-wp
+msgid "As affiliate you get 5% of the amount of purchases that have been carried out thanks to an ad or link on your site. Fill out the form below to apply to join the program!"
+msgstr "Som affiliate får du <strong>5%</strong> av beløpet på kjøp som har blitt gjennomført takket være en annonse eller link på ditt nettsted. Fyll ut skjemaet nedenfor for å søke om å bli med i programmet!"
+

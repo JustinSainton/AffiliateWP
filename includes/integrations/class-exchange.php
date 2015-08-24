@@ -31,8 +31,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	public function add_pending_referral( $transaction_id = 0 ) {
 
-		$has_coupon  = false;
-		$this->transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
+		$has_coupon         = false;
+		$this->transaction  = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
 
 		if ( $this->transaction->coupons && is_array( $this->transaction->coupons ) ) {
 
@@ -43,6 +43,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 					$affiliate_id = get_post_meta( $coupon['id'], 'affwp_coupon_affiliate', true );
 
 					if( ! $affiliate_id ) {
+						continue;
+					}
+
+					if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
 						continue;
 					}
 
@@ -58,7 +62,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 		if( $this->was_referred() || $has_coupon ) {
 
-			if( $this->get_affiliate_email() === $this->transaction->shipping_address['email'] ) {
+			if ( $this->is_affiliate_email( $this->transaction->shipping_address['email'] ) ) {
 				return; // Customers cannot refer themselves
 			}
 
@@ -99,8 +103,38 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				$amount += $this->calculate_referral_amount( $referral_product_price, $transaction_id, $product['product_id'] );
 			}
 
-			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description );
+			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description, $this->get_products( $transaction_id ) );
 		}
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $order_id = 0 ) {
+
+		$products  = array();
+		$items     = $this->transaction->products;
+		foreach( $items as $key => $product ) {
+
+			if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
+			$products[] = array(
+				'name'            => $product['product_name'],
+				'id'              => $product['product_id'],
+				'price'           => $product['product_subtotal'],
+				'referral_amount' => $this->calculate_referral_amount( $product['product_subtotal'], $order_id, $product['product_id'] )
+			);
+
+		}
+
+		return $products;
 
 	}
 
@@ -202,11 +236,11 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 			<td>
 				<span class="affwp-ajax-search-wrap">
 					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" />
+					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" />
 					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 				</span>
 				<div id="affwp_user_search_results"></div>
-				<p class="description"><?php _e( 'If you would like to connect this coupon to an affiliate, enter the name of the affiliate it belongs to.', 'edd' ); ?></p>
+				<p class="description"><?php _e( 'If you would like to connect this coupon to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></p>
 			</td>
 		</div>
 <?php
@@ -219,7 +253,12 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	 * @since   1.3
 	*/
 	public function store_coupon_affiliate( $coupon_id = 0, $data = array() ) {
-
+		
+		if ( empty( $_POST['user_name'] ) ) {		
+			delete_post_meta( $coupon_id, 'affwp_coupon_affiliate' );
+			return;
+		}
+		
 		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
 		}

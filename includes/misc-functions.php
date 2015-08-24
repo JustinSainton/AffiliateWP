@@ -117,7 +117,7 @@ function affwp_sanitize_amount( $amount ) {
 	}
 
 	$decimals = apply_filters( 'affwp_sanitize_amount_decimals', 2, $amount );
-	$amount   = number_format( $amount, $decimals, '.', '' );
+	$amount   = number_format( floatval( $amount ), absint( $decimals ), '.', '' );
 
 	return apply_filters( 'affwp_sanitize_amount', $amount );
 }
@@ -126,10 +126,10 @@ function affwp_sanitize_amount( $amount ) {
  * Returns a nicely formatted amount.
  *
  * @since 1.0
- * 
+ *
  * @param string $amount   Price amount to format
  * @param string $decimals Whether or not to use decimals.  Useful when set to false for non-currency numbers.
- * 
+ *
  * @return string $amount Newly formatted amount or Price Not Available
  */
 function affwp_format_amount( $amount, $decimals = true ) {
@@ -153,7 +153,7 @@ function affwp_format_amount( $amount, $decimals = true ) {
 	if ( empty( $amount ) ) {
 		$amount = 0;
 	}
-	
+
 	$decimals  = apply_filters( 'affwp_format_amount_decimals', $decimals ? 2 : 0, $amount );
 	$formatted = number_format( $amount, $decimals, $decimal_sep, $thousands_sep );
 
@@ -198,7 +198,7 @@ function affwp_currency_filter( $amount ) {
 			case "SGD" :
 				$formatted = '&#36;' . $amount;
 				break;
-			case 'RON' : 
+			case 'RON' :
 				$formatted = 'lei' . $amount;
 				break;
 			case "JPY" :
@@ -231,7 +231,7 @@ function affwp_currency_filter( $amount ) {
 			case "SGD" :
 				$formatted = $amount . '&#36;';
 				break;
-			case 'RON' : 
+			case 'RON' :
 				$formatted = $amount . 'lei';
 				break;
 			case "JPY" :
@@ -340,4 +340,87 @@ if ( ! function_exists( 'cal_days_in_month' ) ) {
 	function cal_days_in_month( $calendar, $month, $year ) {
 		return date( 't', mktime( 0, 0, 0, $month, 1, $year ) );
 	}
+}
+
+
+
+/**
+ * Get the referral format value
+ *
+ * @since 1.6
+ * @param string $format referral format passed in via [affiliate_referral_url] shortcode
+ * @return string affiliate ID or username
+ */
+function affwp_get_referral_format_value( $format = '', $affiliate_id = 0 ) {
+
+	// get affiliate's user ID
+	$user_id = affwp_get_affiliate_user_id( $affiliate_id );
+
+	if ( ! $format ) {
+		$format = affwp_get_referral_format();
+	}
+
+	switch ( $format ) {
+
+		case 'username':
+			$value = affwp_get_affiliate_username( $affiliate_id );
+			break;
+
+		case 'id':
+		default:
+			$value = affwp_get_affiliate_id( $user_id );
+			break;
+
+	}
+
+	return $value;
+}
+
+/**
+ * Gets the referral format from Affiliates -> Settings -> General
+ *
+ * @since  1.6
+ * @return string "id" or "username"
+ */
+function affwp_get_referral_format() {
+
+	$referral_format = affiliate_wp()->settings->get( 'referral_format' );
+
+	return $referral_format;
+
+}
+
+/**
+ * Checks whether pretty referral URLs is enabled from Affiliates -> Settings -> General
+ *
+ * @since  1.6
+ * @return boolean
+ */
+function affwp_is_pretty_referral_urls() {
+
+	$is_pretty_affiliate_urls = affiliate_wp()->settings->get( 'referral_pretty_urls' );
+
+	if ( $is_pretty_affiliate_urls ) {
+		return (bool) true;
+	}
+
+	return (bool) false;
+
+}
+
+/**
+ * Checks whether reCAPTCHA is enabled since it requires three options
+ *
+ * @since  1.7
+ * @return boolean
+ */
+function affwp_is_recaptcha_enabled() {
+
+	$checkbox   = affiliate_wp()->settings->get( 'recaptcha_enabled', 0 );
+	$site_key   = affiliate_wp()->settings->get( 'recaptcha_site_key', '' );
+	$secret_key = affiliate_wp()->settings->get( 'recaptcha_secret_key', '' );
+	$enabled    = ( ! empty( $checkbox ) && ! empty( $site_key ) && ! empty( $secret_key ) );
+
+	return (bool) apply_filters( 'affwp_recaptcha_enabled', $enabled );
+
 }
