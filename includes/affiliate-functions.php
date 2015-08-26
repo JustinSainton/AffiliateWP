@@ -786,7 +786,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 		$args = array(
 			'user_id'       => $user_id,
-			'status'        => 'pending',
+			'status'        => $data['status'],
 			'rate'          => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : '',
 			'rate_type'     => ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '',
 			'payment_email' => ! empty( $data['payment_email'] ) ? sanitize_text_field( $data['payment_email'] ) : ''
@@ -796,8 +796,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if ( $affiliate_id ) {
 
-			$status = affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active';
-			affwp_set_affiliate_status( $affiliate_id, $status );
+			affwp_set_affiliate_status( $affiliate_id, $data['status'] );
 
 			return $affiliate_id;
 		}

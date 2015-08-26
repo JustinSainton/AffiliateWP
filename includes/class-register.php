@@ -239,7 +239,8 @@ class Affiliate_WP_Register {
 		$affiliate_id = affwp_add_affiliate( array(
 			'status'        => $status,
 			'user_id'       => $user_id,
-			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : ''
+			'payment_email' => ! empty( $_POST['affwp_payment_email'] ) ? sanitize_text_field( $_POST['affwp_payment_email'] ) : '',
+			'status'        => affiliate_wp()->settings->get( 'require_approval' ) ? 'pending' : 'active',
 		) );
 
 		if ( ! is_user_logged_in() ) {
