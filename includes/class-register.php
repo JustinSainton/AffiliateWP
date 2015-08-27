@@ -247,6 +247,9 @@ class Affiliate_WP_Register {
 			$this->log_user_in( $user_id, sanitize_text_field( $_POST['affwp_user_login'] ) );
 		}
 
+		// Retrieve affiliate ID. Resolves issues with caching on some hosts, such as GoDaddy
+		$affiliate_id = affwp_get_affiliate_id( $user_id );
+
 		do_action( 'affwp_register_user', $affiliate_id, $status, $args );
 	}
 
