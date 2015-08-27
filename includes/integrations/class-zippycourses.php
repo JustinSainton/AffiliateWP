@@ -30,8 +30,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
     }
 
-    public function metabox()
-    {   
+    public function metabox() {   
         add_meta_box( 'zippy-affiliate-wp', __( 'Affiliate Settings', 'affiliate-wp' ), array($this, 'product_settings'), 'product', 'side', 'default' );
     }
 
