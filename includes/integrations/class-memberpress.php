@@ -49,7 +49,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			}
 
 			if( get_post_meta( $txn->product_id, '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
-				continue; // Referrals are disabled on this membership
+				return; // Referrals are disabled on this membership
 			}
 
 			// get referral total
