@@ -430,7 +430,7 @@ function affwp_is_recaptcha_enabled() {
  *
  * Allows zero values, but ignores truly empty values.
  *
- * The correct type will be used automatically, dending on its value:
+ * The correct type will be used automatically, depending on its value:
  *
  * - Whole numbers (including numbers with a 0 value decimal) will be return as ints
  * - Decimal numbers will be returned as floats
