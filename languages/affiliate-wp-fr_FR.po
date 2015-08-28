@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: AffiliateWP\n"
 "Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
 "POT-Creation-Date: 2015-07-22 08:47:56+00:00\n"
-"PO-Revision-Date: 2015-07-22 11:29+0200\n"
+"PO-Revision-Date: 2015-08-28 16:23+0200\n"
 "Last-Translator: fxbenard | FxB <fx@fxbenard.com>\n"
 "Language-Team: AffiliateWP <support@affiliatewp.com>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -89,9 +89,8 @@ msgstr "Échec du test de sécurité"
 msgid "No affiliate IDs specified for deletion"
 msgstr "Aucun ID Affilié spécifié pour la suppression"
 
-#: includes/admin/affiliates/affiliates.php:44
-#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
-#: includes/admin/class-welcome.php:289
+#: includes/admin/affiliates/affiliates.php:44 includes/admin/class-menu.php:11
+#: includes/admin/class-menu.php:13 includes/admin/class-welcome.php:289
 msgid "Affiliates"
 msgstr "Affiliés"
 
@@ -174,8 +173,7 @@ msgstr "Parrainages payés"
 #: includes/admin/affiliates/affiliates.php:216
 #: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
 #: includes/admin/overview/overview.php:170
-#: includes/admin/reports/reports.php:66
-#: includes/admin/reports/reports.php:185
+#: includes/admin/reports/reports.php:66 includes/admin/reports/reports.php:185
 #: includes/admin/tools/export/class-export-affiliates.php:54
 #: includes/admin/tools/tools.php:105 includes/admin/visits/visits.php:27
 #: templates/dashboard-tab-stats.php:10 templates/dashboard.php:45
@@ -1145,8 +1143,7 @@ msgstr "Dernières Inscriptions Affiliés"
 #: includes/admin/overview/overview.php:116
 #: includes/admin/overview/overview.php:167
 #: includes/admin/overview/overview.php:205
-#: includes/admin/overview/overview.php:240
-#: includes/admin/referrals/new.php:16
+#: includes/admin/overview/overview.php:240 includes/admin/referrals/new.php:16
 #: includes/admin/referrals/referrals.php:224
 #: includes/admin/visits/visits.php:155
 msgid "Affiliate"
@@ -1728,7 +1725,7 @@ msgstr "Avertir Admins"
 msgid "Notify site admins of new affiliate registrations?"
 msgstr ""
 "Avertir les administrateurs du site lors de nouvelles inscriptions "
-"d'affiliés?"
+"d'affiliés&nbsp;:?"
 
 #: includes/admin/settings/class-settings.php:343
 msgid "Registration Email Subject"
@@ -1882,7 +1879,8 @@ msgstr "Enregistrer automatiquement les nouveaux utilisateurs"
 #: includes/admin/settings/class-settings.php:395
 msgid "Automatically register new users as affiliates?"
 msgstr ""
-"Enregistrer automatiquement les nouveaux utilisateurs en tant qu'affiliés?"
+"Enregistrer automatiquement les nouveaux utilisateurs en tant "
+"qu'affiliés&nbsp;?"
 
 #: includes/admin/settings/class-settings.php:399
 msgid "Reject Unpaid Referrals on Refund?"
@@ -3103,7 +3101,7 @@ msgstr "Adresse de messagerie de paiement "
 
 #: templates/register.php:71
 msgid "How will you promote us?"
-msgstr "Comment allez-vous nous promouvoir?"
+msgstr "Comment allez-vous nous promouvoir&nbsp;?"
 
 #: templates/register.php:83
 msgid "Confirm Password"
