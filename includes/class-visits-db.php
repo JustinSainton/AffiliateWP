@@ -239,6 +239,18 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		return $this->get_visits( $args, true );
 	}
 
+	/**
+	 * Retrieve campaigns and associated stats
+	 *
+	 * @param  array  $args
+	 * @return int
+	 */
+	public function get_campaigns( $affiliate_id = 0 ) {
+		
+		// will retrieve an array of campaign data
+
+	}
+
 	public function add( $data = array() ) {
 
 		if( ! empty( $data['url'] ) ) {
