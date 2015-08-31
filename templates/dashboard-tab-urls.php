@@ -17,6 +17,11 @@
 			<input type="text" name="url" id="affwp-url" value="<?php echo esc_url( affwp_get_affiliate_base_url() ); ?>" />
 		</div>
 
+		<div class="affwp-wrap affwp-campaign-wrap">
+			<label for="affwp-url"><?php _e( 'Campaign Name (optional)', 'affiliate-wp' ); ?></label>
+			<input type="text" name="campaign" id="affwp-campaign" value="" />
+		</div>
+
 		<div class="affwp-wrap affwp-referral-url-wrap" <?php if ( ! isset( $_GET['url'] ) ) { echo 'style="display:none;"'; } ?>>
 			<label for="affwp-referral-url"><?php _e( 'Referral URL', 'affiliate-wp' ); ?></label>
 			<input type="text" id="affwp-referral-url" value="<?php echo esc_url( affwp_get_affiliate_referral_url() ); ?>" />
