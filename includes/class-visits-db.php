@@ -23,6 +23,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'referral_id'  => '%d',
 			'url'          => '%s',
 			'referrer'     => '%s',
+			'campaign'     => '%s',
 			'ip'           => '%s',
 			'date'         => '%s',
 		);
@@ -33,7 +34,8 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'affiliate_id' => 0,
 			'referral_id'  => 0,
 			'date'         => date( 'Y-m-d H:i:s' ),
-			'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : ''
+			'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '',
+			'campaign'     => ! empty( $_REQUEST['campaign'] )    ? $_REQUEST['campaign']    : ''
 		);
 	}
 
@@ -54,6 +56,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			'affiliate_id'    => 0,
 			'referral_id'     => 0,
 			'referral_status' => '',
+			'campaign'        => '',
 			'order'           => 'DESC',
 			'orderby'         => 'visit_id'
 		);
@@ -89,6 +92,23 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			}
 
 			$where .= "WHERE `referral_id` IN( {$referral_ids} ) ";
+
+		}
+
+		// visits for specific campaign
+		if( ! empty( $args['campaign'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if( is_array( $args['campaign'] ) ) {
+				$where .= " `campaign` IN(" . implode( ',', $args['campaign'] ) . ") ";
+			} else {
+				$where .= " `campaign` = '" . $args['campaign'] . "' ";
+			}
 
 		}
 
@@ -244,6 +264,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			referral_id bigint(20) NOT NULL,
 			url mediumtext NOT NULL,
 			referrer mediumtext NOT NULL,
+			campaign varchar(30) NOT NULL,
 			ip tinytext NOT NULL,
 			date datetime NOT NULL,
 			PRIMARY KEY  (visit_id),

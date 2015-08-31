@@ -113,6 +113,9 @@ class Affiliate_WP_Upgrades {
 	 */
 	private function v17_upgrades() {
 
+		@affiliate_wp()->referrals->create_table();
+		@affiliate_wp()->visits->create_table();
+
 		$this->v17_upgrade_gforms();
 
 		$this->v17_upgrade_nforms();

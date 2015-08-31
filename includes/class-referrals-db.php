@@ -40,6 +40,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'currency'    => '%s',
 			'custom'      => '%s',
 			'context'     => '%s',
+			'campaign'    => '%s',
 			'reference'   => '%s',
 			'products'    => '%s',
 			'date'        => '%s',
@@ -197,6 +198,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 			'affiliate_id' => 0,
 			'reference'    => '',
 			'context'      => '',
+			'campaign'     => '',
 			'status'       => '',
 			'orderby'      => 'referral_id',
 			'order'        => 'DESC',
@@ -353,6 +355,26 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 					$where .= " `context` LIKE '%%" . $args['context'] . "%%' ";
 				} else {
 					$where .= " `context` = '" . $args['context'] . "' ";
+				}
+			}
+
+		}
+
+		if( ! empty( $args['campaign'] ) ) {
+
+			if( empty( $where ) ) {
+				$where .= " WHERE";
+			} else {
+				$where .= " AND";
+			}
+
+			if( is_array( $args['campaign'] ) ) {
+				$where .= " `campaign` IN(" . implode( ',', $args['campaign'] ) . ") ";
+			} else {
+				if( ! empty( $args['search'] ) ) {
+					$where .= " `campaign` LIKE '%%" . $args['campaign'] . "%%' ";
+				} else {
+					$where .= " `campaign` = '" . $args['campaign'] . "' ";
 				}
 			}
 
@@ -587,6 +609,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 		currency char(3) NOT NULL,
 		custom longtext NOT NULL,
 		context tinytext NOT NULL,
+		campaign varchar(30) NOT NULL,
 		reference mediumtext NOT NULL,
 		products mediumtext NOT NULL,
 		date datetime NOT NULL,
