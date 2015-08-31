@@ -257,13 +257,14 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 */
 	public function visits_data() {
 
-		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )          : 1;
-		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )        : false;
-		$referral_id  = isset( $_GET['referral'] )  ? absint( $_GET['referral'] )       : false;
-		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] )      : false;
-		$order        = isset( $_GET['order'] )     ? $_GET['order']                    : 'DESC';
-		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']                  : 'date';
-		$search       = isset( $_GET['s'] )         ? sanitize_text_field( $_GET['s'] ) : '';
+		$page         = isset( $_GET['paged'] )     ? absint( $_GET['paged'] )                 : 1;
+		$user_id      = isset( $_GET['user_id'] )   ? absint( $_GET['user_id'] )               : false;
+		$referral_id  = isset( $_GET['referral'] )  ? absint( $_GET['referral'] )              : false;
+		$affiliate_id = isset( $_GET['affiliate'] ) ? absint( $_GET['affiliate'] )             : false;
+		$campaign     = isset( $_GET['campaign'] )  ? sanitize_text_field( $_GET['campaign'] ) : false;
+		$order        = isset( $_GET['order'] )     ? $_GET['order']                           : 'DESC';
+		$orderby      = isset( $_GET['orderby'] )   ? $_GET['orderby']                         : 'date';
+		$search       = isset( $_GET['s'] )         ? sanitize_text_field( $_GET['s'] )        : '';
 
 		$from   = ! empty( $_REQUEST['filter_from'] )   ? $_REQUEST['filter_from']   : '';
 		$to     = ! empty( $_REQUEST['filter_to'] )     ? $_REQUEST['filter_to']     : '';
@@ -289,6 +290,9 @@ class AffWP_Visits_Table extends WP_List_Table {
 		} elseif ( strpos( $search, 'affiliate:' ) !== false ) {
 			$affiliate_id = absint( trim( str_replace( 'affiliate:', '', $search ) ) );
 			$search       = '';
+		} elseif ( strpos( $search, 'campaign:' ) !== false ) {
+			$campaign = trim( str_replace( 'campaign:', '', $search ) );
+			$search   = '';
 		}
 
 		$per_page = $this->get_items_per_page( 'affwp_edit_visits_per_page', $this->per_page );
@@ -299,6 +303,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 			'affiliate_id' => $affiliate_id,
 			'referral_id'  => $referral_id,
 			'date'         => $date,
+			'campaign'     => $campaign,
 			'orderby'      => $orderby,
 			'order'        => $order,
 			'search'       => $search,
