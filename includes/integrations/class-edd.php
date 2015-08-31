@@ -153,6 +153,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 							'amount'       => $referral_total,
 							'reference'    => $payment_id,
 							'description'  => $desc,
+							'campaign'     => affiliate_wp()->tracking->get_campaign(),
 							'affiliate_id' => $this->affiliate_id,
 							'context'      => $this->context,
 							'products'     => $this->get_products( $payment_id )

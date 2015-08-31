@@ -1,12 +1,14 @@
 jQuery(document).ready( function($) {
 
     var cookie = $.cookie( 'affwp_ref' );
+    var campaign_cookie = $.cookie( 'affwp_campaign' );
 
     if( cookie ) {
         return;
     }
 
     var ref = affwp_get_query_vars()[AFFWP.referral_var];
+    var campaign = affwp_get_query_vars()['campaign'];
 
     if( typeof ref == 'undefined' ) {
 
@@ -34,7 +36,7 @@ jQuery(document).ready( function($) {
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 if( '1' == response.data.success ) {
-                    affwp_track_visit( response.data.affiliate_id );
+                    affwp_track_visit( response.data.affiliate_id, campaign );
                 }
             }
 
@@ -48,12 +50,12 @@ jQuery(document).ready( function($) {
 
         // If a referral var is present and a referral cookie is not already set
         if( ref && ! cookie ) {
-            affwp_track_visit( ref );
+            affwp_track_visit( ref, campaign );
         }
 
     }
 
-    function affwp_track_visit( affiliate_id ) {
+    function affwp_track_visit( affiliate_id, campaign ) {
 
         // Set the cookie and expire it after 24 hours
         $.cookie( 'affwp_ref', affiliate_id, { expires: AFFWP.expiration, path: '/' } );
@@ -64,12 +66,14 @@ jQuery(document).ready( function($) {
             data: {
                 action: 'affwp_track_visit',
                 affiliate: affiliate_id,
+                campaign: campaign,
                 url: document.URL,
                 referrer: document.referrer
             },
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 $.cookie( 'affwp_ref_visit_id', response, { expires: AFFWP.expiration, path: '/' } );
+                $.cookie( 'affwp_campaign', campaign, { expires: AFFWP.expiration, path: '/' } );
             }
 
         }).fail(function (response) {
