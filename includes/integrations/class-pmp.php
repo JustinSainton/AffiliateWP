@@ -11,10 +11,12 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 		add_action( 'admin_init', array( $this, 'revoke_referral_on_refund_and_cancel' ), 10);
 		add_action( 'pmpro_delete_order', array( $this, 'revoke_referral_on_delete' ), 10, 2 );
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
+		add_filter( 'pmpro_orders_show_affiliate_ids', '__return_true' );
 
 		// Coupon support
 		add_action( 'pmpro_discount_code_after_settings', array( $this, 'coupon_option' ) );
 		add_action( 'pmpro_save_discount_code', array( $this, 'save_affiliate_coupon' ) );
+
 	}
 
 	public function add_pending_referral( $order ) {
@@ -34,6 +36,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 			$user = get_userdata( $order->user_id );
 
 			if ( $user instanceof WP_User && $this->is_affiliate_email( $user->user_email, $affiliate_id ) ) {
+
 				return; // Customers cannot refer themselves
 			}
 
@@ -47,7 +50,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 					affiliate_wp()->referrals->update( $referral_id, array( 'custom' => $order->id ), '', 'referral' );
 				}
 
-				$this->complete_referral( $order->id );
+				$this->mark_referral_complete( $order );
 
 			}
 		}
@@ -61,6 +64,25 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 		}
 
 		$this->complete_referral( $order->id );
+
+		$referral = affiliate_wp()->referrals->get_by( 'reference', $order->id, $this->context );
+		$order    = new MemberOrder( $order->id );
+
+		// Prevent infinite loop
+		remove_action( 'pmpro_updated_order', array( $this, 'mark_referral_complete' ), 10 );
+
+		$order->affiliate_id = $referral->affiliate_id;
+		$amount              = html_entity_decode( affwp_currency_filter( affwp_format_amount( $referral->amount ) ), ENT_QUOTES, 'UTF-8' );
+		$name                = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
+		$note                = sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
+
+		if( empty( $order->notes ) ) {
+			$order->notes = $note;
+		} else {
+			$order->notes = $order->notes . "\n\n" . $note;
+		}
+
+		$order->saveOrder();
 	}
 
 	public function revoke_referral_on_refund_and_cancel() {
