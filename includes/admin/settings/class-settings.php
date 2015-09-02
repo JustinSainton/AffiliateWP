@@ -154,7 +154,7 @@ class Affiliate_WP_Settings {
 			$input[ $key ]     = $value;
 
 			if ( $type ) {
-
+				
 				if( $sanitize_callback && is_callable( $sanitize_callback ) ) {
 
 					add_filter( 'affwp_settings_sanitize_' . $type, $sanitize_callback, 10, 2 );
@@ -167,6 +167,13 @@ class Affiliate_WP_Settings {
 
 			// General filter
 			$input[ $key ] = apply_filters( 'affwp_settings_sanitize', $input[ $key ], $key );
+
+			// Now remove the filter
+			if( $sanitize_callback && is_callable( $sanitize_callback ) ) {
+
+				remove_filter( 'affwp_settings_sanitize_' . $type, $sanitize_callback, 10 );
+
+			}
 		}
 
 		add_settings_error( 'affwp-notices', '', __( 'Settings updated.', 'affiliate-wp' ), 'updated' );
