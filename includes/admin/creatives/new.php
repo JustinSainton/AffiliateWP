@@ -1,7 +1,7 @@
 <div class="wrap">
 
 	<h2><?php _e( 'New Creative', 'affiliate-wp' ); ?></h2>
-	
+
 	<form method="post" id="affwp_add_creative">
 
 		<?php do_action( 'affwp_new_creative_top' ); ?>
@@ -73,7 +73,7 @@
 					<input class="upload_image_button button-secondary" type="button" value="Choose Image" />
 					<p class="description"><?php _e( 'Select an image if you would like an image banner. You can also enter an image URL if your image is hosted elsewhere.', 'affiliate-wp' ); ?></p>
 
-					<div id="preview_image" style="display: none; max-width: 600px; overflow: hidden; margin: 15px 0;"></div>
+					<div id="preview_image"></div>
 				</td>
 
 			</tr>
