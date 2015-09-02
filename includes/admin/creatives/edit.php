@@ -5,7 +5,7 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 
 	<h2><?php _e( 'Edit Creative', 'affiliate-wp' ); ?></h2>
 
-	<form method="post" id="affwp_edit_affiliate">
+	<form method="post" id="affwp_edit_creative">
 
 		<?php do_action( 'affwp_edit_creative_top', $creative ); ?>
 
@@ -75,19 +75,19 @@ $creative = affwp_get_creative( absint( $_GET['creative_id'] ) );
 					<p class="description"><?php _e( 'Select your image. You can also enter an image URL if your image is hosted elsewhere.', 'affiliate-wp' ); ?></p>
 
 					<?php if ( ! empty( $creative->image ) ) { ?>
-						<div id="preview_image" style="margin: 15px 0; max-width: 600px; overflow: hidden;">
+						<div id="preview_image">
 							<img src="<?php echo esc_attr( $creative->image ); ?>" />
 						</div>
 					<?php } else { ?>
-						<div id="preview_image" style="display: none; max-width: 600px; overflow: hidden; margin: 15px 0;">
-							
+						<div id="preview_image" style="display: none;">
+
 						</div>
 					<?php } ?>
 
 				</td>
 
 			</tr>
-			
+
 			<tr class="form-row form-required">
 
 				<th scope="row">
