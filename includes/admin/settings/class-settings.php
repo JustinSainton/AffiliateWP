@@ -238,9 +238,8 @@ class Affiliate_WP_Settings {
 	 * @return int
 	*/
 	public function sanitize_number_fields( $value = '', $key = '' ) {
-		return intval( $value );
+		return floatval( $value );
 	}
-
 
 	/**
 	 * Sanitize rich editor fields
