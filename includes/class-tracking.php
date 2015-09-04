@@ -177,6 +177,14 @@ class Affiliate_WP_Tracking {
 	 */
 	public function rewrites() {
 
+		$taxonomies = get_taxonomies( array( 'public' => true, '_builtin' => false ), 'objects' );
+		
+		foreach( $taxonomies as $tax_id => $tax ) {
+
+			add_rewrite_rule( $tax->rewrite['slug'] . '/(.+?)/' . $this->get_referral_var() . '(/(.*))?/?$', 'index.php?' . $tax_id . '=$matches[1]&ref=$matches[3]', 'top');		
+			
+		}
+
 		add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
 
 	}
