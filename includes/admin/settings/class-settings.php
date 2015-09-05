@@ -30,12 +30,39 @@ class Affiliate_WP_Settings {
 	/**
 	 * Get the value of a specific setting
 	 *
-	 * @since 1.0
+	 * Note: By default, zero values are not allowed. If you have a custom
+	 * setting that needs to allow 0 as a valid value, but sure to add its
+	 * key to the filtered array seen in this method.
+	 *
+	 * @since  1.0
+	 * @param  string  $key
+	 * @param  mixed   $default (optional)
 	 * @return mixed
-	*/
+	 */
 	public function get( $key, $default = false ) {
+
+		// Only allow non-empty values, otherwise fallback to the default
 		$value = ! empty( $this->options[ $key ] ) ? $this->options[ $key ] : $default;
+
+		/**
+		 * Allow certain settings to accept 0 as a valid value without
+		 * falling back to the default.
+		 *
+		 * @since  1.7
+		 * @param  array
+		 */
+		$zero_values_allowed = (array) apply_filters( 'affwp_settings_zero_values_allowed', array( 'referral_rate' ) );
+
+		// Allow 0 values for specified keys only
+		if ( in_array( $key, $zero_values_allowed ) ) {
+
+			$value = isset( $this->options[ $key ] ) ? $this->options[ $key ] : null;
+			$value = ( ! is_null( $value ) && '' !== $value ) ? $value : $default;
+
+		}
+
 		return $value;
+
 	}
 
 	/**
@@ -746,17 +773,22 @@ class Affiliate_WP_Settings {
 	 */
 	function number_callback( $args ) {
 
-		if ( isset( $this->options[ $args['id'] ] ) )
-			$value = $this->options[ $args['id'] ];
-		else
-			$value = isset( $args['std'] ) ? $args['std'] : '';
+		// Get value, with special consideration for 0 values, and never allowing negative values
+		$value = isset( $this->options[ $args['id'] ] ) ? $this->options[ $args['id'] ] : null;
+		$value = ( ! is_null( $value ) && '' !== $value && floatval( $value ) >= 0 ) ? floatval( $value ) : null;
 
-		$max  = isset( $args['max'] ) ? $args['max'] : 999999;
-		$min  = isset( $args['min'] ) ? $args['min'] : 0;
+		// Saving the field empty will revert to std value, if it exists
+		$std   = ( isset( $args['std'] ) && ! is_null( $args['std'] ) && '' !== $args['std'] && floatval( $args['std'] ) >= 0 ) ? $args['std'] : null;
+		$value = ! is_null( $value ) ? $value : ( ! is_null( $std ) ? $std : null );
+		$value = affwp_abs_number_round( $value );
+
+		// Other attributes and their defaults
+		$max  = isset( $args['max'] )  ? $args['max']  : 999999;
+		$min  = isset( $args['min'] )  ? $args['min']  : 0;
 		$step = isset( $args['step'] ) ? $args['step'] : 1;
-
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
-		$html = '<input type="number" step="' . esc_attr( $step ) . '" max="' . esc_attr( $max ) . '" min="' . esc_attr( $min ) . '" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
+
+		$html  = '<input type="number" step="' . esc_attr( $step ) . '" max="' . esc_attr( $max ) . '" min="' . esc_attr( $min ) . '" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" placeholder="' . esc_attr( $std ) . '" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
 		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
 
 		echo $html;
