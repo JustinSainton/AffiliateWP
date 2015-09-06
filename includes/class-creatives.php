@@ -138,7 +138,7 @@ class Affiliate_WP_Creatives {
 
 		ob_start();
 		
-		affiliate_wp()->templates->get_template_part( 'creative', $id );
+		affiliate_wp()->templates->get_template_part( 'creative' );
 		
 		$html = ob_get_clean();
 		return apply_filters( 'affwp_affiliate_creative_html', $html, $url, $image_link, $image_attributes, $preview, $text );
