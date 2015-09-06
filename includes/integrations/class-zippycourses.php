@@ -31,7 +31,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
     }
 
     public function metabox() {   
-        add_meta_box( 'zippy-affiliate-wp', __( 'Affiliate Settings', 'affiliate-wp' ), array($this, 'product_settings'), 'product', 'side', 'default' );
+        add_meta_box( 'zippy-affiliate-wp', __( 'Affiliate Settings', 'affiliate-wp' ), array($this, 'product_settings_mb'), 'product', 'side', 'default' );
     }
 
     /**
@@ -40,7 +40,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * @access  public
      * @since   1.7
     */
-    public function product_settings( $product ) {
+    public function product_settings_mb( $product ) {
 
         $rate     = get_post_meta( $product->ID, '_affwp_' . $this->context . '_product_rate', true );
         $disabled = get_post_meta( $product->ID, '_affwp_' . $this->context . '_referrals_disabled', true );
@@ -170,7 +170,19 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
 
             $order = $event->order;
 
-            $this->complete_referral( $order->getId() );            
+            $this->complete_referral( $order->getId() );
+
+            $referral   = affiliate_wp()->referrals->get_by( 'reference', $order->getId(), $this->context );
+            $amount     = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
+            $name       = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
+            $note       = sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
+
+            $order->addNote( array(
+                'content'   => $note,
+                'timestamp' => time()
+            ) );
+
+            $order->saveNotes();
 
         }
 
@@ -187,14 +199,14 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
             return;
         }
-        
+
         $valid_statuses = array('active', 'complete');
 
         if( ! in_array( $event->new_status, $valid_statuses ) ) {
             
             $order = $event->order;
 
-            $this->reject_referral( $order->getId() );          
+            $this->reject_referral( $order->getId() );
 
         }
 
