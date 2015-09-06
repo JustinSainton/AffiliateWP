@@ -8,6 +8,16 @@ jQuery(document).ready( function($) {
 		    prettyAffiliateUrls = affwp_vars.pretty_affiliate_urls,
 		    add                 = '';
 
+		// URL has fragment
+		if ( url.indexOf( '#' ) > 0 ) {
+			var fragment = url.split('#');
+		}
+
+		// if fragment, remove it, we'll append it later
+		if ( fragment ) {
+			url = fragment[0];
+		}
+
 		if ( prettyAffiliateUrls ) {
 			// pretty affiliate URLs
 
@@ -65,10 +75,17 @@ jQuery(document).ready( function($) {
 
 				// add any query strings to the end
 				add = '&' + pieces[1];
+
 			}
 
 			// build URL
 			url = url + '?' + refVar + '=' + affId + add;
+
+		}
+
+		// if there's a fragment, add it to the end of the URL
+		if ( fragment) {
+			url += '#' + fragment[1];
 		}
 
 		// clean URL to remove any instances of multiple slashes
