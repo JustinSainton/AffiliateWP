@@ -200,9 +200,9 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
             return;
         }
 
-        $valid_statuses = array('active', 'complete');
+        $revokable_statuses = array( 'refund', 'cancel', 'revoke' );
 
-        if( ! in_array( $event->new_status, $valid_statuses ) ) {
+        if( in_array( $event->new_status, $revokable_statuses ) ) {
             
             $order = $event->order;
 
@@ -228,7 +228,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
 
         $url = get_edit_post_link( $reference );
 
-        return '<a href="' . esc_url( $url ) . '">' . $reference . '</a>';
+        return '<a href="' . esc_url( $url ) . '">' . get_the_title($reference) . '</a>';
     }
 
 }
