@@ -170,9 +170,12 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
 
             $order = $event->order;
 
-            $this->complete_referral( $order->getId() );
-
             $referral   = affiliate_wp()->referrals->get_by( 'reference', $order->getId(), $this->context );
+            if( !$referral ) {
+                return;
+            }
+
+            $this->complete_referral( $order->getId() );            
             $amount     = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
             $name       = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
             $note       = sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
