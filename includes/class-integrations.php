@@ -26,6 +26,7 @@ class Affiliate_WP_Integrations {
 			'shopp'	         => 'Shopp',
 			'sproutinvoices' => 'Sprout Invoices',
 			'woocommerce'    => 'WooCommerce',
+			'wpeasycart'     => 'WP EasyCart',
 			'wpec'           => 'WP e-Commerce',
 		) );
 
