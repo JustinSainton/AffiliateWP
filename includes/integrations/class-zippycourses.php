@@ -36,7 +36,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * @access  public
      * @since   1.7
     */
-    public function metabox() {   
+    public function metabox() {
         add_meta_box( 'zippy-affiliate-wp', __( 'Affiliate Settings', 'affiliate-wp' ), array($this, 'product_settings_mb'), 'product', 'side', 'default' );
     }
 
@@ -106,7 +106,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         if ( ! current_user_can( 'edit_post', $post_id ) ) {
             return $post_id;
         }
-    
+
         if( ! empty( $_POST['_affwp_' . $this->context . '_product_rate'] ) ) {
 
             $rate = sanitize_text_field( $_POST['_affwp_' . $this->context . '_product_rate'] );
@@ -142,7 +142,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         if ( $this->was_referred() ) {
 
             if( $event->new_status == 'pending' && $event->old_status != 'pending' ) {
-                
+
                 $order = $event->order;
 
                 $customer = $order->getCustomer();
@@ -156,7 +156,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
                 $description    = $product !== null ? get_the_title( $product->getId() ) : '';
 
                 // insert a pending referral
-                $referral_id = $this->insert_pending_referral( $total, $order->getId(), $description, array( $product->getId() ) ); 
+                $referral_id = $this->insert_pending_referral( $total, $order->getId(), $description, array( $product->getId() ) );
 
             }
 
@@ -181,7 +181,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
                 return;
             }
 
-            $this->complete_referral( $order->getId() );            
+            $this->complete_referral( $order->getId() );
             $amount     = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
             $name       = affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id );
             $note       = sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral->referral_id, $amount, $name );
@@ -212,7 +212,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         $revokable_statuses = array( 'refund', 'cancel', 'revoke' );
 
         if( in_array( $event->new_status, $revokable_statuses ) ) {
-            
+
             $order = $event->order;
 
             $this->reject_referral( $order->getId() );
