@@ -1,48 +1,52 @@
+# Copyright (C) 2015 Pippin Williamson and Andrew Munro
+# This file is distributed under the same license as the AffiliateWP package.
 msgid ""
 msgstr ""
-"Project-Id-Version: AffiliateWP\n"
+"Project-Id-Version: AffiliateWP 1.6.5\n"
 "Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
 "POT-Creation-Date: 2015-07-22 08:47:56+00:00\n"
-"PO-Revision-Date: 2015-04-09 10:01-0600\n"
-"Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
-"Language-Team: Levon Arakelyan <levonarakelian@live.com>\n"
-"Language: hy_AM\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: AffiliateWP <support@affiliatewp.com>\n"
+"Language-Team: AffiliateWP <support@affiliatewp.com>\n"
+"X-Generator: grunt-wp-i18n 0.5.2\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
 
 #: affiliate-wp.php:199 affiliate-wp.php:211
 msgid "Cheatin&#8217; huh?"
-msgstr "Փորցում եք խաբել&#8217; հահ...?"
+msgstr ""
 
 #: includes/admin/AFFWP_Plugin_Updater.php:164
 #: includes/admin/class-addon-updater.php:186
 msgid ""
-"There is a new version of %1$s available. <a target=\"_blank\" class="
-"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+"There is a new version of %1$s available. <a target=\"_blank\" "
+"class=\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
 msgstr ""
 
 #: includes/admin/AFFWP_Plugin_Updater.php:171
 #: includes/admin/class-addon-updater.php:193
 msgid ""
-"There is a new version of %1$s available. <a target=\"_blank\" class="
-"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
-"\">update now</a>."
+"There is a new version of %1$s available. <a target=\"_blank\" "
+"class=\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a "
+"href=\"%4$s\">update now</a>."
 msgstr ""
 
 #: includes/admin/AFFWP_Plugin_Updater.php:311
 #: includes/admin/class-addon-updater.php:280
-#, fuzzy
 msgid "You do not have permission to install plugin updates"
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/AFFWP_Plugin_Updater.php:311
 #: includes/admin/affiliates/actions.php:20
@@ -61,18 +65,16 @@ msgstr "Դուք չունեք տվյալներ արտահանելու թույլ
 #: includes/admin/tools/import/import.php:23
 #: includes/admin/tools/import/import.php:29
 msgid "Error"
-msgstr "Տեղի է ունեցել սխալ"
+msgstr ""
 
 #: includes/admin/affiliates/actions.php:20
 #: includes/admin/affiliates/actions.php:104
-#, fuzzy
 msgid "You do not have permission to manage affiliates"
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/affiliates/actions.php:49
-#, fuzzy
 msgid "You do not have permission to delete affiliate accounts"
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/affiliates/actions.php:53
 #: includes/admin/creatives/actions.php:48
@@ -85,41 +87,40 @@ msgstr ""
 msgid "No affiliate IDs specified for deletion"
 msgstr ""
 
-#: includes/admin/affiliates/affiliates.php:44
-#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
-#: includes/admin/class-welcome.php:289
+#: includes/admin/affiliates/affiliates.php:44 includes/admin/class-menu.php:11
+#: includes/admin/class-menu.php:13 includes/admin/class-welcome.php:289
 msgid "Affiliates"
-msgstr "Գործընկերներ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:45
 #: includes/admin/creatives/creatives.php:41
 msgid "Add New"
-msgstr "Ավելացնել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:49
 #: includes/admin/referrals/referrals.php:60
 #: includes/admin/visits/visits.php:30
 msgid "Search"
-msgstr "Որոնում"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:191
 #: includes/admin/creatives/creatives.php:138
 #: includes/admin/referrals/referrals.php:203
 msgid "All"
-msgstr "Բոլորը"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:192
 #: includes/admin/creatives/creatives.php:139
 #: includes/admin/creatives/edit.php:99 includes/admin/creatives/new.php:89
 #: includes/admin/tools/tools.php:211
 msgid "Active"
-msgstr "Ակտիվ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:193
 #: includes/admin/creatives/creatives.php:140
 #: includes/admin/creatives/edit.php:100 includes/admin/creatives/new.php:90
 msgid "Inactive"
-msgstr "Ոչ ակտիվ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:194
 #: includes/admin/referrals/edit.php:90 includes/admin/referrals/new.php:92
@@ -127,7 +128,7 @@ msgstr "Ոչ ակտիվ"
 #: includes/admin/tools/tools.php:212 includes/admin/tools/tools.php:242
 #: includes/referral-functions.php:55
 msgid "Pending"
-msgstr "Կախման մեջ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:195
 #: includes/admin/referrals/edit.php:91 includes/admin/referrals/new.php:93
@@ -135,48 +136,47 @@ msgstr "Կախման մեջ"
 #: includes/admin/tools/tools.php:213 includes/admin/tools/tools.php:243
 #: includes/referral-functions.php:54
 msgid "Rejected"
-msgstr "Մերժված"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:211
 #: includes/admin/affiliates/review.php:22
 #: includes/admin/creatives/creatives.php:155
 #: includes/admin/creatives/edit.php:17 includes/admin/creatives/new.php:16
 msgid "Name"
-msgstr "Անուն"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:212
 #: includes/admin/settings/class-settings.php:223
 #: includes/admin/tools/export/class-export.php:69
 msgid "ID"
-msgstr "Համար"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:213
 #: includes/admin/affiliates/view.php:11
 #: includes/admin/overview/overview.php:168
 #: includes/admin/tools/export/class-export-affiliates.php:52
 msgid "Earnings"
-msgstr "Եկամուտներ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:214
 #: includes/admin/tools/export/class-export-affiliates.php:50
 msgid "Rate"
-msgstr "Տոկոսադրույք"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:215
 #: templates/dashboard-tab-stats.php:9
 msgid "Paid Referrals"
-msgstr "Վճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:216
 #: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
 #: includes/admin/overview/overview.php:170
-#: includes/admin/reports/reports.php:66
-#: includes/admin/reports/reports.php:185
+#: includes/admin/reports/reports.php:66 includes/admin/reports/reports.php:185
 #: includes/admin/tools/export/class-export-affiliates.php:54
 #: includes/admin/tools/tools.php:105 includes/admin/visits/visits.php:27
 #: templates/dashboard-tab-stats.php:10 templates/dashboard.php:45
 msgid "Visits"
-msgstr "Այցելություններ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:217
 #: includes/admin/creatives/creatives.php:158
@@ -188,14 +188,14 @@ msgstr "Այցելություններ"
 #: includes/admin/tools/export/class-export-referrals.php:67
 #: templates/dashboard-tab-referrals.php:22
 msgid "Status"
-msgstr "Կարգավիճակ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:218
 #: includes/admin/creatives/creatives.php:159
 #: includes/admin/overview/overview.php:118
 #: includes/admin/referrals/referrals.php:228
 msgid "Actions"
-msgstr "Գործողություններ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:281
 msgid "(user deleted)"
@@ -204,45 +204,44 @@ msgstr ""
 #: includes/admin/affiliates/affiliates.php:358
 #: includes/admin/class-menu.php:17
 msgid "Reports"
-msgstr "Հաշվետվություններ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:359
 #: includes/admin/creatives/creatives.php:232
 #: includes/admin/referrals/referrals.php:377
 msgid "Edit"
-msgstr "Փոփոխել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:362
 #: includes/admin/affiliates/affiliates.php:402
 #: includes/admin/creatives/creatives.php:235
 msgid "Deactivate"
-msgstr "Դեակտիվացնել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:364
 #: includes/admin/overview/overview.php:133
-#, fuzzy
 msgid "Review"
-msgstr "Ակնարկ"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:365
 #: includes/admin/affiliates/affiliates.php:399
 #: includes/admin/referrals/referrals.php:365
 #: includes/admin/referrals/referrals.php:457
 msgid "Accept"
-msgstr "Հաստատել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:366
 #: includes/admin/affiliates/affiliates.php:400
 #: includes/admin/referrals/referrals.php:371
 #: includes/admin/referrals/referrals.php:458
 msgid "Reject"
-msgstr "Մերժել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:368
 #: includes/admin/affiliates/affiliates.php:401
 #: includes/admin/creatives/creatives.php:237
 msgid "Activate"
-msgstr "Ակտիվացնել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:371
 #: includes/admin/affiliates/affiliates.php:403
@@ -250,25 +249,23 @@ msgstr "Ակտիվացնել"
 #: includes/admin/referrals/referrals.php:378
 #: includes/admin/referrals/referrals.php:461
 msgid "Delete"
-msgstr "Հեռացնել"
+msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:387
 msgid "No affiliates found."
-msgstr "Գործընկերներ չեն գտնվել:"
+msgstr ""
 
 #: includes/admin/affiliates/delete.php:14
 #: includes/admin/affiliates/delete.php:49
-#, fuzzy
 msgid "Delete Affiliates"
-msgstr "Գործընկերներ"
+msgstr ""
 
 #: includes/admin/affiliates/delete.php:20
 msgid "You have specified these affiliates for deletion:"
 msgstr ""
 
 #: includes/admin/affiliates/delete.php:33
-msgid ""
-"Deleting these affiliates will also delete their referral and visit data."
+msgid "Deleting these affiliates will also delete their referral and visit data."
 msgstr ""
 
 #: includes/admin/affiliates/delete.php:39
@@ -277,25 +274,25 @@ msgstr ""
 
 #: includes/admin/affiliates/edit.php:10
 msgid "Edit Affiliate"
-msgstr "Փոփոխել գործընկերոջ տվյալները"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:21 includes/admin/referrals/edit.php:18
 #: includes/admin/tools/export/class-export-affiliates.php:47
 #: includes/admin/tools/export/class-export-referrals.php:61
 msgid "Affiliate ID"
-msgstr "Գործընկերոջ համարը"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:26
 msgid "The affiliate's ID. This cannot be changed."
-msgstr "Գործընկերոջ համարը: Սա անհնար է փոխել:"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:34
 msgid "User ID"
-msgstr "Օգտատիրոջ համարը"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:39
 msgid "The affiliate's user ID. This cannot be changed."
-msgstr "Գործընկերոջ հաշվի համարը: Սա անհնար է փոխել:"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:47
 #: includes/admin/affiliates/review.php:34
@@ -304,45 +301,41 @@ msgstr "Գործընկերոջ հաշվի համարը: Սա անհնար է փ�
 #: templates/login.php:15 templates/login.php:16 templates/register.php:48
 #: templates/register.php:49
 msgid "Username"
-msgstr "Մականուն"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:52
-#, fuzzy
 msgid "The affiliate's username. This cannot be changed."
-msgstr "Գործընկերոջ հաշվի համարը: Սա անհնար է փոխել:"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:60 includes/admin/affiliates/new.php:33
 #: includes/admin/settings/class-settings.php:234
 msgid "Referral Rate Type"
-msgstr "Ռեֆերալի տոկոսադրույքի տեսակը"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:65 includes/admin/affiliates/new.php:38
 msgid "Site Default"
-msgstr "Կայքի նախնական դրվածքով"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:70 includes/admin/affiliates/new.php:43
 msgid "The affiliate's referral rate type."
-msgstr "Գործընկերոջ ռեֆերալի տոկոսադրույքի տեսակը:"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:78 includes/admin/affiliates/new.php:51
 #: includes/admin/settings/class-settings.php:240
 #: includes/integrations/class-edd.php:555
 #: includes/integrations/extras/class-exchange-feature.php:46
 msgid "Referral Rate"
-msgstr "Ռեֆերալի տոկոսադրույքը"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:83 includes/admin/affiliates/new.php:56
-#, fuzzy
 msgid ""
 "The affiliate's referral rate, such as 20 for 20%. If left blank, the site "
 "default will be used."
 msgstr ""
-"Ռեֆերալ տոկոսադրույքը, օրինակ 20 (20%-ի համար). Դատարկ թողնելու դեպքում "
-"կօգտագործվի կայքի նախնական դրվածքը:"
 
 #: includes/admin/affiliates/edit.php:91 templates/register.php:53
 msgid "Account Email"
-msgstr "Հաշվի էլ. հասցե"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:96
 msgid ""
@@ -353,56 +346,46 @@ msgstr ""
 #: includes/admin/affiliates/edit.php:104 includes/admin/affiliates/new.php:64
 #: templates/register.php:61
 msgid "Payment Email"
-msgstr "Վճարման էլ. հասցե"
+msgstr ""
 
 #: includes/admin/affiliates/edit.php:109 includes/admin/affiliates/new.php:69
 msgid ""
 "Affiliate's payment email for systems such as PayPal, Moneybookers, or "
 "others. Leave blank to use the affiliate's user email."
 msgstr ""
-"Գործընկերոջ PayPal, Moneybookers և այլ համակարգերի համար վճարային էլ. հասցե: "
-"Թողեք դատարկ եթե նույնն է ինչ գործընկերոջ գրանցման էլ. հասցեն:"
 
 #: includes/admin/affiliates/edit.php:122
-#, fuzzy
 msgid "Update Affiliate"
-msgstr "Փոփոխել գործընկերոջ տվյալները"
+msgstr ""
 
 #: includes/admin/affiliates/new.php:3
 msgid "New Affiliate"
-msgstr "Նոր գործընկեր"
+msgstr ""
 
 #: includes/admin/affiliates/new.php:9
 msgid ""
-"Use this screen to register a new affiliate. Each affiliate is tied directly "
-"to a user account, so if the user account for the affiliate does not yet "
-"exist, <a href=\"%s\" target=\"_blank\">create one</a>."
+"Use this screen to register a new affiliate. Each affiliate is tied "
+"directly to a user account, so if the user account for the affiliate does "
+"not yet exist, <a href=\"%s\" target=\"_blank\">create one</a>."
 msgstr ""
-"Օգտագրոծեք այս պատուհանը նոր գործընկեր գրանցելու համար: Յուրաքանչյուր "
-"գործընկեր կցված է մի օգտատիրոջ հաշվի, այնպես, որ եթե օգտատիրոջ հաշիվ "
-"գոյություն չունի գործընկերոջ համար, <a href=\"%s\" target=\"_blank\">ստեղծեք "
-"այն</a>:"
 
 #: includes/admin/affiliates/new.php:16
 msgid "User"
-msgstr "Օգտատեր"
+msgstr ""
 
 #: includes/admin/affiliates/new.php:25
 msgid ""
 "Begin typing the name of the affiliate to perform a search for their "
 "associated user account."
 msgstr ""
-"Սկսեք մուտքագրելով գործընկերոջ անունը, որպեսզի կատարեք որոնում նրան կցված "
-"օգտատիրոջ հաշվը գտնելու համար:"
 
 #: includes/admin/affiliates/new.php:83
 msgid "Add Affiliate"
-msgstr "Ավելացնել գործընկեր"
+msgstr ""
 
 #: includes/admin/affiliates/review.php:11
-#, fuzzy
 msgid "Review Affiliate"
-msgstr "Նոր գործընկեր"
+msgstr ""
 
 #: includes/admin/affiliates/review.php:11
 msgid "Go Back"
@@ -410,74 +393,70 @@ msgstr ""
 
 #: includes/admin/affiliates/review.php:46 templates/register.php:54
 msgid "Email Address"
-msgstr "Էլ. հասցե"
+msgstr ""
 
 #: includes/admin/affiliates/review.php:59 templates/register.php:66
 #: templates/register.php:67
-#, fuzzy
 msgid "Website URL"
-msgstr "Գեներացնել URL հղում"
+msgstr ""
 
 #: includes/admin/affiliates/review.php:63
-#, fuzzy
 msgid "Affiliate's Website URL"
-msgstr "Գործընկերներ"
+msgstr ""
 
 #: includes/admin/affiliates/review.php:73
 msgid "Promotion Method"
 msgstr ""
 
 #: includes/admin/affiliates/review.php:89
-#, fuzzy
 msgid "Accept Affiliate"
-msgstr "Նոր գործընկեր"
+msgstr ""
 
 #: includes/admin/affiliates/review.php:90
-#, fuzzy
 msgid "Reject Affiliate"
-msgstr "Նոր գործընկեր"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:7
 msgid "Affiliate: #%d %s"
-msgstr "Գործընկեր՝ #%d %s"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:18
 msgid "Total earnings"
-msgstr "Ամբողջ եկամուտը"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:19
 msgid "Total unpaid earnings"
-msgstr "Ընդամենը չվճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:20
 msgid "Total paid referrals"
-msgstr "Ընդամենը վճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:21
 msgid "Total unpaid referrals"
-msgstr "Ընդամենը չվճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:22
 msgid "Total pending referrals"
-msgstr "Ընդամենը անորոշ ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:23
 msgid "Total rejected referrals"
-msgstr "Ընդամենը մերժված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/affiliates/view.php:24
 msgid "Total visits"
-msgstr "Ընդհանուր այցելություններ"
+msgstr ""
 
 #: includes/admin/ajax-actions.php:34
 msgid "No users found"
-msgstr "Օգտատերեր չեն գտնվել"
+msgstr ""
 
 #: includes/admin/class-menu.php:12 includes/admin/overview/overview.php:19
 #: includes/admin/referrals/contextual-help.php:37
 #: includes/admin/visits/contextual-help.php:37
 msgid "Overview"
-msgstr "Ակնարկ"
+msgstr ""
 
 #: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:294
 #: includes/admin/overview/overview.php:169
@@ -487,7 +466,7 @@ msgstr "Ակնարկ"
 #: includes/admin/tools/tools.php:104 templates/dashboard-tab-referrals.php:3
 #: templates/dashboard.php:42
 msgid "Referrals"
-msgstr "Ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/class-menu.php:16 includes/admin/creatives/creatives.php:40
 #: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:48
@@ -496,174 +475,164 @@ msgstr ""
 
 #: includes/admin/class-menu.php:18
 msgid "Tools"
-msgstr "Գործիքներ"
+msgstr ""
 
 #: includes/admin/class-menu.php:19 templates/dashboard.php:51
 msgid "Settings"
-msgstr "Նախընտրանքներ"
+msgstr ""
 
 #: includes/admin/class-menu.php:20 includes/admin/tools/migration.php:15
 msgid "AffiliateWP Migration"
-msgstr "AffiliateWP միգրացիա"
+msgstr ""
 
 #: includes/admin/class-notices.php:16
 #: includes/admin/settings/class-settings.php:157
 msgid "Settings updated."
-msgstr "Նախընտրանքները թարմացված են:"
+msgstr ""
 
 #: includes/admin/class-notices.php:25
 msgid "Affiliate added successfully"
-msgstr "Գործընկերն հաջողությամբ գրանցված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:31
 msgid "Affiliate wasn't added, please try again."
-msgstr "Գործընկերն գրանցված չէ, խնդրում ենք կրկին փորցել:"
+msgstr ""
 
 #: includes/admin/class-notices.php:38
 msgid "Affiliate updated successfully"
-msgstr "Գործընկերն հաջողությամբ թարմացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:40
 msgid "<a href=\"%s\">Back to Affiliates</a>"
-msgstr "<a href=\"%s\">Վերադառնալ գործընկերներին</a>"
+msgstr ""
 
 #: includes/admin/class-notices.php:46
 msgid "Affiliate update failed, please try again"
-msgstr "Գործընկերը թարմացված չէ, խնդրում ենք կրկին փորցել:"
+msgstr ""
 
 #: includes/admin/class-notices.php:53
-#, fuzzy
 msgid "Affiliate account(s) deleted successfully"
-msgstr "Գործընկերն հաջողությամբ հեռացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:59
 msgid "Affiliate deletion failed, please try again"
-msgstr "Գործընկերն հեռացված չէ, խնդրում ենք կրկին փորցել:"
+msgstr ""
 
 #: includes/admin/class-notices.php:66
 msgid "Affiliate account activated"
-msgstr "Գործընկերոջ հաշիվն ակտիվացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:72
 msgid "Affiliate account deactivated"
-msgstr "Գործընկերոջ հաշիվը դեակտիվացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:78
 msgid "Affiliate request was accepted"
-msgstr "Գործընկերոջ դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:84
 msgid "Affiliate request was rejected"
-msgstr "Գործընկերոջ դիմումը մերժված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:90
 msgid "Affiliate stats have been recounted!"
-msgstr "Գործընկերների վիճակագրությունը բարեհաջող վերահաշվարկվել է"
+msgstr ""
 
 #: includes/admin/class-notices.php:96
 msgid "Referral added successfully"
-msgstr "Ռեֆերալն հաջողությամբ գրանցված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:102
 msgid "Referral updated successfully"
-msgstr "Ռեֆերալն հաջողությամբ թարմացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:108
 msgid "Referral update failed, please try again"
-msgstr "Ռեֆերալը թարմացված չէ, խնդրում ենք կրկին փորցել:"
+msgstr ""
 
 #: includes/admin/class-notices.php:114
 msgid "Referral deleted successfully"
-msgstr "Ռեֆերալն հաջողությամբ հեռացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:120
 msgid "Referral deletion failed, please try again"
-msgstr "Ռեֆերալը հեռացված չէ, խնդրում ենք կրկին փորցել:"
+msgstr ""
 
 #: includes/admin/class-notices.php:127
-#, fuzzy
 msgid "Creative updated successfully"
-msgstr "Գործընկերն հաջողությամբ թարմացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:129
-#, fuzzy
 msgid "<a href=\"%s\">Back to Creatives</a>"
-msgstr "<a href=\"%s\">Վերադառնալ գործընկերներին</a>"
+msgstr ""
 
 #: includes/admin/class-notices.php:135
-#, fuzzy
 msgid "Creative added successfully"
-msgstr "Գործընկերն հաջողությամբ գրանցված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:141
-#, fuzzy
 msgid "Creative deleted successfully"
-msgstr "Գործընկերն հաջողությամբ հեռացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:147
-#, fuzzy
 msgid "Creative activated"
-msgstr "Դեակտիվացնել"
+msgstr ""
 
 #: includes/admin/class-notices.php:153
-#, fuzzy
 msgid "Creative deactivated"
-msgstr "Գործընկերոջ հաշիվը դեակտիվացված է"
+msgstr ""
 
 #: includes/admin/class-notices.php:159
 msgid "Settings successfully imported"
-msgstr "Նախընտրանքները հաջողությամբ ներբեռնվել են"
+msgstr ""
 
 #: includes/admin/class-welcome.php:52 includes/admin/class-welcome.php:53
 msgid "What's new in AffiliateWP"
-msgstr "Ի՞նչ նորություններ կան AffiliateWP-ում"
+msgstr ""
 
 #: includes/admin/class-welcome.php:61 includes/admin/class-welcome.php:62
 msgid "Getting started with AffiliateWP"
-msgstr "Որտեղի՞ց սկսել AffiliateWP-ի հետ աշխատանքը"
+msgstr ""
 
 #: includes/admin/class-welcome.php:70 includes/admin/class-welcome.php:71
 msgid "The people that build AffiliateWP"
-msgstr "AffiliateWP-ի ստեղծողները"
+msgstr ""
 
 #: includes/admin/class-welcome.php:146
 msgid "What's New"
-msgstr "Ի՞նչ նորություն կա"
+msgstr ""
 
 #: includes/admin/class-welcome.php:149 includes/admin/plugins.php:50
 msgid "Getting Started"
-msgstr "Որտեղի՞ց սկսել"
+msgstr ""
 
 #: includes/admin/class-welcome.php:152
 msgid "Credits"
-msgstr "Կրեդիտներ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:169
 msgid "Welcome to AffiliateWP v%s"
-msgstr "Բարի գալուստ AffiliateWP v%s"
+msgstr ""
 
 #: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:237
 msgid ""
 "Thank you for installing AffiliateWP v%s. The best affiliate marketing "
 "plugin for WordPress."
 msgstr ""
-"Շնորհակալություն AffiliateWP v%s տեղադրելու համար: Սա համագործակցական "
-"մարքեթինգի լավագույն հավելումն է WordPress-ի համար:"
 
 #: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:238
 #: includes/admin/class-welcome.php:334
 msgid "Version %s"
-msgstr "Տարբերակ %s"
+msgstr ""
 
 #: includes/admin/class-welcome.php:179
-#, fuzzy
 msgid "New integrations"
-msgstr "Ինտեգրացիաներ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:180
 msgid ""
-"To make AffiliateWP more accessible and more valuable to more users, we have "
-"added four new integrations:"
+"To make AffiliateWP more accessible and more valuable to more users, we "
+"have added four new integrations:"
 msgstr ""
 
 #: includes/admin/class-welcome.php:189
@@ -673,16 +642,16 @@ msgstr ""
 #: includes/admin/class-welcome.php:191
 msgid ""
 "With version 1.6, we have introduced a new tab in the Settings page that "
-"allows you to configure all emails that get sent out to affiliates when they "
-"register for an account or earn a new referral."
+"allows you to configure all emails that get sent out to affiliates when "
+"they register for an account or earn a new referral."
 msgstr ""
 
 #: includes/admin/class-welcome.php:192
 msgid ""
-"All emails are sent in beautiful HTML templates that can be easily edited at "
-"anytime. These template files can be copied to your theme's \"affiliatewp/"
-"emails\" folder to give you complete control over the appearance of the "
-"emails."
+"All emails are sent in beautiful HTML templates that can be easily edited "
+"at anytime. These template files can be copied to your theme's "
+"\"affiliatewp/emails\" folder to give you complete control over the "
+"appearance of the emails."
 msgstr ""
 
 #: includes/admin/class-welcome.php:194
@@ -692,32 +661,31 @@ msgstr ""
 #: includes/admin/class-welcome.php:195
 msgid ""
 "Your affiliates can already promote your website using a wide variety of <a "
-"href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" target="
-"\"_blank\">Affiliate URLs</a>. Admins now have much more control over how "
-"these referral URLs appear to affiliates on the front-end of your website. "
-"You can set a <strong>Default Referral Format</strong> (ID or username) and "
-"choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your "
-"affiliates."
+"href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" "
+"target=\"_blank\">Affiliate URLs</a>. Admins now have much more control "
+"over how these referral URLs appear to affiliates on the front-end of your "
+"website. You can set a <strong>Default Referral Format</strong> (ID or "
+"username) and choose whether or not to show <strong>Pretty Affiliate "
+"URLs</strong> to your affiliates."
 msgstr ""
 
 #: includes/admin/class-welcome.php:197
 msgid "Additional Updates"
-msgstr "Հավելյալ թարմացումներ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:199
 msgid "Affiliate Export Improvements"
 msgstr ""
 
 #: includes/admin/class-welcome.php:200
-#, fuzzy
 msgid ""
-"The affiliate's username is now included in the exported affiliate .csv file."
-msgstr "Գերծընկերոջ աշխատասենյակը հասանելի է միայն գրանցված գործընկերներին:"
+"The affiliate's username is now included in the exported affiliate .csv "
+"file."
+msgstr ""
 
 #: includes/admin/class-welcome.php:202
-#, fuzzy
 msgid "New Affiliate Meta Class"
-msgstr "Նոր գործընկեր"
+msgstr ""
 
 #: includes/admin/class-welcome.php:203
 msgid ""
@@ -748,71 +716,59 @@ msgstr ""
 
 #: includes/admin/class-welcome.php:219 includes/admin/class-welcome.php:306
 msgid "Go to AffiliateWP Settings"
-msgstr "Գնալ AffiliateWP-ի կարգավորումների էջ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:236 includes/admin/class-welcome.php:332
 msgid "Welcome to AffiliateWP %s"
-msgstr "Բարի գալուստ AffiliateWP %s"
+msgstr ""
 
 #: includes/admin/class-welcome.php:242
 msgid ""
 "Use the tips below to get started using AffiliateWP. You will be up and "
 "running in no time!"
 msgstr ""
-"AffiliateWP-ն օգտագործել սկսելու համար օգտվեք ներքոնշյալ խորհուրդներից: Դուք "
-"կլինեք պատրաստ աշխատանքի շատ կարճ ժամանակից:"
 
 #: includes/admin/class-welcome.php:245
 msgid "Overview of Affiliates and Referrals"
-msgstr "Գործընկերների և ռեֆերալների ակնարկ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:250
 msgid "The Overview Page"
-msgstr "Ակնարկի էջ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:251
 msgid ""
 "The overview page gives you a quick summary of your recent affiliate "
 "activity, including recent registrations, referrals, and visits."
 msgstr ""
-"Ակնարկի էջը հնարավորություն է տալիս տեսնել Ձեր գործընկերների վերջերս կատարած "
-"գործողությունների, գրանցումների, ռեֆերալների և այցելությունների մասին հակիրճ "
-"և ամփոփ տեղեկություններ:"
 
 #: includes/admin/class-welcome.php:252
 msgid "It also provides a quick summary of your affiliates' referral earnings."
 msgstr ""
-"Այն նույնպես տրամադրում է Ձեր գործընկերների ռեֆերալ եկամուտների մասին հակիրճ "
-"ամփոփում:"
 
 #: includes/admin/class-welcome.php:253
 msgid ""
 "If you allow affiliate registrations, you can also easily accept or reject "
 "affiliate's applications directly from the Overview page"
 msgstr ""
-"Եթե Դուք թույլատրում եք գործընկերների գրանցում, Դուք նույնպես կարող եք "
-"հեշտությամբ հաստատել կամ մերժել գործընկերների դիմումները հենց ակնարկի էջից"
 
 #: includes/admin/class-welcome.php:256
 msgid "Adding Affiliates"
-msgstr "Ավելացնել գործընկերներ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:261
 msgid "Affiliates &rarr; Add New"
-msgstr "Գործընկերներ &rarr; ավելացնել"
+msgstr ""
 
 #: includes/admin/class-welcome.php:262
 msgid ""
 "From the main Affiliates page, site admins can easily add new affiliates to "
 "AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
 msgstr ""
-"Գործընկերների հիմնական էջից կայքի ադմինիստրատորները կարող են AffiliateWP-ում "
-"հեշտությամբ գրանցել նոր գործընկերներ: Ընդամենը մուտքագրեք մականուն, նշեք "
-"վարձատրության տեսակը ու չափը և սեղմեք Ավելացնել Գործընկեր:"
 
 #: includes/admin/class-welcome.php:264
 msgid "Affiliate Registration"
-msgstr "Գործընկերների գրանցում"
+msgstr ""
 
 #: includes/admin/class-welcome.php:265
 msgid ""
@@ -821,14 +777,10 @@ msgid ""
 "agreeing to the terms of use. If they need to create an entirely new "
 "account, they have that option as well!"
 msgstr ""
-"Երբ ակտիվացված է, գործընկերները կարող են իրենք իրենց գրանցել գործընկերների "
-"էջի միջոցով: Եթե նրանք արդեն հանդիսանում են Ձեր կայքի օգտատեր, ապա նրանք "
-"կարող են գրանցվել ընդամենը համաձայնելով գործածման կանոնների հետ: Եթե նրանց "
-"հարկավոր է գրանցել նոր հաշիվ, դա նույնպես հնարավոր է:"
 
 #: includes/admin/class-welcome.php:267
 msgid "Moderate Registrations"
-msgstr "Քննել գրանցումները"
+msgstr ""
 
 #: includes/admin/class-welcome.php:268
 msgid ""
@@ -836,43 +788,34 @@ msgid ""
 "approve each registration before the affiliate is permitted to begin "
 "tracking referrals."
 msgstr ""
-"Գործընկերների գրանցումները կարող են մոդերացվել և պահանջել կայքի "
-"ադմինիստրատորի կողմից հաստատում մինչև նրանք կկարողանան հետևել ռեֆերալներին:"
 
 #: includes/admin/class-welcome.php:269
 msgid ""
 "Each time an affiliate registers, site admins can log into the site and "
 "approve or reject the application."
 msgstr ""
-"Ամեն անգամ երբ գործընկեր է գրանցվում, կայքի ադմինիստրատորները կարող են մուտք "
-"գործել կայք և հաստատել կամ մերժել հաշվի բացման դիմումը:"
 
 #: includes/admin/class-welcome.php:272
 #: includes/admin/settings/class-settings.php:196 includes/install.php:26
 msgid "Affiliate Area"
-msgstr "Գործընկերոջ աշխատասենյակ"
+msgstr ""
 
 #: includes/admin/class-welcome.php:277
 msgid "A Dashboard For Your Affiliates"
-msgstr "Աշխատասենյակ Ձեր գործընկերների համար"
+msgstr ""
 
 #: includes/admin/class-welcome.php:278
 msgid ""
-"The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
-"em> short code, gives your affiliates access to their performance reports."
+"The Affiliate Area, shown on any page containing the "
+"<em>[affiliate_area]</em> short code, gives your affiliates access to their "
+"performance reports."
 msgstr ""
-"Գործընկերների էջը, որը ցուցադրվում է ցանկացաց <em>[affiliate_area]</"
-"em>շորթկոդ պարունակող էջի վրա, գործընկերներին տալիս է հնարավորություն "
-"դիտարկելու իրենց գործունեության էֆեկտիվությունը:"
 
 #: includes/admin/class-welcome.php:279
 msgid ""
 "Affiliates can easily see how much they have earned, how much is awaiting "
 "payment, and even how their referral URLs have done over time."
 msgstr ""
-"Գործընկերները կարող են հեշտությամբ տեսնել իրենց աշխատած գումարի չափը, "
-"սպասման մեջ գտնվող վճարները և նույնիսկ ինչքան էֆեկտիվություն ունեն իրենց "
-"ռեֆերալ հղումները:"
 
 #: includes/admin/class-welcome.php:280
 msgid ""
@@ -880,13 +823,10 @@ msgid ""
 "clicked on from, and whether the link converted into a successful referral, "
 "is also available to affiliates."
 msgstr ""
-"Գործընկերներին հասանելի է նաև ռեֆերալ հղումների, դրանց վրա սեղմման կայքերի "
-"մասին վիճակագրություն, այդ թվում այն մասին թե արդյո՞ք այս կամ այն սեղմումը "
-"հանգեցրել է վաճառքի թե՞ ոչ:"
 
 #: includes/admin/class-welcome.php:285
 msgid "Quick Terminology"
-msgstr "Հակիրճ տերմինաբանություն"
+msgstr ""
 
 #: includes/admin/class-welcome.php:290
 msgid ""
@@ -894,50 +834,38 @@ msgid ""
 "your products and services through referral URLs. When they create a "
 "customer for you, they get paid back in the form of a commission."
 msgstr ""
-"Սրանք Ձեր լավագույն ընկերներն են: Արանք այն օգտատերերն են, որոնք ակտիվ "
-"տարածում են Ձեր ապրանքներն ու ծառայությունները իրենց ռեֆերալ հղումների "
-"միջոցով: Երբ նրանք Ձեր համար հաճախորդ են ստեղծում, նրանք վարձատրվում են "
-"ռեֆերալ կոմիսիայի տեսքով:"
 
 #: includes/admin/class-welcome.php:295
 msgid ""
 "These are the commission records created anytime an affiliate successfully "
 "sends a potential customer to your site and that customer makes a purchase."
 msgstr ""
-"Սրանք ռեֆերալ կոմիսիայի գրանցումներն են, որոնք ստեղծվում են ամեն անգամ, եթբ "
-"գործընկերը բարեհաջող ուղարկում է հաճախորդ Ձեր կայք և այդ հաճախորդը կատարում "
-"է գնում:"
 
 #: includes/admin/class-welcome.php:300
 msgid ""
 "These are unique hits on the referral URLs shared out by your affiliates. "
-"Each time a potential customer clicks on a referral URL, a visit is recorded."
+"Each time a potential customer clicks on a referral URL, a visit is "
+"recorded."
 msgstr ""
-"Սրանք Ձեր գործընկերների ռեֆերալ հղումներից ստացված ունիկալ դիտումներն են: "
-"Ամեն անգամ պոտենցիալ հաճախորդը սեղմում է ռեֆերալ URL հղման վրա, համակարգում "
-"այցելություն է գրանցվում:"
 
 #: includes/admin/class-welcome.php:310
 msgid "Need Help?"
-msgstr "Ունեք հարցե՞ր:"
+msgstr ""
 
 #: includes/admin/class-welcome.php:313
 msgid "Phenomenal Support"
-msgstr "Ֆենոմենալ աջակցություն"
+msgstr ""
 
 #: includes/admin/class-welcome.php:314
 msgid ""
 "We do our best to provide the best support we can. If you encounter a "
-"problem or have a question, visit our <a href=\"http://affiliatewp.com/"
-"support\">support</a> page to open a ticket."
+"problem or have a question, visit our <a "
+"href=\"http://affiliatewp.com/support\">support</a> page to open a ticket."
 msgstr ""
-"Մենք անում ենք ամեն հնարավորը, լավագույն տեխնիկական աջակցությունն ապահովելու "
-"համար: Եթե Ձեզ հանիպել է որևէ խնդիր կամ ունեց ինչ-որ հարց, այցելեք մեր <a "
-"href=\"http://affiliatewp.com/support\">աջակցության</a> էջը և բացեք նոր հայց:"
 
 #: includes/admin/class-welcome.php:333
 msgid "Thank you for updating to the latest version!"
-msgstr "Շնորհակալությու՛ն վերջին տարբերակին թարմացնելու համար:"
+msgstr ""
 
 #: includes/admin/class-welcome.php:338
 msgid ""
@@ -945,24 +873,19 @@ msgid ""
 "provide the #1 affiliate platform for WordPress. Here are just some of the "
 "faces that have helped build AffiliateWP:"
 msgstr ""
-"AffiliateWP-ն ստեղծվել է աշխարհի տարբեր ծեգերում գտնվող ծրագրավորողների "
-"կողմից WordPress-ի համար #1 համագործակցական համակարգը պատրաստելու նպատակով: "
-"Ստորև նշված են AffiliateWP-ն ստեղծողների միայն մի մասը:"
 
 #: includes/admin/class-welcome.php:365
 msgid "View %s"
-msgstr "Դիտել %s"
+msgstr ""
 
 #: includes/admin/creatives/actions.php:16
 #: includes/admin/creatives/actions.php:80
-#, fuzzy
 msgid "You do not have permission to manage creatives"
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/creatives/actions.php:44
-#, fuzzy
 msgid "You do not have permission to delete a creative"
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/creatives/actions.php:52
 msgid "No creative IDs specified for deletion"
@@ -973,16 +896,15 @@ msgstr ""
 #: includes/admin/overview/overview.php:241
 #: templates/dashboard-tab-visits.php:18
 msgid "URL"
-msgstr "URL Հղում"
+msgstr ""
 
 #: includes/admin/creatives/creatives.php:157
 msgid "Shortcode"
 msgstr ""
 
 #: includes/admin/creatives/creatives.php:255
-#, fuzzy
 msgid "No creatives found."
-msgstr "Ռեֆերալներ չեն գտնվել:"
+msgstr ""
 
 #: includes/admin/creatives/delete.php:10
 #: includes/admin/creatives/delete.php:32
@@ -1007,7 +929,7 @@ msgstr ""
 #: includes/admin/referrals/referrals.php:226
 #: templates/dashboard-tab-referrals.php:21
 msgid "Description"
-msgstr "Նկարագրություն"
+msgstr ""
 
 #: includes/admin/creatives/edit.php:35 includes/admin/creatives/new.php:34
 msgid ""
@@ -1040,22 +962,19 @@ msgid ""
 msgstr ""
 
 #: includes/admin/creatives/edit.php:102 includes/admin/creatives/new.php:92
-#, fuzzy
 msgid "Select the status of the creative."
-msgstr "Նշեք ռեֆերալի կարգավիճալը:"
+msgstr ""
 
 #: includes/admin/creatives/edit.php:113
 msgid "Update Creative"
 msgstr ""
 
 #: includes/admin/creatives/new.php:3
-#, fuzzy
 msgid "New Creative"
-msgstr "Նոր հնարավորություններ"
+msgstr ""
 
 #: includes/admin/creatives/new.php:9
-msgid ""
-"Use this screen to add a new creative, such as a text link or image banner."
+msgid "Use this screen to add a new creative, such as a text link or image banner."
 msgstr ""
 
 #: includes/admin/creatives/new.php:74
@@ -1070,87 +989,86 @@ msgstr ""
 
 #: includes/admin/overview/overview.php:26
 msgid "Totals"
-msgstr "Ընդամենը"
+msgstr ""
 
 #: includes/admin/overview/overview.php:35
 #: includes/admin/reports/reports.php:86 includes/admin/tools/tools.php:103
 #: templates/dashboard-tab-stats.php:34
 msgid "Paid Earnings"
-msgstr "Վճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:36
 #: includes/admin/reports/reports.php:87
 msgid "Paid Earnings This Month"
-msgstr "Այս ամիս վճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:37
 #: includes/admin/reports/reports.php:88
 msgid "Paid Earnings Today"
-msgstr "Այսօր վճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:61
 #: includes/admin/reports/reports.php:138 templates/dashboard-tab-stats.php:8
 msgid "Unpaid Referrals"
-msgstr "Չվճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:62
 #: includes/admin/reports/reports.php:139
 msgid "Unpaid Referrals This Month"
-msgstr "Այս ամիս չվճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:63
 #: includes/admin/reports/reports.php:140
 msgid "Unpaid Referrals Today"
-msgstr "Այսօր չվճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:86
 #: includes/admin/reports/reports.php:112 templates/dashboard-tab-stats.php:33
 msgid "Unpaid Earnings"
-msgstr "Չվճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:87
 #: includes/admin/reports/reports.php:113
 msgid "Unpaid Earnings This Month"
-msgstr "Այս ամիս չվճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:88
 #: includes/admin/reports/reports.php:114
 msgid "Unpaid Earnings Today"
-msgstr "Այսօր չվճարված եկամուտներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:108
 msgid "Latest Affiliate Registrations"
-msgstr "Վերջերս գրանցված գործընկերները"
+msgstr ""
 
 #: includes/admin/overview/overview.php:116
 #: includes/admin/overview/overview.php:167
 #: includes/admin/overview/overview.php:205
-#: includes/admin/overview/overview.php:240
-#: includes/admin/referrals/new.php:16
+#: includes/admin/overview/overview.php:240 includes/admin/referrals/new.php:16
 #: includes/admin/referrals/referrals.php:224
 #: includes/admin/visits/visits.php:155
 msgid "Affiliate"
-msgstr "Գործընկեր"
+msgstr ""
 
 #: includes/admin/overview/overview.php:136
 msgid "View Report"
-msgstr "Դիտել հաշվետվությունը"
+msgstr ""
 
 #: includes/admin/overview/overview.php:144
 msgid "No affiliate registrations yet"
-msgstr "Դեռևս գրանցված գործընկերներ չկան"
+msgstr ""
 
 #: includes/admin/overview/overview.php:159
 msgid "Most Valuable Affiliates"
-msgstr "Լավագույն գործընկերները"
+msgstr ""
 
 #: includes/admin/overview/overview.php:187
 msgid "No registered affiliates"
-msgstr "Գրանցված գործընկերներ չկան"
+msgstr ""
 
 #: includes/admin/overview/overview.php:197
 msgid "Recent Referrals"
-msgstr "Թարմ ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:206
 #: includes/admin/referrals/edit.php:31 includes/admin/referrals/new.php:33
@@ -1159,124 +1077,113 @@ msgstr "Թարմ ռեֆերալներ"
 #: includes/admin/tools/export/class-export-referrals.php:63
 #: templates/dashboard-tab-referrals.php:20
 msgid "Amount"
-msgstr "Քանակը"
+msgstr ""
 
 #: includes/admin/overview/overview.php:223
 msgid "No referrals recorded yet"
-msgstr "Դեռևս ռեֆերալներ չեն գրանցվել"
+msgstr ""
 
 #: includes/admin/overview/overview.php:232
 msgid "Recent Referral Visits"
-msgstr "Վերջերս այցելած ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/overview/overview.php:242
 #: includes/admin/visits/visits.php:158 templates/dashboard-tab-visits.php:20
 msgid "Converted"
-msgstr "Փոխակերպված"
+msgstr ""
 
 #: includes/admin/overview/overview.php:261
 msgid "No referral visits recorded yet"
-msgstr "Դեռևս ռեֆերալների այցելություններ չեն գրանցվել"
+msgstr ""
 
 #: includes/admin/plugins.php:27
 msgid "General Settings"
-msgstr "Ընդհանուր կարգավորումներ"
+msgstr ""
 
 #: includes/admin/referrals/actions.php:16
 #: includes/admin/referrals/actions.php:47
-#, fuzzy
 msgid "You do not have permission to manage referrals"
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:29
 #: includes/admin/visits/contextual-help.php:29
 msgid "For more information:"
-msgstr "Հավելյան տեղեկությունների համար."
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:30
 #: includes/admin/visits/contextual-help.php:30
 msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
-msgstr "Դիտեք <a href=\"%s\">դոկումենտացիան</a> AffiliateWP կայքում:"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:31
 #: includes/admin/visits/contextual-help.php:31
 msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
-msgstr "<a href=\"%s\">Հաղորդել խնդրի մասին</a><a href=\"%s\">GitHub-ում</a>."
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:39
 msgid "This screen provides access to your site's referral history."
-msgstr "Այս էջը տրամադրում է Ձեր կայքի ռեֆերալների պատմություն:"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:40
 msgid ""
 "<strong>Reference</strong>: this refers to the order number (or similar) "
 "that created this referral."
 msgstr ""
-"<strong>Հղում</strong>: սա վերաբերում է այս ռեֆերալի կողմից ստեղծված պատվերի "
-"համարին (կամ նման մի բան)"
 
 #: includes/admin/referrals/contextual-help.php:41
 msgid "Referral statuses:"
-msgstr "Ռեֆերալների կարգավիճակները"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:43
 msgid ""
 "<strong>Paid</strong> - this is a referral that has been paid to the "
 "affiliate"
 msgstr ""
-"<strong>Վճարված</strong> - սա այն ռեֆերալն է, որը վճարված է գործընկերոջը"
 
 #: includes/admin/referrals/contextual-help.php:44
 msgid ""
 "<strong>Unpaid</strong> - this is a referral that has been accepted but not "
 "yet paid to the affiliate"
 msgstr ""
-"<strong>Չվճարված</strong> - սա այն ռեֆերալն է, որը թեև հաստատված է, սակայն "
-"դեռևս չի վճարված գործընկերոջը"
 
 #: includes/admin/referrals/contextual-help.php:45
-msgid ""
-"<strong>Pending</strong> - this is a referral that is waiting to be accepted"
-msgstr "<strong>Անորոշ</strong> - սա այն ռեֆերալն է, որը սպասում է հաստատման"
+msgid "<strong>Pending</strong> - this is a referral that is waiting to be accepted"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:46
 msgid ""
 "<strong>Rejected</strong> - this is a referral that has been rejected and "
 "will not be paid to the affiliate"
 msgstr ""
-"<strong>Մերժված</strong> - սա այն ռեֆերալն է, որը մերժվել է և չի վճարվելու "
-"գործընկերոջը"
 
 #: includes/admin/referrals/contextual-help.php:52
 msgid "Searching Referrals"
-msgstr "Փնտրել ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:54
 msgid "Referrals can be searched in several different ways:"
-msgstr "Ռեֆերալներին կարող եք փնտրել մի քանի տարբեր եղանակներով."
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:56
 msgid "You can enter the referral's ID number"
-msgstr "Դուք կարող եք մուտքագրել ռեֆերալի ID համարը"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:57
 msgid "You can enter the referral reference prefixed by 'ref:'"
 msgstr ""
-"Դուք կարող եք մուտքագրել ռեֆերալի վկայակոչումը (ռեֆերանսը) նախորդված 'ref:'-"
-"ով"
 
 #: includes/admin/referrals/contextual-help.php:58
 msgid "You can enter the referral context prefixed by 'context:'"
-msgstr "Դուք կարող եք մուտքագրել ռեֆերալի կոնտեքստը նախորդված 'context:'-ով"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:59
 #: includes/admin/visits/contextual-help.php:58
 msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
-msgstr "Դուք կարող եք մուտքագրել ռեֆերալի ID համարը նախորդված affiliate:'-ով"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:65
 msgid "Exporting Referrals"
-msgstr "Ռեֆերալների արտահանում"
+msgstr ""
 
 #: includes/admin/referrals/contextual-help.php:67
 msgid ""
@@ -1284,151 +1191,128 @@ msgid ""
 "for your own accounting needs and for you to payout your affiliates's "
 "earnings."
 msgstr ""
-"Ռեֆերալները կարող են արտահանվել ուղղակիորեն CSV ֆայլ, որպեսզի հարմարեցնի Ձեր "
-"անձնական հաշվապահական պահանջմունքները և հեշտացնի գերծընկերներին իրենց "
-"վաստակած գումարները վճարելը:"
 
 #: includes/admin/referrals/contextual-help.php:68
 msgid ""
 "The CSV file generated is structured properly for PayPal's Mass Payment "
 "system so you can easily payout all of your affiliates at once via PayPal."
 msgstr ""
-"Գեներացված CSV ֆայլը կառուցված է PayPal's Mass Payment system-ի պահանջներին "
-"համապատասխան և դուք կարող եք վճարել Ձեր բոլոր գործըկերներին արագորեն և "
-"միաժամանակ PayPal-ի միջոցով:"
 
 #: includes/admin/referrals/edit.php:6
-#, fuzzy
 msgid "Edit Referral"
-msgstr "Ավելացնել ռեֆերալ"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:23
-#, fuzzy
-msgid ""
-"The affiliate's ID this referral belongs to. This value cannot be changed."
-msgstr "Գործընկերոջ հաշվի համարը: Սա անհնար է փոխել:"
+msgid "The affiliate's ID this referral belongs to. This value cannot be changed."
+msgstr ""
 
 #: includes/admin/referrals/edit.php:36 includes/admin/referrals/new.php:38
 msgid "The amount of the referral, such as 15."
-msgstr "Ռեֆերալի չափը, օրինակ՝ 15:"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:49 includes/admin/referrals/new.php:51
 msgid "Enter a description for this referral."
-msgstr "Մուտքագրեք նկարագրություն այս ռեֆերալի համար:"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:57 includes/admin/referrals/new.php:59
 #: includes/admin/referrals/referrals.php:225
 #: includes/admin/tools/export/class-export-referrals.php:65
 msgid "Reference"
-msgstr "Ռեֆերանս"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:62 includes/admin/referrals/new.php:64
 msgid ""
 "Enter a reference for this referral (optional). Usually this would be the "
 "transaction ID of the associated purchase."
 msgstr ""
-"Մուտքագրեք տվյալ ռեֆերալի մասին վկայակոչում (ըստ հայեցողության): Սովորաբար "
-"այստեղ լրացվում է այս ռեֆերալի հետ ասոոցացված վաճառքի փոխանցման համարը:"
 
 #: includes/admin/referrals/edit.php:70 includes/admin/referrals/new.php:72
 #: includes/admin/tools/export/class-export-referrals.php:66
 msgid "Context"
-msgstr "Կոնտեքստ"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:75 includes/admin/referrals/new.php:77
 msgid ""
 "Enter a context for this referral (optional). Usually this is used to help "
 "identify the payment system that was used for the transaction."
 msgstr ""
-"Մուտքագրեք այս ռեֆերալի կոնտեքստը (ոչ պարտադիր): Սովորաբար սա կիրառվում է "
-"օգնելու հասկանալ այն վճարային համակարգը, որով կատարվել է փոխանցումը:"
 
 #: includes/admin/referrals/edit.php:88 includes/admin/referrals/new.php:90
 #: includes/admin/referrals/referrals.php:205
 #: includes/admin/tools/tools.php:241 includes/referral-functions.php:53
 msgid "Unpaid"
-msgstr "Չվճարված"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:89 includes/admin/referrals/new.php:91
 #: includes/admin/referrals/referrals.php:204
 #: includes/admin/tools/tools.php:240 includes/referral-functions.php:52
 msgid "Paid"
-msgstr "Վճարված"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:93 includes/admin/referrals/new.php:95
 msgid "Select the status of the referral."
-msgstr "Նշեք ռեֆերալի կարգավիճալը:"
+msgstr ""
 
 #: includes/admin/referrals/edit.php:106
-#, fuzzy
 msgid "Update Referral"
-msgstr "Չվճարված ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/referrals/new.php:3
 msgid "New Referral"
-msgstr "Նոր ռեֆերալ"
+msgstr ""
 
 #: includes/admin/referrals/new.php:9
-msgid ""
-"Use this screen to manually create a new referral record for an affiliate."
+msgid "Use this screen to manually create a new referral record for an affiliate."
 msgstr ""
-"Օգտագործեք այս պատուհանը գործընկերների համար ձեռքով նոր ռեֆերալ գրանցելու "
-"համար"
 
 #: includes/admin/referrals/new.php:25
 msgid ""
 "Enter the name of the affiliate or enter a partial name or email to perform "
 "a search."
 msgstr ""
-"Փնտրելու համար մուտքագրեք գործընկերոջ անունը, կամ մասնակի անունը, կամ էլ. "
-"հասցեն"
 
 #: includes/admin/referrals/new.php:108
 msgid "Add Referral"
-msgstr "Ավելացնել ռեֆերալ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:39
 msgid "Add New Referral"
-msgstr "Ավելացնել նոր ռեֆերալ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:40
 msgid "Generate Payout File"
-msgstr "Գեներացնել դուսգրման ֆայլ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:41
 msgid "Close"
-msgstr "Փակել"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:47
 #: includes/admin/referrals/referrals.php:437
 #: includes/admin/tools/tools.php:236 includes/admin/visits/visits.php:38
 msgid "From - mm/dd/yyyy"
-msgstr "Սկսած - աա/օօ/տտտտ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:48
 #: includes/admin/referrals/referrals.php:438
 #: includes/admin/tools/tools.php:237 includes/admin/visits/visits.php:39
 msgid "To - mm/dd/yyyy"
-msgstr "Մինչև - աա/օօ/տտտտ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:49
 msgid "Minimum amount"
-msgstr "Նվազագույն չափը"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:52
 msgid "Generate CSV File"
-msgstr "Գեներացնել CSV ֆայլ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:53
 msgid ""
 "This will mark all unpaid referrals in this timeframe as paid. To export "
-"referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s"
-"\">Tools &rarr; Export</a> page."
+"referrals with a status other than <em>unpaid</em>, go to the <a "
+"href=\"%s\">Tools &rarr; Export</a> page."
 msgstr ""
-"Այս գործողությունը տվյալ ժամանակահատվածի համար բոլոր չվճարված ռեֆերալներին "
-"կնշի որպես վճարված: Ռեֆերալներին <em>չվճարված</em>-ի փոխարեն այլ "
-"կարգավիճակով արտահանելու համար այցելեք <a href=\"%s\">Գործիքներ &rarr; "
-"Արտահանում</a> էջը:"
 
 #: includes/admin/referrals/referrals.php:227
 #: includes/admin/tools/export/class-export-referrals.php:68
@@ -1436,99 +1320,93 @@ msgstr ""
 #: includes/admin/visits/visits.php:159
 #: templates/dashboard-tab-referrals.php:23
 msgid "Date"
-msgstr "Ամսաթիվ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:353
 #: includes/admin/referrals/referrals.php:460
 msgid "Mark as Unpaid"
-msgstr "Նշել որպես չվճարված"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:359
 #: includes/admin/referrals/referrals.php:459
 msgid "Mark as Paid"
-msgstr "Նշել որպես վճարված"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:392
 msgid "No referrals found."
-msgstr "Ռեֆերալներ չեն գտնվել:"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:416
 msgid "Bulk Actions"
-msgstr "Միաժամանակյա գործողություններ"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:428
 msgid "Apply"
-msgstr "Կիրառել"
+msgstr ""
 
 #: includes/admin/referrals/referrals.php:442
 #: includes/admin/visits/visits.php:41 includes/class-graph.php:404
 msgid "Filter"
-msgstr "Ֆիլտր"
+msgstr ""
 
 #: includes/admin/reports/class-registrations-graph.php:68
 #: includes/admin/reports/reports.php:67
 msgid "Affiliate Registrations"
-msgstr "Գործընկերների գրանցումներ"
+msgstr ""
 
 #: includes/admin/reports/reports.php:186
 msgid "Successful Conversions"
-msgstr "Հաջողված փոխակերպումներ գնորդի"
+msgstr ""
 
 #: includes/admin/reports/reports.php:187 templates/dashboard-tab-stats.php:11
 msgid "Conversion Rate"
-msgstr "Գնորդի փոխակերպման տոկոսը"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:180
 msgid "License Settings"
-msgstr "Լիցենզիայի կարգավորումներ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:185
 msgid "License Key"
-msgstr "Լիցենզիայի կոդ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:186
 msgid ""
-"Please enter your license key. An active license key is needed for automatic "
-"plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
+"Please enter your license key. An active license key is needed for "
+"automatic plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
 msgstr ""
-"Խնդրում ենք, մուտքագրեք Ձեր լիցենզիայի բանալին: Հավելվածի ավտոմատ թարմացման "
-"և <a href=\"%s\" target=\"_blank\">աջակցության</a>համար հարկավոր է աշխատող "
-"լիցենզիա:"
 
 #: includes/admin/settings/class-settings.php:191
 msgid "Pages"
-msgstr "Էջեր"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:197
 msgid "This is the page where affiliates will manage their affiliate account."
-msgstr "Սա այն էջն է, որտեղից Ձեր գործընկերները կկառավարեն իրենց հաշիվները:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:202
 msgid "Terms of Use"
-msgstr "Օգտագործման պայմաններ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:203
 msgid "Select the page that shows the terms of use for Affiliate Registration"
-msgstr "Նշեք այն էջը, որը պարունակում է գործընկերների գրանցման պայմանները"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:208
 msgid "Referral Settings"
-msgstr "Ռեֆերալի կարգավորումներ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:213
 msgid "Referral Variable"
-msgstr "Ռեֆերալի փոփոխական"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:214
 msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
 msgstr ""
-"URL հղման փոփոխականը ռեֆերալների հղումների համար: Օրինակ՝ <strong>%s</"
-"strong>."
 
 #: includes/admin/settings/class-settings.php:219
-#, fuzzy
 msgid "Default Referral Format"
-msgstr "Ռեֆերալի տոկոսադրույքը"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:220
 msgid ""
@@ -1537,23 +1415,18 @@ msgid ""
 msgstr ""
 
 #: includes/admin/settings/class-settings.php:229
-#, fuzzy
 msgid "Pretty Affiliate URLs"
-msgstr "Նոր գործընկեր"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:230
-#, fuzzy
 msgid ""
 "Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
 "%s</strong>"
 msgstr ""
-"URL հղման փոփոխականը ռեֆերալների հղումների համար: Օրինակ՝ <strong>%s</"
-"strong>."
 
 #: includes/admin/settings/class-settings.php:235
 msgid "Should referrals be based on a percentage or flat rate amounts?"
 msgstr ""
-"Ռեֆերալները պետք է հաշվարկվեն տոկոսադրույքո՞վ, թե՞ հաստատուն (միանվագ) վճարով"
 
 #: includes/admin/settings/class-settings.php:241
 msgid ""
@@ -1561,8 +1434,6 @@ msgid ""
 "flat amount otherwise. Rates can be set for each affiliate individually as "
 "well."
 msgstr ""
-"Կայքի նախնական ռեֆերալ հաշվարկի արժեք: Տոկոսադրույք՝ եթե ռեֆերալ հաշվարկի "
-"տեսակը տոկոսադրույք է նշված, այլ դեպքում՝ միանվագ վճար:"
 
 #: includes/admin/settings/class-settings.php:248
 msgid "Exclude Shipping"
@@ -1582,82 +1453,76 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:258
 msgid "Cookie Expiration"
-msgstr "Բուլկիների (Cookie) լրացման ժամկետ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:259
 msgid "How many days should the referral tracking cookie be valid for?"
-msgstr "Քանի՞ օր պետք է գործի ռեֆերալի պահպանման «բուլկին» (Cookie):"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:265
 msgid "Currency Settings"
-msgstr "Արտարժույքի կարգավորումներ:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:266
 msgid "Configure the currency options"
-msgstr "Կարգավորել արտարժույթի նախընտրությունները:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:270
 #: includes/admin/tools/export/class-export-referrals-payout.php:42
 #: includes/admin/tools/export/class-export-referrals.php:64
 msgid "Currency"
-msgstr "Արտարժույթ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:271
 msgid ""
 "Choose your currency. Note that some payment gateways have currency "
 "restrictions."
 msgstr ""
-"Ընտրեք Ձեր արտարժույթը: Հաշվի առեք, որ որոշ վճարային համակարգեր ունեն "
-"արտարժույթի սահմանափակումներ:"
 
 #: includes/admin/settings/class-settings.php:276
 msgid "Currency Position"
-msgstr "Արտարժույթի տեղը"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:277
 msgid "Choose the location of the currency sign."
-msgstr "Ընտրեք արտարժույթի նշանի տեղը"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:280
 msgid "Before - $10"
-msgstr "Մինչև 10$"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:281
 msgid "After - 10$"
-msgstr "10$-ից բարձր"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:285
 msgid "Thousands Separator"
-msgstr "Հազարականների բաժանիչ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:286
 msgid "The symbol (usually , or .) to separate thousands"
-msgstr "Հազարական թվերը բաժանող նշան (սովորաբար , կամ .)"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:292
 msgid "Decimal Separator"
-msgstr "Տասնորդականների բաժանիչ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:293
 msgid "The symbol (usually , or .) to separate decimal points"
-msgstr "Տասնորդական թվերը բաժանող նշան (սովորաբար , կամ .)"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:304
 #: includes/admin/settings/display-settings.php:74
 msgid "Integrations"
-msgstr "Ինտեգրացիաներ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:305
 msgid ""
 "Choose the integrations to enable. If you are not using any of these, you "
 "may use the <strong>[affiliate_conversion_script]</strong> short code to "
-"track and create referrals. Refer to the <a href=\"%s\" target=\"_blank"
-"\">documentation</a> for help using this."
+"track and create referrals. Refer to the <a href=\"%s\" "
+"target=\"_blank\">documentation</a> for help using this."
 msgstr ""
-"Նշեք այն ինտեգչացիաները, որոնք ցանկանում եք ակտիվացնել: Եթե Դուք ոչ մեկը չեք "
-"օգտագործում՝ կարող եք օգտագործել <strong>[affiliate_conversion_script]</"
-"strong> շորթկոդը ռեֆերալներ ստեղծելու և հետևելու համար: Ուսումնասիրեք <a "
-"href=\"%s\" target=\"_blank\">դոկումենտացիան</a>հավելյալ օգնության համար:"
 
 #: includes/admin/settings/class-settings.php:315
 msgid "Logo"
@@ -1676,9 +1541,8 @@ msgid "Choose a template to use for email messages."
 msgstr ""
 
 #: includes/admin/settings/class-settings.php:326
-#, fuzzy
 msgid "From Name"
-msgstr "Ձեր անունը"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:327
 msgid ""
@@ -1687,9 +1551,8 @@ msgid ""
 msgstr ""
 
 #: includes/admin/settings/class-settings.php:332
-#, fuzzy
 msgid "From Email"
-msgstr "Էլ. հասցե"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:333
 msgid ""
@@ -1699,11 +1562,11 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:338
 msgid "Notify Admins"
-msgstr "Տեղեկացնել ադմինիստրատորներին"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:339
 msgid "Notify site admins of new affiliate registrations?"
-msgstr "Ծանուցե՞լ կայքի ադմինիստրատորներին նոր գործընկերների գրանցման մասին:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:343
 msgid "Registration Email Subject"
@@ -1718,7 +1581,7 @@ msgstr ""
 #: includes/admin/settings/class-settings.php:346
 #: includes/emails/actions.php:41
 msgid "New Affiliate Registration"
-msgstr "Նոր գործընկերոջ գրանցում"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:349
 msgid "Registration Email Content"
@@ -1736,12 +1599,11 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:352
 msgid "Name: "
-msgstr "Անուն:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:355
-#, fuzzy
 msgid "Application Accepted Email Subject"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:356
 msgid ""
@@ -1752,12 +1614,11 @@ msgstr ""
 #: includes/admin/settings/class-settings.php:358
 #: includes/emails/actions.php:96
 msgid "Affiliate Application Accepted"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:361
-#, fuzzy
 msgid "Application Accepted Email Content"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:362
 msgid ""
@@ -1767,31 +1628,21 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:364
 #: includes/admin/settings/class-settings.php:376
-#, fuzzy
 msgid "Congratulations {name}!"
 msgstr ""
-"Շնորհավորու՛մ ենք %s!\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:364
 #: includes/emails/actions.php:101
-#, fuzzy
 msgid "Your affiliate application on %s has been accepted!"
 msgstr ""
-"Ձեր %s-ի հետ համագործակցության մասին դիմումը ընդունված է\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:364
-#, fuzzy
 msgid "Log into your affiliate area at"
 msgstr ""
-"Ձեր հաշիվ մուտք գործելու համար հետևեք այս հղմանը: %s\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:367
-#, fuzzy
 msgid "New Referral Email Subject"
-msgstr "Նոր ռեֆերալ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:368
 msgid ""
@@ -1802,12 +1653,11 @@ msgstr ""
 #: includes/admin/settings/class-settings.php:370
 #: includes/emails/actions.php:214
 msgid "Referral Awarded!"
-msgstr "Ռեֆերալը հաշվանցված է Ձեզ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:373
-#, fuzzy
 msgid "New Referral Email Content"
-msgstr "Նոր ռեֆերալ"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:374
 msgid ""
@@ -1816,82 +1666,68 @@ msgid ""
 msgstr ""
 
 #: includes/admin/settings/class-settings.php:376
-#, fuzzy
 msgid "You have been awarded a new referral of"
 msgstr ""
-"Դուք պարգևատրվել եք %s ռեֆերալով %s-ին\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:376
-#, fuzzy
 msgid "on %s!"
-msgstr "Տարբերակ %s"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:376
-#, fuzzy
 msgid ""
 "Log into your affiliate area to view your earnings or disable these "
 "notifications:"
 msgstr ""
-"Ձեր եկամուտները տեսնելու կամ այս ծանուցումներն անջատելու համար մուտք գործեք "
-"աշխատասենյակ : %s\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:384
 msgid "Allow affiliate registration"
-msgstr "Թույլատրել գործընկերների գրանցում"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:385
 msgid "Should affiliates be able to register accounts for themselves?"
-msgstr "Թույլատրե՞լ գործընկերներին գրանցել իրենց համար հաշիվ:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:389
 msgid "Require approval"
-msgstr "Պահանջել հաստատում"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:390
 msgid ""
 "Require that site admins approve affiliates before they can begin earning "
 "referrals?"
 msgstr ""
-"Պահանջե՞լ կայքի ադմինիստրատորների կողմից նոր գործընկերների հաստատում, մինչ "
-"նրանց ռեֆերալներ վաստակելու հնարավորություն տալը:"
 
 #: includes/admin/settings/class-settings.php:394
 msgid "Auto Register New Users"
-msgstr "Ավտոմատ կերպով գրանցել նոր օգտագործողներին"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:395
 msgid "Automatically register new users as affiliates?"
-msgstr "Նոր օգտատերերին ավտոմատ կերպով գրանցե՞լ որպես գործընկեր:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:399
 msgid "Reject Unpaid Referrals on Refund?"
-msgstr "Մերժե՞լ չվճարված ռեֆերալները փոխհատուցելուց:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:400
 msgid ""
 "Should unpaid referrals get automatically rejected when the originating "
 "purchase is refunded or revoked?"
 msgstr ""
-"Ցանկանու՞մ եք ավտոմատ կերպով մերժել չվճարված ռեֆերալները երբ տվյալ գնումը "
-"փոխհատուցված է կամ ետ կանչված:"
 
 #: includes/admin/settings/class-settings.php:404
 msgid "Use Fallback Referral Tracking Method?"
-msgstr "Օգտագործե՞լ ռեֆերալների հետապնդման ապահով (Fallback) միջոց:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:405
 msgid ""
 "The method used to track referral links can fail on sites that have jQuery "
 "errors. Check this if referrals are not getting tracked properly."
 msgstr ""
-"Ռեֆերալ հղումները հետևող մեթողը կարող է չգործել jQuery սխալներ պարունակող "
-"կայքերի վրա: Ստուգեք դա, եթե ռեֆերալները կարգին չեն հաշվարկվում:"
 
 #: includes/admin/settings/class-settings.php:409
 msgid "Ignore Zero Referrals?"
-msgstr "Անտեսե՞լ զրոյական ռեֆերալները:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:410
 msgid ""
@@ -1901,29 +1737,20 @@ msgid ""
 "Please note: if this setting is enabled and a visit results in a zero "
 "referral, then the visit would be considered not converted."
 msgstr ""
-"Նշեք այս վանդակը եթե ցանկանում եք, որ AffiliateWP-ն ամբողջությամբ անտեսի այն "
-"ռեֆերալները, որոնք ունեն զրոյական չափ: Սա կարող է անհրաժեշտ լինել երբ կան "
-"զրոյից սկսող տարբեր գներ ունեցող ապրանքներ, կամ երբ օգտագործվել է զեղչ, որի "
-"հետևանքով ստացվել է զրոյական գին: Հաշվի առեք, որ երբ այս վանդակը նշված է և "
-"այցելության արդյունքը զրոյական գնով ռեֆերալ է, ապա այցելությունը չի որակվի "
-"որպես փոխակերպված գնորդի:"
 
 #: includes/admin/settings/class-settings.php:414
 msgid "Remove Data on Uninstall?"
-msgstr "Ցանկանու՞մ եք ջնջել ողջ տվյալները ծրագիրը հեռացնելուց:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:415
 msgid ""
-"Check this box if you would like AffiliateWP to completely remove all of its "
-"data when the plugin is deleted."
+"Check this box if you would like AffiliateWP to completely remove all of "
+"its data when the plugin is deleted."
 msgstr ""
-"Նշեք այս վանդակը եթե ցանկանում եք, որ AffiliateWP-ն ամբողջապես ջնջի իր "
-"տվյալների բազան երբ հավելվածը հեռացվի:"
 
 #: includes/admin/settings/class-settings.php:440
-#, fuzzy
 msgid "Application Pending Email Subject"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:441
 msgid "Enter the subject line for pending affiliate application emails."
@@ -1931,16 +1758,12 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:443
 #: includes/emails/actions.php:137
-#, fuzzy
 msgid "Your Affiliate Application Is Being Reviewed"
 msgstr ""
-"Ձեր %s-ի հետ համագործակցության մասին դիմումը ընդունված է\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:446
-#, fuzzy
 msgid "Application Pending Email Content"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:447
 msgid ""
@@ -1965,9 +1788,8 @@ msgid ""
 msgstr ""
 
 #: includes/admin/settings/class-settings.php:452
-#, fuzzy
 msgid "Application Rejection Email Subject"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:453
 msgid "Enter the subject line for rejected affiliate application emails."
@@ -1975,16 +1797,12 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:455
 #: includes/emails/actions.php:173
-#, fuzzy
 msgid "Your Affiliate Application Has Been Rejected"
 msgstr ""
-"Ձեր %s-ի հետ համագործակցության մասին դիմումը ընդունված է\n"
-"\n"
 
 #: includes/admin/settings/class-settings.php:458
-#, fuzzy
 msgid "Application Rejection Email Content"
-msgstr "Համագործակցության դիմումն ընդունված է"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:459
 msgid ""
@@ -2005,34 +1823,29 @@ msgstr ""
 
 #: includes/admin/settings/class-settings.php:597
 msgid "Deactivate License"
-msgstr "Դեակտիվացնել լիցենզիան"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:598
 msgid "Your license is valid!"
-msgstr "Ձեր լիցենզիան վավեր է:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:601
 msgid "Renew Your License"
-msgstr "Թարմացրեք Ձեր լիցենզիան:"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:602
 msgid ""
 "Your license has expired, renew today to continue getting updates and "
 "support!"
 msgstr ""
-"Ձեր լիցենզիայի ժամկետը սպառված է, թարմացրեք, որպեսզի շարունակեք ստանալ "
-"ծրագրի թարմացումներ և տեխնիկական աջակցություն:"
 
 #: includes/admin/settings/class-settings.php:604
 msgid "Activate License"
-msgstr "Ակտիվացնել լիցենզիան"
+msgstr ""
 
 #: includes/admin/settings/class-settings.php:698
-msgid ""
-"The callback function used for the <strong>%s</strong> setting is missing."
+msgid "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr ""
-"Այս հետադարձ ֆունկցիան օգտագործվում է երբ <strong>%s</strong> կարգավորումը "
-"բացակայում է:"
 
 #: includes/admin/settings/class-settings.php:773
 msgid "Upload File"
@@ -2040,129 +1853,112 @@ msgstr ""
 
 #: includes/admin/settings/display-settings.php:73
 msgid "General"
-msgstr "Ընդհանուր"
+msgstr ""
 
 #: includes/admin/settings/display-settings.php:75
-#, fuzzy
 msgid "Emails"
-msgstr "Էլ. հասցե"
+msgstr ""
 
 #: includes/admin/settings/display-settings.php:76
 msgid "Misc"
-msgstr "Խառը"
+msgstr ""
 
 #: includes/admin/tools/export/class-export-affiliates.php:48
 #: includes/admin/tools/export/class-export-referrals-payout.php:40
 #: includes/admin/tools/export/class-export-referrals.php:62
 msgid "Email"
-msgstr "Էլ. հասցե"
+msgstr ""
 
 #: includes/admin/tools/export/class-export-affiliates.php:51
-#, fuzzy
 msgid "Rate Type"
-msgstr "Ռեֆերալի տոկոսադրույքի տեսակը"
+msgstr ""
 
 #: includes/admin/tools/export/class-export-affiliates.php:56
-#, fuzzy
 msgid "Date Registered"
-msgstr "Գրանցում"
+msgstr ""
 
 #: includes/admin/tools/export/class-export.php:173
 msgid "You do not have permission to export data."
-msgstr "Դուք չունեք տվյալներ արտահանելու թույլտվություն:"
+msgstr ""
 
 #: includes/admin/tools/import/import.php:23
 msgid "Please upload a valid .json file"
-msgstr "Խնդրում ենք ներբեռնել առանց սխալների .json ֆայլ"
+msgstr ""
 
 #: includes/admin/tools/import/import.php:29
 msgid "Please upload a file to import"
-msgstr "Խնդրում ենք նշեք ներբեռնելու համար ֆայլը"
+msgstr ""
 
 #: includes/admin/tools/migration.php:17
 msgid ""
 "The upgrade process is running, please be patient. This could take several "
 "minutes to complete while affiliate records are upgraded in batches of 100."
 msgstr ""
-"Փարմացման գործընթացը ընթացքի մեջ է, խնդրում ենք սպասել: Սա կարող է տևել մի "
-"քանի րոպե մինչ գործընկերների գրանցման տվյալները թարմացվում են 100-յակներով:"
 
 #: includes/admin/tools/migration.php:18
 msgid "Step %d running"
-msgstr "Թիվ %d քայլի կատարում"
+msgstr ""
 
 #: includes/admin/tools/tools.php:75
 msgid "Export / Import"
-msgstr "Արտահանել / Ներբեռնել"
+msgstr ""
 
 #: includes/admin/tools/tools.php:76
 msgid "Recount Stats"
-msgstr "Վերահաշվարկել վիճակագրությունը"
+msgstr ""
 
 #: includes/admin/tools/tools.php:77
 msgid "Migration Assistant"
-msgstr "Միգրացիայի օգնական"
+msgstr ""
 
 #: includes/admin/tools/tools.php:93
 msgid "Recount Affiliate Stats"
-msgstr "Վերահաշվարկել գործընկերների վիճակագրությունը"
+msgstr ""
 
 #: includes/admin/tools/tools.php:95
 msgid "Use this tool to recount affiliate statistics."
 msgstr ""
-"Գործընկերների վիճակագրությունը վերահաշվարկելու համար օգտագործեք այս գործիքը:"
 
 #: includes/admin/tools/tools.php:99 includes/admin/tools/tools.php:232
 #: includes/admin/visits/visits.php:32
 msgid "Affiliate name"
-msgstr "Գործընկերոջ անուն"
+msgstr ""
 
 #: includes/admin/tools/tools.php:108
 msgid ""
-"Enter the name of the affiliate or begin typing to perform a search based on "
-"the affiliate's name."
+"Enter the name of the affiliate or begin typing to perform a search based "
+"on the affiliate's name."
 msgstr ""
-"Մուտքագրեք գործընկերոջ անունը կամ սկսեք տպել, որպեսզի կատարեք որոնում "
-"հիմնվելով գործընկերոջ անվան վրա:"
 
 #: includes/admin/tools/tools.php:113
 msgid "Recount"
-msgstr "Վերահաշվարկ"
+msgstr ""
 
 #: includes/admin/tools/tools.php:136
 msgid ""
 "These tools assist in migrating affiliate and referral data from existing "
 "platforms."
 msgstr ""
-"Այս գործիքներրը կօգնեն միգրացնել գործընկերների և ռեֆերալների մասին տվյալներն "
-"այլ գոյություն ունեցող համակարգերից:"
 
 #: includes/admin/tools/tools.php:141
-#, fuzzy
 msgid "User Accounts"
-msgstr "Վերահաշվարկ"
+msgstr ""
 
 #: includes/admin/tools/tools.php:143
-#, fuzzy
 msgid ""
 "Use this tool to create affiliate accounts for each of your existing "
 "WordPress user accounts."
 msgstr ""
-"Սկսեք մուտքագրելով գործընկերոջ անունը, որպեսզի կատարեք որոնում նրան կցված "
-"օգտատիրոջ հաշվը գտնելու համար:"
 
 #: includes/admin/tools/tools.php:149
-#, fuzzy
 msgid "Create Affiliate Accounts"
-msgstr "Գրանցել նոր գործընկերոջ հաշիվ"
+msgstr ""
 
 #: includes/admin/tools/tools.php:158
 msgid ""
-"Use this tool migrate existing affiliate / referral data from Affiliates Pro "
-"to AffiliateWP."
+"Use this tool migrate existing affiliate / referral data from Affiliates "
+"Pro to AffiliateWP."
 msgstr ""
-"Օգտագործեք այս գործիքը տեղափոխելու գործընկերների / ռեֆերալների տվյալները "
-"Affiliates Pro-ից AffiliateWP:"
 
 #: includes/admin/tools/tools.php:159
 msgid ""
@@ -2170,97 +1966,79 @@ msgid ""
 "install. If you have already collected affiliate or referral data, do not "
 "use this tool."
 msgstr ""
-"<strong>ՈՒՇԱԴՐՈՒԹՅՈՒՆ:</strong> այս գործիքը կարելի է օգտագործել միայն թարմ "
-"տեղադրված հավելվածի վրա: Եթե Դուք արդեն հավաքել եք գործնկերների կամ "
-"ռեֆերալների տվյալներ, մի օգտագործեք այս գործիքը:"
 
 #: includes/admin/tools/tools.php:165
 msgid "Migrate Data from Affiliates Pro"
-msgstr "Տվյալների միգրացիա Affiliates Pro-ից"
+msgstr ""
 
 #: includes/admin/tools/tools.php:174
-#, fuzzy
 msgid ""
 "Use this tool migrate existing affiliate accounts from WP Affiliate to "
 "AffiliateWP."
 msgstr ""
-"Օգտագործեք այս գործիքը տեղափոխելու գործընկերների / ռեֆերալների տվյալները "
-"Affiliates Pro-ից AffiliateWP:"
 
 #: includes/admin/tools/tools.php:180
-#, fuzzy
 msgid "Migrate Data from WP Affiliate"
-msgstr "Տվյալների միգրացիա Affiliates Pro-ից"
+msgstr ""
 
 #: includes/admin/tools/tools.php:204
-#, fuzzy
 msgid "Export Affiliates"
-msgstr "Փոփոխել գործընկերոջ տվյալները"
+msgstr ""
 
 #: includes/admin/tools/tools.php:206
-#, fuzzy
 msgid "Export affiliates to a CSV file."
-msgstr "Արտահանել ռեֆերալներին CSV ֆայլ"
+msgstr ""
 
 #: includes/admin/tools/tools.php:210 includes/admin/tools/tools.php:239
 msgid "All Statuses"
-msgstr "Բոլոր կարգավիճակները"
+msgstr ""
 
 #: includes/admin/tools/tools.php:219 includes/admin/tools/tools.php:251
 #: includes/admin/tools/tools.php:265
 msgid "Export"
-msgstr "Արտահանել"
+msgstr ""
 
 #: includes/admin/tools/tools.php:226
 msgid "Export Referrals"
-msgstr "Արտահանել ռեֆերալներին"
+msgstr ""
 
 #: includes/admin/tools/tools.php:228
 msgid "Export referrals to a CSV file."
-msgstr "Արտահանել ռեֆերալներին CSV ֆայլ"
+msgstr ""
 
 #: includes/admin/tools/tools.php:246
 msgid ""
 "To search for a affiliate, enter the affiliate's login name, first name, or "
 "last name. Leave blank to export referrals for all affiliates."
 msgstr ""
-"Գործընկեր փնտրելու համար, մուտքագրեք նրա մականունը, անունը կամ ազգանունը: "
-"Թողեք դատարկ բոլոր գործընկերների ռեֆերալներին արտահանելու համար:"
 
 #: includes/admin/tools/tools.php:258
 msgid "Export Settings"
-msgstr "Արտահանել կարգավորումները"
+msgstr ""
 
 #: includes/admin/tools/tools.php:260
 msgid ""
 "Export the AffiliateWP settings for this site as a .json file. This allows "
 "you to easily import the configuration into another site."
 msgstr ""
-"Արտահանել AffiliateWP կարգավորումներն այս կայքի համար .json ֆայլի տեսքով: Սա "
-"հնարավորություն է տալիս հետագայում հեշտությամբ վերականգնել կոնֆիգուրացիան "
-"այլ կայք:"
 
 #: includes/admin/tools/tools.php:272
 msgid "Import Settings"
-msgstr "Ներբեռնել կարգավորումները"
+msgstr ""
 
 #: includes/admin/tools/tools.php:274
 msgid ""
-"Import the AffiliateWP settings from a .json file. This file can be obtained "
-"by exporting the settings on another site using the form above."
+"Import the AffiliateWP settings from a .json file. This file can be "
+"obtained by exporting the settings on another site using the form above."
 msgstr ""
-"Ներբեռնել AffiliateWP-ի կարգավորումները .json ֆայլից: Այս ֆայլը կարող է ձեռք "
-"բերվել այլ կայքի վրայից արտահանելով կարգավորումները օգտագործելով վերևում "
-"գտնվող պատուհանը:"
 
 #: includes/admin/tools/tools.php:282
 msgid "Import"
-msgstr "Ներբեռնել"
+msgstr ""
 
 #: includes/admin/visits/contextual-help.php:39
-#, fuzzy
 msgid "This screen provides access to your site's visit history."
-msgstr "Այս էջը տրամադրում է Ձեր կայքի ռեֆերալների պատմություն:"
+msgstr ""
 
 #: includes/admin/visits/contextual-help.php:40
 msgid ""
@@ -2276,24 +2054,19 @@ msgstr ""
 
 #: includes/admin/visits/contextual-help.php:42
 msgid ""
-"<strong>Affiliate</strong>: this the affiliate that the visit was attributed "
-"to."
+"<strong>Affiliate</strong>: this the affiliate that the visit was "
+"attributed to."
 msgstr ""
 
 #: includes/admin/visits/contextual-help.php:43
-#, fuzzy
 msgid ""
 "<strong>Referral ID</strong>: this is the ID of the referral that was "
 "created from this visit, if any."
 msgstr ""
-"<strong>Հղում</strong>: սա վերաբերում է այս ռեֆերալի կողմից ստեղծված պատվերի "
-"համարին (կամ նման մի բան)"
 
 #: includes/admin/visits/contextual-help.php:44
-#, fuzzy
 msgid "<strong>IP</strong>: this is the IP address of the visitor."
 msgstr ""
-"<strong>Վճարված</strong> - սա այն ռեֆերալն է, որը վճարված է գործընկերոջը"
 
 #: includes/admin/visits/contextual-help.php:45
 msgid ""
@@ -2302,14 +2075,12 @@ msgid ""
 msgstr ""
 
 #: includes/admin/visits/contextual-help.php:50
-#, fuzzy
 msgid "Searching Visits"
-msgstr "Փնտրել ռեֆերալներ"
+msgstr ""
 
 #: includes/admin/visits/contextual-help.php:52
-#, fuzzy
 msgid "Visit records can be searched in several different ways:"
-msgstr "Ռեֆերալներին կարող եք փնտրել մի քանի տարբեր եղանակներով."
+msgstr ""
 
 #: includes/admin/visits/contextual-help.php:54
 msgid "You can enter an IP address to find all visits from a specific IP"
@@ -2323,48 +2094,45 @@ msgstr ""
 
 #: includes/admin/visits/contextual-help.php:56
 msgid ""
-"You can enter a partial URL to find all visits that landed on or came from a "
-"specific site"
+"You can enter a partial URL to find all visits that landed on or came from "
+"a specific site"
 msgstr ""
 
 #: includes/admin/visits/contextual-help.php:57
-#, fuzzy
 msgid "You can enter the referral's ID number prefixed by 'referral:'"
 msgstr ""
-"Դուք կարող եք մուտքագրել ռեֆերալի վկայակոչումը (ռեֆերանսը) նախորդված 'ref:'-"
-"ով"
 
 #: includes/admin/visits/visits.php:153
 msgid "Landing Page"
-msgstr "Գլխավոր էջ (Landing Page)"
+msgstr ""
 
 #: includes/admin/visits/visits.php:154 templates/dashboard-tab-visits.php:19
 msgid "Referring URL"
-msgstr "Հղման հասցե (ռեֆերալ հասցե)"
+msgstr ""
 
 #: includes/admin/visits/visits.php:156
 msgid "Referral ID"
-msgstr "Ռեֆերալի համարը"
+msgstr ""
 
 #: includes/admin/visits/visits.php:157
 msgid "IP"
-msgstr "IP"
+msgstr ""
 
 #: includes/admin/visits/visits.php:222 templates/dashboard-tab-visits.php:30
 msgid "Direct traffic"
-msgstr "Ուղղակի դիտումներ"
+msgstr ""
 
 #: includes/admin/visits/visits.php:247
 msgid "No visits found."
-msgstr "Դիտումներ չեն գտնվել:"
+msgstr ""
 
 #: includes/affiliate-functions.php:308
 msgid "Percentage (%)"
-msgstr "Տոկոսադրույք (%)"
+msgstr ""
 
 #: includes/affiliate-functions.php:309
 msgid "Flat %s"
-msgstr "Ուղղակի %s"
+msgstr ""
 
 #: includes/class-creatives.php:165
 msgid "Copy and paste the following:"
@@ -2372,60 +2140,60 @@ msgstr ""
 
 #: includes/class-graph.php:332
 msgid "Today"
-msgstr "Այսօր"
+msgstr ""
 
 #: includes/class-graph.php:333
 msgid "Yesterday"
-msgstr "Երեկ"
+msgstr ""
 
 #: includes/class-graph.php:334
 msgid "This Week"
-msgstr "Այս շաբաթ"
+msgstr ""
 
 #: includes/class-graph.php:335
 msgid "Last Week"
-msgstr "Անցյալ շաբաթ"
+msgstr ""
 
 #: includes/class-graph.php:336
 msgid "This Month"
-msgstr "Այս ամիս"
+msgstr ""
 
 #: includes/class-graph.php:337
 msgid "Last Month"
-msgstr "Անցյալ ամիս"
+msgstr ""
 
 #: includes/class-graph.php:338
 msgid "This Quarter"
-msgstr "Այս եռամսյակ"
+msgstr ""
 
 #: includes/class-graph.php:339
 msgid "Last Quarter"
-msgstr "Անցյալ եռամսյակ"
+msgstr ""
 
 #: includes/class-graph.php:340
 msgid "This Year"
-msgstr "Այս տարի"
+msgstr ""
 
 #: includes/class-graph.php:341
 msgid "Last Year"
-msgstr "Անցյալ տարի"
+msgstr ""
 
 #: includes/class-graph.php:342
 msgid "Custom"
-msgstr "Ըստ նախընտրության"
+msgstr ""
 
 #: includes/class-graph.php:380
 msgid "From"
-msgstr "Ումից"
+msgstr ""
 
 #: includes/class-graph.php:391
 msgid "To"
-msgstr "Ում"
+msgstr ""
 
 #: includes/class-login.php:56 includes/class-register.php:74
 #: includes/class-register.php:141
 msgid "Invalid username"
-msgstr "Սխալ մականուն"
+msgstr ""
 
 #: includes/class-login.php:62
 msgid "No such user"
@@ -2433,32 +2201,31 @@ msgstr ""
 
 #: includes/class-login.php:66 includes/class-register.php:149
 msgid "Please enter a password"
-msgstr "Մուտքագրեք Ձեր գաղտնաբառը"
+msgstr ""
 
 #: includes/class-login.php:73
-#, fuzzy
 msgid "Incorrect username or password"
-msgstr "Սխալ գաղտնաբառ"
+msgstr ""
 
 #: includes/class-referrals-graph.php:116
 msgid "Unpaid Referral Earnings"
-msgstr "Չվճարված ռեֆերալ եկամուտներ"
+msgstr ""
 
 #: includes/class-referrals-graph.php:117
 msgid "Pending Referral Earnings"
-msgstr "Կախված ռեֆերալ եկամուտներ"
+msgstr ""
 
 #: includes/class-referrals-graph.php:118
 msgid "Rejected Referral Earnings"
-msgstr "Մերժված ռեֆերալ եկամուտներ"
+msgstr ""
 
 #: includes/class-referrals-graph.php:119
 msgid "Paid Referral Earnings"
-msgstr "Վճարված ռեֆերալ եկամուտներ"
+msgstr ""
 
 #: includes/class-register.php:67
 msgid "Username already taken"
-msgstr "Այս մականունն արդեն զբաղված է"
+msgstr ""
 
 #: includes/class-register.php:72
 msgid "Invalid username. Only lowercase letters (a-z) and numbers are allowed"
@@ -2466,63 +2233,59 @@ msgstr ""
 
 #: includes/class-register.php:79
 msgid "Email address already taken"
-msgstr "Էլ. հասցեն արդեն օգտագործվել է"
+msgstr ""
 
 #: includes/class-register.php:83
 msgid "Invalid email"
-msgstr "Սխալ էլ. հասցե"
+msgstr ""
 
 #: includes/class-register.php:87
 msgid "Invalid payment email"
-msgstr "Սխալ վճարային էլ. հասցե"
+msgstr ""
 
 #: includes/class-register.php:91
 msgid "Passwords do not match"
-msgstr "Գախտնաբառերը չեն համընկնում"
+msgstr ""
 
 #: includes/class-register.php:98
 msgid "Please agree to our terms of use"
-msgstr "Խնդրում ենք հաստատեք, որ համաձայն եք մեր գործածման պայմաններին"
+msgstr ""
 
 #: includes/class-register.php:102
 msgid "Nice try honey bear, don't touch our honey"
-msgstr "Լավ փորց էր այ դու առջուկ, ձեռք մի տուր մեր մեղրին"
+msgstr ""
 
 #: includes/class-register.php:106
 msgid "You are already registered as an affiliate"
-msgstr "Դուք արդեն գրանցված եք, որպես գործընկեր"
+msgstr ""
 
 #: includes/class-register.php:137
 msgid "Please enter your name"
-msgstr "Մուտքագրեք Ձեր անունը"
+msgstr ""
 
 #: includes/class-register.php:145
-#, fuzzy
 msgid "Please enter a website URL"
-msgstr "Մուտքագրեք Ձեր գաղտնաբառը"
+msgstr ""
 
 #: includes/class-visits-graph.php:126
 msgid "Converted Visits"
-msgstr "Փոխարկված այցելություններ"
+msgstr ""
 
 #: includes/class-visits-graph.php:127
 msgid "Unconverted Visits"
-msgstr "Չփոխարկված այցելություններ"
+msgstr ""
 
 #: includes/creative-functions.php:31 includes/creative-functions.php:63
-#, fuzzy
 msgid "Creative"
-msgstr "Ոչ ակտիվ"
+msgstr ""
 
 #: includes/emails/actions.php:46
-#, fuzzy
 msgid "A new affiliate has registered on your site, "
-msgstr "Դեռևս գրանցված գործընկերներ չկան"
+msgstr ""
 
 #: includes/emails/actions.php:47
-#, fuzzy
 msgid "Name: %s"
-msgstr "Անուն:"
+msgstr ""
 
 #: includes/emails/actions.php:50
 msgid "Website URL: %s"
@@ -2537,44 +2300,30 @@ msgid "Review pending applications: %s"
 msgstr ""
 
 #: includes/emails/actions.php:100 includes/emails/actions.php:219
-#, fuzzy
 msgid "Congratulations %s!"
 msgstr ""
-"Շնորհավորու՛մ ենք %s!\n"
-"\n"
 
 #: includes/emails/actions.php:102
-#, fuzzy
 msgid "Log into your affiliate area at %s"
 msgstr ""
-"Ձեր հաշիվ մուտք գործելու համար հետևեք այս հղմանը: %s\n"
-"\n"
 
 #: includes/emails/actions.php:141
-#, fuzzy
 msgid "Hi %s!"
-msgstr "Տարբերակ %s"
+msgstr ""
 
 #: includes/emails/actions.php:177
 msgid "Hi %s,"
 msgstr ""
 
 #: includes/emails/actions.php:220
-#, fuzzy
 msgid "You have been awarded a new referral of %s on %s!"
 msgstr ""
-"Դուք պարգևատրվել եք %s ռեֆերալով %s-ին\n"
-"\n"
 
 #: includes/emails/actions.php:221
-#, fuzzy
 msgid ""
 "log into your affiliate area to view your earnings or disable these "
 "notifications: %s"
 msgstr ""
-"Ձեր եկամուտները տեսնելու կամ այս ծանուցումներն անջատելու համար մուտք գործեք "
-"աշխատասենյակ : %s\n"
-"\n"
 
 #: includes/emails/class-affwp-emails.php:198
 msgid "Default Template"
@@ -2603,9 +2352,8 @@ msgid "The email address of the affiliate"
 msgstr ""
 
 #: includes/emails/class-affwp-emails.php:432
-#, fuzzy
 msgid "The website of the affiliate"
-msgstr "Գրանցված գործընկերներ չկան"
+msgstr ""
 
 #: includes/emails/class-affwp-emails.php:437
 msgid "The promo method used by the affiliate"
@@ -2616,24 +2364,20 @@ msgid "The affiliate login URL to your website"
 msgstr ""
 
 #: includes/emails/class-affwp-emails.php:447
-#, fuzzy
 msgid "The amount of a given referral"
-msgstr "Ռեֆերալի չափը, օրինակ՝ 15:"
+msgstr ""
 
 #: includes/emails/class-affwp-emails.php:452
-#, fuzzy
 msgid "Your site name"
-msgstr "Ձեր անունը"
+msgstr ""
 
 #: includes/emails/class-affwp-emails.php:457
-#, fuzzy
 msgid "The affiliate's referral URL"
-msgstr "Գործընկերոջ ռեֆերալի տոկոսադրույքի տեսակը:"
+msgstr ""
 
 #: includes/emails/class-affwp-emails.php:462
-#, fuzzy
 msgid "The affiliate's ID"
-msgstr "Գործընկերոջ համարը"
+msgstr ""
 
 #: includes/integrations/class-edd.php:289
 #: includes/integrations/class-gravityforms.php:103
@@ -2642,13 +2386,13 @@ msgstr "Գործընկերոջ համարը"
 #: includes/integrations/class-sproutinvoices.php:53
 #: includes/integrations/class-woocommerce.php:159
 msgid "Referral #%d for %s recorded for %s"
-msgstr "Ռեֆերալ #%d %s-ի համար գրանցված %s-ով"
+msgstr ""
 
 #: includes/integrations/class-edd.php:406
 #: includes/integrations/class-rcp.php:159
 #: includes/integrations/class-woocommerce.php:279
 msgid "Affiliate Discount?"
-msgstr "Գործընկերոջ զե՞ղջ"
+msgstr ""
 
 #: includes/integrations/class-edd.php:415
 #: includes/integrations/class-rcp.php:168
@@ -2657,8 +2401,6 @@ msgid ""
 "If you would like to connect this discount to an affiliate, enter the name "
 "of the affiliate it belongs to."
 msgstr ""
-"Եթե ցանկանում եք այս զեղչը կցել որևե գործընկերոջ, ապա մուտքագրեք այն "
-"գործընկերոջ անունը ում այն պատկանում է:"
 
 #: includes/integrations/class-edd.php:506
 msgid "Adjust EDD Commissions"
@@ -2666,15 +2408,14 @@ msgstr ""
 
 #: includes/integrations/class-edd.php:507
 msgid ""
-"Should AffiliateWP adjust the commission amounts recorded for purchases that "
-"include affiliate referrals? This will subtract the referral amount from the "
-"base amount used to calculate the commission total."
+"Should AffiliateWP adjust the commission amounts recorded for purchases "
+"that include affiliate referrals? This will subtract the referral amount "
+"from the base amount used to calculate the commission total."
 msgstr ""
 
 #: includes/integrations/class-edd.php:527
-#, fuzzy
 msgid "Disable Renewal Referrals"
-msgstr "Թարմ ռեֆերալներ"
+msgstr ""
 
 #: includes/integrations/class-edd.php:528
 msgid ""
@@ -2683,9 +2424,8 @@ msgid ""
 msgstr ""
 
 #: includes/integrations/class-edd.php:549
-#, fuzzy
 msgid "Affiliate Rates:"
-msgstr "Գործընկերոջ անուն"
+msgstr ""
 
 #: includes/integrations/class-edd.php:562
 msgid "Disable referrals on this %s"
@@ -2700,28 +2440,22 @@ msgid ""
 msgstr ""
 
 #: includes/integrations/class-exchange.php:234
-#, fuzzy
 msgid "Affiliate coupon?"
-msgstr "Գործընկերոջ զե՞ղջ"
+msgstr ""
 
 #: includes/integrations/class-exchange.php:243
-#, fuzzy
 msgid ""
 "If you would like to connect this coupon to an affiliate, enter the name of "
 "the affiliate it belongs to."
 msgstr ""
-"Եթե ցանկանում եք այս զեղչը կցել որևե գործընկերոջ, ապա մուտքագրեք այն "
-"գործընկերոջ անունը ում այն պատկանում է:"
 
 #: includes/integrations/class-formidablepro.php:71
-#, fuzzy
 msgid " AffiliateWP"
-msgstr "Գործընկեր"
+msgstr ""
 
 #: includes/integrations/class-formidablepro.php:76
-#, fuzzy
 msgid "Referral description"
-msgstr "Ռեֆերալի կարգավորումներ"
+msgstr ""
 
 #: includes/integrations/class-formidablepro.php:80
 #: includes/integrations/class-formidablepro.php:106
@@ -2733,30 +2467,25 @@ msgid "Purchase Amount"
 msgstr ""
 
 #: includes/integrations/class-formidablepro.php:198
-#, fuzzy
 msgid "AffiliateWP: Referral #%d for %s recorded for %s"
-msgstr "Ռեֆերալ #%d %s-ի համար գրանցված %s-ով"
+msgstr ""
 
 #: includes/integrations/class-formidablepro.php:223
-#, fuzzy
 msgid "AffiliateWP: Referral #%d for %s for %s rejected"
-msgstr "Ռեֆերալ #%d %s-ի համար գրանցված %s-ով"
+msgstr ""
 
 #: includes/integrations/class-gravityforms.php:125
 #: includes/integrations/class-sproutinvoices.php:76
-#, fuzzy
 msgid "Referral #%d for %s for %s rejected"
-msgstr "Ռեֆերալ #%d %s-ի համար գրանցված %s-ով"
+msgstr ""
 
 #: includes/integrations/class-woocommerce.php:399
-#, fuzzy
 msgid "Affiliate Rate"
-msgstr "Գործընկերոջ անուն"
+msgstr ""
 
 #: includes/integrations/class-woocommerce.php:405
-#, fuzzy
 msgid "Disable referrals"
-msgstr "Ընդամենը անորոշ ռեֆերալներ"
+msgstr ""
 
 #: includes/integrations/class-woocommerce.php:406
 msgid ""
@@ -2773,9 +2502,8 @@ msgid "Disable referrals on this product"
 msgstr ""
 
 #: includes/misc-functions.php:26
-#, fuzzy
 msgid "US Dollars"
-msgstr "ԱՄՆ դոլլար (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:27
 msgid "Euros"
@@ -2786,32 +2514,28 @@ msgid "United Arab Emirates Dirham"
 msgstr ""
 
 #: includes/misc-functions.php:29
-#, fuzzy
 msgid "Australian Dollars"
-msgstr "Ավստրալական դոլլար (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:30
 msgid "Bangladeshi Taka"
 msgstr ""
 
 #: includes/misc-functions.php:31
-#, fuzzy
 msgid "Brazilian Real"
-msgstr "Բրազիլական Րեալ (R&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:32
 msgid "Bulgarian Lev"
 msgstr ""
 
 #: includes/misc-functions.php:33
-#, fuzzy
 msgid "Canadian Dollars"
-msgstr "Կանադական դոլլար (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:34
-#, fuzzy
 msgid "Chilean Peso"
-msgstr "Ֆիլիպինյան պեսո"
+msgstr ""
 
 #: includes/misc-functions.php:35
 msgid "Chinese Yuan"
@@ -2823,20 +2547,19 @@ msgstr ""
 
 #: includes/misc-functions.php:37
 msgid "Czech Koruna"
-msgstr "Չեխական կրոն"
+msgstr ""
 
 #: includes/misc-functions.php:38
 msgid "Danish Krone"
-msgstr "Դանիական կրոն"
+msgstr ""
 
 #: includes/misc-functions.php:39
 msgid "Dominican Peso"
 msgstr ""
 
 #: includes/misc-functions.php:40
-#, fuzzy
 msgid "Hong Kong Dollar"
-msgstr "Հոնգ-Կոնգյան դոլլար (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:41
 msgid "Croatia kuna"
@@ -2844,7 +2567,7 @@ msgstr ""
 
 #: includes/misc-functions.php:42
 msgid "Hungarian Forint"
-msgstr "Հունգարական ֆորինտ"
+msgstr ""
 
 #: includes/misc-functions.php:43
 msgid "Icelandic krona"
@@ -2855,23 +2578,20 @@ msgid "Indonesia Rupiah"
 msgstr ""
 
 #: includes/misc-functions.php:45
-#, fuzzy
 msgid "Indian Rupee"
-msgstr "Հնդկական ռուպի (&#8377;)"
+msgstr ""
 
 #: includes/misc-functions.php:46
 msgid "Nepali Rupee"
 msgstr ""
 
 #: includes/misc-functions.php:47
-#, fuzzy
 msgid "Israeli Shekel"
-msgstr "Իսրայելական շեկել (&#8362;)"
+msgstr ""
 
 #: includes/misc-functions.php:48
-#, fuzzy
 msgid "Japanese Yen"
-msgstr "Ճապոնական իեն (&yen;)"
+msgstr ""
 
 #: includes/misc-functions.php:49
 msgid "Lao Kip"
@@ -2883,12 +2603,11 @@ msgstr ""
 
 #: includes/misc-functions.php:51
 msgid "Malaysian Ringgits"
-msgstr "Մալազիական րինգից"
+msgstr ""
 
 #: includes/misc-functions.php:52
-#, fuzzy
 msgid "Mexican Peso"
-msgstr "Մեքսիկական պեսո (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:53
 msgid "Nigerian Naira"
@@ -2896,12 +2615,11 @@ msgstr ""
 
 #: includes/misc-functions.php:54
 msgid "Norwegian Krone"
-msgstr "Նորվեգիական կրոն"
+msgstr ""
 
 #: includes/misc-functions.php:55
-#, fuzzy
 msgid "New Zealand Dollar"
-msgstr "Նոր Զելանդական դոլլար (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:56
 msgid "Paraguayan Guaraní"
@@ -2909,30 +2627,27 @@ msgstr ""
 
 #: includes/misc-functions.php:57
 msgid "Philippine Pesos"
-msgstr "Ֆիլիպինյան պեսո"
+msgstr ""
 
 #: includes/misc-functions.php:58
 msgid "Polish Zloty"
-msgstr "Լեհական զլոտի"
+msgstr ""
 
 #: includes/misc-functions.php:59
-#, fuzzy
 msgid "Pounds Sterling"
-msgstr "Ֆունտ Ստերլինգ (&pound;)"
+msgstr ""
 
 #: includes/misc-functions.php:60
 msgid "Romanian Leu"
 msgstr ""
 
 #: includes/misc-functions.php:61
-#, fuzzy
 msgid "Russian Ruble"
-msgstr "Ռուսական ռուբլի"
+msgstr ""
 
 #: includes/misc-functions.php:62
-#, fuzzy
 msgid "Singapore Dollar"
-msgstr "Սինգապուրական դոլլար (&#36;)"
+msgstr ""
 
 #: includes/misc-functions.php:63
 msgid "South African rand"
@@ -2940,25 +2655,23 @@ msgstr ""
 
 #: includes/misc-functions.php:64
 msgid "Swedish Krona"
-msgstr "Շվեդական կրոնա"
+msgstr ""
 
 #: includes/misc-functions.php:65
 msgid "Swiss Franc"
-msgstr "Շվեցարական ֆրանկ"
+msgstr ""
 
 #: includes/misc-functions.php:66
 msgid "Taiwan New Dollars"
-msgstr "Տայվանական նոր դոլլար"
+msgstr ""
 
 #: includes/misc-functions.php:67
-#, fuzzy
 msgid "Thai Baht"
-msgstr "Թայլանդական բահտ (&#3647;)"
+msgstr ""
 
 #: includes/misc-functions.php:68
-#, fuzzy
 msgid "Turkish Lira"
-msgstr "Թուրքական լիրա (&#8378;)"
+msgstr ""
 
 #: includes/misc-functions.php:69
 msgid "Vietnamese Dong"
@@ -2973,118 +2686,108 @@ msgid ""
 "Are you sure you want to generate the payout file? All included referrals "
 "will be marked as Paid."
 msgstr ""
-"Դուք համոզվա՞ծ եք, որ ցանկանում եք գեներացնել վճարումների դուրսգրման ֆայլ: "
-"Բոլոր ընդգրկված ռեֆերալները կնշվեն որպես վճարված:"
 
 #: templates/dashboard-tab-creatives.php:36
 msgid "Sorry, there are currently no creatives available."
 msgstr ""
 
 #: templates/dashboard-tab-graphs.php:3
-#, fuzzy
 msgid "Referral Graphs"
-msgstr "Ռեֆերալներ"
+msgstr ""
 
 #: templates/dashboard-tab-referrals.php:44
-#, fuzzy
 msgid "You have not made any referrals yet."
-msgstr "Դուք դեռ դիտումներ չունեք"
+msgstr ""
 
 #: templates/dashboard-tab-settings.php:3
 msgid "Profile Settings"
-msgstr "Հաշվի կարգավորումներ"
+msgstr ""
 
 #: templates/dashboard-tab-settings.php:7
 msgid "Your payment email"
-msgstr "Ձեր վճարման էլ. հասցեն"
+msgstr ""
 
 #: templates/dashboard-tab-settings.php:13
 msgid "Enable New Referral Notifications"
-msgstr "Միացնել նոր ռեֆերալների մասին ծանուցումները"
+msgstr ""
 
 #: templates/dashboard-tab-settings.php:21
 msgid "Save Profile Settings"
-msgstr "Պահպանել հաշվի կարգավորումները"
+msgstr ""
 
 #: templates/dashboard-tab-stats.php:3 templates/dashboard.php:36
-#, fuzzy
 msgid "Statistics"
-msgstr "Վիճակագրություն"
+msgstr ""
 
 #: templates/dashboard-tab-stats.php:35
 msgid "Commission Rate"
-msgstr "Կոմիսիոն վճարի տոկոսադրույքը"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:3
 msgid "Referral URL Generator"
-msgstr "Ռեֆերալի URL հղման գեներատոր"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:6
-#, fuzzy
 msgid "Your affiliate ID is: <strong>%s</strong>"
-msgstr "Ձեր գործընկերոջ համարն է - <strong>%d</strong>"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:8
-#, fuzzy
 msgid "Your affiliate username is: <strong>%s</strong>"
-msgstr "Ձեր գործընկերոջ համարն է - <strong>%d</strong>"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:11
 msgid "Your referral URL is: <strong>%s</strong>"
-msgstr "Ձեր ռեֆերալ URL հղումը - <strong>%s</strong>"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:12
-#, fuzzy
 msgid ""
 "Enter any URL from this website in the form below to generate a referral "
 "link!"
 msgstr ""
-"Մուտքագրեք ցանկացած URL հասցե ներքևի էջում ռեֆերալ հղում գեներացնելու համար:"
 
 #: templates/dashboard-tab-urls.php:16
 msgid "Page URL"
-msgstr "Էջի URL հասցե"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:21
 msgid "Referral URL"
-msgstr "Ռեֆերալի URL հղում"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:23
 msgid "(now copy this referral link and share it anywhere)"
-msgstr "(հիմա պատճենեք այս ռեֆերալ հղումը և տարածեք այն որտեղ կուզենաք)"
+msgstr ""
 
 #: templates/dashboard-tab-urls.php:29
 msgid "Generate URL"
-msgstr "Գեներացնել URL հղում"
+msgstr ""
 
 #: templates/dashboard-tab-visits.php:3
 msgid "Referral URL Visits"
-msgstr "Դիտումներ ռեֆերալ հասցեյից"
+msgstr ""
 
 #: templates/dashboard-tab-visits.php:41
 msgid "You have not received any visits yet."
-msgstr "Դուք դեռ դիտումներ չունեք"
+msgstr ""
 
 #: templates/dashboard.php:7
 msgid "Your affiliate account is pending approval"
-msgstr "Ձեր գործընկերոջ հաշիվը ստուգման մեջ է"
+msgstr ""
 
 #: templates/dashboard.php:11
 msgid "Your affiliate account is not active"
-msgstr "Ձեր գործընկերոջ հաշիվը ակտիվ չե"
+msgstr ""
 
 #: templates/dashboard.php:15
 msgid "Your affiliate account request has been rejected"
-msgstr "Ձեր գործընկերոջ հաշվի բացման դիմումը մերժված է"
+msgstr ""
 
 #: templates/dashboard.php:25
 msgid "Your affiliate profile has been updated"
-msgstr "Ձեր գործընկերոջ հաշիվը թարմացված է"
+msgstr ""
 
 #: templates/dashboard.php:33
-#, fuzzy
 msgid "Affiliate URLs"
-msgstr "Գործընկերներ"
+msgstr ""
 
 #: templates/dashboard.php:39
 msgid "Graphs"
@@ -3092,39 +2795,39 @@ msgstr ""
 
 #: templates/login.php:10
 msgid "Log into Your Account"
-msgstr "Մուտք Ձեր հաշիվ"
+msgstr ""
 
 #: templates/login.php:20 templates/register.php:78
 msgid "Password"
-msgstr "Գաղտնաբառ"
+msgstr ""
 
 #: templates/login.php:26
 msgid "Remember Me"
-msgstr "Հիշել ինձ"
+msgstr ""
 
 #: templates/login.php:34
 msgid "Login"
-msgstr "Մուտք"
+msgstr ""
 
 #: templates/login.php:38
 msgid "Lost Password?"
-msgstr "Մոռացել եք գաղտնաբառը՞"
+msgstr ""
 
 #: templates/no-access.php:1
 msgid "The affiliate area is available only for registered affiliates."
-msgstr "Գերծընկերոջ աշխատասենյակը հասանելի է միայն գրանցված գործընկերներին:"
+msgstr ""
 
 #: templates/register.php:36
 msgid "Register a New Affiliate Account"
-msgstr "Գրանցել նոր գործընկերոջ հաշիվ"
+msgstr ""
 
 #: templates/register.php:43 templates/register.php:44
 msgid "Your Name"
-msgstr "Ձեր անունը"
+msgstr ""
 
 #: templates/register.php:62
 msgid "Payment Email Address"
-msgstr "Վճարային էլ. հասցե"
+msgstr ""
 
 #: templates/register.php:71
 msgid "How will you promote us?"
@@ -3132,16 +2835,15 @@ msgstr ""
 
 #: templates/register.php:83
 msgid "Confirm Password"
-msgstr "Հաստատե՛ք գաղտնաբառը"
+msgstr ""
 
 #: templates/register.php:96
 msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
 msgstr ""
-"Համաձայնեք մեր <a href=\"%s\" target=\"_blank\">Գործածման պայմաններին</a>"
 
 #: templates/register.php:108
 msgid "Register"
-msgstr "Գրանցում"
+msgstr ""
 
 #. Description of the plugin/theme
 msgid "Affiliate Plugin for WordPress"
@@ -3156,141 +2858,3 @@ msgstr ""
 msgctxt "Creative ID, creative name"
 msgid "Creative ID #%d: %s"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Congratulations"
-#~ msgstr ""
-#~ "Շնորհավորու՛մ ենք %s!\n"
-#~ "\n"
-
-#, fuzzy
-#~ msgid "AffiliateWP"
-#~ msgstr "Գործընկեր"
-
-#~ msgid "Euros (&euro;)"
-#~ msgstr "Եվրո (&euro;)"
-
-#~ msgid "Korean Won (&#8361;)"
-#~ msgstr "Կորեական վոն (&#8361;)"
-
-#~ msgid "Iranian Rial (&#65020;)"
-#~ msgstr "Իրանական րիալ (&#65020;)"
-
-#~ msgid "Coupon Code Tracking"
-#~ msgstr "Կտրոնի կոդի հետաքննություն"
-
-#~ msgid ""
-#~ "Affiliate coupon tracking has been one of the most requested features, "
-#~ "and one we are thrilled to introduce with version 1.1."
-#~ msgstr ""
-#~ "Գործընկերոջ կտրոնի հետաքննությունը ամենապահանջված ֆունկցիաներից էր և մենք "
-#~ "ուրախ ենք այն ներմուծելու համար 1.1 տարբերակում"
-
-#~ msgid ""
-#~ "This allows you to connect a coupon code to a specific affiliate so the "
-#~ "affiliate is credited a referral anytime the coupon is redeemed."
-#~ msgstr ""
-#~ "Սա Ձեզ հնարավորություն է տալիս կտրոնի կոդը կցել որևե գործընկերոջ, որի "
-#~ "միջոցով գործընկերը կպարգևատրվի ամեն անգամ երբ կտրոնը կօգտագործվի:"
-
-#~ msgid ""
-#~ "For version 1.1, we have included coupon code tracking support for Easy "
-#~ "Digital Downloads, WooCommerce, and Restrict Content Pro. More "
-#~ "integrations will get added soon."
-#~ msgstr ""
-#~ "1.1 տարբերակի համար մենք ներառել ենք Easy Digital Downloads-ի, "
-#~ "WooCommerce-ի և Restrict Content Pro-ի համար կտրոնների կոդերի հետևման "
-#~ "հնարավորություն: Շուտով կավելացվեն հավելյալ ինտեգրացիաներ:"
-
-#~ msgid "Minimum Earnings for Affiliate Payout"
-#~ msgstr "Գործընկերոջ եկամուտների դուրսգրման համար նվազագույն շեմ"
-
-#~ msgid ""
-#~ "With the minimum amount option, you can set the minimum amount that "
-#~ "affiliates need to have earned before their referrals are included in the "
-#~ "payout."
-#~ msgstr ""
-#~ "Նվազագույն քանակի կարգավորման միջոցով դուք կարող եք սահմանել այն "
-#~ "նվազագույն եկամուտի չափը, որը վաստակելու դեպքում միայն գործընկերների "
-#~ "դուսգրված եկամուտներում կներառվեն իրենց ռեֆերալները:"
-
-#~ msgid ""
-#~ "This is great for sites that want to keep the affiliate system locked "
-#~ "down to serious affiliates."
-#~ msgstr ""
-#~ "Սա օգտակար է այն կայքերին, որոնք ցանկանում են պահպանել իրենց "
-#~ "համագործակցության համակարգը հասանելի միայն լուրջ գործընկերների:"
-
-#~ msgid "Affiliate Registration Graph"
-#~ msgstr "Գործընկերների գրանցման գրաֆիկ"
-
-#~ msgid ""
-#~ "A new section has been added to the Reports page that lets you see "
-#~ "affiliate registrations over time."
-#~ msgstr ""
-#~ "Հաշվետվությունների էջում ավելացվել է նոր բաժին, որը հնարավորություն է "
-#~ "տալիս տեսնել գերծընկերների գրանցման պատմությունը:"
-
-#~ msgid "Auto Register Users as Affiliates"
-#~ msgstr "Ավտոմատ կերպով օգտագործողների գրանցում, որպես գործընկեր"
-
-#~ msgid ""
-#~ "We have introduced a new option to automatically register new WordPress "
-#~ "users as affiliates when their user accounts are created."
-#~ msgstr ""
-#~ "Արդեն հնարավոր է WordPress-ի նոր օգտագործողների ավտոմատ կերպով գրանցումը "
-#~ "որպես գերծընկեր, երբ նրանք ստեղծում են իրենց հաշիվը:"
-
-#~ msgid ""
-#~ "The Overview page now has a new widget that shows your top 5 most "
-#~ "valuable affiliates, based on earnings."
-#~ msgstr ""
-#~ "Ակնարկի էջն արդեն ունի նոր վիդջեթ, որը ցույց է տալիս Ձեր 5 առաջադեմ "
-#~ "գործընկերներին, հիմք ընդունելով եկամուտները:"
-
-#~ msgid "Shortcode to Affiliate-only Content"
-#~ msgstr "Միայն գործընկերներին տեսանելի նյութի շորթկոդ (Shortcode)"
-
-#~ msgid ""
-#~ "We have added a new shortcode that lets you show specific content to "
-#~ "logged-in affiliates only."
-#~ msgstr ""
-#~ "Մենք ներմուծել ենք նոր շորթկոդ, որը հնարավորություն է տալիս ցուցադրել "
-#~ "որոշակի նյութը միայն մուտք գործած գործընկերներին:"
-
-#~ msgid "Custom Cookie Expiration Option"
-#~ msgstr ""
-#~ "Բուլկիների ժամկետանցման ըստ նախընտրության կարգավորում (Cookie Expiration)"
-
-#~ msgid ""
-#~ "The expiration time for the affiliate tracking cookies can now be set "
-#~ "from the Settings page."
-#~ msgstr ""
-#~ "Գործընկերների հետևման «բլիթների» գործողության ժամկետն այսուհետ կարելի է "
-#~ "փոփոխել կարգավորումների էջից:"
-
-#~ msgid "More Actions"
-#~ msgstr "Հավելյալ գործողություններ"
-
-#~ msgid ""
-#~ "Numerous new action and filter hooks have been added to make AffiliateWP "
-#~ "even more developer friendly."
-#~ msgstr ""
-#~ "AffiliateWP-ն ծրագրավորողների համար ավելի հարմար դարձնելու նպատակով "
-#~ "ավելացվել են բազմաթիվ նոր action և filter hook-եր:"
-
-#~ msgid ""
-#~ "The affiliate's referral rate. If left blank, the site default will be "
-#~ "used."
-#~ msgstr ""
-#~ "Գործընկերոջ ռեֆերալի տոկոսադրույքը: Դատարկ թողնելու դեպքում կօգտագործվի "
-#~ "կայքի նախնական դրվածքը:"
-
-#~ msgid "Affiliates Pro"
-#~ msgstr "Գործընկերներ-Պրոֆեսիոնալ (Affiliates Pro)"
-
-#~ msgid "Payment Email (if different)"
-#~ msgstr "Վճարային էլ. հասցե (եթե տարբերվում է)"
-
-#~ msgid "Referrals Over Time"
-#~ msgstr "Ողջ ժամանակահատվածի ռեֆերալները"
