@@ -95,7 +95,13 @@ jQuery(document).ready( function($) {
         for(var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
+
+            var key = typeof hash[1] == 'undefined' ? 0 : 1;
+
+            // Remove fragment identifiers
+            var n = hash[key].indexOf('#');
+            hash[key] = hash[key].substring(0, n != -1 ? n : hash[key].length);
+            vars[hash[0]] = hash[key];
         }
         return vars;
     }

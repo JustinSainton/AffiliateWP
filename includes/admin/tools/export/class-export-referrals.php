@@ -58,14 +58,15 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 	 */
 	public function csv_cols() {
 		$cols = array(
-			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
-			'email'        => __( 'Email', 'affiliate-wp' ),
-			'amount'       => __( 'Amount', 'affiliate-wp' ),
-			'currency'     => __( 'Currency', 'affiliate-wp' ),
-			'reference'    => __( 'Reference', 'affiliate-wp' ),
-			'context'      => __( 'Context', 'affiliate-wp' ),
-			'status'       => __( 'Status', 'affiliate-wp' ),
-			'date'         => __( 'Date', 'affiliate-wp' )
+			'affiliate_id'  => __( 'Affiliate ID', 'affiliate-wp' ),
+			'email'         => __( 'Email', 'affiliate-wp' ),
+			'payment_email' => __( 'Payment Email', 'affiliate-wp' ),
+			'amount'        => __( 'Amount', 'affiliate-wp' ),
+			'currency'      => __( 'Currency', 'affiliate-wp' ),
+			'reference'     => __( 'Reference', 'affiliate-wp' ),
+			'context'       => __( 'Context', 'affiliate-wp' ),
+			'status'        => __( 'Status', 'affiliate-wp' ),
+			'date'          => __( 'Date', 'affiliate-wp' )
 		);
 		return $cols;
 	}
@@ -96,14 +97,15 @@ class Affiliate_WP_Referral_Export extends Affiliate_WP_Export {
 			foreach( $referrals as $referral ) {
 
 				$data[] = array(
-					'affiliate_id' => $referral->affiliate_id,
-					'email'        => affwp_get_affiliate_email( $referral->affiliate_id ),
-					'amount'       => $referral->amount,
-					'currency'     => $referral->currency,
-					'reference'    => $referral->reference,
-					'context'      => $referral->context,
-					'status'       => $referral->status,
-					'date'         => $referral->date,
+					'affiliate_id'  => $referral->affiliate_id,
+					'email'         => affwp_get_affiliate_email( $referral->affiliate_id ),
+					'payment_email' => affwp_get_affiliate_payment_email( $referral->affiliate_id ),
+					'amount'        => $referral->amount,
+					'currency'      => $referral->currency,
+					'reference'     => $referral->reference,
+					'context'       => $referral->context,
+					'status'        => $referral->status,
+					'date'          => $referral->date,
 				);
 
 			}

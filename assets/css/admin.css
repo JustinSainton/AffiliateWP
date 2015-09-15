@@ -66,10 +66,29 @@ table.affwp_table td a {
 #affwp-dashboard-widgets-wrap .postbox h3 {
 	cursor: default;
 }
+#affwp-dashboard-widgets-wrap .muted {
+	color: #999;
+}
 
 /* Affiliate Overview */
 #affwp-dashboard-widgets-wrap .postbox {
 	margin: 0 8px 20px;
+}
+
+/* Creatives */
+#affwp_add_creative table,
+#affwp_edit_creative table {
+    table-layout: fixed;
+}
+
+#preview_image {
+    margin: 15px 0;
+}
+
+#preview_image img {
+    height: auto;
+    display: block;
+    max-width: 100%;
 }
 
 /* Review page */
@@ -183,6 +202,7 @@ table.affwp_table td a {
 	right: 5px;
 	top: 2px;
 }
+
 /* Media Queries */
 @media screen and ( max-width: 782px ) {
 	#affwp-affiliates-filter .column-affiliate_id,

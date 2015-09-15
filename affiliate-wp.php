@@ -5,7 +5,7 @@
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
  * Author URI: http://affiliatewp.com
- * Version: 1.6.5
+ * Version: 1.7
  * Text Domain: affiliate-wp
  * Domain Path: languages
  *
@@ -24,7 +24,7 @@
  * @package AffiliateWP
  * @category Core
  * @author Pippin Williamson
- * @version 1.6.5
+ * @version 1.7
  */
 
 // Exit if accessed directly
@@ -51,7 +51,7 @@ final class Affiliate_WP {
 	 *
 	 * @since 1.0
 	 */
-	private $version = '1.6.5';
+	private $version = '1.7';
 
 	/**
 	 * The affiliates DB instance variable.
@@ -175,6 +175,15 @@ final class Affiliate_WP {
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Affiliate_WP ) ) {
 			self::$instance = new Affiliate_WP;
+
+			if( version_compare( PHP_VERSION, '5.3', '<' ) ) {
+
+				add_action( 'admin_notices', array( 'Affiliate_WP', 'below_php_version_notice' ) );
+
+				return self::$instance;
+
+			}
+
 			self::$instance->setup_constants();
 			self::$instance->includes();
 
@@ -209,6 +218,17 @@ final class Affiliate_WP {
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
 		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'affiliate-wp' ), '1.0' );
+	}
+
+	/**
+	 * Show a warning to sites running PHP < 5.3
+	 *
+	 * @access private
+	 * @since 1.0
+	 * @return void
+	 */
+	public function below_php_version_notice() {
+		echo '<div class="error"><p>' . __( 'Your version of PHP is below the minimum version of PHP required by AffiliateWP. Please contact your host and request that your version be upgraded to 5.3 or later.', 'affiliate-wp' ) . '</p></div>';
 	}
 
 	/**
@@ -278,12 +298,9 @@ final class Affiliate_WP {
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/plugins.php';
 			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/tools/class-migrate.php';
 
-		} else {
-
-			require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
-
 		}
 
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-shortcodes.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/class-affwp-emails.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/functions.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/emails/actions.php';
@@ -346,7 +363,7 @@ final class Affiliate_WP {
 	 */
 	private function updater() {
 
-		if( ! is_admin() ) {
+		if( ! is_admin() || ! class_exists( 'AFFWP_Plugin_Updater' ) ) {
 			return;
 		}
 

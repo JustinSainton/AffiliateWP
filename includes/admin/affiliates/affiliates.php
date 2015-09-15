@@ -13,25 +13,35 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/screen-options.php';
+
 function affwp_affiliates_admin() {
 
-	if ( isset( $_GET['action'] ) && 'view_affiliate' == $_GET['action'] ) {
+	$action = null;
+
+	if ( isset( $_GET['action2'] ) && '-1' !== $_GET['action2'] ) {
+		$action = $_GET['action2'];
+	} elseif ( isset( $_GET['action'] ) && '-1' !== $_GET['action'] ) {
+		$action = $_GET['action'];
+	}
+
+	if ( 'view_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/view.php';
 
-	} else if ( isset( $_GET['action'] ) && 'add_affiliate' == $_GET['action'] ) {
+	} elseif ( 'add_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/new.php';
 
-	} else if ( isset( $_GET['action'] ) && 'edit_affiliate' == $_GET['action'] ) {
+	} elseif ( 'edit_affiliate' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/edit.php';
 
-	} else if ( isset( $_GET['action'] ) && 'review_affiliate' == $_GET['action'] ) {
-		
+	} elseif ( 'review_affiliate' === $action ) {
+
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/review.php';
 
-	} else if( isset( $_GET['action'] ) && 'delete' == $_GET['action'] ) {
+	} elseif ( 'delete' === $action ) {
 
 		include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/affiliates/delete.php';
 
@@ -76,7 +86,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 class AffWP_Affiliates_Table extends WP_List_Table {
 
 	/**
-	 * Number of results to show per page
+	 * Default number of items to show per page
 	 *
 	 * @var string
 	 * @since 1.0
@@ -84,15 +94,15 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of affiliates found
 	 *
-	 * Total number of affiliates
-	 * @var string
+	 * @var int
 	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of affiliates
+	 * Number of active affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -100,7 +110,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $active_count;
 
 	/**
-	 * Inactive number of affiliates
+	 *  Number of inactive affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -108,7 +118,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $inactive_count;
 
 	/**
-	 * Pending number of affiliates
+	 * Number of pending affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -116,7 +126,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	public $pending_count;
 
 	/**
-	 * Rejected number of affiliates
+	 * Number of rejected affiliates found
 	 *
 	 * @var string
 	 * @since 1.0
@@ -274,7 +284,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$base         = admin_url( 'admin.php?page=affiliate-wp&affiliate_id=' . $affiliate->affiliate_id );
 		$row_actions  = array();
 		$name         = affiliate_wp()->affiliates->get_affiliate_name( $affiliate->affiliate_id );
-		
+
 		if( $name ) {
 			$name = sprintf( '<a href="%s">%s</a>', get_edit_user_link( $affiliate->user_id ), $name );
 		} else {
@@ -293,7 +303,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return string Displays a checkbox
 	 */
 	function column_cb( $affiliate ) {
-		return '<input type="checkbox" name="affiliate_id[]" value="' . $affiliate->affiliate_id . '" />';
+		return '<input type="checkbox" name="affiliate_id[]" value="' . absint( $affiliate->affiliate_id ) . '" />';
 	}
 
 	/**
@@ -481,9 +491,11 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$order   = isset( $_GET['order'] )    ? $_GET['order']           : 'DESC';
 		$orderby = isset( $_GET['orderby'] )  ? $_GET['orderby']         : 'affiliate_id';
 
+		$per_page = $this->get_items_per_page( 'affwp_edit_affiliates_per_page', $this->per_page );
+
 		$affiliates   = affiliate_wp()->affiliates->get_affiliates( array(
-			'number'  => $this->per_page,
-			'offset'  => $this->per_page * ( $page - 1 ),
+			'number'  => $per_page,
+			'offset'  => $per_page * ( $page - 1 ),
 			'status'  => $status,
 			'search'  => $search,
 			'orderby' => sanitize_text_field( $orderby ),
@@ -506,7 +518,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function prepare_items() {
-		$per_page = $this->per_page;
+		$per_page = $this->get_items_per_page( 'affwp_edit_affiliates_per_page', $this->per_page );
 
 		$columns = $this->get_columns();
 

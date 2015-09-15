@@ -37,9 +37,9 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 	 */
 	public function csv_cols() {
 		$cols = array(
-			'email'    => __( 'Email', 'affiliate-wp' ),
-			'amount'   => __( 'Amount', 'affiliate-wp' ),
-			'currency' => __( 'Currency', 'affiliate-wp' ),
+			'email'         => __( 'Email', 'affiliate-wp' ),
+			'amount'        => __( 'Amount', 'affiliate-wp' ),
+			'currency'      => __( 'Currency', 'affiliate-wp' ),
 		);
 		return $cols;
 	}
@@ -88,10 +88,8 @@ class Affiliate_WP_Referral_Payout_Export extends Affiliate_WP_Referral_Export {
 
 				} else {
 
-					$email = affwp_get_affiliate_email( $referral->affiliate_id );
-
 					$data[ $referral->affiliate_id ] = array(
-						'email'    => $email,
+						'email'    => affwp_get_affiliate_payment_email( $referral->affiliate_id ),
 						'amount'   => $referral->amount,
 						'currency' => ! empty( $referral->currency ) ? $referral->currency : affwp_get_currency()
 					);
