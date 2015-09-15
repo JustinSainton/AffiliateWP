@@ -275,7 +275,7 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			</th>
 			<td>
 				<input name="affwp_rcp_level_rate" id="rcp-affiliate-rate" style="width:40px" type="number" min="0"/>
-				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'rcp' ); ?></p>
+				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'affiliate-wp' ); ?></p>
 			</td>
 		</tr>
 <?php
@@ -297,7 +297,7 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 			</th>
 			<td>
 				<input name="affwp_rcp_level_rate" id="rcp-affiliate-rate" style="width:40px" type="number" min="0" value="<?php echo esc_attr( $rate ); ?>"/>
-				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'rcp' ); ?></p>
+				<p class="description"><?php _e( 'This rate will be used to calculate affiliate earnings when members subscribe to this level. Leave blank to use the site default referral rate.', 'affiliate-wp' ); ?></p>
 			</td>
 		</tr>
 <?php
