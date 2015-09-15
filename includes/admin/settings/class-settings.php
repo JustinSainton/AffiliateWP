@@ -350,6 +350,11 @@ class Affiliate_WP_Settings {
 						'desc' => '<p class="description">' . sprintf( __( 'Show pretty affiliate referrals to affiliates. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ) . '</p>',
 						'type' => 'checkbox'
 					),
+					'referral_credit_last' => array(
+						'name' => __( 'Credit Last Referrer', 'affiliate-wp' ),
+						'desc' => '<p class="description">' . __( 'Credit the last affiliate who referred the customer.', 'affiliate-wp' ) . '</p>',
+						'type' => 'checkbox'
+					),
 					'referral_rate_type' => array(
 						'name' => __( 'Referral Rate Type', 'affiliate-wp' ),
 						'desc' => '<p class="description">' . __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ) . '</p>',
