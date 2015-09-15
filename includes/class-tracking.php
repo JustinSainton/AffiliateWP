@@ -539,12 +539,11 @@ class Affiliate_WP_Tracking {
 		}
 
 		$is_self = is_user_logged_in() && get_current_user_id() == affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+		$active  = 'active' === affwp_get_affiliate_status( $affiliate_id );
+		$valid   = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
+		$ret     = $valid && ! $is_self && $active;
 
-		$active = 'active' === affwp_get_affiliate_status( $affiliate_id );
-
-		$valid  = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
-
-		return $valid && ! $is_self && $active;
+		return apply_filters( 'affwp_tracking_is_valid_affiliate', $ret, $affiliate_id );
 	}
 
 	/**
