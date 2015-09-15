@@ -931,8 +931,8 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 		$base_url = affwp_get_affiliate_base_url();
 	}
 
-	// add trailing slash only if no query string exists
-	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) ) {
+	// add trailing slash only if no query string exists and there's no fragment identifier
+	if ( isset( $args['base_url'] ) && ! array_key_exists( 'query', parse_url( $base_url ) ) && ! array_key_exists( 'fragment', parse_url( $base_url ) ) ) {
 		$base_url = trailingslashit( $args['base_url'] );
 	}
 
