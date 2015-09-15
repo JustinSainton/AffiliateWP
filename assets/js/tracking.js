@@ -87,10 +87,12 @@ jQuery(document).ready( function($) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
 
+            var key = typeof hash[1] == 'undefined' ? 0 : 1;
+
             // Remove fragment identifiers
-            var n = hash[1].indexOf('#');
-            hash[1] = hash[1].substring(0, n != -1 ? n : hash[1].length);
-            vars[hash[0]] = hash[1];
+            var n = hash[key].indexOf('#');
+            hash[key] = hash[key].substring(0, n != -1 ? n : hash[key].length);
+            vars[hash[0]] = hash[key];
         }
         return vars;
     }
