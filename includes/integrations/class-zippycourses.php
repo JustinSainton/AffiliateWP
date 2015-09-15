@@ -6,7 +6,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * The order object
      *
      * @access  private
-     * @since   1.1
+     * @since   1.7
     */
     private $order;
 
@@ -14,7 +14,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * Setup actions and filters
      *
      * @access  public
-     * @since   1.0
+     * @since   1.7
     */
     public function init() {
 
@@ -30,6 +30,12 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
     }
 
+    /**
+     * Register product settings metabox
+     *
+     * @access  public
+     * @since   1.7
+    */
     public function metabox() {   
         add_meta_box( 'zippy-affiliate-wp', __( 'Affiliate Settings', 'affiliate-wp' ), array($this, 'product_settings_mb'), 'product', 'side', 'default' );
     }
@@ -129,7 +135,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * Store a pending referral when a new order is created
      *
      * @access  public
-     * @since   1.0
+     * @since   1.7
     */
     public function add_pending_referral( Zippy_Event $event ) {
 
@@ -162,7 +168,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * Mark referral as complete when payment is completed
      *
      * @access  public
-     * @since   1.0
+     * @since   1.7
     */
     public function mark_referral_complete( Zippy_Event $event ) {
 
@@ -195,7 +201,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
      * Revoke the referral when the order is refunded
      *
      * @access  public
-     * @since   1.0
+     * @since   1.7
     */
     public function revoke_referral_on_refund( Zippy_Event $event ) {
 
