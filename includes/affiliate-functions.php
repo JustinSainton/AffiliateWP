@@ -782,7 +782,7 @@ function affwp_get_affiliate_campaigns( $affiliate ) {
 		return false;
 	}
 
-	$campaigns = affiliate_wp()->visits->get_campaigns( $affiliate_id );	
+	$campaigns = affiliate_wp()->campaigns->get_campaigns( $affiliate_id );	
 
 	return apply_filters( 'affwp_get_affiliate_campaigns', $campaigns, $affiliate_id );
 

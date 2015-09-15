@@ -78,6 +78,14 @@ final class Affiliate_WP {
 	public $referrals;
 
 	/**
+	 * The campaigns instance variable.
+	 *
+	 * @var Affiliate_WP_Campaigns_DB
+	 * @since 1.7
+	 */
+	public $campaigns;
+
+	/**
 	 * The visits DB instance variable
 	 *
 	 * @var Affiliate_WP_Visits_DB
@@ -273,6 +281,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/admin/settings/class-settings.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-affiliates-db.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-campaigns-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-capabilities.php';
 
 		if( is_admin() ) {
@@ -340,6 +349,7 @@ final class Affiliate_WP {
 		self::$instance->affiliates     = new Affiliate_WP_DB_Affiliates;
 		self::$instance->affiliate_meta = new Affiliate_WP_Affiliate_Meta_DB;
 		self::$instance->referrals      = new Affiliate_WP_Referrals_DB;
+		self::$instance->campaigns      = new Affiliate_WP_Campaigns_DB;
 		self::$instance->visits         = new Affiliate_WP_Visits_DB;
 		self::$instance->settings       = new Affiliate_WP_Settings;
 		self::$instance->tracking       = new Affiliate_WP_Tracking;

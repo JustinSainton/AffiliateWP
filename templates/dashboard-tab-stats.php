@@ -55,9 +55,9 @@
 			<tr>
 				<th><?php _e( 'Campaign', 'affiliate-wp' ); ?></th>
 				<th><?php _e( 'Visits', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Unique Visits', 'affiliate-wp' ); ?></th>
 				<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 				<th><?php _e( 'Conversion Rate', 'affiliate-wp' ); ?></th>
-				<th><?php _e( 'Total Value', 'affiliate-wp' ); ?></th>
 			</tr>
 		</thead>
 
@@ -65,12 +65,16 @@
 			<?php if( $campaigns = affwp_get_affiliate_campaigns( affwp_get_affiliate_id() ) ) : ?>
 				<?php foreach( $campaigns as $campaign ) : ?>
 					<tr>
-						<td></td>
+						<td><?php echo esc_html( $campaign->campaign ); ?></td>
+						<td><?php echo esc_html( $campaign->visits ); ?></td>
+						<td><?php echo esc_html( $campaign->unique_visits ); ?></td>
+						<td><?php echo esc_html( $campaign->referrals ); ?></td>
+						<td><?php echo esc_html( affwp_format_amount( $campaign->conversion_rate ) ); ?>%</td>
 					</tr>
 				<?php endforeach; ?>
 			<?php else : ?>
 				<tr>
-					<td colspan="5"><?php _e( 'You have no referrals or visits that included a campaign name', 'affiliate-wp' ); ?></td>
+					<td colspan="5"><?php _e( 'You have no referrals or visits that included a campaign name.', 'affiliate-wp' ); ?></td>
 				</tr>
 			<?php endif; ?>
 		</tbody>

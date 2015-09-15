@@ -115,6 +115,7 @@ class Affiliate_WP_Upgrades {
 
 		@affiliate_wp()->referrals->create_table();
 		@affiliate_wp()->visits->create_table();
+		@affiliate_wp()->campaigns->create_view();
 
 		$this->v17_upgrade_gforms();
 
