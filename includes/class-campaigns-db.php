@@ -83,18 +83,28 @@ class Affiliate_WP_Campaigns_DB extends Affiliate_WP_DB {
 	 * @since  1.7
 	 */
 	public function create_view() {
+
+		global $wpdb;
+
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-		$sql = "CREATE OR REPLACE VIEW {$this->table_name} AS
+		if( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) {
+			// Allows a single visits table for the whole network
+			$visits_db  = 'affiliate_wp_visits';
+		} else {
+			$visits_db  = $wpdb->prefix . 'affiliate_wp_visits';
+		}
+
+		$sql = "CREATE OR REPLACE VIEW $this->table_name AS
 				SELECT affiliate_id,
 					campaign,
 					COUNT(url) as visits,
 					COUNT(DISTINCT url) as unique_visits,
 					SUM(IF(referral_id<>0,1,0)) as referrals,
 					ROUND((SUM(IF(referral_id<>0,1,0))/COUNT(url)) * 100, 2) as conversion_rate
-				FROM {$this->table_name} GROUP BY affiliate_id, campaign;";
+				FROM $visits_db GROUP BY affiliate_id, campaign;";
 
-		dbDelta( $sql );
+		$wpdb->query( $sql );
 
 		update_option( $this->table_name . '_db_version', $this->version );
 	}
