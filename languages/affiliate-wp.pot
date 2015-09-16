@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP 1.7\n"
 "Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
-"POT-Creation-Date: 2015-09-15 21:46:52+00:00\n"
+"POT-Creation-Date: 2015-09-16 19:51:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -100,7 +100,7 @@ msgid "No affiliate IDs specified for deletion"
 msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:54 includes/admin/class-menu.php:11
-#: includes/admin/class-menu.php:13 includes/admin/class-welcome.php:289
+#: includes/admin/class-menu.php:13 includes/admin/class-welcome.php:298
 msgid "Affiliates"
 msgstr ""
 
@@ -185,7 +185,7 @@ msgid "Paid Referrals"
 msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:226
-#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
+#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:308
 #: includes/admin/overview/overview.php:170
 #: includes/admin/reports/reports.php:66 includes/admin/reports/reports.php:185
 #: includes/admin/tools/export/class-export-affiliates.php:55
@@ -491,7 +491,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:294
+#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:303
 #: includes/admin/overview/overview.php:169
 #: includes/admin/referrals/referrals.php:35
 #: includes/admin/reports/reports.php:65
@@ -659,163 +659,197 @@ msgstr ""
 msgid "Welcome to AffiliateWP v%s"
 msgstr ""
 
-#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:237
+#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:246
 msgid ""
 "Thank you for installing AffiliateWP v%s. The best affiliate marketing "
 "plugin for WordPress."
 msgstr ""
 
-#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:238
-#: includes/admin/class-welcome.php:334
+#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:247
+#: includes/admin/class-welcome.php:343
 msgid "Version %s"
 msgstr ""
 
 #: includes/admin/class-welcome.php:179
-msgid "New integrations"
+msgid "New Integrations"
 msgstr ""
 
 #: includes/admin/class-welcome.php:180
 msgid ""
 "To make AffiliateWP more accessible and more valuable to more users, we "
-"have added four new integrations:"
+"have added three new integrations:"
 msgstr ""
 
-#: includes/admin/class-welcome.php:189
-msgid "Configurable emails"
+#: includes/admin/class-welcome.php:188
+msgid "Improved Integrations"
 msgstr ""
 
 #: includes/admin/class-welcome.php:191
-msgid ""
-"With version 1.6, we have introduced a new tab in the Settings page that "
-"allows you to configure all emails that get sent out to affiliates when "
-"they register for an account or earn a new referral."
+msgid "Per-Membership commission rates are now supported in Restrict Content Pro"
 msgstr ""
 
 #: includes/admin/class-welcome.php:192
-msgid ""
-"All emails are sent in beautiful HTML templates that can be easily edited "
-"at anytime. These template files can be copied to your theme's "
-"\"affiliatewp/emails\" folder to give you complete control over the "
-"appearance of the emails."
+msgid "Per-Membership commission rates are now supported in MemberPress"
+msgstr ""
+
+#: includes/admin/class-welcome.php:193
+msgid "Commissions can be disabled on individual forms in Gravity Forms"
 msgstr ""
 
 #: includes/admin/class-welcome.php:194
-msgid "Fine-tuned control over how referral URLs appear to affiliates"
+msgid "Commissions can be disabled on individual forms in Ninja Forms"
 msgstr ""
 
 #: includes/admin/class-welcome.php:195
 msgid ""
-"Your affiliates can already promote your website using a wide variety of <a "
-"href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" "
-"target=\"_blank\">Affiliate URLs</a>. Admins now have much more control "
-"over how these referral URLs appear to affiliates on the front-end of your "
-"website. You can set a <strong>Default Referral Format</strong> (ID or "
-"username) and choose whether or not to show <strong>Pretty Affiliate "
-"URLs</strong> to your affiliates."
+"Affiliate commissions are now shown on the order details screens in Paid "
+"Memberships Pro"
 msgstr ""
 
-#: includes/admin/class-welcome.php:197
-msgid "Additional Updates"
+#: includes/admin/class-welcome.php:198
+msgid "URL Campaign Tracking"
 msgstr ""
 
 #: includes/admin/class-welcome.php:199
-msgid "Affiliate Export Improvements"
+msgid ""
+"Affiliates can now include URL campaign parameters in their affiliate URLs "
+"and have them automatically tracked by AffiliateWP. A new Campaigns table "
+"has been added to the Statistics tab of the affiliate area to show "
+"affiliates the results of their URL campaigns."
 msgstr ""
 
-#: includes/admin/class-welcome.php:200
-msgid ""
-"The affiliate's username is now included in the exported affiliate .csv "
-"file."
+#: includes/admin/class-welcome.php:201
+msgid "Affiliate Rejection Reasons"
 msgstr ""
 
 #: includes/admin/class-welcome.php:202
-msgid "New Affiliate Meta Class"
+msgid ""
+"When rejecting affiliate accounts, a rejection reason can be provided that "
+"is then (optionally) emailed to the affiliate and recorded for future "
+"reference."
 msgstr ""
 
-#: includes/admin/class-welcome.php:203
-msgid ""
-"We've introduced a new metadata API for afiliate accounts that provides "
-"developers with a powerful tool for tracking affiliate-specific data."
+#: includes/admin/class-welcome.php:204
+msgid "reCaptcha v2.0"
 msgstr ""
 
 #: includes/admin/class-welcome.php:205
-msgid "Creative Improvements"
-msgstr ""
-
-#: includes/admin/class-welcome.php:206
 msgid ""
-"We've made improvements to the way creatives are shown. The description is "
-"now shown at the top of the creative and it's much easier for affiliates to "
-"copy the necessary code."
+"Google's reCaptcha version 2.0 library has been introduced to AffiliateWP "
+"to help protect you and your website from spam user registrations."
 msgstr ""
 
-#: includes/admin/class-welcome.php:208
-msgid "Affiliate Dashboard Improvements"
+#: includes/admin/class-welcome.php:207
+msgid "Additional Updates"
 msgstr ""
 
 #: includes/admin/class-welcome.php:209
-msgid ""
-"Pending affiliates can no longer access the affiliate dashboard until they "
-"have been approved."
+msgid "Improved User Searching"
 msgstr ""
 
-#: includes/admin/class-welcome.php:219 includes/admin/class-welcome.php:306
+#: includes/admin/class-welcome.php:210
+msgid ""
+"When creating new affiliate accounts, the search process for users in your "
+"WordPress site now return better results."
+msgstr ""
+
+#: includes/admin/class-welcome.php:212
+msgid "Per-Page Options for Admin Screens"
+msgstr ""
+
+#: includes/admin/class-welcome.php:213
+msgid ""
+"Admin pages for Affiliates, Referrals, Visits, and Creatives can have the "
+"number of items per-page configured from the Screen Options tab."
+msgstr ""
+
+#: includes/admin/class-welcome.php:215
+msgid "Disable Individual Emails"
+msgstr ""
+
+#: includes/admin/class-welcome.php:216
+msgid ""
+"New options have been introduced that allow you to pick-and-choose which "
+"email notifications AffiliateWP will send."
+msgstr ""
+
+#: includes/admin/class-welcome.php:218
+msgid "Creative Template File"
+msgstr ""
+
+#: includes/admin/class-welcome.php:219
+msgid ""
+"A new template file has been introduced for exact control over the display "
+"of creatives in the affiliate area."
+msgstr ""
+
+#: includes/admin/class-welcome.php:221
+msgid "Import Users By Role"
+msgstr ""
+
+#: includes/admin/class-welcome.php:222
+msgid ""
+"When importing existing users as affiliates, an option to import just users "
+"of a specific role is now available."
+msgstr ""
+
+#: includes/admin/class-welcome.php:228 includes/admin/class-welcome.php:315
 msgid "Go to AffiliateWP Settings"
 msgstr ""
 
-#: includes/admin/class-welcome.php:236 includes/admin/class-welcome.php:332
+#: includes/admin/class-welcome.php:245 includes/admin/class-welcome.php:341
 msgid "Welcome to AffiliateWP %s"
 msgstr ""
 
-#: includes/admin/class-welcome.php:242
+#: includes/admin/class-welcome.php:251
 msgid ""
 "Use the tips below to get started using AffiliateWP. You will be up and "
 "running in no time!"
 msgstr ""
 
-#: includes/admin/class-welcome.php:245
+#: includes/admin/class-welcome.php:254
 msgid "Overview of Affiliates and Referrals"
 msgstr ""
 
-#: includes/admin/class-welcome.php:250
+#: includes/admin/class-welcome.php:259
 msgid "The Overview Page"
 msgstr ""
 
-#: includes/admin/class-welcome.php:251
+#: includes/admin/class-welcome.php:260
 msgid ""
 "The overview page gives you a quick summary of your recent affiliate "
 "activity, including recent registrations, referrals, and visits."
 msgstr ""
 
-#: includes/admin/class-welcome.php:252
+#: includes/admin/class-welcome.php:261
 msgid "It also provides a quick summary of your affiliates' referral earnings."
 msgstr ""
 
-#: includes/admin/class-welcome.php:253
+#: includes/admin/class-welcome.php:262
 msgid ""
 "If you allow affiliate registrations, you can also easily accept or reject "
 "affiliate's applications directly from the Overview page"
 msgstr ""
 
-#: includes/admin/class-welcome.php:256
+#: includes/admin/class-welcome.php:265
 msgid "Adding Affiliates"
 msgstr ""
 
-#: includes/admin/class-welcome.php:261
+#: includes/admin/class-welcome.php:270
 msgid "Affiliates &rarr; Add New"
 msgstr ""
 
-#: includes/admin/class-welcome.php:262
+#: includes/admin/class-welcome.php:271
 msgid ""
 "From the main Affiliates page, site admins can easily add new affiliates to "
 "AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
 msgstr ""
 
-#: includes/admin/class-welcome.php:264
+#: includes/admin/class-welcome.php:273
 msgid "Affiliate Registration"
 msgstr ""
 
-#: includes/admin/class-welcome.php:265
+#: includes/admin/class-welcome.php:274
 msgid ""
 "When enabled, affiliates can register themselves via the Affiliate Area. If "
 "they already have a user account on your site, they can register by simply "
@@ -823,103 +857,103 @@ msgid ""
 "account, they have that option as well!"
 msgstr ""
 
-#: includes/admin/class-welcome.php:267
+#: includes/admin/class-welcome.php:276
 msgid "Moderate Registrations"
 msgstr ""
 
-#: includes/admin/class-welcome.php:268
+#: includes/admin/class-welcome.php:277
 msgid ""
 "Affiliate registrations can be moderated and require that a site admin "
 "approve each registration before the affiliate is permitted to begin "
 "tracking referrals."
 msgstr ""
 
-#: includes/admin/class-welcome.php:269
+#: includes/admin/class-welcome.php:278
 msgid ""
 "Each time an affiliate registers, site admins can log into the site and "
 "approve or reject the application."
 msgstr ""
 
-#: includes/admin/class-welcome.php:272
+#: includes/admin/class-welcome.php:281
 #: includes/admin/settings/class-settings.php:314 includes/install.php:26
 msgid "Affiliate Area"
 msgstr ""
 
-#: includes/admin/class-welcome.php:277
+#: includes/admin/class-welcome.php:286
 msgid "A Dashboard For Your Affiliates"
 msgstr ""
 
-#: includes/admin/class-welcome.php:278
+#: includes/admin/class-welcome.php:287
 msgid ""
 "The Affiliate Area, shown on any page containing the "
 "<em>[affiliate_area]</em> short code, gives your affiliates access to their "
 "performance reports."
 msgstr ""
 
-#: includes/admin/class-welcome.php:279
+#: includes/admin/class-welcome.php:288
 msgid ""
 "Affiliates can easily see how much they have earned, how much is awaiting "
 "payment, and even how their referral URLs have done over time."
 msgstr ""
 
-#: includes/admin/class-welcome.php:280
+#: includes/admin/class-welcome.php:289
 msgid ""
 "A log of the referral links that have been clicked and where they were "
 "clicked on from, and whether the link converted into a successful referral, "
 "is also available to affiliates."
 msgstr ""
 
-#: includes/admin/class-welcome.php:285
+#: includes/admin/class-welcome.php:294
 msgid "Quick Terminology"
 msgstr ""
 
-#: includes/admin/class-welcome.php:290
+#: includes/admin/class-welcome.php:299
 msgid ""
 "These are your best friends. They are the users that are actively promoting "
 "your products and services through referral URLs. When they create a "
 "customer for you, they get paid back in the form of a commission."
 msgstr ""
 
-#: includes/admin/class-welcome.php:295
+#: includes/admin/class-welcome.php:304
 msgid ""
 "These are the commission records created anytime an affiliate successfully "
 "sends a potential customer to your site and that customer makes a purchase."
 msgstr ""
 
-#: includes/admin/class-welcome.php:300
+#: includes/admin/class-welcome.php:309
 msgid ""
 "These are unique hits on the referral URLs shared out by your affiliates. "
 "Each time a potential customer clicks on a referral URL, a visit is "
 "recorded."
 msgstr ""
 
-#: includes/admin/class-welcome.php:310
+#: includes/admin/class-welcome.php:319
 msgid "Need Help?"
 msgstr ""
 
-#: includes/admin/class-welcome.php:313
+#: includes/admin/class-welcome.php:322
 msgid "Phenomenal Support"
 msgstr ""
 
-#: includes/admin/class-welcome.php:314
+#: includes/admin/class-welcome.php:323
 msgid ""
 "We do our best to provide the best support we can. If you encounter a "
 "problem or have a question, visit our <a "
 "href=\"http://affiliatewp.com/support\">support</a> page to open a ticket."
 msgstr ""
 
-#: includes/admin/class-welcome.php:333
+#: includes/admin/class-welcome.php:342
 msgid "Thank you for updating to the latest version!"
 msgstr ""
 
-#: includes/admin/class-welcome.php:338
+#: includes/admin/class-welcome.php:347
 msgid ""
 "AffiliateWP is created by developers from around the world that aim to "
 "provide the #1 affiliate platform for WordPress. Here are just some of the "
 "faces that have helped build AffiliateWP:"
 msgstr ""
 
-#: includes/admin/class-welcome.php:365
+#: includes/admin/class-welcome.php:374
 msgid "View %s"
 msgstr ""
 
