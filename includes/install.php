@@ -10,8 +10,8 @@ function affiliate_wp_install() {
 	$affiliate_wp_install->affiliates     = new Affiliate_WP_DB_Affiliates;
 	$affiliate_wp_install->affiliate_meta = new Affiliate_WP_Affiliate_Meta_DB;
 	$affiliate_wp_install->referrals      = new Affiliate_WP_Referrals_DB;
-	$affiliate_wp_install->campaigns      = new Affiliate_WP_Campaigns_DB;
 	$affiliate_wp_install->visits         = new Affiliate_WP_Visits_DB;
+	$affiliate_wp_install->campaigns      = new Affiliate_WP_Campaigns_DB;
 	$affiliate_wp_install->creatives      = new Affiliate_WP_Creatives_DB;
 	$affiliate_wp_install->settings       = new Affiliate_WP_Settings;
 
