@@ -86,6 +86,7 @@ abstract class Affiliate_WP_Base {
 			'amount'       => $amount,
 			'reference'    => $reference,
 			'description'  => $description,
+			'campaign'     => affiliate_wp()->tracking->get_campaign(),
 			'affiliate_id' => $this->affiliate_id,
 			'visit_id'     => $visit_id,
 			'products'     => ! empty( $products ) ? maybe_serialize( $products ) : '',

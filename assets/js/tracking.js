@@ -1,6 +1,7 @@
 jQuery(document).ready( function($) {
 
     var cookie = $.cookie( 'affwp_ref' );
+    var campaign_cookie = $.cookie( 'affwp_campaign' );
 
     var credit_last = AFFWP.referral_credit_last;
 
@@ -9,6 +10,7 @@ jQuery(document).ready( function($) {
     }
 
     var ref = affwp_get_query_vars()[AFFWP.referral_var];
+    var campaign = affwp_get_query_vars()['campaign'];
 
     if( typeof ref == 'undefined' ) {
 
@@ -36,11 +38,12 @@ jQuery(document).ready( function($) {
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 if( '1' == response.data.success ) {
+
                     if( '1' == credit_last && cookie ) {
                         $.removeCookie( 'affwp_ref' );
                     }
 
-                    affwp_track_visit( response.data.affiliate_id );
+                    affwp_track_visit( response.data.affiliate_id, campaign );
                 }
             }
 
@@ -57,12 +60,12 @@ jQuery(document).ready( function($) {
             affwp_track_visit( ref );
         } else if( '1' == credit_last && cookie ) {
             $.removeCookie( 'affwp_ref' );
-            affwp_track_visit( ref );
+            affwp_track_visit( ref, campaign );
         }
 
     }
 
-    function affwp_track_visit( affiliate_id ) {
+    function affwp_track_visit( affiliate_id, campaign ) {
 
         // Set the cookie and expire it after 24 hours
         $.cookie( 'affwp_ref', affiliate_id, { expires: AFFWP.expiration, path: '/' } );
@@ -73,12 +76,14 @@ jQuery(document).ready( function($) {
             data: {
                 action: 'affwp_track_visit',
                 affiliate: affiliate_id,
+                campaign: campaign,
                 url: document.URL,
                 referrer: document.referrer
             },
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 $.cookie( 'affwp_ref_visit_id', response, { expires: AFFWP.expiration, path: '/' } );
+                $.cookie( 'affwp_campaign', campaign, { expires: AFFWP.expiration, path: '/' } );
             }
 
         }).fail(function (response) {

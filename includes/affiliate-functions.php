@@ -766,6 +766,28 @@ function affwp_get_affiliate_conversion_rate( $affiliate ) {
 }
 
 /**
+ * Retrieves the affiliate's tracked campaigns
+ *
+ * @since 1.7
+ * @return array
+ */
+function affwp_get_affiliate_campaigns( $affiliate ) {
+
+	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
+		$affiliate_id = $affiliate->affiliate_id;
+	} elseif ( is_numeric( $affiliate ) ) {
+		$affiliate_id = absint( $affiliate );
+	} else {
+		return false;
+	}
+
+	$campaigns = affiliate_wp()->campaigns->get_campaigns( $affiliate_id );	
+
+	return apply_filters( 'affwp_get_affiliate_campaigns', $campaigns, $affiliate_id );
+
+}
+
+/**
  * Adds a new affiliate to the database
  *
  * @since 1.0
@@ -986,3 +1008,4 @@ function affwp_get_affiliate_base_url() {
 	return apply_filters( 'affwp_affiliate_referral_url_base', $base_url );
 
 }
+

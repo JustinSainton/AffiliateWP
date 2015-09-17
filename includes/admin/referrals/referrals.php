@@ -557,6 +557,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		$affiliate = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id']    : '';
 		$reference = isset( $_GET['reference'] )    ? $_GET['reference']       : '';
 		$context   = isset( $_GET['context'] )      ? $_GET['context']         : '';
+		$campaign  = isset( $_GET['campaign'] )     ? $_GET['campaign']        : '';
 		$from      = isset( $_GET['filter_from'] )  ? $_GET['filter_from']     : '';
 		$to        = isset( $_GET['filter_to'] )    ? $_GET['filter_to']       : '';
 		$order     = isset( $_GET['order'] )        ? $_GET['order']           : 'DESC';
@@ -587,6 +588,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 				$context = trim( str_replace( 'context:', '', $search ) );
 			} elseif ( strpos( $search, 'affiliate:' ) !== false ) {
 				$affiliate = absint( trim( str_replace( 'affiliate:', '', $search ) ) );
+			} elseif ( strpos( $search, 'campaign:' ) !== false ) {
+				$campaign = trim( str_replace( 'campaign:', '', $search ) );
 			}
 
 		}
@@ -601,6 +604,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'affiliate_id' => $affiliate,
 			'reference'    => $reference,
 			'context'      => $context,
+			'campaign'      => $campaign,
 			'date'         => $date,
 			'search'       => $is_search,
 			'orderby'      => sanitize_text_field( $orderby ),

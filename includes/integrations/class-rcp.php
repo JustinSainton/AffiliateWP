@@ -70,7 +70,8 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 					'reference'    => rcp_get_subscription_key( $user_id ),
 					'description'  => rcp_get_subscription( $user_id ),
 					'affiliate_id' => $this->affiliate_id,
-					'context'      => $this->context
+					'context'      => $this->context,
+					'campaign'     => affiliate_wp()->tracking->get_campaign(),
 				) );
 
 			}
