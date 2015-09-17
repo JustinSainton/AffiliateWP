@@ -55,7 +55,7 @@
 			<tr>
 				<th><?php _e( 'Campaign', 'affiliate-wp' ); ?></th>
 				<th><?php _e( 'Visits', 'affiliate-wp' ); ?></th>
-				<th><?php _e( 'Unique URLs', 'affiliate-wp' ); ?></th>
+				<th><?php _e( 'Unique Links', 'affiliate-wp' ); ?></th>
 				<th><?php _e( 'Converted', 'affiliate-wp' ); ?></th>
 				<th><?php _e( 'Conversion Rate', 'affiliate-wp' ); ?></th>
 			</tr>
