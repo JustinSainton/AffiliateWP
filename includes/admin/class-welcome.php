@@ -175,9 +175,9 @@ class Affiliate_WP_Welcome {
 			<div class="changelog">
 
 				<div class="feature-section">
-					
+
 					<h2><?php _e( 'New Integrations', 'affiliate-wp' );?></h2>
-					<p><?php _e( 'To make AffiliateWP more accessible and more valuable to more users, we have added three new integrations:', 'affiliate-wp' );?></p>
+					<p><?php _e( 'We’ve made AffiliateWP more accessible and more valuable to more users with three new integrations:', 'affiliate-wp' );?></p>
 
 					<ul>
 						<li><a href="http://docs.affiliatewp.com/article/1014-s2member" target="_blank">s2Member</a></li>
@@ -188,39 +188,39 @@ class Affiliate_WP_Welcome {
 					<h2><?php _e( 'Improved Integrations', 'affiliate-wp' );?></h2>
 
 					<ul>
-						<li><?php _e( 'Per-Membership commission rates are now supported in Restrict Content Pro', 'affiliate-wp' ); ?></li>
-						<li><?php _e( 'Per-Membership commission rates are now supported in MemberPress', 'affiliate-wp' ); ?></li>
+						<li><?php _e( 'Per-membership commission rates are now supported in Restrict Content Pro', 'affiliate-wp' ); ?></li>
+						<li><?php _e( 'Per-membership commission rates are now supported in MemberPress', 'affiliate-wp' ); ?></li>
 						<li><?php _e( 'Commissions can be disabled on individual forms in Gravity Forms', 'affiliate-wp' ); ?></li>
 						<li><?php _e( 'Commissions can be disabled on individual forms in Ninja Forms', 'affiliate-wp' ); ?></li>
 						<li><?php _e( 'Affiliate commissions are now shown on the order details screens in Paid Memberships Pro', 'affiliate-wp' ); ?></li>
 					</ul>
-				
+
 					<h2><?php _e( 'URL Campaign Tracking', 'affiliate-wp' );?></h2>
-					<p><?php _e( 'Affiliates can now include URL campaign parameters in their affiliate URLs and have them automatically tracked by AffiliateWP. A new Campaigns table has been added to the Statistics tab of the affiliate area to show affiliates the results of their URL campaigns.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'Affiliates can now include URL campaign parameters in their affiliate URLs and have them automatically tracked by AffiliateWP. A new "Campaigns" table has been added to the Statistics tab of the affiliate area to show affiliates the results of their URL campaigns.', 'affiliate-wp' );?></p>
 
 					<h2><?php _e( 'Affiliate Rejection Reasons', 'affiliate-wp' );?></h2>
 					<p><?php _e( 'When rejecting affiliate accounts, a rejection reason can be provided that is then (optionally) emailed to the affiliate and recorded for future reference.', 'affiliate-wp' );?></p>
-					
+
 					<h2><?php _e( 'reCaptcha v2.0', 'affiliate-wp' );?></h2>
 					<p><?php _e( 'Google\'s reCaptcha version 2.0 library has been introduced to AffiliateWP to help protect you and your website from spam user registrations.', 'affiliate-wp' );?></p>
 
 					<h2><?php _e( 'Additional Updates', 'affiliate-wp' );?></h2>
-	
+
 					<h4><?php _e( 'Improved User Searching', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'When creating new affiliate accounts, the search process for users in your WordPress site now return better results.', 'affiliate-wp' );?></p>
-					
+
 					<h4><?php _e( 'Per-Page Options for Admin Screens', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'Admin pages for Affiliates, Referrals, Visits, and Creatives can have the number of items per-page configured from the Screen Options tab.', 'affiliate-wp' );?></p>
-	
+
 					<h4><?php _e( 'Disable Individual Emails', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'New options have been introduced that allow you to pick-and-choose which email notifications AffiliateWP will send.', 'affiliate-wp' );?></p>
-					
+
 					<h4><?php _e( 'Creative Template File', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'A new template file has been introduced for exact control over the display of creatives in the affiliate area.', 'affiliate-wp' );?></p>
-					
+
 					<h4><?php _e( 'Import Users By Role', 'affiliate-wp' );?></h4>
 					<p><?php _e( 'When importing existing users as affiliates, an option to import just users of a specific role is now available.', 'affiliate-wp' );?></p>
-					
+
 				</div>
 			</div>
 
