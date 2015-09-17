@@ -65,7 +65,7 @@
 			<?php if( $campaigns = affwp_get_affiliate_campaigns( affwp_get_affiliate_id() ) ) : ?>
 				<?php foreach( $campaigns as $campaign ) : ?>
 					<tr>
-						<td><?php echo esc_html( $campaign->campaign ); ?></td>
+						<td><?php echo ! empty( $campaign->campaign ) ? esc_html( $campaign->campaign ) : __( 'None set', 'affiliate-wp' ); ?></td>
 						<td><?php echo esc_html( $campaign->visits ); ?></td>
 						<td><?php echo esc_html( $campaign->unique_visits ); ?></td>
 						<td><?php echo esc_html( $campaign->referrals ); ?></td>
