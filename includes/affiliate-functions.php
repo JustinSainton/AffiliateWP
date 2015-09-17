@@ -781,7 +781,7 @@ function affwp_get_affiliate_campaigns( $affiliate ) {
 		return false;
 	}
 
-	$campaigns = affiliate_wp()->campaigns->get_campaigns( $affiliate_id );	
+	$campaigns = affiliate_wp()->campaigns->get_campaigns( $affiliate_id );
 
 	return apply_filters( 'affwp_get_affiliate_campaigns', $campaigns, $affiliate_id );
 
@@ -961,25 +961,22 @@ function affwp_get_affiliate_referral_url( $args = array() ) {
 	// the format value, either affiliate's ID or username
 	$format_value = affwp_get_referral_format_value( $format, $affiliate_id );
 
+	$url_parts = parse_url( $base_url );
+
+	// if fragment identifier exists in base URL, strip it and store in variable so we can append it later
+	$fragment        = array_key_exists( 'fragment', $url_parts ) ? '#' . $url_parts['fragment'] : '';
+
 	// if query exists in base URL, strip it and store in variable so we can append to the end of the URL
-	if ( array_key_exists( 'query', parse_url( $base_url ) ) ) {
+	$query_string    = array_key_exists( 'query', $url_parts ) ? '?' . $url_parts['query'] : '';
 
-		$url_parts       = parse_url( $base_url );
-		$url_scheme      = isset( $url_parts['scheme'] ) ? $url_parts['scheme'] : 'http';
-		$url_host        = isset( $url_parts['host'] ) ? $url_parts['host'] : '';
-		$constructed_url = $url_scheme . '://' . $url_host . $url_parts['path'];
-		$base_url        = $constructed_url;
-
-		// build query string
-		$query_string =  '?' . $url_parts['query'];
-
-	} else {
-		$query_string = '';
-	}
+	$url_scheme      = isset( $url_parts['scheme'] ) ? $url_parts['scheme'] : 'http';
+	$url_host        = isset( $url_parts['host'] ) ? $url_parts['host'] : '';
+	$constructed_url = $url_scheme . '://' . $url_host . $url_parts['path'];
+	$base_url        = $constructed_url;
 
 	// set up URLs
-	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . trailingslashit( $format_value ) . $query_string;
-	$non_pretty_urls = esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format_value, $base_url . $query_string ) );
+	$pretty_urls     = trailingslashit( $base_url ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . trailingslashit( $format_value ) . $query_string . $fragment;
+	$non_pretty_urls = esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $format_value, $base_url . $query_string . $fragment ) );
 
 	if ( $pretty ) {
 		$referral_url = $pretty_urls;
@@ -1008,4 +1005,3 @@ function affwp_get_affiliate_base_url() {
 	return apply_filters( 'affwp_affiliate_referral_url_base', $base_url );
 
 }
-
