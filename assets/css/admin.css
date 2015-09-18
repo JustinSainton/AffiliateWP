@@ -29,6 +29,8 @@ table.affwp_table {
 	border: none;
 	margin: 0 0 21px;
 	border-collapse: collapse;
+    table-layout: fixed;
+    word-wrap: break-word;
 }
 table.affwp_table th,
 table.affwp_table td {
