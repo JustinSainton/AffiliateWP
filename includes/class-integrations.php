@@ -22,10 +22,13 @@ class Affiliate_WP_Integrations {
 			'ninja-forms'    => 'Ninja Forms',
 			'pmp'            => 'Paid Memberships Pro',
 			'rcp'            => 'Restrict Content Pro',
+			's2member'       => 's2Member',
 			'shopp'	         => 'Shopp',
 			'sproutinvoices' => 'Sprout Invoices',
 			'woocommerce'    => 'WooCommerce',
+			'wpeasycart'     => 'WP EasyCart',
 			'wpec'           => 'WP e-Commerce',
+			'zippycourses'   => 'Zippy Courses',
 		) );
 
 	}

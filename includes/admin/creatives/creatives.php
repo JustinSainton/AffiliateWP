@@ -13,6 +13,8 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+include AFFILIATEWP_PLUGIN_DIR . 'includes/admin/creatives/screen-options.php';
+
 function affwp_creatives_admin() {
 
 	if ( isset( $_GET['action'] ) && 'view_creative' == $_GET['action'] ) {
@@ -71,7 +73,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 class AffWP_Creatives_Table extends WP_List_Table {
 
 	/**
-	 * Number of results to show per page
+	 * Default number of items to show per page
 	 *
 	 * @var string
 	 * @since 1.2
@@ -79,15 +81,15 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	public $per_page = 30;
 
 	/**
+	 * Total number of creatives found
 	 *
-	 * Total number of creatives
-	 * @var string
-	 * @since 1.2
+	 * @var int
+	 * @since 1.0
 	 */
 	public $total_count;
 
 	/**
-	 * Active number of creatives
+	 * Number of active creatives found
 	 *
 	 * @var string
 	 * @since 1.2
@@ -95,7 +97,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	public $active_count;
 
 	/**
-	 * Inactive number of creatives
+	 * Number of inactive creatives found
 	 *
 	 * @var string
 	 * @since 1.2
@@ -314,19 +316,19 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * @return array $creatives_data Array of all the data for the Creatives
 	 */
 	public function creatives_data() {
-		
-		$page = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
-		$status  = isset( $_GET['status'] ) ? $_GET['status'] : '';
 
+		$page     = isset( $_GET['paged'] ) ? absint( $_GET['paged'] ) : 1;
+		$status   = isset( $_GET['status'] ) ? $_GET['status'] : '';
+		$per_page = $this->get_items_per_page( 'affwp_edit_creatives_per_page', $this->per_page );
 
 		$creatives = affiliate_wp()->creatives->get_creatives( array(
-			'number'  => $this->per_page,
-			'offset'  => $this->per_page * ( $page - 1 ),
+			'number'  => $per_page,
+			'offset'  => $per_page * ( $page - 1 ),
 			'status'  => $status,
 		) );
 
 		return $creatives;
-	
+
 	}
 
 	/**
@@ -343,7 +345,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function prepare_items() {
-		$per_page = $this->per_page;
+		$per_page = $this->get_items_per_page( 'affwp_edit_creatives_per_page', $this->per_page );
 
 		$columns = $this->get_columns();
 

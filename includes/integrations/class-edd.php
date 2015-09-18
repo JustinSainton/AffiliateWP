@@ -153,6 +153,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 							'amount'       => $referral_total,
 							'reference'    => $payment_id,
 							'description'  => $desc,
+							'campaign'     => affiliate_wp()->tracking->get_campaign(),
 							'affiliate_id' => $this->affiliate_id,
 							'context'      => $this->context,
 							'products'     => $this->get_products( $payment_id )
@@ -408,11 +409,11 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 					<td>
 						<span class="affwp-ajax-search-wrap">
 							<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-							<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" style="width: 300px;" />
+							<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" style="width: 300px;" />
 							<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 						</span>
 						<div id="affwp_user_search_results"></div>
-						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'edd' ); ?></p>
+						<p class="description"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></p>
 					</td>
 				</tr>
 			</tbody>
@@ -563,7 +564,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 			</label>
 		</p>
 
-		<p><?php _e( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use default affiliate rates.', 'affiliate-wp' ); ?></p>
+		<p><?php _e( 'These settings will be used to calculate affiliate earnings per-sale. Leave blank to use the site default referral rate.', 'affiliate-wp' ); ?></p>
 <?php
 	}
 

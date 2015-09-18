@@ -27,7 +27,9 @@ abstract class Affiliate_WP_Base {
 	public function __construct() {
 
 		$this->affiliate_id = affiliate_wp()->tracking->get_affiliate_id();
+
 		$this->init();
+
 	}
 
 	/**
@@ -66,8 +68,6 @@ abstract class Affiliate_WP_Base {
 	 */
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $products = array(), $data = array() ) {
 
-		$this->affiliate_id = $this->get_affiliate_id();
-
 		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
 			return false; // Allow extensions to prevent referrals from being created
 		}
@@ -86,6 +86,7 @@ abstract class Affiliate_WP_Base {
 			'amount'       => $amount,
 			'reference'    => $reference,
 			'description'  => $description,
+			'campaign'     => affiliate_wp()->tracking->get_campaign(),
 			'affiliate_id' => $this->affiliate_id,
 			'visit_id'     => $visit_id,
 			'products'     => ! empty( $products ) ? maybe_serialize( $products ) : '',
@@ -174,10 +175,10 @@ abstract class Affiliate_WP_Base {
 	 *
 	 * @access  public
 	 * @since   1.0
-	 * @return  string
+	 * @return  int
 	 */
 	public function get_affiliate_id() {
-		return apply_filters( 'affwp_get_referring_affiliate_id', $this->affiliate_id );
+		return absint( apply_filters( 'affwp_get_referring_affiliate_id', $this->affiliate_id ) );
 	}
 
 	/**
@@ -194,37 +195,28 @@ abstract class Affiliate_WP_Base {
 	/**
 	 * Determine if the passed email belongs to the affiliate
 	 *
+	 * Checks a given email address against the referring affiliate's
+	 * user email and payment email addresses to prevent customers from
+	 * referring themselves.
+	 *
 	 * @access  public
 	 * @since   1.6
+	 * @param   string $email
 	 * @return  bool
 	 */
-	public function is_affiliate_email( $email = '' ) {
+	public function is_affiliate_email( $email ) {
 
-		global $wpdb;
+		$is_affiliate_email = false;
 
-		$ret = false;
+		// Get affiliate emails
+		$user_email    = affwp_get_affiliate_email( $this->affiliate_id );
+		$payment_email = affwp_get_affiliate_payment_email( $this->affiliate_id );
 
-		$affiliate = affwp_get_affiliate( $this->affiliate_id );
+		// True if the email is valid and matches affiliate user email or payment email, otherwise false
+		$is_affiliate_email = ( is_email( $email ) && ( $user_email === $email || $payment_email === $email ) );
 
-		if ( ! empty( $affiliate->payment_email ) && is_email( $affiliate->payment_email ) ) {
+		return (bool) apply_filters( 'affwp_is_customer_email_affiliate_email', $is_affiliate_email, $email, $this->affiliate_id );
 
-			if( $email == $affiliate->payment_email ) {
-				$ret = true;
-			}
-
-		}
-
-		if( ! empty( $affiliate->user_id ) ) {
-
-			$user_email = $wpdb->get_var( $wpdb->prepare( "SELECT user_email FROM $wpdb->users WHERE ID = '%d' LIMIT 1", $affiliate->user_id ) );
-
-			if( $email == $user_email ) {
-				$ret = true;
-			}
-
-		}
-
-		return apply_filters( 'affwp_is_customer_email_affiliate_email', $ret, $email, $this->affiliate_id );
 	}
 
 	/**
@@ -240,21 +232,9 @@ abstract class Affiliate_WP_Base {
 
 		$this->affiliate_id = $this->get_affiliate_id();
 
-		if( ! empty( $product_id ) ) {
+		if ( ! empty( $product_id ) ) {
 
 			$rate = $this->get_product_rate( $product_id, $args = array( 'reference' => $reference ) );
-			$type = affwp_get_affiliate_rate_type( $this->affiliate_id );
-
-			if ( 'percentage' == $type ) {
-
-				// Sanitize the rate and ensure it's in the proper format
-				if ( $rate > 1 ) {
-
-					$rate = $rate / 100;
-
-				}
-
-			}
 
 		}
 
@@ -274,13 +254,8 @@ abstract class Affiliate_WP_Base {
 	public function get_product_rate( $product_id = 0, $args = array() ) {
 
 		$rate = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate', true );
-		if( empty( $rate ) ) {
 
-			$rate = affwp_get_affiliate_rate( $this->affiliate_id );
-
-		}
-
-		return apply_filters( 'affwp_get_product_rate', (float) $rate, $product_id, $args, $this->affiliate_id, $this->context );
+		return apply_filters( 'affwp_get_product_rate', $rate, $product_id, $args, $this->affiliate_id, $this->context );
 
 	}
 

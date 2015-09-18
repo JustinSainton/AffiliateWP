@@ -98,6 +98,14 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 			</p>
 		<?php endif; ?>
 
+		<?php if ( affwp_is_recaptcha_enabled() ) : ?>
+			<div class="g-recaptcha" data-sitekey="<?php echo esc_attr( affiliate_wp()->settings->get( 'recaptcha_site_key' ) ); ?>"></div>
+
+			<p>
+				<input type="hidden" name="g-recaptcha-remoteip" value=<?php echo esc_attr( affiliate_wp()->tracking->get_ip() ); ?> />
+			</p>
+		<?php endif; ?>
+
 		<?php do_action( 'affwp_register_fields_before_submit' ); ?>
 
 		<p>

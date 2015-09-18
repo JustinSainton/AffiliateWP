@@ -22,3 +22,5 @@ $RECYCLE.BIN/
 *.pydevproject
 .project
 .metadata
+/node_modules/
+/build/

@@ -132,6 +132,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 					'amount'       => $amount,
 					'reference'    => $order_id,
 					'description'  => $description,
+					'campaign'     => affiliate_wp()->tracking->get_campaign(),
 					'affiliate_id' => $this->affiliate_id,
 					'visit_id'     => $visit_id,
 					'products'     => $this->get_products(),
@@ -145,6 +146,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 					'amount'       => $amount,
 					'reference'    => $order_id,
 					'description'  => $description,
+					'campaign'     => affiliate_wp()->tracking->get_campaign(),
 					'affiliate_id' => $this->affiliate_id,
 					'visit_id'     => $visit_id,
 					'products'     => $this->get_products(),
@@ -280,7 +282,7 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			<span class="affwp-ajax-search-wrap">
 				<span class="affwp-woo-coupon-input-wrap">
 					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" />
+					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" />
 					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 				</span>
 				<span id="affwp_user_search_results"></span>

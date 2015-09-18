@@ -167,6 +167,12 @@ class Affiliate_WP_Admin_Notices {
 			echo '<div class="' . esc_attr( $class ) . '"><p><strong>' .  $message  . '</strong></p></div>';
 		}
 
+		if ( 'expired' === affiliate_wp()->settings->check_license() ) {
+			echo '<div class="error info"><p>' . __( 'Your license key for AffiliateWP has expired. Please renew your license to re-enable automatic updates.', 'affiliate-wp' ) . '</p></div>';
+		} elseif ( 'valid' !== affiliate_wp()->settings->check_license() ) {
+			echo '<div class="notice notice-info"><p>' . sprintf( __( 'Please <a href="%s">enter and activate</a> your license key for AffiliateWP to enable automatic updates.', 'affiliate-wp' ), admin_url( 'admin.php?page=affiliate-wp-settings' ) ) . '</p></div>';
+		}
+
 	}
 
 }

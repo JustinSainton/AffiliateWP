@@ -80,14 +80,31 @@ $promotion_method = get_user_meta( $affiliate->user_id, 'affwp_promotion_method'
 				</tr>
 			<?php endif; ?>
 
+			<tr class="form-row" id="affwp-rejection-reason">
+
+				<th scope="row">
+					<?php _e( 'Rejection Reason', 'affiliate-wp' ); ?>
+				</th>
+
+				<td>
+					<textarea class="large-text" name="affwp_rejection_reason" rows="10"></textarea>
+					<p class="description"><?php _e( 'Leave blank if approving this affiliate', 'affiliate-wp' ); ?></p>
+				</td>
+
+			</tr>
+
 			<?php do_action( 'affwp_review_affiliate_end', $affiliate ); ?>
 
 		</table>
 
 		<?php do_action( 'affwp_review_affiliate_bottom', $affiliate ); ?>
 
-		<a href="<?php echo esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate_id ) ) ); ?>" class="button button-primary"><?php _e( 'Accept Affiliate', 'affiliate-wp' ); ?></a>
-		<a href="<?php echo esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate_id ) ) ); ?>" class="button button-secondary"><?php _e( 'Reject Affiliate', 'affiliate-wp' ); ?></a>
+		<?php wp_nonce_field( 'affwp_moderate_affiliates_nonce', 'affwp_moderate_affiliates_nonce' ); ?>
+		<input type="hidden" name="affiliate_id" value="<?php echo esc_attr( absint( $affiliate_id ) ); ?>"/>
+		<input type="hidden" name="affwp_action" value="moderate_affiliate"/>
+		<input type="submit" name="affwp_accept" value="<?php esc_attr_e( __( 'Accept Affiliate', 'affiliate-wp' ) ); ?>" class="button button-primary"/>
+		<input type="submit" name="affwp_reject" value="<?php esc_attr_e( __( 'Reject Affiliate', 'affiliate-wp' ) ); ?>" class="button button-secondary"/>
+
 	</form>
 
 </div>

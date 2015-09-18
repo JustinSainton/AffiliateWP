@@ -1,12 +1,16 @@
 jQuery(document).ready( function($) {
 
     var cookie = $.cookie( 'affwp_ref' );
+    var campaign_cookie = $.cookie( 'affwp_campaign' );
 
-    if( cookie ) {
+    var credit_last = AFFWP.referral_credit_last;
+
+    if( '1' != credit_last && cookie ) {
         return;
     }
 
     var ref = affwp_get_query_vars()[AFFWP.referral_var];
+    var campaign = affwp_get_query_vars()['campaign'];
 
     if( typeof ref == 'undefined' ) {
 
@@ -34,7 +38,12 @@ jQuery(document).ready( function($) {
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 if( '1' == response.data.success ) {
-                    affwp_track_visit( response.data.affiliate_id );
+
+                    if( '1' == credit_last && cookie ) {
+                        $.removeCookie( 'affwp_ref' );
+                    }
+
+                    affwp_track_visit( response.data.affiliate_id, campaign );
                 }
             }
 
@@ -49,11 +58,14 @@ jQuery(document).ready( function($) {
         // If a referral var is present and a referral cookie is not already set
         if( ref && ! cookie ) {
             affwp_track_visit( ref );
+        } else if( '1' == credit_last && cookie ) {
+            $.removeCookie( 'affwp_ref' );
+            affwp_track_visit( ref, campaign );
         }
 
     }
 
-    function affwp_track_visit( affiliate_id ) {
+    function affwp_track_visit( affiliate_id, campaign ) {
 
         // Set the cookie and expire it after 24 hours
         $.cookie( 'affwp_ref', affiliate_id, { expires: AFFWP.expiration, path: '/' } );
@@ -64,12 +76,14 @@ jQuery(document).ready( function($) {
             data: {
                 action: 'affwp_track_visit',
                 affiliate: affiliate_id,
+                campaign: campaign,
                 url: document.URL,
                 referrer: document.referrer
             },
             url: affwp_scripts.ajaxurl,
             success: function (response) {
                 $.cookie( 'affwp_ref_visit_id', response, { expires: AFFWP.expiration, path: '/' } );
+                $.cookie( 'affwp_campaign', campaign, { expires: AFFWP.expiration, path: '/' } );
             }
 
         }).fail(function (response) {
@@ -86,7 +100,13 @@ jQuery(document).ready( function($) {
         for(var i = 0; i < hashes.length; i++) {
             hash = hashes[i].split('=');
             vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
+
+            var key = typeof hash[1] == 'undefined' ? 0 : 1;
+
+            // Remove fragment identifiers
+            var n = hash[key].indexOf('#');
+            hash[key] = hash[key].substring(0, n != -1 ? n : hash[key].length);
+            vars[hash[0]] = hash[key];
         }
         return vars;
     }
