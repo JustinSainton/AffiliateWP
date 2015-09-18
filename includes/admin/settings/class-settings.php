@@ -226,10 +226,7 @@ class Affiliate_WP_Settings {
 			} else {
 
 				$value = sanitize_text_field( $value );
-
-				if( false !== preg_match( '@^(?:http://)?([^/]+)@i', $value ) ) {
-					$value = 'ref';
-				}
+				$value = preg_replace( '/[^A-Za-z0-9 ]/', '', $value );
 
 			}
 
