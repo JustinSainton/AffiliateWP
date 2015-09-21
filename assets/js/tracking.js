@@ -26,7 +26,7 @@ jQuery(document).ready( function($) {
     }
 
 
-    if( ! $.isNumeric( ref ) ) {
+    if( typeof ref != 'undefined' && ! $.isNumeric( ref ) ) {
 
         // If a username was provided instead of an affiliate ID number, we need to retrieve the ID
         $.ajax({
