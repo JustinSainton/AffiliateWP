@@ -563,10 +563,15 @@ class Affiliate_WP_Tracking {
 			$affiliate_id = $this->get_affiliate_id();
 		}
 
-		$is_self = is_user_logged_in() && get_current_user_id() == affwp_get_affiliate_user_id( $affiliate_id );
-		$active  = 'active' === affwp_get_affiliate_status( $affiliate_id );
-		$valid   = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
-		$ret     = $valid && ! $is_self && $active;
+		$ret       = false;
+		$affiliate = affwp_get_affiliate( $affiliate_id );
+
+		if( $affiliate ) {
+
+			$is_self = is_user_logged_in() && get_current_user_id() == $affiliate->user_id;
+			$active  = 'active' === $affiliate->status;
+			$ret     = ! $is_self && $active;
+		}
 
 		return apply_filters( 'affwp_tracking_is_valid_affiliate', $ret, $affiliate_id );
 	}
