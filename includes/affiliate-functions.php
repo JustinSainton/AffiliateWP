@@ -30,7 +30,8 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 		$user_id = get_current_user_id();
 	}
 
-	$affiliate_id = wp_cache_get( 'affiliate_id_by_user_id_' . $user_id, 'affiliates' );
+	$cache_key    = md5( 'affwp_get_affiliate_id' . $user_id );
+	$affiliate_id = wp_cache_get( $cache_key, 'affiliates' );
 
 	if( false === $affiliate_id ) {
 
