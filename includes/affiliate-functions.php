@@ -30,14 +30,15 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 		$user_id = get_current_user_id();
 	}
 
-	$affiliate = affiliate_wp()->affiliates->get_by( 'user_id', $user_id );
+	$affiliate_id = wp_cache_get( 'affiliate_id_by_user_id_' . $user_id, 'affiliates' );
 
-	if ( $affiliate ) {
-		return $affiliate->affiliate_id;
+	if( false === $affiliate_id ) {
+
+		$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
+		
 	}
 
-	return false;
-
+	return $affiliate_id;
 }
 
 
