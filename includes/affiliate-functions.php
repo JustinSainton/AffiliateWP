@@ -106,24 +106,9 @@ function affwp_is_active_affiliate( $affiliate_id = 0 ) {
  */
 function affwp_get_affiliate_user_id( $affiliate ) {
 
-	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
-		$affiliate_id = $affiliate->affiliate_id;
-	} elseif ( is_numeric( $affiliate ) ) {
-		$affiliate_id = absint( $affiliate );
-	} else {
-		return false;
-	}
+	$affiliate = affwp_get_affiliate( $affiliate );
 
-	$cache_key = md5( 'affwp_get_affiliate_user_id' . $affiliate_id );
-	$user_id   = wp_cache_get( $cache_key, 'affiliates' );
-
-	if( false === $user_id ) {
-
-		$user_id = affiliate_wp()->affiliates->get_column_by( 'user_id', 'affiliate_id', $affiliate_id );
-
-	}
-
-	return $user_id;
+	return is_object( $affiliate ) ? $affiliate->user_id : false;
 
 }
 
