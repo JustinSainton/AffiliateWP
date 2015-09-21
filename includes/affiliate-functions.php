@@ -114,7 +114,16 @@ function affwp_get_affiliate_user_id( $affiliate ) {
 		return false;
 	}
 
-	return affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+	$cache_key = md5( 'affwp_get_affiliate_user_id' . $affiliate_id );
+	$user_id   = wp_cache_get( $cache_key, 'affiliates' );
+
+	if( false === $user_id ) {
+
+		$user_id = affiliate_wp()->affiliates->get_column_by( 'user_id', 'affiliate_id', $affiliate_id );
+
+	}
+
+	return $user_id;
 
 }
 
