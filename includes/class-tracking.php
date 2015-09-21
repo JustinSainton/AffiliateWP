@@ -270,7 +270,7 @@ class Affiliate_WP_Tracking {
 				'affiliate_id' => $affiliate_id,
 				'ip'           => $this->get_ip(),
 				'url'          => sanitize_text_field( $_POST['url'] ),
-				'campaign'     => sanitize_text_field( $_POST['campaign'] ),
+				'campaign'     => ! empty( $_POST['campaign'] ) ? sanitize_text_field( $_POST['campaign'] ) : '',
 				'referrer'     => sanitize_text_field( $_POST['referrer'] )
 			) );
 
