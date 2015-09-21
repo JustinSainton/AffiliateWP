@@ -143,7 +143,16 @@ function affwp_get_affiliate( $affiliate ) {
 		return false;
 	}
 
-	return affiliate_wp()->affiliates->get( $affiliate_id );
+	$cache_key = md5( 'affwp_get_affiliate' . $affiliate_id );
+	$affiliate = wp_cache_get( $cache_key, 'affiliates' );
+
+	if( false === $affiliate ) {
+
+		$affiliate = affiliate_wp()->affiliates->get( $affiliate_id );
+
+	}
+
+	return $affiliate;
 }
 
 /**
@@ -154,15 +163,9 @@ function affwp_get_affiliate( $affiliate ) {
  */
 function affwp_get_affiliate_status( $affiliate ) {
 
-	if ( is_object( $affiliate ) && isset( $affiliate->affiliate_id ) ) {
-		$affiliate_id = $affiliate->affiliate_id;
-	} elseif ( is_numeric( $affiliate ) ) {
-		$affiliate_id = absint( $affiliate );
-	} else {
-		return false;
-	}
+	$affiliate = affwp_get_affiliate( $affiliate );
 
-	return affiliate_wp()->affiliates->get_column( 'status', $affiliate_id );
+	return is_object( $affiliate ) ? $affiliate->status : false;
 }
 
 /**
