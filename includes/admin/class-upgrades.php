@@ -37,6 +37,10 @@ class Affiliate_WP_Upgrades {
 			$this->v17_upgrades();
 		}
 
+		if ( version_compare( $version, '1.7.3', '<' ) ) {
+			$this->v173_upgrades();
+		}	
+
 		// If upgrades have occurred
 		if ( $this->upgraded ) {
 			update_option( 'affwp_version_upgraded_from', $version );
@@ -128,6 +132,20 @@ class Affiliate_WP_Upgrades {
 	}
 
 	/**
+	 * Perform database upgrades for version 1.7.3
+	 *
+	 * @access  private
+	 * @since   1.7.3
+	 */
+	private function v173_upgrades() {
+
+		$this->v17_upgrade_referral_rates();
+
+		$this->upgraded = true;
+
+	}
+
+	/**
 	 * Perform database upgrades for referral rates in version 1.7
 	 *
 	 * @access  private
@@ -140,18 +158,16 @@ class Affiliate_WP_Upgrades {
 		$prefix  = ( defined( 'AFFILIATE_WP_NETWORK_WIDE' ) && AFFILIATE_WP_NETWORK_WIDE ) ? null : $wpdb->prefix;
 		$results = $wpdb->get_results( "SELECT affiliate_id, rate FROM {$prefix}affiliate_wp_affiliates WHERE rate_type = 'percentage' AND rate > 0 AND rate <= 1;" );
 
-		if ( ! $results ) {
-			return;
-		}
-
-		foreach ( $results as $result ) {
-			$wpdb->update(
-				"{$prefix}affiliate_wp_affiliates",
-				array( 'rate' => floatval( $result->rate ) * 100 ),
-				array( 'affiliate_id' => $result->affiliate_id ),
-				array( '%d' ),
-				array( '%d' )
-			);
+		if ( $results ) {
+			foreach ( $results as $result ) {
+				$wpdb->update(
+					"{$prefix}affiliate_wp_affiliates",
+					array( 'rate' => floatval( $result->rate ) * 100 ),
+					array( 'affiliate_id' => $result->affiliate_id ),
+					array( '%d' ),
+					array( '%d' )
+				);
+			}
 		}
 
 		$settings  = get_option( 'affwp_settings' );
