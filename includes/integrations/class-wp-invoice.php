@@ -9,6 +9,7 @@ class Affiliate_WP_Invoice extends Affiliate_WP_Base {
     $this->context = 'wp-invoice';
 
     add_action( 'wpi_successful_payment', array( $this, 'track_successful_payment' ) );
+    add_action( 'wpi_object_updated', array( $this, 'track_refund' ), 10, 2 );
   }
 
   /**
@@ -33,6 +34,25 @@ class Affiliate_WP_Invoice extends Affiliate_WP_Base {
       }
 
     }
+  }
+
+  /**
+   * Handle refunds
+   * @param $old_invoice
+   * @param $new_post
+   */
+  public function track_refund( $old_invoice, $new_post ) {
+
+    if ( $new_post['post_status'] !== 'refund' ) {
+      return;
+    }
+
+    if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+      return;
+    }
+
+    $this->reject_referral( $old_invoice['invoice_id'] );
+
   }
 
 }
