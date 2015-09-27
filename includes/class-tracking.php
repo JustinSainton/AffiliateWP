@@ -48,7 +48,7 @@ class Affiliate_WP_Tracking {
 		} else {
 
 			add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ), 999999 );
-	
+
 		}
 
 		add_action( 'redirect_canonical', array( $this, 'prevent_canonical_redirect' ), 0, 2 );
@@ -261,9 +261,9 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_visit() {
 
-		$affiliate_id = absint( $_POST['affiliate'] );
+		$affiliate_id = isset( $_POST['affiliate'] ) ? absint( $_POST['affiliate'] ) : '';
 
-		if( $this->is_valid_affiliate( $affiliate_id ) ) {
+		if ( $this->is_valid_affiliate( $affiliate_id ) ) {
 
 			// Store the visit in the DB
 			$visit_id = affiliate_wp()->visits->add( array(
@@ -309,7 +309,7 @@ class Affiliate_WP_Tracking {
 
 			$status = ! empty( $_POST['status'] ) ? $_POST['status'] : 'unpaid';
 			$amount = sanitize_text_field( urldecode( $_POST['amount'] ) );
-			
+
 			if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 				die( '-5' ); // Ignore a zero amount referral
 			}
