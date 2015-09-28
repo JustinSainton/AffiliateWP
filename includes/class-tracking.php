@@ -263,7 +263,7 @@ class Affiliate_WP_Tracking {
 
 		$affiliate_id = isset( $_POST['affiliate'] ) ? absint( $_POST['affiliate'] ) : '';
 
-		if ( $this->is_valid_affiliate( $affiliate_id ) ) {
+		if ( ! empty( $affiliate_id ) && $this->is_valid_affiliate( $affiliate_id ) ) {
 
 			// Store the visit in the DB
 			$visit_id = affiliate_wp()->visits->add( array(
