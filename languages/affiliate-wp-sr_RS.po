@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
 "Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
-"POT-Creation-Date: 2015-09-15 14:50:04+00:00\n"
+"POT-Creation-Date: 2015-09-28 14:32:15+00:00\n"
 "PO-Revision-Date: 2015-04-09 10:00-0600\n"
 "Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
 "Language-Team: Chris Christoff <chriscct7@gmail.com>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: affiliate-wp.php:208 affiliate-wp.php:220
+#: affiliate-wp.php:216 affiliate-wp.php:228
 msgid "Cheatin&#8217; huh?"
 msgstr "Вараш, а?"
 
-#: affiliate-wp.php:231
+#: affiliate-wp.php:239
 msgid ""
 "Your version of PHP is below the minimum version of PHP required by "
 "AffiliateWP. Please contact your host and request that your version be "
@@ -100,7 +100,7 @@ msgstr ""
 
 #: includes/admin/affiliates/affiliates.php:54
 #: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
-#: includes/admin/class-welcome.php:289
+#: includes/admin/class-welcome.php:298
 msgid "Affiliates"
 msgstr "Партнери"
 
@@ -162,7 +162,7 @@ msgid "Name"
 msgstr "Име"
 
 #: includes/admin/affiliates/affiliates.php:222
-#: includes/admin/settings/class-settings.php:343
+#: includes/admin/settings/class-settings.php:340
 #: includes/admin/tools/export/class-export.php:69
 msgid "ID"
 msgstr "ИД"
@@ -185,13 +185,14 @@ msgid "Paid Referrals"
 msgstr "Плаћени упути"
 
 #: includes/admin/affiliates/affiliates.php:226
-#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:299
+#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:308
 #: includes/admin/overview/overview.php:170
 #: includes/admin/reports/reports.php:66
 #: includes/admin/reports/reports.php:185
 #: includes/admin/tools/export/class-export-affiliates.php:55
 #: includes/admin/tools/tools.php:105 includes/admin/visits/visits.php:30
-#: templates/dashboard-tab-stats.php:10 templates/dashboard.php:45
+#: templates/dashboard-tab-stats.php:10 templates/dashboard-tab-stats.php:57
+#: templates/dashboard.php:45
 msgid "Visits"
 msgstr "Посете"
 
@@ -202,7 +203,7 @@ msgstr "Посете"
 #: includes/admin/referrals/edit.php:83 includes/admin/referrals/new.php:85
 #: includes/admin/referrals/referrals.php:230
 #: includes/admin/tools/export/class-export-affiliates.php:56
-#: includes/admin/tools/export/class-export-referrals.php:68
+#: includes/admin/tools/export/class-export-referrals.php:69
 #: templates/dashboard-tab-referrals.php:26
 msgid "Status"
 msgstr "Статус"
@@ -316,7 +317,7 @@ msgstr "Ово је кориснички ИД. Ово не може бити п�
 
 #: includes/admin/affiliates/edit.php:51
 #: includes/admin/affiliates/review.php:34
-#: includes/admin/settings/class-settings.php:344
+#: includes/admin/settings/class-settings.php:341
 #: includes/admin/tools/export/class-export-affiliates.php:50
 #: templates/login.php:15 templates/login.php:16 templates/register.php:48
 #: templates/register.php:49
@@ -329,7 +330,7 @@ msgid "The affiliate's username. This cannot be changed."
 msgstr "Ово је кориснички ИД. Ово не може бити промењено."
 
 #: includes/admin/affiliates/edit.php:64 includes/admin/affiliates/new.php:54
-#: includes/admin/settings/class-settings.php:359
+#: includes/admin/settings/class-settings.php:356
 msgid "Referral Rate Type"
 msgstr "Врста партнерске провизије"
 
@@ -342,8 +343,8 @@ msgid "The affiliate's referral rate type."
 msgstr "Врста провизије партнерског упута."
 
 #: includes/admin/affiliates/edit.php:82 includes/admin/affiliates/new.php:72
-#: includes/admin/settings/class-settings.php:365
-#: includes/integrations/class-edd.php:555
+#: includes/admin/settings/class-settings.php:362
+#: includes/integrations/class-edd.php:556
 #: includes/integrations/class-memberpress.php:141
 #: includes/integrations/class-zippycourses.php:61
 #: includes/integrations/extras/class-exchange-feature.php:46
@@ -513,7 +514,7 @@ msgstr "Нису пронађени корисници"
 msgid "Overview"
 msgstr "Преглед"
 
-#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:294
+#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:303
 #: includes/admin/overview/overview.php:169
 #: includes/admin/referrals/referrals.php:35
 #: includes/admin/reports/reports.php:65
@@ -688,7 +689,7 @@ msgstr "Заслуге"
 msgid "Welcome to AffiliateWP v%s"
 msgstr "Добродошли у AffiliateWP v%s"
 
-#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:237
+#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:246
 msgid ""
 "Thank you for installing AffiliateWP v%s. The best affiliate marketing "
 "plugin for WordPress."
@@ -696,111 +697,149 @@ msgstr ""
 "Хвала што сте инсталирали AffiliateWP v%s. Најбољи додатак за партнерски "
 "маркетинг за Вордпрес."
 
-#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:238
-#: includes/admin/class-welcome.php:334
+#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:247
+#: includes/admin/class-welcome.php:343
 msgid "Version %s"
 msgstr "Верзија %s"
 
 #: includes/admin/class-welcome.php:179
 #, fuzzy
-msgid "New integrations"
+msgid "New Integrations"
 msgstr "Интеграције"
 
 #: includes/admin/class-welcome.php:180
 msgid ""
-"To make AffiliateWP more accessible and more valuable to more users, we have "
-"added four new integrations:"
+"We’ve made AffiliateWP more accessible and more valuable to more users with "
+"three new integrations:"
 msgstr ""
 
-#: includes/admin/class-welcome.php:189
-msgid "Configurable emails"
-msgstr ""
+#: includes/admin/class-welcome.php:188
+#, fuzzy
+msgid "Improved Integrations"
+msgstr "Интеграције"
 
 #: includes/admin/class-welcome.php:191
 msgid ""
-"With version 1.6, we have introduced a new tab in the Settings page that "
-"allows you to configure all emails that get sent out to affiliates when they "
-"register for an account or earn a new referral."
+"Per-membership commission rates are now supported in Restrict Content Pro"
 msgstr ""
 
 #: includes/admin/class-welcome.php:192
-msgid ""
-"All emails are sent in beautiful HTML templates that can be easily edited at "
-"anytime. These template files can be copied to your theme's \"affiliatewp/"
-"emails\" folder to give you complete control over the appearance of the "
-"emails."
+msgid "Per-membership commission rates are now supported in MemberPress"
+msgstr ""
+
+#: includes/admin/class-welcome.php:193
+msgid "Commissions can be disabled on individual forms in Gravity Forms"
 msgstr ""
 
 #: includes/admin/class-welcome.php:194
-msgid "Fine-tuned control over how referral URLs appear to affiliates"
+msgid "Commissions can be disabled on individual forms in Ninja Forms"
 msgstr ""
 
 #: includes/admin/class-welcome.php:195
 msgid ""
-"Your affiliates can already promote your website using a wide variety of <a "
-"href=\"http://docs.affiliatewp.com/article/50-affiliate-urls\" target="
-"\"_blank\">Affiliate URLs</a>. Admins now have much more control over how "
-"these referral URLs appear to affiliates on the front-end of your website. "
-"You can set a <strong>Default Referral Format</strong> (ID or username) and "
-"choose whether or not to show <strong>Pretty Affiliate URLs</strong> to your "
-"affiliates."
+"Affiliate commissions are now shown on the order details screens in Paid "
+"Memberships Pro"
 msgstr ""
 
-#: includes/admin/class-welcome.php:197
-msgid "Additional Updates"
-msgstr "Додатна ажурирања"
+#: includes/admin/class-welcome.php:198
+msgid "URL Campaign Tracking"
+msgstr ""
 
 #: includes/admin/class-welcome.php:199
-msgid "Affiliate Export Improvements"
+msgid ""
+"Affiliates can now include URL campaign parameters in their affiliate URLs "
+"and have them automatically tracked by AffiliateWP. A new \"Campaigns\" "
+"table has been added to the Statistics tab of the affiliate area to show "
+"affiliates the results of their URL campaigns."
 msgstr ""
 
-#: includes/admin/class-welcome.php:200
+#: includes/admin/class-welcome.php:201
 #, fuzzy
-msgid ""
-"The affiliate's username is now included in the exported affiliate .csv file."
-msgstr "Партнерска зона је доступна само регистрованим партнерима."
+msgid "Affiliate Rejection Reasons"
+msgstr "Регистрација партнера"
 
 #: includes/admin/class-welcome.php:202
-#, fuzzy
-msgid "New Affiliate Meta Class"
-msgstr "Нови партнер"
-
-#: includes/admin/class-welcome.php:203
 msgid ""
-"We've introduced a new metadata API for afiliate accounts that provides "
-"developers with a powerful tool for tracking affiliate-specific data."
+"When rejecting affiliate accounts, a rejection reason can be provided that "
+"is then (optionally) emailed to the affiliate and recorded for future "
+"reference."
+msgstr ""
+
+#: includes/admin/class-welcome.php:204
+msgid "reCaptcha v2.0"
 msgstr ""
 
 #: includes/admin/class-welcome.php:205
-msgid "Creative Improvements"
-msgstr ""
-
-#: includes/admin/class-welcome.php:206
 msgid ""
-"We've made improvements to the way creatives are shown. The description is "
-"now shown at the top of the creative and it's much easier for affiliates to "
-"copy the necessary code."
+"Google's reCaptcha version 2.0 library has been introduced to AffiliateWP to "
+"help protect you and your website from spam user registrations."
 msgstr ""
 
-#: includes/admin/class-welcome.php:208
-msgid "Affiliate Dashboard Improvements"
-msgstr ""
+#: includes/admin/class-welcome.php:207
+msgid "Additional Updates"
+msgstr "Додатна ажурирања"
 
 #: includes/admin/class-welcome.php:209
-msgid ""
-"Pending affiliates can no longer access the affiliate dashboard until they "
-"have been approved."
+msgid "Improved User Searching"
 msgstr ""
 
-#: includes/admin/class-welcome.php:219 includes/admin/class-welcome.php:306
+#: includes/admin/class-welcome.php:210
+msgid ""
+"When creating new affiliate accounts, the search process for users in your "
+"WordPress site now return better results."
+msgstr ""
+
+#: includes/admin/class-welcome.php:212
+msgid "Per-Page Options for Admin Screens"
+msgstr ""
+
+#: includes/admin/class-welcome.php:213
+msgid ""
+"Admin pages for Affiliates, Referrals, Visits, and Creatives can have the "
+"number of items per-page configured from the Screen Options tab."
+msgstr ""
+
+#: includes/admin/class-welcome.php:215
+#, fuzzy
+msgid "Disable Individual Emails"
+msgstr "Укупно упути на чекању"
+
+#: includes/admin/class-welcome.php:216
+msgid ""
+"New options have been introduced that allow you to pick-and-choose which "
+"email notifications AffiliateWP will send."
+msgstr ""
+
+#: includes/admin/class-welcome.php:218
+#, fuzzy
+msgid "Creative Template File"
+msgstr "Налог партнера деактивиран"
+
+#: includes/admin/class-welcome.php:219
+msgid ""
+"A new template file has been introduced for exact control over the display "
+"of creatives in the affiliate area."
+msgstr ""
+
+#: includes/admin/class-welcome.php:221
+msgid "Import Users By Role"
+msgstr ""
+
+#: includes/admin/class-welcome.php:222
+msgid ""
+"When importing existing users as affiliates, an option to import just users "
+"of a specific role is now available."
+msgstr ""
+
+#: includes/admin/class-welcome.php:228 includes/admin/class-welcome.php:315
 msgid "Go to AffiliateWP Settings"
 msgstr "Посетите AffiliateWP подешавања"
 
-#: includes/admin/class-welcome.php:236 includes/admin/class-welcome.php:332
+#: includes/admin/class-welcome.php:245 includes/admin/class-welcome.php:341
 msgid "Welcome to AffiliateWP %s"
 msgstr "Добродошли у AffiliateWP %s"
 
-#: includes/admin/class-welcome.php:242
+#: includes/admin/class-welcome.php:251
 msgid ""
 "Use the tips below to get started using AffiliateWP. You will be up and "
 "running in no time!"
@@ -808,15 +847,15 @@ msgstr ""
 "Користите савете испод како бисте почели да користите AffiliateWP. Почећете "
 "за тили час."
 
-#: includes/admin/class-welcome.php:245
+#: includes/admin/class-welcome.php:254
 msgid "Overview of Affiliates and Referrals"
 msgstr "Преглед партнера и упута"
 
-#: includes/admin/class-welcome.php:250
+#: includes/admin/class-welcome.php:259
 msgid "The Overview Page"
 msgstr "Страна прегледа"
 
-#: includes/admin/class-welcome.php:251
+#: includes/admin/class-welcome.php:260
 msgid ""
 "The overview page gives you a quick summary of your recent affiliate "
 "activity, including recent registrations, referrals, and visits."
@@ -824,11 +863,11 @@ msgstr ""
 "Страна прегледа вам даје брзи извештај недавних активности партнера, "
 "укључујући скорашње регистрације, упуте и посете."
 
-#: includes/admin/class-welcome.php:252
+#: includes/admin/class-welcome.php:261
 msgid "It also provides a quick summary of your affiliates' referral earnings."
 msgstr "Такође пружа брзи увид у зараду ваших партнера."
 
-#: includes/admin/class-welcome.php:253
+#: includes/admin/class-welcome.php:262
 msgid ""
 "If you allow affiliate registrations, you can also easily accept or reject "
 "affiliate's applications directly from the Overview page"
@@ -836,15 +875,15 @@ msgstr ""
 "Уколико дозволите самосталну регистрацију партнера, можете такође лако "
 "прихватити или одбити пријаву партнера на страни прегледа"
 
-#: includes/admin/class-welcome.php:256
+#: includes/admin/class-welcome.php:265
 msgid "Adding Affiliates"
 msgstr "Додавање партнера"
 
-#: includes/admin/class-welcome.php:261
+#: includes/admin/class-welcome.php:270
 msgid "Affiliates &rarr; Add New"
 msgstr "Партнери &rarr; Додај новог"
 
-#: includes/admin/class-welcome.php:262
+#: includes/admin/class-welcome.php:271
 msgid ""
 "From the main Affiliates page, site admins can easily add new affiliates to "
 "AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
@@ -853,11 +892,11 @@ msgstr ""
 "нове партнере. Просто унесите корисничко име, подесите стопу, и притисните "
 "Додај партнера!"
 
-#: includes/admin/class-welcome.php:264
+#: includes/admin/class-welcome.php:273
 msgid "Affiliate Registration"
 msgstr "Регистрација партнера"
 
-#: includes/admin/class-welcome.php:265
+#: includes/admin/class-welcome.php:274
 msgid ""
 "When enabled, affiliates can register themselves via the Affiliate Area. If "
 "they already have a user account on your site, they can register by simply "
@@ -869,11 +908,11 @@ msgstr ""
 "регистровати једноставним прихватањем услова о коришћењу. Уколико требају "
 "нов налог, имају и ту могућност!"
 
-#: includes/admin/class-welcome.php:267
+#: includes/admin/class-welcome.php:276
 msgid "Moderate Registrations"
 msgstr "Управљајте регистрацијама"
 
-#: includes/admin/class-welcome.php:268
+#: includes/admin/class-welcome.php:277
 msgid ""
 "Affiliate registrations can be moderated and require that a site admin "
 "approve each registration before the affiliate is permitted to begin "
@@ -882,7 +921,7 @@ msgstr ""
 "Регистрацијом партнера се може управљати тако што администратор одобрава "
 "сваку регистрацију пре него што је партнеру омогућено праћење упута."
 
-#: includes/admin/class-welcome.php:269
+#: includes/admin/class-welcome.php:278
 msgid ""
 "Each time an affiliate registers, site admins can log into the site and "
 "approve or reject the application."
@@ -890,16 +929,16 @@ msgstr ""
 "Сваки пут када се партнер региструје, администратор сајта може да одобри или "
 "одбије пријаву партнера."
 
-#: includes/admin/class-welcome.php:272
-#: includes/admin/settings/class-settings.php:314 includes/install.php:26
+#: includes/admin/class-welcome.php:281
+#: includes/admin/settings/class-settings.php:311 includes/install.php:28
 msgid "Affiliate Area"
 msgstr "Партнерска зона"
 
-#: includes/admin/class-welcome.php:277
+#: includes/admin/class-welcome.php:286
 msgid "A Dashboard For Your Affiliates"
 msgstr "Контролна табла за ваше партнере"
 
-#: includes/admin/class-welcome.php:278
+#: includes/admin/class-welcome.php:287
 msgid ""
 "The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
 "em> short code, gives your affiliates access to their performance reports."
@@ -908,7 +947,7 @@ msgstr ""
 "<em>[affiliate_area]</em>, даје могућност вашим партнерима да приступе "
 "својим извештајима."
 
-#: includes/admin/class-welcome.php:279
+#: includes/admin/class-welcome.php:288
 msgid ""
 "Affiliates can easily see how much they have earned, how much is awaiting "
 "payment, and even how their referral URLs have done over time."
@@ -916,7 +955,7 @@ msgstr ""
 "Партнери могу са лакоћом да виде колико су зарадили, колико зараде чека на "
 "исплату, па чак и колико су били успешни током времена."
 
-#: includes/admin/class-welcome.php:280
+#: includes/admin/class-welcome.php:289
 msgid ""
 "A log of the referral links that have been clicked and where they were "
 "clicked on from, and whether the link converted into a successful referral, "
@@ -925,11 +964,11 @@ msgstr ""
 "Дневник упутних линкова (веза) које су посећене, одакле су посећене и да ли "
 "је посета конвертована у успешан упут, је такође доступан партнерима."
 
-#: includes/admin/class-welcome.php:285
+#: includes/admin/class-welcome.php:294
 msgid "Quick Terminology"
 msgstr "Брзи речник"
 
-#: includes/admin/class-welcome.php:290
+#: includes/admin/class-welcome.php:299
 msgid ""
 "These are your best friends. They are the users that are actively promoting "
 "your products and services through referral URLs. When they create a "
@@ -939,7 +978,7 @@ msgstr ""
 "производе и услуге кроз референтни УРЛ. Када вам од посетиоца направе купца, "
 "они добијају провизију заузврат."
 
-#: includes/admin/class-welcome.php:295
+#: includes/admin/class-welcome.php:304
 msgid ""
 "These are the commission records created anytime an affiliate successfully "
 "sends a potential customer to your site and that customer makes a purchase."
@@ -947,7 +986,7 @@ msgstr ""
 "Ово су записи провизија начињени сваки пут када партнер успешно пошаље "
 "потенцијалног купца на ваш сајт и када купац изврши куповину."
 
-#: includes/admin/class-welcome.php:300
+#: includes/admin/class-welcome.php:309
 msgid ""
 "These are unique hits on the referral URLs shared out by your affiliates. "
 "Each time a potential customer clicks on a referral URL, a visit is recorded."
@@ -955,15 +994,15 @@ msgstr ""
 "Ово су јединствене посете за упутни УРЛ партнера. Сваки пут када "
 "потенцијални купац притисне на упутни УРЛ, забележи се посета. "
 
-#: includes/admin/class-welcome.php:310
+#: includes/admin/class-welcome.php:319
 msgid "Need Help?"
 msgstr "Потребна вам је помоћ?"
 
-#: includes/admin/class-welcome.php:313
+#: includes/admin/class-welcome.php:322
 msgid "Phenomenal Support"
 msgstr "Феноменална подршка"
 
-#: includes/admin/class-welcome.php:314
+#: includes/admin/class-welcome.php:323
 msgid ""
 "We do our best to provide the best support we can. If you encounter a "
 "problem or have a question, visit our <a href=\"http://affiliatewp.com/"
@@ -973,11 +1012,11 @@ msgstr ""
 "проблема или имате питање посетите нашу <a href=\"http://affiliatewp.com/"
 "support\">страну за подршку</a> да пријавите проблем."
 
-#: includes/admin/class-welcome.php:333
+#: includes/admin/class-welcome.php:342
 msgid "Thank you for updating to the latest version!"
 msgstr "Хвала што сте ажурирали на најновију верзију!"
 
-#: includes/admin/class-welcome.php:338
+#: includes/admin/class-welcome.php:347
 msgid ""
 "AffiliateWP is created by developers from around the world that aim to "
 "provide the #1 affiliate platform for WordPress. Here are just some of the "
@@ -987,7 +1026,7 @@ msgstr ""
 "створe број 1 партнерску платформу за Вордпрес. Ово су тек само неке фаце "
 "које су помогле да се створи AffiliateWP:"
 
-#: includes/admin/class-welcome.php:365
+#: includes/admin/class-welcome.php:374
 msgid "View %s"
 msgstr "Прегледа %s"
 
@@ -1213,7 +1252,7 @@ msgstr "Недавне посете упута"
 
 #: includes/admin/overview/overview.php:242
 #: includes/admin/visits/visits.php:47 includes/admin/visits/visits.php:148
-#: templates/dashboard-tab-visits.php:23
+#: templates/dashboard-tab-stats.php:59 templates/dashboard-tab-visits.php:23
 msgid "Converted"
 msgstr "Конверзија"
 
@@ -1316,11 +1355,17 @@ msgstr "Можете унети додатак упута са префиксо�
 msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
 msgstr "Можете да унесете ИД партнера са префиксом 'affiliate:'"
 
-#: includes/admin/referrals/contextual-help.php:65
+#: includes/admin/referrals/contextual-help.php:60
+#: includes/admin/visits/contextual-help.php:59
+#, fuzzy
+msgid "You can enter a URL campaign prefixed by 'campaign:'"
+msgstr "Можете унети додатак упута са префиксом: 'context:'"
+
+#: includes/admin/referrals/contextual-help.php:66
 msgid "Exporting Referrals"
 msgstr "Извоз "
 
-#: includes/admin/referrals/contextual-help.php:67
+#: includes/admin/referrals/contextual-help.php:68
 msgid ""
 "Referrals can be exported directly to a CSV file in order to make it easier "
 "for your own accounting needs and for you to payout your affiliates's "
@@ -1329,7 +1374,7 @@ msgstr ""
 "Упути могу бити извезени директно у CSV датотеку како би се вашем рачуновођи "
 "олакшао посао и како бисте лакше исплаћивали зараде партнера."
 
-#: includes/admin/referrals/contextual-help.php:68
+#: includes/admin/referrals/contextual-help.php:69
 msgid ""
 "The CSV file generated is structured properly for PayPal's Mass Payment "
 "system so you can easily payout all of your affiliates at once via PayPal."
@@ -1359,7 +1404,7 @@ msgstr "Унесите опис за овај упут."
 
 #: includes/admin/referrals/edit.php:57 includes/admin/referrals/new.php:59
 #: includes/admin/referrals/referrals.php:226
-#: includes/admin/tools/export/class-export-referrals.php:66
+#: includes/admin/tools/export/class-export-referrals.php:67
 msgid "Reference"
 msgstr "Референца"
 
@@ -1372,7 +1417,7 @@ msgstr ""
 "трансакцијски ИД повезане куповине."
 
 #: includes/admin/referrals/edit.php:70 includes/admin/referrals/new.php:72
-#: includes/admin/tools/export/class-export-referrals.php:67
+#: includes/admin/tools/export/class-export-referrals.php:68
 msgid "Context"
 msgstr "Објашњење"
 
@@ -1470,7 +1515,7 @@ msgstr ""
 "\">Алатке &rarr; Извоз</a>."
 
 #: includes/admin/referrals/referrals.php:228
-#: includes/admin/tools/export/class-export-referrals.php:69
+#: includes/admin/tools/export/class-export-referrals.php:70
 #: includes/admin/tools/export/class-export.php:70
 #: includes/admin/visits/visits.php:149
 #: templates/dashboard-tab-referrals.php:27
@@ -1519,18 +1564,19 @@ msgid "Successful Conversions"
 msgstr "Успешне конверзије"
 
 #: includes/admin/reports/reports.php:187 templates/dashboard-tab-stats.php:11
+#: templates/dashboard-tab-stats.php:60
 msgid "Conversion Rate"
 msgstr "Стопа конверзије"
 
-#: includes/admin/settings/class-settings.php:298
+#: includes/admin/settings/class-settings.php:295
 msgid "License Settings"
 msgstr "Подешавања лиценце"
 
-#: includes/admin/settings/class-settings.php:303
+#: includes/admin/settings/class-settings.php:300
 msgid "License Key"
 msgstr "Кључ лиценце"
 
-#: includes/admin/settings/class-settings.php:304
+#: includes/admin/settings/class-settings.php:301
 msgid ""
 "Please enter your license key. An active license key is needed for automatic "
 "plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
@@ -1538,74 +1584,74 @@ msgstr ""
 "Молим унесите кључ лиценце. Активни кључ је потребан за аутоматска ажурирања "
 "и <a href=\"%s\" target=\"_blank\">подршку</a>."
 
-#: includes/admin/settings/class-settings.php:309
+#: includes/admin/settings/class-settings.php:306
 msgid "Pages"
 msgstr "Стране"
 
-#: includes/admin/settings/class-settings.php:315
+#: includes/admin/settings/class-settings.php:312
 msgid "This is the page where affiliates will manage their affiliate account."
 msgstr "Ово је стране где ће партнери да уређују свој партнерски налог."
 
-#: includes/admin/settings/class-settings.php:321
+#: includes/admin/settings/class-settings.php:318
 msgid "Terms of Use"
 msgstr "Услови коришћења"
 
-#: includes/admin/settings/class-settings.php:322
+#: includes/admin/settings/class-settings.php:319
 msgid "Select the page that shows the terms of use for Affiliate Registration"
 msgstr ""
 "Одаберите страну која показује услове коришћења приликом регистрације "
 "партнера"
 
-#: includes/admin/settings/class-settings.php:328
+#: includes/admin/settings/class-settings.php:325
 msgid "Referral Settings"
 msgstr "Подешавања упута"
 
-#: includes/admin/settings/class-settings.php:333
+#: includes/admin/settings/class-settings.php:330
 msgid "Referral Variable"
 msgstr "Променљива за упут"
 
-#: includes/admin/settings/class-settings.php:334
+#: includes/admin/settings/class-settings.php:331
 msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
 msgstr "Променљива за упутни УРЛ. На пример: <strong>%s</strong>."
 
-#: includes/admin/settings/class-settings.php:339
+#: includes/admin/settings/class-settings.php:336
 #, fuzzy
 msgid "Default Referral Format"
 msgstr "Провизија упута"
 
-#: includes/admin/settings/class-settings.php:340
+#: includes/admin/settings/class-settings.php:337
 msgid ""
 "Show referral URLs to affiliates with either their affiliate ID or Username "
 "appended.<br/> For example: <strong>%s or %s</strong>."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:349
+#: includes/admin/settings/class-settings.php:346
 #, fuzzy
 msgid "Pretty Affiliate URLs"
 msgstr "Нови партнер"
 
-#: includes/admin/settings/class-settings.php:350
+#: includes/admin/settings/class-settings.php:347
 #, fuzzy
 msgid ""
 "Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
 "%s</strong>"
 msgstr "Променљива за упутни УРЛ. На пример: <strong>%s</strong>."
 
-#: includes/admin/settings/class-settings.php:354
+#: includes/admin/settings/class-settings.php:351
 #, fuzzy
 msgid "Credit Last Referrer"
 msgstr "Додати упут"
 
-#: includes/admin/settings/class-settings.php:355
+#: includes/admin/settings/class-settings.php:352
 msgid "Credit the last affiliate who referred the customer."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:360
+#: includes/admin/settings/class-settings.php:357
 msgid "Should referrals be based on a percentage or flat rate amounts?"
 msgstr ""
 "Да ли базирати провизију упута на процентну стопу или на фиксне износе?"
 
-#: includes/admin/settings/class-settings.php:366
+#: includes/admin/settings/class-settings.php:363
 msgid ""
 "Default referral rate. A percentage if Referral Rate Type is Percentage, a "
 "flat amount otherwise. Rates can be set for each affiliate individually as "
@@ -1615,46 +1661,46 @@ msgstr ""
 "проценат или фиксно за фиксну. Стопа такође може да се подешава за сваког "
 "партнера индивидуално."
 
-#: includes/admin/settings/class-settings.php:373
+#: includes/admin/settings/class-settings.php:370
 msgid "Exclude Shipping"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:374
+#: includes/admin/settings/class-settings.php:371
 msgid "Should shipping costs be excluded from referral calculations?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:378
+#: includes/admin/settings/class-settings.php:375
 msgid "Exclude Tax"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:379
+#: includes/admin/settings/class-settings.php:376
 msgid "Should taxes be excluded from referral calculations?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:383
+#: includes/admin/settings/class-settings.php:380
 msgid "Cookie Expiration"
 msgstr "Истек колачића"
 
 # This needs more explanation. It is very hard to understand what this does.
-#: includes/admin/settings/class-settings.php:384
+#: includes/admin/settings/class-settings.php:381
 msgid "How many days should the referral tracking cookie be valid for?"
 msgstr "Колико дана треба да важи колачић упута?"
 
-#: includes/admin/settings/class-settings.php:390
+#: includes/admin/settings/class-settings.php:387
 msgid "Currency Settings"
 msgstr "Подешавање валуте"
 
-#: includes/admin/settings/class-settings.php:391
+#: includes/admin/settings/class-settings.php:388
 msgid "Configure the currency options"
 msgstr "Конфигурисање опције валуте"
 
-#: includes/admin/settings/class-settings.php:395
+#: includes/admin/settings/class-settings.php:392
 #: includes/admin/tools/export/class-export-referrals-payout.php:42
 #: includes/admin/tools/export/class-export-referrals.php:65
 msgid "Currency"
 msgstr "Валута"
 
-#: includes/admin/settings/class-settings.php:396
+#: includes/admin/settings/class-settings.php:393
 msgid ""
 "Choose your currency. Note that some payment gateways have currency "
 "restrictions."
@@ -1662,44 +1708,44 @@ msgstr ""
 "Одаберите вашу валуту. Имајте на уму да неки пружаоци услуга наплате имају "
 "ограничења."
 
-#: includes/admin/settings/class-settings.php:401
+#: includes/admin/settings/class-settings.php:398
 msgid "Currency Position"
 msgstr "Позиција валуте"
 
-#: includes/admin/settings/class-settings.php:402
+#: includes/admin/settings/class-settings.php:399
 msgid "Choose the location of the currency sign."
 msgstr "Одаберите позицију знака валуте."
 
-#: includes/admin/settings/class-settings.php:405
+#: includes/admin/settings/class-settings.php:402
 msgid "Before - $10"
 msgstr "Испред - $10"
 
-#: includes/admin/settings/class-settings.php:406
+#: includes/admin/settings/class-settings.php:403
 msgid "After - 10$"
 msgstr "Иза - 10$"
 
-#: includes/admin/settings/class-settings.php:410
+#: includes/admin/settings/class-settings.php:407
 msgid "Thousands Separator"
 msgstr "Одвајање хиљада"
 
-#: includes/admin/settings/class-settings.php:411
+#: includes/admin/settings/class-settings.php:408
 msgid "The symbol (usually , or .) to separate thousands"
 msgstr "Симбол (обично , или . ) за раздвајање хиљада"
 
-#: includes/admin/settings/class-settings.php:417
+#: includes/admin/settings/class-settings.php:414
 msgid "Decimal Separator"
 msgstr "Одвајање децимала"
 
-#: includes/admin/settings/class-settings.php:418
+#: includes/admin/settings/class-settings.php:415
 msgid "The symbol (usually , or .) to separate decimal points"
 msgstr "Симбол (обично , или . ) за раздвајање децимала"
 
-#: includes/admin/settings/class-settings.php:429
+#: includes/admin/settings/class-settings.php:426
 #: includes/admin/settings/display-settings.php:74
 msgid "Integrations"
 msgstr "Интеграције"
 
-#: includes/admin/settings/class-settings.php:430
+#: includes/admin/settings/class-settings.php:427
 msgid ""
 "Choose the integrations to enable. If you are not using any of these, you "
 "may use the <strong>[affiliate_conversion_script]</strong> short code to "
@@ -1711,130 +1757,130 @@ msgstr ""
 "strong> кратки код да правите и пратите упуте. Упутите се на <a href=\"%s\" "
 "target=\"_blank\">документацију</a> за помоћ око овог кода."
 
-#: includes/admin/settings/class-settings.php:440
+#: includes/admin/settings/class-settings.php:437
 #, fuzzy
 msgid "Disable All Emails"
 msgstr "Укупно упути на чекању"
 
-#: includes/admin/settings/class-settings.php:441
+#: includes/admin/settings/class-settings.php:438
 msgid "Should all email notifications be disabled?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:445
+#: includes/admin/settings/class-settings.php:442
 msgid "Logo"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:446
+#: includes/admin/settings/class-settings.php:443
 msgid "Upload or choose a logo to be displayed at the top of emails."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:450
+#: includes/admin/settings/class-settings.php:447
 msgid "Email Template"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:451
+#: includes/admin/settings/class-settings.php:448
 msgid "Choose a template to use for email messages."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:456
+#: includes/admin/settings/class-settings.php:453
 #, fuzzy
 msgid "From Name"
 msgstr "Ваше име"
 
-#: includes/admin/settings/class-settings.php:457
+#: includes/admin/settings/class-settings.php:454
 msgid ""
 "The name emails are said to come from. This should probably be your site "
 "name."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:462
+#: includes/admin/settings/class-settings.php:459
 #, fuzzy
 msgid "From Email"
 msgstr "Е-пошта"
 
-#: includes/admin/settings/class-settings.php:463
+#: includes/admin/settings/class-settings.php:460
 msgid ""
 "Email to send emails from. This will act as the \"from\" and \"reply-to\" "
 "address."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:468
+#: includes/admin/settings/class-settings.php:465
 msgid "Notify Admins"
 msgstr "Обавести администратора"
 
-#: includes/admin/settings/class-settings.php:469
+#: includes/admin/settings/class-settings.php:466
 msgid "Notify site admins of new affiliate registrations?"
 msgstr "Обавестити администратора о регистрацији нових партнера?"
 
-#: includes/admin/settings/class-settings.php:473
+#: includes/admin/settings/class-settings.php:470
 msgid "Registration Email Subject"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:474
+#: includes/admin/settings/class-settings.php:471
 msgid ""
 "Enter the subject line for the registration email sent to admins when new "
 "affiliates register."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:476
+#: includes/admin/settings/class-settings.php:473
 #: includes/emails/actions.php:41
 msgid "New Affiliate Registration"
 msgstr "Регистрација новог партнера"
 
-#: includes/admin/settings/class-settings.php:479
+#: includes/admin/settings/class-settings.php:476
 msgid "Registration Email Content"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:480
+#: includes/admin/settings/class-settings.php:477
 msgid ""
 "Enter the email to send when a new affiliate registers. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:482
+#: includes/admin/settings/class-settings.php:479
 msgid "A new affiliate has registered on your site, %s"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:482
+#: includes/admin/settings/class-settings.php:479
 msgid "Name: "
 msgstr "Име:"
 
-#: includes/admin/settings/class-settings.php:485
+#: includes/admin/settings/class-settings.php:482
 #, fuzzy
 msgid "Application Accepted Email Subject"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:486
+#: includes/admin/settings/class-settings.php:483
 msgid ""
 "Enter the subject line for accepted application emails sent to affiliates "
 "when their account is approved."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:488
+#: includes/admin/settings/class-settings.php:485
 #: includes/emails/actions.php:97
 msgid "Affiliate Application Accepted"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:491
+#: includes/admin/settings/class-settings.php:488
 #, fuzzy
 msgid "Application Accepted Email Content"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:492
+#: includes/admin/settings/class-settings.php:489
 msgid ""
 "Enter the email to send when an application is accepted. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:494
-#: includes/admin/settings/class-settings.php:518
+#: includes/admin/settings/class-settings.php:491
+#: includes/admin/settings/class-settings.php:515
 #, fuzzy
 msgid "Congratulations {name}!"
 msgstr ""
 "Честитамо %s!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:494
+#: includes/admin/settings/class-settings.php:491
 #: includes/emails/actions.php:102
 #, fuzzy
 msgid "Your affiliate application on %s has been accepted!"
@@ -1842,45 +1888,45 @@ msgstr ""
 "Ваша партнерска пријава за %s је прихваћена!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:494
+#: includes/admin/settings/class-settings.php:491
 #, fuzzy
 msgid "Log into your affiliate area at"
 msgstr ""
 "Пријавите се у део за партнере на %s\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:497
+#: includes/admin/settings/class-settings.php:494
 #, fuzzy
 msgid "Application Rejected Email Subject"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:498
+#: includes/admin/settings/class-settings.php:495
 msgid ""
 "Enter the subject line for rejected application emails sent to affiliates "
 "when their account is rejected."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:500
+#: includes/admin/settings/class-settings.php:497
 #, fuzzy
 msgid "Affiliate Application Rejected"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:503
+#: includes/admin/settings/class-settings.php:500
 #, fuzzy
 msgid "Application Rejected Email Content"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:504
+#: includes/admin/settings/class-settings.php:501
 msgid ""
 "Enter the email to send when an application is rejected. HTML is rejected. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:506
+#: includes/admin/settings/class-settings.php:503
 msgid "Hello {name}!"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:506
+#: includes/admin/settings/class-settings.php:503
 #, fuzzy
 msgid ""
 "We regret to inform you that your affiliate application on %s has been "
@@ -1889,50 +1935,50 @@ msgstr ""
 "Ваша партнерска пријава за %s је прихваћена!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:506
+#: includes/admin/settings/class-settings.php:503
 msgid "Reason given: %s"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:509
+#: includes/admin/settings/class-settings.php:506
 #, fuzzy
 msgid "New Referral Email Subject"
 msgstr "Нови упут"
 
-#: includes/admin/settings/class-settings.php:510
+#: includes/admin/settings/class-settings.php:507
 msgid ""
 "Enter the subject line for new referral emails sent when affiliates earn "
 "referrals."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:512
+#: includes/admin/settings/class-settings.php:509
 #: includes/emails/actions.php:216
 msgid "Referral Awarded!"
 msgstr "Упут је награђен!"
 
-#: includes/admin/settings/class-settings.php:515
+#: includes/admin/settings/class-settings.php:512
 #, fuzzy
 msgid "New Referral Email Content"
 msgstr "Нови упут"
 
-#: includes/admin/settings/class-settings.php:516
+#: includes/admin/settings/class-settings.php:513
 msgid ""
 "Enter the email to send on new referrals. HTML is accepted. Available "
 "template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:518
+#: includes/admin/settings/class-settings.php:515
 #, fuzzy
 msgid "You have been awarded a new referral of"
 msgstr ""
 "Додељен вам је нови упут од %s на %s!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:518
+#: includes/admin/settings/class-settings.php:515
 #, fuzzy
 msgid "on %s!"
 msgstr "Верзија %s"
 
-#: includes/admin/settings/class-settings.php:518
+#: includes/admin/settings/class-settings.php:515
 #, fuzzy
 msgid ""
 "Log into your affiliate area to view your earnings or disable these "
@@ -1942,19 +1988,19 @@ msgstr ""
 "обавештења: %s\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:526
+#: includes/admin/settings/class-settings.php:523
 msgid "Allow affiliate registration"
 msgstr "Дозволити регистрацију партнера"
 
-#: includes/admin/settings/class-settings.php:527
+#: includes/admin/settings/class-settings.php:524
 msgid "Should affiliates be able to register accounts for themselves?"
 msgstr "Да ли партнери могу бити у могућности да самостално отворе свој налог?"
 
-#: includes/admin/settings/class-settings.php:531
+#: includes/admin/settings/class-settings.php:528
 msgid "Require approval"
 msgstr "Тражити одобрење"
 
-#: includes/admin/settings/class-settings.php:532
+#: includes/admin/settings/class-settings.php:529
 msgid ""
 "Require that site admins approve affiliates before they can begin earning "
 "referrals?"
@@ -1963,47 +2009,47 @@ msgstr ""
 "одобри исти?"
 
 # Auto register new affiliates? or USERS?
-#: includes/admin/settings/class-settings.php:536
+#: includes/admin/settings/class-settings.php:533
 msgid "Auto Register New Users"
 msgstr "Аутоматска регистрација нових партнера"
 
-#: includes/admin/settings/class-settings.php:537
+#: includes/admin/settings/class-settings.php:534
 msgid "Automatically register new users as affiliates?"
 msgstr "Аутоматски регистровати нове кориснике као партнере?"
 
-#: includes/admin/settings/class-settings.php:541
+#: includes/admin/settings/class-settings.php:538
 msgid "Enable reCAPTCHA"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:542
+#: includes/admin/settings/class-settings.php:539
 msgid ""
 "Would you like to prevent bots from registering affiliate accounts using "
 "Google reCAPTCHA?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:546
+#: includes/admin/settings/class-settings.php:543
 msgid "reCAPTCHA Site Key"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:547
+#: includes/admin/settings/class-settings.php:544
 msgid "This is used to identify your site to Google reCAPTCHA."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:551
+#: includes/admin/settings/class-settings.php:548
 msgid "reCAPTCHA Secret Key"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:552
+#: includes/admin/settings/class-settings.php:549
 msgid ""
 "This is used for communication between your site and Google reCAPTCHA. Be "
 "sure to keep it a secret."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:556
+#: includes/admin/settings/class-settings.php:553
 msgid "Reject Unpaid Referrals on Refund?"
 msgstr "Одбити неисплаћене упуте при повраћају новца?"
 
-#: includes/admin/settings/class-settings.php:557
+#: includes/admin/settings/class-settings.php:554
 msgid ""
 "Should unpaid referrals get automatically rejected when the originating "
 "purchase is refunded or revoked?"
@@ -2011,11 +2057,11 @@ msgstr ""
 "Треба ли неисплаћена зарада по упуту да буде аутоматски одбачена уколико је "
 "нека куповина поништена или опозвана? "
 
-#: includes/admin/settings/class-settings.php:561
+#: includes/admin/settings/class-settings.php:558
 msgid "Use Fallback Referral Tracking Method?"
 msgstr "Користити резервни метод праћења?"
 
-#: includes/admin/settings/class-settings.php:562
+#: includes/admin/settings/class-settings.php:559
 msgid ""
 "The method used to track referral links can fail on sites that have jQuery "
 "errors. Check this if referrals are not getting tracked properly."
@@ -2024,11 +2070,11 @@ msgstr ""
 "имају грешке у jQuery-ју. Омогућите ово уколико праћење упута не ради како "
 "треба."
 
-#: includes/admin/settings/class-settings.php:566
+#: includes/admin/settings/class-settings.php:563
 msgid "Ignore Zero Referrals?"
 msgstr "Игнорисати нулте упуте?"
 
-#: includes/admin/settings/class-settings.php:567
+#: includes/admin/settings/class-settings.php:564
 msgid ""
 "Check this box if you would like AffiliateWP to completely ignore referrals "
 "for a zero total amount. This can be useful for multi-price products that "
@@ -2042,11 +2088,11 @@ msgstr ""
 "нулом као финалним износом. Имајте на уму да уколико је ово омогућено све "
 "посете ће бити рачунате као посете без конверзије."
 
-#: includes/admin/settings/class-settings.php:571
+#: includes/admin/settings/class-settings.php:568
 msgid "Remove Data on Uninstall?"
 msgstr "Уклонити све податне приликом деинсталације?"
 
-#: includes/admin/settings/class-settings.php:572
+#: includes/admin/settings/class-settings.php:569
 msgid ""
 "Check this box if you would like AffiliateWP to completely remove all of its "
 "data when the plugin is deleted."
@@ -2054,16 +2100,16 @@ msgstr ""
 "Омогућите ово уколико желите да AffiliateWP у потпуности уклони све своје "
 "податке када додатак буде обрисан."
 
-#: includes/admin/settings/class-settings.php:597
+#: includes/admin/settings/class-settings.php:594
 #, fuzzy
 msgid "Application Pending Email Subject"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:598
+#: includes/admin/settings/class-settings.php:595
 msgid "Enter the subject line for pending affiliate application emails."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:600
+#: includes/admin/settings/class-settings.php:597
 #: includes/emails/actions.php:138
 #, fuzzy
 msgid "Your Affiliate Application Is Being Reviewed"
@@ -2071,43 +2117,43 @@ msgstr ""
 "Ваша партнерска пријава за %s је прихваћена!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:603
+#: includes/admin/settings/class-settings.php:600
 #, fuzzy
 msgid "Application Pending Email Content"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:604
+#: includes/admin/settings/class-settings.php:601
 msgid ""
 "Enter the email to send when an application is pending. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:606
+#: includes/admin/settings/class-settings.php:603
 msgid "Hi {name}!"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:606
+#: includes/admin/settings/class-settings.php:603
 #: includes/emails/actions.php:143
 msgid "Thanks for your recent affiliate registration on {site_name}."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:606
+#: includes/admin/settings/class-settings.php:603
 #: includes/emails/actions.php:144
 msgid ""
 "We're currently reviewing your affiliate application and will be in touch "
 "soon!"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:609
+#: includes/admin/settings/class-settings.php:606
 #, fuzzy
 msgid "Application Rejection Email Subject"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:610
+#: includes/admin/settings/class-settings.php:607
 msgid "Enter the subject line for rejected affiliate application emails."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:612
+#: includes/admin/settings/class-settings.php:609
 #: includes/emails/actions.php:175
 #, fuzzy
 msgid "Your Affiliate Application Has Been Rejected"
@@ -2115,41 +2161,41 @@ msgstr ""
 "Ваша партнерска пријава за %s је прихваћена!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:615
+#: includes/admin/settings/class-settings.php:612
 #, fuzzy
 msgid "Application Rejection Email Content"
 msgstr "Пријава о партнерству прихваћена"
 
-#: includes/admin/settings/class-settings.php:616
+#: includes/admin/settings/class-settings.php:613
 msgid ""
 "Enter the email to send when an application is rejected. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:618
+#: includes/admin/settings/class-settings.php:615
 msgid "Hi {name},"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:618
+#: includes/admin/settings/class-settings.php:615
 #: includes/emails/actions.php:180
 msgid ""
 "We regret to inform you that your recent affiliate registration on "
 "{site_name} was rejected."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:754
+#: includes/admin/settings/class-settings.php:751
 msgid "Deactivate License"
 msgstr "Деактивирање лиценце"
 
-#: includes/admin/settings/class-settings.php:755
+#: includes/admin/settings/class-settings.php:752
 msgid "Your license is valid!"
 msgstr "Ваша лиценца је важећа!"
 
-#: includes/admin/settings/class-settings.php:758
+#: includes/admin/settings/class-settings.php:755
 msgid "Renew Your License"
 msgstr "Обновите вашу лиценцу"
 
-#: includes/admin/settings/class-settings.php:759
+#: includes/admin/settings/class-settings.php:756
 msgid ""
 "Your license has expired, renew today to continue getting updates and "
 "support!"
@@ -2157,16 +2203,16 @@ msgstr ""
 "Ваша лиценца је истекла, обновите је данас како бисте наставили да добијате "
 "ажурирања и подршку!"
 
-#: includes/admin/settings/class-settings.php:761
+#: includes/admin/settings/class-settings.php:758
 msgid "Activate License"
 msgstr "Активирајте лиценцу"
 
-#: includes/admin/settings/class-settings.php:860
+#: includes/admin/settings/class-settings.php:857
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr "Функција која се користи за подешавање <strong>%s</strong> недостаје."
 
-#: includes/admin/settings/class-settings.php:935
+#: includes/admin/settings/class-settings.php:932
 msgid "Upload File"
 msgstr ""
 
@@ -2198,6 +2244,11 @@ msgstr "Врста партнерске провизије"
 #, fuzzy
 msgid "Date Registered"
 msgstr "Регистрација"
+
+#: includes/admin/tools/export/class-export-referrals.php:66
+#: templates/dashboard-tab-stats.php:56
+msgid "Campaign"
+msgstr ""
 
 #: includes/admin/tools/export/class-export.php:173
 msgid "You do not have permission to export data."
@@ -2507,11 +2558,11 @@ msgstr "Директан саобраћај"
 msgid "No visits found."
 msgstr "Посете нису пронађене."
 
-#: includes/affiliate-functions.php:307
+#: includes/affiliate-functions.php:306
 msgid "Percentage (%)"
 msgstr "Процентуално (%)"
 
-#: includes/affiliate-functions.php:308
+#: includes/affiliate-functions.php:307
 msgid "Flat %s"
 msgstr "Фиксно %s"
 
@@ -2795,25 +2846,25 @@ msgstr "Партнерски ИД"
 msgid "No reason provided"
 msgstr "Упути нису забележени"
 
-#: includes/integrations/class-edd.php:289
+#: includes/integrations/class-edd.php:290
 #: includes/integrations/class-gravityforms.php:105
 #: includes/integrations/class-jigoshop.php:85
 #: includes/integrations/class-shopp.php:75
 #: includes/integrations/class-sproutinvoices.php:53
-#: includes/integrations/class-woocommerce.php:159
+#: includes/integrations/class-woocommerce.php:161
 #: includes/integrations/class-zippycourses.php:187
 msgid "Referral #%d for %s recorded for %s"
 msgstr "Упут #%d за %s је забележен за %s"
 
-#: includes/integrations/class-edd.php:406
-#: includes/integrations/class-rcp.php:189
-#: includes/integrations/class-woocommerce.php:279
+#: includes/integrations/class-edd.php:407
+#: includes/integrations/class-rcp.php:190
+#: includes/integrations/class-woocommerce.php:281
 msgid "Affiliate Discount?"
 msgstr "Партнерски попуст?"
 
-#: includes/integrations/class-edd.php:415
-#: includes/integrations/class-rcp.php:198
-#: includes/integrations/class-woocommerce.php:287
+#: includes/integrations/class-edd.php:416
+#: includes/integrations/class-rcp.php:199
+#: includes/integrations/class-woocommerce.php:289
 msgid ""
 "If you would like to connect this discount to an affiliate, enter the name "
 "of the affiliate it belongs to."
@@ -2821,40 +2872,40 @@ msgstr ""
 "Уколико желите да вежете овај попуст за партнера, унесите име партнера за "
 "који везујете попуст."
 
-#: includes/integrations/class-edd.php:506
+#: includes/integrations/class-edd.php:507
 msgid "Adjust EDD Commissions"
 msgstr ""
 
-#: includes/integrations/class-edd.php:507
+#: includes/integrations/class-edd.php:508
 msgid ""
 "Should AffiliateWP adjust the commission amounts recorded for purchases that "
 "include affiliate referrals? This will subtract the referral amount from the "
 "base amount used to calculate the commission total."
 msgstr ""
 
-#: includes/integrations/class-edd.php:527
+#: includes/integrations/class-edd.php:528
 #, fuzzy
 msgid "Disable Renewal Referrals"
 msgstr "Недавни упути"
 
-#: includes/integrations/class-edd.php:528
+#: includes/integrations/class-edd.php:529
 msgid ""
 "Should AffiliateWP prevent referral commissions from being recorded on "
 "renewal purchases with EDD Software Licensing?"
 msgstr ""
 
-#: includes/integrations/class-edd.php:549
+#: includes/integrations/class-edd.php:550
 #: includes/integrations/class-zippycourses.php:55
 #, fuzzy
 msgid "Affiliate Rates:"
 msgstr "Име партнера"
 
-#: includes/integrations/class-edd.php:562
+#: includes/integrations/class-edd.php:563
 #: includes/integrations/class-zippycourses.php:68
 msgid "Disable referrals on this %s"
 msgstr ""
 
-#: includes/integrations/class-edd.php:566
+#: includes/integrations/class-edd.php:567
 #: includes/integrations/class-memberpress.php:152
 #: includes/integrations/class-zippycourses.php:72
 msgid ""
@@ -2922,9 +2973,9 @@ msgid "Allow referrals"
 msgstr "Укупно упути на чекању"
 
 #: includes/integrations/class-memberpress.php:119
-#: includes/integrations/class-rcp.php:274
-#: includes/integrations/class-rcp.php:296
-#: includes/integrations/class-woocommerce.php:399
+#: includes/integrations/class-rcp.php:275
+#: includes/integrations/class-rcp.php:297
+#: includes/integrations/class-woocommerce.php:401
 #, fuzzy
 msgid "Affiliate Rate"
 msgstr "Име партнера"
@@ -2944,26 +2995,26 @@ msgstr "Упути"
 msgid "Enable affiliate referral creation for this form?"
 msgstr "Врста провизије партнерског упута."
 
-#: includes/integrations/class-rcp.php:278
-#: includes/integrations/class-rcp.php:300
+#: includes/integrations/class-rcp.php:279
+#: includes/integrations/class-rcp.php:301
 msgid ""
 "This rate will be used to calculate affiliate earnings when members "
 "subscribe to this level. Leave blank to use the site default referral rate."
 msgstr ""
 
-#: includes/integrations/class-woocommerce.php:401
+#: includes/integrations/class-woocommerce.php:403
 #: includes/integrations/extras/class-exchange-feature.php:42
 msgid ""
 "These settings will be used to calculate affiliate earnings per-sale. Leave "
 "blank to use default affiliate rates."
 msgstr ""
 
-#: includes/integrations/class-woocommerce.php:405
+#: includes/integrations/class-woocommerce.php:407
 #, fuzzy
 msgid "Disable referrals"
 msgstr "Укупно упути на чекању"
 
-#: includes/integrations/class-woocommerce.php:406
+#: includes/integrations/class-woocommerce.php:408
 msgid ""
 "This will prevent orders of this product from generating referral "
 "commissions for affiliates."
@@ -3233,6 +3284,18 @@ msgstr "Статистика"
 msgid "Commission Rate"
 msgstr "Стопа провизије"
 
+#: templates/dashboard-tab-stats.php:58
+msgid "Unique Links"
+msgstr ""
+
+#: templates/dashboard-tab-stats.php:68
+msgid "None set"
+msgstr ""
+
+#: templates/dashboard-tab-stats.php:77
+msgid "You have no referrals or visits that included a campaign name."
+msgstr ""
+
 #: templates/dashboard-tab-urls.php:3
 msgid "Referral URL Generator"
 msgstr "Генерисање упутних УРЛ-а"
@@ -3263,14 +3326,18 @@ msgid "Page URL"
 msgstr "УРЛ странице"
 
 #: templates/dashboard-tab-urls.php:21
+msgid "Campaign Name (optional)"
+msgstr ""
+
+#: templates/dashboard-tab-urls.php:26
 msgid "Referral URL"
 msgstr "УРЛ упута"
 
-#: templates/dashboard-tab-urls.php:23
+#: templates/dashboard-tab-urls.php:28
 msgid "(now copy this referral link and share it anywhere)"
 msgstr "(сада копирајте ову везу и делите је било где)"
 
-#: templates/dashboard-tab-urls.php:29
+#: templates/dashboard-tab-urls.php:34
 msgid "Generate URL"
 msgstr "Генериши УРЛ"
 
@@ -3373,6 +3440,16 @@ msgstr ""
 msgctxt "Creative ID, creative name"
 msgid "Creative ID #%d: %s"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "The affiliate's username is now included in the exported affiliate .csv "
+#~ "file."
+#~ msgstr "Партнерска зона је доступна само регистрованим партнерима."
+
+#, fuzzy
+#~ msgid "New Affiliate Meta Class"
+#~ msgstr "Нови партнер"
 
 #, fuzzy
 #~ msgid "Accept Affiliate"
