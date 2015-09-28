@@ -36,7 +36,7 @@ function affwp_get_affiliate_id( $user_id = 0 ) {
 	if( false === $affiliate_id ) {
 
 		$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
-		
+
 	}
 
 	return $affiliate_id;
@@ -794,10 +794,16 @@ function affwp_get_affiliate_campaigns( $affiliate ) {
  */
 function affwp_add_affiliate( $data = array() ) {
 
+	if ( ! empty( $data['status'] ) ) {
+		$status = $data['status'];
+	} elseif ( affiliate_wp()->settings->get( 'require_approval' ) ) {
+		$status = 'pending';
+	} else {
+		$status = 'active';
+	}
+
 	if ( empty( $data['user_id'] ) ) {
-
 		return false;
-
 	}
 
 	$user_id = absint( $data['user_id'] );
@@ -806,7 +812,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 		$args = array(
 			'user_id'       => $user_id,
-			'status'        => $data['status'],
+			'status'        => $status,
 			'rate'          => ! empty( $data['rate'] ) ? sanitize_text_field( $data['rate'] ) : '',
 			'rate_type'     => ! empty( $data['rate_type' ] ) ? sanitize_text_field( $data['rate_type'] ) : '',
 			'payment_email' => ! empty( $data['payment_email'] ) ? sanitize_text_field( $data['payment_email'] ) : ''
@@ -816,7 +822,7 @@ function affwp_add_affiliate( $data = array() ) {
 
 		if ( $affiliate_id ) {
 
-			affwp_set_affiliate_status( $affiliate_id, $data['status'] );
+			affwp_set_affiliate_status( $affiliate_id, $status );
 
 			return $affiliate_id;
 		}
