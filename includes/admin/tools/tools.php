@@ -174,7 +174,7 @@ function affwp_migration_tab() {
 			<div class="postbox">
 				<h3><span>Affiliates Pro</span></h3>
 				<div class="inside">
-					<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
+					<p><?php _e( 'Use this tool to migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
 					<p><?php _e( '<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool.', 'affiliate-wp' ); ?></p>
 					<form method="get">
 						<input type="hidden" name="type" value="affiliates-pro"/>
@@ -190,7 +190,7 @@ function affwp_migration_tab() {
 			<div class="postbox">
 				<h3><span>WP Affiliate</span></h3>
 				<div class="inside">
-					<p><?php _e( 'Use this tool migrate existing affiliate accounts from WP Affiliate to AffiliateWP.', 'affiliate-wp' ); ?></p>
+					<p><?php _e( 'Use this tool to migrate existing affiliate accounts from WP Affiliate to AffiliateWP.', 'affiliate-wp' ); ?></p>
 					<form method="get">
 						<input type="hidden" name="type" value="wp-affiliate"/>
 						<input type="hidden" name="part" value="affiliates"/>
