@@ -363,7 +363,7 @@ function affwp_get_referral_format_value( $format = '', $affiliate_id = 0 ) {
 	switch ( $format ) {
 
 		case 'username':
-			$value = affwp_get_affiliate_username( $affiliate_id );
+			$value = urlencode( affwp_get_affiliate_username( $affiliate_id ) );
 			break;
 
 		case 'id':
