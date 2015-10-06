@@ -43,3 +43,27 @@ function affwp_delete_visit( $visit ) {
 
 	return false;
 }
+
+/**
+ * Sanitize visit URLs
+ *
+ * @since 1.7.5
+ * @param string $url The URL to sanitize
+ * @return string $url The sanitized URL
+ */
+function affwp_sanitize_visit_url( $url ) {
+	$original_url = $url;
+	$referral_var = affiliate_wp()->tracking->get_referral_var();
+
+	// Remove the referral var
+	$url = remove_query_arg( $referral_var, $url );
+
+	// Fallback for pretty permalinks
+	if( $original_url === $url ) {
+		if( strpos( $url, $referral_var ) ) {
+			$url = preg_replace( '/(\/' . $referral_var . ')[\/](\w*)/', '', $url );
+		}
+	}
+
+	return $url;
+}
