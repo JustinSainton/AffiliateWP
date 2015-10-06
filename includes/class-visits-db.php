@@ -248,7 +248,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			// Remove the referral var
 			$data['url'] = remove_query_arg( $referral_var, $data['url'] );
 
-			if( $original_url == $data['url'] ) {
+			if( $original_url === $data['url'] ) {
 				$pieces = explode( '/', $data['url'] );
 
 				foreach( $pieces as $key => $piece ) {
