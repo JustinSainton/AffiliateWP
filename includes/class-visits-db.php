@@ -242,9 +242,26 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 	public function add( $data = array() ) {
 
 		if( ! empty( $data['url'] ) ) {
+			$original_url = $data['url'];
+			$referral_var = affiliate_wp()->tracking->get_referral_var();
 
 			// Remove the referral var
-			$data['url'] = remove_query_arg( affiliate_wp()->tracking->get_referral_var(), $data['url'] );
+			$data['url'] = remove_query_arg( $referral_var, $data['url'] );
+
+			if( $original_url == $data['url'] ) {
+				$pieces = explode( '/', $data['url'] );
+
+				foreach( $pieces as $key => $piece ) {
+					if( $piece == $referral_var ) {
+						unset( $pieces[$key] );
+						$pieces = array_values( $pieces );
+						unset( $pieces[$key] );
+
+						$data['url'] = implode( '/', $pieces );
+						continue;
+					}
+				}
+			}
 		}
 
 		$visit_id = $this->insert( $data, 'visit' );
