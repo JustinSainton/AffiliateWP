@@ -249,17 +249,8 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			$data['url'] = remove_query_arg( $referral_var, $data['url'] );
 
 			if( $original_url === $data['url'] ) {
-				$pieces = explode( '/', $data['url'] );
-
-				foreach( $pieces as $key => $piece ) {
-					if( $piece == $referral_var ) {
-						unset( $pieces[$key] );
-						$pieces = array_values( $pieces );
-						unset( $pieces[$key] );
-
-						$data['url'] = implode( '/', $pieces );
-						continue;
-					}
+				if( strpos( $data['url'], $referral_var ) ) {
+					$data['url'] = preg_replace( '/(\/' . $referral_var . ')[\/](\w*)/', '', $data['url'] );
 				}
 			}
 		}
