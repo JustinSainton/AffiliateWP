@@ -222,7 +222,8 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
 			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
 			'rate'     	   => __( 'Rate', 'affiliate-wp' ),
-			'referrals'    => __( 'Paid Referrals', 'affiliate-wp' ),
+			'unpaid'       => __( 'Unpaid', 'affiliate-wp' ),
+			'referrals'    => __( 'Paid', 'affiliate-wp' ),
 			'visits'       => __( 'Visits', 'affiliate-wp' ),
 			'status'       => __( 'Status', 'affiliate-wp' ),
 			'actions'      => __( 'Actions', 'affiliate-wp' ),
@@ -244,6 +245,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			'affiliate_id' => array( 'affiliate_id', false ),
 			'earnings'     => array( 'earnings', false ),
 			'rate'         => array( 'rate', false ),
+			'unpaid'       => array( 'unpaid', false ),
 			'referrals'    => array( 'referrals', false ),
 			'visits'       => array( 'visits', false ),
 			'status'       => array( 'status', false ),
@@ -328,6 +330,21 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 */
 	function column_rate( $affiliate ) {
 		return affwp_get_affiliate_rate( $affiliate->affiliate_id, true );
+	}
+
+
+	/**
+	 * Render the unpaid referrals column
+	 *
+	 * @access public
+	 * @since 1.7.5
+	 * @param array $affiliate Contains all the data for the unpaid referrals column
+	 * @return string unpaid referrals link
+	 */
+	function column_unpaid( $affiliate ) {
+		$unpaid_count = affiliate_wp()->referrals->unpaid_count( '', $affiliate->affiliate_id );
+
+		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate_id=' . $affiliate->affiliate_id . '&status=unpaid' ) . '">' . $unpaid_count . '</a>';
 	}
 
 
