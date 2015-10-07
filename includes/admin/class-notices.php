@@ -5,10 +5,18 @@ class Affiliate_WP_Admin_Notices {
 	public function __construct() {
 
 		add_action( 'admin_notices', array( $this, 'show_notices' ) );
+		add_action( 'affwp_dismiss_notices', array( $this, 'dismiss_notices' ) );
 	}
 
 
 	public function show_notices() {
+
+		if( empty( affiliate_wp()->integrations->get_enabled_integrations() ) && ! get_user_meta( get_current_user_id(), '_affwp_no_integrations_dismissed', true ) ) {
+			echo '<div class="error">';
+				echo '<p>' . __( 'There are currently no AffiliateWP integrations enabled. If you are using AffiliateWP without any integrations, you may disregard this message.', 'affiliate-wp' ) . '</p>';
+				echo '<p><a href="' . add_query_arg( array( 'affwp_action' => 'dismiss_notices', 'affwp_notice' => 'no_integrations' ) ) . '">' . __( 'Dismiss Notice', 'affiliate-wp' ) . '</a></p>';
+			echo '</div>';
+		}
 
 		$class = 'updated';
 
@@ -175,5 +183,18 @@ class Affiliate_WP_Admin_Notices {
 
 	}
 
+	/**
+	 * Dismiss admin notices when Dismiss links are clicked
+	 *
+	 * @since 1.7.5
+	 * @return void
+	 */
+	function dismiss_notices() {
+		if( isset( $_GET['affwp_notice'] ) ) {
+			update_user_meta( get_current_user_id(), '_affwp_' . $_GET['affwp_notice'] . '_dismissed', 1 );
+			wp_redirect( remove_query_arg( array( 'affwp_action', 'affwp_notice' ) ) );
+			exit;
+		}
+	}
 }
 new Affiliate_WP_Admin_Notices;
