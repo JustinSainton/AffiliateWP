@@ -64,6 +64,7 @@ table.affwp-table th {
 .affwp-form label {
 	display: inline-block;
 	width: 200px;
+	cursor: pointer;
 }
 
 .affwp-wrap {
