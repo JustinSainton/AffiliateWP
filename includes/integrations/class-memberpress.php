@@ -22,6 +22,9 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 		add_action( 'add_meta_boxes', array( $this, 'register_metabox' ) );
 		add_action( 'save_post', array( $this, 'save_meta' ) );
 
+		// Coupon support
+		add_action( 'add_meta_boxes', array( $this, 'add_coupon_meta_box' ) );
+		add_action( 'save_post', array( $this, 'store_discount_affiliate' ), 1, 2 );
 	}
 
 	/**
@@ -31,9 +34,14 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	 * @since   1.5
 	*/
 	public function add_pending_referral( $txn ) {
+		// Check if an affiliate coupon was used
+		$affiliate_id = $this->get_coupon_affiliate_id( $txn );
 
 		// Pending referrals are only created for one-time purchases
-		if ( $this->was_referred() ) {
+		if ( $this->was_referred() || $affiliate_id ) {
+			if( false !== $affiliate_id ) {
+				$this->affiliate_id = $affiliate_id;
+			}
 
 			$referral = affiliate_wp()->referrals->get_by( 'reference', $txn->id, $this->context );
 
@@ -208,6 +216,129 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 		}
 
+	}
+
+
+	/**
+	 * Register coupon meta box
+	 *
+	 * @access public
+	 */
+	public function add_coupon_meta_box() {
+		add_meta_box( 'memberpress-coupon-affiliate-data', __( 'Affiliate Data', 'affiliate-wp' ), array( $this, 'display_coupon_meta_box' ), MeprCoupon::$cpt, 'side', 'default' );
+	}
+
+
+	/**
+	 * Display coupon meta box
+	 *
+	 * @access public
+	 */
+	public function display_coupon_meta_box() {
+		global $post;
+
+		add_filter( 'affwp_is_admin_page', '__return_true' );
+		affwp_admin_scripts();
+
+		$affiliate_id = get_post_meta( $post->ID, 'affwp_discount_affiliate', true );
+		$user_id      = affwp_get_affiliate_user_id( $affiliate_id );
+		$user         = get_userdata( $user_id );
+		$user_name    = $user ? $user->user_login : '';
+		?>
+		<p class="form-field affwp-jigoshop-coupon-field">
+			<label for="user_name"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></label>
+			<span class="affwp-ajax-search-wrap">
+				<span class="affwp-jigoshop-coupon-input-wrap">
+					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
+					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" />
+					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				</span>
+				<span id="affwp_user_search_results"></span>
+			</span>
+		</p>
+		<?php
+	}
+
+
+	/**
+	 * Save coupon meta
+	 *
+	 * @access public
+	 */
+	public function store_discount_affiliate( $post_id, $post ) {
+		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return $post_id;
+		}
+
+		// Don't save revisions and autosaves
+		if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
+			return $post_id;
+		}
+
+		$post = get_post( $post_id );
+
+		if( ! $post ) {
+			return $post_id;
+		}
+
+		// Check post type is coupon
+		if ( 'memberpresscoupon' != $post->post_type ) {
+			return $post_id;
+		}
+
+		// Check user permission
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return $post_id;
+		}
+
+
+		if( empty( $_POST['user_name'] ) ) {
+			delete_post_meta( $post_id, 'affwp_discount_affiliate' );
+			return;
+		}
+
+		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
+			return;
+		}
+
+		if( empty( $_POST['user_id'] ) ) {
+			$user = get_user_by( 'login', $_POST['user_name'] );
+
+			if( $user ) {
+				$user_id = $user->ID;
+			}
+		} else {
+			$user_id = absint( $_POST['user_id'] );
+		}
+
+		$affiliate_id = affwp_get_affiliate_id( $user_id );
+		update_post_meta( $post_id, 'affwp_discount_affiliate', $affiliate_id );
+	}
+
+
+	/**
+	 * Retrieve the affiliate ID for the coupon used, if any
+	 *
+	 * @access  public
+	 * @since   1.7.5
+	*/
+	private function get_coupon_affiliate_id( $txn ) {
+		if( ! $coupon = $txn->coupon() ) {
+			return false;
+		}
+
+		$affiliate_id = get_post_meta( $coupon->ID, 'affwp_discount_affiliate', true );
+
+		if( $affiliate_id ) {
+			if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
+				continue;
+			}
+
+			return $affiliate_id;
+		}
+
+		return false;
 	}
 }
 new Affiliate_WP_MemberPress;
