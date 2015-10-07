@@ -35,7 +35,7 @@ class Affiliate_WP_Login {
 		ob_start();
 
 		affiliate_wp()->templates->get_template_part( 'login' );
-		
+
 		return apply_filters( 'affwp_login_form', ob_get_clean() );
 	}
 
@@ -57,6 +57,10 @@ class Affiliate_WP_Login {
 		}
 
 		$user = get_user_by( 'login', $_POST['affwp_user_login'] );
+
+		if ( ! $user ) {
+			$user = get_user_by( 'email', $_POST['affwp_user_login'] );
+		}
 
 		if ( ! $user ) {
 			$this->add_error( 'no_such_user', __( 'No such user', 'affiliate-wp' ) );
@@ -95,7 +99,7 @@ class Affiliate_WP_Login {
 			if ( $redirect ) {
 				wp_redirect( $redirect ); exit;
 			}
-			
+
 		} else {
 
 			if ( function_exists( 'limit_login_failed' ) ) {
