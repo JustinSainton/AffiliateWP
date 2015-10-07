@@ -498,7 +498,7 @@ class Affiliate_WP_Tracking {
 
 		if( ! empty( $login ) ) {
 
-			$user = get_user_by( 'login', sanitize_text_field( $login ) );
+			$user = get_user_by( 'login', sanitize_text_field( urldecode( $login ) ) );
 
 			if( $user ) {
 
