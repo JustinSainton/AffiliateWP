@@ -78,6 +78,10 @@ class Affiliate_WP_Register {
 				}
 			}
 
+			if ( is_numeric( $data['affwp_user_login'] ) ) {
+				$this->add_error( 'username_invalid_numeric', __( 'Invalid username. Usernames must include at least one letter', 'affiliate-wp' ) );
+			}
+
 			if ( email_exists( $data['affwp_user_email'] ) ) {
 				$this->add_error( 'email_unavailable', __( 'Email address already taken', 'affiliate-wp' ) );
 			}
