@@ -245,10 +245,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 		$user         = get_userdata( $user_id );
 		$user_name    = $user ? $user->user_login : '';
 		?>
-		<p class="form-field affwp-jigoshop-coupon-field">
+		<p class="form-field affwp-memberpress-coupon-field">
 			<label for="user_name"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></label>
 			<span class="affwp-ajax-search-wrap">
-				<span class="affwp-jigoshop-coupon-input-wrap">
+				<span class="affwp-memberpress-coupon-input-wrap">
 					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
 					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" />
 					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
