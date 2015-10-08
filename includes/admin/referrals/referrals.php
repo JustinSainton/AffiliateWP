@@ -145,6 +145,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 		global $status, $page;
 
 		parent::__construct( array(
+			'singular'  => 'referral',
+			'plural'    => 'referrals',
 			'ajax'      => false
 		) );
 
@@ -478,6 +480,15 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function process_bulk_action() {
+
+		if( empty( $_REQUEST['_wpnonce'] ) ) {
+			return;
+		}
+
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'referrals' ) ) {
+			return;
+		}
+
 		$ids = isset( $_GET['referral_id'] ) ? $_GET['referral_id'] : array();
 
 		if ( ! is_array( $ids ) ) {

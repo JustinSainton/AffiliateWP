@@ -144,6 +144,8 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		global $status, $page;
 
 		parent::__construct( array(
+			'singular'  => 'affiliate',
+			'plural'    => 'affiliates',
 			'ajax'      => false
 		) );
 
@@ -424,6 +426,15 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function process_bulk_action() {
+
+		if( empty( $_REQUEST['_wpnonce'] ) ) {
+			return;
+		}
+
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'affiliates' ) ) {
+			return;
+		}
+
 		$ids = isset( $_GET['affiliate_id'] ) ? $_GET['affiliate_id'] : false;
 
 		if ( ! is_array( $ids ) ) {
