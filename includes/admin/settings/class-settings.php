@@ -98,7 +98,11 @@ class Affiliate_WP_Settings {
 
 			foreach ( $settings as $key => $option ) {
 
-				$name = isset( $option['name'] ) ? $option['name'] : '';
+				if( $option['type'] == 'checkbox' || $option['type'] == 'multicheck' || $option['type'] == 'radio' ) {
+					$name = isset( $option['name'] ) ? $option['name'] : '';
+				} else {
+					$name = isset( $option['name'] ) ? '<label for="affwp_settings[' . $key . ']">' . $option['name'] . '</label>' : '';
+				}
 
 				$callback = ! empty( $option['callback'] ) ? $option['callback'] : array( $this, $option['type'] . '_callback' );
 
@@ -181,7 +185,7 @@ class Affiliate_WP_Settings {
 			$input[ $key ]     = $value;
 
 			if ( $type ) {
-				
+
 				if( $sanitize_callback && is_callable( $sanitize_callback ) ) {
 
 					add_filter( 'affwp_settings_sanitize_' . $type, $sanitize_callback, 10, 2 );
@@ -298,7 +302,7 @@ class Affiliate_WP_Settings {
 					),
 					'license_key' => array(
 						'name' => __( 'License Key', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'http://affiliatewp.com/support/' ) . '</p>',
+						'desc' => sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'http://affiliatewp.com/support/' ),
 						'type' => 'license',
 						'sanitize_callback' => 'sanitize_text_field'
 					),
@@ -309,14 +313,14 @@ class Affiliate_WP_Settings {
 					),
 					'affiliates_page' => array(
 						'name' => __( 'Affiliate Area', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'This is the page where affiliates will manage their affiliate account.', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => affwp_get_pages(),
 						'sanitize_callback' => 'absint'
 					),
 					'terms_of_use' => array(
 						'name' => __( 'Terms of Use', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Select the page that shows the terms of use for Affiliate Registration', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => affwp_get_pages(),
 						'sanitize_callback' => 'absint'
@@ -328,13 +332,13 @@ class Affiliate_WP_Settings {
 					),
 					'referral_var' => array(
 						'name' => __( 'Referral Variable', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ) ) . '</p>',
+						'desc' => sprintf( __( 'The URL variable for referral URLs. For example: <strong>%s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ) ),
 						'type' => 'text',
 						'std' => 'ref'
 					),
 					'referral_format' => array(
 						'name' => __( 'Default Referral Format', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ) . '</p>',
+						'desc' => sprintf( __( 'Show referral URLs to affiliates with either their affiliate ID or Username appended.<br/> For example: <strong>%s or %s</strong>.', 'affiliate-wp' ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), '1', home_url( '/' ) ) ), esc_url( add_query_arg( affiliate_wp()->tracking->get_referral_var(), $username, home_url( '/' ) ) ) ),
 						'type' => 'select',
 						'options' => array(
 							'id'       => __( 'ID', 'affiliate-wp' ),
@@ -344,23 +348,23 @@ class Affiliate_WP_Settings {
 					),
 					'referral_pretty_urls' => array(
 						'name' => __( 'Pretty Affiliate URLs', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . sprintf( __( 'Show pretty affiliate referrals to affiliates. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ) . '</p>',
+						'desc' => sprintf( __( 'Show pretty affiliate referrals to affiliates. For example: <strong>%s or %s</strong>', 'affiliate-wp' ), home_url( '/' ) . affiliate_wp()->tracking->get_referral_var() . '/1', home_url( '/' ) . trailingslashit( affiliate_wp()->tracking->get_referral_var() ) . $username ),
 						'type' => 'checkbox'
 					),
 					'referral_credit_last' => array(
 						'name' => __( 'Credit Last Referrer', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Credit the last affiliate who referred the customer.', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Credit the last affiliate who referred the customer.', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'referral_rate_type' => array(
 						'name' => __( 'Referral Rate Type', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Should referrals be based on a percentage or flat rate amounts?', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => affwp_get_affiliate_rate_types()
 					),
 					'referral_rate' => array(
 						'name' => __( 'Referral Rate', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Default referral rate. A percentage if Referral Rate Type is Percentage, a flat amount otherwise. Rates can be set for each affiliate individually as well.', 'affiliate-wp' ),
 						'type' => 'number',
 						'size' => 'small',
 						'step' => '0.01',
@@ -368,17 +372,17 @@ class Affiliate_WP_Settings {
 					),
 					'exclude_shipping' => array(
 						'name' => __( 'Exclude Shipping', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Should shipping costs be excluded from referral calculations?', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Should shipping costs be excluded from referral calculations?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'exclude_tax' => array(
 						'name' => __( 'Exclude Tax', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Should taxes be excluded from referral calculations?', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Should taxes be excluded from referral calculations?', 'affiliate-wp' ),
 						'type' => 'checkbox'
 					),
 					'cookie_exp' => array(
 						'name' => __( 'Cookie Expiration', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'How many days should the referral tracking cookie be valid for?', 'affiliate-wp' ),
 						'type' => 'number',
 						'size' => 'small',
 						'std' => '1'
@@ -390,13 +394,13 @@ class Affiliate_WP_Settings {
 					),
 					'currency' => array(
 						'name' => __( 'Currency', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Choose your currency. Note that some payment gateways have currency restrictions.', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Choose your currency. Note that some payment gateways have currency restrictions.', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => affwp_get_currencies()
 					),
 					'currency_position' => array(
 						'name' => __( 'Currency Position', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'Choose the location of the currency sign.', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'Choose the location of the currency sign.', 'affiliate-wp' ),
 						'type' => 'select',
 						'options' => array(
 							'before' => __( 'Before - $10', 'affiliate-wp' ),
@@ -405,14 +409,14 @@ class Affiliate_WP_Settings {
 					),
 					'thousands_separator' => array(
 						'name' => __( 'Thousands Separator', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'The symbol (usually , or .) to separate thousands', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'The symbol (usually , or .) to separate thousands', 'affiliate-wp' ),
 						'type' => 'text',
 						'size' => 'small',
 						'std' => ','
 					),
 					'decimal_separator' => array(
 						'name' => __( 'Decimal Separator', 'affiliate-wp' ),
-						'desc' => '<p class="description">' . __( 'The symbol (usually , or .) to separate decimal points', 'affiliate-wp' ) . '</p>',
+						'desc' => __( 'The symbol (usually , or .) to separate decimal points', 'affiliate-wp' ),
 						'type' => 'text',
 						'size' => 'small',
 						'std' => '.'
@@ -646,8 +650,10 @@ class Affiliate_WP_Settings {
 	function checkbox_callback( $args ) {
 
 		$checked = isset($this->options[$args['id']]) ? checked(1, $this->options[$args['id']], false) : '';
-		$html = '<input type="checkbox" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="1" ' . $checked . '/>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html = '<label for="affwp_settings[' . $args['id'] . ']">';
+		$html .= '<input type="checkbox" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="1" ' . $checked . '/>&nbsp;';
+		$html .= $args['desc'];
+		$html .= '</label>';
 
 		echo $html;
 	}
@@ -667,8 +673,9 @@ class Affiliate_WP_Settings {
 		if ( ! empty( $args['options'] ) ) {
 			foreach( $args['options'] as $key => $option ) {
 				if( isset( $this->options[$args['id']][$key] ) ) { $enabled = $option; } else { $enabled = NULL; }
+				echo '<label for="affwp_settings[' . $args['id'] . '][' . $key . ']">';
 				echo '<input name="affwp_settings[' . $args['id'] . '][' . $key . ']" id="affwp_settings[' . $args['id'] . '][' . $key . ']" type="checkbox" value="' . $option . '" ' . checked($option, $enabled, false) . '/>&nbsp;';
-				echo '<label for="affwp_settings[' . $args['id'] . '][' . $key . ']">' . $option . '</label><br/>';
+				echo $option . '</label><br/>';
 			}
 			echo '<p class="description">' . $args['desc'] . '</p>';
 		}
@@ -694,8 +701,9 @@ class Affiliate_WP_Settings {
 			elseif( isset( $args['std'] ) && $args['std'] == $key && ! isset( $this->options[ $args['id'] ] ) )
 				$checked = true;
 
+			echo '<label for="affwp_settings[' . $args['id'] . '][' . $key . ']">';
 			echo '<input name="affwp_settings[' . $args['id'] . ']"" id="affwp_settings[' . $args['id'] . '][' . $key . ']" type="radio" value="' . $key . '" ' . checked(true, $checked, false) . '/>&nbsp;';
-			echo '<label for="affwp_settings[' . $args['id'] . '][' . $key . ']">' . $option . '</label><br/>';
+			echo $option . '</label><br/>';
 		endforeach;
 
 		echo '<p class="description">' . $args['desc'] . '</p>';
@@ -720,7 +728,7 @@ class Affiliate_WP_Settings {
 
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
 		$html = '<input type="text" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<p class="description">'  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -758,7 +766,7 @@ class Affiliate_WP_Settings {
 			$html .= '<input type="submit" class="button" name="affwp_activate_license" value="' . esc_attr__( 'Activate License', 'affiliate-wp' ) . '"/>';
 		}
 
-		$html .= '<br/><label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<br/><p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -791,7 +799,7 @@ class Affiliate_WP_Settings {
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
 
 		$html  = '<input type="number" step="' . esc_attr( $step ) . '" max="' . esc_attr( $max ) . '" min="' . esc_attr( $min ) . '" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" placeholder="' . esc_attr( $std ) . '" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -815,7 +823,7 @@ class Affiliate_WP_Settings {
 
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
 		$html = '<textarea class="large-text" cols="50" rows="5" id="affwp_settings_' . $args['id'] . '" name="affwp_settings[' . $args['id'] . ']">' . esc_textarea( stripslashes( $value ) ) . '</textarea>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -839,7 +847,7 @@ class Affiliate_WP_Settings {
 
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
 		$html = '<input type="password" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( $value ) . '"/>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -882,7 +890,7 @@ class Affiliate_WP_Settings {
 		endforeach;
 
 		$html .= '</select>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -908,7 +916,7 @@ class Affiliate_WP_Settings {
 		wp_editor( stripslashes( $value ), 'affwp_settings_' . $args['id'], array( 'textarea_name' => 'affwp_settings[' . $args['id'] . ']' ) );
 		$html = ob_get_clean();
 
-		$html .= '<br/><label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<br/><p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
@@ -930,7 +938,7 @@ class Affiliate_WP_Settings {
 		$size = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
 		$html = '<input type="text" class="' . $size . '-text" id="affwp_settings[' . $args['id'] . ']" name="affwp_settings[' . $args['id'] . ']" value="' . esc_attr( stripslashes( $value ) ) . '"/>';
 		$html .= '<span>&nbsp;<input type="button" class="affwp_settings_upload_button button-secondary" value="' . __( 'Upload File', 'affiliate-wp' ) . '"/></span>';
-		$html .= '<label for="affwp_settings[' . $args['id'] . ']"> '  . $args['desc'] . '</label>';
+		$html .= '<p class="description"> '  . $args['desc'] . '</p>';
 
 		echo $html;
 	}
