@@ -34,11 +34,13 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	 * @since   1.5
 	*/
 	public function add_pending_referral( $txn ) {
+
 		// Check if an affiliate coupon was used
 		$affiliate_id = $this->get_coupon_affiliate_id( $txn );
 
 		// Pending referrals are only created for one-time purchases
 		if ( $this->was_referred() || $affiliate_id ) {
+
 			if( false !== $affiliate_id ) {
 				$this->affiliate_id = $affiliate_id;
 			}
@@ -223,9 +225,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	 * Register coupon meta box
 	 *
 	 * @access public
+	 * @since   1.7.5
 	 */
 	public function add_coupon_meta_box() {
-		add_meta_box( 'memberpress-coupon-affiliate-data', __( 'Affiliate Data', 'affiliate-wp' ), array( $this, 'display_coupon_meta_box' ), MeprCoupon::$cpt, 'side', 'default' );
+		add_meta_box( 'memberpress-coupon-affiliate-data', __( 'Affiliate', 'affiliate-wp' ), array( $this, 'display_coupon_meta_box' ), MeprCoupon::$cpt, 'side', 'default' );
 	}
 
 
@@ -233,6 +236,7 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	 * Display coupon meta box
 	 *
 	 * @access public
+	 * @since   1.7.5
 	 */
 	public function display_coupon_meta_box() {
 		global $post;
@@ -264,8 +268,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 	 * Save coupon meta
 	 *
 	 * @access public
+	 * @since   1.7.5
 	 */
 	public function store_discount_affiliate( $post_id, $post ) {
+
 		// If this is an autosave, our form has not been submitted, so we don't want to do anything.
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return $post_id;
