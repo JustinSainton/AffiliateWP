@@ -205,6 +205,12 @@ table.affwp_table td a {
 	top: 2px;
 }
 
+/* MemberPress Admin Tweaks */
+.affwp-memberpress-coupon-field #affwp_user_search_results {
+	left: 1px;
+	top: 22px;
+}
+
 /* Media Queries */
 @media screen and ( max-width: 782px ) {
 	#affwp-affiliates-filter .column-affiliate_id,
