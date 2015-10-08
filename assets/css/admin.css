@@ -221,7 +221,7 @@ table.affwp_table td a {
 
 @media screen and ( min-width: 1025px ) {
 	#affwp-affiliates-filter .column-actions {
-		width: 30%;
+		width: 20%;
 	}
 }
 
