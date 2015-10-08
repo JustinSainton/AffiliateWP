@@ -451,7 +451,8 @@ function affwp_is_recaptcha_enabled() {
  */
 function affwp_abs_number_round( $val, $precision = 2 ) {
 
-	if ( is_null( $val ) || '' === $val ) {
+	// 0 is a valid value so we check only for other empty values
+	if ( is_null( $val ) || '' === $val || false === $val ) {
 
 		return;
 
