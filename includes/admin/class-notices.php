@@ -14,7 +14,7 @@ class Affiliate_WP_Admin_Notices {
 		if( empty( affiliate_wp()->integrations->get_enabled_integrations() ) && ! get_user_meta( get_current_user_id(), '_affwp_no_integrations_dismissed', true ) ) {
 			echo '<div class="error">';
 				echo '<p>' . __( 'There are currently no AffiliateWP integrations enabled. If you are using AffiliateWP without any integrations, you may disregard this message.', 'affiliate-wp' ) . '</p>';
-				echo '<p><a href="' . add_query_arg( array( 'affwp_action' => 'dismiss_notices', 'affwp_notice' => 'no_integrations' ) ) . '">' . __( 'Dismiss Notice', 'affiliate-wp' ) . '</a></p>';
+				echo '<p><a href="' . wp_nonce_url( add_query_arg( array( 'affwp_action' => 'dismiss_notices', 'affwp_notice' => 'no_integrations' ) ), 'affwp_dismiss_notice', 'affwp_dismiss_notice_nonce' ) . '">' . __( 'Dismiss Notice', 'affiliate-wp' ) . '</a></p>';
 			echo '</div>';
 		}
 
@@ -190,6 +190,10 @@ class Affiliate_WP_Admin_Notices {
 	 * @return void
 	 */
 	function dismiss_notices() {
+		if( ! isset( $_GET['affwp_dismiss_notice_nonce'] ) || ! wp_verify_nonce( $_GET['affwp_dismiss_notice_nonce'], 'affwp_dismiss_notice') ) {
+			wp_die( __( 'Security check failed', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
+		}
+
 		if( isset( $_GET['affwp_notice'] ) ) {
 			update_user_meta( get_current_user_id(), '_affwp_' . $_GET['affwp_notice'] . '_dismissed', 1 );
 			wp_redirect( remove_query_arg( array( 'affwp_action', 'affwp_notice' ) ) );
