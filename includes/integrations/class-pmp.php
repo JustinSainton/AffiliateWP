@@ -140,7 +140,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 			$affiliate_id = affwp_get_affiliate_id( $user_id );
 
-			update_user_meta( $user_id, 'affwp_discount_pmp_' . $edit, $affiliate_id );
+			affwp_update_affiliate_meta( $affiliate_id, 'affwp_discount_pmp_' . $edit, $affiliate_id );
 		}
 
 		add_filter( 'affwp_is_admin_page', '__return_true' );
