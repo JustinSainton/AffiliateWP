@@ -282,6 +282,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 			return $post_id;
 		}
 
+		if( ! is_admin() ) {
+			return $post_id;
+		}
+
 		$post = get_post( $post_id );
 
 		if( ! $post ) {
