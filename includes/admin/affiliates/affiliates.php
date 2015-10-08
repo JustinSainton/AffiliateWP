@@ -448,7 +448,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'affiliates' ) ) {
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-affiliates' ) ) {
 			return;
 		}
 

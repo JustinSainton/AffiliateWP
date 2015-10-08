@@ -272,7 +272,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'creatives' ) ) {
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-creatives' ) ) {
 			return;
 		}
 

@@ -485,7 +485,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'referrals' ) ) {
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-referrals' ) ) {
 			return;
 		}
 
