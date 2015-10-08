@@ -138,11 +138,11 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 				$user_id = absint( $_POST['user_id'] );
 			}
 
+			$db_code = $wpdb->get_row("SELECT *, UNIX_TIMESTAMP(starts) as starts, UNIX_TIMESTAMP(expires) as expires FROM $wpdb->pmpro_discount_codes WHERE code ='" . esc_sql($_REQUEST['code']) . "' LIMIT 1");
+
 			$affiliate_id = affwp_get_affiliate_id( $user_id );
 
-			$db_code = $wpdb->get_row("SELECT *, UNIX_TIMESTAMP(starts) as starts, UNIX_TIMESTAMP(expires) as expires FROM $wpdb->pmpro_discount_codes WHERE ID ='" . esc_sql($edit) . "' LIMIT 1");
-
-			affwp_update_affiliate_meta( $affiliate_id, 'affwp_discount_pmp_' . $edit, $db_code->code );
+			affwp_update_affiliate_meta( $affiliate_id, 'affwp_discount_pmp_' . $db_code->id, $db_code->code );
 		}
 
 		add_filter( 'affwp_is_admin_page', '__return_true' );
@@ -150,7 +150,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 		if($edit > 0) {
 			$table = $wpdb->prefix . 'affiliate_wp_affiliatemeta';
-			$affiliate_id = $wpdb->get_var( $wpdb->prepare( "SELECT affiliate_id FROM $table WHERE meta_key = %s", 'affwp_discount_pmp_' . $edit ) );
+			$affiliate_id = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table WHERE meta_key = %s", 'affwp_discount_pmp_' . $edit ) );
 		} else {
 			$affiliate_id = false;
 		}
