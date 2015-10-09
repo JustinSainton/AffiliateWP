@@ -665,7 +665,6 @@ class Affiliate_WP_Tracking {
 		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Set whether JS works or not. This is called via ajax.
 	 *
@@ -679,6 +678,3 @@ class Affiliate_WP_Tracking {
 	}
 
 }
-=======
-}
->>>>>>> master
