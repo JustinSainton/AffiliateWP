@@ -14,6 +14,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 		// Coupon support
 		add_action( 'pmpro_discount_code_after_settings', array( $this, 'coupon_option' ) );
+		add_action( 'pmpro_save_discount_code', array( $this, 'save_affiliate_coupon' ) );
 	}
 
 	public function add_pending_referral( $order ) {
@@ -123,41 +124,26 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 	 * @since   1.7.5
 	 */
 	public function coupon_option( $edit ) {
+	
 		global $wpdb;
-
-		if( isset( $_REQUEST['saveid'] ) ) {
-			$user_name = sanitize_text_field( $_POST['user_name'] );
-
-			if( empty( $_POST['user_id'] ) ) {
-				$user = get_user_by( 'login', $_POST['user_name'] );
-
-				if( $user ) {
-					$user_id = $user->ID;
-				}
-			} else {
-				$user_id = absint( $_POST['user_id'] );
-			}
-
-			$db_code = $wpdb->get_row("SELECT *, UNIX_TIMESTAMP(starts) as starts, UNIX_TIMESTAMP(expires) as expires FROM $wpdb->pmpro_discount_codes WHERE code ='" . esc_sql($_REQUEST['code']) . "' LIMIT 1");
-
-			$affiliate_id = affwp_get_affiliate_id( $user_id );
-
-			affwp_update_affiliate_meta( $affiliate_id, 'affwp_discount_pmp_' . $db_code->id, $db_code->code );
-		}
 
 		add_filter( 'affwp_is_admin_page', '__return_true' );
 		affwp_admin_scripts();
 
-		if($edit > 0) {
+		$user_id   = 0;
+		$user_name = '';
+
+		if( $edit > 0 ) {
 			$table = $wpdb->prefix . 'affiliate_wp_affiliatemeta';
 			$affiliate_id = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table WHERE meta_key = %s", 'affwp_discount_pmp_' . $edit ) );
 		} else {
 			$affiliate_id = false;
 		}
-
-		$user_id      = affwp_get_affiliate_user_id( $affiliate_id );
-		$user         = get_userdata( $user_id );
-		$user_name    = $user ? $user->user_login : '';
+		if( $affiliate_id ) {
+			$user_id      = affwp_get_affiliate_user_id( $affiliate_id );
+			$user         = get_userdata( $user_id );
+			$user_name    = $user ? $user->user_login : '';
+		}
 		?>
 		<table class="form-table">
 			<tbody>
@@ -173,11 +159,55 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 							<span id="affwp_user_search_results"></span>
 							<small class="pmpro_lite"><?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?></small>
 						</span>
+						<?php wp_nonce_field( 'affwp_pmp_coupon_nonce', 'affwp_pmp_coupon_nonce' ); ?>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<?php
+	}
+
+	/**
+	 * Saves an affiliate coupon
+	 *
+	 * @access  public
+	 * @since   1.7.5
+	 */
+	public function save_affiliate_coupon( $save_id = 0 ) {
+	
+		global $wpdb;
+
+		if( empty( $_REQUEST['affwp_pmp_coupon_nonce'] ) ) {
+			return;
+		}
+
+		if( ! wp_verify_nonce( $_REQUEST['affwp_pmp_coupon_nonce'], 'affwp_pmp_coupon_nonce' ) ) {
+			return;
+		}
+
+		$user_name = sanitize_text_field( $_POST['user_name'] );
+
+		if( empty( $_POST['user_id'] ) ) {
+			$user = get_user_by( 'login', $_POST['user_name'] );
+
+			if( $user ) {
+				$user_id = $user->ID;
+			}
+		} else {
+			$user_id = absint( $_POST['user_id'] );
+		}
+
+		$coupon       = $wpdb->get_row( "SELECT * FROM $wpdb->pmpro_discount_codes WHERE code = '" . esc_sql( $_REQUEST['code'] ) . "' LIMIT 1" );
+		$affiliate_id = affwp_get_affiliate_id( $user_id );
+
+		if( empty( $_POST['user_name'] ) ) {
+			affwp_delete_affiliate_meta( $affiliate_id, 'affwp_discount_pmp_' . $coupon->id );
+			return;
+		}
+
+
+		affwp_update_affiliate_meta( $affiliate_id, 'affwp_discount_pmp_' . $coupon->id, $coupon->code );
+
 	}
 
 	/**
