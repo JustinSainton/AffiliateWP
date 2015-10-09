@@ -15,9 +15,9 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		$this->context = 'it-exchange';
 
 		add_action( 'it_exchange_add_transaction_success', array( $this, 'add_pending_referral' ), 10 );
-		add_action( 'it_exchange_update_transaction_status', array( $this, 'mark_referral_complete' ), 10, 3 );
-		add_action( 'it_exchange_update_transaction_status', array( $this, 'revoke_referral_on_refund' ), 10, 3 );
-		add_action( 'it_exchange_update_transaction_status', array( $this, 'revoke_referral_on_void' ), 10, 3 );
+		add_action( 'it_exchange_update_transaction_status', array( $this, 'mark_referral_complete' ), 10, 4 );
+		add_action( 'it_exchange_update_transaction_status', array( $this, 'revoke_referral_on_refund' ), 10, 4 );
+		add_action( 'it_exchange_update_transaction_status', array( $this, 'revoke_referral_on_void' ), 10, 4 );
 		add_action( 'wp_trash_post', array( $this, 'revoke_referral_on_delete' ), 10 );
 
 		// coupon code tracking actions and filters
@@ -138,7 +138,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	}
 
-	public function mark_referral_complete( $transaction, $old_status, $old_status_cleared ) {
+	public function mark_referral_complete( $transaction, $old_status, $old_status_cleared, $new_status ) {
 
 		$new_status         = it_exchange_get_transaction_status( $transaction->ID );
 		$new_status_cleared = it_exchange_transaction_is_cleared_for_delivery( $transaction->ID );
@@ -151,7 +151,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	}
 
-	public function revoke_referral_on_refund( $transaction, $old_status, $old_status_cleared ) {
+	public function revoke_referral_on_refund( $transaction, $old_status, $old_status_cleared, $new_status ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;
@@ -165,7 +165,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 	}
 
-	public function revoke_referral_on_void( $transaction, $old_status, $old_status_cleared ) {
+	public function revoke_referral_on_void( $transaction, $old_status, $old_status_cleared, $new_status ) {
 
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
 			return;
