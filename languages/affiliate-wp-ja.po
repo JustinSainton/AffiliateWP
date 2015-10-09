@@ -1,0 +1,3666 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateWP\n"
+"Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
+"POT-Creation-Date: 2015-09-28 14:32:15+00:00\n"
+"PO-Revision-Date: 2015-04-09 10:01-0600\n"
+"Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
+"Language-Team: Micahel Uno <michael@michaeluno.jp>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: affiliate-wp.php:216 affiliate-wp.php:228
+msgid "Cheatin&#8217; huh?"
+msgstr "不正をしようとしていますね?"
+
+#: affiliate-wp.php:239
+msgid ""
+"Your version of PHP is below the minimum version of PHP required by "
+"AffiliateWP. Please contact your host and request that your version be "
+"upgraded to 5.3 or later."
+msgstr ""
+
+#: includes/admin/AFFWP_Plugin_Updater.php:164
+#: includes/admin/class-addon-updater.php:186
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+"%1$s の新しいバージョンがあります。 <a href=\"%2$s\" class=\"thickbox\">%3$s "
+"の詳細を読む</a>。"
+
+#: includes/admin/AFFWP_Plugin_Updater.php:171
+#: includes/admin/class-addon-updater.php:193
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+"新しいバーション %1$s があります。<a target=\"_blank\" class=\"thickbox\" "
+"href=\"%2$s\">バージョン %3$s 詳細を</a>閲覧するかもしくは、<a href=\"%4$s\">"
+"今すぐアップデート</a>する。"
+
+#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/class-addon-updater.php:280
+msgid "You do not have permission to install plugin updates"
+msgstr "プラグインをアップデートをインストールする権限がありません"
+
+#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:49
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/affiliates/actions.php:57
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/affiliates/actions.php:135
+#: includes/admin/affiliates/actions.php:139
+#: includes/admin/class-addon-updater.php:280
+#: includes/admin/creatives/actions.php:16
+#: includes/admin/creatives/actions.php:44
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/creatives/actions.php:52
+#: includes/admin/creatives/actions.php:80
+#: includes/admin/referrals/actions.php:16
+#: includes/admin/tools/export/class-export.php:173
+#: includes/admin/tools/import/import.php:23
+#: includes/admin/tools/import/import.php:29
+msgid "Error"
+msgstr "エラー"
+
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/affiliates/actions.php:135
+msgid "You do not have permission to manage affiliates"
+msgstr "アフィリエイト会員を管理する権限がありません。"
+
+#: includes/admin/affiliates/actions.php:49
+msgid "You do not have permission to delete affiliate accounts"
+msgstr "アフィリエイト会員のアカウントを削除する権限がありません。"
+
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/affiliates/actions.php:139
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/referrals/actions.php:20
+#: includes/admin/referrals/actions.php:51
+#: includes/admin/referrals/actions.php:82
+msgid "Security check failed"
+msgstr "セキュリティの審査に失敗しました"
+
+#: includes/admin/affiliates/actions.php:57
+msgid "No affiliate IDs specified for deletion"
+msgstr "消去するためのアフィリエイトIDが指定されていません"
+
+#: includes/admin/affiliates/affiliates.php:54
+#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
+#: includes/admin/class-welcome.php:298
+msgid "Affiliates"
+msgstr "アフィリエイト会員"
+
+#: includes/admin/affiliates/affiliates.php:55
+#: includes/admin/creatives/creatives.php:43
+msgid "Add New"
+msgstr "新規追加"
+
+#: includes/admin/affiliates/affiliates.php:59
+#: includes/admin/referrals/referrals.php:61
+#: includes/admin/visits/visits.php:33
+msgid "Search"
+msgstr "検索"
+
+#: includes/admin/affiliates/affiliates.php:201
+#: includes/admin/creatives/creatives.php:140
+#: includes/admin/referrals/referrals.php:204
+#: includes/admin/visits/visits.php:46
+msgid "All"
+msgstr "全て"
+
+#: includes/admin/affiliates/affiliates.php:202
+#: includes/admin/affiliates/new.php:42
+#: includes/admin/creatives/creatives.php:141
+#: includes/admin/creatives/edit.php:99 includes/admin/creatives/new.php:89
+#: includes/admin/tools/tools.php:230
+msgid "Active"
+msgstr "有効"
+
+#: includes/admin/affiliates/affiliates.php:203
+#: includes/admin/affiliates/new.php:43
+#: includes/admin/creatives/creatives.php:142
+#: includes/admin/creatives/edit.php:100 includes/admin/creatives/new.php:90
+msgid "Inactive"
+msgstr "無効"
+
+#: includes/admin/affiliates/affiliates.php:204
+#: includes/admin/affiliates/new.php:44 includes/admin/referrals/edit.php:90
+#: includes/admin/referrals/new.php:92
+#: includes/admin/referrals/referrals.php:207
+#: includes/admin/tools/tools.php:231 includes/admin/tools/tools.php:261
+#: includes/referral-functions.php:55
+msgid "Pending"
+msgstr "保留"
+
+#: includes/admin/affiliates/affiliates.php:205
+#: includes/admin/referrals/edit.php:91 includes/admin/referrals/new.php:93
+#: includes/admin/referrals/referrals.php:208
+#: includes/admin/tools/tools.php:232 includes/admin/tools/tools.php:262
+#: includes/referral-functions.php:54
+msgid "Rejected"
+msgstr "拒否済"
+
+#: includes/admin/affiliates/affiliates.php:221
+#: includes/admin/affiliates/review.php:22
+#: includes/admin/creatives/creatives.php:157
+#: includes/admin/creatives/edit.php:17 includes/admin/creatives/new.php:16
+msgid "Name"
+msgstr "名前"
+
+#: includes/admin/affiliates/affiliates.php:222
+#: includes/admin/settings/class-settings.php:340
+#: includes/admin/tools/export/class-export.php:69
+msgid "ID"
+msgstr "ID"
+
+#: includes/admin/affiliates/affiliates.php:223
+#: includes/admin/affiliates/view.php:11
+#: includes/admin/overview/overview.php:168
+#: includes/admin/tools/export/class-export-affiliates.php:53
+msgid "Earnings"
+msgstr "収益"
+
+#: includes/admin/affiliates/affiliates.php:224
+#: includes/admin/tools/export/class-export-affiliates.php:51
+msgid "Rate"
+msgstr "率"
+
+#: includes/admin/affiliates/affiliates.php:225
+#: templates/dashboard-tab-stats.php:9
+msgid "Paid Referrals"
+msgstr "支払い済み紹介"
+
+#: includes/admin/affiliates/affiliates.php:226
+#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:308
+#: includes/admin/overview/overview.php:170
+#: includes/admin/reports/reports.php:66
+#: includes/admin/reports/reports.php:185
+#: includes/admin/tools/export/class-export-affiliates.php:55
+#: includes/admin/tools/tools.php:105 includes/admin/visits/visits.php:30
+#: templates/dashboard-tab-stats.php:10 templates/dashboard-tab-stats.php:57
+#: templates/dashboard.php:45
+msgid "Visits"
+msgstr "訪問"
+
+#: includes/admin/affiliates/affiliates.php:227
+#: includes/admin/creatives/creatives.php:160
+#: includes/admin/creatives/edit.php:94 includes/admin/creatives/new.php:84
+#: includes/admin/overview/overview.php:117
+#: includes/admin/referrals/edit.php:83 includes/admin/referrals/new.php:85
+#: includes/admin/referrals/referrals.php:230
+#: includes/admin/tools/export/class-export-affiliates.php:56
+#: includes/admin/tools/export/class-export-referrals.php:69
+#: templates/dashboard-tab-referrals.php:26
+msgid "Status"
+msgstr "状態"
+
+#: includes/admin/affiliates/affiliates.php:228
+#: includes/admin/creatives/creatives.php:161
+#: includes/admin/overview/overview.php:118
+#: includes/admin/referrals/referrals.php:229
+msgid "Actions"
+msgstr "操作"
+
+#: includes/admin/affiliates/affiliates.php:291
+msgid "(user deleted)"
+msgstr "(ユーザーは削除されました)"
+
+#: includes/admin/affiliates/affiliates.php:368
+#: includes/admin/class-menu.php:17
+msgid "Reports"
+msgstr "レポート"
+
+#: includes/admin/affiliates/affiliates.php:369
+#: includes/admin/creatives/creatives.php:234
+#: includes/admin/referrals/referrals.php:383
+msgid "Edit"
+msgstr "編集"
+
+#: includes/admin/affiliates/affiliates.php:372
+#: includes/admin/affiliates/affiliates.php:412
+#: includes/admin/creatives/creatives.php:237
+msgid "Deactivate"
+msgstr "無効化"
+
+#: includes/admin/affiliates/affiliates.php:374
+#: includes/admin/overview/overview.php:133
+msgid "Review"
+msgstr "審査待ち"
+
+#: includes/admin/affiliates/affiliates.php:375
+#: includes/admin/affiliates/affiliates.php:409
+#: includes/admin/referrals/referrals.php:371
+#: includes/admin/referrals/referrals.php:463
+msgid "Accept"
+msgstr "受理"
+
+#: includes/admin/affiliates/affiliates.php:376
+#: includes/admin/affiliates/affiliates.php:410
+#: includes/admin/referrals/referrals.php:377
+#: includes/admin/referrals/referrals.php:464
+msgid "Reject"
+msgstr "拒否"
+
+#: includes/admin/affiliates/affiliates.php:378
+#: includes/admin/affiliates/affiliates.php:411
+#: includes/admin/creatives/creatives.php:239
+msgid "Activate"
+msgstr "有効化"
+
+#: includes/admin/affiliates/affiliates.php:381
+#: includes/admin/affiliates/affiliates.php:413
+#: includes/admin/creatives/creatives.php:242
+#: includes/admin/referrals/referrals.php:384
+#: includes/admin/referrals/referrals.php:467
+msgid "Delete"
+msgstr "削除"
+
+#: includes/admin/affiliates/affiliates.php:397
+msgid "No affiliates found."
+msgstr "アフィリエイト会員は見つかりませんでした。"
+
+#: includes/admin/affiliates/delete.php:14
+#: includes/admin/affiliates/delete.php:49
+msgid "Delete Affiliates"
+msgstr "アフィリエイト会員の消去"
+
+#: includes/admin/affiliates/delete.php:20
+msgid "You have specified these affiliates for deletion:"
+msgstr "これらのアフィリエイト会員を削除しようとしています:"
+
+#: includes/admin/affiliates/delete.php:33
+msgid ""
+"Deleting these affiliates will also delete their referral and visit data."
+msgstr ""
+"これらのアフィリエイト会員を消去すると彼らの紹介・訪問データも消去されます。"
+
+#: includes/admin/affiliates/delete.php:39
+msgid "Delete affiliate's user accounts as well?"
+msgstr "アフィリエイト会員のユーザーアカウントも消去しますか？"
+
+#: includes/admin/affiliates/edit.php:14
+msgid "Edit Affiliate"
+msgstr "アフィリエイト会員情報を編集"
+
+#: includes/admin/affiliates/edit.php:25 includes/admin/referrals/edit.php:18
+#: includes/admin/tools/export/class-export-affiliates.php:47
+#: includes/admin/tools/export/class-export-referrals.php:61
+msgid "Affiliate ID"
+msgstr "アフィリエイト会員ID"
+
+#: includes/admin/affiliates/edit.php:30
+msgid "The affiliate's ID. This cannot be changed."
+msgstr "アフィリエイト会員ID。これは変更できません。"
+
+#: includes/admin/affiliates/edit.php:38
+msgid "User ID"
+msgstr "ユーザーID"
+
+#: includes/admin/affiliates/edit.php:43
+msgid "The affiliate's user ID. This cannot be changed."
+msgstr "アフィリエイト会員のユーザーID。これは変更できません。"
+
+#: includes/admin/affiliates/edit.php:51
+#: includes/admin/affiliates/review.php:34
+#: includes/admin/settings/class-settings.php:341
+#: includes/admin/tools/export/class-export-affiliates.php:50
+#: templates/login.php:15 templates/login.php:16 templates/register.php:48
+#: templates/register.php:49
+msgid "Username"
+msgstr "ユーザー名"
+
+#: includes/admin/affiliates/edit.php:56
+#, fuzzy
+msgid "The affiliate's username. This cannot be changed."
+msgstr "アフィリエイト会員のユーザーID。これは変更できません。"
+
+#: includes/admin/affiliates/edit.php:64 includes/admin/affiliates/new.php:54
+#: includes/admin/settings/class-settings.php:356
+msgid "Referral Rate Type"
+msgstr "紹介率タイプ"
+
+#: includes/admin/affiliates/edit.php:69 includes/admin/affiliates/new.php:59
+msgid "Site Default"
+msgstr "サイト初期値"
+
+#: includes/admin/affiliates/edit.php:74 includes/admin/affiliates/new.php:64
+msgid "The affiliate's referral rate type."
+msgstr "アフィリエイト会員の紹介率のタイプ。"
+
+#: includes/admin/affiliates/edit.php:82 includes/admin/affiliates/new.php:72
+#: includes/admin/settings/class-settings.php:362
+#: includes/integrations/class-edd.php:556
+#: includes/integrations/class-memberpress.php:141
+#: includes/integrations/class-zippycourses.php:61
+#: includes/integrations/extras/class-exchange-feature.php:46
+msgid "Referral Rate"
+msgstr "紹介率"
+
+#: includes/admin/affiliates/edit.php:87 includes/admin/affiliates/new.php:77
+msgid ""
+"The affiliate's referral rate, such as 20 for 20%. If left blank, the site "
+"default will be used."
+msgstr ""
+"20に対し20%といったアフィリエイト会員の紹介率。空白はサイトのデフォルト値が適"
+"用されます。"
+
+#: includes/admin/affiliates/edit.php:95 templates/register.php:53
+msgid "Account Email"
+msgstr "アカウント用メールアドレス"
+
+#: includes/admin/affiliates/edit.php:100
+msgid ""
+"The affiliate's account email. Updating this will change the email address "
+"shown on the user's profile page."
+msgstr ""
+"アフィリエイト会員アカウント用メールアドレス。この変更はユーザープロフィール"
+"ページに表示されるメールアドレスも変更します。"
+
+#: includes/admin/affiliates/edit.php:108 includes/admin/affiliates/new.php:85
+#: includes/admin/tools/export/class-export-affiliates.php:49
+#: includes/admin/tools/export/class-export-referrals.php:63
+#: templates/register.php:61
+msgid "Payment Email"
+msgstr "支払い用メールアドレス"
+
+#: includes/admin/affiliates/edit.php:113 includes/admin/affiliates/new.php:90
+msgid ""
+"Affiliate's payment email for systems such as PayPal, Moneybookers, or "
+"others. Leave blank to use the affiliate's user email."
+msgstr ""
+"アフィリエイト会員が使用する、PayPal(ペイパル)、Moneybookers 等といったシステ"
+"ムの支払い用メールアドレス。アフィリエイト会員のユーザーアカウントのメールア"
+"ドレスを使用する場合は空白にします。"
+
+#: includes/admin/affiliates/edit.php:122
+#: includes/admin/affiliates/review.php:86
+msgid "Rejection Reason"
+msgstr ""
+
+#: includes/admin/affiliates/edit.php:140
+msgid "Update Affiliate"
+msgstr "アフィリエイト会員を更新"
+
+#: includes/admin/affiliates/new.php:7
+msgid "New Affiliate"
+msgstr "新規アフィリエイト会員"
+
+#: includes/admin/affiliates/new.php:13
+msgid ""
+"Use this screen to register a new affiliate. Each affiliate is tied directly "
+"to a user account, so if the user account for the affiliate does not yet "
+"exist, <a href=\"%s\" target=\"_blank\">create one</a>."
+msgstr ""
+"新規アフィリエイト会員を登録するにはこの画面で行います。各アフィリエイト会員"
+"はユーザーアカウントに連結されます。従って、アフィリエイト会員用ユーザーアカ"
+"ウントがまだ存在しない場合、<a href=\"%s\" target=\"_blank\">作成</a>する必要"
+"があります。"
+
+#: includes/admin/affiliates/new.php:20
+msgid "User"
+msgstr "ユーザー"
+
+#: includes/admin/affiliates/new.php:29
+msgid ""
+"Begin typing the name of the affiliate to perform a search for their "
+"associated user account."
+msgstr ""
+"関連付けられたユーザーアカウントの検索を行うために、アフィリエイト会員の名前"
+"を入力します。"
+
+#: includes/admin/affiliates/new.php:37
+#, fuzzy
+msgid "Affiliate Status"
+msgstr "アフィリエイト会員のレート"
+
+#: includes/admin/affiliates/new.php:46
+#, fuzzy
+msgid "The status assigned to the affiliate's account."
+msgstr "アフィリエイト会員のアカウントを削除する権限がありません。"
+
+#: includes/admin/affiliates/new.php:104
+msgid "Add Affiliate"
+msgstr "アフィリエイト会員を追加"
+
+#: includes/admin/affiliates/review.php:11
+msgid "Review Affiliate"
+msgstr "アフィリエイト会員を審査"
+
+#: includes/admin/affiliates/review.php:11
+msgid "Go Back"
+msgstr "戻る"
+
+#: includes/admin/affiliates/review.php:46 templates/register.php:54
+msgid "Email Address"
+msgstr "メールアドレス"
+
+#: includes/admin/affiliates/review.php:59 templates/register.php:66
+#: templates/register.php:67
+msgid "Website URL"
+msgstr "ウェブサイトURL"
+
+#: includes/admin/affiliates/review.php:63
+msgid "Affiliate's Website URL"
+msgstr "アフィリエイト会員ウェブサイトURL"
+
+#: includes/admin/affiliates/review.php:73
+msgid "Promotion Method"
+msgstr "プロモーション方法"
+
+#: includes/admin/affiliates/review.php:91
+msgid "Leave blank if approving this affiliate"
+msgstr ""
+
+#: includes/admin/affiliates/screen-options.php:22
+msgid "Number of affiliates per page:"
+msgstr ""
+
+#: includes/admin/affiliates/view.php:7
+msgid "Affiliate: #%d %s"
+msgstr "アフィリエイト会員: #%d %s"
+
+#: includes/admin/affiliates/view.php:18
+msgid "Total earnings"
+msgstr "総収益"
+
+#: includes/admin/affiliates/view.php:19
+msgid "Total unpaid earnings"
+msgstr "未払収益の総額"
+
+#: includes/admin/affiliates/view.php:20
+msgid "Total paid referrals"
+msgstr "支払い済み紹介料の総額"
+
+#: includes/admin/affiliates/view.php:21
+msgid "Total unpaid referrals"
+msgstr "未払紹介の合計"
+
+#: includes/admin/affiliates/view.php:22
+msgid "Total pending referrals"
+msgstr "保留されている紹介の合計"
+
+#: includes/admin/affiliates/view.php:23
+msgid "Total rejected referrals"
+msgstr "拒否された紹介の合計"
+
+#: includes/admin/affiliates/view.php:24
+msgid "Total visits"
+msgstr "総訪問数"
+
+#: includes/admin/ajax-actions.php:82
+msgid "No users found"
+msgstr "お探しのユーザーは見つかりませんでした。"
+
+#: includes/admin/class-menu.php:12 includes/admin/overview/overview.php:19
+#: includes/admin/referrals/contextual-help.php:37
+#: includes/admin/visits/contextual-help.php:37
+msgid "Overview"
+msgstr "概観"
+
+#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:303
+#: includes/admin/overview/overview.php:169
+#: includes/admin/referrals/referrals.php:35
+#: includes/admin/reports/reports.php:65
+#: includes/admin/tools/export/class-export-affiliates.php:54
+#: includes/admin/tools/tools.php:104 templates/dashboard-tab-referrals.php:3
+#: templates/dashboard.php:42
+msgid "Referrals"
+msgstr "紹介"
+
+#: includes/admin/class-menu.php:16 includes/admin/creatives/creatives.php:42
+#: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:48
+msgid "Creatives"
+msgstr "制作品"
+
+#: includes/admin/class-menu.php:18
+msgid "Tools"
+msgstr "ツール"
+
+#: includes/admin/class-menu.php:19 templates/dashboard.php:51
+msgid "Settings"
+msgstr "設定"
+
+#: includes/admin/class-menu.php:20 includes/admin/tools/migration.php:17
+msgid "AffiliateWP Migration"
+msgstr "AffiliateWP 移転"
+
+#: includes/admin/class-notices.php:16
+#: includes/admin/settings/class-settings.php:206
+msgid "Settings updated."
+msgstr "設定は更新されました。"
+
+#: includes/admin/class-notices.php:25
+msgid "Affiliate added successfully"
+msgstr "アフィリエイト会員は無事追加されました"
+
+#: includes/admin/class-notices.php:31
+msgid "Affiliate wasn't added, please try again."
+msgstr "アフィリエイト会員は追加されませんでした。もう一度お試しください。"
+
+#: includes/admin/class-notices.php:38
+msgid "Affiliate updated successfully"
+msgstr "アフィリエイト会員は無事更新されました"
+
+#: includes/admin/class-notices.php:40
+msgid "<a href=\"%s\">Back to Affiliates</a>"
+msgstr "<a href=\"%s\">アフィリエイト会員へ戻る</a>"
+
+#: includes/admin/class-notices.php:46
+msgid "Affiliate update failed, please try again"
+msgstr "アフィリエイト会員の更新に失敗しました。もう一度お試し下さい"
+
+#: includes/admin/class-notices.php:53
+msgid "Affiliate account(s) deleted successfully"
+msgstr "新規アフィリエイト会員アカウントを登録する"
+
+#: includes/admin/class-notices.php:59
+msgid "Affiliate deletion failed, please try again"
+msgstr "アフィリエイト会員の消去に失敗しました。もう一度お試し下さい"
+
+#: includes/admin/class-notices.php:66
+msgid "Affiliate account activated"
+msgstr "アフィリエイト会員アカウントは有効になりました"
+
+#: includes/admin/class-notices.php:72
+msgid "Affiliate account deactivated"
+msgstr "アフィリエイト会員のアカウントは無効になりました"
+
+#: includes/admin/class-notices.php:78
+msgid "Affiliate request was accepted"
+msgstr "アフィリエイト会員のリクエストは受理されました"
+
+#: includes/admin/class-notices.php:84
+msgid "Affiliate request was rejected"
+msgstr "アフィリエイト会員のリクエストは拒否されました"
+
+#: includes/admin/class-notices.php:90
+msgid "Affiliate stats have been recounted!"
+msgstr "アフィリエイト会員の統計はリカウントされました！"
+
+#: includes/admin/class-notices.php:96
+msgid "Referral added successfully"
+msgstr "紹介は無事追加されました"
+
+#: includes/admin/class-notices.php:102
+msgid "Referral updated successfully"
+msgstr "紹介は無事更新されました"
+
+#: includes/admin/class-notices.php:108
+msgid "Referral update failed, please try again"
+msgstr "紹介の更新に失敗しました。もう一度お試し下さい"
+
+#: includes/admin/class-notices.php:114
+msgid "Referral deleted successfully"
+msgstr "紹介は無事消去されました"
+
+#: includes/admin/class-notices.php:120
+msgid "Referral deletion failed, please try again"
+msgstr "紹介の消去に失敗しました。もう一度お試し下さい"
+
+#: includes/admin/class-notices.php:127
+msgid "Creative updated successfully"
+msgstr "制作品の更新に成功しました。"
+
+#: includes/admin/class-notices.php:129
+msgid "<a href=\"%s\">Back to Creatives</a>"
+msgstr "<a href=\"%s\">制作品へ戻る</a>"
+
+#: includes/admin/class-notices.php:135
+msgid "Creative added successfully"
+msgstr "制作品は無事追加されました"
+
+#: includes/admin/class-notices.php:141
+msgid "Creative deleted successfully"
+msgstr "アフィリエイト会員は無事消去されました"
+
+#: includes/admin/class-notices.php:147
+msgid "Creative activated"
+msgstr "制作品は有効になりました"
+
+#: includes/admin/class-notices.php:153
+msgid "Creative deactivated"
+msgstr "制作品は無効になりました"
+
+#: includes/admin/class-notices.php:159
+msgid "Settings successfully imported"
+msgstr "設定はインポートされました。"
+
+#: includes/admin/class-notices.php:171
+msgid ""
+"Your license key for AffiliateWP has expired. Please renew your license to "
+"re-enable automatic updates."
+msgstr ""
+
+#: includes/admin/class-notices.php:173
+msgid ""
+"Please <a href=\"%s\">enter and activate</a> your license key for "
+"AffiliateWP to enable automatic updates."
+msgstr ""
+
+#: includes/admin/class-welcome.php:52 includes/admin/class-welcome.php:53
+msgid "What's new in AffiliateWP"
+msgstr "AffiliateWP では何が新しいか"
+
+#: includes/admin/class-welcome.php:61 includes/admin/class-welcome.php:62
+msgid "Getting started with AffiliateWP"
+msgstr "AffiliateWP を始めるにあたって"
+
+#: includes/admin/class-welcome.php:70 includes/admin/class-welcome.php:71
+msgid "The people that build AffiliateWP"
+msgstr "AffiliateWP を作った人々"
+
+#: includes/admin/class-welcome.php:146
+msgid "What's New"
+msgstr "新着情報"
+
+#: includes/admin/class-welcome.php:149 includes/admin/plugins.php:50
+msgid "Getting Started"
+msgstr "はじめに"
+
+#: includes/admin/class-welcome.php:152
+msgid "Credits"
+msgstr "クレジット"
+
+#: includes/admin/class-welcome.php:169
+msgid "Welcome to AffiliateWP v%s"
+msgstr "AffiliateWP v%s へようこそ"
+
+#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:246
+msgid ""
+"Thank you for installing AffiliateWP v%s. The best affiliate marketing "
+"plugin for WordPress."
+msgstr ""
+"WordPress 用アフィリエイトマーケティングのベストプラグイン AffiliateWP v%s を"
+"インストールして頂きありがとうございます。"
+
+#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:247
+#: includes/admin/class-welcome.php:343
+msgid "Version %s"
+msgstr "バージョン %s"
+
+#: includes/admin/class-welcome.php:179
+#, fuzzy
+msgid "New Integrations"
+msgstr "統合"
+
+#: includes/admin/class-welcome.php:180
+msgid ""
+"We’ve made AffiliateWP more accessible and more valuable to more users with "
+"three new integrations:"
+msgstr ""
+
+#: includes/admin/class-welcome.php:188
+#, fuzzy
+msgid "Improved Integrations"
+msgstr "統合"
+
+#: includes/admin/class-welcome.php:191
+msgid ""
+"Per-membership commission rates are now supported in Restrict Content Pro"
+msgstr ""
+
+#: includes/admin/class-welcome.php:192
+msgid "Per-membership commission rates are now supported in MemberPress"
+msgstr ""
+
+#: includes/admin/class-welcome.php:193
+msgid "Commissions can be disabled on individual forms in Gravity Forms"
+msgstr ""
+
+#: includes/admin/class-welcome.php:194
+msgid "Commissions can be disabled on individual forms in Ninja Forms"
+msgstr ""
+
+#: includes/admin/class-welcome.php:195
+msgid ""
+"Affiliate commissions are now shown on the order details screens in Paid "
+"Memberships Pro"
+msgstr ""
+
+#: includes/admin/class-welcome.php:198
+msgid "URL Campaign Tracking"
+msgstr ""
+
+#: includes/admin/class-welcome.php:199
+msgid ""
+"Affiliates can now include URL campaign parameters in their affiliate URLs "
+"and have them automatically tracked by AffiliateWP. A new \"Campaigns\" "
+"table has been added to the Statistics tab of the affiliate area to show "
+"affiliates the results of their URL campaigns."
+msgstr ""
+
+#: includes/admin/class-welcome.php:201
+#, fuzzy
+msgid "Affiliate Rejection Reasons"
+msgstr "アフィリエイト会員登録"
+
+#: includes/admin/class-welcome.php:202
+msgid ""
+"When rejecting affiliate accounts, a rejection reason can be provided that "
+"is then (optionally) emailed to the affiliate and recorded for future "
+"reference."
+msgstr ""
+
+#: includes/admin/class-welcome.php:204
+msgid "reCaptcha v2.0"
+msgstr ""
+
+#: includes/admin/class-welcome.php:205
+msgid ""
+"Google's reCaptcha version 2.0 library has been introduced to AffiliateWP to "
+"help protect you and your website from spam user registrations."
+msgstr ""
+
+#: includes/admin/class-welcome.php:207
+msgid "Additional Updates"
+msgstr "追加のアップデート"
+
+#: includes/admin/class-welcome.php:209
+msgid "Improved User Searching"
+msgstr ""
+
+#: includes/admin/class-welcome.php:210
+msgid ""
+"When creating new affiliate accounts, the search process for users in your "
+"WordPress site now return better results."
+msgstr ""
+
+#: includes/admin/class-welcome.php:212
+msgid "Per-Page Options for Admin Screens"
+msgstr ""
+
+#: includes/admin/class-welcome.php:213
+msgid ""
+"Admin pages for Affiliates, Referrals, Visits, and Creatives can have the "
+"number of items per-page configured from the Screen Options tab."
+msgstr ""
+
+#: includes/admin/class-welcome.php:215
+#, fuzzy
+msgid "Disable Individual Emails"
+msgstr "紹介を無効にする"
+
+#: includes/admin/class-welcome.php:216
+msgid ""
+"New options have been introduced that allow you to pick-and-choose which "
+"email notifications AffiliateWP will send."
+msgstr ""
+
+#: includes/admin/class-welcome.php:218
+#, fuzzy
+msgid "Creative Template File"
+msgstr "制作品は無効になりました"
+
+#: includes/admin/class-welcome.php:219
+msgid ""
+"A new template file has been introduced for exact control over the display "
+"of creatives in the affiliate area."
+msgstr ""
+
+#: includes/admin/class-welcome.php:221
+msgid "Import Users By Role"
+msgstr ""
+
+#: includes/admin/class-welcome.php:222
+msgid ""
+"When importing existing users as affiliates, an option to import just users "
+"of a specific role is now available."
+msgstr ""
+
+#: includes/admin/class-welcome.php:228 includes/admin/class-welcome.php:315
+msgid "Go to AffiliateWP Settings"
+msgstr "AffiliateWP の設定へ移動"
+
+#: includes/admin/class-welcome.php:245 includes/admin/class-welcome.php:341
+msgid "Welcome to AffiliateWP %s"
+msgstr "AffiliateWP %s へようこそ"
+
+#: includes/admin/class-welcome.php:251
+msgid ""
+"Use the tips below to get started using AffiliateWP. You will be up and "
+"running in no time!"
+msgstr ""
+"AffiliateWP を使い始めるには、下のチップスを使用して下さい。動かすまで時間は"
+"かかりません！"
+
+#: includes/admin/class-welcome.php:254
+msgid "Overview of Affiliates and Referrals"
+msgstr "アフィリエイト会員と紹介の概観"
+
+#: includes/admin/class-welcome.php:259
+msgid "The Overview Page"
+msgstr "概観ページ"
+
+#: includes/admin/class-welcome.php:260
+msgid ""
+"The overview page gives you a quick summary of your recent affiliate "
+"activity, including recent registrations, referrals, and visits."
+msgstr ""
+"概観ページでは、最近の登録、紹介、訪問を含む最近のアフィリエイト会員の活動の"
+"簡単な概要が見れます。"
+
+#: includes/admin/class-welcome.php:261
+msgid "It also provides a quick summary of your affiliates' referral earnings."
+msgstr "あなたのアフィリエイト会員の紹介収益の簡単な概観を提供します。"
+
+#: includes/admin/class-welcome.php:262
+msgid ""
+"If you allow affiliate registrations, you can also easily accept or reject "
+"affiliate's applications directly from the Overview page"
+msgstr ""
+"もしアフィリエイト会員の登録を許可した場合、アフィリエイト会員の申請を概観"
+"ページから簡単に受理したり拒否したりできます。"
+
+#: includes/admin/class-welcome.php:265
+msgid "Adding Affiliates"
+msgstr "アフィリエイト会員の追加"
+
+#: includes/admin/class-welcome.php:270
+msgid "Affiliates &rarr; Add New"
+msgstr "アフィリエイト会員 &rarr; 新規追加"
+
+#: includes/admin/class-welcome.php:271
+msgid ""
+"From the main Affiliates page, site admins can easily add new affiliates to "
+"AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
+msgstr ""
+"メインのアフィリエイト会員ページからサイト管理者はAffiliateWPへ新規アフィリエ"
+"イト会員を簡単に追加できます。単にユーザーネームを入力し、レートを設定し、"
+"「アフィリエイト会員を追加」を押すだけです！"
+
+#: includes/admin/class-welcome.php:273
+msgid "Affiliate Registration"
+msgstr "アフィリエイト会員登録"
+
+#: includes/admin/class-welcome.php:274
+msgid ""
+"When enabled, affiliates can register themselves via the Affiliate Area. If "
+"they already have a user account on your site, they can register by simply "
+"agreeing to the terms of use. If they need to create an entirely new "
+"account, they have that option as well!"
+msgstr ""
+"有効の場合、サイトにアフィリエイト会員として登録を希望するアフィリエイターは"
+"自分でアフィリエイト会員エリアから登録することができます。このサイト上でア"
+"フィリエイターがユーザーアカウントを持っている場合、単に利用規約に同意するこ"
+"とで、登録ができます。もしアフィリエイターが全く新しいアカウントが必要な場"
+"合、そ為の設定オプションもあります！"
+
+#: includes/admin/class-welcome.php:276
+msgid "Moderate Registrations"
+msgstr "登録を調停する"
+
+#: includes/admin/class-welcome.php:277
+msgid ""
+"Affiliate registrations can be moderated and require that a site admin "
+"approve each registration before the affiliate is permitted to begin "
+"tracking referrals."
+msgstr ""
+"アフィリエイト会員登録は、管理者の承認を必要とするように設定でき、各登録はア"
+"フィリエイト会員が紹介を始めるのに許可を得てから行う事になります。"
+
+#: includes/admin/class-welcome.php:278
+msgid ""
+"Each time an affiliate registers, site admins can log into the site and "
+"approve or reject the application."
+msgstr ""
+"毎回アフィリエイト会員が登録すると、サイト管理者はサイトにログインし、その申"
+"請を承認するか拒否するか決める事ができます。"
+
+#: includes/admin/class-welcome.php:281
+#: includes/admin/settings/class-settings.php:311 includes/install.php:28
+msgid "Affiliate Area"
+msgstr "アフィリエイト会員エリア"
+
+#: includes/admin/class-welcome.php:286
+msgid "A Dashboard For Your Affiliates"
+msgstr "あなたのアフィリエイト会員のためのダッシュボード"
+
+#: includes/admin/class-welcome.php:287
+msgid ""
+"The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
+"em> short code, gives your affiliates access to their performance reports."
+msgstr ""
+"アフィリエイトエリアは<em>[affiliate_area]</em>ショートコードが含まれたどの"
+"ページでも表示させることができ、彼らのパフォーマンスレポートへのアクセスを可"
+"能にします。"
+
+#: includes/admin/class-welcome.php:288
+msgid ""
+"Affiliates can easily see how much they have earned, how much is awaiting "
+"payment, and even how their referral URLs have done over time."
+msgstr ""
+"アフィリエイト会員は簡単に彼らがどれだけ稼いだか、支払い待ちがどれだけあるの"
+"か、また、紹介用URLがどれだけ訪問されたかの経過を見ることができます。"
+
+#: includes/admin/class-welcome.php:289
+msgid ""
+"A log of the referral links that have been clicked and where they were "
+"clicked on from, and whether the link converted into a successful referral, "
+"is also available to affiliates."
+msgstr ""
+"紹介用リンクが何度クリックされたか、どこからクリックされたか、またそれは紹介"
+"事案として成功しコンバートされたかどうかのログは、アフィリエイト会員にも閲覧"
+"可能です。"
+
+#: includes/admin/class-welcome.php:294
+msgid "Quick Terminology"
+msgstr "クイック語彙"
+
+#: includes/admin/class-welcome.php:299
+msgid ""
+"These are your best friends. They are the users that are actively promoting "
+"your products and services through referral URLs. When they create a "
+"customer for you, they get paid back in the form of a commission."
+msgstr ""
+"彼らはあなたにとって最良の友です。彼らこそがあなたの商品、サービスを紹介用URL"
+"を通し、活発にプロモートしてくれている存在です。彼らがあなたの顧客を呼びこむ"
+"と、コミッションという形で彼らは報酬を受けます。"
+
+#: includes/admin/class-welcome.php:304
+msgid ""
+"These are the commission records created anytime an affiliate successfully "
+"sends a potential customer to your site and that customer makes a purchase."
+msgstr ""
+"こちらはアフィリエイト会員が顧客になりうる人をあなたのサイトに送った時やその"
+"人が商品を購入した時に作成されるコミッション履歴です。"
+
+#: includes/admin/class-welcome.php:309
+msgid ""
+"These are unique hits on the referral URLs shared out by your affiliates. "
+"Each time a potential customer clicks on a referral URL, a visit is recorded."
+msgstr ""
+"こちらはあなたのアフィリエイト会員と共有された紹介用URLにおけるユニーク訪問で"
+"す。潜在的な顧客が紹介用URLをクリックすると、その都度その訪問は記録されます。"
+
+#: includes/admin/class-welcome.php:319
+msgid "Need Help?"
+msgstr "ヘルプが必要ですか ?"
+
+#: includes/admin/class-welcome.php:322
+msgid "Phenomenal Support"
+msgstr "驚くべきサポート"
+
+#: includes/admin/class-welcome.php:323
+msgid ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, visit our <a href=\"http://affiliatewp.com/"
+"support\">support</a> page to open a ticket."
+msgstr ""
+"私達は最良のサポートをできるかぎりベストの形で提供します。もし、質問や問題に"
+"出くわした場合、<a href=\"http://affiliatewp.com/support\">サポート</a> ペー"
+"ジからチケットを発行して下さい。"
+
+#: includes/admin/class-welcome.php:342
+msgid "Thank you for updating to the latest version!"
+msgstr "最新のバージョンにアップデートして頂きありがとうございます！"
+
+#: includes/admin/class-welcome.php:347
+msgid ""
+"AffiliateWP is created by developers from around the world that aim to "
+"provide the #1 affiliate platform for WordPress. Here are just some of the "
+"faces that have helped build AffiliateWP:"
+msgstr ""
+"AffiliateWP はWordPress 用 No.1 のアフィリエイトプラットフォームを提供するこ"
+"とを目的とする世界中の開発者達によって創り出されました。こちらは AffiliateWP "
+"の制作に携わる人々の一部です。"
+
+#: includes/admin/class-welcome.php:374
+msgid "View %s"
+msgstr "%s を閲覧"
+
+#: includes/admin/creatives/actions.php:16
+#: includes/admin/creatives/actions.php:80
+msgid "You do not have permission to manage creatives"
+msgstr "制作品を管理する権限がありません"
+
+#: includes/admin/creatives/actions.php:44
+msgid "You do not have permission to delete a creative"
+msgstr "制作品を消去する権限がありません"
+
+#: includes/admin/creatives/actions.php:52
+msgid "No creative IDs specified for deletion"
+msgstr "消去する為の制作品IDが指定されていません"
+
+#: includes/admin/creatives/creatives.php:158
+#: includes/admin/creatives/edit.php:43 includes/admin/creatives/new.php:42
+#: includes/admin/overview/overview.php:241
+#: templates/dashboard-tab-visits.php:21
+msgid "URL"
+msgstr "URL"
+
+#: includes/admin/creatives/creatives.php:159
+msgid "Shortcode"
+msgstr "ショートコード"
+
+#: includes/admin/creatives/creatives.php:257
+msgid "No creatives found."
+msgstr "制作品が見つかりません"
+
+#: includes/admin/creatives/delete.php:10
+#: includes/admin/creatives/delete.php:32
+msgid "Delete Creative"
+msgstr "制作品の消去"
+
+#: includes/admin/creatives/delete.php:16
+msgid "Are you sure you want to delete this creative?"
+msgstr "本当にこの制作品を削除しますか？"
+
+#: includes/admin/creatives/edit.php:6
+msgid "Edit Creative"
+msgstr "制作品の編集"
+
+#: includes/admin/creatives/edit.php:22 includes/admin/creatives/new.php:21
+msgid "The name of this creative. For your identification only."
+msgstr "制作品の名称。追加したアイテムを見分け安くするためのものです。"
+
+#: includes/admin/creatives/edit.php:30 includes/admin/creatives/new.php:29
+#: includes/admin/overview/overview.php:207
+#: includes/admin/referrals/edit.php:44 includes/admin/referrals/new.php:46
+#: includes/admin/referrals/referrals.php:227
+#: templates/dashboard-tab-referrals.php:25
+msgid "Description"
+msgstr "詳細"
+
+#: includes/admin/creatives/edit.php:35 includes/admin/creatives/new.php:34
+msgid ""
+"An optional description for this creative. This is displayed below the "
+"creative for affiliates."
+msgstr ""
+"任意で追加する制作品に対する詳細。これはアフィリエイト会員用の制作品の下に表"
+"示されます。"
+
+#: includes/admin/creatives/edit.php:48 includes/admin/creatives/new.php:47
+msgid ""
+"Where the creative should link to. The affiliate's referral ID will be "
+"automatically appended."
+msgstr ""
+"制作品がどこにリンクされるか。アフィリエイト会員の紹介IDは自動的に添えられま"
+"す・"
+
+#: includes/admin/creatives/edit.php:56 includes/admin/creatives/new.php:55
+msgid "Text"
+msgstr "テキスト"
+
+#: includes/admin/creatives/edit.php:61 includes/admin/creatives/new.php:60
+msgid "Text for this creative."
+msgstr "この制作品用のテキスト"
+
+#: includes/admin/creatives/edit.php:69 includes/admin/creatives/new.php:68
+msgid "Image"
+msgstr "画像"
+
+#: includes/admin/creatives/edit.php:75
+msgid ""
+"Select your image. You can also enter an image URL if your image is hosted "
+"elsewhere."
+msgstr ""
+"画像を選択します。もし画像が別サイトにある場合は、画像URLを入力することもでき"
+"ます。"
+
+#: includes/admin/creatives/edit.php:102 includes/admin/creatives/new.php:92
+msgid "Select the status of the creative."
+msgstr "制作品の状態を選択します。"
+
+#: includes/admin/creatives/edit.php:113
+msgid "Update Creative"
+msgstr "制作品を更新"
+
+#: includes/admin/creatives/new.php:3
+msgid "New Creative"
+msgstr "新規制作品"
+
+#: includes/admin/creatives/new.php:9
+msgid ""
+"Use this screen to add a new creative, such as a text link or image banner."
+msgstr "この画面で、バナーやテキストリンク等の制作品を追加します。"
+
+#: includes/admin/creatives/new.php:74
+msgid ""
+"Select an image if you would like an image banner. You can also enter an "
+"image URL if your image is hosted elsewhere."
+msgstr ""
+"画像バナーを使いたい場合選択します。画像が別サーバーにある場合、画像URLを入力"
+"することもできます。"
+
+#: includes/admin/creatives/new.php:104
+msgid "Add Creative"
+msgstr "制作品を追加"
+
+#: includes/admin/creatives/screen-options.php:22
+msgid "Number of creatives per page:"
+msgstr ""
+
+#: includes/admin/overview/overview.php:26
+msgid "Totals"
+msgstr "合計"
+
+#: includes/admin/overview/overview.php:35
+#: includes/admin/reports/reports.php:86 includes/admin/tools/tools.php:103
+#: templates/dashboard-tab-stats.php:34
+msgid "Paid Earnings"
+msgstr "支払い済み収益"
+
+#: includes/admin/overview/overview.php:36
+#: includes/admin/reports/reports.php:87
+msgid "Paid Earnings This Month"
+msgstr "今月の支払い済み収益"
+
+#: includes/admin/overview/overview.php:37
+#: includes/admin/reports/reports.php:88
+msgid "Paid Earnings Today"
+msgstr "本日の支払い済収益"
+
+#: includes/admin/overview/overview.php:61
+#: includes/admin/reports/reports.php:138 templates/dashboard-tab-stats.php:8
+msgid "Unpaid Referrals"
+msgstr "未払の紹介"
+
+#: includes/admin/overview/overview.php:62
+#: includes/admin/reports/reports.php:139
+msgid "Unpaid Referrals This Month"
+msgstr "今月の未払い紹介"
+
+#: includes/admin/overview/overview.php:63
+#: includes/admin/reports/reports.php:140
+msgid "Unpaid Referrals Today"
+msgstr "本日の未払い紹介"
+
+#: includes/admin/overview/overview.php:86
+#: includes/admin/reports/reports.php:112 templates/dashboard-tab-stats.php:33
+msgid "Unpaid Earnings"
+msgstr "未払い収益"
+
+#: includes/admin/overview/overview.php:87
+#: includes/admin/reports/reports.php:113
+msgid "Unpaid Earnings This Month"
+msgstr "今月の未払い収益"
+
+#: includes/admin/overview/overview.php:88
+#: includes/admin/reports/reports.php:114
+msgid "Unpaid Earnings Today"
+msgstr "本日の未払い収益"
+
+#: includes/admin/overview/overview.php:108
+msgid "Latest Affiliate Registrations"
+msgstr "最新のアフィリエイト会員登録"
+
+#: includes/admin/overview/overview.php:116
+#: includes/admin/overview/overview.php:167
+#: includes/admin/overview/overview.php:205
+#: includes/admin/overview/overview.php:240
+#: includes/admin/referrals/new.php:16
+#: includes/admin/referrals/referrals.php:225
+#: includes/admin/visits/visits.php:145
+msgid "Affiliate"
+msgstr "アフィリエイト会員"
+
+#: includes/admin/overview/overview.php:136
+msgid "View Report"
+msgstr "レポートを閲覧"
+
+#: includes/admin/overview/overview.php:144
+msgid "No affiliate registrations yet"
+msgstr "まだアフィリエイト会員の登録がありません"
+
+#: includes/admin/overview/overview.php:159
+msgid "Most Valuable Affiliates"
+msgstr "最も価値の高いアフィリエイト会員"
+
+#: includes/admin/overview/overview.php:187
+msgid "No registered affiliates"
+msgstr "登録されたアフィリエイト会員はありません"
+
+#: includes/admin/overview/overview.php:197
+msgid "Recent Referrals"
+msgstr "最近の紹介"
+
+#: includes/admin/overview/overview.php:206
+#: includes/admin/referrals/edit.php:31 includes/admin/referrals/new.php:33
+#: includes/admin/referrals/referrals.php:224
+#: includes/admin/tools/export/class-export-referrals-payout.php:41
+#: includes/admin/tools/export/class-export-referrals.php:64
+#: templates/dashboard-tab-referrals.php:24
+msgid "Amount"
+msgstr "合計金額"
+
+#: includes/admin/overview/overview.php:223
+msgid "No referrals recorded yet"
+msgstr "紹介の記録はまだありません"
+
+#: includes/admin/overview/overview.php:232
+msgid "Recent Referral Visits"
+msgstr "最近の紹介の訪問"
+
+#: includes/admin/overview/overview.php:242
+#: includes/admin/visits/visits.php:47 includes/admin/visits/visits.php:148
+#: templates/dashboard-tab-stats.php:59 templates/dashboard-tab-visits.php:23
+msgid "Converted"
+msgstr "コンバート済"
+
+#: includes/admin/overview/overview.php:261
+msgid "No referral visits recorded yet"
+msgstr "紹介された訪問はまだ記録されていません"
+
+#: includes/admin/plugins.php:27
+msgid "General Settings"
+msgstr "一般設定"
+
+#: includes/admin/referrals/actions.php:16
+#: includes/admin/referrals/actions.php:47
+#: includes/admin/referrals/actions.php:78
+msgid "You do not have permission to manage referrals"
+msgstr "紹介を管理するする権限がありません。"
+
+#: includes/admin/referrals/contextual-help.php:29
+#: includes/admin/visits/contextual-help.php:29
+msgid "For more information:"
+msgstr "より詳しい情報:"
+
+#: includes/admin/referrals/contextual-help.php:30
+#: includes/admin/visits/contextual-help.php:30
+msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
+msgstr "AffiliateWP のウェブサイトにある<a href=\"%s\">マニュアル</a> を参照。"
+
+#: includes/admin/referrals/contextual-help.php:31
+#: includes/admin/visits/contextual-help.php:31
+msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
+msgstr "<a href=\"%s\">イシュー</a>の投稿を<a href=\"%s\">GitHub</a>で行う。"
+
+#: includes/admin/referrals/contextual-help.php:39
+msgid "This screen provides access to your site's referral history."
+msgstr "この画面からあなたのサイトの紹介履歴にアクセスすることができます。"
+
+#: includes/admin/referrals/contextual-help.php:40
+msgid ""
+"<strong>Reference</strong>: this refers to the order number (or similar) "
+"that created this referral."
+msgstr ""
+"<strong>参照</strong>: この紹介を発生させた注文番号（もしくはそれらしいもの）"
+"を指します。"
+
+#: includes/admin/referrals/contextual-help.php:41
+msgid "Referral statuses:"
+msgstr "紹介の状態:"
+
+#: includes/admin/referrals/contextual-help.php:43
+msgid ""
+"<strong>Paid</strong> - this is a referral that has been paid to the "
+"affiliate"
+msgstr ""
+"<strong>支払い済</strong> - アフィリエイト会員に支払い済みの紹介案件です"
+
+#: includes/admin/referrals/contextual-help.php:44
+msgid ""
+"<strong>Unpaid</strong> - this is a referral that has been accepted but not "
+"yet paid to the affiliate"
+msgstr ""
+"<strong>Unpaid</strong> - 承認済で、しかし、アフィリエイト会員にまだ支払いが"
+"されていない紹介案件です"
+
+#: includes/admin/referrals/contextual-help.php:45
+msgid ""
+"<strong>Pending</strong> - this is a referral that is waiting to be accepted"
+msgstr "<strong>保留中</strong> - 承認待ちの紹介案件です"
+
+#: includes/admin/referrals/contextual-help.php:46
+msgid ""
+"<strong>Rejected</strong> - this is a referral that has been rejected and "
+"will not be paid to the affiliate"
+msgstr ""
+"<strong>拒否済</strong> - アフィリエイト会員に支払いを拒否した紹介案件です"
+
+#: includes/admin/referrals/contextual-help.php:52
+msgid "Searching Referrals"
+msgstr "紹介を検索中"
+
+#: includes/admin/referrals/contextual-help.php:54
+msgid "Referrals can be searched in several different ways:"
+msgstr "紹介を検索するにはいくつかの方法があります。"
+
+#: includes/admin/referrals/contextual-help.php:56
+msgid "You can enter the referral's ID number"
+msgstr "紹介のID番号を入力できます。"
+
+#: includes/admin/referrals/contextual-help.php:57
+msgid "You can enter the referral reference prefixed by 'ref:'"
+msgstr "紹介参照キーワードを接頭語 'ref:' をつけて入力できます"
+
+#: includes/admin/referrals/contextual-help.php:58
+msgid "You can enter the referral context prefixed by 'context:'"
+msgstr "紹介文脈キーワードを接頭語 'context:' をつけて入力できます"
+
+#: includes/admin/referrals/contextual-help.php:59
+#: includes/admin/visits/contextual-help.php:58
+msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
+msgstr "アフィリエイト会員のID番号を接頭語 'affiliate:' をつけて入力できます"
+
+#: includes/admin/referrals/contextual-help.php:60
+#: includes/admin/visits/contextual-help.php:59
+#, fuzzy
+msgid "You can enter a URL campaign prefixed by 'campaign:'"
+msgstr "紹介文脈キーワードを接頭語 'context:' をつけて入力できます"
+
+#: includes/admin/referrals/contextual-help.php:66
+msgid "Exporting Referrals"
+msgstr "紹介をエクスポート中"
+
+#: includes/admin/referrals/contextual-help.php:68
+msgid ""
+"Referrals can be exported directly to a CSV file in order to make it easier "
+"for your own accounting needs and for you to payout your affiliates's "
+"earnings."
+msgstr ""
+"アフィリエイト会員の収益を支払うためや、あなた自身の簿記を簡単にするために、"
+"紹介データはCSVファイルでエクスポートできます。"
+
+#: includes/admin/referrals/contextual-help.php:69
+msgid ""
+"The CSV file generated is structured properly for PayPal's Mass Payment "
+"system so you can easily payout all of your affiliates at once via PayPal."
+msgstr ""
+"CSV ファイルは PayPal  (ペイパル)の一括支払いシステム(Mass Payment system)用"
+"に生成されますので PayPal を通じて一度にアフィリエイト会員に支払いをすること"
+"ができます。"
+
+#: includes/admin/referrals/edit.php:6
+#, fuzzy
+msgid "Edit Referral"
+msgstr "紹介を追加"
+
+#: includes/admin/referrals/edit.php:23
+#, fuzzy
+msgid ""
+"The affiliate's ID this referral belongs to. This value cannot be changed."
+msgstr "アフィリエイト会員のユーザーID。これは変更できません。"
+
+#: includes/admin/referrals/edit.php:36 includes/admin/referrals/new.php:38
+msgid "The amount of the referral, such as 15."
+msgstr "15等、紹介料の額"
+
+#: includes/admin/referrals/edit.php:49 includes/admin/referrals/new.php:51
+msgid "Enter a description for this referral."
+msgstr "紹介の説明を入力します。"
+
+#: includes/admin/referrals/edit.php:57 includes/admin/referrals/new.php:59
+#: includes/admin/referrals/referrals.php:226
+#: includes/admin/tools/export/class-export-referrals.php:67
+msgid "Reference"
+msgstr "紹介"
+
+#: includes/admin/referrals/edit.php:62 includes/admin/referrals/new.php:64
+msgid ""
+"Enter a reference for this referral (optional). Usually this would be the "
+"transaction ID of the associated purchase."
+msgstr ""
+"紹介用の参照キーワードを入力します(任意)。通常、関連付けされた購入の売買取引"
+"IDなどが使用されます。"
+
+#: includes/admin/referrals/edit.php:70 includes/admin/referrals/new.php:72
+#: includes/admin/tools/export/class-export-referrals.php:68
+msgid "Context"
+msgstr "文脈"
+
+#: includes/admin/referrals/edit.php:75 includes/admin/referrals/new.php:77
+msgid ""
+"Enter a context for this referral (optional). Usually this is used to help "
+"identify the payment system that was used for the transaction."
+msgstr ""
+"紹介に対する文脈キーワードを入力します(任意)。通常、売買取引用の支払いシステ"
+"ムを見分けやすくするために使用されます。"
+
+#: includes/admin/referrals/edit.php:88 includes/admin/referrals/new.php:90
+#: includes/admin/referrals/referrals.php:206
+#: includes/admin/tools/tools.php:260 includes/referral-functions.php:53
+msgid "Unpaid"
+msgstr "未払い"
+
+#: includes/admin/referrals/edit.php:89 includes/admin/referrals/new.php:91
+#: includes/admin/referrals/referrals.php:205
+#: includes/admin/tools/tools.php:259 includes/referral-functions.php:52
+msgid "Paid"
+msgstr "支払い済"
+
+#: includes/admin/referrals/edit.php:93 includes/admin/referrals/new.php:95
+msgid "Select the status of the referral."
+msgstr "紹介の状態を選択します。"
+
+#: includes/admin/referrals/edit.php:106
+#, fuzzy
+msgid "Update Referral"
+msgstr "未払の紹介"
+
+#: includes/admin/referrals/new.php:3
+msgid "New Referral"
+msgstr "新しい紹介"
+
+#: includes/admin/referrals/new.php:9
+msgid ""
+"Use this screen to manually create a new referral record for an affiliate."
+msgstr "会員用の紹介の新しい記録を作成するにはこの画面で行います。"
+
+#: includes/admin/referrals/new.php:25
+msgid ""
+"Enter the name of the affiliate or enter a partial name or email to perform "
+"a search."
+msgstr ""
+"検索する為に会員の名前、もしくは名前やメールアドレスの一部を入力します。"
+
+#: includes/admin/referrals/new.php:108
+msgid "Add Referral"
+msgstr "紹介を追加"
+
+#: includes/admin/referrals/referrals.php:40
+msgid "Add New Referral"
+msgstr "新規紹介の追加"
+
+#: includes/admin/referrals/referrals.php:41
+msgid "Generate Payout File"
+msgstr "支払いファイルを生成する"
+
+#: includes/admin/referrals/referrals.php:42
+msgid "Close"
+msgstr "閉じる"
+
+#: includes/admin/referrals/referrals.php:48
+#: includes/admin/referrals/referrals.php:443
+#: includes/admin/tools/tools.php:255 includes/admin/visits/visits.php:41
+msgid "From - mm/dd/yyyy"
+msgstr "開始 - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:49
+#: includes/admin/referrals/referrals.php:444
+#: includes/admin/tools/tools.php:256 includes/admin/visits/visits.php:42
+msgid "To - mm/dd/yyyy"
+msgstr "終了 - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:50
+msgid "Minimum amount"
+msgstr "最小額"
+
+#: includes/admin/referrals/referrals.php:53
+msgid "Generate CSV File"
+msgstr "CSVファイルを生成する"
+
+#: includes/admin/referrals/referrals.php:54
+msgid ""
+"This will mark all unpaid referrals in this timeframe as paid. To export "
+"referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s"
+"\">Tools &rarr; Export</a> page."
+msgstr ""
+"このタイムフレームでは全ての未払い紹介は支払い済みと記されます。<em>未払い</"
+"em>よりも古い状態の紹介の記録をエクスポートするには、 <a href=\"%s\">ツール"
+"&rarr; エクスポート</a> ページへ行ってください。"
+
+#: includes/admin/referrals/referrals.php:228
+#: includes/admin/tools/export/class-export-referrals.php:70
+#: includes/admin/tools/export/class-export.php:70
+#: includes/admin/visits/visits.php:149
+#: templates/dashboard-tab-referrals.php:27
+msgid "Date"
+msgstr "日付"
+
+#: includes/admin/referrals/referrals.php:359
+#: includes/admin/referrals/referrals.php:466
+msgid "Mark as Unpaid"
+msgstr "未払いにする"
+
+#: includes/admin/referrals/referrals.php:365
+#: includes/admin/referrals/referrals.php:465
+msgid "Mark as Paid"
+msgstr "支払い済にする"
+
+#: includes/admin/referrals/referrals.php:398
+msgid "No referrals found."
+msgstr "紹介が見つかりませんでした。"
+
+#: includes/admin/referrals/referrals.php:422
+msgid "Bulk Actions"
+msgstr "一括操作"
+
+#: includes/admin/referrals/referrals.php:434
+msgid "Apply"
+msgstr "適用"
+
+#: includes/admin/referrals/referrals.php:448
+#: includes/admin/visits/visits.php:50 includes/class-graph.php:404
+msgid "Filter"
+msgstr "フィルタ"
+
+#: includes/admin/referrals/screen-options.php:22
+#, fuzzy
+msgid "Number of referrals per page:"
+msgstr "紹介の記録はまだありません"
+
+#: includes/admin/reports/class-registrations-graph.php:68
+#: includes/admin/reports/reports.php:67
+msgid "Affiliate Registrations"
+msgstr "アフィリエイト会員登録"
+
+#: includes/admin/reports/reports.php:186
+msgid "Successful Conversions"
+msgstr "成功したコンバージョン"
+
+#: includes/admin/reports/reports.php:187 templates/dashboard-tab-stats.php:11
+#: templates/dashboard-tab-stats.php:60
+msgid "Conversion Rate"
+msgstr "コンバージョン率"
+
+#: includes/admin/settings/class-settings.php:295
+msgid "License Settings"
+msgstr "ライセンス設定"
+
+#: includes/admin/settings/class-settings.php:300
+msgid "License Key"
+msgstr "ライセンスキー"
+
+#: includes/admin/settings/class-settings.php:301
+msgid ""
+"Please enter your license key. An active license key is needed for automatic "
+"plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
+msgstr ""
+"ライセンスキーを入力して下さい。<a href=\"%s\" target=\"_blank\">サポート</a>"
+"とプラグインの自動更新には有効なライセンスキーが必要となります。"
+
+#: includes/admin/settings/class-settings.php:306
+msgid "Pages"
+msgstr "ページ"
+
+#: includes/admin/settings/class-settings.php:312
+msgid "This is the page where affiliates will manage their affiliate account."
+msgstr "このページでアフィリエイト会員はアカウントを編集します。"
+
+#: includes/admin/settings/class-settings.php:318
+msgid "Terms of Use"
+msgstr "利用規約"
+
+#: includes/admin/settings/class-settings.php:319
+msgid "Select the page that shows the terms of use for Affiliate Registration"
+msgstr "アフィリエイト会員登録時に利用規約を表示するページを選択します。"
+
+#: includes/admin/settings/class-settings.php:325
+msgid "Referral Settings"
+msgstr "紹介設定"
+
+#: includes/admin/settings/class-settings.php:330
+msgid "Referral Variable"
+msgstr "紹介用変数"
+
+#: includes/admin/settings/class-settings.php:331
+msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
+msgstr "紹介用URLに使用されるURL内変数。例: <strong>%s</strong>。"
+
+#: includes/admin/settings/class-settings.php:336
+#, fuzzy
+msgid "Default Referral Format"
+msgstr "商品毎の紹介料レート"
+
+#: includes/admin/settings/class-settings.php:337
+msgid ""
+"Show referral URLs to affiliates with either their affiliate ID or Username "
+"appended.<br/> For example: <strong>%s or %s</strong>."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:346
+#, fuzzy
+msgid "Pretty Affiliate URLs"
+msgstr "アフィリエイトURL"
+
+#: includes/admin/settings/class-settings.php:347
+#, fuzzy
+msgid ""
+"Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
+"%s</strong>"
+msgstr "紹介用URLに使用されるURL内変数。例: <strong>%s</strong>。"
+
+#: includes/admin/settings/class-settings.php:351
+#, fuzzy
+msgid "Credit Last Referrer"
+msgstr "紹介を追加"
+
+#: includes/admin/settings/class-settings.php:352
+msgid "Credit the last affiliate who referred the customer."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:357
+msgid "Should referrals be based on a percentage or flat rate amounts?"
+msgstr "紹介料はパーセンテージもしくは定額どちらを基準にしますか？"
+
+#: includes/admin/settings/class-settings.php:363
+msgid ""
+"Default referral rate. A percentage if Referral Rate Type is Percentage, a "
+"flat amount otherwise. Rates can be set for each affiliate individually as "
+"well."
+msgstr ""
+"紹介率の初期値。紹介率のタイプがパーセンテージの場合はパーセンテージ、それ以"
+"外は定額。率は個別の会員毎でも設定可能です。"
+
+#: includes/admin/settings/class-settings.php:370
+msgid "Exclude Shipping"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:371
+#, fuzzy
+msgid "Should shipping costs be excluded from referral calculations?"
+msgstr "紹介料の計算から税は抜きますか？"
+
+#: includes/admin/settings/class-settings.php:375
+msgid "Exclude Tax"
+msgstr "税抜き"
+
+#: includes/admin/settings/class-settings.php:376
+msgid "Should taxes be excluded from referral calculations?"
+msgstr "紹介料の計算から税は抜きますか？"
+
+#: includes/admin/settings/class-settings.php:380
+msgid "Cookie Expiration"
+msgstr "クッキーの保存時間"
+
+#: includes/admin/settings/class-settings.php:381
+msgid "How many days should the referral tracking cookie be valid for?"
+msgstr "何日間紹介用追跡クッキーは有効にしますか？"
+
+#: includes/admin/settings/class-settings.php:387
+msgid "Currency Settings"
+msgstr "通貨設定"
+
+#: includes/admin/settings/class-settings.php:388
+msgid "Configure the currency options"
+msgstr "通貨オプションを設定します"
+
+#: includes/admin/settings/class-settings.php:392
+#: includes/admin/tools/export/class-export-referrals-payout.php:42
+#: includes/admin/tools/export/class-export-referrals.php:65
+msgid "Currency"
+msgstr "通貨"
+
+#: includes/admin/settings/class-settings.php:393
+msgid ""
+"Choose your currency. Note that some payment gateways have currency "
+"restrictions."
+msgstr ""
+"通貨を選択します。決済システムによっては利用できる通貨が限られていることがあ"
+"ります。"
+
+#: includes/admin/settings/class-settings.php:398
+msgid "Currency Position"
+msgstr "通貨記号の位置"
+
+#: includes/admin/settings/class-settings.php:399
+msgid "Choose the location of the currency sign."
+msgstr "通貨記号の位置を選択します。"
+
+#: includes/admin/settings/class-settings.php:402
+msgid "Before - $10"
+msgstr "前 - $10"
+
+#: includes/admin/settings/class-settings.php:403
+msgid "After - 10$"
+msgstr "後 - 10$"
+
+#: includes/admin/settings/class-settings.php:407
+msgid "Thousands Separator"
+msgstr "桁区切り"
+
+#: includes/admin/settings/class-settings.php:408
+msgid "The symbol (usually , or .) to separate thousands"
+msgstr "桁区切り記号（通常は「,」か「,」）"
+
+#: includes/admin/settings/class-settings.php:414
+msgid "Decimal Separator"
+msgstr "小数点区切り"
+
+#: includes/admin/settings/class-settings.php:415
+msgid "The symbol (usually , or .) to separate decimal points"
+msgstr "小数点区切り記号（通常は「,」か「.」）"
+
+#: includes/admin/settings/class-settings.php:426
+#: includes/admin/settings/display-settings.php:74
+msgid "Integrations"
+msgstr "統合"
+
+#: includes/admin/settings/class-settings.php:427
+msgid ""
+"Choose the integrations to enable. If you are not using any of these, you "
+"may use the <strong>[affiliate_conversion_script]</strong> short code to "
+"track and create referrals. Refer to the <a href=\"%s\" target=\"_blank"
+"\">documentation</a> for help using this."
+msgstr ""
+"有効にする統合項目を選択します。もしこれらのどれかを使用している場合、紹介を"
+"作成し記録するために、次のショートコード: "
+"<strong>[affiliate_conversion_script]</strong> が使用できます。この使用方法に"
+"ついては、<a href=\"%s\" target=\"_blank\">マニュアル</a> を御覧ください。"
+
+#: includes/admin/settings/class-settings.php:437
+#, fuzzy
+msgid "Disable All Emails"
+msgstr "紹介を無効にする"
+
+#: includes/admin/settings/class-settings.php:438
+msgid "Should all email notifications be disabled?"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:442
+msgid "Logo"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:443
+msgid "Upload or choose a logo to be displayed at the top of emails."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:447
+msgid "Email Template"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:448
+msgid "Choose a template to use for email messages."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:453
+#, fuzzy
+msgid "From Name"
+msgstr "あなたの名前"
+
+#: includes/admin/settings/class-settings.php:454
+msgid ""
+"The name emails are said to come from. This should probably be your site "
+"name."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:459
+#, fuzzy
+msgid "From Email"
+msgstr "メールアドレス"
+
+#: includes/admin/settings/class-settings.php:460
+msgid ""
+"Email to send emails from. This will act as the \"from\" and \"reply-to\" "
+"address."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:465
+msgid "Notify Admins"
+msgstr "管理人に通知"
+
+#: includes/admin/settings/class-settings.php:466
+msgid "Notify site admins of new affiliate registrations?"
+msgstr "新規アフィリエイト会員が登録されたらサイト管理者に通知しますか？"
+
+#: includes/admin/settings/class-settings.php:470
+msgid "Registration Email Subject"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:471
+msgid ""
+"Enter the subject line for the registration email sent to admins when new "
+"affiliates register."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:473
+#: includes/emails/actions.php:41
+msgid "New Affiliate Registration"
+msgstr "新規アフィリエイト会員登録"
+
+#: includes/admin/settings/class-settings.php:476
+msgid "Registration Email Content"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:477
+msgid ""
+"Enter the email to send when a new affiliate registers. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:479
+msgid "A new affiliate has registered on your site, %s"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:479
+#, fuzzy
+msgid "Name: "
+msgstr "名前:%s"
+
+#: includes/admin/settings/class-settings.php:482
+#, fuzzy
+msgid "Application Accepted Email Subject"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:483
+msgid ""
+"Enter the subject line for accepted application emails sent to affiliates "
+"when their account is approved."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:485
+#: includes/emails/actions.php:97
+msgid "Affiliate Application Accepted"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:488
+#, fuzzy
+msgid "Application Accepted Email Content"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:489
+msgid ""
+"Enter the email to send when an application is accepted. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:491
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid "Congratulations {name}!"
+msgstr ""
+"おめでとう御座います %s!\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:491
+#: includes/emails/actions.php:102
+#, fuzzy
+msgid "Your affiliate application on %s has been accepted!"
+msgstr ""
+"%s に対するあなたのアフィリエイト会員申請は承認されました！\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:491
+#, fuzzy
+msgid "Log into your affiliate area at"
+msgstr ""
+"%s であなたのアフィリエイトエリアにログインして下さい\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:494
+#, fuzzy
+msgid "Application Rejected Email Subject"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:495
+msgid ""
+"Enter the subject line for rejected application emails sent to affiliates "
+"when their account is rejected."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:497
+#, fuzzy
+msgid "Affiliate Application Rejected"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:500
+#, fuzzy
+msgid "Application Rejected Email Content"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:501
+msgid ""
+"Enter the email to send when an application is rejected. HTML is rejected. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:503
+msgid "Hello {name}!"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:503
+#, fuzzy
+msgid ""
+"We regret to inform you that your affiliate application on %s has been "
+"rejected."
+msgstr ""
+"%s に対するあなたのアフィリエイト会員申請は承認されました！\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:503
+msgid "Reason given: %s"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:506
+#, fuzzy
+msgid "New Referral Email Subject"
+msgstr "新しい紹介"
+
+#: includes/admin/settings/class-settings.php:507
+msgid ""
+"Enter the subject line for new referral emails sent when affiliates earn "
+"referrals."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:509
+#: includes/emails/actions.php:216
+msgid "Referral Awarded!"
+msgstr "紹介が授与されました！"
+
+#: includes/admin/settings/class-settings.php:512
+#, fuzzy
+msgid "New Referral Email Content"
+msgstr "新しい紹介"
+
+#: includes/admin/settings/class-settings.php:513
+msgid ""
+"Enter the email to send on new referrals. HTML is accepted. Available "
+"template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid "You have been awarded a new referral of"
+msgstr ""
+"%s の新規紹介料が授与されました(%s)！\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid "on %s!"
+msgstr "バージョン %s"
+
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid ""
+"Log into your affiliate area to view your earnings or disable these "
+"notifications:"
+msgstr ""
+"収益を閲覧するには、あなたのアフィリエイト会員エリアにログインして下さい。も"
+"しくはこれらの通知を無効にします:%s\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:523
+msgid "Allow affiliate registration"
+msgstr "アフィリエイト会員の登録を許可する"
+
+#: includes/admin/settings/class-settings.php:524
+msgid "Should affiliates be able to register accounts for themselves?"
+msgstr "アフィリエイター自らアカウントを登録できるようにしますか？"
+
+#: includes/admin/settings/class-settings.php:528
+msgid "Require approval"
+msgstr "承認を必要にする"
+
+#: includes/admin/settings/class-settings.php:529
+msgid ""
+"Require that site admins approve affiliates before they can begin earning "
+"referrals?"
+msgstr ""
+"アフィリエイト会員が紹介料を稼ぎ始めるにはサイト管理者の承認が必要にします"
+"か？"
+
+#: includes/admin/settings/class-settings.php:533
+msgid "Auto Register New Users"
+msgstr "自動新規ユーザー登録"
+
+#: includes/admin/settings/class-settings.php:534
+msgid "Automatically register new users as affiliates?"
+msgstr "自動的に新規ユーザーをアフィリエイト会員に登録しますか？"
+
+#: includes/admin/settings/class-settings.php:538
+msgid "Enable reCAPTCHA"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:539
+msgid ""
+"Would you like to prevent bots from registering affiliate accounts using "
+"Google reCAPTCHA?"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:543
+msgid "reCAPTCHA Site Key"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:544
+msgid "This is used to identify your site to Google reCAPTCHA."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:548
+msgid "reCAPTCHA Secret Key"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:549
+msgid ""
+"This is used for communication between your site and Google reCAPTCHA. Be "
+"sure to keep it a secret."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:553
+msgid "Reject Unpaid Referrals on Refund?"
+msgstr "商品返済の際、未払いの紹介は拒否しますか？"
+
+#: includes/admin/settings/class-settings.php:554
+msgid ""
+"Should unpaid referrals get automatically rejected when the originating "
+"purchase is refunded or revoked?"
+msgstr ""
+"紹介された商品購入がリファンド(返品やキャンセルによる払い戻し)になった場合、"
+"紹介料未払いの紹介事案は自動的に拒否しますか？"
+
+#: includes/admin/settings/class-settings.php:558
+msgid "Use Fallback Referral Tracking Method?"
+msgstr "フォールバック紹介トラッキングメソッドを使用しますか？"
+
+#: includes/admin/settings/class-settings.php:559
+msgid ""
+"The method used to track referral links can fail on sites that have jQuery "
+"errors. Check this if referrals are not getting tracked properly."
+msgstr ""
+"jQueryエラーによる紹介リンクの追跡に失敗するケースが有ります。もし紹介がきち"
+"んと記録されていない場合、この項目をチェックします。"
+
+#: includes/admin/settings/class-settings.php:563
+msgid "Ignore Zero Referrals?"
+msgstr "紹介ゼロは無視しますか？"
+
+#: includes/admin/settings/class-settings.php:564
+msgid ""
+"Check this box if you would like AffiliateWP to completely ignore referrals "
+"for a zero total amount. This can be useful for multi-price products that "
+"start at zero, or if a discount was used, which resulted in a zero amount. "
+"Please note: if this setting is enabled and a visit results in a zero "
+"referral, then the visit would be considered not converted."
+msgstr ""
+"総額がゼロの紹介を AffiliateWP は完全に無視する場合この項目をチェックします。"
+"これは複数の価格が設定可能でゼロから価格が設定できる商品や、価格がゼロになる"
+"ようなディスカウントコードが使用されたりする場合に役立ちます。留意点: この項"
+"目がチェックされており、訪問数が紹介数ゼロという結果なる場合、訪問はコンバー"
+"トにはカウントされません。"
+
+#: includes/admin/settings/class-settings.php:568
+msgid "Remove Data on Uninstall?"
+msgstr "アンインストール時にデータを消去しますか？"
+
+#: includes/admin/settings/class-settings.php:569
+msgid ""
+"Check this box if you would like AffiliateWP to completely remove all of its "
+"data when the plugin is deleted."
+msgstr ""
+"AffiliateWP プラグインが消去された際にこのプラグインに関連する全てのデータを"
+"消去する場合、この項目をチェックします。"
+
+#: includes/admin/settings/class-settings.php:594
+#, fuzzy
+msgid "Application Pending Email Subject"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:595
+msgid "Enter the subject line for pending affiliate application emails."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:597
+#: includes/emails/actions.php:138
+#, fuzzy
+msgid "Your Affiliate Application Is Being Reviewed"
+msgstr ""
+"%s に対するあなたのアフィリエイト会員申請は承認されました！\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:600
+#, fuzzy
+msgid "Application Pending Email Content"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:601
+msgid ""
+"Enter the email to send when an application is pending. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:603
+msgid "Hi {name}!"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:603
+#: includes/emails/actions.php:143
+msgid "Thanks for your recent affiliate registration on {site_name}."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:603
+#: includes/emails/actions.php:144
+msgid ""
+"We're currently reviewing your affiliate application and will be in touch "
+"soon!"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:606
+#, fuzzy
+msgid "Application Rejection Email Subject"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:607
+msgid "Enter the subject line for rejected affiliate application emails."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:609
+#: includes/emails/actions.php:175
+#, fuzzy
+msgid "Your Affiliate Application Has Been Rejected"
+msgstr ""
+"%s に対するあなたのアフィリエイト会員申請は承認されました！\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:612
+#, fuzzy
+msgid "Application Rejection Email Content"
+msgstr "アフィリエイト会員の申請は承認されました"
+
+#: includes/admin/settings/class-settings.php:613
+msgid ""
+"Enter the email to send when an application is rejected. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:615
+msgid "Hi {name},"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:615
+#: includes/emails/actions.php:180
+msgid ""
+"We regret to inform you that your recent affiliate registration on "
+"{site_name} was rejected."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:751
+msgid "Deactivate License"
+msgstr "ライセンスを無効にする"
+
+#: includes/admin/settings/class-settings.php:752
+msgid "Your license is valid!"
+msgstr "あなたのライセンスは有効です！"
+
+#: includes/admin/settings/class-settings.php:755
+msgid "Renew Your License"
+msgstr "あなたのライセンスを更新する"
+
+#: includes/admin/settings/class-settings.php:756
+msgid ""
+"Your license has expired, renew today to continue getting updates and "
+"support!"
+msgstr ""
+"あなたのライセンスは期限が切れました。アップデートとサポートを受けるには今日"
+"にでも更新して下さい！"
+
+#: includes/admin/settings/class-settings.php:758
+msgid "Activate License"
+msgstr "ライセンスを有効にする"
+
+#: includes/admin/settings/class-settings.php:857
+msgid ""
+"The callback function used for the <strong>%s</strong> setting is missing."
+msgstr "<strong>%s</strong>設定に適用されるコールバック関数が見つかりません。"
+
+#: includes/admin/settings/class-settings.php:932
+msgid "Upload File"
+msgstr ""
+
+#: includes/admin/settings/display-settings.php:73
+msgid "General"
+msgstr "一般"
+
+#: includes/admin/settings/display-settings.php:75
+#, fuzzy
+msgid "Emails"
+msgstr "メールアドレス"
+
+#: includes/admin/settings/display-settings.php:76
+msgid "Misc"
+msgstr "その他"
+
+#: includes/admin/tools/export/class-export-affiliates.php:48
+#: includes/admin/tools/export/class-export-referrals-payout.php:40
+#: includes/admin/tools/export/class-export-referrals.php:62
+msgid "Email"
+msgstr "メールアドレス"
+
+#: includes/admin/tools/export/class-export-affiliates.php:52
+msgid "Rate Type"
+msgstr "レートタイプ"
+
+#: includes/admin/tools/export/class-export-affiliates.php:57
+msgid "Date Registered"
+msgstr "登録日"
+
+#: includes/admin/tools/export/class-export-referrals.php:66
+#: templates/dashboard-tab-stats.php:56
+msgid "Campaign"
+msgstr ""
+
+#: includes/admin/tools/export/class-export.php:173
+msgid "You do not have permission to export data."
+msgstr "データをエクスポートする権限がありません。"
+
+#: includes/admin/tools/import/import.php:23
+msgid "Please upload a valid .json file"
+msgstr "正しい .json ファイルをアップロードして下さい"
+
+#: includes/admin/tools/import/import.php:29
+msgid "Please upload a file to import"
+msgstr "インポートするファイルをアップロードして下さい"
+
+#: includes/admin/tools/migration.php:19
+msgid ""
+"The upgrade process is running, please be patient. This could take several "
+"minutes to complete while affiliate records are upgraded in batches of 100."
+msgstr ""
+"アップグレードのプロセスは実行中です。しばらくお待ちください。これは100を超え"
+"るバッチ処理を要するアフィリエイト会員の記録がアップグレードされる為、終了す"
+"るのに数分かかる場合があります。"
+
+#: includes/admin/tools/migration.php:20
+msgid "Step %d running"
+msgstr "ステップ %d が実行されています"
+
+#: includes/admin/tools/tools.php:75
+msgid "Export / Import"
+msgstr "エクスポート / インポート"
+
+#: includes/admin/tools/tools.php:76
+msgid "Recount Stats"
+msgstr "統計のリカウント"
+
+#: includes/admin/tools/tools.php:77
+msgid "Migration Assistant"
+msgstr "移行アシスタント"
+
+#: includes/admin/tools/tools.php:93
+msgid "Recount Affiliate Stats"
+msgstr "アフィリエイト会員統計をリカウント"
+
+#: includes/admin/tools/tools.php:95
+msgid "Use this tool to recount affiliate statistics."
+msgstr ""
+"アフィリエイト会員の統計をリカウント（リセット）するにはこのツールを使用しま"
+"す。"
+
+#: includes/admin/tools/tools.php:99 includes/admin/tools/tools.php:251
+#: includes/admin/visits/visits.php:35
+msgid "Affiliate name"
+msgstr "アフィリエイト会員名"
+
+#: includes/admin/tools/tools.php:108
+msgid ""
+"Enter the name of the affiliate or begin typing to perform a search based on "
+"the affiliate's name."
+msgstr "アフィリエイト会員の名前、もしくは部分を入力して検索を開始します。"
+
+#: includes/admin/tools/tools.php:113
+msgid "Recount"
+msgstr "リカウント"
+
+#: includes/admin/tools/tools.php:145
+msgid ""
+"These tools assist in migrating affiliate and referral data from existing "
+"platforms."
+msgstr ""
+"既存のプラットフォームからアフィリエイト会員と紹介のデータを移行させるには、"
+"このツールが役立ちます。"
+
+#: includes/admin/tools/tools.php:150
+msgid "User Accounts"
+msgstr "ユーザーアカウント"
+
+#: includes/admin/tools/tools.php:152
+#, fuzzy
+msgid ""
+"Use this tool to create affiliate accounts for each of your existing "
+"WordPress user accounts that belong to the selected roles below."
+msgstr ""
+"既存の各 WordPress ユーザーアカウントからアフィリエイト会員のアカウントを作成"
+"するにはこのツールを使用します。"
+
+#: includes/admin/tools/tools.php:153
+msgid ""
+"<strong>NOTE:</strong> Users that already have affiliate accounts will be "
+"skipped. Duplicate accounts will not be created."
+msgstr ""
+
+#: includes/admin/tools/tools.php:155
+msgid "Select User Roles"
+msgstr ""
+
+#: includes/admin/tools/tools.php:168
+#, fuzzy
+msgid "Create Affiliate Accounts for Users"
+msgstr "アフィリエイト会員のアカウントを作成"
+
+#: includes/admin/tools/tools.php:177
+msgid ""
+"Use this tool migrate existing affiliate / referral data from Affiliates Pro "
+"to AffiliateWP."
+msgstr ""
+"Affiliates Pro から AffiliateWP に既存のアフィリエイト会員もしくは紹介のデー"
+"タを移行させるにはこのツールを使用します。"
+
+#: includes/admin/tools/tools.php:178
+msgid ""
+"<strong>NOTE:</strong> this tool should only ever be used on a fresh "
+"install. If you have already collected affiliate or referral data, do not "
+"use this tool."
+msgstr ""
+"<strong>留意点:</strong> このツールは新規インストールのみ使用できます。もしア"
+"フィリエイト会員、もしくは紹介データが集積されている場合はこのツールは使用し"
+"ないで下さい。"
+
+#: includes/admin/tools/tools.php:184
+msgid "Migrate Data from Affiliates Pro"
+msgstr "Affiliates Pro からデータを移行する"
+
+#: includes/admin/tools/tools.php:193
+msgid ""
+"Use this tool migrate existing affiliate accounts from WP Affiliate to "
+"AffiliateWP."
+msgstr ""
+"WP Affiliates から AffiliateWP に既存のアフィリエイト会員アカウントを移行させ"
+"るにはこのツールを使用します。"
+
+#: includes/admin/tools/tools.php:199
+msgid "Migrate Data from WP Affiliate"
+msgstr "WP Affiliates  からデータを移行する"
+
+#: includes/admin/tools/tools.php:223
+msgid "Export Affiliates"
+msgstr "アフィリエイト会員をエクスポート"
+
+#: includes/admin/tools/tools.php:225
+msgid "Export affiliates to a CSV file."
+msgstr "アフィリエイト会員のデータをCSVファイルでエクスポートする。"
+
+#: includes/admin/tools/tools.php:229 includes/admin/tools/tools.php:258
+msgid "All Statuses"
+msgstr "全ての状態"
+
+#: includes/admin/tools/tools.php:238 includes/admin/tools/tools.php:270
+#: includes/admin/tools/tools.php:284
+msgid "Export"
+msgstr "エクスポート"
+
+#: includes/admin/tools/tools.php:245
+msgid "Export Referrals"
+msgstr "紹介をエクスポート"
+
+#: includes/admin/tools/tools.php:247
+msgid "Export referrals to a CSV file."
+msgstr "紹介の記録をCSVファイルにエクスポートする。"
+
+#: includes/admin/tools/tools.php:265
+msgid ""
+"To search for a affiliate, enter the affiliate's login name, first name, or "
+"last name. Leave blank to export referrals for all affiliates."
+msgstr ""
+"アフィリエイト会員を探す場合、アフィリエイト会員のログイン名、名前、もしくは"
+"姓を入力します。全てのアフィリエイト会員の紹介データをエクスポートするには空"
+"白にします。"
+
+#: includes/admin/tools/tools.php:277
+msgid "Export Settings"
+msgstr "エクスポート設定"
+
+#: includes/admin/tools/tools.php:279
+msgid ""
+"Export the AffiliateWP settings for this site as a .json file. This allows "
+"you to easily import the configuration into another site."
+msgstr ""
+"このサイトの AffiliateWP の設定を .json 形式でエクスポートします。これは別の"
+"サイトへ設定をインポートする時に使います。"
+
+#: includes/admin/tools/tools.php:291
+msgid "Import Settings"
+msgstr "インポート設定"
+
+#: includes/admin/tools/tools.php:293
+msgid ""
+"Import the AffiliateWP settings from a .json file. This file can be obtained "
+"by exporting the settings on another site using the form above."
+msgstr ""
+"AffiliateWP  の設定を .json 形式でインポートします。このファイルは別のサイト"
+"の設定を上のフォームでエクスポートして得ることができます。"
+
+#: includes/admin/tools/tools.php:301
+msgid "Import"
+msgstr "インポート"
+
+#: includes/admin/visits/contextual-help.php:39
+msgid "This screen provides access to your site's visit history."
+msgstr "この画面からあなたのサイトの訪問履歴にアクセスすることができます。"
+
+#: includes/admin/visits/contextual-help.php:40
+msgid ""
+"<strong>Landing Page</strong>: this is the page on your site that the "
+"visitor first landed on. It is the URL that the affiliate link pointed to."
+msgstr ""
+"<strong>ランディングページ</strong>: あなたのサイトに訪問者が初めて訪れたペー"
+"ジを指します。アフィリエイトのリンクが示すURLになります。"
+
+#: includes/admin/visits/contextual-help.php:41
+msgid ""
+"<strong>Referring URL</strong>: this is the source URL of the affiliate "
+"link. It is the web page that the visitor found a link to your site on."
+msgstr ""
+"<strong>紹介用URL</strong>: アフィリエイトリンクの元になるURLです。あなたのサ"
+"イト上でサイト訪問者がリンクを見つけるウェブページです。"
+
+#: includes/admin/visits/contextual-help.php:42
+msgid ""
+"<strong>Affiliate</strong>: this the affiliate that the visit was attributed "
+"to."
+msgstr ""
+"<strong>アフィリエイト会員</strong>:サイト訪問者が属するアフィリエイト会員で"
+"す。"
+
+#: includes/admin/visits/contextual-help.php:43
+msgid ""
+"<strong>Referral ID</strong>: this is the ID of the referral that was "
+"created from this visit, if any."
+msgstr "<strong>紹介ID</strong>: この訪問(もしある場合)から発生した紹介のID"
+
+#: includes/admin/visits/contextual-help.php:44
+msgid "<strong>IP</strong>: this is the IP address of the visitor."
+msgstr "<strong>IP</strong> - これは訪問した人のIPアドレスです。"
+
+#: includes/admin/visits/contextual-help.php:45
+msgid ""
+"<strong>Converted</strong>: this is a Yes / No status for whether the visit "
+"turned into a successful converstion."
+msgstr ""
+"<strong>コンバート済</strong>: これは はい・いいえ の２択になり、サイト訪問者"
+"がコンバージョンされたかどうかを示します。"
+
+#: includes/admin/visits/contextual-help.php:50
+msgid "Searching Visits"
+msgstr "訪問の検索"
+
+#: includes/admin/visits/contextual-help.php:52
+msgid "Visit records can be searched in several different ways:"
+msgstr "訪問履歴はいくつかの方法で検索することができます:"
+
+#: includes/admin/visits/contextual-help.php:54
+msgid "You can enter an IP address to find all visits from a specific IP"
+msgstr "特定のIPからの訪問を探すためにIPを入力できます"
+
+#: includes/admin/visits/contextual-help.php:55
+msgid ""
+"You can enter a complete URL to find all visits that landed on or came from "
+"a specific URL"
+msgstr "特定のURLからの訪問を探すための完全なURLを入力することができます"
+
+#: includes/admin/visits/contextual-help.php:56
+msgid ""
+"You can enter a partial URL to find all visits that landed on or came from a "
+"specific site"
+msgstr "特定のURLからの訪問を探すための部分的なURLを入力することができます"
+
+#: includes/admin/visits/contextual-help.php:57
+msgid "You can enter the referral's ID number prefixed by 'referral:'"
+msgstr "紹介のID番号を接頭語 'referal:' をつけて入力できます"
+
+#: includes/admin/visits/screen-options.php:22
+msgid "Number of visits per page:"
+msgstr ""
+
+#: includes/admin/visits/visits.php:44
+msgid "Filter by status"
+msgstr ""
+
+#: includes/admin/visits/visits.php:48
+#, fuzzy
+msgid "Unconverted"
+msgstr "コンバート済"
+
+#: includes/admin/visits/visits.php:143
+msgid "Landing Page"
+msgstr "ランディングページ"
+
+#: includes/admin/visits/visits.php:144 templates/dashboard-tab-visits.php:22
+msgid "Referring URL"
+msgstr "紹介URL"
+
+#: includes/admin/visits/visits.php:146
+msgid "Referral ID"
+msgstr "紹介ID"
+
+#: includes/admin/visits/visits.php:147
+msgid "IP"
+msgstr "IP"
+
+#: includes/admin/visits/visits.php:212 templates/dashboard-tab-visits.php:33
+msgid "Direct traffic"
+msgstr "直接のやりとり"
+
+#: includes/admin/visits/visits.php:237
+msgid "No visits found."
+msgstr "訪問は見つかりませんでした。"
+
+#: includes/affiliate-functions.php:306
+msgid "Percentage (%)"
+msgstr "パーセンテージ (%)"
+
+#: includes/affiliate-functions.php:307
+msgid "Flat %s"
+msgstr "定額 %s"
+
+#: includes/class-graph.php:332
+msgid "Today"
+msgstr "本日"
+
+#: includes/class-graph.php:333
+msgid "Yesterday"
+msgstr "昨日"
+
+#: includes/class-graph.php:334
+msgid "This Week"
+msgstr "今週"
+
+#: includes/class-graph.php:335
+msgid "Last Week"
+msgstr "先週"
+
+#: includes/class-graph.php:336
+msgid "This Month"
+msgstr "今月"
+
+#: includes/class-graph.php:337
+msgid "Last Month"
+msgstr "先月"
+
+#: includes/class-graph.php:338
+msgid "This Quarter"
+msgstr "今四半期"
+
+#: includes/class-graph.php:339
+msgid "Last Quarter"
+msgstr "前四半期"
+
+#: includes/class-graph.php:340
+msgid "This Year"
+msgstr "今年"
+
+#: includes/class-graph.php:341
+msgid "Last Year"
+msgstr "前年"
+
+#: includes/class-graph.php:342
+msgid "Custom"
+msgstr "カスタム"
+
+#: includes/class-graph.php:380
+msgid "From"
+msgstr "差出人"
+
+#: includes/class-graph.php:391
+msgid "To"
+msgstr "宛先"
+
+#: includes/class-login.php:56 includes/class-register.php:77
+#: includes/class-register.php:176
+msgid "Invalid username"
+msgstr "無効なユーザー名"
+
+#: includes/class-login.php:62
+msgid "No such user"
+msgstr "そのようなユーザーは存在しません。"
+
+#: includes/class-login.php:66 includes/class-register.php:184
+msgid "Please enter a password"
+msgstr "パスワードを入力して下さい"
+
+#: includes/class-login.php:73
+#, fuzzy
+msgid "Incorrect username or password"
+msgstr "間違ったパスワード"
+
+#: includes/class-referrals-graph.php:116
+msgid "Unpaid Referral Earnings"
+msgstr "未払い紹介料"
+
+#: includes/class-referrals-graph.php:117
+msgid "Pending Referral Earnings"
+msgstr "保留中の紹介料"
+
+#: includes/class-referrals-graph.php:118
+msgid "Rejected Referral Earnings"
+msgstr "却下された紹介料"
+
+#: includes/class-referrals-graph.php:119
+msgid "Paid Referral Earnings"
+msgstr "支払い済みの紹介料"
+
+#: includes/class-register.php:70
+msgid "Username already taken"
+msgstr "このユーザー名は既に使われています"
+
+#: includes/class-register.php:75
+msgid "Invalid username. Only lowercase letters (a-z) and numbers are allowed"
+msgstr ""
+
+#: includes/class-register.php:82
+msgid "Email address already taken"
+msgstr "このメールアドレスはすでに使われています"
+
+#: includes/class-register.php:86
+msgid "Invalid email"
+msgstr "無効なメールアドレス"
+
+#: includes/class-register.php:90
+msgid "Invalid payment email"
+msgstr "無効な支払い用メールアドレス"
+
+#: includes/class-register.php:94
+msgid "Passwords do not match"
+msgstr "パスワードが一致しません"
+
+#: includes/class-register.php:101
+msgid "Please agree to our terms of use"
+msgstr "利用規約に同意して頂く必要があります"
+
+#: includes/class-register.php:105
+msgid "Please verify that you are not a robot"
+msgstr ""
+
+#: includes/class-register.php:109
+msgid "Nice try honey bear, don't touch our honey"
+msgstr "惜しいね、くまのプーさん。私達の蜂蜜には触らないでね。"
+
+#: includes/class-register.php:113
+msgid "You are already registered as an affiliate"
+msgstr "あなたは既にアフィリエイト会員として登録済みです"
+
+#: includes/class-register.php:172
+msgid "Please enter your name"
+msgstr "名前を入力してください"
+
+#: includes/class-register.php:180
+msgid "Please enter a website URL"
+msgstr "ウェブサイトのURLを入力してください"
+
+#: includes/class-visits-graph.php:126
+msgid "Converted Visits"
+msgstr "コンバート済訪問"
+
+#: includes/class-visits-graph.php:127
+msgid "Unconverted Visits"
+msgstr "未コンバート訪問"
+
+#: includes/creative-functions.php:31 includes/creative-functions.php:63
+msgid "Creative"
+msgstr "制作品"
+
+#: includes/emails/actions.php:46
+#, fuzzy
+msgid "A new affiliate has registered on your site, "
+msgstr "まだアフィリエイト会員の登録がありません"
+
+#: includes/emails/actions.php:47
+msgid "Name: %s"
+msgstr "名前:%s"
+
+#: includes/emails/actions.php:50
+#, fuzzy
+msgid "Website URL: %s"
+msgstr "ウェブサイトURL:"
+
+#: includes/emails/actions.php:54
+#, fuzzy
+msgid "Promotion method: %s"
+msgstr "プロモーション方法:"
+
+#: includes/emails/actions.php:58
+msgid "Review pending applications: %s"
+msgstr ""
+
+#: includes/emails/actions.php:101 includes/emails/actions.php:221
+#, fuzzy
+msgid "Congratulations %s!"
+msgstr ""
+"おめでとう御座います %s!\n"
+"\n"
+
+#: includes/emails/actions.php:103
+#, fuzzy
+msgid "Log into your affiliate area at %s"
+msgstr ""
+"%s であなたのアフィリエイトエリアにログインして下さい\n"
+"\n"
+
+#: includes/emails/actions.php:142
+#, fuzzy
+msgid "Hi %s!"
+msgstr "バージョン %s"
+
+#: includes/emails/actions.php:179
+msgid "Hi %s,"
+msgstr ""
+
+#: includes/emails/actions.php:222
+#, fuzzy
+msgid "You have been awarded a new referral of %s on %s!"
+msgstr ""
+"%s の新規紹介料が授与されました(%s)！\n"
+"\n"
+
+#: includes/emails/actions.php:223
+#, fuzzy
+msgid ""
+"log into your affiliate area to view your earnings or disable these "
+"notifications: %s"
+msgstr ""
+"収益を閲覧するには、あなたのアフィリエイト会員エリアにログインして下さい。も"
+"しくはこれらの通知を無効にします:%s\n"
+"\n"
+
+#: includes/emails/class-affwp-emails.php:198
+msgid "Default Template"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:199
+msgid "No template, plain text only"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:295
+msgid ""
+"You cannot send emails with AffWP_Emails until init/admin_init has been "
+"reached"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:422
+msgid "The full name of the affiliate"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:427
+msgid "The user name of the affiliate on the site"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:432
+msgid "The email address of the affiliate"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:437
+#, fuzzy
+msgid "The website of the affiliate"
+msgstr "登録されたアフィリエイト会員はありません"
+
+#: includes/emails/class-affwp-emails.php:442
+msgid "The promo method used by the affiliate"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:447
+#, fuzzy
+msgid "The reason an affiliate area was rejected"
+msgstr "アフィリエイト会員のリクエストは拒否されました"
+
+#: includes/emails/class-affwp-emails.php:452
+msgid "The affiliate login URL to your website"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:457
+#, fuzzy
+msgid "The amount of a given referral"
+msgstr "15等、紹介料の額"
+
+#: includes/emails/class-affwp-emails.php:462
+#, fuzzy
+msgid "Your site name"
+msgstr "あなたの名前"
+
+#: includes/emails/class-affwp-emails.php:467
+#, fuzzy
+msgid "The affiliate's referral URL"
+msgstr "アフィリエイト会員の紹介率のタイプ。"
+
+#: includes/emails/class-affwp-emails.php:472
+#, fuzzy
+msgid "The affiliate's ID"
+msgstr "アフィリエイト会員ID"
+
+#: includes/emails/functions.php:121
+#, fuzzy
+msgid "No reason provided"
+msgstr "紹介の記録はまだありません"
+
+#: includes/integrations/class-edd.php:290
+#: includes/integrations/class-gravityforms.php:105
+#: includes/integrations/class-jigoshop.php:85
+#: includes/integrations/class-shopp.php:75
+#: includes/integrations/class-sproutinvoices.php:53
+#: includes/integrations/class-woocommerce.php:161
+#: includes/integrations/class-zippycourses.php:187
+msgid "Referral #%d for %s recorded for %s"
+msgstr "紹介 #%d　%s に対し %s に対する記録"
+
+#: includes/integrations/class-edd.php:407
+#: includes/integrations/class-rcp.php:190
+#: includes/integrations/class-woocommerce.php:281
+msgid "Affiliate Discount?"
+msgstr "アフィリエイト会員ディスカウント？"
+
+#: includes/integrations/class-edd.php:416
+#: includes/integrations/class-rcp.php:199
+#: includes/integrations/class-woocommerce.php:289
+msgid ""
+"If you would like to connect this discount to an affiliate, enter the name "
+"of the affiliate it belongs to."
+msgstr ""
+"アフィリエイト会員とディスカウントを連結する場合、属するアフィリエイト会員の"
+"名前を入力します。"
+
+#: includes/integrations/class-edd.php:507
+msgid "Adjust EDD Commissions"
+msgstr "EDDのコミッションを調整"
+
+#: includes/integrations/class-edd.php:508
+msgid ""
+"Should AffiliateWP adjust the commission amounts recorded for purchases that "
+"include affiliate referrals? This will subtract the referral amount from the "
+"base amount used to calculate the commission total."
+msgstr ""
+"AffiliateWP にアフィリエイトによる紹介を含む購入に対する記録されたコミッショ"
+"ン料を調整させますか？これはコミッション料の総額を計算するのに基本料から紹介"
+"料を差し引きます。"
+
+#: includes/integrations/class-edd.php:528
+#, fuzzy
+msgid "Disable Renewal Referrals"
+msgstr "紹介を無効にする"
+
+#: includes/integrations/class-edd.php:529
+msgid ""
+"Should AffiliateWP prevent referral commissions from being recorded on "
+"renewal purchases with EDD Software Licensing?"
+msgstr ""
+
+#: includes/integrations/class-edd.php:550
+#: includes/integrations/class-zippycourses.php:55
+msgid "Affiliate Rates:"
+msgstr "アフィリエイト会員のレート"
+
+#: includes/integrations/class-edd.php:563
+#: includes/integrations/class-zippycourses.php:68
+msgid "Disable referrals on this %s"
+msgstr "%s には紹介を無効にする"
+
+#: includes/integrations/class-edd.php:567
+#: includes/integrations/class-memberpress.php:152
+#: includes/integrations/class-zippycourses.php:72
+#, fuzzy
+msgid ""
+"These settings will be used to calculate affiliate earnings per-sale. Leave "
+"blank to use the site default referral rate."
+msgstr ""
+"これらの設定はアフィリエイト会員の売上毎の収益を計算する為に使われます。初期"
+"値のアフィリエイト会員のレートを使用するには空白にします。"
+
+#: includes/integrations/class-exchange.php:234
+msgid "Affiliate coupon?"
+msgstr "アフィリエイト用クーポン？"
+
+#: includes/integrations/class-exchange.php:243
+msgid ""
+"If you would like to connect this coupon to an affiliate, enter the name of "
+"the affiliate it belongs to."
+msgstr ""
+"アフィリエイト会員とディスカウントを連結する場合、属するアフィリエイト会員の"
+"名前を入力します。"
+
+#: includes/integrations/class-formidablepro.php:71
+#, fuzzy
+msgid " AffiliateWP"
+msgstr "アフィリエイト会員"
+
+#: includes/integrations/class-formidablepro.php:76
+#, fuzzy
+msgid "Referral description"
+msgstr "紹介設定"
+
+#: includes/integrations/class-formidablepro.php:80
+#: includes/integrations/class-formidablepro.php:106
+msgid "Select Field"
+msgstr ""
+
+#: includes/integrations/class-formidablepro.php:102
+msgid "Purchase Amount"
+msgstr ""
+
+#: includes/integrations/class-formidablepro.php:198
+#, fuzzy
+msgid "AffiliateWP: Referral #%d for %s recorded for %s"
+msgstr "紹介 #%d　%s に対し %s に対する記録"
+
+#: includes/integrations/class-formidablepro.php:223
+#, fuzzy
+msgid "AffiliateWP: Referral #%d for %s for %s rejected"
+msgstr "紹介 #%d (%s) 拒否: %s"
+
+#: includes/integrations/class-gravityforms.php:127
+#: includes/integrations/class-sproutinvoices.php:76
+msgid "Referral #%d for %s for %s rejected"
+msgstr "紹介 #%d (%s) 拒否: %s"
+
+#: includes/integrations/class-gravityforms.php:168
+#, fuzzy
+msgid "Enable affiliate referral creation for this form"
+msgstr "アフィリエイト会員の紹介率のタイプ。"
+
+#: includes/integrations/class-gravityforms.php:172
+#, fuzzy
+msgid "Allow referrals"
+msgstr "紹介を無効にする"
+
+#: includes/integrations/class-memberpress.php:119
+#: includes/integrations/class-rcp.php:275
+#: includes/integrations/class-rcp.php:297
+#: includes/integrations/class-woocommerce.php:401
+msgid "Affiliate Rate"
+msgstr "アフィリエイト会員のレート"
+
+#: includes/integrations/class-memberpress.php:148
+#, fuzzy
+msgid "Disable referrals on this membership"
+msgstr "%s には紹介を無効にする"
+
+#: includes/integrations/class-ninja-forms.php:137
+#, fuzzy
+msgid "Allow Referrals"
+msgstr "紹介"
+
+#: includes/integrations/class-ninja-forms.php:138
+#, fuzzy
+msgid "Enable affiliate referral creation for this form?"
+msgstr "アフィリエイト会員の紹介率のタイプ。"
+
+#: includes/integrations/class-rcp.php:279
+#: includes/integrations/class-rcp.php:301
+#, fuzzy
+msgid ""
+"This rate will be used to calculate affiliate earnings when members "
+"subscribe to this level. Leave blank to use the site default referral rate."
+msgstr ""
+"これらの設定はアフィリエイト会員の売上毎の収益を計算する為に使われます。初期"
+"値のアフィリエイト会員のレートを使用するには空白にします。"
+
+#: includes/integrations/class-woocommerce.php:403
+#: includes/integrations/extras/class-exchange-feature.php:42
+msgid ""
+"These settings will be used to calculate affiliate earnings per-sale. Leave "
+"blank to use default affiliate rates."
+msgstr ""
+"これらの設定はアフィリエイト会員の売上毎の収益を計算する為に使われます。初期"
+"値のアフィリエイト会員のレートを使用するには空白にします。"
+
+#: includes/integrations/class-woocommerce.php:407
+msgid "Disable referrals"
+msgstr "紹介を無効にする"
+
+#: includes/integrations/class-woocommerce.php:408
+msgid ""
+"This will prevent orders of this product from generating referral "
+"commissions for affiliates."
+msgstr ""
+"これはこの商品の注文がアフィリエイト会員の紹介コミッション料を生成するのを防"
+"ぎます。"
+
+#: includes/integrations/class-zippycourses.php:40
+#, fuzzy
+msgid "Affiliate Settings"
+msgstr "AffiliateWP の設定へ移動"
+
+#: includes/integrations/extras/class-exchange-feature.php:22
+msgid "Manage per-product affiliate rates."
+msgstr ""
+
+#: includes/integrations/extras/class-exchange-feature.php:54
+#, fuzzy
+msgid "Disable referrals on this product"
+msgstr "%s には紹介を無効にする"
+
+#: includes/misc-functions.php:26
+msgid "US Dollars"
+msgstr "アメリカ合衆国 ドル"
+
+#: includes/misc-functions.php:27
+msgid "Euros"
+msgstr "ユーロ"
+
+#: includes/misc-functions.php:28
+msgid "United Arab Emirates Dirham"
+msgstr "UAE ディルハム"
+
+#: includes/misc-functions.php:29
+msgid "Australian Dollars"
+msgstr "オーストラリア ドル"
+
+#: includes/misc-functions.php:30
+msgid "Bangladeshi Taka"
+msgstr "バングラデシュ タカ"
+
+#: includes/misc-functions.php:31
+msgid "Brazilian Real"
+msgstr "ブラジル レアル"
+
+#: includes/misc-functions.php:32
+msgid "Bulgarian Lev"
+msgstr "ブルガリア レフ"
+
+#: includes/misc-functions.php:33
+msgid "Canadian Dollars"
+msgstr "カナダ ドル"
+
+#: includes/misc-functions.php:34
+msgid "Chilean Peso"
+msgstr "チリ ペソ"
+
+#: includes/misc-functions.php:35
+msgid "Chinese Yuan"
+msgstr "中国 人民元"
+
+#: includes/misc-functions.php:36
+msgid "Colombian Peso"
+msgstr "コロンビア ペソ"
+
+#: includes/misc-functions.php:37
+msgid "Czech Koruna"
+msgstr "チェコ コルナ"
+
+#: includes/misc-functions.php:38
+msgid "Danish Krone"
+msgstr "デンマーク クローネ"
+
+#: includes/misc-functions.php:39
+msgid "Dominican Peso"
+msgstr "ドミニカ ペソ"
+
+#: includes/misc-functions.php:40
+msgid "Hong Kong Dollar"
+msgstr "香港 ドル"
+
+#: includes/misc-functions.php:41
+msgid "Croatia kuna"
+msgstr "クロアチア クーナ"
+
+#: includes/misc-functions.php:42
+msgid "Hungarian Forint"
+msgstr "ハンガリー フォリント"
+
+#: includes/misc-functions.php:43
+msgid "Icelandic krona"
+msgstr "アイスランド クローナ"
+
+#: includes/misc-functions.php:44
+msgid "Indonesia Rupiah"
+msgstr "インドネシア ルピア"
+
+#: includes/misc-functions.php:45
+msgid "Indian Rupee"
+msgstr "インド ルピー"
+
+#: includes/misc-functions.php:46
+msgid "Nepali Rupee"
+msgstr "ネパール ルピー"
+
+#: includes/misc-functions.php:47
+msgid "Israeli Shekel"
+msgstr "イスラエル シェケル"
+
+#: includes/misc-functions.php:48
+msgid "Japanese Yen"
+msgstr "日本 円"
+
+#: includes/misc-functions.php:49
+msgid "Lao Kip"
+msgstr "ラオス キープ"
+
+#: includes/misc-functions.php:50
+msgid "South Korean Won"
+msgstr "韓国 ウォン"
+
+#: includes/misc-functions.php:51
+msgid "Malaysian Ringgits"
+msgstr "マレーシア リンギ"
+
+#: includes/misc-functions.php:52
+msgid "Mexican Peso"
+msgstr "メキシコ ペソ"
+
+#: includes/misc-functions.php:53
+msgid "Nigerian Naira"
+msgstr "ナイジェリア ナイラ"
+
+#: includes/misc-functions.php:54
+msgid "Norwegian Krone"
+msgstr "ノルウェー クローネ"
+
+#: includes/misc-functions.php:55
+msgid "New Zealand Dollar"
+msgstr "ニュージーランド ドル"
+
+#: includes/misc-functions.php:56
+msgid "Paraguayan Guaraní"
+msgstr "パラグアイ グアラニー"
+
+#: includes/misc-functions.php:57
+msgid "Philippine Pesos"
+msgstr "フィリピン ペソ"
+
+#: includes/misc-functions.php:58
+msgid "Polish Zloty"
+msgstr "ポーランド ズローティ"
+
+#: includes/misc-functions.php:59
+msgid "Pounds Sterling"
+msgstr "イギリス ポンド"
+
+#: includes/misc-functions.php:60
+msgid "Romanian Leu"
+msgstr "ルーマニア レウ"
+
+#: includes/misc-functions.php:61
+msgid "Russian Ruble"
+msgstr "ロシア ルビー"
+
+#: includes/misc-functions.php:62
+msgid "Singapore Dollar"
+msgstr "シンガポール ドル"
+
+#: includes/misc-functions.php:63
+msgid "South African rand"
+msgstr "南アフリカ ランド"
+
+#: includes/misc-functions.php:64
+msgid "Swedish Krona"
+msgstr "スゥエーデン クローナ"
+
+#: includes/misc-functions.php:65
+msgid "Swiss Franc"
+msgstr "スイス フラン"
+
+#: includes/misc-functions.php:66
+msgid "Taiwan New Dollars"
+msgstr "台湾 新ドル"
+
+#: includes/misc-functions.php:67
+msgid "Thai Baht"
+msgstr "タイ バーツ"
+
+#: includes/misc-functions.php:68
+msgid "Turkish Lira"
+msgstr "トルコ リラ"
+
+#: includes/misc-functions.php:69
+msgid "Vietnamese Dong"
+msgstr "ベトナム ドン"
+
+#: includes/misc-functions.php:70
+msgid "Egyptian Pound"
+msgstr "エジプト ポンド"
+
+#: includes/scripts.php:62
+msgid ""
+"Are you sure you want to generate the payout file? All included referrals "
+"will be marked as Paid."
+msgstr ""
+"本当に支払いデータファイルを生成しますか？全ての取り込まれる紹介データは「支"
+"払い済」扱いになります。"
+
+#: includes/scripts.php:63
+#, fuzzy
+msgid "Are you sure you want to delete this referral?"
+msgstr "本当にこの制作品を削除しますか？"
+
+#: templates/creative.php:40
+msgid "Copy and paste the following:"
+msgstr "以下をコピーペーストします："
+
+#: templates/dashboard-tab-creatives.php:44
+msgid "Sorry, there are currently no creatives available."
+msgstr "申し訳ございません。現在制作品はありません。"
+
+#: templates/dashboard-tab-graphs.php:3
+msgid "Referral Graphs"
+msgstr "紹介のグラフ"
+
+#: templates/dashboard-tab-referrals.php:48
+#, fuzzy
+msgid "You have not made any referrals yet."
+msgstr "まだ訪問がありません。"
+
+#: templates/dashboard-tab-settings.php:9
+msgid "Profile Settings"
+msgstr "プロファイル設定"
+
+#: templates/dashboard-tab-settings.php:14
+msgid "Your payment email"
+msgstr "あなたの支払い用メールアドレス"
+
+#: templates/dashboard-tab-settings.php:20
+msgid "Enable New Referral Notifications"
+msgstr "新しい紹介通知を有効にする"
+
+#: templates/dashboard-tab-settings.php:28
+msgid "Save Profile Settings"
+msgstr "プロファイルの設定を保存"
+
+#: templates/dashboard-tab-stats.php:3 templates/dashboard.php:36
+msgid "Statistics"
+msgstr "統計"
+
+#: templates/dashboard-tab-stats.php:35
+msgid "Commission Rate"
+msgstr "斡旋率"
+
+#: templates/dashboard-tab-stats.php:58
+msgid "Unique Links"
+msgstr ""
+
+#: templates/dashboard-tab-stats.php:68
+msgid "None set"
+msgstr ""
+
+#: templates/dashboard-tab-stats.php:77
+msgid "You have no referrals or visits that included a campaign name."
+msgstr ""
+
+#: templates/dashboard-tab-urls.php:3
+msgid "Referral URL Generator"
+msgstr "紹介URLジェネレータ"
+
+#: templates/dashboard-tab-urls.php:6
+#, fuzzy
+msgid "Your affiliate ID is: <strong>%s</strong>"
+msgstr "あなたのアフィリエイトIDは： <strong>%d</strong>"
+
+#: templates/dashboard-tab-urls.php:8
+#, fuzzy
+msgid "Your affiliate username is: <strong>%s</strong>"
+msgstr "あなたのアフィリエイトIDは： <strong>%d</strong>"
+
+#: templates/dashboard-tab-urls.php:11
+msgid "Your referral URL is: <strong>%s</strong>"
+msgstr "あなたの紹介URLは: <strong>%s</strong>"
+
+#: templates/dashboard-tab-urls.php:12
+msgid ""
+"Enter any URL from this website in the form below to generate a referral "
+"link!"
+msgstr ""
+"紹介用リンクを生成するには、このサイト上にあるURLを下のフォームから入力して下"
+"さい！"
+
+#: templates/dashboard-tab-urls.php:16
+msgid "Page URL"
+msgstr "ページURL"
+
+#: templates/dashboard-tab-urls.php:21
+msgid "Campaign Name (optional)"
+msgstr ""
+
+#: templates/dashboard-tab-urls.php:26
+msgid "Referral URL"
+msgstr "紹介URL"
+
+#: templates/dashboard-tab-urls.php:28
+msgid "(now copy this referral link and share it anywhere)"
+msgstr "(ではこの紹介リンクをコピーしてどこでも共有して下さい)"
+
+#: templates/dashboard-tab-urls.php:34
+msgid "Generate URL"
+msgstr "URLを生成する"
+
+#: templates/dashboard-tab-visits.php:3
+msgid "Referral URL Visits"
+msgstr "紹介URLの訪問"
+
+#: templates/dashboard-tab-visits.php:44
+msgid "You have not received any visits yet."
+msgstr "まだ訪問がありません。"
+
+#: templates/dashboard.php:7
+msgid "Your affiliate account is pending approval"
+msgstr "あなたのアフィリエイト会員アカウントは承認待ちです"
+
+#: templates/dashboard.php:11
+msgid "Your affiliate account is not active"
+msgstr "あなたのアフィリエイト会員アカウントは無効です"
+
+#: templates/dashboard.php:15
+msgid "Your affiliate account request has been rejected"
+msgstr "あなたのアフィリエイト会員アカウントのリクエストは拒否されました"
+
+#: templates/dashboard.php:25
+msgid "Your affiliate profile has been updated"
+msgstr "あなたのアフィリエイト会員のプロファイルは更新されました"
+
+#: templates/dashboard.php:33
+msgid "Affiliate URLs"
+msgstr "アフィリエイトURL"
+
+#: templates/dashboard.php:39
+msgid "Graphs"
+msgstr "グラフ"
+
+#: templates/login.php:10
+msgid "Log into Your Account"
+msgstr "アカウントにログインする"
+
+#: templates/login.php:20 templates/register.php:78
+msgid "Password"
+msgstr "パスワード"
+
+#: templates/login.php:26
+msgid "Remember Me"
+msgstr "ログイン状態を保存する"
+
+#: templates/login.php:34
+msgid "Login"
+msgstr "ログイン"
+
+#: templates/login.php:38
+msgid "Lost Password?"
+msgstr "パスワードを紛失しましたか？"
+
+#: templates/no-access.php:1
+msgid "The affiliate area is available only for registered affiliates."
+msgstr "アフィリエイトエリアは登録されたアフィリエイト会員のみ利用できます。"
+
+#: templates/register.php:36
+msgid "Register a New Affiliate Account"
+msgstr "新規アフィリエイト会員用アカウントを登録する"
+
+#: templates/register.php:43 templates/register.php:44
+msgid "Your Name"
+msgstr "あなたの名前"
+
+#: templates/register.php:62
+msgid "Payment Email Address"
+msgstr "支払い用メールアドレス"
+
+#: templates/register.php:71
+msgid "How will you promote us?"
+msgstr "どのようにして私達をプロモーションしますか？"
+
+#: templates/register.php:83
+msgid "Confirm Password"
+msgstr "パスワード確認する"
+
+#: templates/register.php:96
+msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
+msgstr "<a href=\"%s\" target=\"_blank\">利用規約</a>に同意します"
+
+#: templates/register.php:116
+msgid "Register"
+msgstr "登録"
+
+#. Description of the plugin/theme
+msgid "Affiliate Plugin for WordPress"
+msgstr ""
+
+#: includes/admin/affiliates/delete.php:26
+msgctxt "Affiliate ID, affiliate name"
+msgid "ID #%d: %s"
+msgstr "ID #%d: %s"
+
+#: includes/admin/creatives/delete.php:21
+msgctxt "Creative ID, creative name"
+msgid "Creative ID #%d: %s"
+msgstr "制作品ID #%d: %s"
+
+#, fuzzy
+#~ msgid "Affiliate Export Improvements"
+#~ msgstr "アフィリエイト制作品"
+
+#, fuzzy
+#~ msgid ""
+#~ "The affiliate's username is now included in the exported affiliate .csv "
+#~ "file."
+#~ msgstr ""
+#~ "アフィリエイトエリアは登録されたアフィリエイト会員のみ利用できます。"
+
+#, fuzzy
+#~ msgid "New Affiliate Meta Class"
+#~ msgstr "新規アフィリエイト会員"
+
+#, fuzzy
+#~ msgid "Creative Improvements"
+#~ msgstr "制作品"
+
+#~ msgid "Accept Affiliate"
+#~ msgstr "アフィリエイト会員の承認"
+
+#~ msgid "Reject Affiliate"
+#~ msgstr "アフィリエイト会員の拒否"
+
+#, fuzzy
+#~ msgid "Congratulations"
+#~ msgstr ""
+#~ "おめでとう御座います %s!\n"
+#~ "\n"
+
+#, fuzzy
+#~ msgid "AffiliateWP"
+#~ msgstr "アフィリエイト会員"
+
+#~ msgid "New features"
+#~ msgstr "新しい機能"
+
+#~ msgid ""
+#~ "With version 1.2, you can now set referral rates on a per-product basis. "
+#~ "Per-product referral rates are supported for both Easy Digital Downloads "
+#~ "and WooCommerce, with more integrations on the way."
+#~ msgstr ""
+#~ "バージョン1.2では商品ごとに紹介料のレートを決めることができます。Easy "
+#~ "Digital Downloads と WooCmmerce の両方をサポートし、より多くの統合が予定さ"
+#~ "れています。"
+
+#~ msgid ""
+#~ "We have introduced a new admin section for affiliate creatives that you "
+#~ "can share with your affiliates. Easily add image and text creatives which "
+#~ "are shown in affiliate area for your affiliates. Creatives can also be "
+#~ "shown anywhere with a simple shortcode."
+#~ msgstr ""
+#~ "私達はアフィリエイターが使用できるアフィリエイト用制作品（バナー等）の為の"
+#~ "新しい管理セクションを導入しました。画像やテキストリンクを簡単にアフィリエ"
+#~ "イト会員にアフィリエイト会員エリアから表示させることができます。制作品は"
+#~ "ショートコードでサイト上の任意の場所に表示させることが可能です。"
+
+#~ msgid "Improved Affiliate Area"
+#~ msgstr "アフィリエイト会員エリアの改善"
+
+#~ msgid ""
+#~ "The Affiliate Area has been simplified and improved with the introduction "
+#~ "of a tabbed interface."
+#~ msgstr ""
+#~ "アフィリエイト会員エリアは簡略化されタブ化されたインターフェイスの導入によ"
+#~ "り改善されました。"
+
+#~ msgid "Integration with EDD Commissions"
+#~ msgstr "EDD コミッションとの統合"
+
+#~ msgid ""
+#~ "If you use Commissions for Easy Digital Downloads, you can now "
+#~ "automatically adjust the commission rate when a referral is present."
+#~ msgstr ""
+#~ "Easy Digital Downloads のコミッション機能をご使用の場合、紹介が存在する時"
+#~ "には自動的にコミッションレートを調整することが今後可能になりました。"
+
+#~ msgid "New Primary URL and Promotion Method Fields"
+#~ msgstr "新しい初期値URLとプロモーション方法"
+
+#~ msgid ""
+#~ "The affiliate registration form now includes fields for learning how your "
+#~ "affiliates will be promoting your products and services."
+#~ msgstr ""
+#~ "アフィリエイト会員登録には今後、あなたの商品やサービスがどのようにプロモー"
+#~ "ションされるかを学習するための項目があります。"
+
+#~ msgid "Registration Form Retains Values on Error"
+#~ msgstr "登録フォームでのエラー時の入力値の保持"
+
+#~ msgid ""
+#~ "When there's an error on the affiliate registration form, it no longer "
+#~ "clears the entire form, making it easier for your affiliates to complete "
+#~ "their registration."
+#~ msgstr ""
+#~ "アフィリエイト会員の登録フォームでエラーが出た時、それまでのフォームの入力"
+#~ "事項はもう消去されません。アフィリエイターが登録しやすい仕様に変更されまし"
+#~ "た。"
+
+#~ msgid "Improved Affiliate Deletion"
+#~ msgstr "アフィリエイト会員削除機能の改善"
+
+#~ msgid ""
+#~ "When you delete an affiliate account, you now have the option to also "
+#~ "delete the user account and all affiliate data."
+#~ msgstr ""
+#~ "アフィリエイト会員のアカウントを削除する時、そのユーザーアカウントとアフィ"
+#~ "リエイト会員データを消去するかどうかのオプションがあります。"
+
+#~ msgid "Option to Disable the TOS Field"
+#~ msgstr "利用規約を無効にするオプション"
+
+#~ msgid ""
+#~ "The Terms of Service checkbox on the affiliate registration form will now "
+#~ "automatically be disabled when the corresponding page is not set in the "
+#~ "admin."
+#~ msgstr ""
+#~ "アフィリエイト会員登録フォームの利用規約が管理ページで該当させるページが設"
+#~ "定されていない場合、自動的に無効にされるようになりました。"
+
+#~ msgid "Enhanced Visit Search Options"
+#~ msgstr "改良された訪問検索オプション"
+
+#~ msgid ""
+#~ "The Visits page now can be searched with various methods in order to view "
+#~ "visits from specific affiliates, referrals, and more."
+#~ msgstr ""
+#~ "訪問ページでは特定のアフィリエイト会員、紹介、等ほか多数を閲覧するにあたり"
+#~ "様々な方法で検索を行うことが可能になりました。"
+
+#~ msgid "Euros (&euro;)"
+#~ msgstr "ユーロ (&euro;)"
+
+#~ msgid "Korean Won (&#8361;)"
+#~ msgstr "韓国ウォン (&#8361;)"
+
+#~ msgid "Iranian Rial (&#65020;)"
+#~ msgstr "イラン リアル (&#65020;)"
+
+#~ msgid "Coupon Code Tracking"
+#~ msgstr "クーポンコードトラッキング"
+
+#~ msgid ""
+#~ "Affiliate coupon tracking has been one of the most requested features, "
+#~ "and one we are thrilled to introduce with version 1.1."
+#~ msgstr ""
+#~ "アフィリエイトクーポン追跡機能は最もリクエストの多かった機能で、バージョン"
+#~ "1.1で導入されるのにわくわくしています。"
+
+#~ msgid ""
+#~ "This allows you to connect a coupon code to a specific affiliate so the "
+#~ "affiliate is credited a referral anytime the coupon is redeemed."
+#~ msgstr ""
+#~ "これは特定のアフィリエイト会員にクーポンコードを連結させ、そのクーポンが使"
+#~ "用されると、そのアフィリエイト会員の功績となる仕組みです。"
+
+#~ msgid ""
+#~ "For version 1.1, we have included coupon code tracking support for Easy "
+#~ "Digital Downloads, WooCommerce, and Restrict Content Pro. More "
+#~ "integrations will get added soon."
+#~ msgstr ""
+#~ "バージョン1.1では、Easy Digital Downloads., WooCommerce, そして Restrict "
+#~ "Content Pro 用のクーポンコード追跡サポートを取り入れました。より多くのイン"
+#~ "テグレーションが追加予定です。"
+
+#~ msgid "Minimum Earnings for Affiliate Payout"
+#~ msgstr "アフィリエイト支払いの収益最小額"
+
+#~ msgid ""
+#~ "With the minimum amount option, you can set the minimum amount that "
+#~ "affiliates need to have earned before their referrals are included in the "
+#~ "payout."
+#~ msgstr ""
+#~ "最小額オプションにより、アフィリエイト会員が紹介料を支払われるのに必要な稼"
+#~ "がなければならない最低金額を設定することができます。"
+
+#~ msgid ""
+#~ "This is great for sites that want to keep the affiliate system locked "
+#~ "down to serious affiliates."
+#~ msgstr ""
+#~ "アフィリエイトシステムを本格的なアフィリエイターに限定する場合などにとても"
+#~ "役立ちます。"
+
+#~ msgid "Affiliate Registration Graph"
+#~ msgstr "アフィリエイト登録グラフ"
+
+#~ msgid ""
+#~ "A new section has been added to the Reports page that lets you see "
+#~ "affiliate registrations over time."
+#~ msgstr ""
+#~ "レポートページに新しいセクションが追加され、そこでアフィリエイト会員の登録"
+#~ "履歴を見ることができます。"
+
+#~ msgid "Auto Register Users as Affiliates"
+#~ msgstr "自動でユーザーをアフィリエイト会員として登録"
+
+#~ msgid ""
+#~ "We have introduced a new option to automatically register new WordPress "
+#~ "users as affiliates when their user accounts are created."
+#~ msgstr ""
+#~ "私達は WordPress ユーザーが新規作成された時、そのユーザーを自動でアフィリ"
+#~ "エイト会員として登録するオプションを新しく導入しました。"
+
+#~ msgid ""
+#~ "The Overview page now has a new widget that shows your top 5 most "
+#~ "valuable affiliates, based on earnings."
+#~ msgstr ""
+#~ "概観ページでは新しいウィジェットが追加され、それは収益に基づいた、最も有益"
+#~ "なアフィリエイト会員トップ５がリストします。"
+
+#~ msgid "Shortcode to Affiliate-only Content"
+#~ msgstr "アフィリエイト会員専用コンテンツ用ショートコード"
+
+#~ msgid ""
+#~ "We have added a new shortcode that lets you show specific content to "
+#~ "logged-in affiliates only."
+#~ msgstr ""
+#~ "ログインされているアフィリエイト会員のみに対して特定のコンテンツを表示させ"
+#~ "るための新しいショートコードが追加されました。"
+
+#~ msgid "Custom Cookie Expiration Option"
+#~ msgstr "クッキー有効期限カスタム設定"
+
+#~ msgid ""
+#~ "The expiration time for the affiliate tracking cookies can now be set "
+#~ "from the Settings page."
+#~ msgstr ""
+#~ "アフィリエイト追跡クッキーの有効期限が設定ページから設定可能になりました。"
+
+#~ msgid "More Actions"
+#~ msgstr "その他の操作"
+
+#~ msgid ""
+#~ "Numerous new action and filter hooks have been added to make AffiliateWP "
+#~ "even more developer friendly."
+#~ msgstr ""
+#~ "数々の新しいアクションとフィルターフックが追加され、AffiliateWP はより開発"
+#~ "者に親しみやすくなりました。"
+
+#~ msgid ""
+#~ "The affiliate's referral rate. If left blank, the site default will be "
+#~ "used."
+#~ msgstr "アフィリエイトの紹介率。空白の場合、サイトの初期値が適用されます。"
+
+#~ msgid "Affiliates Pro"
+#~ msgstr "アフィリエイトプロ"
+
+#~ msgid "Payment Email (if different)"
+#~ msgstr "支払い用メールアドレス(違う場合)"
+
+#~ msgid "Referrals Over Time"
+#~ msgstr "これまでの紹介"

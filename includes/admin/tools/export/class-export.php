@@ -170,7 +170,7 @@ class Affiliate_WP_Export {
 	 */
 	public function export() {
 		if ( ! $this->can_export() ) {
-			wp_die( __( 'You do not have permission to export data.', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ) );
+			wp_die( __( 'You do not have permission to export data.', 'affiliate-wp' ), __( 'Error', 'affiliate-wp' ), array( 'response' => 403 ) );
 		}
 		// Set headers
 		$this->headers();

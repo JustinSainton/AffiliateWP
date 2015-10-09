@@ -1,0 +1,3590 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AffiliateWP\n"
+"Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
+"POT-Creation-Date: 2015-09-28 14:32:15+00:00\n"
+"PO-Revision-Date: 2015-04-09 10:01-0600\n"
+"Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
+"Language-Team: AffiliateWP <support@affiliatewp.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: affiliate-wp.php:216 affiliate-wp.php:228
+msgid "Cheatin&#8217; huh?"
+msgstr "Varaš&#8217; ha?"
+
+#: affiliate-wp.php:239
+msgid ""
+"Your version of PHP is below the minimum version of PHP required by "
+"AffiliateWP. Please contact your host and request that your version be "
+"upgraded to 5.3 or later."
+msgstr ""
+
+#: includes/admin/AFFWP_Plugin_Updater.php:164
+#: includes/admin/class-addon-updater.php:186
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+
+#: includes/admin/AFFWP_Plugin_Updater.php:171
+#: includes/admin/class-addon-updater.php:193
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+
+#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/class-addon-updater.php:280
+#, fuzzy
+msgid "You do not have permission to install plugin updates"
+msgstr "Nemaš ovlasti upravljati Brand ambasadorima"
+
+#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:49
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/affiliates/actions.php:57
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/affiliates/actions.php:135
+#: includes/admin/affiliates/actions.php:139
+#: includes/admin/class-addon-updater.php:280
+#: includes/admin/creatives/actions.php:16
+#: includes/admin/creatives/actions.php:44
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/creatives/actions.php:52
+#: includes/admin/creatives/actions.php:80
+#: includes/admin/referrals/actions.php:16
+#: includes/admin/tools/export/class-export.php:173
+#: includes/admin/tools/import/import.php:23
+#: includes/admin/tools/import/import.php:29
+msgid "Error"
+msgstr "Greška"
+
+#: includes/admin/affiliates/actions.php:20
+#: includes/admin/affiliates/actions.php:104
+#: includes/admin/affiliates/actions.php:135
+msgid "You do not have permission to manage affiliates"
+msgstr "Nemaš ovlasti upravljati Brand ambasadorima"
+
+#: includes/admin/affiliates/actions.php:49
+msgid "You do not have permission to delete affiliate accounts"
+msgstr "Nemaš ovlasti brisati Brand ambasador račune"
+
+#: includes/admin/affiliates/actions.php:53
+#: includes/admin/affiliates/actions.php:139
+#: includes/admin/creatives/actions.php:48
+#: includes/admin/referrals/actions.php:20
+#: includes/admin/referrals/actions.php:51
+#: includes/admin/referrals/actions.php:82
+msgid "Security check failed"
+msgstr "Sigurnosna provjera neuspjela"
+
+#: includes/admin/affiliates/actions.php:57
+msgid "No affiliate IDs specified for deletion"
+msgstr "Niti jedan Brand ambasador ID nije označen za brisanje"
+
+#: includes/admin/affiliates/affiliates.php:54
+#: includes/admin/class-menu.php:11 includes/admin/class-menu.php:13
+#: includes/admin/class-welcome.php:298
+msgid "Affiliates"
+msgstr "Brand ambasadori"
+
+#: includes/admin/affiliates/affiliates.php:55
+#: includes/admin/creatives/creatives.php:43
+msgid "Add New"
+msgstr "Dodaj novi"
+
+#: includes/admin/affiliates/affiliates.php:59
+#: includes/admin/referrals/referrals.php:61
+#: includes/admin/visits/visits.php:33
+msgid "Search"
+msgstr "Pretraži"
+
+#: includes/admin/affiliates/affiliates.php:201
+#: includes/admin/creatives/creatives.php:140
+#: includes/admin/referrals/referrals.php:204
+#: includes/admin/visits/visits.php:46
+msgid "All"
+msgstr "Sve"
+
+#: includes/admin/affiliates/affiliates.php:202
+#: includes/admin/affiliates/new.php:42
+#: includes/admin/creatives/creatives.php:141
+#: includes/admin/creatives/edit.php:99 includes/admin/creatives/new.php:89
+#: includes/admin/tools/tools.php:230
+msgid "Active"
+msgstr "Aktivni"
+
+#: includes/admin/affiliates/affiliates.php:203
+#: includes/admin/affiliates/new.php:43
+#: includes/admin/creatives/creatives.php:142
+#: includes/admin/creatives/edit.php:100 includes/admin/creatives/new.php:90
+msgid "Inactive"
+msgstr "Neaktivni"
+
+#: includes/admin/affiliates/affiliates.php:204
+#: includes/admin/affiliates/new.php:44 includes/admin/referrals/edit.php:90
+#: includes/admin/referrals/new.php:92
+#: includes/admin/referrals/referrals.php:207
+#: includes/admin/tools/tools.php:231 includes/admin/tools/tools.php:261
+#: includes/referral-functions.php:55
+msgid "Pending"
+msgstr "U procesu"
+
+#: includes/admin/affiliates/affiliates.php:205
+#: includes/admin/referrals/edit.php:91 includes/admin/referrals/new.php:93
+#: includes/admin/referrals/referrals.php:208
+#: includes/admin/tools/tools.php:232 includes/admin/tools/tools.php:262
+#: includes/referral-functions.php:54
+msgid "Rejected"
+msgstr "Odbijeno"
+
+#: includes/admin/affiliates/affiliates.php:221
+#: includes/admin/affiliates/review.php:22
+#: includes/admin/creatives/creatives.php:157
+#: includes/admin/creatives/edit.php:17 includes/admin/creatives/new.php:16
+msgid "Name"
+msgstr "Ime"
+
+#: includes/admin/affiliates/affiliates.php:222
+#: includes/admin/settings/class-settings.php:340
+#: includes/admin/tools/export/class-export.php:69
+msgid "ID"
+msgstr "ID"
+
+#: includes/admin/affiliates/affiliates.php:223
+#: includes/admin/affiliates/view.php:11
+#: includes/admin/overview/overview.php:168
+#: includes/admin/tools/export/class-export-affiliates.php:53
+msgid "Earnings"
+msgstr "Zarada"
+
+#: includes/admin/affiliates/affiliates.php:224
+#: includes/admin/tools/export/class-export-affiliates.php:51
+msgid "Rate"
+msgstr "Stopa provizije"
+
+#: includes/admin/affiliates/affiliates.php:225
+#: templates/dashboard-tab-stats.php:9
+msgid "Paid Referrals"
+msgstr "Plaćene preporuke"
+
+#: includes/admin/affiliates/affiliates.php:226
+#: includes/admin/class-menu.php:15 includes/admin/class-welcome.php:308
+#: includes/admin/overview/overview.php:170
+#: includes/admin/reports/reports.php:66
+#: includes/admin/reports/reports.php:185
+#: includes/admin/tools/export/class-export-affiliates.php:55
+#: includes/admin/tools/tools.php:105 includes/admin/visits/visits.php:30
+#: templates/dashboard-tab-stats.php:10 templates/dashboard-tab-stats.php:57
+#: templates/dashboard.php:45
+msgid "Visits"
+msgstr "Posjete"
+
+#: includes/admin/affiliates/affiliates.php:227
+#: includes/admin/creatives/creatives.php:160
+#: includes/admin/creatives/edit.php:94 includes/admin/creatives/new.php:84
+#: includes/admin/overview/overview.php:117
+#: includes/admin/referrals/edit.php:83 includes/admin/referrals/new.php:85
+#: includes/admin/referrals/referrals.php:230
+#: includes/admin/tools/export/class-export-affiliates.php:56
+#: includes/admin/tools/export/class-export-referrals.php:69
+#: templates/dashboard-tab-referrals.php:26
+msgid "Status"
+msgstr "Status"
+
+#: includes/admin/affiliates/affiliates.php:228
+#: includes/admin/creatives/creatives.php:161
+#: includes/admin/overview/overview.php:118
+#: includes/admin/referrals/referrals.php:229
+msgid "Actions"
+msgstr "Akcije"
+
+#: includes/admin/affiliates/affiliates.php:291
+msgid "(user deleted)"
+msgstr "(korisnik izbrisan)"
+
+#: includes/admin/affiliates/affiliates.php:368
+#: includes/admin/class-menu.php:17
+msgid "Reports"
+msgstr "Izvješća"
+
+#: includes/admin/affiliates/affiliates.php:369
+#: includes/admin/creatives/creatives.php:234
+#: includes/admin/referrals/referrals.php:383
+msgid "Edit"
+msgstr "Uređivanje"
+
+#: includes/admin/affiliates/affiliates.php:372
+#: includes/admin/affiliates/affiliates.php:412
+#: includes/admin/creatives/creatives.php:237
+msgid "Deactivate"
+msgstr "Deaktivacija"
+
+#: includes/admin/affiliates/affiliates.php:374
+#: includes/admin/overview/overview.php:133
+msgid "Review"
+msgstr "Recenzija"
+
+#: includes/admin/affiliates/affiliates.php:375
+#: includes/admin/affiliates/affiliates.php:409
+#: includes/admin/referrals/referrals.php:371
+#: includes/admin/referrals/referrals.php:463
+msgid "Accept"
+msgstr "Prihvati"
+
+#: includes/admin/affiliates/affiliates.php:376
+#: includes/admin/affiliates/affiliates.php:410
+#: includes/admin/referrals/referrals.php:377
+#: includes/admin/referrals/referrals.php:464
+msgid "Reject"
+msgstr "Odbaci"
+
+#: includes/admin/affiliates/affiliates.php:378
+#: includes/admin/affiliates/affiliates.php:411
+#: includes/admin/creatives/creatives.php:239
+msgid "Activate"
+msgstr "Aktiviraj"
+
+#: includes/admin/affiliates/affiliates.php:381
+#: includes/admin/affiliates/affiliates.php:413
+#: includes/admin/creatives/creatives.php:242
+#: includes/admin/referrals/referrals.php:384
+#: includes/admin/referrals/referrals.php:467
+msgid "Delete"
+msgstr "Izbriši"
+
+#: includes/admin/affiliates/affiliates.php:397
+msgid "No affiliates found."
+msgstr "Niti jedan Brand ambasador nije pronađen"
+
+#: includes/admin/affiliates/delete.php:14
+#: includes/admin/affiliates/delete.php:49
+msgid "Delete Affiliates"
+msgstr "Izbriši Brand ambasadore"
+
+#: includes/admin/affiliates/delete.php:20
+msgid "You have specified these affiliates for deletion:"
+msgstr "Označio/la si ove Brand ambasadore za brisanje:"
+
+#: includes/admin/affiliates/delete.php:33
+msgid ""
+"Deleting these affiliates will also delete their referral and visit data."
+msgstr ""
+"Brisanjem ovih Brand ambasadora izbrisati će se i njihove preporuke i "
+"izvješća o posjetama."
+
+#: includes/admin/affiliates/delete.php:39
+msgid "Delete affiliate's user accounts as well?"
+msgstr "Obrisati i korisnički račun Brand ambasadora?"
+
+#: includes/admin/affiliates/edit.php:14
+msgid "Edit Affiliate"
+msgstr "Uredi Brand ambasadora"
+
+#: includes/admin/affiliates/edit.php:25 includes/admin/referrals/edit.php:18
+#: includes/admin/tools/export/class-export-affiliates.php:47
+#: includes/admin/tools/export/class-export-referrals.php:61
+msgid "Affiliate ID"
+msgstr "Brand ambasador ID"
+
+#: includes/admin/affiliates/edit.php:30
+msgid "The affiliate's ID. This cannot be changed."
+msgstr "Brand ambasador ID. Nemože biti naknadno promjenjen."
+
+#: includes/admin/affiliates/edit.php:38
+msgid "User ID"
+msgstr "Korisnički ID"
+
+#: includes/admin/affiliates/edit.php:43
+msgid "The affiliate's user ID. This cannot be changed."
+msgstr "Korisnički Brand ambasadora ID. Nemože biti naknadno promjenjen."
+
+#: includes/admin/affiliates/edit.php:51
+#: includes/admin/affiliates/review.php:34
+#: includes/admin/settings/class-settings.php:341
+#: includes/admin/tools/export/class-export-affiliates.php:50
+#: templates/login.php:15 templates/login.php:16 templates/register.php:48
+#: templates/register.php:49
+msgid "Username"
+msgstr "Korisničko ime"
+
+#: includes/admin/affiliates/edit.php:56
+#, fuzzy
+msgid "The affiliate's username. This cannot be changed."
+msgstr "Korisnički Brand ambasadora ID. Nemože biti naknadno promjenjen."
+
+#: includes/admin/affiliates/edit.php:64 includes/admin/affiliates/new.php:54
+#: includes/admin/settings/class-settings.php:356
+msgid "Referral Rate Type"
+msgstr "Tip provizije"
+
+#: includes/admin/affiliates/edit.php:69 includes/admin/affiliates/new.php:59
+msgid "Site Default"
+msgstr "Zadana stranica"
+
+#: includes/admin/affiliates/edit.php:74 includes/admin/affiliates/new.php:64
+msgid "The affiliate's referral rate type."
+msgstr "Tip provizije Brand ambasadora."
+
+#: includes/admin/affiliates/edit.php:82 includes/admin/affiliates/new.php:72
+#: includes/admin/settings/class-settings.php:362
+#: includes/integrations/class-edd.php:556
+#: includes/integrations/class-memberpress.php:141
+#: includes/integrations/class-zippycourses.php:61
+#: includes/integrations/extras/class-exchange-feature.php:46
+msgid "Referral Rate"
+msgstr "Stopa provizije"
+
+#: includes/admin/affiliates/edit.php:87 includes/admin/affiliates/new.php:77
+msgid ""
+"The affiliate's referral rate, such as 20 for 20%. If left blank, the site "
+"default will be used."
+msgstr ""
+"Stopa provizije, upiši npr. 20 za 20%. Ako je ostavljeno prazno, stranica "
+"koristi zadanu vrijednost."
+
+#: includes/admin/affiliates/edit.php:95 templates/register.php:53
+msgid "Account Email"
+msgstr "Email računa"
+
+#: includes/admin/affiliates/edit.php:100
+msgid ""
+"The affiliate's account email. Updating this will change the email address "
+"shown on the user's profile page."
+msgstr ""
+"Glavni email Brand ambasador računa. Ažuriranje ovog promjeniti će se email "
+"adresa prikazana na stranici profila korisnika."
+
+#: includes/admin/affiliates/edit.php:108 includes/admin/affiliates/new.php:85
+#: includes/admin/tools/export/class-export-affiliates.php:49
+#: includes/admin/tools/export/class-export-referrals.php:63
+#: templates/register.php:61
+msgid "Payment Email"
+msgstr "PayPal email (ako želiš isplatu na PayPal račun)"
+
+#: includes/admin/affiliates/edit.php:113 includes/admin/affiliates/new.php:90
+msgid ""
+"Affiliate's payment email for systems such as PayPal, Moneybookers, or "
+"others. Leave blank to use the affiliate's user email."
+msgstr ""
+"Email za isplatu provizije putem sustava kao PayPal, Moneybookers i slično. "
+"Ostavi prazno za korištenje glavnog emaila Brand ambasador računa."
+
+#: includes/admin/affiliates/edit.php:122
+#: includes/admin/affiliates/review.php:86
+msgid "Rejection Reason"
+msgstr ""
+
+#: includes/admin/affiliates/edit.php:140
+msgid "Update Affiliate"
+msgstr "Ažuriraj partnera"
+
+#: includes/admin/affiliates/new.php:7
+msgid "New Affiliate"
+msgstr "Novi Brand ambasador"
+
+#: includes/admin/affiliates/new.php:13
+msgid ""
+"Use this screen to register a new affiliate. Each affiliate is tied directly "
+"to a user account, so if the user account for the affiliate does not yet "
+"exist, <a href=\"%s\" target=\"_blank\">create one</a>."
+msgstr ""
+"Koristi ovo sučelje za registraciju novog Brand ambasadora. Svaki Brand "
+"ambasador je vezan direktno uz korisnički račun, pa ako korisnički račun još "
+"ne postoji, <a href=\"%s\" target=\"_blank\">kreiraj jedan</a>."
+
+#: includes/admin/affiliates/new.php:20
+msgid "User"
+msgstr "Korisnik"
+
+#: includes/admin/affiliates/new.php:29
+msgid ""
+"Begin typing the name of the affiliate to perform a search for their "
+"associated user account."
+msgstr ""
+"Započni unositi ime Brand ambasadora kako pronašao korisnički račun asociran "
+"s njim."
+
+#: includes/admin/affiliates/new.php:37
+#, fuzzy
+msgid "Affiliate Status"
+msgstr "Stopa provizije:"
+
+#: includes/admin/affiliates/new.php:46
+#, fuzzy
+msgid "The status assigned to the affiliate's account."
+msgstr "Nemaš ovlasti brisati Brand ambasador račune"
+
+#: includes/admin/affiliates/new.php:104
+msgid "Add Affiliate"
+msgstr "Dodaj partnera"
+
+#: includes/admin/affiliates/review.php:11
+msgid "Review Affiliate"
+msgstr "Pregled partnera"
+
+#: includes/admin/affiliates/review.php:11
+msgid "Go Back"
+msgstr "Vrati nazad"
+
+#: includes/admin/affiliates/review.php:46 templates/register.php:54
+msgid "Email Address"
+msgstr "Email adresa"
+
+#: includes/admin/affiliates/review.php:59 templates/register.php:66
+#: templates/register.php:67
+msgid "Website URL"
+msgstr "URL Internet stranice"
+
+#: includes/admin/affiliates/review.php:63
+msgid "Affiliate's Website URL"
+msgstr "URL Internet stranice Brand ambasadora"
+
+#: includes/admin/affiliates/review.php:73
+msgid "Promotion Method"
+msgstr "Metoda promocije"
+
+#: includes/admin/affiliates/review.php:91
+msgid "Leave blank if approving this affiliate"
+msgstr ""
+
+#: includes/admin/affiliates/screen-options.php:22
+msgid "Number of affiliates per page:"
+msgstr ""
+
+#: includes/admin/affiliates/view.php:7
+msgid "Affiliate: #%d %s"
+msgstr "Partner: #%d %s"
+
+#: includes/admin/affiliates/view.php:18
+msgid "Total earnings"
+msgstr "Ukupna zarada"
+
+#: includes/admin/affiliates/view.php:19
+msgid "Total unpaid earnings"
+msgstr "Ukupne neisplaćene zarade"
+
+#: includes/admin/affiliates/view.php:20
+msgid "Total paid referrals"
+msgstr "Ukupno plaćene preporuke"
+
+#: includes/admin/affiliates/view.php:21
+msgid "Total unpaid referrals"
+msgstr "Ukupno neisplaćene preporuke"
+
+#: includes/admin/affiliates/view.php:22
+msgid "Total pending referrals"
+msgstr "Ukupne preporuke u obradi"
+
+#: includes/admin/affiliates/view.php:23
+msgid "Total rejected referrals"
+msgstr "Ukupno odbijene preporuke"
+
+#: includes/admin/affiliates/view.php:24
+msgid "Total visits"
+msgstr "Ukupno posjeta"
+
+#: includes/admin/ajax-actions.php:82
+msgid "No users found"
+msgstr "Nije pronađen niti jedan korisnik"
+
+#: includes/admin/class-menu.php:12 includes/admin/overview/overview.php:19
+#: includes/admin/referrals/contextual-help.php:37
+#: includes/admin/visits/contextual-help.php:37
+msgid "Overview"
+msgstr "Ukupan pregled"
+
+#: includes/admin/class-menu.php:14 includes/admin/class-welcome.php:303
+#: includes/admin/overview/overview.php:169
+#: includes/admin/referrals/referrals.php:35
+#: includes/admin/reports/reports.php:65
+#: includes/admin/tools/export/class-export-affiliates.php:54
+#: includes/admin/tools/tools.php:104 templates/dashboard-tab-referrals.php:3
+#: templates/dashboard.php:42
+msgid "Referrals"
+msgstr "Preporuke"
+
+#: includes/admin/class-menu.php:16 includes/admin/creatives/creatives.php:42
+#: templates/dashboard-tab-creatives.php:3 templates/dashboard.php:48
+msgid "Creatives"
+msgstr "Banneri"
+
+#: includes/admin/class-menu.php:18
+msgid "Tools"
+msgstr "Alati"
+
+#: includes/admin/class-menu.php:19 templates/dashboard.php:51
+msgid "Settings"
+msgstr "Postavke"
+
+#: includes/admin/class-menu.php:20 includes/admin/tools/migration.php:17
+msgid "AffiliateWP Migration"
+msgstr "Migracija AffiliateWP"
+
+#: includes/admin/class-notices.php:16
+#: includes/admin/settings/class-settings.php:206
+msgid "Settings updated."
+msgstr "Postavke ažurirane."
+
+#: includes/admin/class-notices.php:25
+msgid "Affiliate added successfully"
+msgstr "Brand ambasador uspješno dodan"
+
+#: includes/admin/class-notices.php:31
+msgid "Affiliate wasn't added, please try again."
+msgstr "Brand ambasador nije dodan, molimo pokušaj ponovno."
+
+#: includes/admin/class-notices.php:38
+msgid "Affiliate updated successfully"
+msgstr "Brand ambasador uspješno ažuriran"
+
+#: includes/admin/class-notices.php:40
+msgid "<a href=\"%s\">Back to Affiliates</a>"
+msgstr "<a href=\"%s\">Nazad na Brand ambasadore</a>"
+
+#: includes/admin/class-notices.php:46
+msgid "Affiliate update failed, please try again"
+msgstr "Ažuriranje Brand ambasadora nije uspjelo, molimo pokušaj ponovno"
+
+#: includes/admin/class-notices.php:53
+msgid "Affiliate account(s) deleted successfully"
+msgstr "Račun Brand ambasadora uspješno izbrisan"
+
+#: includes/admin/class-notices.php:59
+msgid "Affiliate deletion failed, please try again"
+msgstr "Brisanje Brand ambasadora nije uspjelo, molimo pokušaj ponovno"
+
+#: includes/admin/class-notices.php:66
+msgid "Affiliate account activated"
+msgstr "Brand ambasador račun aktiviran"
+
+#: includes/admin/class-notices.php:72
+msgid "Affiliate account deactivated"
+msgstr "Brand ambasador račun deaktiviran"
+
+#: includes/admin/class-notices.php:78
+msgid "Affiliate request was accepted"
+msgstr "Brand ambasador zahtjev odobren"
+
+#: includes/admin/class-notices.php:84
+msgid "Affiliate request was rejected"
+msgstr "Brand ambasador zahtjev odbijen"
+
+#: includes/admin/class-notices.php:90
+msgid "Affiliate stats have been recounted!"
+msgstr "Izvješća Brand ambasadora su osvježena!"
+
+#: includes/admin/class-notices.php:96
+msgid "Referral added successfully"
+msgstr "Preporuka uspješno dodana"
+
+#: includes/admin/class-notices.php:102
+msgid "Referral updated successfully"
+msgstr "Preporuka uspješno ažurirana"
+
+#: includes/admin/class-notices.php:108
+msgid "Referral update failed, please try again"
+msgstr "Ažuriranje preporuke nije uspjelo, molimo pokušaj ponovno"
+
+#: includes/admin/class-notices.php:114
+msgid "Referral deleted successfully"
+msgstr "Preporuka uspješno izbrisana"
+
+#: includes/admin/class-notices.php:120
+msgid "Referral deletion failed, please try again"
+msgstr "Brisanje preporuke nije uspjelo, molimo pokušaj ponovno"
+
+#: includes/admin/class-notices.php:127
+msgid "Creative updated successfully"
+msgstr "Banner uspješno ažuriran"
+
+#: includes/admin/class-notices.php:129
+msgid "<a href=\"%s\">Back to Creatives</a>"
+msgstr "<a href=\"%s\">Nazad na bannere</a>"
+
+#: includes/admin/class-notices.php:135
+msgid "Creative added successfully"
+msgstr "Banner uspješno dodan"
+
+#: includes/admin/class-notices.php:141
+msgid "Creative deleted successfully"
+msgstr "Banner uspješno izbrisan"
+
+#: includes/admin/class-notices.php:147
+msgid "Creative activated"
+msgstr "Banner aktiviran"
+
+#: includes/admin/class-notices.php:153
+msgid "Creative deactivated"
+msgstr "Banner deaktiviran"
+
+#: includes/admin/class-notices.php:159
+msgid "Settings successfully imported"
+msgstr "Postavke uspješno uvezene"
+
+#: includes/admin/class-notices.php:171
+msgid ""
+"Your license key for AffiliateWP has expired. Please renew your license to "
+"re-enable automatic updates."
+msgstr ""
+
+#: includes/admin/class-notices.php:173
+msgid ""
+"Please <a href=\"%s\">enter and activate</a> your license key for "
+"AffiliateWP to enable automatic updates."
+msgstr ""
+
+#: includes/admin/class-welcome.php:52 includes/admin/class-welcome.php:53
+msgid "What's new in AffiliateWP"
+msgstr "Što je novo u AffiliateWP"
+
+#: includes/admin/class-welcome.php:61 includes/admin/class-welcome.php:62
+msgid "Getting started with AffiliateWP"
+msgstr "Započni rad sa AffiliateWP"
+
+#: includes/admin/class-welcome.php:70 includes/admin/class-welcome.php:71
+msgid "The people that build AffiliateWP"
+msgstr "Ljudi iza AffiliateWP"
+
+#: includes/admin/class-welcome.php:146
+msgid "What's New"
+msgstr "Što je novo"
+
+#: includes/admin/class-welcome.php:149 includes/admin/plugins.php:50
+msgid "Getting Started"
+msgstr "Početak rada"
+
+#: includes/admin/class-welcome.php:152
+msgid "Credits"
+msgstr "Zasluge"
+
+#: includes/admin/class-welcome.php:169
+msgid "Welcome to AffiliateWP v%s"
+msgstr "Dobrodošli na AffiliateWP v%s"
+
+#: includes/admin/class-welcome.php:170 includes/admin/class-welcome.php:246
+msgid ""
+"Thank you for installing AffiliateWP v%s. The best affiliate marketing "
+"plugin for WordPress."
+msgstr ""
+"Hvala što ste se odlučili na instalaciju Affiliate WP v%s., najboljeg "
+"partner (affiliate) plugina za WordPress."
+
+#: includes/admin/class-welcome.php:171 includes/admin/class-welcome.php:247
+#: includes/admin/class-welcome.php:343
+msgid "Version %s"
+msgstr "Verzija %s"
+
+#: includes/admin/class-welcome.php:179
+#, fuzzy
+msgid "New Integrations"
+msgstr "Integracije"
+
+#: includes/admin/class-welcome.php:180
+msgid ""
+"We’ve made AffiliateWP more accessible and more valuable to more users with "
+"three new integrations:"
+msgstr ""
+
+#: includes/admin/class-welcome.php:188
+#, fuzzy
+msgid "Improved Integrations"
+msgstr "Integracije"
+
+#: includes/admin/class-welcome.php:191
+msgid ""
+"Per-membership commission rates are now supported in Restrict Content Pro"
+msgstr ""
+
+#: includes/admin/class-welcome.php:192
+msgid "Per-membership commission rates are now supported in MemberPress"
+msgstr ""
+
+#: includes/admin/class-welcome.php:193
+msgid "Commissions can be disabled on individual forms in Gravity Forms"
+msgstr ""
+
+#: includes/admin/class-welcome.php:194
+msgid "Commissions can be disabled on individual forms in Ninja Forms"
+msgstr ""
+
+#: includes/admin/class-welcome.php:195
+msgid ""
+"Affiliate commissions are now shown on the order details screens in Paid "
+"Memberships Pro"
+msgstr ""
+
+#: includes/admin/class-welcome.php:198
+msgid "URL Campaign Tracking"
+msgstr ""
+
+#: includes/admin/class-welcome.php:199
+msgid ""
+"Affiliates can now include URL campaign parameters in their affiliate URLs "
+"and have them automatically tracked by AffiliateWP. A new \"Campaigns\" "
+"table has been added to the Statistics tab of the affiliate area to show "
+"affiliates the results of their URL campaigns."
+msgstr ""
+
+#: includes/admin/class-welcome.php:201
+#, fuzzy
+msgid "Affiliate Rejection Reasons"
+msgstr "Registracije Brand ambasadora"
+
+#: includes/admin/class-welcome.php:202
+msgid ""
+"When rejecting affiliate accounts, a rejection reason can be provided that "
+"is then (optionally) emailed to the affiliate and recorded for future "
+"reference."
+msgstr ""
+
+#: includes/admin/class-welcome.php:204
+msgid "reCaptcha v2.0"
+msgstr ""
+
+#: includes/admin/class-welcome.php:205
+msgid ""
+"Google's reCaptcha version 2.0 library has been introduced to AffiliateWP to "
+"help protect you and your website from spam user registrations."
+msgstr ""
+
+#: includes/admin/class-welcome.php:207
+msgid "Additional Updates"
+msgstr "Dodatne nadogradnje"
+
+#: includes/admin/class-welcome.php:209
+msgid "Improved User Searching"
+msgstr ""
+
+#: includes/admin/class-welcome.php:210
+msgid ""
+"When creating new affiliate accounts, the search process for users in your "
+"WordPress site now return better results."
+msgstr ""
+
+#: includes/admin/class-welcome.php:212
+msgid "Per-Page Options for Admin Screens"
+msgstr ""
+
+#: includes/admin/class-welcome.php:213
+msgid ""
+"Admin pages for Affiliates, Referrals, Visits, and Creatives can have the "
+"number of items per-page configured from the Screen Options tab."
+msgstr ""
+
+#: includes/admin/class-welcome.php:215
+#, fuzzy
+msgid "Disable Individual Emails"
+msgstr "Ukupne preporuke u obradi"
+
+#: includes/admin/class-welcome.php:216
+msgid ""
+"New options have been introduced that allow you to pick-and-choose which "
+"email notifications AffiliateWP will send."
+msgstr ""
+
+#: includes/admin/class-welcome.php:218
+#, fuzzy
+msgid "Creative Template File"
+msgstr "Banner deaktiviran"
+
+#: includes/admin/class-welcome.php:219
+msgid ""
+"A new template file has been introduced for exact control over the display "
+"of creatives in the affiliate area."
+msgstr ""
+
+#: includes/admin/class-welcome.php:221
+msgid "Import Users By Role"
+msgstr ""
+
+#: includes/admin/class-welcome.php:222
+msgid ""
+"When importing existing users as affiliates, an option to import just users "
+"of a specific role is now available."
+msgstr ""
+
+#: includes/admin/class-welcome.php:228 includes/admin/class-welcome.php:315
+msgid "Go to AffiliateWP Settings"
+msgstr "Idi na postavke AffiliateWP"
+
+#: includes/admin/class-welcome.php:245 includes/admin/class-welcome.php:341
+msgid "Welcome to AffiliateWP %s"
+msgstr "Dobrodošli na AffiliateWP %s"
+
+#: includes/admin/class-welcome.php:251
+msgid ""
+"Use the tips below to get started using AffiliateWP. You will be up and "
+"running in no time!"
+msgstr ""
+"Za efikasan početak korištenja AffiliateWP plugina koristite savjete u "
+"nastavku. Biti ćete spremni za korištene u tren oka!"
+
+#: includes/admin/class-welcome.php:254
+msgid "Overview of Affiliates and Referrals"
+msgstr "Pregled partnera (affiliates) i preporuka"
+
+#: includes/admin/class-welcome.php:259
+msgid "The Overview Page"
+msgstr "Nadzorna ploča"
+
+#: includes/admin/class-welcome.php:260
+msgid ""
+"The overview page gives you a quick summary of your recent affiliate "
+"activity, including recent registrations, referrals, and visits."
+msgstr ""
+"Nadzorna ploča daje vam kratak sažetak zadnjih aktivnosti partnera, "
+"uključujući zadnje registracije, preporuke i posjete."
+
+#: includes/admin/class-welcome.php:261
+msgid "It also provides a quick summary of your affiliates' referral earnings."
+msgstr ""
+"Također pruža brzi pregled provizija vaših partnera ostvarenih preko "
+"preporuka."
+
+#: includes/admin/class-welcome.php:262
+msgid ""
+"If you allow affiliate registrations, you can also easily accept or reject "
+"affiliate's applications directly from the Overview page"
+msgstr ""
+"Ako dozvolite registraciju partnera, također također možete jednostavno "
+"prihvatiti ili odbaciti prijavu novih partnera direktno s nadzorne ploče"
+
+#: includes/admin/class-welcome.php:265
+msgid "Adding Affiliates"
+msgstr "Dodavanje partnera"
+
+#: includes/admin/class-welcome.php:270
+msgid "Affiliates &rarr; Add New"
+msgstr "Partner &rarr; Dodaj novog"
+
+#: includes/admin/class-welcome.php:271
+msgid ""
+"From the main Affiliates page, site admins can easily add new affiliates to "
+"AffiliateWP. Simply enter the username, set a rate, and click Add Affiliate!"
+msgstr ""
+"U sekciji partneri (affiliates), administrator može jednostavno dodati novog "
+"partnera u AffiliateWP. Jednostavno unesite korisničko ime, postavite iznos "
+"provizije i kliknite dodaj partnera!"
+
+#: includes/admin/class-welcome.php:273
+msgid "Affiliate Registration"
+msgstr "Registracija partnera"
+
+#: includes/admin/class-welcome.php:274
+msgid ""
+"When enabled, affiliates can register themselves via the Affiliate Area. If "
+"they already have a user account on your site, they can register by simply "
+"agreeing to the terms of use. If they need to create an entirely new "
+"account, they have that option as well!"
+msgstr ""
+"Ako je omogućeno, partner se može registrirati samostalno kroz partner "
+"(affiliate) sučelje. Ako korisnik već ima korisnički račun na vašoj Internet "
+"stranici, registracija u partner (affiliate) program se vrši prihvaćanjem "
+"uvjeta sudjelovanja. Kod kreiranja potpuno novog računa, korisnik također "
+"mora prihvatiti uvjete sudjelovanja!"
+
+#: includes/admin/class-welcome.php:276
+msgid "Moderate Registrations"
+msgstr "Uredi registracije"
+
+#: includes/admin/class-welcome.php:277
+msgid ""
+"Affiliate registrations can be moderated and require that a site admin "
+"approve each registration before the affiliate is permitted to begin "
+"tracking referrals."
+msgstr ""
+"Registracija partnera može se uređivati i zahtjeva da administrator Internet "
+"stranice odobri svaku registraciju prije nego je partneru dozvoljeno "
+"sudjelovanje u programu. "
+
+#: includes/admin/class-welcome.php:278
+msgid ""
+"Each time an affiliate registers, site admins can log into the site and "
+"approve or reject the application."
+msgstr ""
+"Svaki put prilikom registracije novog partnera, administrator Internet "
+"stranice može se prijaviti na stranicu i odobriti ili odbiti prijavu."
+
+#: includes/admin/class-welcome.php:281
+#: includes/admin/settings/class-settings.php:311 includes/install.php:28
+msgid "Affiliate Area"
+msgstr "Brand ambasador sučelje"
+
+#: includes/admin/class-welcome.php:286
+msgid "A Dashboard For Your Affiliates"
+msgstr "Nadzorna ploča za tvoje partnere (affiliates)"
+
+#: includes/admin/class-welcome.php:287
+msgid ""
+"The Affiliate Area, shown on any page containing the <em>[affiliate_area]</"
+"em> short code, gives your affiliates access to their performance reports."
+msgstr ""
+"Partner (affiliate) sučelje, prikazano je na svakoj stranici koja sadrži "
+"<em>[affiliate_area]</em> kraticu (shortcode), daje tvojim partnerima "
+"pristup njihovim izvješćima."
+
+#: includes/admin/class-welcome.php:288
+msgid ""
+"Affiliates can easily see how much they have earned, how much is awaiting "
+"payment, and even how their referral URLs have done over time."
+msgstr ""
+"Partneri mogu jednostavno vidjeti koliko su zaradili, koji iznos provizije "
+"čeka na isplatu, čak i kako njihove preporuke kotiraju kroz vrijeme."
+
+#: includes/admin/class-welcome.php:289
+msgid ""
+"A log of the referral links that have been clicked and where they were "
+"clicked on from, and whether the link converted into a successful referral, "
+"is also available to affiliates."
+msgstr ""
+"Popis jedinstvenih poveznica (linkova) koje su zabilježile klikove i s kojih "
+"je kliknuto dostupan je partneru bez obzira je li se posjet uspješno "
+"konvertirao ili ne."
+
+#: includes/admin/class-welcome.php:294
+msgid "Quick Terminology"
+msgstr "Brzi pojmovi"
+
+#: includes/admin/class-welcome.php:299
+msgid ""
+"These are your best friends. They are the users that are actively promoting "
+"your products and services through referral URLs. When they create a "
+"customer for you, they get paid back in the form of a commission."
+msgstr ""
+"Oni su vaši najbolji prijatelji. To su korisnici koji aktivno promoviraju "
+"vaše proizvode i usluge kroz jedinstvene poveznice (linkove). Kada njihova "
+"preporuka rezultira prodajom oni bivaju plaćeni u obliku provizije."
+
+#: includes/admin/class-welcome.php:304
+msgid ""
+"These are the commission records created anytime an affiliate successfully "
+"sends a potential customer to your site and that customer makes a purchase."
+msgstr ""
+"Ovo je evidencija provizija stvorenih svaki put kada partnerova preporuka "
+"uputi kupca na vašu Internet stranicu i kada posjeta rezultira prodajom tj. "
+"uspješno je konvertirana. "
+
+#: includes/admin/class-welcome.php:309
+msgid ""
+"These are unique hits on the referral URLs shared out by your affiliates. "
+"Each time a potential customer clicks on a referral URL, a visit is recorded."
+msgstr ""
+"Ovo su jedinstveni klikovi na jedinstvene poveznice (linkove) podjeljene od "
+"strane vašeg partnera. Svaki put kada potencijalni kupac klikne na "
+"jedinstvenu poveznicu (link), sustav zabilježi posjetu."
+
+#: includes/admin/class-welcome.php:319
+msgid "Need Help?"
+msgstr "Trebate pomoć?"
+
+#: includes/admin/class-welcome.php:322
+msgid "Phenomenal Support"
+msgstr "Fenomenalna podrška"
+
+#: includes/admin/class-welcome.php:323
+msgid ""
+"We do our best to provide the best support we can. If you encounter a "
+"problem or have a question, visit our <a href=\"http://affiliatewp.com/"
+"support\">support</a> page to open a ticket."
+msgstr ""
+"Trudimo se osigurati odličnu korisničku podršku. Ako naiđete na problem ili "
+"imate pitanje, posjetite stranicu <a href=\"http://affiliatewp.com/support"
+"\">korisničke podrške</a> i otvorite slučaj."
+
+#: includes/admin/class-welcome.php:342
+msgid "Thank you for updating to the latest version!"
+msgstr "Hvala što ste nadogradili AffiliateWP na zadnju verziju!"
+
+#: includes/admin/class-welcome.php:347
+msgid ""
+"AffiliateWP is created by developers from around the world that aim to "
+"provide the #1 affiliate platform for WordPress. Here are just some of the "
+"faces that have helped build AffiliateWP:"
+msgstr ""
+"AffiliateWP je kreiran od doprinosom programera iz cijelog svijeta kojima je "
+"cilj pružiti #1 partner (affiliate) platformu za WordPress. Ovdje su samo od "
+"nekih lica koja su pomogla izgraditi AffiliateWP:"
+
+#: includes/admin/class-welcome.php:374
+msgid "View %s"
+msgstr "Pogled %s"
+
+#: includes/admin/creatives/actions.php:16
+#: includes/admin/creatives/actions.php:80
+msgid "You do not have permission to manage creatives"
+msgstr "Nemaš ovlasti za upravljanje bannerima"
+
+#: includes/admin/creatives/actions.php:44
+msgid "You do not have permission to delete a creative"
+msgstr "Nemaš ovlasti za brisanje bannera"
+
+#: includes/admin/creatives/actions.php:52
+msgid "No creative IDs specified for deletion"
+msgstr "Niti jedan ID bannera nije označen za brisanje"
+
+#: includes/admin/creatives/creatives.php:158
+#: includes/admin/creatives/edit.php:43 includes/admin/creatives/new.php:42
+#: includes/admin/overview/overview.php:241
+#: templates/dashboard-tab-visits.php:21
+msgid "URL"
+msgstr "URL"
+
+#: includes/admin/creatives/creatives.php:159
+msgid "Shortcode"
+msgstr "Kratica (shortcode)"
+
+#: includes/admin/creatives/creatives.php:257
+msgid "No creatives found."
+msgstr "Niti jedan banner nije pronađen."
+
+#: includes/admin/creatives/delete.php:10
+#: includes/admin/creatives/delete.php:32
+msgid "Delete Creative"
+msgstr "Izbriši banner"
+
+#: includes/admin/creatives/delete.php:16
+msgid "Are you sure you want to delete this creative?"
+msgstr "Jesi siguran da želiš izbrisati ovaj banner?"
+
+#: includes/admin/creatives/edit.php:6
+msgid "Edit Creative"
+msgstr "Uredi banner"
+
+#: includes/admin/creatives/edit.php:22 includes/admin/creatives/new.php:21
+msgid "The name of this creative. For your identification only."
+msgstr "Naziv ovog bannera. Samo za tvoju identifikaciju."
+
+#: includes/admin/creatives/edit.php:30 includes/admin/creatives/new.php:29
+#: includes/admin/overview/overview.php:207
+#: includes/admin/referrals/edit.php:44 includes/admin/referrals/new.php:46
+#: includes/admin/referrals/referrals.php:227
+#: templates/dashboard-tab-referrals.php:25
+msgid "Description"
+msgstr "Opis"
+
+#: includes/admin/creatives/edit.php:35 includes/admin/creatives/new.php:34
+msgid ""
+"An optional description for this creative. This is displayed below the "
+"creative for affiliates."
+msgstr ""
+
+#: includes/admin/creatives/edit.php:48 includes/admin/creatives/new.php:47
+msgid ""
+"Where the creative should link to. The affiliate's referral ID will be "
+"automatically appended."
+msgstr ""
+"Što bi ovaj banner trebao linkati. ID preporuke će biti dodan automatski."
+
+#: includes/admin/creatives/edit.php:56 includes/admin/creatives/new.php:55
+msgid "Text"
+msgstr "Tekst"
+
+#: includes/admin/creatives/edit.php:61 includes/admin/creatives/new.php:60
+msgid "Text for this creative."
+msgstr "Tekst za ovaj banner."
+
+#: includes/admin/creatives/edit.php:69 includes/admin/creatives/new.php:68
+msgid "Image"
+msgstr "Slika"
+
+#: includes/admin/creatives/edit.php:75
+msgid ""
+"Select your image. You can also enter an image URL if your image is hosted "
+"elsewhere."
+msgstr ""
+"Označi svoju sliku. Također možeš unijeti URL slike ako ju imaš negdje "
+"pohranjenu."
+
+#: includes/admin/creatives/edit.php:102 includes/admin/creatives/new.php:92
+msgid "Select the status of the creative."
+msgstr "Označi status bannera."
+
+#: includes/admin/creatives/edit.php:113
+msgid "Update Creative"
+msgstr "Ažuriraj banner"
+
+#: includes/admin/creatives/new.php:3
+msgid "New Creative"
+msgstr "Novi banner"
+
+#: includes/admin/creatives/new.php:9
+msgid ""
+"Use this screen to add a new creative, such as a text link or image banner."
+msgstr ""
+"Koristi ovaj zaslon kako bi nadodao/la novi banner, kao tekst poveznicu ili "
+"slikovni banner."
+
+#: includes/admin/creatives/new.php:74
+msgid ""
+"Select an image if you would like an image banner. You can also enter an "
+"image URL if your image is hosted elsewhere."
+msgstr ""
+"Označi sliku ako želiš slikovni banner. Također možeš unijeti URL slike ako "
+"ju imaš negdje pohranjenu ."
+
+#: includes/admin/creatives/new.php:104
+msgid "Add Creative"
+msgstr "Dodaj banner"
+
+#: includes/admin/creatives/screen-options.php:22
+msgid "Number of creatives per page:"
+msgstr ""
+
+#: includes/admin/overview/overview.php:26
+msgid "Totals"
+msgstr "Ukupno"
+
+#: includes/admin/overview/overview.php:35
+#: includes/admin/reports/reports.php:86 includes/admin/tools/tools.php:103
+#: templates/dashboard-tab-stats.php:34
+msgid "Paid Earnings"
+msgstr "Plaćene provizije"
+
+#: includes/admin/overview/overview.php:36
+#: includes/admin/reports/reports.php:87
+msgid "Paid Earnings This Month"
+msgstr "Plaćene provizije ovaj mjesec"
+
+#: includes/admin/overview/overview.php:37
+#: includes/admin/reports/reports.php:88
+msgid "Paid Earnings Today"
+msgstr "Plaćene provizije danas"
+
+#: includes/admin/overview/overview.php:61
+#: includes/admin/reports/reports.php:138 templates/dashboard-tab-stats.php:8
+msgid "Unpaid Referrals"
+msgstr "Neplaćene preporuke"
+
+#: includes/admin/overview/overview.php:62
+#: includes/admin/reports/reports.php:139
+msgid "Unpaid Referrals This Month"
+msgstr "Neplaćene preporuke ovaj mjesec"
+
+#: includes/admin/overview/overview.php:63
+#: includes/admin/reports/reports.php:140
+msgid "Unpaid Referrals Today"
+msgstr "Neplaćene preporuke danas"
+
+#: includes/admin/overview/overview.php:86
+#: includes/admin/reports/reports.php:112 templates/dashboard-tab-stats.php:33
+msgid "Unpaid Earnings"
+msgstr "Neplaćene provizije"
+
+#: includes/admin/overview/overview.php:87
+#: includes/admin/reports/reports.php:113
+msgid "Unpaid Earnings This Month"
+msgstr "Neplaćene provizije ovaj mjesec"
+
+#: includes/admin/overview/overview.php:88
+#: includes/admin/reports/reports.php:114
+msgid "Unpaid Earnings Today"
+msgstr "Neplaćene provizije danas"
+
+#: includes/admin/overview/overview.php:108
+msgid "Latest Affiliate Registrations"
+msgstr "Zadnje registracije"
+
+#: includes/admin/overview/overview.php:116
+#: includes/admin/overview/overview.php:167
+#: includes/admin/overview/overview.php:205
+#: includes/admin/overview/overview.php:240
+#: includes/admin/referrals/new.php:16
+#: includes/admin/referrals/referrals.php:225
+#: includes/admin/visits/visits.php:145
+msgid "Affiliate"
+msgstr "Brand ambasador (Partner)"
+
+#: includes/admin/overview/overview.php:136
+msgid "View Report"
+msgstr "Vidi izvješće"
+
+#: includes/admin/overview/overview.php:144
+msgid "No affiliate registrations yet"
+msgstr "Nema registriranih partnera"
+
+#: includes/admin/overview/overview.php:159
+msgid "Most Valuable Affiliates"
+msgstr "Najbolji Brand ambasadori"
+
+#: includes/admin/overview/overview.php:187
+msgid "No registered affiliates"
+msgstr "Nema registriranih partnera"
+
+#: includes/admin/overview/overview.php:197
+msgid "Recent Referrals"
+msgstr "Nedavne preporuke"
+
+#: includes/admin/overview/overview.php:206
+#: includes/admin/referrals/edit.php:31 includes/admin/referrals/new.php:33
+#: includes/admin/referrals/referrals.php:224
+#: includes/admin/tools/export/class-export-referrals-payout.php:41
+#: includes/admin/tools/export/class-export-referrals.php:64
+#: templates/dashboard-tab-referrals.php:24
+msgid "Amount"
+msgstr "Iznos"
+
+#: includes/admin/overview/overview.php:223
+msgid "No referrals recorded yet"
+msgstr "Nema zabilježenih preporuka"
+
+#: includes/admin/overview/overview.php:232
+msgid "Recent Referral Visits"
+msgstr "Zadnje posjete po preporukama"
+
+#: includes/admin/overview/overview.php:242
+#: includes/admin/visits/visits.php:47 includes/admin/visits/visits.php:148
+#: templates/dashboard-tab-stats.php:59 templates/dashboard-tab-visits.php:23
+msgid "Converted"
+msgstr "Konvertirano"
+
+#: includes/admin/overview/overview.php:261
+msgid "No referral visits recorded yet"
+msgstr "Niti jedan posjet po preporuci nije zabilježen"
+
+#: includes/admin/plugins.php:27
+msgid "General Settings"
+msgstr "Opće postavke"
+
+#: includes/admin/referrals/actions.php:16
+#: includes/admin/referrals/actions.php:47
+#: includes/admin/referrals/actions.php:78
+msgid "You do not have permission to manage referrals"
+msgstr "Nemaš dozvolu za upravljanje preporukama"
+
+#: includes/admin/referrals/contextual-help.php:29
+#: includes/admin/visits/contextual-help.php:29
+msgid "For more information:"
+msgstr "Za više informacija:"
+
+#: includes/admin/referrals/contextual-help.php:30
+#: includes/admin/visits/contextual-help.php:30
+msgid "Visit the <a href=\"%s\">documentation</a> on the AffiliateWP website."
+msgstr ""
+"Pogledaj <a href=\"%s\">dokumentaciju</a> na AffiliateWP Internet stranici."
+
+#: includes/admin/referrals/contextual-help.php:31
+#: includes/admin/visits/contextual-help.php:31
+msgid "<a href=\"%s\">Post an issue</a> on <a href=\"%s\">GitHub</a>."
+msgstr "<a href=\"%s\">Objavi problem</a> on <a href=\"%s\">GitHub</a>."
+
+#: includes/admin/referrals/contextual-help.php:39
+msgid "This screen provides access to your site's referral history."
+msgstr "Ovo sučelje omogućuje pristup povijesti preporuka za tvoju stranicu."
+
+#: includes/admin/referrals/contextual-help.php:40
+msgid ""
+"<strong>Reference</strong>: this refers to the order number (or similar) "
+"that created this referral."
+msgstr ""
+"<strong>Referenca</strong> - ovo se odnosi na broj narudžbe (ili slično) "
+"koju je kreirala ova preporuka."
+
+#: includes/admin/referrals/contextual-help.php:41
+msgid "Referral statuses:"
+msgstr "Status preporuka:"
+
+#: includes/admin/referrals/contextual-help.php:43
+msgid ""
+"<strong>Paid</strong> - this is a referral that has been paid to the "
+"affiliate"
+msgstr "<strong>Plaćeno</strong> - ovo je preporuka koja je plaćena partneru"
+
+#: includes/admin/referrals/contextual-help.php:44
+msgid ""
+"<strong>Unpaid</strong> - this is a referral that has been accepted but not "
+"yet paid to the affiliate"
+msgstr ""
+"<strong>Neplaćeno</strong> - ovo je preporuka koja je prihvaćena ali još "
+"nije plaćena partneru"
+
+#: includes/admin/referrals/contextual-help.php:45
+msgid ""
+"<strong>Pending</strong> - this is a referral that is waiting to be accepted"
+msgstr "<strong>U obradi</strong> - ovo je preporuka koja čeka na odobrenje"
+
+#: includes/admin/referrals/contextual-help.php:46
+msgid ""
+"<strong>Rejected</strong> - this is a referral that has been rejected and "
+"will not be paid to the affiliate"
+msgstr ""
+"<strong>Odbijeno</strong> - ovo je preporuka koje je odbijena i neće biti "
+"plaćena partneru"
+
+#: includes/admin/referrals/contextual-help.php:52
+msgid "Searching Referrals"
+msgstr "Traženje preporuka"
+
+#: includes/admin/referrals/contextual-help.php:54
+msgid "Referrals can be searched in several different ways:"
+msgstr "Preporuke mogu biti pretražene u nekoliko različitih načina:"
+
+#: includes/admin/referrals/contextual-help.php:56
+msgid "You can enter the referral's ID number"
+msgstr "Možeš unijeti ID preporuke"
+
+#: includes/admin/referrals/contextual-help.php:57
+msgid "You can enter the referral reference prefixed by 'ref:'"
+msgstr "Možeš unijeti referencu preporuke s prefiksom 'ref:'"
+
+#: includes/admin/referrals/contextual-help.php:58
+msgid "You can enter the referral context prefixed by 'context:'"
+msgstr "Možeš unijeti kontekst preporuke s prefiksom 'context:'"
+
+#: includes/admin/referrals/contextual-help.php:59
+#: includes/admin/visits/contextual-help.php:58
+msgid "You can enter the affiliate's ID number prefixed by 'affiliate:'"
+msgstr "Možeš unijeti ID Brand ambasadora s prefiksom 'affiliate:'"
+
+#: includes/admin/referrals/contextual-help.php:60
+#: includes/admin/visits/contextual-help.php:59
+#, fuzzy
+msgid "You can enter a URL campaign prefixed by 'campaign:'"
+msgstr "Možeš unijeti kontekst preporuke s prefiksom 'context:'"
+
+#: includes/admin/referrals/contextual-help.php:66
+msgid "Exporting Referrals"
+msgstr "Izvoz preporuka"
+
+#: includes/admin/referrals/contextual-help.php:68
+msgid ""
+"Referrals can be exported directly to a CSV file in order to make it easier "
+"for your own accounting needs and for you to payout your affiliates's "
+"earnings."
+msgstr ""
+"Preporuke mogu biti izvezene direktno u CSV datoteku kako bi se olakšalo "
+"vođenje računovodstva i i isplate zarade Brand ambasadorima."
+
+#: includes/admin/referrals/contextual-help.php:69
+msgid ""
+"The CSV file generated is structured properly for PayPal's Mass Payment "
+"system so you can easily payout all of your affiliates at once via PayPal."
+msgstr ""
+"Generirana CSV datoteka je strukturirana za PayPal sistem masovne isplate, "
+"tako da možeš putem PayPal-a jednostavno isplatiti sve svoje Brand "
+"ambasadore odjednom."
+
+#: includes/admin/referrals/edit.php:6
+#, fuzzy
+msgid "Edit Referral"
+msgstr "Dodaj preporuku"
+
+#: includes/admin/referrals/edit.php:23
+#, fuzzy
+msgid ""
+"The affiliate's ID this referral belongs to. This value cannot be changed."
+msgstr "Korisnički Brand ambasadora ID. Nemože biti naknadno promjenjen."
+
+#: includes/admin/referrals/edit.php:36 includes/admin/referrals/new.php:38
+msgid "The amount of the referral, such as 15."
+msgstr "Iznos preporuke, npr. 15."
+
+#: includes/admin/referrals/edit.php:49 includes/admin/referrals/new.php:51
+msgid "Enter a description for this referral."
+msgstr "Unesi opis preporuke."
+
+#: includes/admin/referrals/edit.php:57 includes/admin/referrals/new.php:59
+#: includes/admin/referrals/referrals.php:226
+#: includes/admin/tools/export/class-export-referrals.php:67
+msgid "Reference"
+msgstr "Reference"
+
+#: includes/admin/referrals/edit.php:62 includes/admin/referrals/new.php:64
+msgid ""
+"Enter a reference for this referral (optional). Usually this would be the "
+"transaction ID of the associated purchase."
+msgstr ""
+"Unesi referencu za ovu preporuku (neobavezno). Ovo je ID transakcije "
+"povezane kupnje."
+
+#: includes/admin/referrals/edit.php:70 includes/admin/referrals/new.php:72
+#: includes/admin/tools/export/class-export-referrals.php:68
+msgid "Context"
+msgstr "Kontekts "
+
+#: includes/admin/referrals/edit.php:75 includes/admin/referrals/new.php:77
+msgid ""
+"Enter a context for this referral (optional). Usually this is used to help "
+"identify the payment system that was used for the transaction."
+msgstr ""
+"Unesi opis ove preporuke (neobavezno). Ovo se koristi za pomoć u "
+"identifikaciji sustava plaćanja korištenog za transakciju."
+
+#: includes/admin/referrals/edit.php:88 includes/admin/referrals/new.php:90
+#: includes/admin/referrals/referrals.php:206
+#: includes/admin/tools/tools.php:260 includes/referral-functions.php:53
+msgid "Unpaid"
+msgstr "Neplaćeno"
+
+#: includes/admin/referrals/edit.php:89 includes/admin/referrals/new.php:91
+#: includes/admin/referrals/referrals.php:205
+#: includes/admin/tools/tools.php:259 includes/referral-functions.php:52
+msgid "Paid"
+msgstr "Plaćeno"
+
+#: includes/admin/referrals/edit.php:93 includes/admin/referrals/new.php:95
+msgid "Select the status of the referral."
+msgstr "Označi status preporuke"
+
+#: includes/admin/referrals/edit.php:106
+#, fuzzy
+msgid "Update Referral"
+msgstr "Neplaćene preporuke"
+
+#: includes/admin/referrals/new.php:3
+msgid "New Referral"
+msgstr "Nova preporuka"
+
+#: includes/admin/referrals/new.php:9
+msgid ""
+"Use this screen to manually create a new referral record for an affiliate."
+msgstr "Koristi ovo sučelje za ručno stvaranje nove zabilješke preporuke."
+
+#: includes/admin/referrals/new.php:25
+msgid ""
+"Enter the name of the affiliate or enter a partial name or email to perform "
+"a search."
+msgstr "Za pretragu unesi ime Brand ambasadora, dio imena ili email."
+
+#: includes/admin/referrals/new.php:108
+msgid "Add Referral"
+msgstr "Dodaj preporuku"
+
+#: includes/admin/referrals/referrals.php:40
+msgid "Add New Referral"
+msgstr "Dodaj novu preporuku"
+
+#: includes/admin/referrals/referrals.php:41
+msgid "Generate Payout File"
+msgstr "Generiraj datoteku za isplatu"
+
+#: includes/admin/referrals/referrals.php:42
+msgid "Close"
+msgstr "Zatvori"
+
+#: includes/admin/referrals/referrals.php:48
+#: includes/admin/referrals/referrals.php:443
+#: includes/admin/tools/tools.php:255 includes/admin/visits/visits.php:41
+msgid "From - mm/dd/yyyy"
+msgstr "Od - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:49
+#: includes/admin/referrals/referrals.php:444
+#: includes/admin/tools/tools.php:256 includes/admin/visits/visits.php:42
+msgid "To - mm/dd/yyyy"
+msgstr "Do - mm/dd/yyyy"
+
+#: includes/admin/referrals/referrals.php:50
+msgid "Minimum amount"
+msgstr "Minimalan iznos"
+
+#: includes/admin/referrals/referrals.php:53
+msgid "Generate CSV File"
+msgstr "Generiraj CSV datoteku"
+
+#: includes/admin/referrals/referrals.php:54
+msgid ""
+"This will mark all unpaid referrals in this timeframe as paid. To export "
+"referrals with a status other than <em>unpaid</em>, go to the <a href=\"%s"
+"\">Tools &rarr; Export</a> page."
+msgstr ""
+"Ovo će označiti sve neplaćene preporuke u ovom vremenskom periodu kao "
+"plaćene. Za izvoz preporuka sa statusom narudžbi drugačijim od "
+"<em>neplaćeno</em>, idi na <a href=\"%s\">Alati &rarr; Izvoz</a>."
+
+#: includes/admin/referrals/referrals.php:228
+#: includes/admin/tools/export/class-export-referrals.php:70
+#: includes/admin/tools/export/class-export.php:70
+#: includes/admin/visits/visits.php:149
+#: templates/dashboard-tab-referrals.php:27
+msgid "Date"
+msgstr "Datum"
+
+#: includes/admin/referrals/referrals.php:359
+#: includes/admin/referrals/referrals.php:466
+msgid "Mark as Unpaid"
+msgstr "Označi kao neplaćeno"
+
+#: includes/admin/referrals/referrals.php:365
+#: includes/admin/referrals/referrals.php:465
+msgid "Mark as Paid"
+msgstr "Označi kao plaćeno"
+
+#: includes/admin/referrals/referrals.php:398
+msgid "No referrals found."
+msgstr "Niti jedna preporuka nije nađena."
+
+#: includes/admin/referrals/referrals.php:422
+msgid "Bulk Actions"
+msgstr "Masovne akcije"
+
+#: includes/admin/referrals/referrals.php:434
+msgid "Apply"
+msgstr "Primjeni"
+
+#: includes/admin/referrals/referrals.php:448
+#: includes/admin/visits/visits.php:50 includes/class-graph.php:404
+msgid "Filter"
+msgstr "Filtriraj"
+
+#: includes/admin/referrals/screen-options.php:22
+#, fuzzy
+msgid "Number of referrals per page:"
+msgstr "Nema zabilježenih preporuka"
+
+#: includes/admin/reports/class-registrations-graph.php:68
+#: includes/admin/reports/reports.php:67
+msgid "Affiliate Registrations"
+msgstr "Registracije Brand ambasadora"
+
+#: includes/admin/reports/reports.php:186
+msgid "Successful Conversions"
+msgstr "Uspješne konverzije"
+
+#: includes/admin/reports/reports.php:187 templates/dashboard-tab-stats.php:11
+#: templates/dashboard-tab-stats.php:60
+msgid "Conversion Rate"
+msgstr "Stopa konverzije"
+
+#: includes/admin/settings/class-settings.php:295
+msgid "License Settings"
+msgstr "Postavke licence"
+
+#: includes/admin/settings/class-settings.php:300
+msgid "License Key"
+msgstr "Licencni ključ"
+
+#: includes/admin/settings/class-settings.php:301
+msgid ""
+"Please enter your license key. An active license key is needed for automatic "
+"plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
+msgstr ""
+"Molimo unesi svoji jedinstveni licencni ključ. Aktivna licenca je potrebna "
+"za automatsko nadograđivanje plugina i <a href=\"%s\" target=\"_blank"
+"\">korisničku podršku</a>."
+
+#: includes/admin/settings/class-settings.php:306
+msgid "Pages"
+msgstr "Stranice"
+
+#: includes/admin/settings/class-settings.php:312
+msgid "This is the page where affiliates will manage their affiliate account."
+msgstr "Stranica na kojoj će Brand ambasador upravljati svojim računom."
+
+#: includes/admin/settings/class-settings.php:318
+msgid "Terms of Use"
+msgstr "Uvjeti sudjelovanja"
+
+#: includes/admin/settings/class-settings.php:319
+msgid "Select the page that shows the terms of use for Affiliate Registration"
+msgstr ""
+"Označi stranicu na kojoj su napisani uvjeti sudjelovanja u Brand ambasador "
+"(partner) programu"
+
+#: includes/admin/settings/class-settings.php:325
+msgid "Referral Settings"
+msgstr "Postavke linkova preporuka"
+
+#: includes/admin/settings/class-settings.php:330
+msgid "Referral Variable"
+msgstr "Varijabla jedinstvenog linka"
+
+#: includes/admin/settings/class-settings.php:331
+msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
+msgstr "URL varijabla za link preporuke. Npr: <strong>%s</strong>."
+
+#: includes/admin/settings/class-settings.php:336
+#, fuzzy
+msgid "Default Referral Format"
+msgstr "Definiranje stope provizije na razini proizvoda"
+
+#: includes/admin/settings/class-settings.php:337
+msgid ""
+"Show referral URLs to affiliates with either their affiliate ID or Username "
+"appended.<br/> For example: <strong>%s or %s</strong>."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:346
+#, fuzzy
+msgid "Pretty Affiliate URLs"
+msgstr "Jedinstveni linkovi"
+
+#: includes/admin/settings/class-settings.php:347
+#, fuzzy
+msgid ""
+"Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
+"%s</strong>"
+msgstr "URL varijabla za link preporuke. Npr: <strong>%s</strong>."
+
+#: includes/admin/settings/class-settings.php:351
+#, fuzzy
+msgid "Credit Last Referrer"
+msgstr "Dodaj preporuku"
+
+#: includes/admin/settings/class-settings.php:352
+msgid "Credit the last affiliate who referred the customer."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:357
+msgid "Should referrals be based on a percentage or flat rate amounts?"
+msgstr ""
+"Želiš li obračunavati tip provizije u postocima ili kao fiksni iznos u "
+"zadanoj valuti?"
+
+#: includes/admin/settings/class-settings.php:363
+msgid ""
+"Default referral rate. A percentage if Referral Rate Type is Percentage, a "
+"flat amount otherwise. Rates can be set for each affiliate individually as "
+"well."
+msgstr ""
+"Zadani iznos provizije. Ovisno o tipu provizije izražen u postocima ili kao "
+"fiksni iznos u zadanoj valuti. Stopa provizije može biti i individualno "
+"definirati za svakog Brand ambasadora."
+
+#: includes/admin/settings/class-settings.php:370
+msgid "Exclude Shipping"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:371
+msgid "Should shipping costs be excluded from referral calculations?"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:375
+msgid "Exclude Tax"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:376
+msgid "Should taxes be excluded from referral calculations?"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:380
+msgid "Cookie Expiration"
+msgstr "Vremenska vrijednost kolačića"
+
+#: includes/admin/settings/class-settings.php:381
+msgid "How many days should the referral tracking cookie be valid for?"
+msgstr "Koliko dana kolačić za pračenje preporuke vrijedi?"
+
+#: includes/admin/settings/class-settings.php:387
+msgid "Currency Settings"
+msgstr "Postavke valute"
+
+#: includes/admin/settings/class-settings.php:388
+msgid "Configure the currency options"
+msgstr "Konfiguracija opcija valute"
+
+#: includes/admin/settings/class-settings.php:392
+#: includes/admin/tools/export/class-export-referrals-payout.php:42
+#: includes/admin/tools/export/class-export-referrals.php:65
+msgid "Currency"
+msgstr "Valuta"
+
+#: includes/admin/settings/class-settings.php:393
+msgid ""
+"Choose your currency. Note that some payment gateways have currency "
+"restrictions."
+msgstr ""
+"Odaberi valutu. Imaj na umu da neki payment gateways imaju valutna "
+"ograničenja."
+
+#: includes/admin/settings/class-settings.php:398
+msgid "Currency Position"
+msgstr "Pozicija valutnog znaka"
+
+#: includes/admin/settings/class-settings.php:399
+msgid "Choose the location of the currency sign."
+msgstr "Odaberi poziciju znaka valute"
+
+#: includes/admin/settings/class-settings.php:402
+msgid "Before - $10"
+msgstr "Prije - $10"
+
+#: includes/admin/settings/class-settings.php:403
+msgid "After - 10$"
+msgstr "Poslije - 10$"
+
+#: includes/admin/settings/class-settings.php:407
+msgid "Thousands Separator"
+msgstr "Oznaka tisuću"
+
+#: includes/admin/settings/class-settings.php:408
+msgid "The symbol (usually , or .) to separate thousands"
+msgstr "Simbol (uobičajeno , ili .) označava tisuće"
+
+#: includes/admin/settings/class-settings.php:414
+msgid "Decimal Separator"
+msgstr "Oznaka decimale"
+
+#: includes/admin/settings/class-settings.php:415
+msgid "The symbol (usually , or .) to separate decimal points"
+msgstr "Simbol (uobičajeno , ili .) označava decimale"
+
+#: includes/admin/settings/class-settings.php:426
+#: includes/admin/settings/display-settings.php:74
+msgid "Integrations"
+msgstr "Integracije"
+
+#: includes/admin/settings/class-settings.php:427
+msgid ""
+"Choose the integrations to enable. If you are not using any of these, you "
+"may use the <strong>[affiliate_conversion_script]</strong> short code to "
+"track and create referrals. Refer to the <a href=\"%s\" target=\"_blank"
+"\">documentation</a> for help using this."
+msgstr ""
+"Odaberi vrstu integracije. Ako ne koristiš niti jedan od navedenih sustava, "
+"možeš koristiti <strong>[affiliate_conversion_script]</strong> kraticu za "
+"praćenje i kreiranje preporuka. Za pomoć oko korištenja kratice molimo "
+"pogledaj <a href=\"%s\" target=\"_blank\">dokumentaciju</a>."
+
+#: includes/admin/settings/class-settings.php:437
+#, fuzzy
+msgid "Disable All Emails"
+msgstr "Ukupne preporuke u obradi"
+
+#: includes/admin/settings/class-settings.php:438
+msgid "Should all email notifications be disabled?"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:442
+msgid "Logo"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:443
+msgid "Upload or choose a logo to be displayed at the top of emails."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:447
+msgid "Email Template"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:448
+msgid "Choose a template to use for email messages."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:453
+#, fuzzy
+msgid "From Name"
+msgstr "Ime i prezime"
+
+#: includes/admin/settings/class-settings.php:454
+msgid ""
+"The name emails are said to come from. This should probably be your site "
+"name."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:459
+#, fuzzy
+msgid "From Email"
+msgstr "Email"
+
+#: includes/admin/settings/class-settings.php:460
+msgid ""
+"Email to send emails from. This will act as the \"from\" and \"reply-to\" "
+"address."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:465
+msgid "Notify Admins"
+msgstr "Obavjesti administratora"
+
+#: includes/admin/settings/class-settings.php:466
+msgid "Notify site admins of new affiliate registrations?"
+msgstr "Obavjesti administratora o novim registracijama?"
+
+#: includes/admin/settings/class-settings.php:470
+msgid "Registration Email Subject"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:471
+msgid ""
+"Enter the subject line for the registration email sent to admins when new "
+"affiliates register."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:473
+#: includes/emails/actions.php:41
+msgid "New Affiliate Registration"
+msgstr "Registracija novog Brand ambasadora"
+
+#: includes/admin/settings/class-settings.php:476
+msgid "Registration Email Content"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:477
+msgid ""
+"Enter the email to send when a new affiliate registers. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:479
+msgid "A new affiliate has registered on your site, %s"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:479
+#, fuzzy
+msgid "Name: "
+msgstr "Ime: %s"
+
+#: includes/admin/settings/class-settings.php:482
+#, fuzzy
+msgid "Application Accepted Email Subject"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:483
+msgid ""
+"Enter the subject line for accepted application emails sent to affiliates "
+"when their account is approved."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:485
+#: includes/emails/actions.php:97
+msgid "Affiliate Application Accepted"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:488
+#, fuzzy
+msgid "Application Accepted Email Content"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:489
+msgid ""
+"Enter the email to send when an application is accepted. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:491
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid "Congratulations {name}!"
+msgstr ""
+"Čestitamo %s!\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:491
+#: includes/emails/actions.php:102
+#, fuzzy
+msgid "Your affiliate application on %s has been accepted!"
+msgstr ""
+"Tvoja prijava za Brand ambasador (partner) program na %s je prihvaćena! \n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:491
+#, fuzzy
+msgid "Log into your affiliate area at"
+msgstr ""
+"Na svoj Brand ambasador račun prijavi se na %s\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:494
+#, fuzzy
+msgid "Application Rejected Email Subject"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:495
+msgid ""
+"Enter the subject line for rejected application emails sent to affiliates "
+"when their account is rejected."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:497
+#, fuzzy
+msgid "Affiliate Application Rejected"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:500
+#, fuzzy
+msgid "Application Rejected Email Content"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:501
+msgid ""
+"Enter the email to send when an application is rejected. HTML is rejected. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:503
+msgid "Hello {name}!"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:503
+#, fuzzy
+msgid ""
+"We regret to inform you that your affiliate application on %s has been "
+"rejected."
+msgstr ""
+"Tvoja prijava za Brand ambasador (partner) program na %s je prihvaćena! \n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:503
+msgid "Reason given: %s"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:506
+#, fuzzy
+msgid "New Referral Email Subject"
+msgstr "Nova preporuka"
+
+#: includes/admin/settings/class-settings.php:507
+msgid ""
+"Enter the subject line for new referral emails sent when affiliates earn "
+"referrals."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:509
+#: includes/emails/actions.php:216
+msgid "Referral Awarded!"
+msgstr "Preporuka dodjeljena!"
+
+#: includes/admin/settings/class-settings.php:512
+#, fuzzy
+msgid "New Referral Email Content"
+msgstr "Nova preporuka"
+
+#: includes/admin/settings/class-settings.php:513
+msgid ""
+"Enter the email to send on new referrals. HTML is accepted. Available "
+"template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid "You have been awarded a new referral of"
+msgstr ""
+"Dodjeljena ti je nova preporuka od %s za %s!\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid "on %s!"
+msgstr "Verzija %s"
+
+#: includes/admin/settings/class-settings.php:515
+#, fuzzy
+msgid ""
+"Log into your affiliate area to view your earnings or disable these "
+"notifications:"
+msgstr ""
+"Za pregled svoje zarade ili isključivanje ovih obavjesti prijavi se na svoj "
+"Brand ambasador račun: %s\n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:523
+msgid "Allow affiliate registration"
+msgstr "Dozvoli registraciju Brand ambasadora"
+
+#: includes/admin/settings/class-settings.php:524
+msgid "Should affiliates be able to register accounts for themselves?"
+msgstr "Mogu li Brand ambasadori sami registrirati račun?"
+
+#: includes/admin/settings/class-settings.php:528
+msgid "Require approval"
+msgstr "Zahtjevaj odobrenje"
+
+#: includes/admin/settings/class-settings.php:529
+msgid ""
+"Require that site admins approve affiliates before they can begin earning "
+"referrals?"
+msgstr ""
+"Zahtjevaj od administratora da odobri Brand ambasadora prije nego može "
+"početi sudjelovati u programu?"
+
+#: includes/admin/settings/class-settings.php:533
+msgid "Auto Register New Users"
+msgstr "Automatska registracija novih korisnika"
+
+#: includes/admin/settings/class-settings.php:534
+msgid "Automatically register new users as affiliates?"
+msgstr "Automatski registriraj nove korisnike kao Brand ambasadore?"
+
+#: includes/admin/settings/class-settings.php:538
+msgid "Enable reCAPTCHA"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:539
+msgid ""
+"Would you like to prevent bots from registering affiliate accounts using "
+"Google reCAPTCHA?"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:543
+msgid "reCAPTCHA Site Key"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:544
+msgid "This is used to identify your site to Google reCAPTCHA."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:548
+msgid "reCAPTCHA Secret Key"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:549
+msgid ""
+"This is used for communication between your site and Google reCAPTCHA. Be "
+"sure to keep it a secret."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:553
+msgid "Reject Unpaid Referrals on Refund?"
+msgstr "Odbaci neplaćene preporuke u slučaju povrata novca? "
+
+#: includes/admin/settings/class-settings.php:554
+msgid ""
+"Should unpaid referrals get automatically rejected when the originating "
+"purchase is refunded or revoked?"
+msgstr ""
+"Trebaju li neplaćene preporuke biti automatski odbijene kada je originalna "
+"transakcija vraćena ili povučena?"
+
+#: includes/admin/settings/class-settings.php:558
+msgid "Use Fallback Referral Tracking Method?"
+msgstr "Koristiti fallback metodu praćenja preporuka?"
+
+#: includes/admin/settings/class-settings.php:559
+msgid ""
+"The method used to track referral links can fail on sites that have jQuery "
+"errors. Check this if referrals are not getting tracked properly."
+msgstr ""
+"Metoda korištena za pračenje poveznice preporuke može biti neuspjela za "
+"Internet stranice koje imaju jQuery grešku. Označi ako preporuke nisu "
+"praćene pravilno."
+
+#: includes/admin/settings/class-settings.php:563
+msgid "Ignore Zero Referrals?"
+msgstr "Ignoriraj preporuke s iznosom transakcije nula?"
+
+#: includes/admin/settings/class-settings.php:564
+msgid ""
+"Check this box if you would like AffiliateWP to completely ignore referrals "
+"for a zero total amount. This can be useful for multi-price products that "
+"start at zero, or if a discount was used, which resulted in a zero amount. "
+"Please note: if this setting is enabled and a visit results in a zero "
+"referral, then the visit would be considered not converted."
+msgstr ""
+"Označi ako želiš da AffiliateWP u potpunosti ignorira preporuke s ukupnim "
+"iznosom transakcije nula. Ovoj slučaj se javlja kada imaš proizvode s "
+"cijenom nula ili ako je korišten popust rezultirao ukupnim iznosom nula. "
+"Imaj na umu: ako je ova postavka omogučena i posjeta rezultira  konverzijom "
+"s iznosom nula, ta posjeta smatrat će se ne konvertiranom."
+
+#: includes/admin/settings/class-settings.php:568
+msgid "Remove Data on Uninstall?"
+msgstr "Ukloni sve podatke prilikom deinstalacije?"
+
+#: includes/admin/settings/class-settings.php:569
+msgid ""
+"Check this box if you would like AffiliateWP to completely remove all of its "
+"data when the plugin is deleted."
+msgstr ""
+"Označi ovu kućicu ako želiš da AffiliateWP u potpunosti ukloni sve podatke "
+"povezane s njim prilikom deinstalacije plugina."
+
+#: includes/admin/settings/class-settings.php:594
+#, fuzzy
+msgid "Application Pending Email Subject"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:595
+msgid "Enter the subject line for pending affiliate application emails."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:597
+#: includes/emails/actions.php:138
+#, fuzzy
+msgid "Your Affiliate Application Is Being Reviewed"
+msgstr ""
+"Tvoja prijava za Brand ambasador (partner) program na %s je prihvaćena! \n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:600
+#, fuzzy
+msgid "Application Pending Email Content"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:601
+msgid ""
+"Enter the email to send when an application is pending. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:603
+msgid "Hi {name}!"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:603
+#: includes/emails/actions.php:143
+msgid "Thanks for your recent affiliate registration on {site_name}."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:603
+#: includes/emails/actions.php:144
+msgid ""
+"We're currently reviewing your affiliate application and will be in touch "
+"soon!"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:606
+#, fuzzy
+msgid "Application Rejection Email Subject"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:607
+msgid "Enter the subject line for rejected affiliate application emails."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:609
+#: includes/emails/actions.php:175
+#, fuzzy
+msgid "Your Affiliate Application Has Been Rejected"
+msgstr ""
+"Tvoja prijava za Brand ambasador (partner) program na %s je prihvaćena! \n"
+"\n"
+
+#: includes/admin/settings/class-settings.php:612
+#, fuzzy
+msgid "Application Rejection Email Content"
+msgstr "Prijava za Brand ambasador (partner) program prihvaćena"
+
+#: includes/admin/settings/class-settings.php:613
+msgid ""
+"Enter the email to send when an application is rejected. HTML is accepted. "
+"Available template tags:"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:615
+msgid "Hi {name},"
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:615
+#: includes/emails/actions.php:180
+msgid ""
+"We regret to inform you that your recent affiliate registration on "
+"{site_name} was rejected."
+msgstr ""
+
+#: includes/admin/settings/class-settings.php:751
+msgid "Deactivate License"
+msgstr "Deaktiviraj licencu"
+
+#: includes/admin/settings/class-settings.php:752
+msgid "Your license is valid!"
+msgstr "Tvoja licenca je važeća!"
+
+#: includes/admin/settings/class-settings.php:755
+msgid "Renew Your License"
+msgstr "Obnovi svoju licencu"
+
+#: includes/admin/settings/class-settings.php:756
+msgid ""
+"Your license has expired, renew today to continue getting updates and "
+"support!"
+msgstr ""
+"Tvoja licenca je istekla, obnovi ju kako bi nastavio primati nove verzije i "
+"podršku!"
+
+#: includes/admin/settings/class-settings.php:758
+msgid "Activate License"
+msgstr "Aktivna licenca"
+
+#: includes/admin/settings/class-settings.php:857
+msgid ""
+"The callback function used for the <strong>%s</strong> setting is missing."
+msgstr "Povratna funkcija korištena za <strong>%s</strong> postavke nedostaju."
+
+#: includes/admin/settings/class-settings.php:932
+msgid "Upload File"
+msgstr ""
+
+#: includes/admin/settings/display-settings.php:73
+msgid "General"
+msgstr "Općenito"
+
+#: includes/admin/settings/display-settings.php:75
+#, fuzzy
+msgid "Emails"
+msgstr "Email"
+
+#: includes/admin/settings/display-settings.php:76
+msgid "Misc"
+msgstr "Razno"
+
+#: includes/admin/tools/export/class-export-affiliates.php:48
+#: includes/admin/tools/export/class-export-referrals-payout.php:40
+#: includes/admin/tools/export/class-export-referrals.php:62
+msgid "Email"
+msgstr "Email"
+
+#: includes/admin/tools/export/class-export-affiliates.php:52
+#, fuzzy
+msgid "Rate Type"
+msgstr "Tip provizije"
+
+#: includes/admin/tools/export/class-export-affiliates.php:57
+#, fuzzy
+msgid "Date Registered"
+msgstr "Registracija"
+
+#: includes/admin/tools/export/class-export-referrals.php:66
+#: templates/dashboard-tab-stats.php:56
+msgid "Campaign"
+msgstr ""
+
+#: includes/admin/tools/export/class-export.php:173
+msgid "You do not have permission to export data."
+msgstr "Nemaš dozvolu za izvoz podataka"
+
+#: includes/admin/tools/import/import.php:23
+msgid "Please upload a valid .json file"
+msgstr "Molimo unesi važeću .json datoteku"
+
+#: includes/admin/tools/import/import.php:29
+msgid "Please upload a file to import"
+msgstr "Molimo unesi datoteku za uvoz"
+
+#: includes/admin/tools/migration.php:19
+msgid ""
+"The upgrade process is running, please be patient. This could take several "
+"minutes to complete while affiliate records are upgraded in batches of 100."
+msgstr ""
+"Proces nadogradnje je u tijeku, molimo budi strpljiv. Ovo može potrajati "
+"nekoliko minuta za završetak. Zapisi partnera nadograđuju se u serijama od "
+"100."
+
+#: includes/admin/tools/migration.php:20
+msgid "Step %d running"
+msgstr "Korak %d u procesu"
+
+#: includes/admin/tools/tools.php:75
+msgid "Export / Import"
+msgstr "Izvoz / Uvoz"
+
+#: includes/admin/tools/tools.php:76
+msgid "Recount Stats"
+msgstr "Osvježi statistiku"
+
+#: includes/admin/tools/tools.php:77
+msgid "Migration Assistant"
+msgstr "Pomoć za migraciju"
+
+#: includes/admin/tools/tools.php:93
+msgid "Recount Affiliate Stats"
+msgstr "Osvježi statistiku Brand ambasadora"
+
+#: includes/admin/tools/tools.php:95
+msgid "Use this tool to recount affiliate statistics."
+msgstr "Koristi ovaj alat za osvježavanje statistike Brand ambasadora."
+
+#: includes/admin/tools/tools.php:99 includes/admin/tools/tools.php:251
+#: includes/admin/visits/visits.php:35
+msgid "Affiliate name"
+msgstr "Ime Brand ambasadora (partnera)"
+
+#: includes/admin/tools/tools.php:108
+msgid ""
+"Enter the name of the affiliate or begin typing to perform a search based on "
+"the affiliate's name."
+msgstr ""
+"Unesi ime Brand ambasadora ili započni unos za pretragu baziranu prema imenu."
+
+#: includes/admin/tools/tools.php:113
+msgid "Recount"
+msgstr "Osvježi"
+
+#: includes/admin/tools/tools.php:145
+msgid ""
+"These tools assist in migrating affiliate and referral data from existing "
+"platforms."
+msgstr ""
+"Ovaj alat pomaže u migraciji podataka i preporuka Brand ambasadora s "
+"postojeće platforme."
+
+#: includes/admin/tools/tools.php:150
+#, fuzzy
+msgid "User Accounts"
+msgstr "Osvježi"
+
+#: includes/admin/tools/tools.php:152
+#, fuzzy
+msgid ""
+"Use this tool to create affiliate accounts for each of your existing "
+"WordPress user accounts that belong to the selected roles below."
+msgstr ""
+"Započni unositi ime Brand ambasadora kako pronašao korisnički račun asociran "
+"s njim."
+
+#: includes/admin/tools/tools.php:153
+msgid ""
+"<strong>NOTE:</strong> Users that already have affiliate accounts will be "
+"skipped. Duplicate accounts will not be created."
+msgstr ""
+
+#: includes/admin/tools/tools.php:155
+msgid "Select User Roles"
+msgstr ""
+
+#: includes/admin/tools/tools.php:168
+#, fuzzy
+msgid "Create Affiliate Accounts for Users"
+msgstr "Registriraj novi Brand ambasador račun"
+
+#: includes/admin/tools/tools.php:177
+msgid ""
+"Use this tool migrate existing affiliate / referral data from Affiliates Pro "
+"to AffiliateWP."
+msgstr ""
+"Koristi ovaj alat za migraciju podataka sa Affiliates Pro na AffiliatesWP."
+
+#: includes/admin/tools/tools.php:178
+msgid ""
+"<strong>NOTE:</strong> this tool should only ever be used on a fresh "
+"install. If you have already collected affiliate or referral data, do not "
+"use this tool."
+msgstr ""
+"<strong>NAPOMENA:</strong> ovaj alat se smije koristiti samo na novoj "
+"instalaciji. Ako već postoje registrirani Brand ambasadori i zabilježene "
+"preporuke, ne koristi ovaj alat."
+
+#: includes/admin/tools/tools.php:184
+msgid "Migrate Data from Affiliates Pro"
+msgstr "Migriraj podatke iz Affiliates Pro"
+
+#: includes/admin/tools/tools.php:193
+#, fuzzy
+msgid ""
+"Use this tool migrate existing affiliate accounts from WP Affiliate to "
+"AffiliateWP."
+msgstr ""
+"Koristi ovaj alat za migraciju podataka sa Affiliates Pro na AffiliatesWP."
+
+#: includes/admin/tools/tools.php:199
+#, fuzzy
+msgid "Migrate Data from WP Affiliate"
+msgstr "Migriraj podatke iz Affiliates Pro"
+
+#: includes/admin/tools/tools.php:223
+#, fuzzy
+msgid "Export Affiliates"
+msgstr "Uredi Brand ambasadora"
+
+#: includes/admin/tools/tools.php:225
+#, fuzzy
+msgid "Export affiliates to a CSV file."
+msgstr "Izvezi preporuke u CSV datoteku"
+
+#: includes/admin/tools/tools.php:229 includes/admin/tools/tools.php:258
+msgid "All Statuses"
+msgstr "Svi statusi"
+
+#: includes/admin/tools/tools.php:238 includes/admin/tools/tools.php:270
+#: includes/admin/tools/tools.php:284
+msgid "Export"
+msgstr "Izvoz"
+
+#: includes/admin/tools/tools.php:245
+msgid "Export Referrals"
+msgstr "Izvoz preporuka"
+
+#: includes/admin/tools/tools.php:247
+msgid "Export referrals to a CSV file."
+msgstr "Izvezi preporuke u CSV datoteku"
+
+#: includes/admin/tools/tools.php:265
+msgid ""
+"To search for a affiliate, enter the affiliate's login name, first name, or "
+"last name. Leave blank to export referrals for all affiliates."
+msgstr ""
+"Za pretragu Brand ambasadora, unesi korisničko ime, ime ili prezime. Za "
+"izvoz preporuka svih Brand ambasadora ostavi prazno."
+
+#: includes/admin/tools/tools.php:277
+msgid "Export Settings"
+msgstr "Izvoz postavki"
+
+#: includes/admin/tools/tools.php:279
+msgid ""
+"Export the AffiliateWP settings for this site as a .json file. This allows "
+"you to easily import the configuration into another site."
+msgstr ""
+"Izvezi postavke AffiliateWP ove Internet stranice kao .json datoteku. Ovo ti "
+"dozvoljava jednostavan uvoz postavki na drugu Internet stranicu."
+
+#: includes/admin/tools/tools.php:291
+msgid "Import Settings"
+msgstr "Uvoz postavki"
+
+#: includes/admin/tools/tools.php:293
+msgid ""
+"Import the AffiliateWP settings from a .json file. This file can be obtained "
+"by exporting the settings on another site using the form above."
+msgstr ""
+"Uvezi postavke AffiliateWP iz .json datoteke. Ova datoteka može se kreirati "
+"izvozom postavki sa druge stranice koristeći obrazac gore."
+
+#: includes/admin/tools/tools.php:301
+msgid "Import"
+msgstr "Uvoz"
+
+#: includes/admin/visits/contextual-help.php:39
+msgid "This screen provides access to your site's visit history."
+msgstr "Ovo sučelje omogućuje pristup povijesti posjeta tvoje stranice."
+
+#: includes/admin/visits/contextual-help.php:40
+msgid ""
+"<strong>Landing Page</strong>: this is the page on your site that the "
+"visitor first landed on. It is the URL that the affiliate link pointed to."
+msgstr ""
+"<strong>Odredišna stranica</strong>: ovo je stranica na tvojoj Internet "
+"stranici na koju je posjetitelj prvo došao. To je URL na koji preusmjerava "
+"link Brand ambasadora."
+
+#: includes/admin/visits/contextual-help.php:41
+msgid ""
+"<strong>Referring URL</strong>: this is the source URL of the affiliate "
+"link. It is the web page that the visitor found a link to your site on."
+msgstr ""
+"<strong>URL preporuke</strong>: ovo je izvorni URL Brand ambasadora. To je "
+"Internet stranica gdje je posjetitelj kliknuo link na tvoju stranicu."
+
+#: includes/admin/visits/contextual-help.php:42
+msgid ""
+"<strong>Affiliate</strong>: this the affiliate that the visit was attributed "
+"to."
+msgstr ""
+"<strong>Brand ambasador (Partner)</strong>: ovo je Brand ambasador kojem je "
+"dodjeljena posjeta."
+
+#: includes/admin/visits/contextual-help.php:43
+msgid ""
+"<strong>Referral ID</strong>: this is the ID of the referral that was "
+"created from this visit, if any."
+msgstr ""
+"<strong>ID preporuke</strong>: ovo je ID preporuke koja je kreirana od ove "
+"posjete, ako je je bilo."
+
+#: includes/admin/visits/contextual-help.php:44
+msgid "<strong>IP</strong>: this is the IP address of the visitor."
+msgstr "<strong>IP</strong>: ovo je IP adresa posjetitelja."
+
+#: includes/admin/visits/contextual-help.php:45
+msgid ""
+"<strong>Converted</strong>: this is a Yes / No status for whether the visit "
+"turned into a successful converstion."
+msgstr ""
+"<strong>Konvertirano</strong>: ovo je DA / NE status bez obzira da li se "
+"posjeta realizirala u uspješnu konverziju."
+
+#: includes/admin/visits/contextual-help.php:50
+msgid "Searching Visits"
+msgstr "Pretraga posjeta"
+
+#: includes/admin/visits/contextual-help.php:52
+msgid "Visit records can be searched in several different ways:"
+msgstr "Zapisi posjeta mogu se pretraživati na nekoliko različitih načina:"
+
+#: includes/admin/visits/contextual-help.php:54
+msgid "You can enter an IP address to find all visits from a specific IP"
+msgstr ""
+"Za pronalazak svih posjeta sa specifične IP adrese unesi željenu IP adresu"
+
+#: includes/admin/visits/contextual-help.php:55
+msgid ""
+"You can enter a complete URL to find all visits that landed on or came from "
+"a specific URL"
+msgstr ""
+"Kako bi vidio/la sve posjete koje su došle sa određene stranice možeš "
+"unijeti cijeli URL"
+
+#: includes/admin/visits/contextual-help.php:56
+msgid ""
+"You can enter a partial URL to find all visits that landed on or came from a "
+"specific site"
+msgstr ""
+"Kako bi vidio/la sve posjete koje su došle sa stranice možeš unijeti dio URL-"
+"a"
+
+#: includes/admin/visits/contextual-help.php:57
+msgid "You can enter the referral's ID number prefixed by 'referral:'"
+msgstr "Možeš unijeti ID preporuke s prefiksom 'referral:'"
+
+#: includes/admin/visits/screen-options.php:22
+msgid "Number of visits per page:"
+msgstr ""
+
+#: includes/admin/visits/visits.php:44
+msgid "Filter by status"
+msgstr ""
+
+#: includes/admin/visits/visits.php:48
+#, fuzzy
+msgid "Unconverted"
+msgstr "Konvertirano"
+
+#: includes/admin/visits/visits.php:143
+msgid "Landing Page"
+msgstr "Odredišna stranica"
+
+#: includes/admin/visits/visits.php:144 templates/dashboard-tab-visits.php:22
+msgid "Referring URL"
+msgstr "Link preporuke"
+
+#: includes/admin/visits/visits.php:146
+msgid "Referral ID"
+msgstr "ID preporuke"
+
+#: includes/admin/visits/visits.php:147
+msgid "IP"
+msgstr "IP"
+
+#: includes/admin/visits/visits.php:212 templates/dashboard-tab-visits.php:33
+msgid "Direct traffic"
+msgstr "Direktan promet"
+
+#: includes/admin/visits/visits.php:237
+msgid "No visits found."
+msgstr "Nema zabilježenih posjeta."
+
+#: includes/affiliate-functions.php:306
+msgid "Percentage (%)"
+msgstr "Postotak (%)"
+
+#: includes/affiliate-functions.php:307
+msgid "Flat %s"
+msgstr "Flat %s"
+
+#: includes/class-graph.php:332
+msgid "Today"
+msgstr "Danas"
+
+#: includes/class-graph.php:333
+msgid "Yesterday"
+msgstr "Jučer"
+
+#: includes/class-graph.php:334
+msgid "This Week"
+msgstr "Ovaj tjedan"
+
+#: includes/class-graph.php:335
+msgid "Last Week"
+msgstr "Prošli tjedan"
+
+#: includes/class-graph.php:336
+msgid "This Month"
+msgstr "Ovaj mjesec"
+
+#: includes/class-graph.php:337
+msgid "Last Month"
+msgstr "Prošli mjesec"
+
+#: includes/class-graph.php:338
+msgid "This Quarter"
+msgstr "Ovaj kvartal"
+
+#: includes/class-graph.php:339
+msgid "Last Quarter"
+msgstr "Prošli kvartal"
+
+#: includes/class-graph.php:340
+msgid "This Year"
+msgstr "Ove godine"
+
+#: includes/class-graph.php:341
+msgid "Last Year"
+msgstr "Prošle godine"
+
+#: includes/class-graph.php:342
+msgid "Custom"
+msgstr "Prilagođeno"
+
+#: includes/class-graph.php:380
+msgid "From"
+msgstr "Od"
+
+#: includes/class-graph.php:391
+msgid "To"
+msgstr "Za"
+
+#: includes/class-login.php:56 includes/class-register.php:77
+#: includes/class-register.php:176
+msgid "Invalid username"
+msgstr "Netočno korisničko ime"
+
+#: includes/class-login.php:62
+msgid "No such user"
+msgstr "Nepostojeći korisnik"
+
+#: includes/class-login.php:66 includes/class-register.php:184
+msgid "Please enter a password"
+msgstr "Molimo unesi lozinku"
+
+#: includes/class-login.php:73
+#, fuzzy
+msgid "Incorrect username or password"
+msgstr "Netočna lozinka"
+
+#: includes/class-referrals-graph.php:116
+msgid "Unpaid Referral Earnings"
+msgstr "Neisplaćena provizija"
+
+#: includes/class-referrals-graph.php:117
+msgid "Pending Referral Earnings"
+msgstr "Provizija u obradi"
+
+#: includes/class-referrals-graph.php:118
+msgid "Rejected Referral Earnings"
+msgstr "Odbijene provizije"
+
+#: includes/class-referrals-graph.php:119
+msgid "Paid Referral Earnings"
+msgstr "Isplaćene provizije"
+
+#: includes/class-register.php:70
+msgid "Username already taken"
+msgstr "Korisničko ime je zauzeto"
+
+#: includes/class-register.php:75
+msgid "Invalid username. Only lowercase letters (a-z) and numbers are allowed"
+msgstr ""
+
+#: includes/class-register.php:82
+msgid "Email address already taken"
+msgstr "Email adresa je zauzeta"
+
+#: includes/class-register.php:86
+msgid "Invalid email"
+msgstr "Neispravan email"
+
+#: includes/class-register.php:90
+msgid "Invalid payment email"
+msgstr "Neispravan PayPal email "
+
+#: includes/class-register.php:94
+msgid "Passwords do not match"
+msgstr "Lozinke se ne podudaraju"
+
+#: includes/class-register.php:101
+msgid "Please agree to our terms of use"
+msgstr "Molimo prihvati uvjete sudjelovanja"
+
+#: includes/class-register.php:105
+msgid "Please verify that you are not a robot"
+msgstr ""
+
+#: includes/class-register.php:109
+msgid "Nice try honey bear, don't touch our honey"
+msgstr "Dobar pokušaj mustro, prste dalje od toga"
+
+#: includes/class-register.php:113
+msgid "You are already registered as an affiliate"
+msgstr "Već si registriran/a kao Brand ambasador"
+
+#: includes/class-register.php:172
+msgid "Please enter your name"
+msgstr "Molimo unesi svoje ime"
+
+#: includes/class-register.php:180
+msgid "Please enter a website URL"
+msgstr "Molimo unesi URL Internet stranice"
+
+#: includes/class-visits-graph.php:126
+msgid "Converted Visits"
+msgstr "Konvertirane posjete"
+
+#: includes/class-visits-graph.php:127
+msgid "Unconverted Visits"
+msgstr "Nekonvertirane posjete"
+
+#: includes/creative-functions.php:31 includes/creative-functions.php:63
+msgid "Creative"
+msgstr "Banner"
+
+#: includes/emails/actions.php:46
+#, fuzzy
+msgid "A new affiliate has registered on your site, "
+msgstr "Nema registriranih partnera"
+
+#: includes/emails/actions.php:47
+msgid "Name: %s"
+msgstr "Ime: %s"
+
+#: includes/emails/actions.php:50
+#, fuzzy
+msgid "Website URL: %s"
+msgstr "URL Internet stranice:"
+
+#: includes/emails/actions.php:54
+#, fuzzy
+msgid "Promotion method: %s"
+msgstr "Metoda promocije:"
+
+#: includes/emails/actions.php:58
+msgid "Review pending applications: %s"
+msgstr ""
+
+#: includes/emails/actions.php:101 includes/emails/actions.php:221
+#, fuzzy
+msgid "Congratulations %s!"
+msgstr ""
+"Čestitamo %s!\n"
+"\n"
+
+#: includes/emails/actions.php:103
+#, fuzzy
+msgid "Log into your affiliate area at %s"
+msgstr ""
+"Na svoj Brand ambasador račun prijavi se na %s\n"
+"\n"
+
+#: includes/emails/actions.php:142
+#, fuzzy
+msgid "Hi %s!"
+msgstr "Verzija %s"
+
+#: includes/emails/actions.php:179
+msgid "Hi %s,"
+msgstr ""
+
+#: includes/emails/actions.php:222
+#, fuzzy
+msgid "You have been awarded a new referral of %s on %s!"
+msgstr ""
+"Dodjeljena ti je nova preporuka od %s za %s!\n"
+"\n"
+
+#: includes/emails/actions.php:223
+#, fuzzy
+msgid ""
+"log into your affiliate area to view your earnings or disable these "
+"notifications: %s"
+msgstr ""
+"Za pregled svoje zarade ili isključivanje ovih obavjesti prijavi se na svoj "
+"Brand ambasador račun: %s\n"
+"\n"
+
+#: includes/emails/class-affwp-emails.php:198
+msgid "Default Template"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:199
+msgid "No template, plain text only"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:295
+msgid ""
+"You cannot send emails with AffWP_Emails until init/admin_init has been "
+"reached"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:422
+msgid "The full name of the affiliate"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:427
+msgid "The user name of the affiliate on the site"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:432
+msgid "The email address of the affiliate"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:437
+#, fuzzy
+msgid "The website of the affiliate"
+msgstr "Nema registriranih partnera"
+
+#: includes/emails/class-affwp-emails.php:442
+msgid "The promo method used by the affiliate"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:447
+#, fuzzy
+msgid "The reason an affiliate area was rejected"
+msgstr "Brand ambasador zahtjev odbijen"
+
+#: includes/emails/class-affwp-emails.php:452
+msgid "The affiliate login URL to your website"
+msgstr ""
+
+#: includes/emails/class-affwp-emails.php:457
+#, fuzzy
+msgid "The amount of a given referral"
+msgstr "Iznos preporuke, npr. 15."
+
+#: includes/emails/class-affwp-emails.php:462
+#, fuzzy
+msgid "Your site name"
+msgstr "Ime i prezime"
+
+#: includes/emails/class-affwp-emails.php:467
+#, fuzzy
+msgid "The affiliate's referral URL"
+msgstr "Tip provizije Brand ambasadora."
+
+#: includes/emails/class-affwp-emails.php:472
+#, fuzzy
+msgid "The affiliate's ID"
+msgstr "Brand ambasador ID"
+
+#: includes/emails/functions.php:121
+#, fuzzy
+msgid "No reason provided"
+msgstr "Nema zabilježenih preporuka"
+
+#: includes/integrations/class-edd.php:290
+#: includes/integrations/class-gravityforms.php:105
+#: includes/integrations/class-jigoshop.php:85
+#: includes/integrations/class-shopp.php:75
+#: includes/integrations/class-sproutinvoices.php:53
+#: includes/integrations/class-woocommerce.php:161
+#: includes/integrations/class-zippycourses.php:187
+msgid "Referral #%d for %s recorded for %s"
+msgstr "Preporuka #%d za %s je dodjeljena %s"
+
+#: includes/integrations/class-edd.php:407
+#: includes/integrations/class-rcp.php:190
+#: includes/integrations/class-woocommerce.php:281
+msgid "Affiliate Discount?"
+msgstr "Brand ambasador popust?"
+
+#: includes/integrations/class-edd.php:416
+#: includes/integrations/class-rcp.php:199
+#: includes/integrations/class-woocommerce.php:289
+msgid ""
+"If you would like to connect this discount to an affiliate, enter the name "
+"of the affiliate it belongs to."
+msgstr ""
+"Ako želiš dodjeliti ovaj popust Brand ambasadoru, unesi ime Brand ambasadora "
+"kojem ga dodjeljuješ."
+
+#: includes/integrations/class-edd.php:507
+msgid "Adjust EDD Commissions"
+msgstr "Prilagodi EDD proviziju"
+
+#: includes/integrations/class-edd.php:508
+msgid ""
+"Should AffiliateWP adjust the commission amounts recorded for purchases that "
+"include affiliate referrals? This will subtract the referral amount from the "
+"base amount used to calculate the commission total."
+msgstr ""
+"Treba li AffiliateWP prilagoditi iznos provizije zabilježen kod kupnje koje "
+"uključuju preporuke partnera? Ovo će oduzeti iznos od baznog iznosa "
+"korištenog za izračun ukupne provizije."
+
+#: includes/integrations/class-edd.php:528
+#, fuzzy
+msgid "Disable Renewal Referrals"
+msgstr "Nedavne preporuke"
+
+#: includes/integrations/class-edd.php:529
+msgid ""
+"Should AffiliateWP prevent referral commissions from being recorded on "
+"renewal purchases with EDD Software Licensing?"
+msgstr ""
+
+#: includes/integrations/class-edd.php:550
+#: includes/integrations/class-zippycourses.php:55
+msgid "Affiliate Rates:"
+msgstr "Stopa provizije:"
+
+#: includes/integrations/class-edd.php:563
+#: includes/integrations/class-zippycourses.php:68
+msgid "Disable referrals on this %s"
+msgstr ""
+
+#: includes/integrations/class-edd.php:567
+#: includes/integrations/class-memberpress.php:152
+#: includes/integrations/class-zippycourses.php:72
+#, fuzzy
+msgid ""
+"These settings will be used to calculate affiliate earnings per-sale. Leave "
+"blank to use the site default referral rate."
+msgstr ""
+"Ove postavke će biti korištene za izračun zarade Brand ambasadora po "
+"realiziranoj prodaji. Ostavi prazno za korištenje zadane stope provizije."
+
+#: includes/integrations/class-exchange.php:234
+#, fuzzy
+msgid "Affiliate coupon?"
+msgstr "Brand ambasador popust?"
+
+#: includes/integrations/class-exchange.php:243
+#, fuzzy
+msgid ""
+"If you would like to connect this coupon to an affiliate, enter the name of "
+"the affiliate it belongs to."
+msgstr ""
+"Ako želiš dodjeliti ovaj popust Brand ambasadoru, unesi ime Brand ambasadora "
+"kojem ga dodjeljuješ."
+
+#: includes/integrations/class-formidablepro.php:71
+#, fuzzy
+msgid " AffiliateWP"
+msgstr "Brand ambasador (Partner)"
+
+#: includes/integrations/class-formidablepro.php:76
+#, fuzzy
+msgid "Referral description"
+msgstr "Postavke linkova preporuka"
+
+#: includes/integrations/class-formidablepro.php:80
+#: includes/integrations/class-formidablepro.php:106
+msgid "Select Field"
+msgstr ""
+
+#: includes/integrations/class-formidablepro.php:102
+msgid "Purchase Amount"
+msgstr ""
+
+#: includes/integrations/class-formidablepro.php:198
+#, fuzzy
+msgid "AffiliateWP: Referral #%d for %s recorded for %s"
+msgstr "Preporuka #%d za %s je dodjeljena %s"
+
+#: includes/integrations/class-formidablepro.php:223
+#, fuzzy
+msgid "AffiliateWP: Referral #%d for %s for %s rejected"
+msgstr "Preporuka #%d za %s je dodjeljena %s"
+
+#: includes/integrations/class-gravityforms.php:127
+#: includes/integrations/class-sproutinvoices.php:76
+#, fuzzy
+msgid "Referral #%d for %s for %s rejected"
+msgstr "Preporuka #%d za %s je dodjeljena %s"
+
+#: includes/integrations/class-gravityforms.php:168
+#, fuzzy
+msgid "Enable affiliate referral creation for this form"
+msgstr "Tip provizije Brand ambasadora."
+
+#: includes/integrations/class-gravityforms.php:172
+#, fuzzy
+msgid "Allow referrals"
+msgstr "Ukupne preporuke u obradi"
+
+#: includes/integrations/class-memberpress.php:119
+#: includes/integrations/class-rcp.php:275
+#: includes/integrations/class-rcp.php:297
+#: includes/integrations/class-woocommerce.php:401
+msgid "Affiliate Rate"
+msgstr "Postotak provizije"
+
+#: includes/integrations/class-memberpress.php:148
+#, fuzzy
+msgid "Disable referrals on this membership"
+msgstr "Ukupne preporuke u obradi"
+
+#: includes/integrations/class-ninja-forms.php:137
+#, fuzzy
+msgid "Allow Referrals"
+msgstr "Preporuke"
+
+#: includes/integrations/class-ninja-forms.php:138
+#, fuzzy
+msgid "Enable affiliate referral creation for this form?"
+msgstr "Tip provizije Brand ambasadora."
+
+#: includes/integrations/class-rcp.php:279
+#: includes/integrations/class-rcp.php:301
+#, fuzzy
+msgid ""
+"This rate will be used to calculate affiliate earnings when members "
+"subscribe to this level. Leave blank to use the site default referral rate."
+msgstr ""
+"Ove postavke će biti korištene za izračun zarade Brand ambasadora po "
+"realiziranoj prodaji. Ostavi prazno za korištenje zadane stope provizije."
+
+#: includes/integrations/class-woocommerce.php:403
+#: includes/integrations/extras/class-exchange-feature.php:42
+msgid ""
+"These settings will be used to calculate affiliate earnings per-sale. Leave "
+"blank to use default affiliate rates."
+msgstr ""
+"Ove postavke će biti korištene za izračun zarade Brand ambasadora po "
+"realiziranoj prodaji. Ostavi prazno za korištenje zadane stope provizije."
+
+#: includes/integrations/class-woocommerce.php:407
+#, fuzzy
+msgid "Disable referrals"
+msgstr "Ukupne preporuke u obradi"
+
+#: includes/integrations/class-woocommerce.php:408
+msgid ""
+"This will prevent orders of this product from generating referral "
+"commissions for affiliates."
+msgstr ""
+
+#: includes/integrations/class-zippycourses.php:40
+#, fuzzy
+msgid "Affiliate Settings"
+msgstr "Idi na postavke AffiliateWP"
+
+#: includes/integrations/extras/class-exchange-feature.php:22
+msgid "Manage per-product affiliate rates."
+msgstr ""
+
+#: includes/integrations/extras/class-exchange-feature.php:54
+msgid "Disable referrals on this product"
+msgstr ""
+
+#: includes/misc-functions.php:26
+#, fuzzy
+msgid "US Dollars"
+msgstr "Američki dolar (&#36;)"
+
+#: includes/misc-functions.php:27
+msgid "Euros"
+msgstr ""
+
+#: includes/misc-functions.php:28
+msgid "United Arab Emirates Dirham"
+msgstr ""
+
+#: includes/misc-functions.php:29
+#, fuzzy
+msgid "Australian Dollars"
+msgstr "Australski dolar (&#36;)"
+
+#: includes/misc-functions.php:30
+msgid "Bangladeshi Taka"
+msgstr ""
+
+#: includes/misc-functions.php:31
+#, fuzzy
+msgid "Brazilian Real"
+msgstr "Brazilski real (R&#36;)"
+
+#: includes/misc-functions.php:32
+msgid "Bulgarian Lev"
+msgstr ""
+
+#: includes/misc-functions.php:33
+#, fuzzy
+msgid "Canadian Dollars"
+msgstr "Kanadski dolar (&#36;)"
+
+#: includes/misc-functions.php:34
+#, fuzzy
+msgid "Chilean Peso"
+msgstr "Filipinski pezos"
+
+#: includes/misc-functions.php:35
+msgid "Chinese Yuan"
+msgstr ""
+
+#: includes/misc-functions.php:36
+msgid "Colombian Peso"
+msgstr ""
+
+#: includes/misc-functions.php:37
+msgid "Czech Koruna"
+msgstr "Češka kruna"
+
+#: includes/misc-functions.php:38
+msgid "Danish Krone"
+msgstr "Danska kruna"
+
+#: includes/misc-functions.php:39
+msgid "Dominican Peso"
+msgstr ""
+
+#: includes/misc-functions.php:40
+#, fuzzy
+msgid "Hong Kong Dollar"
+msgstr "Hong Kong dolar (&#36;)"
+
+#: includes/misc-functions.php:41
+msgid "Croatia kuna"
+msgstr ""
+
+#: includes/misc-functions.php:42
+msgid "Hungarian Forint"
+msgstr "Mađarska forinta"
+
+#: includes/misc-functions.php:43
+msgid "Icelandic krona"
+msgstr ""
+
+#: includes/misc-functions.php:44
+msgid "Indonesia Rupiah"
+msgstr ""
+
+#: includes/misc-functions.php:45
+#, fuzzy
+msgid "Indian Rupee"
+msgstr "Indijska rupija (&#8377;)"
+
+#: includes/misc-functions.php:46
+msgid "Nepali Rupee"
+msgstr ""
+
+#: includes/misc-functions.php:47
+#, fuzzy
+msgid "Israeli Shekel"
+msgstr "Izraelski šekel (&#8362;)"
+
+#: includes/misc-functions.php:48
+#, fuzzy
+msgid "Japanese Yen"
+msgstr "Japanski yen (&yen;)"
+
+#: includes/misc-functions.php:49
+msgid "Lao Kip"
+msgstr ""
+
+#: includes/misc-functions.php:50
+msgid "South Korean Won"
+msgstr ""
+
+#: includes/misc-functions.php:51
+msgid "Malaysian Ringgits"
+msgstr "Malezijski ringgits"
+
+#: includes/misc-functions.php:52
+#, fuzzy
+msgid "Mexican Peso"
+msgstr "Meksički pezo (&#36;)"
+
+#: includes/misc-functions.php:53
+msgid "Nigerian Naira"
+msgstr ""
+
+#: includes/misc-functions.php:54
+msgid "Norwegian Krone"
+msgstr "Norveška kruna"
+
+#: includes/misc-functions.php:55
+#, fuzzy
+msgid "New Zealand Dollar"
+msgstr "Novozelandski dolar (&#36;)"
+
+#: includes/misc-functions.php:56
+msgid "Paraguayan Guaraní"
+msgstr ""
+
+#: includes/misc-functions.php:57
+msgid "Philippine Pesos"
+msgstr "Filipinski pezos"
+
+#: includes/misc-functions.php:58
+msgid "Polish Zloty"
+msgstr "Poljski zlot"
+
+#: includes/misc-functions.php:59
+#, fuzzy
+msgid "Pounds Sterling"
+msgstr "Britanska funta (&pound;)"
+
+#: includes/misc-functions.php:60
+msgid "Romanian Leu"
+msgstr ""
+
+#: includes/misc-functions.php:61
+#, fuzzy
+msgid "Russian Ruble"
+msgstr "Ruski rublji"
+
+#: includes/misc-functions.php:62
+#, fuzzy
+msgid "Singapore Dollar"
+msgstr "Singapurski dolar (&#36;)"
+
+#: includes/misc-functions.php:63
+msgid "South African rand"
+msgstr ""
+
+#: includes/misc-functions.php:64
+msgid "Swedish Krona"
+msgstr "Švedska kruna"
+
+#: includes/misc-functions.php:65
+msgid "Swiss Franc"
+msgstr "Švicarski franak"
+
+#: includes/misc-functions.php:66
+msgid "Taiwan New Dollars"
+msgstr "Tajvanski novi dolar"
+
+#: includes/misc-functions.php:67
+#, fuzzy
+msgid "Thai Baht"
+msgstr "Tajlandski bat (&#3647;)"
+
+#: includes/misc-functions.php:68
+#, fuzzy
+msgid "Turkish Lira"
+msgstr "Turska lira (&#8378;)"
+
+#: includes/misc-functions.php:69
+msgid "Vietnamese Dong"
+msgstr ""
+
+#: includes/misc-functions.php:70
+msgid "Egyptian Pound"
+msgstr ""
+
+#: includes/scripts.php:62
+msgid ""
+"Are you sure you want to generate the payout file? All included referrals "
+"will be marked as Paid."
+msgstr ""
+"Jesi li siguran da želiš generirati datoteku za isplatu? Sve uključene "
+"preporuke biti će označene kao plaćene."
+
+#: includes/scripts.php:63
+#, fuzzy
+msgid "Are you sure you want to delete this referral?"
+msgstr "Jesi siguran da želiš izbrisati ovaj banner?"
+
+#: templates/creative.php:40
+msgid "Copy and paste the following:"
+msgstr "HTML kód ispod kopiraj i zalijepi na svoju stranicu/blog: "
+
+#: templates/dashboard-tab-creatives.php:44
+msgid "Sorry, there are currently no creatives available."
+msgstr "Žao nam je, trenutno nema dostupnih bannera."
+
+#: templates/dashboard-tab-graphs.php:3
+msgid "Referral Graphs"
+msgstr "Grafikoni preporuka"
+
+#: templates/dashboard-tab-referrals.php:48
+#, fuzzy
+msgid "You have not made any referrals yet."
+msgstr "Do sada nisi imao/la nikakvih posjeta."
+
+#: templates/dashboard-tab-settings.php:9
+msgid "Profile Settings"
+msgstr "Postavke profila"
+
+#: templates/dashboard-tab-settings.php:14
+msgid "Your payment email"
+msgstr "PayPal email (ako želiš isplatu na PayPal račun)"
+
+#: templates/dashboard-tab-settings.php:20
+msgid "Enable New Referral Notifications"
+msgstr "Pošalji mi obavjesti o novo generiranoj preporuci"
+
+#: templates/dashboard-tab-settings.php:28
+msgid "Save Profile Settings"
+msgstr "Spremi postavke profila"
+
+#: templates/dashboard-tab-stats.php:3 templates/dashboard.php:36
+msgid "Statistics"
+msgstr "Izvješća"
+
+#: templates/dashboard-tab-stats.php:35
+msgid "Commission Rate"
+msgstr "Postotak provizije"
+
+#: templates/dashboard-tab-stats.php:58
+msgid "Unique Links"
+msgstr ""
+
+#: templates/dashboard-tab-stats.php:68
+msgid "None set"
+msgstr ""
+
+#: templates/dashboard-tab-stats.php:77
+msgid "You have no referrals or visits that included a campaign name."
+msgstr ""
+
+#: templates/dashboard-tab-urls.php:3
+msgid "Referral URL Generator"
+msgstr "Generator jedinstvenog linka preporuke"
+
+#: templates/dashboard-tab-urls.php:6
+#, fuzzy
+msgid "Your affiliate ID is: <strong>%s</strong>"
+msgstr "Tvoj partner ID je: <strong>%d</strong>"
+
+#: templates/dashboard-tab-urls.php:8
+#, fuzzy
+msgid "Your affiliate username is: <strong>%s</strong>"
+msgstr "Tvoj partner ID je: <strong>%d</strong>"
+
+#: templates/dashboard-tab-urls.php:11
+msgid "Your referral URL is: <strong>%s</strong>"
+msgstr "Tvoj jedinstveni link preporuke je: <strong>%s</strong>"
+
+#: templates/dashboard-tab-urls.php:12
+msgid ""
+"Enter any URL from this website in the form below to generate a referral "
+"link!"
+msgstr ""
+"U polje ispod unesi bilo koji URL s naše Internet stranice i generiraj link "
+"preporuke!"
+
+#: templates/dashboard-tab-urls.php:16
+msgid "Page URL"
+msgstr "URL stranice"
+
+#: templates/dashboard-tab-urls.php:21
+msgid "Campaign Name (optional)"
+msgstr ""
+
+#: templates/dashboard-tab-urls.php:26
+msgid "Referral URL"
+msgstr "Link preporuke"
+
+#: templates/dashboard-tab-urls.php:28
+msgid "(now copy this referral link and share it anywhere)"
+msgstr "(sada možeš kopirati ovu poveznicu i podjeliti ju gdje god želiš)"
+
+#: templates/dashboard-tab-urls.php:34
+msgid "Generate URL"
+msgstr "Generiraj jedinstveni link"
+
+#: templates/dashboard-tab-visits.php:3
+msgid "Referral URL Visits"
+msgstr "Posjete preko jedinstvenih linkova"
+
+#: templates/dashboard-tab-visits.php:44
+msgid "You have not received any visits yet."
+msgstr "Do sada nisi imao/la nikakvih posjeta."
+
+#: templates/dashboard.php:7
+msgid "Your affiliate account is pending approval"
+msgstr "Tvoj Brand ambasador (partner) račun čeka odobrenje"
+
+#: templates/dashboard.php:11
+msgid "Your affiliate account is not active"
+msgstr "Tvoj Brand ambasador (partner) račun nije aktivan"
+
+#: templates/dashboard.php:15
+msgid "Your affiliate account request has been rejected"
+msgstr ""
+"Zahtjev za registraciju tvojeg Brand ambasador (partner) računa je odbijen"
+
+#: templates/dashboard.php:25
+msgid "Your affiliate profile has been updated"
+msgstr "Tvoj partner profil je ažuriran"
+
+#: templates/dashboard.php:33
+msgid "Affiliate URLs"
+msgstr "Jedinstveni linkovi"
+
+#: templates/dashboard.php:39
+msgid "Graphs"
+msgstr "Grafikoni"
+
+#: templates/login.php:10
+msgid "Log into Your Account"
+msgstr "Prijavi se na svoj račun"
+
+#: templates/login.php:20 templates/register.php:78
+msgid "Password"
+msgstr "Lozinka"
+
+#: templates/login.php:26
+msgid "Remember Me"
+msgstr "Zapamti me"
+
+#: templates/login.php:34
+msgid "Login"
+msgstr "Prijava"
+
+#: templates/login.php:38
+msgid "Lost Password?"
+msgstr "Zaboravljena lozinka? "
+
+#: templates/no-access.php:1
+msgid "The affiliate area is available only for registered affiliates."
+msgstr "Brand ambasador sučelje je dostupno samo za registrirane korisnike."
+
+#: templates/register.php:36
+msgid "Register a New Affiliate Account"
+msgstr "Registriraj novi Brand ambasador račun"
+
+#: templates/register.php:43 templates/register.php:44
+msgid "Your Name"
+msgstr "Ime i prezime"
+
+#: templates/register.php:62
+msgid "Payment Email Address"
+msgstr "PayPal email (ako želiš isplatu na PayPal račun)"
+
+#: templates/register.php:71
+msgid "How will you promote us?"
+msgstr "Kako češ vršiti promociju?"
+
+#: templates/register.php:83
+msgid "Confirm Password"
+msgstr "Potvrdi lozinku"
+
+#: templates/register.php:96
+msgid "Agree to our <a href=\"%s\" target=\"_blank\">Terms of Use</a>"
+msgstr "Prihvaćam <a href=\"%s\" target=\"_blank\">uvjete sudjelovanja</a>"
+
+#: templates/register.php:116
+msgid "Register"
+msgstr "Registracija"
+
+#. Description of the plugin/theme
+msgid "Affiliate Plugin for WordPress"
+msgstr ""
+
+#: includes/admin/affiliates/delete.php:26
+msgctxt "Affiliate ID, affiliate name"
+msgid "ID #%d: %s"
+msgstr "ID #%d: %s"
+
+#: includes/admin/creatives/delete.php:21
+msgctxt "Creative ID, creative name"
+msgid "Creative ID #%d: %s"
+msgstr "ID bannera #%d: %s"
+
+#, fuzzy
+#~ msgid "Affiliate Export Improvements"
+#~ msgstr "Banneri Brand ambasadora"
+
+#, fuzzy
+#~ msgid ""
+#~ "The affiliate's username is now included in the exported affiliate .csv "
+#~ "file."
+#~ msgstr "Brand ambasador sučelje je dostupno samo za registrirane korisnike."
+
+#, fuzzy
+#~ msgid "New Affiliate Meta Class"
+#~ msgstr "Novi Brand ambasador"
+
+#, fuzzy
+#~ msgid "Creative Improvements"
+#~ msgstr "Banneri"
+
+#~ msgid "Accept Affiliate"
+#~ msgstr "Prihvati partnera"
+
+#~ msgid "Reject Affiliate"
+#~ msgstr "Odbaci partnera"
+
+#, fuzzy
+#~ msgid "Congratulations"
+#~ msgstr ""
+#~ "Čestitamo %s!\n"
+#~ "\n"
+
+#, fuzzy
+#~ msgid "AffiliateWP"
+#~ msgstr "Brand ambasador (Partner)"
+
+#~ msgid "New features"
+#~ msgstr "Nove značajke"
+
+#~ msgid ""
+#~ "With version 1.2, you can now set referral rates on a per-product basis. "
+#~ "Per-product referral rates are supported for both Easy Digital Downloads "
+#~ "and WooCommerce, with more integrations on the way."
+#~ msgstr ""
+#~ "S verzijom 1.2, sada možete postaviti proviziju za preporuku baziranu na "
+#~ "pojedini proizvod. Provizija definirana na razini proizvoda podržana je "
+#~ "za Easy Digital Downloads i WooCommerce. Više integracija uskoro."
+
+#~ msgid ""
+#~ "We have introduced a new admin section for affiliate creatives that you "
+#~ "can share with your affiliates. Easily add image and text creatives which "
+#~ "are shown in affiliate area for your affiliates. Creatives can also be "
+#~ "shown anywhere with a simple shortcode."
+#~ msgstr ""
+#~ "Uveli smo novu sekciju za administratore namjenjenu postavljanje bannera "
+#~ "koje će partneri moći koristiti i vidjeti na svojem sučelju. Za dodavanje "
+#~ "bannera jednostavno dodajte sliku i tekst bannera koje želite da partner "
+#~ "vidi na svom partner sučelju. Banneri također mogu biti prikazani bilo "
+#~ "gdje uz pomoć jednostavne kratice (shortcode)."
+
+#~ msgid "Improved Affiliate Area"
+#~ msgstr "Unaprjeđeno partner (affiliate) sučelje"
+
+#~ msgid ""
+#~ "The Affiliate Area has been simplified and improved with the introduction "
+#~ "of a tabbed interface."
+#~ msgstr ""
+#~ "Partner sučelje je pojednostavljeno i unaprjeđeno uvođenjem tabulatora."
+
+#~ msgid "Integration with EDD Commissions"
+#~ msgstr "Integracija sa EDD provizijama"
+
+#~ msgid ""
+#~ "If you use Commissions for Easy Digital Downloads, you can now "
+#~ "automatically adjust the commission rate when a referral is present."
+#~ msgstr ""
+#~ "Ako koristite provizije za Easy Digital Downloads, možete automatski "
+#~ "prilagoditi stopu provizije kada je preporuka prisutna."
+
+#~ msgid "New Primary URL and Promotion Method Fields"
+#~ msgstr "Novo polje za primarni URL i metodu promocije"
+
+#~ msgid ""
+#~ "The affiliate registration form now includes fields for learning how your "
+#~ "affiliates will be promoting your products and services."
+#~ msgstr ""
+#~ "Obrazac za registraciju od sada uključuje polje za upoznavanje s metodama "
+#~ "koje će vaš partner koristiti u promociji vaših proizvoda i usluga."
+
+#~ msgid "Registration Form Retains Values on Error"
+#~ msgstr "Obrazac za prijavu zadržava vrijednosti u slučaju greške"
+
+#~ msgid ""
+#~ "When there's an error on the affiliate registration form, it no longer "
+#~ "clears the entire form, making it easier for your affiliates to complete "
+#~ "their registration."
+#~ msgstr ""
+#~ "Ako se pojavi greška u popunjavanju obrasca za registraciju, više se ne "
+#~ "neće izbrisati cijeli obrazac, čineći završetak procesa registracije "
+#~ "tvojim partnerima jednostavnijim."
+
+#~ msgid "Improved Affiliate Deletion"
+#~ msgstr "Unaprjeđeno brisanje partnera"
+
+#~ msgid ""
+#~ "When you delete an affiliate account, you now have the option to also "
+#~ "delete the user account and all affiliate data."
+#~ msgstr ""
+#~ "Prilikom brisanja računa partnera, od sada postoji i opcija brisanja "
+#~ "korisničkog računa i svih ostalih podataka vezanih uz partnera."
+
+#~ msgid "Option to Disable the TOS Field"
+#~ msgstr "Opcija za onemogućavanje TOS polja"
+
+#~ msgid ""
+#~ "The Terms of Service checkbox on the affiliate registration form will now "
+#~ "automatically be disabled when the corresponding page is not set in the "
+#~ "admin."
+#~ msgstr ""
+#~ "Kućica uvjeta sudjelovanja na obrazcu za registraciju će sada biti "
+#~ "automatski onemogućena ako odgovarajuća stranica nije postavljena od "
+#~ "strane administratora."
+
+#~ msgid "Enhanced Visit Search Options"
+#~ msgstr "Proširene opcije pretrage posjeta"
+
+#~ msgid ""
+#~ "The Visits page now can be searched with various methods in order to view "
+#~ "visits from specific affiliates, referrals, and more."
+#~ msgstr ""
+#~ "U cilju dosega informacija o specifičnim partnerima, preporukama i "
+#~ "ostalom stranica koja bilježi posjete sada se može pretražiti različitim "
+#~ "metodama."
+
+#~ msgid "Euros (&euro;)"
+#~ msgstr "Euro (&euro;)"
+
+#~ msgid "Korean Won (&#8361;)"
+#~ msgstr "Korejski won (&#8361;)"
+
+#~ msgid "Iranian Rial (&#65020;)"
+#~ msgstr "Iranski rial (&#65020;)"
+
+#~ msgid "Payment Email (if different)"
+#~ msgstr "PayPal email (ako je drugačiji)"

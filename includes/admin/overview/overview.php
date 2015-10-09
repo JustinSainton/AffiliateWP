@@ -184,7 +184,7 @@ function affwp_affiliates_dashboard() {
 									<?php endforeach; ?>
 								<?php else : ?>
 									<tr>
-										<td colspan="3"><?php _e( 'No registered affiliates', 'affiliate-wp' ); ?></td>
+										<td colspan="4"><?php _e( 'No registered affiliates', 'affiliate-wp' ); ?></td>
 									</tr>
 								<?php endif; ?>
 								</tbody>

@@ -18,11 +18,11 @@
 
 				<td>
 					<span class="affwp-ajax-search-wrap">
-						<input type="text" name="user_name" id="user_name" class="affwp-user-search" autocomplete="off" />
+						<input type="text" name="user_name" id="user_name" class="affwp-user-search" data-affwp-status="active" autocomplete="off" />
 						<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
 					</span>
 					<div id="affwp_user_search_results"></div>
-					<div class="description"><?php _e( 'Enter the name of the affiliate or enter a partial name or email to perform a search.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter the name of the affiliate or enter a partial name or email to perform a search.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -35,7 +35,7 @@
 
 				<td>
 					<input type="text" name="amount" id="amount" />
-					<div class="description"><?php _e( 'The amount of the referral, such as 15.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'The amount of the referral, such as 15.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -48,7 +48,7 @@
 
 				<td>
 					<input type="text" name="description" id="description" />
-					<div class="description"><?php _e( 'Enter a description for this referral.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter a description for this referral.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -61,7 +61,7 @@
 
 				<td>
 					<input type="text" name="reference" id="reference" />
-					<div class="description"><?php _e( 'Enter a reference for this referral (optional). Usually this would be the transaction ID of the associated purchase.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter a reference for this referral (optional). Usually this would be the transaction ID of the associated purchase.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -74,7 +74,7 @@
 
 				<td>
 					<input type="text" name="context" id="context" />
-					<div class="description"><?php _e( 'Enter a context for this referral (optional). Usually this is used to help identify the payment system that was used for the transaction.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Enter a context for this referral (optional). Usually this is used to help identify the payment system that was used for the transaction.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -92,7 +92,7 @@
 						<option value="pending"><?php _e( 'Pending', 'affiliate-wp' ); ?></option>
 						<option value="rejected"><?php _e( 'Rejected', 'affiliate-wp' ); ?></option>
 					</select>
-					<div class="description"><?php _e( 'Select the status of the referral.', 'affiliate-wp' ); ?></div>
+					<p class="description"><?php _e( 'Select the status of the referral.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
@@ -101,6 +101,7 @@
 
 		<?php do_action( 'affwp_new_referral_bottom' ); ?>
 
+		<?php echo wp_nonce_field( 'affwp_add_referral_nonce', 'affwp_add_referral_nonce' ); ?>
 		<input type="hidden" name="user_id" id="user_id" value="" />
 		<input type="hidden" name="affwp_action" value="add_referral" />
 

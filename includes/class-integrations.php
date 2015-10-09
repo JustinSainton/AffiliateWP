@@ -11,16 +11,25 @@ class Affiliate_WP_Integrations {
 	public function get_integrations() {
 
 		return apply_filters( 'affwp_integrations', array(
-			'edd'          => 'Easy Digital Downloads',
-			'gravityforms' => 'Gravity Forms',
-			'exchange'     => 'iThemes Exchange',
-			'membermouse'  => 'MemberMouse',
-			'jigoshop'     => 'Jigoshop',
-			'rcp'          => 'Restrict Content Pro',
-			'pmp'          => 'Paid Memberships Pro',
-			'shopp'        => 'Shopp',
-			'woocommerce'  => 'WooCommerce',
-			'wpec'         => 'WP e-Commerce',
+			'edd'            => 'Easy Digital Downloads',
+			'formidablepro'  => 'Formidable Pro',
+			'gravityforms'   => 'Gravity Forms',
+			'exchange'       => 'iThemes Exchange',
+			'jigoshop'       => 'Jigoshop',
+			'marketpress'    => 'MarketPress',
+			'membermouse'    => 'MemberMouse',
+			'memberpress'    => 'MemberPress',
+			'ninja-forms'    => 'Ninja Forms',
+			'pmp'            => 'Paid Memberships Pro',
+			'rcp'            => 'Restrict Content Pro',
+			's2member'       => 's2Member',
+			'shopp'	         => 'Shopp',
+			'sproutinvoices' => 'Sprout Invoices',
+			'woocommerce'    => 'WooCommerce',
+			'wpeasycart'     => 'WP EasyCart',
+			'wpec'           => 'WP e-Commerce',
+			'wp-invoice'     => 'WP-Invoice',
+			'zippycourses'   => 'Zippy Courses',
 		) );
 
 	}
@@ -36,6 +45,8 @@ class Affiliate_WP_Integrations {
 
 		$enabled = apply_filters( 'affwp_enabled_integrations', $this->get_enabled_integrations() );
 
+		do_action( 'affwp_integrations_load' );
+
 		foreach( $enabled as $filename => $integration ) {
 
 			if( file_exists( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/class-' . $filename . '.php' ) ) {
@@ -43,6 +54,8 @@ class Affiliate_WP_Integrations {
 			}
 
 		}
+
+		do_action( 'affwp_integrations_loaded' );
 
 	}
 

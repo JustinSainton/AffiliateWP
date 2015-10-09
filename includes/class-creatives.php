@@ -7,7 +7,7 @@
  * @package     AffiliateWP
  * @copyright   Copyright (c) 2012, Pippin Williamson
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
- * @since       2.1
+ * @since       1.2
  */
 
 class Affiliate_WP_Creatives {
@@ -15,42 +15,63 @@ class Affiliate_WP_Creatives {
 	/**
 	 * The [affiliate_creative] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creative( $args = array() ) {
-		
-		$id = isset( $args['id'] ) ? $args['id'] : '';
 
-		$defaults = array(
-			'id'            => '',
-			'link'          => affiliate_wp()->creatives->get_column( 'url', $id ),
-			'text'          => affiliate_wp()->creatives->get_column( 'text', $id ),
-			'image_id'      => '',
-			'image_link'	=> affiliate_wp()->creatives->get_column( 'image', $id ),
-			'preview'       => 'yes'
-		);
+		// creative's ID
+		$id = isset( $args['id'] ) ? (int) $args['id'] : '';
 
-		$args = wp_parse_args( $args, $defaults );
+		if ( ! $id ) {
+			return;
+		}
 
-		// if no link is specified, use the current site URL
-		$link = ! empty( $args['link'] ) ? $args['link'] : get_site_url();
+		// creative's link/URL
+		if ( ! empty( $args['link'] ) ) {
+			// set link to shortcode parameter
+			$link = $args['link'];
+		} elseif ( affiliate_wp()->creatives->get_column( 'url', $id ) ) {
+			// set link to creative's link from creatives section
+			$link = affiliate_wp()->creatives->get_column( 'url', $id );
+		} else {
+			// set link to the site URL
+			$link = get_site_url();
+		}
 
-		// if no text is specified, use the site name
-		$text = ! empty( $args['text'] ) ? $args['text'] : get_bloginfo( 'name' );
+		// creative's image link
+		$image_link = ! empty( $args['image_link'] ) ? $args['image_link'] : affiliate_wp()->creatives->get_column( 'image', $id );	
+
+		// creative's text (shown in alt/title tags)
+		if ( ! empty( $args['text'] ) ) {
+			// set text to shortcode parameter if used
+			$text = $args['text'];
+		} elseif ( affiliate_wp()->creatives->get_column( 'text', $id ) ) {
+			// set text to creative's text from the creatives section
+			$text = affiliate_wp()->creatives->get_column( 'text', $id );
+		} else {
+			// set text to name of blog
+			$text = get_bloginfo( 'name' );
+		}
+
+		// creative's description
+		$description = ! empty( $args['description'] ) ? $args['description'] : affiliate_wp()->creatives->get_column( 'description', $id );
+
+		// creative's preview parameter
+		$preview = ! empty( $args['preview'] ) ? $args['preview'] : 'yes';
 
 		// get the image attributes from image_id
 		$attributes = ! empty( $args['image_id'] ) ? wp_get_attachment_image_src( $args['image_id'], 'full' ) : '';
 
 		// load the HTML required for the creative
-		return $this->html( $id, $args['link'], $args['image_link'], $attributes, $args['preview'], $args['text'] );
+		return $this->html( $id, $link, $image_link, $attributes, $preview, $text, $description );
 
 	}
 
 	/**
 	 * The [affiliate_creatives] shortcode
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string
 	 */
 	public function affiliate_creatives( $args = array() ) {
@@ -84,88 +105,41 @@ class Affiliate_WP_Creatives {
 	/**
 	 * Returns the referral link to append to the end of a URL
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @return string Affiliate's referral link
-	 * @todo  Better handling of referral link once we introduce pretty affiliate URLs
 	 */
 	public function ref_link( $url = '' ) {
-		return add_query_arg( affiliate_wp()->tracking->get_referral_var(), affwp_get_affiliate_id(), $url );
+		return affwp_get_affiliate_referral_url( array( 'base_url' => $url ) );
 	}
 
 	/**
 	 * Shortcode HTML
 	 *
-	 * @since  2.1
+	 * @since  1.2
 	 * @param  $image the image URL. Either the URL from the image column in DB or external URL of image.
 	 * @return string
 	 */
 	public function html( $id = '', $url, $image_link, $image_attributes, $preview, $text, $desc = '' ) {
 		
+		global $affwp_creative_atts;
+
 		$id_class = $id ? ' creative-' . $id : '';
+		
+		$affwp_creative_atts = array(
+			'id'               => $id,
+			'url'              => $url,
+			'id_class'         => $id_class,
+			'desc'             => $desc,
+			'preview'          => $preview,
+			'image_attributes' => $image_attributes,
+			'image_link'       => $image_link,
+			'text'             => $text
+		);
+
 		ob_start();
-	?>
-		<div class="affwp-creative<?php echo esc_attr( $id_class ); ?>">
-
-			<?php if ( $preview != 'no' ) : ?>
-
-				<?php 
-				// Image preview - using ID of image from media library
-				if ( $image_attributes ) : ?> 
-				<p>
-					<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
-						<img src="<?php echo esc_attr( $image_attributes[0] ); ?>" width="<?php echo esc_attr( $image_attributes[1] ); ?>" height="<?php echo esc_attr( $image_attributes[2] ); ?>" alt="<?php echo esc_attr( $text ); ?>">
-					</a>
-				</p>
-				
-				<?php
-				// Image preview - External image URL or picked from media library
-				elseif ( $image_link ) :
-					$image      = $image_link;
-					$image_size = getimagesize( $image ); // get the image's dimensions
-				?>
-					<p>
-						<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>">
-							<img src="<?php echo esc_attr( $image ); ?>" <?php echo $image_size[3]; ?> alt="<?php echo esc_attr( $text ); ?>">
-						</a>
-					</p>
-
-				<?php else : // text link preview ?>
-					<p>
-						<a href="<?php echo esc_url( $this->ref_link( $url ) ); ?>" title="<?php echo esc_attr( $text ); ?>"><?php echo esc_attr( $text ); ?></a>
-					</p>
-				<?php endif; ?>
-
-			<?php endif; ?>
-
-			<?php
-				echo apply_filters( 'affwp_affiliate_creative_text', '<p>' . __( 'Copy and paste the following:', 'affiliate-wp' ) . '</p>' );
-
-				// Image - media library
-				if ( $image_attributes ) {
-					$image_or_text = '<img src="' . esc_attr( $image_attributes[0] ) . '" alt="' . esc_attr( $text ) .'" />';
-				}
-				// Image - External URL
-				elseif ( $image_link ) {
-					$image_or_text = '<img src="' . esc_attr( $image_link ) . '" alt="' . esc_attr( $text ) .'" />';
-				}
-				// Show site name when no image
-				else {
-					$image_or_text = esc_attr( $text );
-				}
-			?>
-			
-			<?php 
-				$creative = '<a href="' . esc_url( $this->ref_link( $url ) ) .'" title="' . esc_attr( $text ) . '">' . $image_or_text . '</a>';
-				echo '<p>' . esc_html( $creative ) . '</p>'; 
-			?>
-
-			<?php if( ! empty( $desc ) ) : ?>
-				<p class="affwp-creative-desc"><?php echo $desc; ?></p>
-			<?php endif; ?>
-			
-		</div>
-
-		<?php 
+		
+		affiliate_wp()->templates->get_template_part( 'creative' );
+		
 		$html = ob_get_clean();
 		return apply_filters( 'affwp_affiliate_creative_html', $html, $url, $image_link, $image_attributes, $preview, $text );
 	}

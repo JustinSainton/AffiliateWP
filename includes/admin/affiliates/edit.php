@@ -1,9 +1,13 @@
 <?php
-$affiliate = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
-$user_info = get_userdata( $affiliate->user_id );
-$rate_type = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
-$rate      = ! empty( $affiliate->rate ) ? $affiliate->rate : '';
-$email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
+$affiliate    = affwp_get_affiliate( absint( $_GET['affiliate_id'] ) );
+$user_info    = get_userdata( $affiliate->user_id );
+$rate_type    = ! empty( $affiliate->rate_type ) ? $affiliate->rate_type : '';
+$rate         = isset( $affiliate->rate ) ? $affiliate->rate : null;
+$rate         = affwp_abs_number_round( $affiliate->rate );
+$default_rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
+$default_rate = affwp_abs_number_round( $default_rate );
+$email        = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : '';
+$reason       = affwp_get_affiliate_meta( $affiliate->affiliate_id, '_rejection_reason', true );
 ?>
 <div class="wrap">
 
@@ -35,13 +39,26 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</th>
 
 				<td>
-					<input class="small-text" type="text" name="user_id" id="user_id" value="<?php echo esc_attr( $affiliate->user_id ); ?>" <?php if( ! empty( $affiliate->user_id ) ) { echo 'disabled="1"'; } ?> />
+					<input class="small-text" type="text" name="user_id" id="user_id" value="<?php echo esc_attr( $affiliate->user_id ); ?>" disabled="1" />
 					<p class="description"><?php _e( 'The affiliate\'s user ID. This cannot be changed.', 'affiliate-wp' ); ?></p>
 				</td>
 
 			</tr>
 
 			<tr class="form-row form-required">
+
+				<th scope="row">
+					<label for="user_login"><?php _e( 'Username', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<input class="regular-text" type="text" name="user_login" id="user_login" value="<?php echo esc_attr( $user_info->user_login ); ?>" disabled="1" />
+					<p class="description"><?php _e( 'The affiliate\'s username. This cannot be changed.', 'affiliate-wp' ); ?></p>
+				</td>
+
+			</tr>
+
+			<tr class="form-row">
 
 				<th scope="row">
 					<label for="rate_type"><?php _e( 'Referral Rate Type', 'affiliate-wp' ); ?></label>
@@ -59,14 +76,14 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 
 			</tr>
 
-			<tr class="form-row form-required">
+			<tr class="form-row">
 
 				<th scope="row">
 					<label for="rate"><?php _e( 'Referral Rate', 'affiliate-wp' ); ?></label>
 				</th>
 
 				<td>
-					<input class="small-text" type="text" name="rate" id="rate" value="<?php echo esc_attr( $rate ); ?>"/>
+					<input class="small-text" type="number" name="rate" id="rate" step="0.01" min="0" max="999999" placeholder="<?php echo esc_attr( $default_rate ); ?>" value="<?php echo esc_attr( $rate ); ?>"/>
 					<p class="description"><?php _e( 'The affiliate\'s referral rate, such as 20 for 20%. If left blank, the site default will be used.', 'affiliate-wp' ); ?></p>
 				</td>
 
@@ -97,6 +114,22 @@ $email     = ! empty( $affiliate->payment_email ) ? $affiliate->payment_email : 
 				</td>
 
 			</tr>
+
+			<?php if( 'rejected' == $affiliate->status && ! empty( $reason ) ) : ?>
+				<tr class="form-row">
+
+					<th scope="row">
+						<label><?php _e( 'Rejection Reason', 'affiliate-wp' ); ?></label>
+					</th>
+
+					<td>
+						<div class="description"><?php echo wpautop( $reason ); ?></div>
+					</td>
+
+				</tr>
+			<?php endif; ?>
+
+			<?php do_action( 'affwp_edit_affiliate_end', $affiliate ); ?>
 
 		</table>
 

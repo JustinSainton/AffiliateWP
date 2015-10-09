@@ -69,7 +69,7 @@ class Affiliate_WP_Recount {
 		}
 
 		$earnings = affiliate_wp()->referrals->paid_earnings( '', $affiliate_id, false );
-		affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ) );
+		affiliate_wp()->affiliates->update( $affiliate_id, array( 'earnings' => $earnings ), '', 'affiliate' );
 	}
 
 	/**
@@ -85,7 +85,7 @@ class Affiliate_WP_Recount {
 		}
 
 		$earnings = affiliate_wp()->referrals->count( array( 'affiliate_id' => $affiliate_id, 'status' => 'paid' ) );
-		affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $earnings ) );
+		affiliate_wp()->affiliates->update( $affiliate_id, array( 'referrals' => $earnings ), '', 'affiliate' );
 
 	}
 
@@ -102,10 +102,10 @@ class Affiliate_WP_Recount {
 		}
 
 		$earnings = affiliate_wp()->visits->count( array( 'affiliate_id' => $affiliate_id ) );
-		affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $earnings ) );
+		affiliate_wp()->affiliates->update( $affiliate_id, array( 'visits' => $earnings ), '', 'affiliate' );
 
 	}
-	
+
 
 }
 new Affiliate_WP_Recount;

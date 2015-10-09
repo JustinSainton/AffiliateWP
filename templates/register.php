@@ -64,7 +64,7 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 
 			<p>
 				<label for="affwp-user-url"><?php _e( 'Website URL', 'affiliate-wp' ); ?></label>
-				<input id="affwp-user-url" type="text" name="affwp_user_url" value="<?php if( ! empty( $url ) ) { echo $url; } ?>" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
+				<input id="affwp-user-url" class="required" type="text" name="affwp_user_url" value="<?php if( ! empty( $url ) ) { echo $url; } ?>" title="<?php esc_attr_e( 'Website URL', 'affiliate-wp' ); ?>" />
 			</p>
 
 			<p>
@@ -95,6 +95,14 @@ if( ! is_user_logged_in() && ! empty( $errors ) ) {
 					<input id="affwp-tos" class="required" type="checkbox" name="affwp_tos" />
 					<?php printf( __( 'Agree to our <a href="%s" target="_blank">Terms of Use</a>', 'affiliate-wp' ), esc_url( get_permalink( affiliate_wp()->settings->get( 'terms_of_use' ) ) ) ); ?>
 				</label>
+			</p>
+		<?php endif; ?>
+
+		<?php if ( affwp_is_recaptcha_enabled() ) : ?>
+			<div class="g-recaptcha" data-sitekey="<?php echo esc_attr( affiliate_wp()->settings->get( 'recaptcha_site_key' ) ); ?>"></div>
+
+			<p>
+				<input type="hidden" name="g-recaptcha-remoteip" value=<?php echo esc_attr( affiliate_wp()->tracking->get_ip() ); ?> />
 			</p>
 		<?php endif; ?>
 

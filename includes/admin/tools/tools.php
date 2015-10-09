@@ -88,7 +88,7 @@ function affwp_get_tools_tabs() {
 function affwp_recount_tab() {
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
-		<div class="metabox-holder">	
+		<div class="metabox-holder">
 			<div class="postbox">
 				<h3><span><?php _e( 'Recount Affiliate Stats', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -128,25 +128,44 @@ add_action( 'affwp_tools_tab_recount', 'affwp_recount_tab' );
  * @return      void
  */
 function affwp_migration_tab() {
+	$user_counts = count_users();
+
+	$_roles = new WP_Roles();
+	$roles  = array();
+
+	foreach ( $_roles->get_names() as $role => $label ) {
+		$roles[ $role ]['label'] = translate_user_role( $label );
+		$roles[ $role ]['count'] = isset( $user_counts['avail_roles'][ $role ] ) ? $user_counts['avail_roles'][ $role ] : 0;
+	}
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
-		<div class="metabox-holder">	
+		<div class="metabox-holder">
 			<div class="postbox">
 				<div class="inside">
 					<p><?php _e( 'These tools assist in migrating affiliate and referral data from existing platforms.', 'affiliate-wp' ); ?></p>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-	
+
 			<div class="postbox">
 				<h3><span><?php _e( 'User Accounts', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
-					<p><?php _e( 'Use this tool create affiliate accounts for each of your existing WordPress user accounts.', 'affiliate-wp' ); ?></p>
-					<form method="get">
+					<p><?php _e( 'Use this tool to create affiliate accounts for each of your existing WordPress user accounts that belong to the selected roles below.', 'affiliate-wp' ); ?></p>
+					<p><?php _e( '<strong>NOTE:</strong> Users that already have affiliate accounts will be skipped. Duplicate accounts will not be created.', 'affiliate-wp' ); ?></p>
+					<form method="get" id="affiliate-wp-migrate-user-accounts">
+						<h4><span><?php _e( 'Select User Roles', 'affiliate-wp' ); ?></span></h4>
+						<?php foreach ( $roles as $role => $data ) : ?>
+							<?php $has_users = ! empty( $data['count'] ); ?>
+							<label>
+								<input type="checkbox" name="roles[]" value="<?php echo esc_attr( $role ); ?>" <?php checked( $has_users ); disabled( ! $has_users ) ?>>
+								<span class="<?php echo ( ! $has_users ) ? 'muted' : ''; ?>"><?php echo esc_html( $data['label'] ); ?> (<?php echo absint( $data['count'] ); ?>)</span>
+							</label>
+							<br>
+						<?php endforeach; ?>
 						<input type="hidden" name="type" value="users"/>
 						<input type="hidden" name="part" value="affiliates"/>
 						<input type="hidden" name="page" value="affiliate-wp-migrate"/>
 						<p>
-							<input type="submit" value="<?php _e( 'Create Affiliate Accounts', 'affiliate-wp' ); ?>" class="button"/>
+							<input type="submit" value="<?php _e( 'Create Affiliate Accounts for Users', 'affiliate-wp' ); ?>" class="button" />
 						</p>
 					</form>
 				</div><!-- .inside -->
@@ -155,7 +174,7 @@ function affwp_migration_tab() {
 			<div class="postbox">
 				<h3><span>Affiliates Pro</span></h3>
 				<div class="inside">
-					<p><?php _e( 'Use this tool migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
+					<p><?php _e( 'Use this tool to migrate existing affiliate / referral data from Affiliates Pro to AffiliateWP.', 'affiliate-wp' ); ?></p>
 					<p><?php _e( '<strong>NOTE:</strong> this tool should only ever be used on a fresh install. If you have already collected affiliate or referral data, do not use this tool.', 'affiliate-wp' ); ?></p>
 					<form method="get">
 						<input type="hidden" name="type" value="affiliates-pro"/>
@@ -163,6 +182,21 @@ function affwp_migration_tab() {
 						<input type="hidden" name="page" value="affiliate-wp-migrate"/>
 						<p>
 							<input type="submit" value="<?php _e( 'Migrate Data from Affiliates Pro', 'affiliate-wp' ); ?>" class="button"/>
+						</p>
+					</form>
+				</div><!-- .inside -->
+			</div><!-- .postbox -->
+
+			<div class="postbox">
+				<h3><span>WP Affiliate</span></h3>
+				<div class="inside">
+					<p><?php _e( 'Use this tool to migrate existing affiliate accounts from WP Affiliate to AffiliateWP.', 'affiliate-wp' ); ?></p>
+					<form method="get">
+						<input type="hidden" name="type" value="wp-affiliate"/>
+						<input type="hidden" name="part" value="affiliates"/>
+						<input type="hidden" name="page" value="affiliate-wp-migrate"/>
+						<p>
+							<input type="submit" value="<?php _e( 'Migrate Data from WP Affiliate', 'affiliate-wp' ); ?>" class="button"/>
 						</p>
 					</form>
 				</div><!-- .inside -->
@@ -183,8 +217,8 @@ add_action( 'affwp_tools_tab_migration', 'affwp_migration_tab' );
 function affwp_export_import_tab() {
 ?>
 	<div id="affwp-dashboard-widgets-wrap">
-		<div class="metabox-holder">	
-			
+		<div class="metabox-holder">
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Export Affiliates', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -238,7 +272,7 @@ function affwp_export_import_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-	
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Export Settings', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">
@@ -252,7 +286,7 @@ function affwp_export_import_tab() {
 					</form>
 				</div><!-- .inside -->
 			</div><!-- .postbox -->
-	
+
 			<div class="postbox">
 				<h3><span><?php _e( 'Import Settings', 'affiliate-wp' ); ?></span></h3>
 				<div class="inside">

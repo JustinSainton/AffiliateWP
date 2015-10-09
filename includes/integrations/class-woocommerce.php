@@ -30,6 +30,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
 		add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_pending_to_cancelled', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'woocommerce_order_status_pending_to_failed', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'wc-on-hold_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'wc-processing_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
+		add_action( 'wc-completed_to_trash', array( $this, 'revoke_referral_on_refund' ), 10 );
 
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
@@ -61,46 +66,55 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 				$this->affiliate_id = $affiliate_id;
 			}
 
-			if( affwp_get_affiliate_email( $this->affiliate_id ) == $this->order->billing_email ) {
-				return; // Customers cannot refer themselves
+			if ( $this->is_affiliate_email( $this->order->billing_email ) ) {
+				return false; // Customers cannot refer themselves
 			}
 
-			$cart_discount = $this->order->get_total_discount();
+			// Check for an existing referral
+			$existing = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
+
+			// If an existing referral exists and it is not pending, exit. If it is pending, we update it below
+			if( $existing && 'pending' != $existing->status ) {
+			
+				return false; // Referral already created for this reference
+
+			}
+
+			$cart_shipping = $this->order->get_total_shipping();
 
 			$items = $this->order->get_items();
 
-			//echo '<pre>'; print_r( $items ); echo '</pre>'; exit;
+			// Calculate the referral amount based on product prices
+			$amount = 0.00;
+			foreach( $items as $product ) {
 
-			if( is_array( $items ) ) {
+				if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+					continue; // Referrals are disabled on this product
+				}
 
-				// Calculate the referral amount based on product prices
-				$amount = 0.00;
-				foreach( $items as $product ) {
+				// The order discount has to be divided across the items
 
-					if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
-						continue; // Referrals are disabled on this product
-					}
+				$product_total = $product['line_total'];
+				$shipping      = 0;
 
-					// The order discount has to be divided across the items
+				if( $cart_shipping > 0 && ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 
-					$discount = 0;
-
-					if( $cart_discount > 0 ) {
-
-						$discount = $cart_discount / count( $items );
-
-					}
-
-					$product_total = $product['line_total'] - $discount;
-
-					$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
+					$shipping       = $cart_shipping / count( $items );
+					$product_total += $shipping;
 
 				}
 
-			} else {
+				if( ! affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 
-				$total  = $this->order->get_total() - $cart_discount;
-				$amount = $this->calculate_referral_amount( $this->order->get_total(), $order_id );
+					$product_total += $product['line_tax'];
+
+				}
+
+				if( $product_total <= 0 ) {
+					continue;
+				}
+
+				$amount += $this->calculate_referral_amount( $product_total, $order_id, $product['product_id'] );
 
 			}
 
@@ -111,25 +125,82 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			$description = $this->get_referral_description();
 			$visit_id    = affiliate_wp()->tracking->get_visit_id();
 
-			$referral_id = affiliate_wp()->referrals->add( apply_filters( 'affwp_insert_pending_referral', array(
-				'amount'       => $amount,
-				'reference'    => $order_id,
-				'description'  => $description,
-				'affiliate_id' => $this->affiliate_id,
-				'visit_id'     => $visit_id,
-				'context'      => $this->context
-			), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
+			if( $existing ) {
 
-			if( $referral_id ) {
+				// Update the previously created referral
+				affiliate_wp()->referrals->update_referral( $existing->referral_id, array(
+					'amount'       => $amount,
+					'reference'    => $order_id,
+					'description'  => $description,
+					'campaign'     => affiliate_wp()->tracking->get_campaign(),
+					'affiliate_id' => $this->affiliate_id,
+					'visit_id'     => $visit_id,
+					'products'     => $this->get_products(),
+					'context'      => $this->context
+				) );
 
-				$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
-				$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
+			} else {
 
-				$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+				// Create a new referral
+				$referral_id = affiliate_wp()->referrals->add( apply_filters( 'affwp_insert_pending_referral', array(
+					'amount'       => $amount,
+					'reference'    => $order_id,
+					'description'  => $description,
+					'campaign'     => affiliate_wp()->tracking->get_campaign(),
+					'affiliate_id' => $this->affiliate_id,
+					'visit_id'     => $visit_id,
+					'products'     => $this->get_products(),
+					'context'      => $this->context
+				), $amount, $order_id, $description, $this->affiliate_id, $visit_id, array(), $this->context ) );
 
+				if( $referral_id ) {
+
+					$amount = affwp_currency_filter( affwp_format_amount( $amount ) );
+					$name   = affiliate_wp()->affiliates->get_affiliate_name( $this->affiliate_id );
+
+					$this->order->add_order_note( sprintf( __( 'Referral #%d for %s recorded for %s', 'affiliate-wp' ), $referral_id, $amount, $name ) );
+
+				}
 			}
 
+
 		}
+
+	}
+
+	/**
+	 * Retrieves the product details array for the referral
+	 *
+	 * @access  public
+	 * @since   1.6
+	 * @return  array
+	*/
+	public function get_products( $order_id = 0 ) {
+
+		$products  = array();
+		$items     = $this->order->get_items();
+		foreach( $items as $key => $product ) {
+
+			if( get_post_meta( $product['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				continue; // Referrals are disabled on this product
+			}
+
+			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				$amount = $product['line_total'] - $product['line_tax'];
+			} else {
+				$amount = $product['line_total'];
+			}
+
+			$products[] = array(
+				'name'            => $product['name'],
+				'id'              => $product['product_id'],
+				'price'           => $amount,
+				'referral_amount' => $this->calculate_referral_amount( $amount, $order_id, $product['product_id'] )
+			);
+
+		}
+
+		return $products;
 
 	}
 
@@ -153,7 +224,15 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function revoke_referral_on_refund( $order_id = 0 ) {
 
+		if ( is_a( $order_id, 'WP_Post' ) ) {
+			$order_id = $order_id->ID;
+		}
+
 		if( ! affiliate_wp()->settings->get( 'revoke_on_refund' ) ) {
+			return;
+		}
+
+		if( 'shop_order' != get_post_type( $order_id ) ) {
 			return;
 		}
 
@@ -201,9 +280,11 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		<p class="form-field affwp-woo-coupon-field">
 			<label for="user_name"><?php _e( 'Affiliate Discount?', 'affiliate-wp' ); ?></label>
 			<span class="affwp-ajax-search-wrap">
-				<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
-				<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" autocomplete="off" style="width: 300px;" />
-				<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				<span class="affwp-woo-coupon-input-wrap">
+					<input type="hidden" name="user_id" id="user_id" value="<?php echo esc_attr( $user_id ); ?>" />
+					<input type="text" name="user_name" id="user_name" value="<?php echo esc_attr( $user_name ); ?>" class="affwp-user-search" data-affwp-status="active" autocomplete="off" />
+					<img class="affwp-ajax waiting" src="<?php echo admin_url('images/wpspin_light.gif'); ?>" style="display: none;"/>
+				</span>
 				<span id="affwp_user_search_results"></span>
 				<img class="help_tip" data-tip='<?php _e( 'If you would like to connect this discount to an affiliate, enter the name of the affiliate it belongs to.', 'affiliate-wp' ); ?>' src="<?php echo WC()->plugin_url(); ?>/assets/images/help.png" height="16" width="16" />
 			</span>
@@ -218,6 +299,13 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	 * @since   1.1
 	*/
 	public function store_discount_affiliate( $coupon_id = 0 ) {
+
+		if( empty( $_POST['user_name'] ) ) {
+			
+			delete_post_meta( $coupon_id, 'affwp_discount_affiliate' );
+			return;
+
+		}
 
 		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
@@ -258,6 +346,10 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 			if( $affiliate_id ) {
 
+				if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
+					continue;
+				}
+
 				return $affiliate_id;
 
 			}
@@ -275,19 +367,20 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 	*/
 	public function get_referral_description() {
 
-		$description = '';
 		$items       = $this->order->get_items();
-		foreach( $items as $key => $item ) {
+		$description = array();
 
-			if( get_post_meta( $item['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+		foreach ( $items as $key => $item ) {
+
+			$description[] = $item['name'];
+
+			if ( get_post_meta( $item['product_id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 				continue; // Referrals are disabled on this product
 			}
 
-			$description .= $item['name'];
-			if( $key + 1 < count( $items ) ) {
-				$description .= ', ';
-			}
 		}
+
+		$description = implode( ', ', $description );
 
 		return $description;
 

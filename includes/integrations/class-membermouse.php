@@ -23,7 +23,7 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 				return;
 			}
 
-			if( $this->get_affiliate_email() == $member_data['email'] ) {
+			if ( $this->is_affiliate_email( $member_data['email'] ) ) {
 				return; // Customers cannot refer themselves
 			}
 
@@ -37,30 +37,38 @@ class Affiliate_WP_Membermouse extends Affiliate_WP_Base {
 
 	public function add_referral( $affiliate_data ) {
 
-		if( $this->was_referred() ) {
+		$this->affiliate_id = $affiliate_data['order_affiliate_id'];
 
-			$user = get_userdata( $affiliate_data['member_id'] );
+		$user = get_userdata( $affiliate_data['member_id'] );
 
-			if( $this->get_affiliate_email() == $user->user_email ) {
-				return; // Customers cannot refer themselves
+		$products = json_decode( stripslashes( $affiliate_data['order_products'] ) );
+
+		$description = '';
+
+		if( is_array( $products ) ) {
+
+			$count = count( $products );
+
+			foreach( $products as $product ) {
+
+				$product = (array) $product;
+
+				$description .= $product['name'];
+
+				if( $key + 1 < $count ) {
+					$description .= ', ';
+				}
+
 			}
-
-			$products = json_decode( $affiliate_data['order_products'] );
-
-			if ( ! is_array( $products ) ) {
-				$products = array();
-			}
-
-			$description = implode( ', ', $products );
-
-			$reference = $affiliate_data['member_id'] . '|' . $affiliate_data['order_number'];
-
-			$referral_total = $this->calculate_referral_amount( $affiliate_data['order_total'], $reference );
-
-			$this->insert_pending_referral( $referral_total, $reference, $description );
-			$this->complete_referral( $reference );
 
 		}
+
+		$reference = $affiliate_data['member_id'] . '|' . $affiliate_data['order_number'];
+
+		$referral_total = $this->calculate_referral_amount( $affiliate_data['order_total'], $reference );
+
+		$this->insert_pending_referral( $referral_total, $reference, $description );
+		$this->complete_referral( $reference );
 
 	}
 

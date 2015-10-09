@@ -6,6 +6,8 @@ class Affiliate_WP_Tracking {
 
 	private $expiration_time;
 
+	public $referral;
+
 	/**
 	 * Get things started
 	 *
@@ -38,6 +40,18 @@ class Affiliate_WP_Tracking {
 
 		add_action( 'wp_head', array( $this, 'header_scripts' ) );
 		add_action( 'init', array( $this, 'rewrites' ) );
+
+		if ( function_exists( 'wc_get_page_id' ) && get_option( 'page_on_front' ) == wc_get_page_id( 'shop' ) ) {
+
+			add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ), -1 );
+
+		} else {
+
+			add_action( 'pre_get_posts', array( $this, 'unset_query_arg' ), 999999 );
+
+		}
+
+		add_action( 'redirect_canonical', array( $this, 'prevent_canonical_redirect' ), 0, 2 );
 		add_action( 'wp_ajax_nopriv_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_track_conversion', array( $this, 'track_conversion' ) );
 		add_action( 'wp_ajax_affwp_check_js', array( $this, 'check_js' ) );
@@ -51,6 +65,7 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function header_scripts() {
+		$referral_credit_last = affiliate_wp()->settings->get( 'referral_credit_last', 0 );
 ?>
 		<script type="text/javascript">
 		var AFFWP = AFFWP || {};
@@ -68,6 +83,7 @@ class Affiliate_WP_Tracking {
 			});
 		});
 <?php endif; ?>
+		AFFWP.referral_credit_last = <?php echo absint( $referral_credit_last ); ?>;
 		</script>
 <?php
 	}
@@ -83,12 +99,13 @@ class Affiliate_WP_Tracking {
 			'amount'      => '',
 			'description' => '',
 			'context'     => '',
+			'campaign'    => '',
 			'reference'   => ''
 		);
 
 		$args = wp_parse_args( $args, $defaults );
 
-		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) ) {
+		if( empty( $args['amount'] ) && ! empty( $_REQUEST['amount'] ) && 0 !== $args['amount'] ) {
 			// Allow the amount to be passed via a query string or post request
 			$args['amount'] = affwp_sanitize_amount( sanitize_text_field( urldecode( $_REQUEST['amount'] ) ) );
 		}
@@ -108,6 +125,10 @@ class Affiliate_WP_Tracking {
 
 		if( empty( $args['status'] ) && ! empty( $_REQUEST['status'] ) ) {
 			$args['status'] = sanitize_text_field( $_REQUEST['status'] );
+		}
+
+		if( empty( $args['campaign'] ) && ! empty( $_REQUEST['campaign'] ) ) {
+			$args['campaign'] = sanitize_text_field( $_REQUEST['campaign'] );
 		}
 
 		$md5 = md5( $args['amount'] . $args['description'] . $args['reference'] . $args['context'] . $args['status'] );
@@ -133,6 +154,7 @@ class Affiliate_WP_Tracking {
 						description : '<?php echo $args["description"]; ?>',
 						context     : '<?php echo $args["context"]; ?>',
 						reference   : '<?php echo $args["reference"]; ?>',
+						campaign    : '<?php echo $args["campaign"]; ?>',
 						md5         : '<?php echo $md5; ?>'
 					},
 					url: affwp_scripts.ajaxurl,
@@ -165,7 +187,7 @@ class Affiliate_WP_Tracking {
 
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie.js', array( 'jquery' ), '1.4.0' );
+		wp_enqueue_script( 'jquery-cookie', AFFILIATEWP_PLUGIN_URL . 'assets/js/jquery.cookie' . $suffix . '.js', array( 'jquery' ), '1.4.0' );
 		wp_enqueue_script( 'affwp-tracking', AFFILIATEWP_PLUGIN_URL . 'assets/js/tracking' . $suffix . '.js', array( 'jquery-cookie' ), AFFILIATEWP_VERSION );
 		wp_localize_script( 'jquery-cookie', 'affwp_scripts', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
@@ -173,11 +195,84 @@ class Affiliate_WP_Tracking {
 	/**
 	 * Registers the rewrite rules for pretty affiliate links
 	 *
-	 * @since 1.0
+	 * @since 1.3
 	 */
 	public function rewrites() {
 
-		 add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
+		$taxonomies = get_taxonomies( array( 'public' => true, '_builtin' => false ), 'objects' );
+		
+		foreach( $taxonomies as $tax_id => $tax ) {
+
+			add_rewrite_rule( $tax->rewrite['slug'] . '/(.+?)/' . $this->get_referral_var() . '(/(.*))?/?$', 'index.php?' . $tax_id . '=$matches[1]&ref=$matches[3]', 'top');		
+			
+		}
+
+		add_rewrite_endpoint( $this->get_referral_var(), EP_ALL );
+
+	}
+
+	/**
+	 * Removes our tracking query arg so as not to interfere with the WP query, see https://core.trac.wordpress.org/ticket/25143
+	 *
+	 * @since 1.3.1
+	 */
+	public function unset_query_arg( $query ) {
+
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		$key = affiliate_wp()->tracking->get_referral_var();
+
+		$ref = $query->get( $key );
+
+		if ( ! empty( $ref ) ) {
+
+			$this->referral = $ref;
+
+			// unset ref var from $wp_query
+			$query->set( $key, null );
+
+			global $wp;
+
+			// unset ref var from $wp
+			unset( $wp->query_vars[ $key ] );
+
+			// if in home (because $wp->query_vars is empty) and 'show_on_front' is page
+			if ( empty( $wp->query_vars ) && get_option( 'show_on_front' ) === 'page' ) {
+
+			 	// reset and re-parse query vars
+				$wp->query_vars['page_id'] = get_option( 'page_on_front' );
+				$query->parse_query( $wp->query_vars );
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Filters on canonical redirects
+	 *
+	 * @since 1.4
+	 * @return string
+	 */
+	public function prevent_canonical_redirect( $redirect_url, $requested_url ) {
+
+		if( ! is_front_page() ) {
+			return $redirect_url;
+		}
+
+		$key = affiliate_wp()->tracking->get_referral_var();
+		$ref = get_query_var( $key );
+
+		if( ! empty( $ref ) || false !== strpos( $requested_url, $key ) ) {
+
+			$redirect_url = $requested_url;
+
+		}
+
+		return $redirect_url;
 
 	}
 
@@ -188,15 +283,16 @@ class Affiliate_WP_Tracking {
 	 */
 	public function track_visit() {
 
-		$affiliate_id = absint( $_POST['affiliate'] );
+		$affiliate_id = isset( $_POST['affiliate'] ) ? absint( $_POST['affiliate'] ) : '';
 
-		if( $this->is_valid_affiliate( $affiliate_id ) ) {
+		if ( ! empty( $affiliate_id ) && $this->is_valid_affiliate( $affiliate_id ) ) {
 
 			// Store the visit in the DB
 			$visit_id = affiliate_wp()->visits->add( array(
 				'affiliate_id' => $affiliate_id,
 				'ip'           => $this->get_ip(),
 				'url'          => sanitize_text_field( $_POST['url'] ),
+				'campaign'     => ! empty( $_POST['campaign'] ) ? sanitize_text_field( $_POST['campaign'] ) : '',
 				'referrer'     => sanitize_text_field( $_POST['referrer'] )
 			) );
 
@@ -234,21 +330,31 @@ class Affiliate_WP_Tracking {
 			}
 
 			$status = ! empty( $_POST['status'] ) ? $_POST['status'] : 'unpaid';
+			$amount = sanitize_text_field( urldecode( $_POST['amount'] ) );
+
+			if( 0 == $amount && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+				die( '-5' ); // Ignore a zero amount referral
+			}
+
+			$amount = $amount > 0 ? affwp_calc_referral_amount( $amount, $affiliate_id ) : 0;
 
 			// Store the visit in the DB
-			$referal_id = affiliate_wp()->referrals->add( array(
+			$referral_id = affiliate_wp()->referrals->add( array(
 				'affiliate_id' => $affiliate_id,
-				'amount'       => affwp_calc_referral_amount( sanitize_text_field( urldecode( $_POST['amount'] ) ), $affiliate_id ),
-				'status'       => $status,
+				'amount'       => $amount,
+				'status'       => 'pending',
 				'description'  => sanitize_text_field( $_POST['description'] ),
 				'context'      => sanitize_text_field( $_POST['context'] ),
+				'campaign'     => sanitize_text_field( $_POST['campaign'] ),
 				'reference'    => sanitize_text_field( $_POST['reference'] ),
 				'visit_id'     => $this->get_visit_id()
 			) );
 
-			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referal_id ) );
+			affwp_set_referral_status( $referral_id, $status );
 
-			echo $referal_id; exit;
+			affiliate_wp()->visits->update( $this->get_visit_id(), array( 'referral_id' => $referral_id ), '', 'visit' );
+
+			echo $referral_id; exit;
 
 		} else {
 
@@ -265,20 +371,20 @@ class Affiliate_WP_Tracking {
 	 */
 	public function fallback_track_visit() {
 
-		$affiliate_id = get_query_var( $this->get_referral_var() );
+		$affiliate_id = $this->referral;
 
 		if( empty( $affiliate_id ) ) {
 
 			$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
 
-			if( ! is_numeric( $affiliate_id ) ) {
-				$affiliate_id = $this->get_affiliate_id_from_login( $affiliate_id );
-			}
-
 		}
 
 		if( empty( $affiliate_id ) ) {
 			return;
+		}
+
+		if( ! is_numeric( $affiliate_id ) ) {
+			$affiliate_id = $this->get_affiliate_id_from_login( $affiliate_id );
 		}
 
 		$affiliate_id = absint( $affiliate_id );
@@ -292,6 +398,7 @@ class Affiliate_WP_Tracking {
 				'affiliate_id' => $affiliate_id,
 				'ip'           => $this->get_ip(),
 				'url'          => $this->get_current_page_url(),
+				'campaign'     => $this->get_campaign(),
 				'referrer'     => ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : ''
 			) );
 
@@ -299,6 +406,22 @@ class Affiliate_WP_Tracking {
 
 		}
 
+	}
+
+	/**
+	 * Get the referral campaign
+	 *
+	 * @since 1.7
+	 */
+	public function get_campaign() {
+		$campaign = isset( $_COOKIE['affwp_campaign'] ) ? sanitize_text_field( $_COOKIE['affwp_campaign'] ) : '';
+
+		if( empty( $campaign ) ) {
+
+			$campaign = isset( $_REQUEST['campaign'] ) ? sanitize_text_field( $_REQUEST['campaign'] ) : '';
+
+		}
+		return apply_filters( 'affwp_get_campaign', $campaign, $this );
 	}
 
 	/**
@@ -383,7 +506,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
-		return $affiliate_id;
+		return apply_filters( 'affwp_tracking_get_affiliate_id', $affiliate_id );
 	}
 
 	/**
@@ -397,7 +520,7 @@ class Affiliate_WP_Tracking {
 
 		if( ! empty( $login ) ) {
 
-			$user = get_user_by( 'login', sanitize_text_field( $login ) );
+			$user = get_user_by( 'login', sanitize_text_field( urldecode( $login ) ) );
 
 			if( $user ) {
 
@@ -407,7 +530,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
-		return $affiliate_id;
+		return apply_filters( 'affwp_tracking_get_affiliate_id', $affiliate_id );
 
 	}
 
@@ -462,13 +585,17 @@ class Affiliate_WP_Tracking {
 			$affiliate_id = $this->get_affiliate_id();
 		}
 
-		$is_self = is_user_logged_in() && get_current_user_id() == affiliate_wp()->affiliates->get_column( 'user_id', $affiliate_id );
+		$ret       = false;
+		$affiliate = affwp_get_affiliate( $affiliate_id );
 
-		$active = 'active' == affwp_get_affiliate_status( $affiliate_id );
+		if( $affiliate ) {
 
-		$valid  = affiliate_wp()->affiliates->affiliate_exists( $affiliate_id );
+			$is_self = is_user_logged_in() && get_current_user_id() == $affiliate->user_id;
+			$active  = 'active' === $affiliate->status;
+			$ret     = ! $is_self && $active;
+		}
 
-		return ! empty( $valid ) && ! $is_self && $active;
+		return apply_filters( 'affwp_tracking_is_valid_affiliate', $ret, $affiliate_id );
 	}
 
 	/**
@@ -538,6 +665,7 @@ class Affiliate_WP_Tracking {
 		return apply_filters( 'affwp_use_fallback_tracking_method', $use_fallback );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Set whether JS works or not. This is called via ajax.
 	 *
@@ -551,3 +679,6 @@ class Affiliate_WP_Tracking {
 	}
 
 }
+=======
+}
+>>>>>>> master

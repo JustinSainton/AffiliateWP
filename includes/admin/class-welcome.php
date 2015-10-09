@@ -173,48 +173,54 @@ class Affiliate_WP_Welcome {
 			<?php $this->tabs(); ?>
 
 			<div class="changelog">
-				<h3><?php _e( 'New features', 'affiliate-wp' );?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'Per-Product Referral Rates', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'With version 1.2, you can now set referral rates on a per-product basis. Per-product referral rates are supported for both Easy Digital Downloads and WooCommerce, with more integrations on the way.', 'affiliate-wp' );?></p>
 
-					<h4><?php _e( 'Affiliate Creatives', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'We have introduced a new admin section for affiliate creatives that you can share with your affiliates. Easily add image and text creatives which are shown in affiliate area for your affiliates. Creatives can also be shown anywhere with a simple shortcode.', 'affiliate-wp' );?></p>
-					
+					<h2><?php _e( 'New Integrations', 'affiliate-wp' );?></h2>
+					<p><?php _e( 'We’ve made AffiliateWP more accessible and more valuable to more users with three new integrations:', 'affiliate-wp' );?></p>
 
-					<h4><?php _e( 'Improved Affiliate Area', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'The Affiliate Area has been simplified and improved with the introduction of a tabbed interface.', 'affiliate-wp' );?></p>
-				</div>
-			</div>
+					<ul>
+						<li><a href="http://docs.affiliatewp.com/article/1014-s2member" target="_blank">s2Member</a></li>
+						<li><a href="http://docs.affiliatewp.com/article/1019-zippy-courses" target="_blank">Zippy Courses</a></li>
+						<li><a href="http://docs.affiliatewp.com/article/669-wp-easycart" target="_blank">WP EasyCart</a></li>
+					</ul>
 
-			<div class="changelog">
-				<h3><?php _e( 'Additional Updates', 'affiliate-wp' );?></h3>
+					<h2><?php _e( 'Improved Integrations', 'affiliate-wp' );?></h2>
 
-				<div class="feature-section col three-col">
-					<div>
-						<h4><?php _e( 'Integration with EDD Commissions', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'If you use Commissions for Easy Digital Downloads, you can now automatically adjust the commission rate when a referral is present.', 'affiliate-wp' );?></p>
+					<ul>
+						<li><?php _e( 'Per-membership commission rates are now supported in Restrict Content Pro', 'affiliate-wp' ); ?></li>
+						<li><?php _e( 'Per-membership commission rates are now supported in MemberPress', 'affiliate-wp' ); ?></li>
+						<li><?php _e( 'Commissions can be disabled on individual forms in Gravity Forms', 'affiliate-wp' ); ?></li>
+						<li><?php _e( 'Commissions can be disabled on individual forms in Ninja Forms', 'affiliate-wp' ); ?></li>
+						<li><?php _e( 'Affiliate commissions are now shown on the order details screens in Paid Memberships Pro', 'affiliate-wp' ); ?></li>
+					</ul>
 
-						<h4><?php _e( 'New Primary URL and Promotion Method Fields', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The affiliate registration form now includes fields for learning how your affiliates will be promoting your products and services.', 'affiliate-wp' );?></p>
-					</div>
+					<h2><?php _e( 'URL Campaign Tracking', 'affiliate-wp' );?></h2>
+					<p><?php _e( 'Affiliates can now include URL campaign parameters in their affiliate URLs and have them automatically tracked by AffiliateWP. A new "Campaigns" table has been added to the Statistics tab of the affiliate area to show affiliates the results of their URL campaigns.', 'affiliate-wp' );?></p>
 
-					<div>
-						<h4><?php _e( 'Registration Form Retains Values on Error', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'When there\'s an error on the affiliate registration form, it no longer clears the entire form, making it easier for your affiliates to complete their registration.', 'affiliate-wp' );?></p>
+					<h2><?php _e( 'Affiliate Rejection Reasons', 'affiliate-wp' );?></h2>
+					<p><?php _e( 'When rejecting affiliate accounts, a rejection reason can be provided that is then (optionally) emailed to the affiliate and recorded for future reference.', 'affiliate-wp' );?></p>
 
-						<h4><?php _e( 'Improved Affiliate Deletion', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'When you delete an affiliate account, you now have the option to also delete the user account and all affiliate data.', 'affiliate-wp' );?></p>
-					</div>
+					<h2><?php _e( 'reCaptcha v2.0', 'affiliate-wp' );?></h2>
+					<p><?php _e( 'Google\'s reCaptcha version 2.0 library has been introduced to AffiliateWP to help protect you and your website from spam user registrations.', 'affiliate-wp' );?></p>
 
-					<div class="last-feature">
-						<h4><?php _e( 'Option to Disable the TOS Field', 'affiliate-wp' );?></h4>
-						<p><?php _e( 'The Terms of Service checkbox on the affiliate registration form will now automatically be disabled when the corresponding page is not set in the admin.', 'affiliate-wp' );?></p>
+					<h2><?php _e( 'Additional Updates', 'affiliate-wp' );?></h2>
 
-						<h4><?php _e( 'Enhanced Visit Search Options','affiliate-wp' );?></h4>
-						<p><?php _e( 'The Visits page now can be searched with various methods in order to view visits from specific affiliates, referrals, and more.', 'affiliate-wp' );?></p>
-					</div>
+					<h4><?php _e( 'Improved User Searching', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'When creating new affiliate accounts, the search process for users in your WordPress site now return better results.', 'affiliate-wp' );?></p>
+
+					<h4><?php _e( 'Per-Page Options for Admin Screens', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'Admin pages for Affiliates, Referrals, Visits, and Creatives can have the number of items per-page configured from the Screen Options tab.', 'affiliate-wp' );?></p>
+
+					<h4><?php _e( 'Disable Individual Emails', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'New options have been introduced that allow you to pick-and-choose which email notifications AffiliateWP will send.', 'affiliate-wp' );?></p>
+
+					<h4><?php _e( 'Creative Template File', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'A new template file has been introduced for exact control over the display of creatives in the affiliate area.', 'affiliate-wp' );?></p>
+
+					<h4><?php _e( 'Import Users By Role', 'affiliate-wp' );?></h4>
+					<p><?php _e( 'When importing existing users as affiliates, an option to import just users of a specific role is now available.', 'affiliate-wp' );?></p>
+
 				</div>
 			</div>
 
