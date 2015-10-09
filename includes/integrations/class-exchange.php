@@ -78,9 +78,9 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 			$referral_total = $total;
 
 			if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
-			
+
 				$referral_total -= $total_taxes;
-			
+
 			}
 
 			if( affiliate_wp()->settings->get( 'exclude_shipping' ) && $shipping > 0 ) {
@@ -104,6 +104,11 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 			}
 
 			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description, $this->get_products( $transaction_id ) );
+
+			if( it_exchange_transaction_is_cleared_for_delivery( $transaction_id ) ) {
+				$this->complete_referral( $transaction_id );
+			}
+
 		}
 
 	}
@@ -253,12 +258,12 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	 * @since   1.3
 	*/
 	public function store_coupon_affiliate( $coupon_id = 0, $data = array() ) {
-		
-		if ( empty( $_POST['user_name'] ) ) {		
+
+		if ( empty( $_POST['user_name'] ) ) {
 			delete_post_meta( $coupon_id, 'affwp_coupon_affiliate' );
 			return;
 		}
-		
+
 		if( empty( $_POST['user_id'] ) && empty( $_POST['user_name'] ) ) {
 			return;
 		}
