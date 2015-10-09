@@ -222,9 +222,8 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 		$affiliate_id = false;
 
 		if( pmpro_checkDiscountCode( $coupon_code ) ) {
-			$table = $wpdb->prefix . 'affiliate_wp_affiliatemeta';
-			$db_code = $wpdb->get_row("SELECT *, UNIX_TIMESTAMP(starts) as starts, UNIX_TIMESTAMP(expires) as expires FROM $wpdb->pmpro_discount_codes WHERE code ='" . esc_sql($coupon_code) . "' LIMIT 1");
-			$affiliate_id = $wpdb->get_var( $wpdb->prepare( "SELECT affiliate_id FROM $table WHERE meta_key = %s", 'affwp_discount_pmp_' . $edit ) );
+			$table        = $wpdb->prefix . 'affiliate_wp_affiliatemeta';
+			$affiliate_id = $wpdb->get_var( $wpdb->prepare( "SELECT affiliate_id FROM $table WHERE meta_value = %s", $coupon_code ) );
 		}
 
 		return $affiliate_id;
