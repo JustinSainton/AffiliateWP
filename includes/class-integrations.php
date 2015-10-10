@@ -27,7 +27,7 @@ class Affiliate_WP_Integrations {
 			'sproutinvoices' => 'Sprout Invoices',
 			'woocommerce'    => 'WooCommerce',
 			'wpeasycart'     => 'WP EasyCart',
-			'wpec'           => 'WP e-Commerce',
+			'wpec'           => 'WP eCommerce',
 			'wp-invoice'     => 'WP-Invoice',
 			'zippycourses'   => 'Zippy Courses',
 		) );
