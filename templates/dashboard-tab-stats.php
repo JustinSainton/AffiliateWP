@@ -80,6 +80,6 @@
 		</tbody>
 	</table>
 
-	<?php do_action( 'affwp_affiliate_dashboard_after_earnings', affwp_get_affiliate_id() ); ?>
+	<?php do_action( 'affwp_affiliate_dashboard_after_campaign_stats', affwp_get_affiliate_id() ); ?>
 
 </div>
