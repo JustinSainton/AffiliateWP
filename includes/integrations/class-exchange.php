@@ -14,6 +14,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 		$this->context = 'it-exchange';
 
+		add_filter( 'it_exchange_generate_transaction_object', array( $this, 'add_affiliate_id_to_txn_object' ) );
 		add_action( 'it_exchange_add_transaction_success', array( $this, 'add_pending_referral' ), 10 );
 		add_action( 'it_exchange_update_transaction_status', array( $this, 'mark_referral_complete' ), 10, 4 );
 		add_action( 'it_exchange_update_transaction_status', array( $this, 'revoke_referral_on_refund' ), 10, 4 );
@@ -29,10 +30,22 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		add_action( 'it_libraries_loaded', array( $this, 'load_product_feature' ) );
 	}
 
+	public function add_affiliate_id_to_txn_object( $object ) {
+
+		if ( $this->was_referred() ) {
+			$object->affwp_affiliate_id = $this->affiliate_id;
+		}
+
+		return $object;
+	}
+
 	public function add_pending_referral( $transaction_id = 0 ) {
 
-		$has_coupon         = false;
-		$this->transaction  = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
+		$this->transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
+
+		if ( isset( $this->transaction->affwp_affiliate_id ) ) {
+			$this->affiliate_id = $this->transaction->affwp_affiliate_id;
+		}
 
 		if ( $this->transaction->coupons && is_array( $this->transaction->coupons ) ) {
 
@@ -51,16 +64,13 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 					}
 
 					$this->affiliate_id = $affiliate_id;
-					$has_coupon = true;
 					break;
 
 				}
-
 			}
-
 		}
 
-		if( $this->was_referred() || $has_coupon ) {
+		if( $this->affiliate_id ) {
 
 			if ( $this->is_affiliate_email( $this->transaction->shipping_address['email'] ) ) {
 				return; // Customers cannot refer themselves
