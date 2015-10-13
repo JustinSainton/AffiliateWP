@@ -358,25 +358,25 @@ class AffWP_Referrals_Table extends WP_List_Table {
 
 		if( 'paid' == $referral->status ) {
 
-			$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_unpaid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Unpaid', 'affiliate-wp' ) . '</a>';
+			$action_links[] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'mark_as_unpaid', 'referral_id' => $referral->referral_id ) ), 'referral-nonce' ) . '" class="mark-as-paid">' . __( 'Mark as Unpaid', 'affiliate-wp' ) . '</a>';
 
 		} else {
 
 			if( 'unpaid' == $referral->status ) {
 
-				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ) ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
+				$action_links[] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'mark_as_paid', 'referral_id' => $referral->referral_id ) ), 'referral-nonce' ) . '" class="mark-as-paid">' . __( 'Mark as Paid', 'affiliate-wp' ) . '</a>';
 
 			}
 
 			if( 'rejected' == $referral->status || 'pending' == $referral->status ) {
 
-				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'accept', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+				$action_links[] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'accept', 'referral_id' => $referral->referral_id ) ), 'referral-nonce' ) . '" class="reject">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
 
 			}
 
 			if( 'rejected' != $referral->status ) {
 
-				$action_links[] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'reject', 'referral_id' => $referral->referral_id ) ) ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+				$action_links[] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'reject', 'referral_id' => $referral->referral_id ) ), 'referral-nonce' ) . '" class="reject">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 
 			}
 
@@ -485,7 +485,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-referrals' ) ) {
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-referrals' ) && ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'referral-nonce' ) ) {
 			return;
 		}
 
