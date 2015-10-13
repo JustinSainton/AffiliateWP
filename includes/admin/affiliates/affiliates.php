@@ -388,16 +388,16 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$row_actions['edit'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
 		if ( strtolower( $affiliate->status ) == 'active' ) {
-			$row_actions['deactivate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_deactivated', 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+			$row_actions['deactivate'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'affiliate_deactivated', 'action' => 'deactivate', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affiliate-nonce' ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		} elseif( strtolower( $affiliate->status ) == 'pending' ) {
-			$row_actions['review'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'review_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Review', 'affiliate-wp' ) . '</a>';
-			$row_actions['accept'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
-			$row_actions['reject'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
+			$row_actions['review'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'review_affiliate', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affiliate-nonce' ) . '">' . __( 'Review', 'affiliate-wp' ) . '</a>';
+			$row_actions['accept'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'affiliate_accepted', 'action' => 'accept', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affiliate-nonce' ) . '">' . __( 'Accept', 'affiliate-wp' ) . '</a>';
+			$row_actions['reject'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'affiliate_rejected', 'action' => 'reject', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affiliate-nonce' ) . '">' . __( 'Reject', 'affiliate-wp' ) . '</a>';
 		} else {
-			$row_actions['activate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'affiliate_actived', 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+			$row_actions['activate'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'affiliate_actived', 'action' => 'activate', 'affiliate_id' => $affiliate->affiliate_id ) ), 'affiliate-nonce' ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
-		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id, 'affwp_notice' => false ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete', 'affiliate_id' => $affiliate->affiliate_id, 'affwp_notice' => false ) ), 'affiliate-nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_affiliate_row_actions', $row_actions, $affiliate );
 
@@ -448,7 +448,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-affiliates' ) ) {
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-affiliates' ) && ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'affiliate-nonce' ) ) {
 			return;
 		}
 
