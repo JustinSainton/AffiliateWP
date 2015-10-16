@@ -46,7 +46,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 		// Do some craziness to determine the price (this should be easy but is not)
 
-		$desc      = '';
+		$desc      = isset( $form['title'] ) ? $form['title'] : '';
 		$entry     = GFFormsModel::get_lead( $entry['id'] );
 		$products  = GFCommon::get_product_fields( $form, $entry );
 		$total     = 0;
