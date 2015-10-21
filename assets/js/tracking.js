@@ -59,7 +59,7 @@ jQuery(document).ready( function($) {
         // If a referral var is present and a referral cookie is not already set
         if( ref && ! ref_cookie ) {
             affwp_track_visit( ref, campaign );
-        } else if( '1' == credit_last && ref && ref_cookie ) {
+        } else if( '1' == credit_last && ref && ref_cookie && ref !== ref_cookie ) {
             $.removeCookie( 'affwp_ref' );
             affwp_track_visit( ref, campaign );
         }
