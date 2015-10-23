@@ -84,6 +84,10 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 		$this->insert_pending_referral( $referral_total, $entry['id'], $desc );
 
+		if( empty( $total ) ) {
+			$this->mark_referral_complete( $entry, array() );
+		}
+
 	}
 
 	/**
