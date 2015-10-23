@@ -215,4 +215,16 @@ jQuery(document).ready(function($) {
 		maybe_activate_migrate_users_button();
 	});
 
+	$('#affwp_add_affiliate #status').change(function() {
+
+		var status = $(this).val();
+		if( 'active' == status ) {
+			$('#affwp-welcome-email-row').show();
+		} else {
+			$('#affwp-welcome-email-row').hide();
+			$('#affwp-welcome-email-row #welcome_email').prop( 'checked', false );
+		}
+
+	});
+
 });

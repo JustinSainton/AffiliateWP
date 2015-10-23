@@ -92,6 +92,21 @@ $default_rate = affwp_abs_number_round( $default_rate );
 
 			</tr>
 
+			<tr class="form-row" id="affwp-welcome-email-row">
+
+				<th scope="row">
+					<label for="welcome_email"><?php _e( 'Welcome Email', 'affiliate-wp' ); ?></label>
+				</th>
+
+				<td>
+					<label class="description">
+						<input type="checkbox" name="welcome_email" id="welcome_email" value="1"/>
+						<?php _e( 'Send welcome email after registering affiliate?', 'affiliate-wp' ); ?>
+					</label>
+				</td>
+
+			</tr>
+
 			<?php do_action( 'affwp_new_affiliate_end' ); ?>
 
 		</table>
