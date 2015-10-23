@@ -81,7 +81,8 @@ class Affiliate_WP_Rewrites {
 
 		foreach( $taxonomies as $tax_id => $tax ) {
 
-			add_rewrite_rule( $tax->rewrite['slug'] . '/(.+?)/' . affiliate_wp()->tracking->get_referral_var() . '(/(.*))?/?$', 'index.php?' . $tax_id . '=$matches[1]&ref=$matches[3]', 'top');
+			$ref = affiliate_wp()->tracking->get_referral_var();
+			add_rewrite_rule( $tax->rewrite['slug'] . '/(.+?)/' . $ref . '(/(.*))?/?$', 'index.php?' . $tax_id . '=$matches[1]&' . $ref . '=$matches[3]', 'top');
 
 		}
 
