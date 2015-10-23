@@ -14,6 +14,7 @@ function affiliate_wp_install() {
 	$affiliate_wp_install->campaigns      = new Affiliate_WP_Campaigns_DB;
 	$affiliate_wp_install->creatives      = new Affiliate_WP_Creatives_DB;
 	$affiliate_wp_install->settings       = new Affiliate_WP_Settings;
+	$affiliate_wp_install->rewrites       = new Affiliate_WP_Rewrites;
 
 	$affiliate_wp_install->affiliates->create_table();
 	$affiliate_wp_install->affiliate_meta->create_table();
@@ -46,7 +47,7 @@ function affiliate_wp_install() {
 	update_option( 'affwp_version', AFFILIATEWP_VERSION );
 	
 	// Clear rewrite rules
-	flush_rewrite_rules();
+	$affiliate_wp_install->rewrites->flush_rewrites();
 
 	// Bail if activating from network, or bulk
 	if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {

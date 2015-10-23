@@ -10,7 +10,7 @@ class Affiliate_WP_Rewrites {
 	public function __construct() {
 
 		$this->init();
-	
+
 	}
 
 	/**
@@ -20,7 +20,7 @@ class Affiliate_WP_Rewrites {
 	 */
 	public function init() {
 
-		add_action( 'init', array( $this, 'maybe_flush_rewrites' ), 999999 );
+		add_action( 'init', array( $this, 'maybe_flush_rewrites' ), 999998 );
 
 		add_action( 'init', array( $this, 'rewrites' ), 999999 );
 
@@ -37,13 +37,35 @@ class Affiliate_WP_Rewrites {
 		add_action( 'redirect_canonical', array( $this, 'prevent_canonical_redirect' ), 0, 2 );
 	}
 
+	/**
+	 * Flush rewrite rules if flag is set
+	 *
+	 * @since 1.7.8
+	 */
 	public function maybe_flush_rewrites() {
 
 		if( get_option( 'affwp_flush_rewrites' ) ) {
-			flush_rewrite_rules();
+
+			$this->flush_rewrites();
+
 			delete_option( 'affwp_flush_rewrites' );
+
 		}
 
+	}
+
+	/**
+	 * Flush rewrite rules and run pre/pst actions to allow integrations to tie into the flush process
+	 *
+	 * @since 1.7.8
+	 */
+	public function flush_rewrites() {
+
+		do_action( 'affwp_pre_flush_rewrites' );
+
+		flush_rewrite_rules();
+
+		do_action( 'affwp_post_flush_rewrites' );
 	}
 
 	/**
@@ -56,11 +78,11 @@ class Affiliate_WP_Rewrites {
 	public function rewrites() {
 
 		$taxonomies = get_taxonomies( array( 'public' => true, '_builtin' => false ), 'objects' );
-		
+
 		foreach( $taxonomies as $tax_id => $tax ) {
 
-			add_rewrite_rule( $tax->rewrite['slug'] . '/(.+?)/' . affiliate_wp()->tracking->get_referral_var() . '(/(.*))?/?$', 'index.php?' . $tax_id . '=$matches[1]&ref=$matches[3]', 'top');		
-			
+			add_rewrite_rule( $tax->rewrite['slug'] . '/(.+?)/' . affiliate_wp()->tracking->get_referral_var() . '(/(.*))?/?$', 'index.php?' . $tax_id . '=$matches[1]&ref=$matches[3]', 'top');
+
 		}
 
 		add_rewrite_endpoint( affiliate_wp()->tracking->get_referral_var(), EP_ALL );
