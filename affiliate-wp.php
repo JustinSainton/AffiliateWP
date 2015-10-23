@@ -379,17 +379,16 @@ final class Affiliate_WP {
 
 		$license_key = $this->settings->get( 'license_key' );
 
-		if( $license_key ) {
-			// setup the updater
-			$affwp_updater = new AFFWP_Plugin_Updater( 'http://affiliatewp.com', __FILE__, array(
-					'version' 	=> AFFILIATEWP_VERSION,
-					'license' 	=> $license_key,
-					'item_name' => 'AffiliateWP',
-					'item_id'   => 17,
-					'author' 	=> 'Pippin Williamson'
-				)
-			);
-		}
+		// setup the updater
+		$affwp_updater = new AFFWP_Plugin_Updater( 'http://affiliatewp.com', __FILE__, array(
+				'version' 	=> AFFILIATEWP_VERSION,
+				'license' 	=> $license_key,
+				'item_name' => 'AffiliateWP',
+				'item_id'   => 17,
+				'author' 	=> 'Pippin Williamson'
+			)
+		);
+
 	}
 
 	/**
