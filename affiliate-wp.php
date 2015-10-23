@@ -166,6 +166,14 @@ final class Affiliate_WP {
 	public $creative;
 
 	/**
+	 * The rewrite class instance variable
+	 *
+	 * @var Affiliate_WP_Rewrites
+	 * @since 1.7.8
+	 */
+	public $rewrites;
+
+	/**
 	 * Main Affiliate_WP Instance
 	 *
 	 * Insures that only one instance of Affiliate_WP exists in memory at any one
@@ -321,6 +329,7 @@ final class Affiliate_WP {
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-register.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-templates.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-tracking.php';
+		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-rewrites.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-visits-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-campaigns-db.php';
 		require_once AFFILIATEWP_PLUGIN_DIR . 'includes/class-creatives-db.php';
@@ -360,6 +369,7 @@ final class Affiliate_WP {
 		self::$instance->emails         = new Affiliate_WP_Emails;
 		self::$instance->creatives      = new Affiliate_WP_Creatives_DB;
 		self::$instance->creative       = new Affiliate_WP_Creatives;
+		self::$instance->rewrites       = new Affiliate_WP_Rewrites;
 
 		self::$instance->updater();
 	}
