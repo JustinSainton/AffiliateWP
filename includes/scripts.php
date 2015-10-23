@@ -110,7 +110,7 @@ function affwp_frontend_scripts_and_styles() {
 		return;
 	}
 
-	if ( has_shortcode( $post->post_content, 'affiliate_area' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
+	if ( has_shortcode( $post->post_content, 'affiliate_area' ) || has_shortcode( $post->post_content, 'affiliate_area' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
 
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
