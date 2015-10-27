@@ -234,6 +234,8 @@ class Affiliate_WP_Settings {
 
 			}
 
+			update_option( 'affwp_flush_rewrites', '1' );
+
 		}
 
 		return $value;

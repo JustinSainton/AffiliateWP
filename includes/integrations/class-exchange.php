@@ -28,6 +28,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
 
 		add_action( 'it_libraries_loaded', array( $this, 'load_product_feature' ) );
+
+		add_action( 'init', array( $this, 'page_rewrites' ) );
 	}
 
 	public function add_affiliate_id_to_txn_object( $object ) {
@@ -301,6 +303,31 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 	public function load_product_feature() {
 		if( class_exists( 'IT_Exchange_Product_Feature_Abstract' ) ) {
 			require_once ( AFFILIATEWP_PLUGIN_DIR . 'includes/integrations/extras/class-exchange-feature.php' );
+		}
+	}
+
+	/**
+	 * Register rewrites for custom pages
+	 *
+	 * @access  public
+	 * @since   1.7.8
+	 */
+	public function page_rewrites() {
+
+		$pages = it_exchange_get_pages( true, array( 'type' => 'exchange' ) );
+
+		// Add rewrite rules for each page
+		foreach( $pages as $page => $data ) {
+
+			if( 'login' == $page || 'logout' == $page ) {
+				continue;
+			}
+
+			$ref  = affiliate_wp()->tracking->get_referral_var();
+			$slug = str_replace( home_url( '/' ), '', it_exchange_get_core_page_urls( $page ) );
+
+			add_rewrite_rule( $slug . $ref . '(/(.*))?/?$', 'index.php?' . $page . '=1&' . $ref . '=$matches[3]', 'top' );
+
 		}
 	}
 }

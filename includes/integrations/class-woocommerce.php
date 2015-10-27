@@ -45,6 +45,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 		add_action( 'woocommerce_product_options_general_product_data', array( $this, 'product_settings' ), 100 );
 		add_action( 'save_post', array( $this, 'save_meta' ) );
 
+		add_action( 'affwp_pre_flush_rewrites', array( $this, 'skip_generate_rewrites' ) );
+
 	}
 
 	/**
@@ -466,6 +468,18 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		}
 
+	}
+
+	/**
+	 * Prevent WooCommerce from fixing rewrite rules when AffiliateWP runs affiliate_wp()->rewrites->flush_rewrites()
+	 *
+	 * See https://github.com/affiliatewp/AffiliateWP/issues/919
+	 *
+	 * @access  public
+	 * @since   1.7.8
+	*/
+	public function skip_generate_rewrites() {
+		remove_filter( 'rewrite_rules_array', 'wc_fix_rewrite_rules', 10 );
 	}
 
 }
