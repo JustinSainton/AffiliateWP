@@ -319,6 +319,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		// Add rewrite rules for each page
 		foreach( $pages as $page => $data ) {
 
+			if( 'login' == $page || 'logout' == $page ) {
+				continue;
+			}
+
 			$ref  = affiliate_wp()->tracking->get_referral_var();
 			$slug = str_replace( home_url( '/' ), '', it_exchange_get_core_page_urls( $page ) );
 
