@@ -221,7 +221,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 		$affiliate_id = false;
 
-		if( pmpro_checkDiscountCode( $coupon_code ) ) {
+		if( ! empty( $coupon_code ) && pmpro_checkDiscountCode( $coupon_code ) ) {
 			$table        = $wpdb->prefix . 'affiliate_wp_affiliatemeta';
 			$affiliate_id = $wpdb->get_var( $wpdb->prepare( "SELECT affiliate_id FROM $table WHERE meta_value = %s", $coupon_code ) );
 		}
