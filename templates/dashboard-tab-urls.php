@@ -18,7 +18,7 @@
 		</div>
 
 		<div class="affwp-wrap affwp-campaign-wrap">
-			<label for="affwp-url"><?php _e( 'Campaign Name (optional)', 'affiliate-wp' ); ?></label>
+			<label for="affwp-campaign"><?php _e( 'Campaign Name (optional)', 'affiliate-wp' ); ?></label>
 			<input type="text" name="campaign" id="affwp-campaign" value="" />
 		</div>
 
