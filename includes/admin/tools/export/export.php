@@ -13,7 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Process a affiliates export
+ * Process an affiliates export
  *
  * @since       1.0
  * @return      void
@@ -87,7 +87,7 @@ function affwp_process_referrals_export() {
 add_action( 'affwp_export_referrals', 'affwp_process_referrals_export' );
 
 /**
- * Process a settings export that generates a .json file of the shop settings
+ * Process a settings export that generates a .json file of the shop settings.
  *
  * @since       1.0
  * @return      void
