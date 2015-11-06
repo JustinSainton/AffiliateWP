@@ -2,7 +2,7 @@
 /**
  * Export Class
  *
- * This is the base class for all export methods. Each data export type (referrals, affiliates, visits) extend this class
+ * This is the base class for all export methods. Each data export type (referrals, affiliates, visits) extends this class.
  *
  * @package     AffiliateWP
  * @subpackage  Admin/Export
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 class Affiliate_WP_Export {
 	/**
-	 * Our export type. Used for export-type specific filters/actions
+	 * Our export type. Used for export-type specific filters/actions.
 	 * @var string
 	 * @since 1.0
 	 */

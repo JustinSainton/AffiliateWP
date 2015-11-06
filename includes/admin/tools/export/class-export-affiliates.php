@@ -2,7 +2,7 @@
 /**
  * Affiliates Export Class
  *
- * This class handles exporting affiliate data
+ * This class handles exporting affiliate data.
  *
  * @package     AffiliateWP
  * @subpackage  Admin/Export
