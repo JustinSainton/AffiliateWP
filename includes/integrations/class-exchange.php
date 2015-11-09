@@ -14,6 +14,10 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 		$this->context = 'it-exchange';
 
+		if( ! class_exists( 'IT_Exchange' ) ) {
+			return;
+		}
+
 		add_filter( 'it_exchange_generate_transaction_object', array( $this, 'add_affiliate_id_to_txn_object' ) );
 		add_action( 'it_exchange_add_transaction_success', array( $this, 'add_pending_referral' ), 10 );
 		add_action( 'it_exchange_update_transaction_status', array( $this, 'mark_referral_complete' ), 10, 4 );
