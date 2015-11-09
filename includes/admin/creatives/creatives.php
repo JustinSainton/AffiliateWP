@@ -236,12 +236,12 @@ class AffWP_Creatives_Table extends WP_List_Table {
 		$row_actions['edit'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => false, 'action' => 'edit_creative', 'creative_id' => $creative->creative_id ) ) ) . '">' . __( 'Edit', 'affiliate-wp' ) . '</a>';
 
 		if ( strtolower( $creative->status ) == 'active' ) {
-			$row_actions['deactivate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'creative_deactivated', 'action' => 'deactivate', 'creative_id' => $creative->creative_id ) ) ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
+			$row_actions['deactivate'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'creative_deactivated', 'action' => 'deactivate', 'creative_id' => $creative->creative_id ) ), 'affwp-creative-nonce' ) . '">' . __( 'Deactivate', 'affiliate-wp' ) . '</a>';
 		} else {
-			$row_actions['activate'] = '<a href="' . esc_url( add_query_arg( array( 'affwp_notice' => 'creative_activated', 'action' => 'activate', 'creative_id' => $creative->creative_id ) ) ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
+			$row_actions['activate'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'affwp_notice' => 'creative_activated', 'action' => 'activate', 'creative_id' => $creative->creative_id ) ), 'affwp-creative-nonce' ) . '">' . __( 'Activate', 'affiliate-wp' ) . '</a>';
 		}
 
-		$row_actions['delete'] = '<a href="' . esc_url( add_query_arg( array( 'action' => 'delete', 'creative_id' => $creative->creative_id, 'affwp_notice' => false ) ) ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
+		$row_actions['delete'] = '<a href="' . wp_nonce_url( add_query_arg( array( 'action' => 'delete', 'creative_id' => $creative->creative_id, 'affwp_notice' => false ) ), 'affwp-creative-nonce' ) . '">' . __( 'Delete', 'affiliate-wp' ) . '</a>';
 
 		$row_actions = apply_filters( 'affwp_creative_row_actions', $row_actions, $creative );
 
@@ -272,7 +272,7 @@ class AffWP_Creatives_Table extends WP_List_Table {
 			return;
 		}
 
-		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'bulk-creatives' ) ) {
+		if( ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'affwp-creative-nonce' ) ) {
 			return;
 		}
 
