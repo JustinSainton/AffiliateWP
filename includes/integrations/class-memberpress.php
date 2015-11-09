@@ -12,6 +12,10 @@ class Affiliate_WP_MemberPress extends Affiliate_WP_Base {
 
 		$this->context = 'memberpress';
 
+		if( ! defined( 'MEPR_VERSION' ) ) {
+			return;
+		}
+
 		add_action( 'mepr-txn-status-pending', array( $this, 'add_pending_referral' ), 10 );
 		add_action( 'mepr-txn-status-complete', array( $this, 'mark_referral_complete' ), 10 );
 		add_action( 'mepr-txn-status-refunded', array( $this, 'revoke_referral_on_refund' ), 10 );
