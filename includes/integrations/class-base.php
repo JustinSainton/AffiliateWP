@@ -61,7 +61,7 @@ abstract class Affiliate_WP_Base {
 	 * @since   1.0
 	 * @param   $amount The final referral commission amount
 	 * @param   $reference The reference column for the referral per the current context
-	 * @param   $description A plaintext description of the refferral
+	 * @param   $description A plaintext description of the referral
 	 * @param   $products An array of product details
 	 * @param   $data Any custom data that can be passed to and stored with the referral
 	 * @return  bool
