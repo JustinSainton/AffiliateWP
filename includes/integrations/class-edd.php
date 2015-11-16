@@ -56,22 +56,26 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				return; // Customers cannot refer themselves
 			}
 
-			if( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
+			if ( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
 
 				$was_renewal = get_post_meta( $payment_id, '_edd_sl_is_renewal', true );
-				if( $was_renewal ) {
+
+				if ( $was_renewal ) {
 					return;
 				}
 
 			}
 
+			// get affiliate ID
+			$affiliate_id = $this->get_affiliate_id( $payment_id );
+
 			// get referral total
-			$referral_total = $this->get_referral_total( $payment_id, $this->affiliate_id );
+			$referral_total = $this->get_referral_total( $payment_id, $affiliate_id );
 
 			// Referral description
 			$desc = $this->get_referral_description( $payment_id );
 
-			if( empty( $desc ) ) {
+			if ( empty( $desc ) ) {
 				return;
 			}
 
@@ -94,10 +98,11 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		if ( isset( $user_info['discount'] ) && $user_info['discount'] != 'none' ) {
 
-			if( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
+			if ( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
 
 				$was_renewal = get_post_meta( $payment_id, '_edd_sl_is_renewal', true );
-				if( $was_renewal ) {
+
+				if ( $was_renewal ) {
 					return;
 				}
 
@@ -120,7 +125,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				$this->affiliate_id = $affiliate_id;
 
-				if( ! affiliate_wp()->tracking->is_valid_affiliate( $this->affiliate_id ) ) {
+				if ( ! affiliate_wp()->tracking->is_valid_affiliate( $this->affiliate_id ) ) {
 					continue;
 				}
 
@@ -144,7 +149,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 					$desc = $this->get_referral_description( $payment_id );
 
-					if( empty( $desc ) ) {
+					if ( empty( $desc ) ) {
 						return false;
 					}
 
@@ -182,28 +187,26 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 			foreach ( $downloads as $key => $download ) {
 
-				if( get_post_meta( $download['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
+				if ( get_post_meta( $download['id'], '_affwp_' . $this->context . '_referrals_disabled', true ) ) {
 					continue; // Referrals are disabled on this product
 				}
 
-				if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+				if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 					$amount = $download['price'] - $download['tax'];
 				} else {
 					$amount = $download['price'];
 				}
 
-				if( class_exists( 'EDD_Simple_Shipping' ) ) {
+				if ( class_exists( 'EDD_Simple_Shipping' ) ) {
 
-					if( isset( $download['fees'] ) ) {
+					if ( isset( $download['fees'] ) ) {
 
-						foreach( $download['fees'] as $fee_id => $fee ) {
+						foreach ( $download['fees'] as $fee_id => $fee ) {
 
-							if( false !== strpos( $fee_id, 'shipping' ) ) {
+							if ( false !== strpos( $fee_id, 'shipping' ) ) {
 
-								if( ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
-
+								if ( ! affiliate_wp()->settings->get( 'exclude_shipping' ) ) {
 									$amount += $fee['amount'];
-
 								}
 
 							}
@@ -214,13 +217,12 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 				}
 
-				$referral_total += $this->calculate_referral_amount( $amount, $payment_id, $download['id'] );
-
+				$referral_total += $this->calculate_referral_amount( $amount, $payment_id, $download['id'], $affiliate_id );
 			}
 
 		} else {
 
-			if( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
+			if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
 				$amount = edd_get_payment_subtotal( $payment_id );
 			} else {
 				$amount = edd_get_payment_amount( $payment_id );
