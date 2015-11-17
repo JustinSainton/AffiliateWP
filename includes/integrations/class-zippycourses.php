@@ -11,6 +11,20 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
     private $order;
 
     /**
+     * The affiliate referrer attached to a transaction object
+     * @access public
+     * @since 1.7.9
+     */
+    public $transaction_affiliate_referrer;
+
+    /**
+     * The affiliate Visit ID attached to a transaction object
+     * @access public
+     * @since  1.7.9
+     */
+    public $transaction_affiliate_visit;
+
+    /**
      * Setup actions and filters
      *
      * @access  public
@@ -26,7 +40,8 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         add_action( 'zippy_event_order_status_change', array( $this, 'add_pending_referral' ), 10 );
         add_action( 'zippy_event_order_status_change', array( $this, 'mark_referral_complete' ), 10 );
         add_action( 'zippy_event_order_status_change', array( $this, 'revoke_referral_on_refund' ), 10 );
-
+        add_action( 'zippy_event_transaction_status_change', array( $this, 'add_referral_to_transaction' ), 10 );
+       
         add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
     }
 
@@ -139,7 +154,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
     */
     public function add_pending_referral( Zippy_Event $event ) {
 
-        if ( $this->was_referred() ) {
+        if ( $this->was_referred() || $this->transaction_has_referral( $event ) ) {
 
             if( $event->new_status == 'pending' && $event->old_status != 'pending' ) {
 
@@ -157,12 +172,64 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
 
                 // insert a pending referral
                 $referral_id = $this->insert_pending_referral( $total, $order->getId(), $description, array( $product->getId() ) );
-
             }
 
         }
 
     }
+
+    /**
+     *  Store the Affiliate ID with this transaction
+     *
+     * @access  public
+     * @since  1.7.9
+     */
+    public function add_referral_to_transaction( Zippy_Event $event) {
+
+        if ( $event->new_status == 'pending' && $event->old_status != 'pending' ) {
+            $transaction = $event->transaction;
+            $affiliate_id = $this->get_affiliate_id();
+            if ($affiliate_id && $transaction->gateway == 'paypal' ) {
+                update_post_meta( $transaction->id, 'affiliateWP_affiliate_id', $this->get_affiliate_id());
+                update_post_meta( $transaction->id, 'affiliateWP_visit_id', affiliate_wp()->tracking->get_visit_id());
+            }
+        }
+
+    }
+
+    /**
+     *  Check if the Order Event has an affiliate ID, return true if it does
+     *
+     * @access  public
+     * @since  1.7.9
+     */
+    public function transaction_has_referral( Zippy_Event $event ) {
+
+        $transactions = $event->order->transactions;
+
+        foreach ( $transactions->items as $transaction ) {
+            $this->transaction_affiliate_referrer = get_post_meta( $transaction->id, 'affiliateWP_affiliate_id', true );
+            if ( $this->transaction_affiliate_referrer ) {
+                $this->transaction_affiliate_visit = get_post_meta( $transaction->id, 'affiliateWP_visit_id', true );
+                add_filter( 'affwp_insert_pending_referral', array( $this, 'insert_transaction_metadata' ), 10 );
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    /**
+     * Insert the transaction metadata into the affiliate args
+     * @access public
+     * @since  1.7.9
+     */
+    public function insert_transaction_metadata( $args ) {
+        $args['affiliate_id'] = $this->transaction_affiliate_referrer;
+        $args['visit_id'] = $this->transaction_affiliate_visit;
+        return $args;
+    }
+
 
     /**
      * Mark referral as complete when payment is completed
