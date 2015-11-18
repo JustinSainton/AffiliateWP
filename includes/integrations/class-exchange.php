@@ -78,14 +78,8 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 
 		if( $this->affiliate_id ) {
 
-			$guest_checkout_email = it_exchange_get_cart_data( 'guest-checkout-user' );
-			$guest_checkout_email = is_array( $guest_checkout_email ) ? reset( $guest_checkout_email ) : $guest_checkout_email;
-
-			if ( $guest_checkout_email ) {
-				$email = $guest_checkout_email;
-			} else {
-				$email = $this->transaction->shipping_address['email'];
-			}
+			$guest_checkout_email = it_exchange_get_transaction_customer_email( $transaction_id );
+			$email                = isset( $guest_checkout_email ) ? $guest_checkout_email : $this->transaction->shipping_address['email'];
 
 			if ( $this->is_affiliate_email( $email ) ) {
 				return; // Customers cannot refer themselves
