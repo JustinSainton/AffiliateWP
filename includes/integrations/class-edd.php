@@ -230,7 +230,7 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				$amount = edd_get_payment_amount( $payment_id );
 			}
 
-			$referral_total = $this->calculate_referral_amount( $amount, $payment_id );
+			$referral_total = $this->calculate_referral_amount( $amount, $payment_id, '', $affiliate_id );
 		}
 
 		return $referral_total;
