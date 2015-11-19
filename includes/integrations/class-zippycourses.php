@@ -166,8 +166,6 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
                     return; // Customers cannot refer themselves
                 }
 
-                $total = $order->getTotal();
-
                 $product = $order->getProduct();
 
                 // calculate referral amount
