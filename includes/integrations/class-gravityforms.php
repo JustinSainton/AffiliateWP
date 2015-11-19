@@ -135,7 +135,7 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 	}
 
 	/**
-	 * Revoke referral on refund
+	 * Sets up the reference link in the Referrals table
 	 *
 	 * @access public
 	 * @uses GFFormsModel::get_lead()
