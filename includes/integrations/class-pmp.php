@@ -33,7 +33,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 
 			$user = get_userdata( $order->user_id );
 
-			if ( $user instanceof WP_User && $this->is_affiliate_email( $user->user_email ) ) {
+			if ( $user instanceof WP_User && $this->is_affiliate_email( $user->user_email, $affiliate_id ) ) {
 				return; // Customers cannot refer themselves
 			}
 

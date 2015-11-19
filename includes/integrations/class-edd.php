@@ -50,10 +50,15 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 
 		if ( $this->was_referred() ) {
 
+			// get affiliate ID
+			$affiliate_id = $this->get_affiliate_id( $payment_id );
+
+			// get customer email
 			$customer_email = edd_get_payment_user_email( $payment_id );
 
-			if ( $this->is_affiliate_email( $customer_email ) ) {
-				return; // Customers cannot refer themselves
+			// Customers cannot refer themselves
+			if ( $this->is_affiliate_email( $customer_email, $affiliate_id ) ) {
+				return false;
 			}
 
 			if ( affiliate_wp()->settings->get( 'edd_disable_on_renewals' ) ) {
@@ -65,9 +70,6 @@ class Affiliate_WP_EDD extends Affiliate_WP_Base {
 				}
 
 			}
-
-			// get affiliate ID
-			$affiliate_id = $this->get_affiliate_id( $payment_id );
 
 			// get referral total
 			$referral_total = $this->get_referral_total( $payment_id, $affiliate_id );
