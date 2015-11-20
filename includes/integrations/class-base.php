@@ -83,19 +83,19 @@ abstract class Affiliate_WP_Base {
 		$visit_id = affiliate_wp()->tracking->get_visit_id();
 
 		// get affiliate ID
-		$affiliate_id = isset( $data['affiliate_id'] ) ? $data['affiliate_id'] : $this->get_affiliate_id( $reference, $this->context );
+		$this->affiliate_id = isset( $data['affiliate_id'] ) ? $data['affiliate_id'] : $this->get_affiliate_id( $reference, $this->context );
 
 		$args = apply_filters( 'affwp_insert_pending_referral', array(
 			'amount'       => $amount,
 			'reference'    => $reference,
 			'description'  => $description,
 			'campaign'     => affiliate_wp()->tracking->get_campaign(),
-			'affiliate_id' => $affiliate_id,
+			'affiliate_id' => $this->affiliate_id,
 			'visit_id'     => $visit_id,
 			'products'     => ! empty( $products ) ? maybe_serialize( $products ) : '',
 			'custom'       => ! empty( $data ) ? maybe_serialize( $data ) : '',
 			'context'      => $this->context
-		), $amount, $reference, $description, $affiliate_id, $visit_id, $data, $this->context );
+		), $amount, $reference, $description, $this->affiliate_id, $visit_id, $data, $this->context );
 
 		return affiliate_wp()->referrals->add( $args );
 
