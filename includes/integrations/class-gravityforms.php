@@ -53,12 +53,6 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 		foreach ( $products['products'] as $key => $product ) {
 
-			$desc .= $product['name'];
-
-			if ( $key + 1 < count( $products ) ) {
-				$description .= ', ';
-			}
-
 			$price = GFCommon::to_number( $product['price'] );
 
 			if ( is_array( rgar( $product,'options' ) ) ) {
@@ -76,6 +70,12 @@ class Affiliate_WP_Gravity_Forms extends Affiliate_WP_Base {
 
 			$total += $subtotal;
 
+		}
+
+		// replace description if there are products
+		if ( ! empty( $products['products'] ) ) {
+			$product_names = wp_list_pluck( $products['products'], 'name' );
+			$desc = implode( ', ', $product_names );
 		}
 
 		$total += floatval( $products['shipping']['price'] );

@@ -96,6 +96,7 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 			$email                = isset( $guest_checkout_email ) ? $guest_checkout_email : $this->transaction->shipping_address['email'];
 
 			if ( $this->is_affiliate_email( $email, $affiliate_id ) ) {
+
 				return; // Customers cannot refer themselves
 			}
 
