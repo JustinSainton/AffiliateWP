@@ -41,7 +41,7 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
         add_action( 'zippy_event_order_status_change', array( $this, 'mark_referral_complete' ), 10 );
         add_action( 'zippy_event_order_status_change', array( $this, 'revoke_referral_on_refund' ), 10 );
         add_action( 'zippy_event_transaction_status_change', array( $this, 'add_referral_to_transaction' ), 10 );
-       
+
         add_filter( 'affwp_referral_reference_column', array( $this, 'reference_link' ), 10, 2 );
     }
 
@@ -166,12 +166,16 @@ class Affiliate_WP_ZippyCourses extends Affiliate_WP_Base {
                     return; // Customers cannot refer themselves
                 }
 
-                $total          = $order->getTotal();
+                $product = $order->getProduct();
+
+                // calculate referral amount
+                $referral_total = $this->calculate_referral_amount( $product->amount, $order->getId(), $product->id );
+
                 $product        = $order->getProduct();
                 $description    = $product !== null ? get_the_title( $product->getId() ) : '';
 
                 // insert a pending referral
-                $referral_id = $this->insert_pending_referral( $total, $order->getId(), $description, array( $product->getId() ) );
+                $referral_id = $this->insert_pending_referral( $referral_total, $order->getId(), $description, array( $product->getId() ) );
             }
 
         }
