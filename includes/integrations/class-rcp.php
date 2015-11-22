@@ -105,13 +105,13 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 
 		$rate = get_option( 'affwp_rcp_level_rate_' . $level_id, true );
 
-		if( empty( $rate ) ) {
+		if( empty( $rate ) || ! is_numeric( $rate ) ) {
 
-			$rate = affwp_get_affiliate_rate( $this->affiliate_id );
+			$rate = null;
 
 		}
 
-		return apply_filters( 'affwp_get_product_rate', (float) $rate, $level_id, $args, $this->affiliate_id, $this->context );
+		return apply_filters( 'affwp_get_product_rate', $rate, $level_id, $args, $this->affiliate_id, $this->context );
 
 	}
 
