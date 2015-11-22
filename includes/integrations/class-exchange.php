@@ -36,52 +36,67 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 		add_action( 'init', array( $this, 'page_rewrites' ) );
 	}
 
-	public function add_affiliate_id_to_txn_object( $object ) {
+	/**
+	 * Add the referred affiliate ID to the transaction object
+	 *
+	 * @access  public
+	 * @since   1.7.7
+	 * @param object $transaction_object the transaction object right before being added to database
+	 * @return object
+	 */
+	public function add_affiliate_id_to_txn_object( $transaction_object ) {
 
 		if ( $this->was_referred() ) {
-			$object->affwp_affiliate_id = $this->affiliate_id;
+			$transaction_object->affwp_affiliate_id = $this->get_affiliate_id();
 		}
 
-		return $object;
+		return $transaction_object;
 	}
 
+	/**
+	 * Records a pending referral when a pending payment is created
+	 *
+	 * @access  public
+	 * @since   1.0
+	*/
 	public function add_pending_referral( $transaction_id = 0 ) {
 
+		// get transaction object
 		$this->transaction = apply_filters( 'affwp_get_it_exchange_transaction', get_post_meta( $transaction_id, '_it_exchange_cart_object', true ) );
 
-		if ( isset( $this->transaction->affwp_affiliate_id ) ) {
-			$this->affiliate_id = $this->transaction->affwp_affiliate_id;
-		}
+		// get affiliate ID from the transaction object if set
+		$affiliate_id = isset( $this->transaction->affwp_affiliate_id ) ? $this->transaction->affwp_affiliate_id : $this->get_affiliate_id( $transaction_id );
 
+		// set affiliate ID to that of tracked affiliate coupon (if any)
 		if ( $this->transaction->coupons && is_array( $this->transaction->coupons ) ) {
 
-			if( ! empty( $this->transaction->coupons['cart'] ) ) {
+			if ( ! empty( $this->transaction->coupons['cart'] ) ) {
 
-				foreach( $this->transaction->coupons['cart'] as $coupon ) {
+				foreach ( $this->transaction->coupons['cart'] as $coupon ) {
 
 					$affiliate_id = get_post_meta( $coupon['id'], 'affwp_coupon_affiliate', true );
 
-					if( ! $affiliate_id ) {
+					if ( ! $affiliate_id ) {
 						continue;
 					}
 
-					if( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
+					if ( ! affiliate_wp()->tracking->is_valid_affiliate( $affiliate_id ) ) {
 						continue;
 					}
 
-					$this->affiliate_id = $affiliate_id;
 					break;
 
 				}
 			}
 		}
 
-		if( $this->affiliate_id ) {
+		if ( $affiliate_id ) {
 
 			$guest_checkout_email = it_exchange_get_transaction_customer_email( $transaction_id );
 			$email                = isset( $guest_checkout_email ) ? $guest_checkout_email : $this->transaction->shipping_address['email'];
 
-			if ( $this->is_affiliate_email( $email ) ) {
+			if ( $this->is_affiliate_email( $email, $affiliate_id ) ) {
+
 				return; // Customers cannot refer themselves
 			}
 
@@ -97,15 +112,11 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 			$referral_total = $total;
 
 			if ( affiliate_wp()->settings->get( 'exclude_tax' ) ) {
-
 				$referral_total -= $total_taxes;
-
 			}
 
-			if( affiliate_wp()->settings->get( 'exclude_shipping' ) && $shipping > 0 ) {
-
+			if ( affiliate_wp()->settings->get( 'exclude_shipping' ) && $shipping > 0 ) {
 				$referral_total -= $shipping / 100;
-
 			}
 
 			$amount = 0;
@@ -117,14 +128,14 @@ class Affiliate_WP_Exchange extends Affiliate_WP_Base {
 				}
 
 				$product_percent_of_cart = (float) $product['product_subtotal'] / $sub_total;
-				$referral_product_price = (float) $product_percent_of_cart * (float) $referral_total;
+				$referral_product_price  = (float) $product_percent_of_cart * (float) $referral_total;
 
-				$amount += $this->calculate_referral_amount( $referral_product_price, $transaction_id, $product['product_id'] );
+				$amount += $this->calculate_referral_amount( $referral_product_price, $transaction_id, $product['product_id'], $affiliate_id );
 			}
 
-			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description, $this->get_products( $transaction_id ) );
+			$this->insert_pending_referral( $amount, $transaction_id, $this->transaction->description, $this->get_products( $transaction_id ), array( 'affiliate_id' => $affiliate_id ) );
 
-			if( it_exchange_transaction_is_cleared_for_delivery( $transaction_id ) ) {
+			if ( it_exchange_transaction_is_cleared_for_delivery( $transaction_id ) ) {
 				$this->complete_referral( $transaction_id );
 			}
 

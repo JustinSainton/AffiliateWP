@@ -68,19 +68,22 @@ abstract class Affiliate_WP_Base {
 	 */
 	public function insert_pending_referral( $amount = '', $reference = 0, $description = '', $products = array(), $data = array() ) {
 
-		if( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
+		if ( ! (bool) apply_filters( 'affwp_integration_create_referral', true, $this->context ) ) {
 			return false; // Allow extensions to prevent referrals from being created
 		}
 
-		if( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
+		if ( affiliate_wp()->referrals->get_by( 'reference', $reference, $this->context ) ) {
 			return false; // Referral already created for this reference
 		}
 
-		if( empty( $amount ) && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
+		if ( empty( $amount ) && affiliate_wp()->settings->get( 'ignore_zero_referrals' ) ) {
 			return false; // Ignore a zero amount referral
 		}
 
 		$visit_id = affiliate_wp()->tracking->get_visit_id();
+
+		// get affiliate ID
+		$this->affiliate_id = isset( $data['affiliate_id'] ) ? $data['affiliate_id'] : $this->get_affiliate_id( $reference, $this->context );
 
 		$args = apply_filters( 'affwp_insert_pending_referral', array(
 			'amount'       => $amount,
@@ -177,8 +180,8 @@ abstract class Affiliate_WP_Base {
 	 * @since   1.0
 	 * @return  int
 	 */
-	public function get_affiliate_id() {
-		return absint( apply_filters( 'affwp_get_referring_affiliate_id', $this->affiliate_id ) );
+	public function get_affiliate_id( $reference = 0 ) {
+		return absint( apply_filters( 'affwp_get_referring_affiliate_id', $this->affiliate_id, $reference, $this->context ) );
 	}
 
 	/**
@@ -204,18 +207,22 @@ abstract class Affiliate_WP_Base {
 	 * @param   string $email
 	 * @return  bool
 	 */
-	public function is_affiliate_email( $email ) {
+	public function is_affiliate_email( $email, $affiliate_id = 0 ) {
 
 		$is_affiliate_email = false;
 
+		// allow an affiliate ID to be passed in
+		$affiliate_id = isset( $affiliate_id ) ? $affiliate_id : $this->get_affiliate_id();
+
 		// Get affiliate emails
-		$user_email    = affwp_get_affiliate_email( $this->affiliate_id );
-		$payment_email = affwp_get_affiliate_payment_email( $this->affiliate_id );
+		$user_email  = affwp_get_affiliate_email( $affiliate_id );
+
+		$payment_email = affwp_get_affiliate_payment_email( $affiliate_id );
 
 		// True if the email is valid and matches affiliate user email or payment email, otherwise false
 		$is_affiliate_email = ( is_email( $email ) && ( $user_email === $email || $payment_email === $email ) );
 
-		return (bool) apply_filters( 'affwp_is_customer_email_affiliate_email', $is_affiliate_email, $email, $this->affiliate_id );
+		return (bool) apply_filters( 'affwp_is_customer_email_affiliate_email', $is_affiliate_email, $email, $affiliate_id );
 
 	}
 
@@ -226,19 +233,18 @@ abstract class Affiliate_WP_Base {
 	 * @since   1.2
 	 * @return  array
 	 */
-	public function calculate_referral_amount( $base_amount = '', $reference = '', $product_id = 0 ) {
+	public function calculate_referral_amount( $base_amount = '', $reference = '', $product_id = 0, $affiliate_id = 0 ) {
+
+		// the affiliate ID can be optionally passed in to override the referral amount
+		$affiliate_id = ! empty( $affiliate_id ) ? $affiliate_id : $this->get_affiliate_id( $reference );
 
 		$rate = '';
 
-		$this->affiliate_id = $this->get_affiliate_id();
-
 		if ( ! empty( $product_id ) ) {
-
-			$rate = $this->get_product_rate( $product_id, $args = array( 'reference' => $reference ) );
-
+			$rate = $this->get_product_rate( $product_id, $args = array( 'reference' => $reference, 'affiliate_id' => $affiliate_id ) );
 		}
 
-		$amount = affwp_calc_referral_amount( $base_amount, $this->affiliate_id, $reference, $rate, $product_id );
+		$amount = affwp_calc_referral_amount( $base_amount, $affiliate_id, $reference, $rate, $product_id );
 
 		return $amount;
 
@@ -253,9 +259,11 @@ abstract class Affiliate_WP_Base {
 	*/
 	public function get_product_rate( $product_id = 0, $args = array() ) {
 
+		$affiliate_id = isset( $args['affiliate_id'] ) ? $args['affiliate_id'] : $this->get_affiliate_id( $args['reference'] );
+
 		$rate = get_post_meta( $product_id, '_affwp_' . $this->context . '_product_rate', true );
 
-		return apply_filters( 'affwp_get_product_rate', $rate, $product_id, $args, $this->affiliate_id, $this->context );
+		return apply_filters( 'affwp_get_product_rate', $rate, $product_id, $args, $affiliate_id, $this->context );
 
 	}
 
@@ -267,9 +275,7 @@ abstract class Affiliate_WP_Base {
 	 * @return  array
 	*/
 	public function get_products( $order_id = 0 ) {
-
 		return array();
-
 	}
 
 }

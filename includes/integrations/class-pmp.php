@@ -20,25 +20,28 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 	public function add_pending_referral( $order ) {
 
 		// Check if an affiliate coupon was used
-		$affiliate_id = $this->get_coupon_affiliate_id( $order->discount_code );
+		$coupon_affiliate_id = $this->get_coupon_affiliate_id( $order->discount_code );
 
-		if( $this->was_referred() || $affiliate_id ) {
+		if ( $this->was_referred() || $coupon_affiliate_id ) {
 
-			if( false !== $affiliate_id ) {
-				$this->affiliate_id = $affiliate_id;
+			// get affiliate ID
+			$affiliate_id = $this->get_affiliate_id( $order->id );
+
+			if ( false !== $coupon_affiliate_id ) {
+				$affiliate_id = $coupon_affiliate_id;
 			}
 
 			$user = get_userdata( $order->user_id );
 
-			if ( $user instanceof WP_User && $this->is_affiliate_email( $user->user_email ) ) {
+			if ( $user instanceof WP_User && $this->is_affiliate_email( $user->user_email, $affiliate_id ) ) {
 				return; // Customers cannot refer themselves
 			}
 
-			$referral_total = $this->calculate_referral_amount( $order->subtotal, $order->id );
+			$referral_total = $this->calculate_referral_amount( $order->subtotal, $order->id, '', $affiliate_id );
 
-			$referral_id = $this->insert_pending_referral( $referral_total, $order->id, $order->membership_name );
+			$referral_id = $this->insert_pending_referral( $referral_total, $order->id, $order->membership_name, '', array( 'affiliate_id' => $affiliate_id ) );
 
-			if( 'success' === strtolower( $order->status ) ) {
+			if ( 'success' === strtolower( $order->status ) ) {
 
 				if( $referral_id ) {
 					affiliate_wp()->referrals->update( $referral_id, array( 'custom' => $order->id ), '', 'referral' );
@@ -124,7 +127,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 	 * @since   1.7.5
 	 */
 	public function coupon_option( $edit ) {
-	
+
 		global $wpdb;
 
 		add_filter( 'affwp_is_admin_page', '__return_true' );
@@ -174,7 +177,7 @@ class Affiliate_WP_PMP extends Affiliate_WP_Base {
 	 * @since   1.7.5
 	 */
 	public function save_affiliate_coupon( $save_id = 0 ) {
-	
+
 		global $wpdb;
 
 		if( empty( $_REQUEST['affwp_pmp_coupon_nonce'] ) ) {
