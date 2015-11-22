@@ -189,7 +189,7 @@ function affwp_set_affiliate_status( $affiliate, $status = '' ) {
  * @param  string  $product_rate  A custom product rate that overrides site/affiliate settings
  * @return string
  */
-function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $product_rate = '', $reference ) {
+function affwp_get_affiliate_rate( $affiliate_id = 0, $formatted = false, $product_rate = '', $reference = '' ) {
 
 	// Global referral rate setting, fallback to 20
 	$default_rate = affiliate_wp()->settings->get( 'referral_rate', 20 );
