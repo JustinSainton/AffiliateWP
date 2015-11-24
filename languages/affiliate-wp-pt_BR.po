@@ -505,11 +505,11 @@ msgstr "Você não tem permissão para deletar contas dos afiliados"
 #: includes/admin/affiliates/new.php:98
 #, fuzzy
 msgid "Welcome Email"
-msgstr "E-mail"
+msgstr "Email de boas-vindas"
 
 #: includes/admin/affiliates/new.php:104
 msgid "Send welcome email after registering affiliate?"
-msgstr ""
+msgstr "Enviar email de boas-vindas após registrar afiliado"
 
 # @ affiliate-wp
 #: includes/admin/affiliates/new.php:119
