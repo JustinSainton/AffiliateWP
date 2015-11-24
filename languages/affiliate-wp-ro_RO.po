@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AffiliateWP\n"
 "Report-Msgid-Bugs-To: http://affiliatewp.com/support/\n"
-"POT-Creation-Date: 2015-10-09 15:45:30+00:00\n"
+"POT-Creation-Date: 2015-11-24 21:58:34+00:00\n"
 "PO-Revision-Date: 2015-04-09 10:00-0600\n"
 "Last-Translator: Chris Christoff <chriscct7@gmail.com>\n"
 "Language-Team: \n"
@@ -19,25 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: affiliate-wp.php:216 affiliate-wp.php:228
+#: affiliate-wp.php:224 affiliate-wp.php:236
 msgid "Cheatin&#8217; huh?"
 msgstr "Incerci sa trisezi?"
 
-#: affiliate-wp.php:239
+#: affiliate-wp.php:247
 msgid ""
 "Your version of PHP is below the minimum version of PHP required by "
 "AffiliateWP. Please contact your host and request that your version be "
 "upgraded to 5.3 or later."
 msgstr ""
 
-#: includes/admin/AFFWP_Plugin_Updater.php:164
+#: includes/admin/AFFWP_Plugin_Updater.php:183
 #: includes/admin/class-addon-updater.php:186
 msgid ""
 "There is a new version of %1$s available. <a target=\"_blank\" class="
 "\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
 msgstr ""
 
-#: includes/admin/AFFWP_Plugin_Updater.php:171
+#: includes/admin/AFFWP_Plugin_Updater.php:190
 #: includes/admin/class-addon-updater.php:193
 msgid ""
 "There is a new version of %1$s available. <a target=\"_blank\" class="
@@ -45,22 +45,22 @@ msgid ""
 "\">update now</a>."
 msgstr ""
 
-#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/AFFWP_Plugin_Updater.php:327
 #: includes/admin/class-addon-updater.php:280
 #, fuzzy
 msgid "You do not have permission to install plugin updates"
 msgstr "Nu ai permisiunea de a exporta date."
 
-#: includes/admin/AFFWP_Plugin_Updater.php:311
+#: includes/admin/AFFWP_Plugin_Updater.php:327
 #: includes/admin/affiliates/actions.php:20
-#: includes/admin/affiliates/actions.php:49
-#: includes/admin/affiliates/actions.php:53
-#: includes/admin/affiliates/actions.php:57
-#: includes/admin/affiliates/actions.php:104
-#: includes/admin/affiliates/actions.php:135
-#: includes/admin/affiliates/actions.php:139
+#: includes/admin/affiliates/actions.php:56
+#: includes/admin/affiliates/actions.php:60
+#: includes/admin/affiliates/actions.php:64
+#: includes/admin/affiliates/actions.php:111
+#: includes/admin/affiliates/actions.php:142
+#: includes/admin/affiliates/actions.php:146
 #: includes/admin/class-addon-updater.php:280
-#: includes/admin/class-notices.php:194
+#: includes/admin/class-notices.php:196
 #: includes/admin/creatives/actions.php:16
 #: includes/admin/creatives/actions.php:44
 #: includes/admin/creatives/actions.php:48
@@ -74,20 +74,20 @@ msgid "Error"
 msgstr "Eroare"
 
 #: includes/admin/affiliates/actions.php:20
-#: includes/admin/affiliates/actions.php:104
-#: includes/admin/affiliates/actions.php:135
+#: includes/admin/affiliates/actions.php:111
+#: includes/admin/affiliates/actions.php:142
 #, fuzzy
 msgid "You do not have permission to manage affiliates"
 msgstr "Nu ai permisiunea de a exporta date."
 
-#: includes/admin/affiliates/actions.php:49
+#: includes/admin/affiliates/actions.php:56
 #, fuzzy
 msgid "You do not have permission to delete affiliate accounts"
 msgstr "Nu ai permisiunea de a exporta date."
 
-#: includes/admin/affiliates/actions.php:53
-#: includes/admin/affiliates/actions.php:139
-#: includes/admin/class-notices.php:194
+#: includes/admin/affiliates/actions.php:60
+#: includes/admin/affiliates/actions.php:146
+#: includes/admin/class-notices.php:196
 #: includes/admin/creatives/actions.php:48
 #: includes/admin/referrals/actions.php:20
 #: includes/admin/referrals/actions.php:51
@@ -95,7 +95,7 @@ msgstr "Nu ai permisiunea de a exporta date."
 msgid "Security check failed"
 msgstr ""
 
-#: includes/admin/affiliates/actions.php:57
+#: includes/admin/affiliates/actions.php:64
 msgid "No affiliate IDs specified for deletion"
 msgstr ""
 
@@ -163,7 +163,7 @@ msgid "Name"
 msgstr "Nume"
 
 #: includes/admin/affiliates/affiliates.php:224
-#: includes/admin/settings/class-settings.php:344
+#: includes/admin/settings/class-settings.php:346
 #: includes/admin/tools/export/class-export.php:69
 msgid "ID"
 msgstr "ID"
@@ -324,7 +324,7 @@ msgstr "ID utilizator. Acesta nu poate fi modificat."
 
 #: includes/admin/affiliates/edit.php:51
 #: includes/admin/affiliates/review.php:34
-#: includes/admin/settings/class-settings.php:345
+#: includes/admin/settings/class-settings.php:347
 #: includes/admin/tools/export/class-export-affiliates.php:50
 #: templates/login.php:15 templates/login.php:16 templates/register.php:48
 #: templates/register.php:49
@@ -337,7 +337,7 @@ msgid "The affiliate's username. This cannot be changed."
 msgstr "ID utilizator. Acesta nu poate fi modificat."
 
 #: includes/admin/affiliates/edit.php:64 includes/admin/affiliates/new.php:54
-#: includes/admin/settings/class-settings.php:360
+#: includes/admin/settings/class-settings.php:362
 msgid "Referral Rate Type"
 msgstr "Tip Comison de Referinta"
 
@@ -350,11 +350,11 @@ msgid "The affiliate's referral rate type."
 msgstr "Tipul de comision de referinta a afiliatului."
 
 #: includes/admin/affiliates/edit.php:82 includes/admin/affiliates/new.php:72
-#: includes/admin/settings/class-settings.php:366
-#: includes/integrations/class-edd.php:556
-#: includes/integrations/class-memberpress.php:151
-#: includes/integrations/class-zippycourses.php:61
-#: includes/integrations/extras/class-exchange-feature.php:46
+#: includes/admin/settings/class-settings.php:368
+#: includes/integrations/class-edd.php:560
+#: includes/integrations/class-memberpress.php:155
+#: includes/integrations/class-zippycourses.php:76
+#: includes/integrations/extras/class-exchange-feature.php:31
 msgid "Referral Rate"
 msgstr "Comision Referinta"
 
@@ -438,7 +438,16 @@ msgstr "Nume afiliat"
 msgid "The status assigned to the affiliate's account."
 msgstr "Nu ai permisiunea de a exporta date."
 
+#: includes/admin/affiliates/new.php:98
+#, fuzzy
+msgid "Welcome Email"
+msgstr "Email"
+
 #: includes/admin/affiliates/new.php:104
+msgid "Send welcome email after registering affiliate?"
+msgstr ""
+
+#: includes/admin/affiliates/new.php:119
 msgid "Add Affiliate"
 msgstr "Adauga Afiliat"
 
@@ -547,131 +556,132 @@ msgstr "Setari"
 msgid "AffiliateWP Migration"
 msgstr "Migrare AffiliateWP"
 
-#: includes/admin/class-notices.php:16
+#: includes/admin/class-notices.php:18
 msgid ""
-"There are currently no AffiliateWP integrations enabled. If you are using "
-"AffiliateWP without any integrations, you may disregard this message."
+"There are currently no AffiliateWP <a href=\"%s\">integrations</a> enabled. "
+"If you are using AffiliateWP without any integrations, you may disregard "
+"this message."
 msgstr ""
 
-#: includes/admin/class-notices.php:17
+#: includes/admin/class-notices.php:19
 msgid "Dismiss Notice"
 msgstr ""
 
-#: includes/admin/class-notices.php:24
+#: includes/admin/class-notices.php:26
 #: includes/admin/settings/class-settings.php:210
 msgid "Settings updated."
 msgstr "Setari Actualizate."
 
-#: includes/admin/class-notices.php:33
+#: includes/admin/class-notices.php:35
 msgid "Affiliate added successfully"
 msgstr "Afiliatul a fost adaugat cu succes"
 
-#: includes/admin/class-notices.php:39
+#: includes/admin/class-notices.php:41
 msgid "Affiliate wasn't added, please try again."
 msgstr "Nu s-a putut aduga afiliatul, incearca din nou"
 
-#: includes/admin/class-notices.php:46
+#: includes/admin/class-notices.php:48
 msgid "Affiliate updated successfully"
 msgstr "Datele afiliatului s-au actualizat cu succes"
 
-#: includes/admin/class-notices.php:48
+#: includes/admin/class-notices.php:50
 msgid "<a href=\"%s\">Back to Affiliates</a>"
 msgstr "<a href=\"%s\">Inapoi la Afiliati</a>"
 
-#: includes/admin/class-notices.php:54
+#: includes/admin/class-notices.php:56
 msgid "Affiliate update failed, please try again"
 msgstr "Datele afiliatului nu au putut fi actualizate, incearca din nou"
 
-#: includes/admin/class-notices.php:61
+#: includes/admin/class-notices.php:63
 #, fuzzy
 msgid "Affiliate account(s) deleted successfully"
 msgstr "Afiliatul a fost sters cu succes"
 
-#: includes/admin/class-notices.php:67
+#: includes/admin/class-notices.php:69
 msgid "Affiliate deletion failed, please try again"
 msgstr "Stergerea afiliatului a esuat, incearca din nou"
 
-#: includes/admin/class-notices.php:74
+#: includes/admin/class-notices.php:76
 msgid "Affiliate account activated"
 msgstr "Contul de afiliat a fost activat"
 
-#: includes/admin/class-notices.php:80
+#: includes/admin/class-notices.php:82
 msgid "Affiliate account deactivated"
 msgstr "Contul de afiliat a fost dezactivat"
 
-#: includes/admin/class-notices.php:86
+#: includes/admin/class-notices.php:88
 msgid "Affiliate request was accepted"
 msgstr "Solicitarea de afiliere a fost acceptata"
 
-#: includes/admin/class-notices.php:92
+#: includes/admin/class-notices.php:94
 msgid "Affiliate request was rejected"
 msgstr "Solicitarea de afiliere a fost respinsa"
 
-#: includes/admin/class-notices.php:98
+#: includes/admin/class-notices.php:100
 msgid "Affiliate stats have been recounted!"
 msgstr "Statisticile de afiliat au fost recalculate!"
 
-#: includes/admin/class-notices.php:104
+#: includes/admin/class-notices.php:106
 msgid "Referral added successfully"
 msgstr "Referinta adaugata cu succes"
 
-#: includes/admin/class-notices.php:110
+#: includes/admin/class-notices.php:112
 msgid "Referral updated successfully"
 msgstr "Referinta actualizata cu succes"
 
-#: includes/admin/class-notices.php:116
+#: includes/admin/class-notices.php:118
 msgid "Referral update failed, please try again"
 msgstr "Referinta nu a putut fi actualizata, incearca din nou"
 
-#: includes/admin/class-notices.php:122
+#: includes/admin/class-notices.php:124
 msgid "Referral deleted successfully"
 msgstr "Referinta stearsa cu succes"
 
-#: includes/admin/class-notices.php:128
+#: includes/admin/class-notices.php:130
 msgid "Referral deletion failed, please try again"
 msgstr "Stergerea referintei a esuat, incearca din nou"
 
-#: includes/admin/class-notices.php:135
+#: includes/admin/class-notices.php:137
 #, fuzzy
 msgid "Creative updated successfully"
 msgstr "Datele afiliatului s-au actualizat cu succes"
 
-#: includes/admin/class-notices.php:137
+#: includes/admin/class-notices.php:139
 #, fuzzy
 msgid "<a href=\"%s\">Back to Creatives</a>"
 msgstr "<a href=\"%s\">Inapoi la Afiliati</a>"
 
-#: includes/admin/class-notices.php:143
+#: includes/admin/class-notices.php:145
 #, fuzzy
 msgid "Creative added successfully"
 msgstr "Afiliatul a fost adaugat cu succes"
 
-#: includes/admin/class-notices.php:149
+#: includes/admin/class-notices.php:151
 #, fuzzy
 msgid "Creative deleted successfully"
 msgstr "Afiliatul a fost sters cu succes"
 
-#: includes/admin/class-notices.php:155
+#: includes/admin/class-notices.php:157
 #, fuzzy
 msgid "Creative activated"
 msgstr "Dezactiveaza"
 
-#: includes/admin/class-notices.php:161
+#: includes/admin/class-notices.php:163
 #, fuzzy
 msgid "Creative deactivated"
 msgstr "Contul de afiliat a fost dezactivat"
 
-#: includes/admin/class-notices.php:167
+#: includes/admin/class-notices.php:169
 msgid "Settings successfully imported"
 msgstr "Setarile au fost importate cu succes"
 
-#: includes/admin/class-notices.php:179
+#: includes/admin/class-notices.php:181
 msgid ""
 "Your license key for AffiliateWP has expired. Please renew your license to "
 "re-enable automatic updates."
 msgstr ""
 
-#: includes/admin/class-notices.php:181
+#: includes/admin/class-notices.php:183
 msgid ""
 "Please <a href=\"%s\">enter and activate</a> your license key for "
 "AffiliateWP to enable automatic updates."
@@ -948,7 +958,7 @@ msgstr ""
 "site pentru a aproba sau refuza inregistrarea."
 
 #: includes/admin/class-welcome.php:281
-#: includes/admin/settings/class-settings.php:315 includes/install.php:28
+#: includes/admin/settings/class-settings.php:317 includes/install.php:29
 msgid "Affiliate Area"
 msgstr "Zona Afiliat"
 
@@ -1225,7 +1235,7 @@ msgstr "Ultimele Inregistrari de Afiliati"
 #: includes/admin/referrals/new.php:16
 #: includes/admin/referrals/referrals.php:227
 #: includes/admin/visits/visits.php:145
-#: includes/integrations/class-memberpress.php:231
+#: includes/integrations/class-memberpress.php:235
 msgid "Affiliate"
 msgstr "Afiliat"
 
@@ -1584,15 +1594,15 @@ msgstr "Conversii cu Succes"
 msgid "Conversion Rate"
 msgstr "Rata Conversie"
 
-#: includes/admin/settings/class-settings.php:299
+#: includes/admin/settings/class-settings.php:301
 msgid "License Settings"
 msgstr "Setari Licenta"
 
-#: includes/admin/settings/class-settings.php:304
+#: includes/admin/settings/class-settings.php:306
 msgid "License Key"
 msgstr "Cheie Licenta"
 
-#: includes/admin/settings/class-settings.php:305
+#: includes/admin/settings/class-settings.php:307
 msgid ""
 "Please enter your license key. An active license key is needed for automatic "
 "plugin updates and <a href=\"%s\" target=\"_blank\">support</a>."
@@ -1600,54 +1610,54 @@ msgstr ""
 "Te rugam sa introduci o cheie de licenta.  O licenta activa este necesara "
 "pentru actualizare automata si <a href=\"%s\" target=\"_blank\">suport</a>."
 
-#: includes/admin/settings/class-settings.php:310
+#: includes/admin/settings/class-settings.php:312
 msgid "Pages"
 msgstr "Pagini"
 
-#: includes/admin/settings/class-settings.php:316
+#: includes/admin/settings/class-settings.php:318
 msgid "This is the page where affiliates will manage their affiliate account."
 msgstr "Aceasta este pagina unde afiliatii isi vor administra contul."
 
-#: includes/admin/settings/class-settings.php:322
+#: includes/admin/settings/class-settings.php:324
 msgid "Terms of Use"
 msgstr "Termini si Conditii"
 
-#: includes/admin/settings/class-settings.php:323
+#: includes/admin/settings/class-settings.php:325
 msgid "Select the page that shows the terms of use for Affiliate Registration"
 msgstr ""
 "Alege o pagina pentru afisarea termenilor si conditiilor pentru "
 "inregistrarea afiliatilor"
 
-#: includes/admin/settings/class-settings.php:329
+#: includes/admin/settings/class-settings.php:331
 msgid "Referral Settings"
 msgstr "Setari Referinte"
 
-#: includes/admin/settings/class-settings.php:334
+#: includes/admin/settings/class-settings.php:336
 msgid "Referral Variable"
 msgstr "Variabila Referinta"
 
-#: includes/admin/settings/class-settings.php:335
+#: includes/admin/settings/class-settings.php:337
 msgid "The URL variable for referral URLs. For example: <strong>%s</strong>."
 msgstr ""
 "Variabila URL pentru URL-urile de referinta. De exemplu: <strong>%s</strong>."
 
-#: includes/admin/settings/class-settings.php:340
+#: includes/admin/settings/class-settings.php:342
 #, fuzzy
 msgid "Default Referral Format"
 msgstr "Comision Referinta"
 
-#: includes/admin/settings/class-settings.php:341
+#: includes/admin/settings/class-settings.php:343
 msgid ""
 "Show referral URLs to affiliates with either their affiliate ID or Username "
 "appended.<br/> For example: <strong>%s or %s</strong>."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:350
+#: includes/admin/settings/class-settings.php:352
 #, fuzzy
 msgid "Pretty Affiliate URLs"
 msgstr "Afiliat Nou"
 
-#: includes/admin/settings/class-settings.php:351
+#: includes/admin/settings/class-settings.php:353
 #, fuzzy
 msgid ""
 "Show pretty affiliate referrals to affiliates. For example: <strong>%s or "
@@ -1655,20 +1665,20 @@ msgid ""
 msgstr ""
 "Variabila URL pentru URL-urile de referinta. De exemplu: <strong>%s</strong>."
 
-#: includes/admin/settings/class-settings.php:355
+#: includes/admin/settings/class-settings.php:357
 #, fuzzy
 msgid "Credit Last Referrer"
 msgstr "Adauga Referinta"
 
-#: includes/admin/settings/class-settings.php:356
+#: includes/admin/settings/class-settings.php:358
 msgid "Credit the last affiliate who referred the customer."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:361
+#: includes/admin/settings/class-settings.php:363
 msgid "Should referrals be based on a percentage or flat rate amounts?"
 msgstr "Referintele se bazeaza pe procent sau comision fix?"
 
-#: includes/admin/settings/class-settings.php:367
+#: includes/admin/settings/class-settings.php:369
 msgid ""
 "Default referral rate. A percentage if Referral Rate Type is Percentage, a "
 "flat amount otherwise. Rates can be set for each affiliate individually as "
@@ -1678,89 +1688,89 @@ msgstr ""
 "referinta este procentual, in caz contrar, o valoare fixa. Comisioanele pot "
 "fi setate si individual pentru fiecare afiliat."
 
-#: includes/admin/settings/class-settings.php:374
+#: includes/admin/settings/class-settings.php:376
 msgid "Exclude Shipping"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:375
+#: includes/admin/settings/class-settings.php:377
 msgid "Should shipping costs be excluded from referral calculations?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:379
+#: includes/admin/settings/class-settings.php:381
 msgid "Exclude Tax"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:380
+#: includes/admin/settings/class-settings.php:382
 msgid "Should taxes be excluded from referral calculations?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:384
+#: includes/admin/settings/class-settings.php:386
 msgid "Cookie Expiration"
 msgstr "Expirare Cookie"
 
-#: includes/admin/settings/class-settings.php:385
+#: includes/admin/settings/class-settings.php:387
 msgid "How many days should the referral tracking cookie be valid for?"
 msgstr "Cate zile va fi valid cookie de referinta?"
 
-#: includes/admin/settings/class-settings.php:391
+#: includes/admin/settings/class-settings.php:393
 msgid "Currency Settings"
 msgstr "Setari Moneda"
 
-#: includes/admin/settings/class-settings.php:392
+#: includes/admin/settings/class-settings.php:394
 msgid "Configure the currency options"
 msgstr "Setare optiuni moneda"
 
-#: includes/admin/settings/class-settings.php:396
+#: includes/admin/settings/class-settings.php:398
 #: includes/admin/tools/export/class-export-referrals-payout.php:42
 #: includes/admin/tools/export/class-export-referrals.php:65
 msgid "Currency"
 msgstr "Moneda"
 
-#: includes/admin/settings/class-settings.php:397
+#: includes/admin/settings/class-settings.php:399
 msgid ""
 "Choose your currency. Note that some payment gateways have currency "
 "restrictions."
 msgstr ""
 "Alege moneda. Unele procesoare de plata au restrictii pe anumite monede."
 
-#: includes/admin/settings/class-settings.php:402
+#: includes/admin/settings/class-settings.php:404
 msgid "Currency Position"
 msgstr "Pozitie Moneda"
 
-#: includes/admin/settings/class-settings.php:403
+#: includes/admin/settings/class-settings.php:405
 msgid "Choose the location of the currency sign."
 msgstr "Alege o locatie pentru semnul monedei."
 
-#: includes/admin/settings/class-settings.php:406
+#: includes/admin/settings/class-settings.php:408
 msgid "Before - $10"
 msgstr "Inainte - $10"
 
-#: includes/admin/settings/class-settings.php:407
+#: includes/admin/settings/class-settings.php:409
 msgid "After - 10$"
 msgstr "Dupa - 10$"
 
-#: includes/admin/settings/class-settings.php:411
+#: includes/admin/settings/class-settings.php:413
 msgid "Thousands Separator"
 msgstr "Separator Mii"
 
-#: includes/admin/settings/class-settings.php:412
+#: includes/admin/settings/class-settings.php:414
 msgid "The symbol (usually , or .) to separate thousands"
 msgstr "Simbolul (de obicei , sau .) pentru a separa miile."
 
-#: includes/admin/settings/class-settings.php:418
+#: includes/admin/settings/class-settings.php:420
 msgid "Decimal Separator"
 msgstr "Separator Zecimala"
 
-#: includes/admin/settings/class-settings.php:419
+#: includes/admin/settings/class-settings.php:421
 msgid "The symbol (usually , or .) to separate decimal points"
 msgstr "Simbolul (de obicei , sau .) pentru a separa zecimale."
 
-#: includes/admin/settings/class-settings.php:430
+#: includes/admin/settings/class-settings.php:432
 #: includes/admin/settings/display-settings.php:74
 msgid "Integrations"
 msgstr "Integrari"
 
-#: includes/admin/settings/class-settings.php:431
+#: includes/admin/settings/class-settings.php:433
 msgid ""
 "Choose the integrations to enable. If you are not using any of these, you "
 "may use the <strong>[affiliate_conversion_script]</strong> short code to "
@@ -1772,176 +1782,176 @@ msgstr ""
 "referinte. Vezi pagina de <a href=\"%s\" target=\"_blank\">documentatie</a> "
 "pentru ajutor."
 
-#: includes/admin/settings/class-settings.php:441
+#: includes/admin/settings/class-settings.php:443
 #, fuzzy
 msgid "Disable All Emails"
 msgstr "Total referinte in asteptare"
 
-#: includes/admin/settings/class-settings.php:442
+#: includes/admin/settings/class-settings.php:444
 msgid "Should all email notifications be disabled?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:446
+#: includes/admin/settings/class-settings.php:448
 msgid "Logo"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:447
+#: includes/admin/settings/class-settings.php:449
 msgid "Upload or choose a logo to be displayed at the top of emails."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:451
+#: includes/admin/settings/class-settings.php:453
 msgid "Email Template"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:452
+#: includes/admin/settings/class-settings.php:454
 msgid "Choose a template to use for email messages."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:457
+#: includes/admin/settings/class-settings.php:459
 #, fuzzy
 msgid "From Name"
 msgstr "Nume"
 
-#: includes/admin/settings/class-settings.php:458
+#: includes/admin/settings/class-settings.php:460
 msgid ""
 "The name emails are said to come from. This should probably be your site "
 "name."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:463
+#: includes/admin/settings/class-settings.php:465
 #, fuzzy
 msgid "From Email"
 msgstr "Email"
 
-#: includes/admin/settings/class-settings.php:464
+#: includes/admin/settings/class-settings.php:466
 msgid ""
 "Email to send emails from. This will act as the \"from\" and \"reply-to\" "
 "address."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:469
+#: includes/admin/settings/class-settings.php:471
 msgid "Notify Admins"
 msgstr "Anunta Administratorii"
 
-#: includes/admin/settings/class-settings.php:470
+#: includes/admin/settings/class-settings.php:472
 msgid "Notify site admins of new affiliate registrations?"
 msgstr "Notificare administratori site la inregistrare de afiliat noua?"
 
-#: includes/admin/settings/class-settings.php:474
+#: includes/admin/settings/class-settings.php:476
 msgid "Registration Email Subject"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:475
+#: includes/admin/settings/class-settings.php:477
 msgid ""
 "Enter the subject line for the registration email sent to admins when new "
 "affiliates register."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:477
+#: includes/admin/settings/class-settings.php:479
 #: includes/emails/actions.php:41
 msgid "New Affiliate Registration"
 msgstr "Inregistrare Afiliat Nou"
 
-#: includes/admin/settings/class-settings.php:480
+#: includes/admin/settings/class-settings.php:482
 msgid "Registration Email Content"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:481
+#: includes/admin/settings/class-settings.php:483
 msgid ""
 "Enter the email to send when a new affiliate registers. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:483
+#: includes/admin/settings/class-settings.php:485
 msgid "A new affiliate has registered on your site, %s"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:483
+#: includes/admin/settings/class-settings.php:485
 msgid "Name: "
 msgstr "Nume:"
 
-#: includes/admin/settings/class-settings.php:486
+#: includes/admin/settings/class-settings.php:488
 #, fuzzy
 msgid "Application Accepted Email Subject"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:487
+#: includes/admin/settings/class-settings.php:489
 msgid ""
 "Enter the subject line for accepted application emails sent to affiliates "
 "when their account is approved."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:489
-#: includes/emails/actions.php:97
+#: includes/admin/settings/class-settings.php:491
+#: includes/emails/actions.php:102
 msgid "Affiliate Application Accepted"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:492
+#: includes/admin/settings/class-settings.php:494
 #, fuzzy
 msgid "Application Accepted Email Content"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:493
+#: includes/admin/settings/class-settings.php:495
 msgid ""
 "Enter the email to send when an application is accepted. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:495
-#: includes/admin/settings/class-settings.php:519
+#: includes/admin/settings/class-settings.php:497
+#: includes/admin/settings/class-settings.php:521
 #, fuzzy
 msgid "Congratulations {name}!"
 msgstr ""
 "Felicitari %s!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:495
-#: includes/emails/actions.php:102
+#: includes/admin/settings/class-settings.php:497
+#: includes/emails/actions.php:107
 #, fuzzy
 msgid "Your affiliate application on %s has been accepted!"
 msgstr ""
 "Aplicarea pentru afiliere la %s a fost acceptata!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:495
+#: includes/admin/settings/class-settings.php:497
 #, fuzzy
 msgid "Log into your affiliate area at"
 msgstr ""
 "Intra in zona de afiliat la %s\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:498
+#: includes/admin/settings/class-settings.php:500
 #, fuzzy
 msgid "Application Rejected Email Subject"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:499
+#: includes/admin/settings/class-settings.php:501
 msgid ""
 "Enter the subject line for rejected application emails sent to affiliates "
 "when their account is rejected."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:501
+#: includes/admin/settings/class-settings.php:503
 #, fuzzy
 msgid "Affiliate Application Rejected"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:504
+#: includes/admin/settings/class-settings.php:506
 #, fuzzy
 msgid "Application Rejected Email Content"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:505
+#: includes/admin/settings/class-settings.php:507
 msgid ""
 "Enter the email to send when an application is rejected. HTML is rejected. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:507
+#: includes/admin/settings/class-settings.php:509
 msgid "Hello {name}!"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:507
+#: includes/admin/settings/class-settings.php:509
 #, fuzzy
 msgid ""
 "We regret to inform you that your affiliate application on %s has been "
@@ -1950,50 +1960,50 @@ msgstr ""
 "Aplicarea pentru afiliere la %s a fost acceptata!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:507
+#: includes/admin/settings/class-settings.php:509
 msgid "Reason given: %s"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:510
+#: includes/admin/settings/class-settings.php:512
 #, fuzzy
 msgid "New Referral Email Subject"
 msgstr "Referinta Noua"
 
-#: includes/admin/settings/class-settings.php:511
+#: includes/admin/settings/class-settings.php:513
 msgid ""
 "Enter the subject line for new referral emails sent when affiliates earn "
 "referrals."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:513
-#: includes/emails/actions.php:216
+#: includes/admin/settings/class-settings.php:515
+#: includes/emails/actions.php:221
 msgid "Referral Awarded!"
 msgstr "Referinta Acceptata!"
 
-#: includes/admin/settings/class-settings.php:516
+#: includes/admin/settings/class-settings.php:518
 #, fuzzy
 msgid "New Referral Email Content"
 msgstr "Referinta Noua"
 
-#: includes/admin/settings/class-settings.php:517
+#: includes/admin/settings/class-settings.php:519
 msgid ""
 "Enter the email to send on new referrals. HTML is accepted. Available "
 "template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:519
+#: includes/admin/settings/class-settings.php:521
 #, fuzzy
 msgid "You have been awarded a new referral of"
 msgstr ""
 "O referinta noua a fost acceptata de %s la %s!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:519
+#: includes/admin/settings/class-settings.php:521
 #, fuzzy
 msgid "on %s!"
 msgstr "Versiune %s"
 
-#: includes/admin/settings/class-settings.php:519
+#: includes/admin/settings/class-settings.php:521
 #, fuzzy
 msgid ""
 "Log into your affiliate area to view your earnings or disable these "
@@ -2003,19 +2013,19 @@ msgstr ""
 "notificari: %s\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:527
+#: includes/admin/settings/class-settings.php:529
 msgid "Allow affiliate registration"
 msgstr "Permite inregistrare afiliati"
 
-#: includes/admin/settings/class-settings.php:528
+#: includes/admin/settings/class-settings.php:530
 msgid "Should affiliates be able to register accounts for themselves?"
 msgstr "Afiliatii au posibilitatea de inregistrare singuri?"
 
-#: includes/admin/settings/class-settings.php:532
+#: includes/admin/settings/class-settings.php:534
 msgid "Require approval"
 msgstr "Solicita aprobare"
 
-#: includes/admin/settings/class-settings.php:533
+#: includes/admin/settings/class-settings.php:535
 msgid ""
 "Require that site admins approve affiliates before they can begin earning "
 "referrals?"
@@ -2023,47 +2033,47 @@ msgstr ""
 "Administratorii de site trebuie sa aprobe afiliatii inainte de a putea "
 "castiga din referinte?"
 
-#: includes/admin/settings/class-settings.php:537
+#: includes/admin/settings/class-settings.php:539
 msgid "Auto Register New Users"
 msgstr "Inregistrare Automata Utilizatori Noi"
 
-#: includes/admin/settings/class-settings.php:538
+#: includes/admin/settings/class-settings.php:540
 msgid "Automatically register new users as affiliates?"
 msgstr "Inregistrare automata utilizatori nou precum afiliati?"
 
-#: includes/admin/settings/class-settings.php:542
+#: includes/admin/settings/class-settings.php:544
 msgid "Enable reCAPTCHA"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:543
+#: includes/admin/settings/class-settings.php:545
 msgid ""
 "Would you like to prevent bots from registering affiliate accounts using "
 "Google reCAPTCHA?"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:547
+#: includes/admin/settings/class-settings.php:549
 msgid "reCAPTCHA Site Key"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:548
+#: includes/admin/settings/class-settings.php:550
 msgid "This is used to identify your site to Google reCAPTCHA."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:552
+#: includes/admin/settings/class-settings.php:554
 msgid "reCAPTCHA Secret Key"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:553
+#: includes/admin/settings/class-settings.php:555
 msgid ""
 "This is used for communication between your site and Google reCAPTCHA. Be "
 "sure to keep it a secret."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:557
+#: includes/admin/settings/class-settings.php:559
 msgid "Reject Unpaid Referrals on Refund?"
 msgstr "Refuza Referintele Neplatite in Caz de Returnare?"
 
-#: includes/admin/settings/class-settings.php:558
+#: includes/admin/settings/class-settings.php:560
 msgid ""
 "Should unpaid referrals get automatically rejected when the originating "
 "purchase is refunded or revoked?"
@@ -2071,11 +2081,11 @@ msgstr ""
 "Refuz automat de referinte neplatite in cazul in care un client solicita "
 "returnarea banilor?"
 
-#: includes/admin/settings/class-settings.php:562
+#: includes/admin/settings/class-settings.php:564
 msgid "Use Fallback Referral Tracking Method?"
 msgstr "Utilizeaza Metoda Alternativa de Urmarire a Referintelor?"
 
-#: includes/admin/settings/class-settings.php:563
+#: includes/admin/settings/class-settings.php:565
 msgid ""
 "The method used to track referral links can fail on sites that have jQuery "
 "errors. Check this if referrals are not getting tracked properly."
@@ -2083,11 +2093,11 @@ msgstr ""
 "Metoda de urmarire a linkurilor de referinta poate esua pe siteuri cu erori "
 "de jQuery. Verifica daca referintele sunt urmarite corespunzator."
 
-#: includes/admin/settings/class-settings.php:567
+#: includes/admin/settings/class-settings.php:569
 msgid "Ignore Zero Referrals?"
 msgstr "Ignora Zero Referinte?"
 
-#: includes/admin/settings/class-settings.php:568
+#: includes/admin/settings/class-settings.php:570
 msgid ""
 "Check this box if you would like AffiliateWP to completely ignore referrals "
 "for a zero total amount. This can be useful for multi-price products that "
@@ -2101,11 +2111,11 @@ msgstr ""
 "rezultat in valoare zero. Daca aceasta optiune este activa, vizitele cu zero "
 "referinta vor fo considerata ca fiind fara conversie."
 
-#: includes/admin/settings/class-settings.php:572
+#: includes/admin/settings/class-settings.php:574
 msgid "Remove Data on Uninstall?"
 msgstr "Elimina Date la Dezinstalare?"
 
-#: includes/admin/settings/class-settings.php:573
+#: includes/admin/settings/class-settings.php:575
 msgid ""
 "Check this box if you would like AffiliateWP to completely remove all of its "
 "data when the plugin is deleted."
@@ -2113,102 +2123,102 @@ msgstr ""
 "Bifeaza aceasta casuta daca doresti ca datele AffiliateWP sa fie sterse "
 "complet la dezinstalare."
 
-#: includes/admin/settings/class-settings.php:598
+#: includes/admin/settings/class-settings.php:600
 #, fuzzy
 msgid "Application Pending Email Subject"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:599
+#: includes/admin/settings/class-settings.php:601
 msgid "Enter the subject line for pending affiliate application emails."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:601
-#: includes/emails/actions.php:138
+#: includes/admin/settings/class-settings.php:603
+#: includes/emails/actions.php:143
 #, fuzzy
 msgid "Your Affiliate Application Is Being Reviewed"
 msgstr ""
 "Aplicarea pentru afiliere la %s a fost acceptata!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:604
+#: includes/admin/settings/class-settings.php:606
 #, fuzzy
 msgid "Application Pending Email Content"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:605
+#: includes/admin/settings/class-settings.php:607
 msgid ""
 "Enter the email to send when an application is pending. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:607
+#: includes/admin/settings/class-settings.php:609
 msgid "Hi {name}!"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:607
-#: includes/emails/actions.php:143
+#: includes/admin/settings/class-settings.php:609
+#: includes/emails/actions.php:148
 msgid "Thanks for your recent affiliate registration on {site_name}."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:607
-#: includes/emails/actions.php:144
+#: includes/admin/settings/class-settings.php:609
+#: includes/emails/actions.php:149
 msgid ""
 "We're currently reviewing your affiliate application and will be in touch "
 "soon!"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:610
+#: includes/admin/settings/class-settings.php:612
 #, fuzzy
 msgid "Application Rejection Email Subject"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:611
+#: includes/admin/settings/class-settings.php:613
 msgid "Enter the subject line for rejected affiliate application emails."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:613
-#: includes/emails/actions.php:175
+#: includes/admin/settings/class-settings.php:615
+#: includes/emails/actions.php:180
 #, fuzzy
 msgid "Your Affiliate Application Has Been Rejected"
 msgstr ""
 "Aplicarea pentru afiliere la %s a fost acceptata!\n"
 "\n"
 
-#: includes/admin/settings/class-settings.php:616
+#: includes/admin/settings/class-settings.php:618
 #, fuzzy
 msgid "Application Rejection Email Content"
 msgstr "Aplicarea pentru afiliere a fost acceptata"
 
-#: includes/admin/settings/class-settings.php:617
+#: includes/admin/settings/class-settings.php:619
 msgid ""
 "Enter the email to send when an application is rejected. HTML is accepted. "
 "Available template tags:"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:619
+#: includes/admin/settings/class-settings.php:621
 msgid "Hi {name},"
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:619
-#: includes/emails/actions.php:180
+#: includes/admin/settings/class-settings.php:621
+#: includes/emails/actions.php:185
 msgid ""
 "We regret to inform you that your recent affiliate registration on "
 "{site_name} was rejected."
 msgstr ""
 
-#: includes/admin/settings/class-settings.php:759
+#: includes/admin/settings/class-settings.php:761
 msgid "Deactivate License"
 msgstr "Dezactiveaza Licenta"
 
-#: includes/admin/settings/class-settings.php:760
+#: includes/admin/settings/class-settings.php:762
 msgid "Your license is valid!"
 msgstr "Licenta ta e valida!"
 
-#: includes/admin/settings/class-settings.php:763
+#: includes/admin/settings/class-settings.php:765
 msgid "Renew Your License"
 msgstr "Reinnoieste Licenta"
 
-#: includes/admin/settings/class-settings.php:764
+#: includes/admin/settings/class-settings.php:766
 msgid ""
 "Your license has expired, renew today to continue getting updates and "
 "support!"
@@ -2216,16 +2226,16 @@ msgstr ""
 "Cheia de licenta a expirat, reinnoieste azi pentru a beneficia de "
 "actualizari si suport!"
 
-#: includes/admin/settings/class-settings.php:766
+#: includes/admin/settings/class-settings.php:768
 msgid "Activate License"
 msgstr "Activare Licenta"
 
-#: includes/admin/settings/class-settings.php:865
+#: includes/admin/settings/class-settings.php:867
 msgid ""
 "The callback function used for the <strong>%s</strong> setting is missing."
 msgstr "Functia utilizata pentru setarile <strong>%s</strong> lipseste."
 
-#: includes/admin/settings/class-settings.php:940
+#: includes/admin/settings/class-settings.php:942
 msgid "Upload File"
 msgstr ""
 
@@ -2757,37 +2767,37 @@ msgstr ""
 msgid "Review pending applications: %s"
 msgstr ""
 
-#: includes/emails/actions.php:101 includes/emails/actions.php:221
+#: includes/emails/actions.php:106 includes/emails/actions.php:226
 #, fuzzy
 msgid "Congratulations %s!"
 msgstr ""
 "Felicitari %s!\n"
 "\n"
 
-#: includes/emails/actions.php:103
+#: includes/emails/actions.php:108
 #, fuzzy
 msgid "Log into your affiliate area at %s"
 msgstr ""
 "Intra in zona de afiliat la %s\n"
 "\n"
 
-#: includes/emails/actions.php:142
+#: includes/emails/actions.php:147
 #, fuzzy
 msgid "Hi %s!"
 msgstr "Versiune %s"
 
-#: includes/emails/actions.php:179
+#: includes/emails/actions.php:184
 msgid "Hi %s,"
 msgstr ""
 
-#: includes/emails/actions.php:222
+#: includes/emails/actions.php:227
 #, fuzzy
 msgid "You have been awarded a new referral of %s on %s!"
 msgstr ""
 "O referinta noua a fost acceptata de %s la %s!\n"
 "\n"
 
-#: includes/emails/actions.php:223
+#: includes/emails/actions.php:228
 #, fuzzy
 msgid ""
 "log into your affiliate area to view your earnings or disable these "
@@ -2866,26 +2876,26 @@ msgstr "ID Afiliat"
 msgid "No reason provided"
 msgstr "Nu s-a inregistrat inca nicio referinta"
 
-#: includes/integrations/class-edd.php:290
-#: includes/integrations/class-gravityforms.php:105
+#: includes/integrations/class-edd.php:294
+#: includes/integrations/class-gravityforms.php:109
 #: includes/integrations/class-jigoshop.php:85
 #: includes/integrations/class-shopp.php:75
 #: includes/integrations/class-sproutinvoices.php:53
-#: includes/integrations/class-woocommerce.php:161
-#: includes/integrations/class-zippycourses.php:187
+#: includes/integrations/class-woocommerce.php:162
+#: includes/integrations/class-zippycourses.php:258
 msgid "Referral #%d for %s recorded for %s"
 msgstr "Referinta #%d pentru %s inregistrata pentru %s"
 
-#: includes/integrations/class-edd.php:407
-#: includes/integrations/class-pmp.php:151
+#: includes/integrations/class-edd.php:411
+#: includes/integrations/class-pmp.php:154
 #: includes/integrations/class-rcp.php:190
 #: includes/integrations/class-woocommerce.php:281
 msgid "Affiliate Discount?"
 msgstr "Discount Afiliat?"
 
-#: includes/integrations/class-edd.php:416
-#: includes/integrations/class-memberpress.php:253
-#: includes/integrations/class-pmp.php:160
+#: includes/integrations/class-edd.php:420
+#: includes/integrations/class-memberpress.php:257
+#: includes/integrations/class-pmp.php:163
 #: includes/integrations/class-rcp.php:199
 #: includes/integrations/class-woocommerce.php:289
 msgid ""
@@ -2895,53 +2905,53 @@ msgstr ""
 "Daca doresti sa conectezi acest discout unui afiliat, introdu numele "
 "afiliatului caruia-i apartine."
 
-#: includes/integrations/class-edd.php:507
+#: includes/integrations/class-edd.php:511
 msgid "Adjust EDD Commissions"
 msgstr ""
 
-#: includes/integrations/class-edd.php:508
+#: includes/integrations/class-edd.php:512
 msgid ""
 "Should AffiliateWP adjust the commission amounts recorded for purchases that "
 "include affiliate referrals? This will subtract the referral amount from the "
 "base amount used to calculate the commission total."
 msgstr ""
 
-#: includes/integrations/class-edd.php:528
+#: includes/integrations/class-edd.php:532
 #, fuzzy
 msgid "Disable Renewal Referrals"
 msgstr "Referinte Recente"
 
-#: includes/integrations/class-edd.php:529
+#: includes/integrations/class-edd.php:533
 msgid ""
 "Should AffiliateWP prevent referral commissions from being recorded on "
 "renewal purchases with EDD Software Licensing?"
 msgstr ""
 
-#: includes/integrations/class-edd.php:550
-#: includes/integrations/class-zippycourses.php:55
+#: includes/integrations/class-edd.php:554
+#: includes/integrations/class-zippycourses.php:70
 #, fuzzy
 msgid "Affiliate Rates:"
 msgstr "Nume afiliat"
 
-#: includes/integrations/class-edd.php:563
-#: includes/integrations/class-zippycourses.php:68
+#: includes/integrations/class-edd.php:567
+#: includes/integrations/class-zippycourses.php:83
 msgid "Disable referrals on this %s"
 msgstr ""
 
-#: includes/integrations/class-edd.php:567
-#: includes/integrations/class-memberpress.php:162
-#: includes/integrations/class-zippycourses.php:72
+#: includes/integrations/class-edd.php:571
+#: includes/integrations/class-memberpress.php:166
+#: includes/integrations/class-zippycourses.php:87
 msgid ""
 "These settings will be used to calculate affiliate earnings per-sale. Leave "
 "blank to use the site default referral rate."
 msgstr ""
 
-#: includes/integrations/class-exchange.php:239
+#: includes/integrations/class-exchange.php:269
 #, fuzzy
 msgid "Affiliate coupon?"
 msgstr "Discount Afiliat?"
 
-#: includes/integrations/class-exchange.php:248
+#: includes/integrations/class-exchange.php:278
 #, fuzzy
 msgid ""
 "If you would like to connect this coupon to an affiliate, enter the name of "
@@ -2979,23 +2989,23 @@ msgstr "Referinta #%d pentru %s inregistrata pentru %s"
 msgid "AffiliateWP: Referral #%d for %s for %s rejected"
 msgstr "Referinta #%d pentru %s inregistrata pentru %s"
 
-#: includes/integrations/class-gravityforms.php:127
+#: includes/integrations/class-gravityforms.php:131
 #: includes/integrations/class-sproutinvoices.php:76
 #, fuzzy
 msgid "Referral #%d for %s for %s rejected"
 msgstr "Referinta #%d pentru %s inregistrata pentru %s"
 
-#: includes/integrations/class-gravityforms.php:168
+#: includes/integrations/class-gravityforms.php:172
 #, fuzzy
 msgid "Enable affiliate referral creation for this form"
 msgstr "Tipul de comision de referinta a afiliatului."
 
-#: includes/integrations/class-gravityforms.php:172
+#: includes/integrations/class-gravityforms.php:176
 #, fuzzy
 msgid "Allow referrals"
 msgstr "Total referinte in asteptare"
 
-#: includes/integrations/class-memberpress.php:129
+#: includes/integrations/class-memberpress.php:133
 #: includes/integrations/class-rcp.php:275
 #: includes/integrations/class-rcp.php:297
 #: includes/integrations/class-woocommerce.php:401
@@ -3003,7 +3013,7 @@ msgstr "Total referinte in asteptare"
 msgid "Affiliate Rate"
 msgstr "Nume afiliat"
 
-#: includes/integrations/class-memberpress.php:158
+#: includes/integrations/class-memberpress.php:162
 #, fuzzy
 msgid "Disable referrals on this membership"
 msgstr "Total referinte in asteptare"
@@ -3026,7 +3036,7 @@ msgid ""
 msgstr ""
 
 #: includes/integrations/class-woocommerce.php:403
-#: includes/integrations/extras/class-exchange-feature.php:42
+#: includes/integrations/extras/class-exchange-feature.php:27
 msgid ""
 "These settings will be used to calculate affiliate earnings per-sale. Leave "
 "blank to use default affiliate rates."
@@ -3043,17 +3053,17 @@ msgid ""
 "commissions for affiliates."
 msgstr ""
 
-#: includes/integrations/class-zippycourses.php:40
+#: includes/integrations/class-zippycourses.php:55
 #, fuzzy
 msgid "Affiliate Settings"
 msgstr "Mergi la Setarile AffiliateWP"
 
-#: includes/integrations/extras/class-exchange-feature.php:22
-msgid "Manage per-product affiliate rates."
+#: includes/integrations/extras/class-exchange-feature.php:39
+msgid "Disable referrals on this product"
 msgstr ""
 
-#: includes/integrations/extras/class-exchange-feature.php:54
-msgid "Disable referrals on this product"
+#: includes/integrations/extras/class-exchange-feature.php:194
+msgid "Manage per-product affiliate rates."
 msgstr ""
 
 #: includes/misc-functions.php:26
@@ -3066,43 +3076,43 @@ msgid "Euros"
 msgstr ""
 
 #: includes/misc-functions.php:28
-msgid "United Arab Emirates Dirham"
-msgstr ""
-
-#: includes/misc-functions.php:29
 #, fuzzy
 msgid "Australian Dollars"
 msgstr "Dolar Australia (&#36;)"
 
-#: includes/misc-functions.php:30
+#: includes/misc-functions.php:29
 msgid "Bangladeshi Taka"
 msgstr ""
 
-#: includes/misc-functions.php:31
+#: includes/misc-functions.php:30
 #, fuzzy
 msgid "Brazilian Real"
 msgstr "Real Brazilia (R&#36;)"
 
-#: includes/misc-functions.php:32
+#: includes/misc-functions.php:31
 msgid "Bulgarian Lev"
 msgstr ""
 
-#: includes/misc-functions.php:33
+#: includes/misc-functions.php:32
 #, fuzzy
 msgid "Canadian Dollars"
 msgstr "Dolar Canada (&#36;)"
 
-#: includes/misc-functions.php:34
+#: includes/misc-functions.php:33
 #, fuzzy
 msgid "Chilean Peso"
 msgstr "Pesos Filipine"
 
-#: includes/misc-functions.php:35
+#: includes/misc-functions.php:34
 msgid "Chinese Yuan"
 msgstr ""
 
-#: includes/misc-functions.php:36
+#: includes/misc-functions.php:35
 msgid "Colombian Peso"
+msgstr ""
+
+#: includes/misc-functions.php:36
+msgid "Croatia Kuna"
 msgstr ""
 
 #: includes/misc-functions.php:37
@@ -3118,21 +3128,22 @@ msgid "Dominican Peso"
 msgstr ""
 
 #: includes/misc-functions.php:40
+msgid "Egyptian Pound"
+msgstr ""
+
+#: includes/misc-functions.php:41
 #, fuzzy
 msgid "Hong Kong Dollar"
 msgstr "Dolar Hong Kong (&#36;)"
-
-#: includes/misc-functions.php:41
-msgid "Croatia kuna"
-msgstr ""
 
 #: includes/misc-functions.php:42
 msgid "Hungarian Forint"
 msgstr "Forint Ungaria"
 
 #: includes/misc-functions.php:43
-msgid "Icelandic krona"
-msgstr ""
+#, fuzzy
+msgid "Icelandic Krona"
+msgstr "Coroana Suedeza"
 
 #: includes/misc-functions.php:44
 msgid "Indonesia Rupiah"
@@ -3144,82 +3155,82 @@ msgid "Indian Rupee"
 msgstr "Rupie India (&#8377;)"
 
 #: includes/misc-functions.php:46
-msgid "Nepali Rupee"
-msgstr ""
-
-#: includes/misc-functions.php:47
 #, fuzzy
 msgid "Israeli Shekel"
 msgstr "Shekel Israel (&#8362;)"
 
-#: includes/misc-functions.php:48
+#: includes/misc-functions.php:47
 #, fuzzy
 msgid "Japanese Yen"
 msgstr "Yen Japonez (&yen;)"
 
-#: includes/misc-functions.php:49
+#: includes/misc-functions.php:48
 msgid "Lao Kip"
 msgstr ""
 
-#: includes/misc-functions.php:50
-msgid "South Korean Won"
-msgstr ""
-
-#: includes/misc-functions.php:51
+#: includes/misc-functions.php:49
 msgid "Malaysian Ringgits"
 msgstr "Ringgits Malesia"
 
-#: includes/misc-functions.php:52
+#: includes/misc-functions.php:50
 #, fuzzy
 msgid "Mexican Peso"
 msgstr "Peso Mexic (&#36;)"
 
-#: includes/misc-functions.php:53
+#: includes/misc-functions.php:51
+msgid "Nepali Rupee"
+msgstr ""
+
+#: includes/misc-functions.php:52
 msgid "Nigerian Naira"
 msgstr ""
 
-#: includes/misc-functions.php:54
+#: includes/misc-functions.php:53
 msgid "Norwegian Krone"
 msgstr "Coroana Norvegia"
 
-#: includes/misc-functions.php:55
+#: includes/misc-functions.php:54
 #, fuzzy
 msgid "New Zealand Dollar"
 msgstr "Dolar Noa Zeelanda (&#36;)"
 
-#: includes/misc-functions.php:56
+#: includes/misc-functions.php:55
 msgid "Paraguayan Guaraní"
 msgstr ""
 
-#: includes/misc-functions.php:57
+#: includes/misc-functions.php:56
 msgid "Philippine Pesos"
 msgstr "Pesos Filipine"
 
-#: includes/misc-functions.php:58
+#: includes/misc-functions.php:57
 msgid "Polish Zloty"
 msgstr "Zlote Polonia"
 
-#: includes/misc-functions.php:59
+#: includes/misc-functions.php:58
 #, fuzzy
 msgid "Pounds Sterling"
 msgstr "Lira Sterlina (&pound;)"
 
-#: includes/misc-functions.php:60
+#: includes/misc-functions.php:59
 msgid "Romanian Leu"
 msgstr ""
 
-#: includes/misc-functions.php:61
+#: includes/misc-functions.php:60
 #, fuzzy
 msgid "Russian Ruble"
 msgstr "Rubla Rusia"
 
-#: includes/misc-functions.php:62
+#: includes/misc-functions.php:61
 #, fuzzy
 msgid "Singapore Dollar"
 msgstr "Dolar Singapore (&#36;)"
 
+#: includes/misc-functions.php:62
+msgid "South African Rand"
+msgstr ""
+
 #: includes/misc-functions.php:63
-msgid "South African rand"
+msgid "South Korean Won"
 msgstr ""
 
 #: includes/misc-functions.php:64
@@ -3245,11 +3256,11 @@ msgid "Turkish Lira"
 msgstr "Lira Turcia (&#8378;)"
 
 #: includes/misc-functions.php:69
-msgid "Vietnamese Dong"
+msgid "United Arab Emirates Dirham"
 msgstr ""
 
 #: includes/misc-functions.php:70
-msgid "Egyptian Pound"
+msgid "Vietnamese Dong"
 msgstr ""
 
 #: includes/scripts.php:62
