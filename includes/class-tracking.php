@@ -279,7 +279,7 @@ class Affiliate_WP_Tracking {
 
 		if( empty( $affiliate_id ) ) {
 
-			$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
+			$affiliate_id = $this->get_fallback_affiliate_id();
 
 		}
 
@@ -310,6 +310,53 @@ class Affiliate_WP_Tracking {
 
 		}
 
+	}
+
+	/**
+	 * Get the affiliate ID when using fallback tracking method
+	 *
+	 * @since 1.7.11
+	 */
+	public function get_fallback_affiliate_id() {
+
+		$affiliate_id = ! empty( $_GET[ $this->get_referral_var() ] ) ? $_GET[ $this->get_referral_var() ] : false;
+
+		if( empty( $affiliate_id ) ) {
+
+			$path = ! empty( $_SERVER['REQUEST_URI' ] ) ? $_SERVER['REQUEST_URI' ] : '';
+
+			if( false !== strpos( $path, $this->get_referral_var() . '/' ) ) {
+				$pieces = explode( '/', $path );
+				$key    = array_search( $this->get_referral_var(), $pieces );
+				if( $key ) {
+
+					$key += 1;					
+					$affiliate_id = isset( $pieces[ $key ] ) ? $pieces[ $key ] : false;
+
+					// Look for affiliate ID by username
+					if( intval( $affiliate_id ) < 1 || ! is_numeric( $affiliate_id ) ) {
+
+						$user = get_user_by( 'login', sanitize_text_field( urldecode( $affiliate_id ) ) );
+
+						if( $user ) {
+
+							$affiliate_id = affwp_get_affiliate_id( $user->ID );
+
+						} else {
+
+							$affiliate_id = false;
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+		return $affiliate_id;
 	}
 
 	/**
