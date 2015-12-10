@@ -28,10 +28,6 @@ function affwp_process_affiliates_export() {
 		return;
 	}
 
-	if( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-
 	$status  = ! empty( $_POST['status'] ) ? sanitize_text_field( $_POST['status'] ) : false;
 
 	$export = new Affiliate_WP_Affiliate_Export;

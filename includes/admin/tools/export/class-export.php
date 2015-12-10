@@ -35,7 +35,7 @@ class Affiliate_WP_Export {
 	 * @return bool Whether we can export or not
 	 */
 	public function can_export() {
-		return (bool) apply_filters( 'affwp_export_capability', current_user_can( 'manage_options' ) );
+		return (bool) current_user_can( apply_filters( 'affwp_export_capability', 'export_affiliate_data' ) );
 	}
 
 	/**
