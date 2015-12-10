@@ -57,7 +57,10 @@ class Affiliate_WP_RCP extends Affiliate_WP_Base {
 
 				$this->affiliate_id = $affiliate_id;
 
-				$key    = rcp_get_subscription_key( $user_id );
+				$key = get_user_meta( $user_id, 'rcp_pending_subscription_key', true );
+				if( empty( $key ) ) {
+					$key = rcp_get_subscription_key( $user_id );
+				}
 
 				$amount = $this->calculate_referral_amount( $price, $key, absint( $_POST['rcp_level'] ) );
 				
