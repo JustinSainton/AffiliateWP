@@ -284,7 +284,7 @@ class Affiliate_WP_Welcome {
 					<img src="<?php echo esc_url( AFFILIATEWP_PLUGIN_URL . 'assets/images/screenshots/graph.png' ); ?>" class="affwp-welcome-screenshots"/>
 
 					<h4><?php _e( 'A Dashboard For Your Affiliates', 'affiliate-wp' );?></h4>
-					<p><?php _e( 'The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> short code, gives your affiliates access to their performance reports.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'The Affiliate Area, shown on any page containing the <em>[affiliate_area]</em> shortcode, gives your affiliates access to their performance reports.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'Affiliates can easily see how much they have earned, how much is awaiting payment, and even how their referral URLs have done over time.', 'affiliate-wp' );?></p>
 					<p><?php _e( 'A log of the referral links that have been clicked and where they were clicked on from, and whether the link converted into a successful referral, is also available to affiliates.', 'affiliate-wp' );?></p>
 				</div>
