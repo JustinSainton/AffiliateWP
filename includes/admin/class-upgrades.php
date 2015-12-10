@@ -318,11 +318,15 @@ class Affiliate_WP_Upgrades {
 		// Ensures settings are not lost if the duplicate email/subject fields were used before they were removed
 		if( ! empty( $settings['rejected_email'] ) && empty( $settings['rejection_email'] ) ) {
 			$settings['rejection_email'] = $settings['rejected_email'];
+			unset( $settings['rejected_email'] );
 		}
 
 		if( ! empty( $settings['rejected_subject'] ) && empty( $settings['rejection_subject'] ) ) {
 			$settings['rejection_subject'] = $settings['rejected_subject'];
+			unset( $settings['rejected_subject'] );
 		}
+
+		update_option( 'affwp_settings', $settings );
 
 		$this->upgraded = true;
 
