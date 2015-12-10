@@ -213,7 +213,7 @@ class Affiliate_WP_Tracking {
 	/**
 	 * Record referral conversion via ajax
 	 *
-	 * This is called anytime a referred visitor lands on a success page, defined by the [affiliate_conversion_script] short code
+	 * This is called anytime a referred visitor lands on a success page, defined by the [affiliate_conversion_script] shortcode
 	 *
 	 * @since 1.0
 	 */
@@ -577,7 +577,7 @@ class Affiliate_WP_Tracking {
 	public function check_js() {
 
 		update_option( 'affwp_js_works', 1 );
-	
+
 		die( '1' );
 	}
 
