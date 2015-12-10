@@ -39,6 +39,10 @@ class Affiliate_WP_Upgrades {
 
 		if ( version_compare( $version, '1.7.3', '<' ) ) {
 			$this->v173_upgrades();
+		}
+
+		if ( version_compare( $version, '1.7.11', '<' ) ) {
+			$this->v1711_upgrades();
 		}	
 
 		// If upgrades have occurred
@@ -301,6 +305,28 @@ class Affiliate_WP_Upgrades {
 
 	}
 
-}
+	/**
+	 * Perform database upgrades for version 1.7.11
+	 *
+	 * @access  private
+	 * @since   1.7.11
+	 */
+	private function v1711_upgrades() {
 
+		$settings = affiliate_wp()->settings->get_all();
+
+		// Ensures settings are not lost if the duplicate email/subject fields were used before they were removed
+		if( ! empty( $settings['rejected_email'] ) && empty( $settings['rejection_email'] ) ) {
+			$settings['rejection_email'] = $settings['rejected_email'];
+		}
+
+		if( ! empty( $settings['rejected_subject'] ) && empty( $settings['rejection_subject'] ) ) {
+			$settings['rejection_subject'] = $settings['rejected_subject'];
+		}
+
+		$this->upgraded = true;
+
+	}
+
+}
 new Affiliate_WP_Upgrades;
