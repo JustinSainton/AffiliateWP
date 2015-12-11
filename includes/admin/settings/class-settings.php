@@ -229,8 +229,7 @@ class Affiliate_WP_Settings {
 
 			} else {
 
-				$value = sanitize_text_field( $value );
-				$value = preg_replace( '/[^A-Za-z0-9 ]/', '', $value );
+				$value = sanitize_key( $value );
 
 			}
 
