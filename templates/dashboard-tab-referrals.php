@@ -45,7 +45,7 @@
 			<?php else : ?>
 
 				<tr>
-					<td colspan="3"><?php _e( 'You have not made any referrals yet.', 'affiliate-wp' ); ?></td>
+					<td colspan="4"><?php _e( 'You have not made any referrals yet.', 'affiliate-wp' ); ?></td>
 				</tr>
 
 			<?php endif; ?>
