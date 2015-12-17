@@ -110,9 +110,10 @@ function affwp_frontend_scripts_and_styles() {
 		return;
 	}
 
-	if ( has_shortcode( $post->post_content, 'affiliate_area' ) || has_shortcode( $post->post_content, 'affiliate_area' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+	wp_register_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
 
-		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+	if ( has_shortcode( $post->post_content, 'affiliate_area' ) || has_shortcode( $post->post_content, 'affiliate_area' ) || apply_filters( 'affwp_force_frontend_scripts', false ) ) {
 
 		wp_enqueue_script( 'affwp-frontend', AFFILIATEWP_PLUGIN_URL . 'assets/js/frontend' . $suffix . '.js', array( 'jquery' ), AFFILIATEWP_VERSION );
 		wp_localize_script( 'affwp-frontend', 'affwp_vars', array(
@@ -122,7 +123,8 @@ function affwp_frontend_scripts_and_styles() {
 			'currency_sign'         => affwp_currency_filter(''),
 			'currency_pos'          => affiliate_wp()->settings->get( 'currency_position', 'before' ),
 		));
-		wp_enqueue_style( 'affwp-forms', AFFILIATEWP_PLUGIN_URL . 'assets/css/forms' . $suffix . '.css', AFFILIATEWP_VERSION );
+
+		wp_enqueue_style( 'affwp-forms' );
 		wp_enqueue_style( 'dashicons' );
 
 		if ( affwp_is_recaptcha_enabled() ) {
