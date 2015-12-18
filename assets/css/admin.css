@@ -67,6 +67,9 @@ table.affwp_table td a {
 }
 #affwp-dashboard-widgets-wrap .postbox h3 {
 	cursor: default;
+    font-weight: 600;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 #affwp-dashboard-widgets-wrap .muted {
 	color: #999;
