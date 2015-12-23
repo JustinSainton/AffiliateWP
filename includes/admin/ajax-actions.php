@@ -48,25 +48,22 @@ function affwp_search_users() {
 		}
 	}
 
-	$found_users = array_filter(
-		get_users( $args ),
-		function ( $user ) {
-			$q = mb_strtolower( htmlentities2( trim( $_POST['search'] ) ) );
-
-			$user_login   = mb_strtolower( $user->user_login );
-			$display_name = mb_strtolower( $user->display_name );
-			$user_email   = mb_strtolower( $user->user_email );
-
-			// Detect query term matches from these user fields (in order of priority)
-			return (
-				false !== mb_strpos( $user_login, $q )
-				||
-				false !== mb_strpos( $display_name, $q )
-				||
-				false !== mb_strpos( $user_email, $q )
-			);
-		}
+	//make sure we filter the search columns so they only include the columns we want to search
+	//this filter was exposed by WordPress in WP 3.6.0
+	add_filter(
+		'user_search_columns',
+		function( $search_columns, $search, WP_User_Query $WP_User_Query ) {
+			return array( 'user_login', 'display_name', 'user_email' );
+		},
+		10,
+		3
 	);
+
+	//add search string to args
+	$args['search'] = mb_strtolower( htmlentities2( trim( $_POST['search'] ) ) );
+	
+	//get users matching search
+	$found_users = get_users( $args );
 
 	if ( $found_users ) {
 		$user_list = '<ul>';
