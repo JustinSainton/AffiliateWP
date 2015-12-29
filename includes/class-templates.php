@@ -23,7 +23,7 @@ class Affiliate_WP_Templates {
 	}
 
 	/**
-	 * Returns the URL to the AffiliateWP templates directory
+	 * Returns the URL to the theme's AffiliateWP templates directory
 	 *
 	 * @since 1.0
 	 * @return string
