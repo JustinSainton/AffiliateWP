@@ -95,6 +95,10 @@ function affwp_notify_on_approval( $affiliate_id = 0, $status = '', $old_status 
 		return;
 	}
 
+	if( doing_action( 'affwp_add_affiliate' ) && empty( $_POST['welcome_email'] ) ) {
+		return;
+	}
+
 	$emails       = new Affiliate_WP_Emails;
 	$emails->__set( 'affiliate_id', $affiliate_id );
 
