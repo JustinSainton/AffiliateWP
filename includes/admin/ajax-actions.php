@@ -60,7 +60,7 @@ function affwp_search_users() {
 	);
 
 	//add search string to args
-	$args['search'] = mb_strtolower( htmlentities2( trim( $_POST['search'] ) ) );
+	$args['search'] = '*' . mb_strtolower( htmlentities2( trim( $_POST['search'] ) ) ) . '*';
 	
 	//get users matching search
 	$found_users = get_users( $args );
