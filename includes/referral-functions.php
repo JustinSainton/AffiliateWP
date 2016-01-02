@@ -78,6 +78,10 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
 		return false;
 	}
 
+	if( empty( $new_status ) ) {
+		return false;
+	}
+
 	if( affiliate_wp()->referrals->update( $referral_id, array( 'status' => $new_status ), '', 'referral' ) ) {
 
 		if( 'paid' == $new_status ) {

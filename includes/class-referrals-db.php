@@ -135,7 +135,7 @@ class Affiliate_WP_Referrals_DB extends Affiliate_WP_DB  {
 
 		if( $update ) {
 
-			if( $referral->status !== $data['status'] ) {
+			if( ! empty( $data['status'] ) && $referral->status !== $data['status'] ) {
 
 				affwp_set_referral_status( $referral, $data['status'] );
 
