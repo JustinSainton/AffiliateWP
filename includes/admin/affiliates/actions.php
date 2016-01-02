@@ -24,10 +24,6 @@ function affwp_process_add_affiliate( $data ) {
 
 	if ( $affiliate_id ) {
 
-		if( ! empty( $data['welcome_email'] ) ) {
-			affwp_notify_on_approval( $affiliate_id, 'active', 'pending' );
-		}
-
 		wp_safe_redirect( admin_url( 'admin.php?page=affiliate-wp-affiliates&affwp_notice=affiliate_added' ) );
 		exit;
 	} else {
