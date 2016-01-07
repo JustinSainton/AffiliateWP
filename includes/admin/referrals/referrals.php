@@ -327,7 +327,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string The affiliate
 	 */
 	public function column_affiliate( $referral ) {
-		return '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate_id=' . $referral->affiliate_id ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ) . '</a>';
+		return apply_filters( 'affwp_referral_affiliate_column', '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate_id=' . $referral->affiliate_id ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ) . '</a>', $referral );
 	}
 
 	/**
