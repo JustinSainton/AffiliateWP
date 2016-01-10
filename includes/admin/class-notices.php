@@ -71,7 +71,7 @@ class Affiliate_WP_Admin_Notices {
 
 					break;
 
-				case 'affiliate_actived' :
+				case 'affiliate_activated' :
 
 					$message = __( 'Affiliate account activated', 'affiliate-wp' );
 
