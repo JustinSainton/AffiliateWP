@@ -221,7 +221,7 @@ class AffWP_Affiliates_Table extends WP_List_Table {
 		$columns = array(
 			'cb'           => '<input type="checkbox" />',
 			'name'         => __( 'Name', 'affiliate-wp' ),
-			'affiliate_id' => __( 'ID', 'affiliate-wp' ),
+			'affiliate_id' => __( 'Affiliate ID', 'affiliate-wp' ),
 			'earnings'     => __( 'Earnings', 'affiliate-wp' ),
 			'rate'     	   => __( 'Rate', 'affiliate-wp' ),
 			'unpaid'       => __( 'Unpaid Referrals', 'affiliate-wp' ),
