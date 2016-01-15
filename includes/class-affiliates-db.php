@@ -123,7 +123,7 @@ class Affiliate_WP_DB_Affiliates extends Affiliate_WP_DB {
 
 					$user    = get_user_by( 'email', $args['search'] );
 					$user_id = $user ? $user->ID : 0;
-					$search  = "`user_id` = '" . $user_id . "' ";
+					$search  = "`user_id` = '" . $user_id . "' OR `payment_email` = '" . esc_sql ( $args['search'] ) . "' ";
 
 				} else {
 
