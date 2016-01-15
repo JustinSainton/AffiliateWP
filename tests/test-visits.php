@@ -13,8 +13,8 @@ class Visit_Tests extends WP_UnitTestCase {
 		$visit_id = affiliate_wp()->visits->add( array( 'campaign' => $campaign, 'affiliate_id' => 1 ) );
 		$visit    = affiliate_wp()->visits->get( $visit_id );
 
-		$this->assertEqual( 50, strlen( $visit->campaign ) );
-		$this->assertEqual( '11111111111111111111111111111111111111111111111111', $visit->campaign );
+		$this->assertEquals( 50, strlen( $visit->campaign ) );
+		$this->assertEquals( '11111111111111111111111111111111111111111111111111', $visit->campaign );
 
 	}
 
