@@ -250,7 +250,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 		if( ! empty( $data['campaign'] ) ) {
 
 			// Make sure campaign is not longer than 50 characters
-			$data['campaign'] = substr( $data['campaign'], 0, 49 );
+			$data['campaign'] = substr( $data['campaign'], 0, 50 );
 
 		}
 
