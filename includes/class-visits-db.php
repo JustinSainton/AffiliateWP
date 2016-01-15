@@ -247,6 +247,13 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			$data['url'] = remove_query_arg( affiliate_wp()->tracking->get_referral_var(), $data['url'] );
 		}
 
+		if( ! empty( $data['campaign'] ) ) {
+
+			// Make sure campaign is not longer than 50 characters
+			$data['campaign'] = substr( $data['campaign'], 0, 49 );
+
+		}
+
 		$visit_id = $this->insert( $data, 'visit' );
 
 
@@ -264,7 +271,7 @@ class Affiliate_WP_Visits_DB extends Affiliate_WP_DB {
 			referral_id bigint(20) NOT NULL,
 			url mediumtext NOT NULL,
 			referrer mediumtext NOT NULL,
-			campaign varchar(30) NOT NULL,
+			campaign varchar(50) NOT NULL,
 			ip tinytext NOT NULL,
 			date datetime NOT NULL,
 			PRIMARY KEY  (visit_id),
