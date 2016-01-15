@@ -400,8 +400,14 @@ class Affiliate_WP_Tracking {
 	 * @since 1.0
 	 */
 	public function set_expiration_time() {
+
 		// Default time is 1 day
 		$days = affiliate_wp()->settings->get( 'cookie_exp', 1 );
+
+		// Cannot permit cookies to go past 2038
+		$max  = ( 2038 - date( 'Y' ) ) * 365; 
+		$days = $days > $max ? $max : $days;
+
 		$this->expiration_time = apply_filters( 'affwp_cookie_expiration_time', $days );
 	}
 
