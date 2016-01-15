@@ -98,6 +98,22 @@ class Affiliate_WP_Register {
 				$this->add_error( 'password_mismatch', __( 'Passwords do not match', 'affiliate-wp' ) );
 			}
 
+		} else {
+
+			// Loop through required fields and show error message
+			foreach ( $this->required_fields() as $field_name => $value ) {
+
+				if( ! empty( $value['logged_out'] ) ) {
+					continue;
+				}
+
+				$field = sanitize_text_field( $_POST[ $field_name ] );
+
+				if ( empty( $field ) ) {
+					$this->add_error( $value['error_id'], $value['error_message'] );
+				}
+			}
+
 		}
 
 		$terms_of_use = affiliate_wp()->settings->get( 'terms_of_use' );
@@ -173,11 +189,13 @@ class Affiliate_WP_Register {
 		$required_fields = array(
 			'affwp_user_name' 	=> array(
 				'error_id'      => 'empty_name',
-				'error_message' => __( 'Please enter your name', 'affiliate-wp' )
+				'error_message' => __( 'Please enter your name', 'affiliate-wp' ),
+				'logged_out'    => true
 			),
 			'affwp_user_login' 	=> array(
 				'error_id'      => 'empty_username',
-				'error_message' => __( 'Invalid username', 'affiliate-wp' )
+				'error_message' => __( 'Invalid username', 'affiliate-wp' ),
+				'logged_out'    => true
 			),
 			'affwp_user_url' 	=> array(
 				'error_id'      => 'invalid_url',
@@ -185,7 +203,8 @@ class Affiliate_WP_Register {
 			),
 			'affwp_user_pass' 	=> array(
 				'error_id'      => 'empty_password',
-				'error_message' => __( 'Please enter a password', 'affiliate-wp' )
+				'error_message' => __( 'Please enter a password', 'affiliate-wp' ),
+				'logged_out'    => true
 			)
 		);
 
