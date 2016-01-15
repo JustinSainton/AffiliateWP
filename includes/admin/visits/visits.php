@@ -149,7 +149,7 @@ class AffWP_Visits_Table extends WP_List_Table {
 			'date'         => __( 'Date', 'affiliate-wp' ),
 		);
 
-		return $columns;
+		return apply_filters( 'affwp_visit_table_columns', $columns );
 	}
 
 	/**
@@ -178,13 +178,13 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	function column_default( $visit, $column_name ) {
-		switch( $column_name ){
+		switch( $column_name ) {
 			default:
 				$value = isset( $visit->$column_name ) ? $visit->$column_name : '';
 				break;
 		}
 
-		return $value;
+		return apply_filters( 'affwp_visit_table_' . $column_name, $value, $visit );
 	}
 
 	/**
@@ -196,7 +196,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return string The affiliate
 	 */
 	function column_affiliate( $visit ) {
-		return '<a href="' . esc_url( admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $visit->affiliate_id ) ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $visit->affiliate_id ) . '</a>';
+		$value = '<a href="' . esc_url( admin_url( 'admin.php?page=affiliate-wp-visits&affiliate=' . $visit->affiliate_id ) ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $visit->affiliate_id ) . '</a>';
+		return apply_filters( 'affwp_visit_table_affiliate', $value, $visit );
 	}
 
 	/**
@@ -208,9 +209,8 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return string Referring URL
 	 */
 	function column_referrer( $visit ) {
-
-		$referrer = ! empty( $visit->referrer ) ? '<a href="' . esc_url( $visit->referrer ) . '" taret="_blank">' . $visit->referrer . '</a>' : __( 'Direct traffic', 'affiliate-wp' );
-		return $referrer;
+		$value = ! empty( $visit->referrer ) ? '<a href="' . esc_url( $visit->referrer ) . '" taret="_blank">' . $visit->referrer . '</a>' : __( 'Direct traffic', 'affiliate-wp' );
+		return apply_filters( 'affwp_visit_table_referrer', $value, $visit );
 	}
 
 	/**
@@ -222,9 +222,9 @@ class AffWP_Visits_Table extends WP_List_Table {
 	 * @return string Converted status icon
 	 */
 	function column_converted( $visit ) {
-
 		$converted = ! empty( $visit->referral_id ) ? 'yes' : 'no';
-		return '<span class="visit-converted ' . $converted . '"><i></i></span>';
+		$value = '<span class="visit-converted ' . $converted . '"><i></i></span>';
+		return apply_filters( 'affwp_visit_table_converted', $value, $visit );
 	}
 
 	/**
