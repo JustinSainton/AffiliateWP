@@ -43,6 +43,10 @@ class Affiliate_WP_Upgrades {
 
 		if ( version_compare( $version, '1.7.11', '<' ) ) {
 			$this->v1711_upgrades();
+		}
+
+		if ( version_compare( $version, '1.7.14', '<' ) ) {
+			$this->v1714_upgrades();
 		}	
 
 		// If upgrades have occurred
@@ -327,6 +331,20 @@ class Affiliate_WP_Upgrades {
 		}
 
 		update_option( 'affwp_settings', $settings );
+
+		$this->upgraded = true;
+
+	}
+
+	/**
+	 * Perform database upgrades for version 1.7.14
+	 *
+	 * @access  private
+	 * @since   1.7.14
+	 */
+	private function v1714_upgrades() {
+
+		@affiliate_wp()->visits->create_table();
 
 		$this->upgraded = true;
 
