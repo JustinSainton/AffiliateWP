@@ -24,6 +24,11 @@ class Affiliate_WP_Shortcodes {
 	 */
 	public function affiliate_area( $atts, $content = null ) {
 
+		// See https://github.com/AffiliateWP/AffiliateWP/issues/867
+		if( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+			return;
+		}
+
 		ob_start();
 
 		if ( is_user_logged_in() && affwp_is_affiliate() ) {
