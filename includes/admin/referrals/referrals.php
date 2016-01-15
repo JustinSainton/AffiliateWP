@@ -232,7 +232,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 			'status'      => __( 'Status', 'affiliate-wp' ),
 		);
 
-		return $columns;
+		return apply_filters( 'affwp_referral_table_columns', $columns );
 	}
 
 	/**
@@ -263,7 +263,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Column Name
 	 */
 	public function column_default( $referral, $column_name ) {
-		switch( $column_name ){
+		switch( $column_name ) {
 
 			case 'date' :
 				$value = date_i18n( get_option( 'date_format' ), strtotime( $referral->date ) );
@@ -279,7 +279,7 @@ class AffWP_Referrals_Table extends WP_List_Table {
 				break;
 		}
 
-		return $value;
+		return apply_filters( 'affwp_referral_table_' . $column_name, $value, $referral );
 	}
 
 	/**
@@ -303,7 +303,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Displays the referral amount
 	 */
 	public function column_amount( $referral ) {
-		return affwp_currency_filter( affwp_format_amount( $referral->amount ) );
+		$value = affwp_currency_filter( affwp_format_amount( $referral->amount ) );
+		return apply_filters( 'affwp_referral_table_amount', $value, $referral );
 	}
 
 	/**
@@ -315,7 +316,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string Displays the referral status
 	 */
 	public function column_status( $referral ) {
-		return '<span class="affwp-status ' . $referral->status . '"><i></i>' . affwp_get_referral_status_label( $referral ) . '</span>';
+		$value ='<span class="affwp-status ' . $referral->status . '"><i></i>' . affwp_get_referral_status_label( $referral ) . '</span>';
+		return apply_filters( 'affwp_referral_table_status', $value, $referral );
 	}
 
 	/**
@@ -327,7 +329,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string The affiliate
 	 */
 	public function column_affiliate( $referral ) {
-		return apply_filters( 'affwp_referral_affiliate_column', '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate_id=' . $referral->affiliate_id ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ) . '</a>', $referral );
+		$value = apply_filters( 'affwp_referral_affiliate_column', '<a href="' . admin_url( 'admin.php?page=affiliate-wp-referrals&affiliate_id=' . $referral->affiliate_id ) . '">' . affiliate_wp()->affiliates->get_affiliate_name( $referral->affiliate_id ) . '</a>', $referral );
+		return apply_filters( 'affwp_referral_table_affiliate', $value, $referral );
 	}
 
 	/**
@@ -339,9 +342,8 @@ class AffWP_Referrals_Table extends WP_List_Table {
 	 * @return string The reference
 	 */
 	public function column_reference( $referral ) {
-
-		return apply_filters( 'affwp_referral_reference_column', $referral->reference, $referral );
-
+		$value = apply_filters( 'affwp_referral_reference_column', $referral->reference, $referral );
+		return apply_filters( 'affwp_referral_table_reference', $value, $referral );
 	}
 
 	/**
