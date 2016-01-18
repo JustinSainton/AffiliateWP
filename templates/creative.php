@@ -19,7 +19,7 @@
 		<?php
 		// Image preview - External image URL or picked from media library
 		elseif ( $affwp_creative_atts['image_link'] ) :
-			$image      = $affwp_creative_atts['image_link'];
+			$image = $affwp_creative_atts['image_link'];
 		?>
 			<p>
 				<a href="<?php echo esc_url( affwp_get_affiliate_referral_url( array( 'base_url' => $affwp_creative_atts['url'] ) ) ); ?>" title="<?php echo esc_attr( $affwp_creative_atts['text'] ); ?>">
