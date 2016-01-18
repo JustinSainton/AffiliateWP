@@ -7,24 +7,23 @@
 
 	<?php if ( $affwp_creative_atts['preview'] != 'no' ) : ?>
 
-		<?php 
+		<?php
 		// Image preview - using ID of image from media library
-		if ( $affwp_creative_atts['image_attributes'] ) : ?> 
+		if ( $affwp_creative_atts['image_attributes'] ) : ?>
 		<p>
 			<a href="<?php echo esc_url( affwp_get_affiliate_referral_url( array( 'base_url' => $affwp_creative_atts['url'] ) ) ); ?>" title="<?php echo esc_attr( $affwp_creative_atts['text'] ); ?>">
 				<img src="<?php echo esc_attr( $affwp_creative_atts['image_attributes'][0] ); ?>" width="<?php echo esc_attr( $affwp_creative_atts['image_attributes'][1] ); ?>" height="<?php echo esc_attr( $image_attributes[2] ); ?>" alt="<?php echo esc_attr( $text ); ?>">
 			</a>
 		</p>
-		
+
 		<?php
 		// Image preview - External image URL or picked from media library
 		elseif ( $affwp_creative_atts['image_link'] ) :
-			$image      = $affwp_creative_atts['image_link'];
-			$image_size = getimagesize( $image ); // get the image's dimensions
+			$image = $affwp_creative_atts['image_link'];
 		?>
 			<p>
 				<a href="<?php echo esc_url( affwp_get_affiliate_referral_url( array( 'base_url' => $affwp_creative_atts['url'] ) ) ); ?>" title="<?php echo esc_attr( $affwp_creative_atts['text'] ); ?>">
-					<img src="<?php echo esc_attr( $affwp_creative_atts['image_link'] ); ?>" <?php echo $image_size[3]; ?> alt="<?php echo esc_attr( $affwp_creative_atts['text'] ); ?>">
+					<img src="<?php echo esc_attr( $affwp_creative_atts['image_link'] ); ?>" alt="<?php echo esc_attr( $affwp_creative_atts['text'] ); ?>">
 				</a>
 			</p>
 
@@ -52,10 +51,10 @@
 			$image_or_text = esc_attr( $affwp_creative_atts['text'] );
 		}
 	?>
-	
-	<?php 
+
+	<?php
 		$creative = '<a href="' . esc_url( affwp_get_affiliate_referral_url( array( 'base_url' => $affwp_creative_atts['url'] ) ) ) .'" title="' . esc_attr( $affwp_creative_atts['text'] ) . '">' . $image_or_text . '</a>';
-		echo '<pre><code>' . esc_html( $creative ) . '</code></pre>'; 
+		echo '<pre><code>' . esc_html( $creative ) . '</code></pre>';
 	?>
-	
-</div>	
+
+</div>
