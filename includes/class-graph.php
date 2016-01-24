@@ -468,7 +468,7 @@ function affwp_get_report_dates() {
 		break;
 
 		case 'yesterday' :
-			$month              = date( 'n', $current_time ) == 1 ? 12 : date( 'n', $current_time );
+			$month              = date( 'n', $current_time ) == 1 && date( 'd', $current_time ) == 1 ? 12 : date( 'n', $current_time );
 			$days_in_month      = cal_days_in_month( CAL_GREGORIAN, $month, date( 'Y', $current_time ) );
 			$yesterday          = date( 'd', $current_time ) == 1 ? $days_in_month : date( 'd', $current_time ) - 1;
 			$dates['day']		= $yesterday;
