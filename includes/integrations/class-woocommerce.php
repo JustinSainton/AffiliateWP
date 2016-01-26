@@ -79,9 +79,9 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			// Check for an existing referral
 			$existing = affiliate_wp()->referrals->get_by( 'reference', $order_id, $this->context );
 
-			// If an existing referral exists and it is not pending, exit. If it is pending, we update it below
-			if ( $existing && 'pending' != $existing->status ) {
-				return false; // Referral already created for this reference
+			// If an existing referral exists and it is paid or unpaid exit.
+			if ( $existing && ( 'paid' == $existing->status || 'unpaid' == $existing->status ) ) {
+				return false; // Completed Referral already created for this reference
 			}
 
 			$cart_shipping = $this->order->get_total_shipping();
