@@ -262,7 +262,7 @@ function affwp_export_import_tab() {
 								<option value="rejected"><?php _e( 'Rejected', 'affiliate-wp' ); ?></option>
 							</select>
 							<div id="affwp_user_search_results"></div>
-							<div class="description"><?php _e( 'To search for a affiliate, enter the affiliate\'s login name, first name, or last name. Leave blank to export referrals for all affiliates.', 'affiliate-wp' ); ?></div>
+							<div class="description"><?php _e( 'To search for an affiliate, enter the affiliate\'s login name, first name, or last name. Leave blank to export referrals for all affiliates.', 'affiliate-wp' ); ?></div>
 						</p>
 						<p>
 							<input type="hidden" name="affwp_action" value="export_referrals" />
