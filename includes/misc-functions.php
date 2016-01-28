@@ -116,7 +116,7 @@ function affwp_sanitize_amount( $amount ) {
 		$amount = str_replace( $thousands_sep, '', $amount );
 	}
 
-	$decimals = apply_filters( 'affwp_sanitize_amount_decimals', 2, $amount );
+	$decimals = apply_filters( 'affwp_sanitize_amount_decimals', affwp_get_decimal_count(), $amount );
 	$amount   = number_format( floatval( $amount ), absint( $decimals ), '.', '' );
 
 	return apply_filters( 'affwp_sanitize_amount', $amount );
@@ -154,12 +154,26 @@ function affwp_format_amount( $amount, $decimals = true ) {
 		$amount = 0;
 	}
 
-	$decimals  = apply_filters( 'affwp_format_amount_decimals', $decimals ? 2 : 0, $amount );
+	if( $decimals ) {
+		$decimals = apply_filters( 'affwp_format_amount_decimals', affwp_get_decimal_count(), $amount );
+	} else {
+		$decimals = 0;
+	}
+
 	$formatted = number_format( $amount, $decimals, $decimal_sep, $thousands_sep );
 
 	return apply_filters( 'affwp_format_amount', $formatted, $amount, $decimals, $decimal_sep, $thousands_sep );
 }
 
+/**
+ * Retrieves the number of decimals to round to
+ *
+ * @since 1.8
+ * @return int Number of decimal places
+ */
+function affwp_get_decimal_count() {
+	return apply_filters( 'affwp_decimal_count', 2 );
+}
 
 /**
  * Formats the currency display
@@ -279,9 +293,7 @@ function affwp_currency_decimal_filter( $decimals = 2 ) {
 
 	return $decimals;
 }
-add_filter( 'affwp_sanitize_amount_decimals', 'affwp_currency_decimal_filter' );
-add_filter( 'affwp_format_amount_decimals', 'affwp_currency_decimal_filter' );
-
+add_filter( 'affwp_decimal_count', 'affwp_currency_decimal_filter' );
 
 /**
  * Convert an object to an associative array.
