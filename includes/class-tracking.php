@@ -330,7 +330,7 @@ class Affiliate_WP_Tracking {
 				$key    = array_search( $this->get_referral_var(), $pieces );
 				if( $key ) {
 
-					$key += 1;					
+					$key += 1;
 					$affiliate_id = isset( $pieces[ $key ] ) ? $pieces[ $key ] : false;
 
 					// Look for affiliate ID by username
@@ -405,7 +405,7 @@ class Affiliate_WP_Tracking {
 		$days = affiliate_wp()->settings->get( 'cookie_exp', 1 );
 
 		// Cannot permit cookies to go past 2038
-		$max  = ( 2038 - date( 'Y' ) ) * 365; 
+		$max  = ( 2038 - date( 'Y' ) ) * 365;
 		$days = $days > $max ? $max : $days;
 
 		$this->expiration_time = apply_filters( 'affwp_cookie_expiration_time', $days );
@@ -487,7 +487,7 @@ class Affiliate_WP_Tracking {
 
 		}
 
-		return apply_filters( 'affwp_tracking_get_affiliate_id', $affiliate_id );
+		return apply_filters( 'affwp_tracking_get_affiliate_id', $affiliate_id, $login );
 
 	}
 
