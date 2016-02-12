@@ -457,7 +457,7 @@ class Affiliate_WP_Tracking {
 
 		$affiliate_id = ! empty( $_COOKIE['affwp_ref'] ) ? $_COOKIE['affwp_ref'] : false;
 
-		if( ! empty( $cookie ) ) {
+		if ( ! empty( $affiliate_id ) ) {
 
 			$affiliate_id = absint( $affiliate_id );
 
