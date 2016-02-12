@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: AffiliateWP
- * Plugin URI: http://affiliatewp.com
+ * Plugin URI: https://affiliatewp.com
  * Description: Affiliate Plugin for WordPress
  * Author: Pippin Williamson and Andrew Munro
- * Author URI: http://affiliatewp.com
+ * Author URI: https://affiliatewp.com
  * Version: 1.7.14
  * Text Domain: affiliate-wp
  * Domain Path: languages
@@ -390,7 +390,7 @@ final class Affiliate_WP {
 		$license_key = $this->settings->get( 'license_key' );
 
 		// setup the updater
-		$affwp_updater = new AFFWP_Plugin_Updater( 'http://affiliatewp.com', __FILE__, array(
+		$affwp_updater = new AFFWP_Plugin_Updater( 'https://affiliatewp.com', __FILE__, array(
 				'version' 	=> AFFILIATEWP_VERSION,
 				'license' 	=> $license_key,
 				'item_name' => 'AffiliateWP',
