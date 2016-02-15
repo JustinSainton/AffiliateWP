@@ -303,7 +303,7 @@ class Affiliate_WP_Settings {
 					),
 					'license_key' => array(
 						'name' => __( 'License Key', 'affiliate-wp' ),
-						'desc' => sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'http://affiliatewp.com/support/' ),
+						'desc' => sprintf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'affiliate-wp' ), 'https://affiliatewp.com/support/' ),
 						'type' => 'license',
 						'sanitize_callback' => 'sanitize_text_field'
 					),
@@ -960,7 +960,7 @@ class Affiliate_WP_Settings {
 		);
 
 		// Call the custom API.
-		$response = wp_remote_post( 'http://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
+		$response = wp_remote_post( 'https://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
@@ -1002,7 +1002,7 @@ class Affiliate_WP_Settings {
 		);
 
 		// Call the custom API.
-		$response = wp_remote_post( 'http://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
+		$response = wp_remote_post( 'https://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
@@ -1038,7 +1038,7 @@ class Affiliate_WP_Settings {
 			);
 
 			// Call the custom API.
-			$response = wp_remote_post( 'http://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
+			$response = wp_remote_post( 'https://affiliatewp.com', array( 'timeout' => 35, 'sslverify' => false, 'body' => $api_params ) );
 
 			// make sure the response came back okay
 			if ( is_wp_error( $response ) )

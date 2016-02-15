@@ -2,11 +2,11 @@
 	"name": "AffiliateWP",
 	"version": "1.7.7",
 	"description": "Affiliate Plugin for WordPress",
-	"homepage": "http://affiliatewp.com/",
+	"homepage": "https://affiliatewp.com/",
 	"author": {
 		"name": "Pippin Williamson and Andrew Munro",
 		"email": "support@affiliatewp.com",
-		"url": "http://affiliatewp.com/"
+		"url": "https://affiliatewp.com/"
 	},
 	"contributors": "FX Bénard <fx@fxbenard.com> ",
 	"repository": {
@@ -14,7 +14,7 @@
 		"url": ""
 	},
 	"bugs": {
-		"url": "http://affiliatewp.com/support/",
+		"url": "https://affiliatewp.com/support/",
 		"email": ""
 	},
 	"license": "GPLv2+",
@@ -31,7 +31,7 @@
 		"textdomain": "affiliate-wp",
 		"src": "affiliate-wp.php",
 		"header": {
-			"bugs": "http://affiliatewp.com/support/",
+			"bugs": "https://affiliatewp.com/support/",
 			"team": "AffiliateWP <support@affiliatewp.com>",
 			"last_translator": "AffiliateWP <support@affiliatewp.com>"
 		}

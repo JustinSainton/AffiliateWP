@@ -320,7 +320,7 @@ class Affiliate_WP_Welcome {
 
 				<div class="feature-section">
 					<h4><?php _e( 'Phenomenal Support','affiliate-wp' );?></h4>
-					<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, visit our <a href="http://affiliatewp.com/support">support</a> page to open a ticket.', 'affiliate-wp' );?></p>
+					<p><?php _e( 'We do our best to provide the best support we can. If you encounter a problem or have a question, visit our <a href="https://affiliatewp.com/support">support</a> page to open a ticket.', 'affiliate-wp' );?></p>
 				</div>
 			</div>
 		</div>

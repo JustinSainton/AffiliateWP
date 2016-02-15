@@ -27,7 +27,7 @@ function affwp_visits_contextual_help() {
 		return;
 
 	$sidebar_text = '<p><strong>' . __( 'For more information:', 'affiliate-wp' ) . '</strong></p>';
-	$sidebar_text .= '<p>' . sprintf( __( 'Visit the <a href="%s">documentation</a> on the AffiliateWP website.', 'affiliate-wp' ), esc_url( 'http://affiliatewp.com/documentation/' ) ) . '</p>';
+	$sidebar_text .= '<p>' . sprintf( __( 'Visit the <a href="%s">documentation</a> on the AffiliateWP website.', 'affiliate-wp' ), esc_url( 'https://affiliatewp.com/documentation/' ) ) . '</p>';
 	$sidebar_text .= '<p>' . sprintf( __( '<a href="%s">Post an issue</a> on <a href="%s">GitHub</a>.', 'affiliate-wp' ), esc_url( 'https://github.com/affiliatewp/AffiliateWP/issues' ), esc_url( 'https://github.com/affiliatewp/AffiliateWP' )  ) . '</p>';
 
 	$screen->set_help_sidebar( $sidebar_text );
