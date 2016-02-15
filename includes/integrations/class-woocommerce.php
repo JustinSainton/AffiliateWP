@@ -409,6 +409,8 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 			'cbvalue'     => 1
 		) );
 
+		wp_nonce_field( 'affwp_woo_product_nonce', 'affwp_woo_product_nonce' );
+
 	}
 
 	/**
@@ -426,6 +428,10 @@ class Affiliate_WP_WooCommerce extends Affiliate_WP_Base {
 
 		// Don't save revisions and autosaves
 		if ( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) ) {
+			return $post_id;
+		}
+
+		if( empty( $_POST['affwp_woo_product_nonce'] ) || ! wp_verify_nonce( $_POST['affwp_woo_product_nonce'], 'affwp_woo_product_nonce' ) ) {
 			return $post_id;
 		}
 
