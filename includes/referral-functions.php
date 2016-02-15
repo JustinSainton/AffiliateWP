@@ -116,26 +116,26 @@ function affwp_set_referral_status( $referral, $new_status = '' ) {
  * Adds a new referral to the database
  *
  * @since 1.0
- * @return bool
+ * @return integer 0 if no referral was added, referral ID if it was successfully added.
  */
 function affwp_add_referral( $data = array() ) {
-
-	if( empty( $data['user_id'] ) && empty( $data['affiliate_id'] ) ) {
-		return false;
+	
+	if ( empty( $data['user_id'] ) && empty( $data['affiliate_id'] ) ) {
+		return 0;
 	}
 
-	if( empty( $data['affiliate_id'] ) ) {
+	if ( empty( $data['affiliate_id'] ) ) {
 
 		$user_id      = absint( $data['user_id'] );
 		$affiliate_id = affiliate_wp()->affiliates->get_column_by( 'affiliate_id', 'user_id', $user_id );
 
-		if( ! empty( $affiliate_id ) ) {
+		if ( ! empty( $affiliate_id ) ) {
 
 			$data['affiliate_id'] = $affiliate_id;
 
 		} else {
 
-			return false;
+			return 0;
 
 		}
 
@@ -152,16 +152,16 @@ function affwp_add_referral( $data = array() ) {
 
 	$referral_id = affiliate_wp()->referrals->add( $args );
 
-	if( $referral_id ) {
+	if ( $referral_id ) {
 
 		$status = ! empty( $data['status'] ) ? sanitize_text_field( $data['status'] ) : 'pending';
 
 		affwp_set_referral_status( $referral_id, $status );
 
-		return true;
+		return $referral_id;
 	}
 
-	return false;
+	return 0;
 
 }
 
