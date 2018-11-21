@@ -8,7 +8,17 @@
 		<p><?php printf( __( 'Your affiliate username is: <strong>%s</strong>', 'affiliate-wp' ), affwp_get_affiliate_username() ); ?></p>
 	<?php endif; ?>
 
-	<p><?php printf( __( 'Your referral URL is: <strong>%s</strong>', 'affiliate-wp' ), esc_url( urldecode( affwp_get_affiliate_referral_url() ) ) ); ?></p>
+	<?php
+        $affiliate_urls = apply_filters('affwp_affiliate_dashboard_urls', array( 'Your referral URL is:' => affwp_get_affiliate_referral_url() ));
+        if ( !empty($affiliate_urls) ) :
+            foreach ($affiliate_urls as $label => $url) :
+                echo '<p>';
+                printf(__($label . ' <strong>%s</strong>', 'affiliate-wp'), esc_url(urldecode($url)));
+                echo '</p>';
+            endforeach;
+        endif;
+        ?>
+	
 	<p><?php _e( 'Enter any URL from this website in the form below to generate a referral link!', 'affiliate-wp' ); ?></p>
 
 	<form id="affwp-generate-ref-url" class="affwp-form" method="get" action="#affwp-generate-ref-url">
